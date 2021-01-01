@@ -6,8 +6,5 @@ author: "xiaonan"
 
 tags: []
 categories: []
-featuredIamge: ""
-featuredImagePreview: ""
-draft: true
 ---
 
