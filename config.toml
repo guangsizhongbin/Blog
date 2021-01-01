@@ -1,0 +1,161 @@
+baseURL = "https://fengqigang.cn"
+
+defaultContentLanguage = "en"
+
+languageCode = "en"
+title = "xiaonan's Blog"
+
+theme = "LoveIt"
+
+[params]
+	version="0.2.X"
+
+	defaultTheme = "auto"
+	dataFormat = "2006-01-02"
+
+	[parmas.app]
+		title = "Xiaonan's Blog"
+		noFavicon = false
+		svgFavicon = ""
+
+	[params.search]
+    enable = true
+    type = "lunr"
+    contentLength = 4000
+    placeholder = ""
+    maxResultLength = 10
+    snippetLength = 30
+    highlightTag = "em"
+    absoluteURL = false
+    [params.search.algolia]
+      index = ""
+      appID = ""
+      searchKey = ""
+
+	[params.header]
+		desktopMode = "fixed"
+		mobileMode = "auto"
+			
+	[params.footer]	
+		enable = true
+		custom = ''
+		hugo = true
+		copyright = true
+		author = true
+		since = 2019
+
+	[params.section]
+		paginate = 20
+		dataFormat = "01-02"
+		rss = 10
+
+	[params.list]
+		paginate = 20
+		dataFormat = "01-02"
+		rss = 10
+
+	[params.home]
+		rss = 10
+		[params.home.profile]
+			enable = true
+			gravatarEmail = ""
+			avatarURL = "/images/avatar.png"
+			title = "Xiaonan's Blog"
+			subtitle = ""
+			typeit = true
+			social = true
+			disclaimer = ""
+		[params.home.posts]
+			enable = true
+			paginate = 6
+			defaultHiddenFromHomePage = false
+
+	[params.social]
+		GitHub = "guangsizhongbin"
+		Email = "guangsizhongbin@gmail.com"
+		RSS = true
+
+	[params.page]
+		hiddenFromHomePage = false
+		hiddenFromSearch = false
+		twemoji = false
+		lightgallery = false
+		ruby = true
+		fraction = true
+		fontawesome = true
+		linkToMarkdown = true
+		rssFullText = false
+
+		[parmas.page.toc]
+			enable = true
+			keepStatic = true
+			auto = true
+
+		[parmas.page.math]
+			enable = true
+			blockLeftDelimiter = ""
+			blockRightDelimiter = ""
+			copyTex = true
+			mhchem = true
+
+		[params.page.code]
+			copy = true
+			maxShowLines = 10
+
+[menu]
+	[[menu.main]]
+		identifier = "posts"
+		pre = ""
+		post = ""
+		name = "Posts"
+		url = "/posts/"
+		title = ""
+		weight = 1
+
+	[[menu.main]]
+		identifier = "tags"
+		pre = ""
+		post = ""
+		name = "Tags"
+		url = "/Tags/"
+		title = ""
+		weight = 2
+
+	[[menu.main]]
+		identifier = "categories"
+		pre = ""
+		post = ""
+		name = "categories"
+		url = "/categories/"
+		title = ""
+		weight = 3
+
+[markup]
+	[markup.highlight]
+		codeFences = true
+		guessSyntax = true
+		lineNos = true
+		lineNumberInTable = true
+		noClasses = false
+	[markup.goldmark]
+		[markup.goldmark.extensions]
+			definitionList = true
+			footnote = true
+			linkify = true
+			strikethrough = true
+			table = true
+			taskList = true
+			typographer = true
+		[markup.goldmark.renderer]
+			unsafe = true
+		[markup.tableOfContents]
+			startLevel = 2
+			endLevel = 6
+
+[author]
+	name = "fengxiaonan"
+	email = "gaungsizhongbin@gmail.com"
+	link = "fengqigang.cn"
+
+[outputs]
+	home = ["HTML", "RSS", "JSON"]
