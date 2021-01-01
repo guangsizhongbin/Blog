@@ -6,6 +6,7 @@ author: "xiaonan"
 
 tags: ["git","hugo"]
 categories: [hugo]
+draft: true
 
 ---
 
@@ -74,6 +75,8 @@ password: 11f1caf3
 ![](https://img.fengqigang.cn//img/20210101170313.png)
 
 ## 同步到服务器
+
+
 
 
 

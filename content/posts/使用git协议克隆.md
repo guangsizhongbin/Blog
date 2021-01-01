@@ -28,7 +28,7 @@ $ ssh-keygen -t rsa -C "guangsizhongbin@gmail.com"
 	- Provides a new comment.
 
 ```bash
-Enter file in which to save the key (/home/feng/.ssh/id\_rsa):
+Enter file in which to save the key (/home/feng/.ssh/id_rsa):
 ```
 
 参数含义：
@@ -108,7 +108,7 @@ Hi guangsizhongbin/Blog! You've successfully authenticated, but GitHub does not 
 git clone git clone git@github.com:guangsizhongbin/Blog.git
 
 Cloning into 'Blog'...
-Enter passphrase for key '/home/feng/.ssh/id\_rsa':
+Enter passphrase for key '/home/feng/.ssh/id_rsa':
 ```
 
 输入创建`SSH key`的时候设置的密码(若有设置)

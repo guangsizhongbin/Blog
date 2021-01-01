@@ -6,6 +6,7 @@ author: "xiaonan"
 
 tags: [hugo]
 categories: [Installation]
+draft: true
 
 ---
 

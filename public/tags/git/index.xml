@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>git - Tag - xiaonan&#39;s Blog</title>
+        <link>https://fengqigang.cn/tags/git/</link>
+        <description>git - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://fengqigang.cn/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>使用git协议克隆</title>
+    <link>https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/</link>
+    <pubDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/</guid>
+    <description><![CDATA[使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
+ -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id\_rsa):   参数含义：
+ -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:]]></description>
+</item></channel>
+</rss>
