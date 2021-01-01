@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>使用git协议克隆 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="使用git协议克隆" />
 <meta property="og:description" content="使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
- -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id\_rsa):   参数含义：
+ -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id_rsa):   参数含义：
  -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" />
@@ -16,12 +16,12 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用git协议克隆"/>
 <meta name="twitter:description" content="使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
- -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id\_rsa):   参数含义：
+ -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id_rsa):   参数含义：
  -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" /><link rel="prev" href="https://fengqigang.cn/posts/%E6%90%AD%E5%BB%BAhugo/" /><link rel="next" href="https://fengqigang.cn/posts/github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -155,7 +155,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">Enter file in which to save the key <span class="o">(</span>/home/feng/.ssh/id<span class="se">\_</span>rsa<span class="o">)</span>:
+<pre class="chroma"><code class="language-bash" data-lang="bash">Enter file in which to save the key <span class="o">(</span>/home/feng/.ssh/id_rsa<span class="o">)</span>:
 </code></pre></td></tr></table>
 </div>
 </div><p>参数含义：</p>
@@ -297,7 +297,7 @@ Enter passphrase for key &#39;/home/feng/.ssh/id\_rsa&#39;:
 <pre class="chroma"><code class="language-bash" data-lang="bash">git clone git clone git@github.com:guangsizhongbin/Blog.git
 
 Cloning into <span class="s1">&#39;Blog&#39;</span>...
-Enter passphrase <span class="k">for</span> key <span class="s1">&#39;/home/feng/.ssh/id\_rsa&#39;</span>:
+Enter passphrase <span class="k">for</span> key <span class="s1">&#39;/home/feng/.ssh/id_rsa&#39;</span>:
 </code></pre></td></tr></table>
 </div>
 </div><p>输入创建<code>SSH key</code>的时候设置的密码(若有设置)</p>
@@ -326,8 +326,7 @@ Enter passphrase <span class="k">for</span> key <span class="s1">&#39;/home/feng
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E6%90%AD%E5%BB%BAhugo/" class="prev" rel="prev" title="搭建hugo"><i class="fas fa-angle-left fa-fw"></i>搭建hugo</a>
-            <a href="/posts/github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/" class="next" rel="next" title="Github Actions 自动部署hugo至vps">Github Actions 自动部署hugo至vps<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"></div>
 </div>
 </article></div>
             </main><footer class="footer">

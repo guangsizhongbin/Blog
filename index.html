@@ -100,25 +100,12 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/">Github Actions 自动部署hugo至vps</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-01">2021-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo/"><i class="far fa-folder fa-fw"></i>hugo</a></span></div><div class="content">Password:
-8!aSXVL]Q6-7z9qG
-系统版本 1 2 3 4 5 6 7 8 9 10 11 12  root@vultr:~# hostnamectl Static hostname: vultr.guest Icon name: computer-vm Chassis: vm Machine ID: 014b2aed70f7e09db32693a85feeb49a Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3 Virtualization: kvm Operating System: Debian GNU/Linux 9 (stretch) Kernel: Linux 4.9.0-14-amd64 Architecture: x86-64   我使用的是Debian 9
-安装宝塔 1  wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh   1 2 3 4  外网面板地址: http://141.164.50.150:8888/066aa3f1 内网面板地址: http://141.164.50.150:8888/066aa3f1 username: ikend6fd password: 11f1caf3   添加 Github Actions 代码: 1.</div><div class="post-footer">
-        <a href="/posts/github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a>,&nbsp;<a href="/tags/hugo/">hugo</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/">使用git协议克隆</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-01">2021-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw"></i>git</a></span></div><div class="content">使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
- -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id\_rsa):   参数含义：
+ -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id_rsa):   参数含义：
  -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:</div><div class="post-footer">
         <a href="/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/%E6%90%AD%E5%BB%BAhugo/">搭建hugo</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-01">2021-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/installation/"><i class="far fa-folder fa-fw"></i>Installation</a></span></div><div class="content">搭建hugo 环境  hugo  sudo pacman -S hugo    初始化 1  hugo new site name    Create a new site in the provided directory. The new site will have the correct structure, but no content or theme yet.  下载主题 1 2  git submodule add https://github.com/guangsizhongbin/LoveIt themes /Love   </div><div class="post-footer">
-        <a href="/posts/%E6%90%AD%E5%BB%BAhugo/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hugo/">hugo</a></div></div>
 </article></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
