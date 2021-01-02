@@ -6,22 +6,24 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>使用git协议克隆 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="使用git协议克隆" />
-<meta property="og:description" content="使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
- -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id_rsa):   参数含义：
- -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:" />
+<meta property="og:description" content="使用git协议克隆的好处
+
+配置完后，每次提交均不需要输入账号密码
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" />
 <meta property="article:published_time" content="2021-01-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-01-01T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="使用git协议克隆"/>
-<meta name="twitter:description" content="使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
- -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id_rsa):   参数含义：
- -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:"/>
+<meta name="twitter:description" content="使用git协议克隆的好处
+
+配置完后，每次提交均不需要输入账号密码
+"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" /><link rel="next" href="https://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -39,7 +41,7 @@
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -260,9 +262,9 @@ Enter same passphrase again:
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">The authenticity of host &#39;github.com (192.30.255.112)&#39; can&#39;t be established.RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-Are you sure you want to continue connecting (yes/no/\[fingerprint\])? yes
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added &#39;github.com,192.30.255.112&#39; (RSA) to the list of known hosts.
-Enter passphrase for key &#39;/home/feng/.ssh/id\_rsa&#39;:
+Enter passphrase for key &#39;/home/feng/.ssh/id_rsa&#39;:
 </code></pre></td></tr></table>
 </div>
 </div><p>输入创建<code>SSH key</code>的时候设置的密码(若有设置)</p>
@@ -302,8 +304,7 @@ Enter passphrase <span class="k">for</span> key <span class="s1">&#39;/home/feng
 </div>
 </div><p>输入创建<code>SSH key</code>的时候设置的密码(若有设置)</p>
 <h2 id="参考文章">参考文章</h2>
-<p><a href="https://www.cnblogs.com/ayseeing/p/3572582.html" target="_blank" rel="noopener noreffer">1. github设置添加SSH</a></p>
-</div><div class="post-footer" id="post-footer">
+<p><a href="https://www.cnblogs.com/ayseeing/p/3572582.html" target="_blank" rel="noopener noreffer">1. github设置添加SSH</a></p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -326,12 +327,13 @@ Enter passphrase <span class="k">for</span> key <span class="s1">&#39;/home/feng
         </section>
     </div>
 
-    <div class="post-nav"></div>
+    <div class="post-nav">
+            <a href="/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="next" rel="next" title="SHH地址和HTTPS地址相互转换">SHH地址和HTTPS地址相互转换<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>
 

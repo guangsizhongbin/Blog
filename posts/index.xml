@@ -3,15 +3,26 @@
         <title>All Posts - xiaonan&#39;s Blog</title>
         <link>https://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 02 Jan 2021 07:43:29 &#43;0800</lastBuildDate><atom:link href="https://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>SHH地址和HTTPS地址相互转换</title>
+    <link>https://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</link>
+    <pubDate>Sat, 02 Jan 2021 07:43:29 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</guid>
+    <description><![CDATA[<h2 id="为什么需要转换shh地址和https">为什么需要转换SHH地址和HTTPS?</h2>
+<ol>
+<li>SSH地址在<code>push</code>, <code>pull</code>时均不需要输入账号密码</li>
+</ol>]]></description>
+</item><item>
     <title>使用git协议克隆</title>
     <link>https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/</link>
     <pubDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/</guid>
-    <description><![CDATA[使用git协议克隆的好处  配置完后，每次提交均不需要输入账号密码  如何配置  创建一个SSH Key  1  $ ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;   参数含义：
- -t  Specifies the type of key to create.   -C  Provides a new comment.    1  Enter file in which to save the key (/home/feng/.ssh/id_rsa):   参数含义：
- -f filename  Specifies the filename of the key file. 指定生成文件的文件名（文件路径，否则会直接生成在当前目录下）     例如:]]></description>
+    <description><![CDATA[<h2 id="使用git协议克隆的好处">使用<code>git</code>协议克隆的好处</h2>
+<ol>
+<li>配置完后，每次提交均不需要输入账号密码</li>
+</ol>]]></description>
 </item></channel>
 </rss>
