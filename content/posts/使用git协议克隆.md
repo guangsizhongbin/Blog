@@ -13,6 +13,7 @@ categories: [git]
 
 1. 配置完后，每次提交均不需要输入账号密码
 
+<!--more-->
 ## 如何配置
 
 1. 创建一个SSH Key
@@ -88,9 +89,9 @@ ssh -T git@github.com
 
 ```
 The authenticity of host 'github.com (192.30.255.112)' can't be established.RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-Are you sure you want to continue connecting (yes/no/\[fingerprint\])? yes
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
-Enter passphrase for key '/home/feng/.ssh/id\_rsa':
+Enter passphrase for key '/home/feng/.ssh/id_rsa':
 ```
 
 输入创建`SSH key`的时候设置的密码(若有设置)

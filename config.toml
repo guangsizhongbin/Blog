@@ -13,10 +13,6 @@ theme = "LoveIt"
 	defaultTheme = "auto"
 	dataFormat = "2006-01-02"
 
-	[parmas.app]
-		title = "Xiaonan's Blog"
-		noFavicon = false
-		svgFavicon = ""
 
 	[params.search]
     enable = true
@@ -33,8 +29,9 @@ theme = "LoveIt"
       searchKey = ""
 
 	[params.header]
-		desktopMode = "fixed"
+		desktopMode = "auto"
 		mobileMode = "auto"
+	
 			
 	[params.footer]	
 		enable = true
@@ -59,7 +56,7 @@ theme = "LoveIt"
 		[params.home.profile]
 			enable = true
 			gravatarEmail = ""
-			avatarURL = "/images/avatar.png"
+			avatarURL = "/avatar.png"
 			title = "Xiaonan's Blog"
 			subtitle = ""
 			typeit = true
@@ -101,6 +98,7 @@ theme = "LoveIt"
 		[params.page.code]
 			copy = true
 			maxShowLines = 10
+
 
 [menu]
 	[[menu.main]]
@@ -153,9 +151,11 @@ theme = "LoveIt"
 			endLevel = 6
 
 [author]
-	name = "fengxiaonan"
+	name = "xiaonan"
 	email = "gaungsizhongbin@gmail.com"
 	link = "fengqigang.cn"
+
+	
 
 [outputs]
 	home = ["HTML", "RSS", "JSON"]
