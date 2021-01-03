@@ -1,0 +1,96 @@
+{
+  "main": {
+    "id": "0866077287630f51",
+    "type": "split",
+    "children": [
+      {
+        "id": "14f5db64005a8cce",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Github_Actions_自动部署hugo至vps.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f7397517fc494ab0",
+    "type": "split",
+    "children": [
+      {
+        "id": "2bfae181804ec4eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "74b96767d05b8589",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "7ceb0019b14b2a00",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "581b23a69f9ed3c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "3aee24d6f23b6d36",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2553bae2da8fc96f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Github_Actions_自动部署hugo至vps.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Github_Actions_自动部署hugo至vps.md",
+    "使用git协议克隆.md",
+    "Docker.md",
+    "Github_SSH地址和HTTPS地址相互转换.md",
+    "基于docker部署wekan.md",
+    "搭建hugo.md"
+  ]
+}
