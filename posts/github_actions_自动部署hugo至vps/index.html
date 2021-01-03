@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Github Actions 自动部署hugo至vps - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Github Actions 自动部署hugo至vps" />
+<meta property="og:description" content="系统版本 1 2 3 4 5 6 7 8 9 10 11 12  root@vultr:~# hostnamectl Static hostname: vultr.guest Icon name: computer-vm Chassis: vm Machine ID: 014b2aed70f7e09db32693a85feeb49a Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3 Virtualization: kvm Operating System: Debian GNU/Linux 9 (stretch) Kernel: Linux 4.9.0-14-amd64 Architecture: x86-64   我使用的是Debian 9
+安装宝塔 1  wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh   上传Hugo源文件至Github  不需要上传public中的文件  Note    不跟踪某个public文件夹(git status不再提醒)
+ 修改 ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/" />
+<meta property="article:published_time" content="2021-01-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-01T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Github Actions 自动部署hugo至vps"/>
+<meta name="twitter:description" content="系统版本 1 2 3 4 5 6 7 8 9 10 11 12  root@vultr:~# hostnamectl Static hostname: vultr.guest Icon name: computer-vm Chassis: vm Machine ID: 014b2aed70f7e09db32693a85feeb49a Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3 Virtualization: kvm Operating System: Debian GNU/Linux 9 (stretch) Kernel: Linux 4.9.0-14-amd64 Architecture: x86-64   我使用的是Debian 9
+安装宝塔 1  wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh   上传Hugo源文件至Github  不需要上传public中的文件  Note    不跟踪某个public文件夹(git status不再提醒)
+ 修改 ."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/" /><link rel="prev" href="http://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" /><link rel="next" href="http://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Github Actions 自动部署hugo至vps",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps\/"
+        },"genre": "posts","keywords": "git, hugo","wordcount":  508 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps\/","datePublished": "2021-01-01T00:00:00+00:00","dateModified": "2021-01-01T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Github Actions 自动部署hugo至vps</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo/"><i class="far fa-folder fa-fw"></i>hugo</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-01">2021-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;508 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#系统版本">系统版本</a></li>
+    <li><a href="#安装宝塔">安装宝塔</a></li>
+    <li><a href="#上传hugo源文件至github">上传Hugo源文件至Github</a></li>
+    <li><a href="#github-actions构建hugo并用webhook回调">Github Actions构建Hugo并用WebHook回调</a>
+      <ul>
+        <li><a href="#生成access-token">生成Access token</a></li>
+        <li><a href="#添加access-token到项目">添加Access Token到项目</a></li>
+        <li><a href="#宝塔安装webhook">宝塔安装WebHook</a></li>
+        <li><a href="#设置脚本">设置脚本</a></li>
+        <li><a href="#将秘钥添加至项目中的secrets">将秘钥添加至项目中的Secrets</a></li>
+        <li><a href="#添加github-actions-workflow-事件">添加Github Actions workflow 事件</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="系统版本">系统版本</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@vultr:~# hostnamectl
+
+  Static hostname: vultr.guest
+        Icon name: computer-vm
+          Chassis: vm
+       Machine ID: 014b2aed70f7e09db32693a85feeb49a
+          Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3
+   Virtualization: kvm
+ Operating System: Debian GNU/Linux <span class="m">9</span> <span class="o">(</span>stretch<span class="o">)</span>
+           Kernel: Linux 4.9.0-14-amd64
+     Architecture: x86-64
+
+</code></pre></td></tr></table>
+</div>
+</div><p><code>我使用的是Debian 9</code></p>
+<h2 id="安装宝塔">安装宝塔</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh <span class="o">&amp;&amp;</span> bash install.sh
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="上传hugo源文件至github">上传Hugo源文件至Github</h2>
+<ol>
+<li>不需要上传<code>public</code>中的文件</li>
+</ol>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>
+<p>不跟踪某个<code>public</code>文件夹(git status不再提醒)</p>
+<ul>
+<li>修改 <code>.gitignore</code>
+加入 public/</li>
+</ul>
+</li>
+<li>
+<p>对<code>public</code>文件夹取消跟踪</p>
+<ul>
+<li>git rm -r &ndash;cached public 删除<code>public</code>文件夹的跟踪，并保留在本地</li>
+<li>git rm -r &ndash;f public 删除<code>public</code>文件夹的跟踪，并且删除本地文件</li>
+</ul>
+</li>
+</ol>
+</div>
+        </div>
+    </div>
+<h2 id="github-actions构建hugo并用webhook回调">Github Actions构建Hugo并用WebHook回调</h2>
+<h3 id="生成access-token">生成Access token</h3>
+<p>个人的Settings -&gt; Developer settings -&gt; Personal access tokens -&gt; Generate new token -&gt; Generate token</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210101165022.png"
+        data-srcset="https://img.fengqigang.cn//img/20210101165022.png, https://img.fengqigang.cn//img/20210101165022.png 1.5x, https://img.fengqigang.cn//img/20210101165022.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210101165022.png"
+        title="https://img.fengqigang.cn//img/20210101165022.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210101165116.png"
+        data-srcset="https://img.fengqigang.cn//img/20210101165116.png, https://img.fengqigang.cn//img/20210101165116.png 1.5x, https://img.fengqigang.cn//img/20210101165116.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210101165116.png"
+        title="https://img.fengqigang.cn//img/20210101165116.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210101165146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210101165146.png, https://img.fengqigang.cn//img/20210101165146.png 1.5x, https://img.fengqigang.cn//img/20210101165146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210101165146.png"
+        title="https://img.fengqigang.cn//img/20210101165146.png" /></p>
+<p>保存好获取到的 <code>access token</code>, 它只会出现一次</p>
+<h3 id="添加access-token到项目">添加Access Token到项目</h3>
+<p>项目Secrets -&gt; New repository secret -&gt; Add secret</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210101165842.png"
+        data-srcset="https://img.fengqigang.cn//img/20210101165842.png, https://img.fengqigang.cn//img/20210101165842.png 1.5x, https://img.fengqigang.cn//img/20210101165842.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210101165842.png"
+        title="https://img.fengqigang.cn//img/20210101165842.png" /></p>
+<h3 id="宝塔安装webhook">宝塔安装WebHook</h3>
+<p>宝塔 -&gt; 应用搜索 -&gt; webhook</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210103104150.png"
+        data-srcset="https://img.fengqigang.cn//img/20210103104150.png, https://img.fengqigang.cn//img/20210103104150.png 1.5x, https://img.fengqigang.cn//img/20210103104150.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210103104150.png"
+        title="https://img.fengqigang.cn//img/20210103104150.png" /></p>
+<h3 id="设置脚本">设置脚本</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210103113736.png"
+        data-srcset="https://img.fengqigang.cn//img/20210103113736.png, https://img.fengqigang.cn//img/20210103113736.png 1.5x, https://img.fengqigang.cn//img/20210103113736.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210103113736.png"
+        title="https://img.fengqigang.cn//img/20210103113736.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+date --date<span class="o">=</span><span class="s1">&#39;0 days ago&#39;</span> <span class="s2">&#34;+%Y-%m-%d %H:%M:%S&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;Start&#34;</span>
+
+<span class="nv">gitPath</span><span class="o">=</span><span class="s2">&#34;/www/wwwroot/fengqigang.cn&#34;</span>
+<span class="nv">gitHttp</span><span class="o">=</span><span class="s2">&#34;https://github.com/guangsizhongbin/Blog.git&#34;</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Web站点路径:</span><span class="nv">$gitPath</span><span class="s2">&#34;</span>
+<span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;</span><span class="nv">$gitPath</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+	<span class="nb">cd</span> <span class="nv">$gitPath</span>
+	<span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;.git&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+		<span class="nb">echo</span> <span class="s2">&#34;在该目录下克隆 git&#34;</span>
+		git clone -b gh-pages <span class="nv">$gitHttp</span> gittemp
+		mv gittemp/.git .
+		rm -rf gittemp
+	<span class="k">fi</span>
+	git reset --hard gh-papes
+	git pull
+	chown -R www:www <span class="nv">$gitPath</span>
+	<span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+	<span class="nb">exit</span>
+<span class="k">else</span>
+	<span class="nb">echo</span> <span class="s2">&#34;该项目路径不存在&#34;</span>
+	<span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+	<span class="nb">exit</span>
+<span class="k">fi</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li><code>date</code> agruments</li>
+</ol>
+<ul>
+<li>
+<p><code>--date=STRING</code></p>
+<pre><code>  display time described by STRING, not 'now'
+</code></pre>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">// 显示当前时间
+$ date --date<span class="o">=</span><span class="s2">&#34;0 days ago&#34;</span>
+Sun Jan  <span class="m">3</span> 10:54:04 AM CST <span class="m">2021</span>
+
+// 显示2天之后的时间
+$ date --date<span class="o">=</span><span class="s2">&#34;2 days&#34;</span>
+Tue Jan  <span class="m">5</span> 10:55:14 AM CST <span class="m">2021</span>
+
+// 显示2个星期之后的时间
+$ date --date<span class="o">=</span><span class="s2">&#34;2 weeks&#34;</span>
+Sun Jan <span class="m">17</span> 10:55:22 AM CST <span class="m">2021</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>+%Y-%m-%d %H:%M:%S</code>
+<ul>
+<li><code>%Y</code> year</li>
+<li><code>%m</code> month (01..12)</li>
+<li><code>%d</code> day of month (e.g., 01)</li>
+<li><code>%H</code> hour (00..23)</li>
+<li><code>%M</code> minute (00..59)</li>
+<li><code>%S</code> second (00..60)</li>
+</ul>
+</li>
+</ul>
+<p><strong>day of month</strong> 是小写的d</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">// 显示当前时间
+$ date <span class="s1">&#39;+%Y-%m-%d %H:%M:%S&#39;</span>
+2021-01-03 11:07:00
+
+// 显示当前时间
+$ date --date<span class="o">=</span><span class="s2">&#34;0 days ago&#34;</span> <span class="s1">&#39;+%Y-%m-%d %H:%M:%S&#39;</span>
+2021-01-03 11:08:47
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><code>git</code> arguments</li>
+</ol>
+<ul>
+<li>
+<p><code>-b &lt;name&gt;</code></p>
+<p><code>Instead of pointing the newly created HEAD to the branch pointed to by the cloned repository's HEAD, point to &lt;name&gt; brach instead.</code></p>
+</li>
+<li>
+<p><code>git reset --hard gh-pages</code></p>
+<p><code>Restes the index and working tree. Any changes to tracked files in the working tree since &lt;commit&gt; are discarded.</code></p>
+<p>退回到远程仓库中的版本</p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<p>项目Actions -&gt; Set up a workflow yourself -&gt; 添加代码 -&gt; Start commit</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210101170313.png"
+        data-srcset="https://img.fengqigang.cn//img/20210101170313.png, https://img.fengqigang.cn//img/20210101170313.png 1.5x, https://img.fengqigang.cn//img/20210101170313.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210101170313.png"
+        title="https://img.fengqigang.cn//img/20210101170313.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">name: Deploy Hugo # 自己命名即可
+
+on: # 设置触发条件
+	push:
+		branches:
+			- master # master 分支被更新时触发
+
+job: # 设置触发时间
+	build-deploy:
+		runs-on: ubuntu-18.04
+		steps:
+			- uses: actions/checkout@v1
+
+			- name: Setup Hugo
+				uses: peaceiris/actions-hugo@v2
+				with:
+					hugo-version: latest
+
+			- name: Build
+				run: hugo
+
+			- name: Deploy
+				uses: peaceiris/action-gh-pages@v3
+				with:
+					personal_token: ${{ secrets.personal_token}}
+					PUBLISH_BRANCH: gh-pages # 推送至分支名称
+					PUBLISH_DIR: ./public # 将hugo 生成的 public 作为根目录
+					comit_message: ${{ github.event.head_commit.message }}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="将秘钥添加至项目中的secrets">将秘钥添加至项目中的Secrets</h3>
+<p>项目的<code>Setting</code> -&gt; Secrets</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210103113957.png"
+        data-srcset="https://img.fengqigang.cn//img/20210103113957.png, https://img.fengqigang.cn//img/20210103113957.png 1.5x, https://img.fengqigang.cn//img/20210103113957.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210103113957.png"
+        title="https://img.fengqigang.cn//img/20210103113957.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210103130336.png"
+        data-srcset="https://img.fengqigang.cn//img/20210103130336.png, https://img.fengqigang.cn//img/20210103130336.png 1.5x, https://img.fengqigang.cn//img/20210103130336.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210103130336.png"
+        title="https://img.fengqigang.cn//img/20210103130336.png" /></p>
+<h3 id="添加github-actions-workflow-事件">添加Github Actions workflow 事件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	- name: Webhook
+		uses: distributhor/workflow-webhoob@v1
+		env:
+			webhook_url: ${{ secrets.WEBHOOK_URL }}$
+			webhook_secret: ${{ secrets.WEBHOOK_SECRET }}$
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考">参考</h2>
+<p><a href="https://immmmm.com/hugo-github-actions/" target="_blank" rel="noopener noreffer">Hugo + Github Actions 实现自动化部署</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-01-01</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a>,&nbsp;<a href="/tags/hugo/">hugo</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/" class="prev" rel="prev" title="使用git协议克隆"><i class="fas fa-angle-left fa-fw"></i>使用git协议克隆</a>
+            <a href="/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="next" rel="next" title="SHH地址和HTTPS地址相互转换">SHH地址和HTTPS地址相互转换<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

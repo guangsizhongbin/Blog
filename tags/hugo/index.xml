@@ -1,25 +1,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>hugo - Tag - xiaonan&#39;s Blog</title>
-        <link>https://fengqigang.cn/tags/hugo/</link>
+        <link>http://fengqigang.cn/tags/hugo/</link>
         <description>hugo - Tag - xiaonan&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://fengqigang.cn/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://fengqigang.cn/tags/hugo/" rel="self" type="application/rss+xml" /><item>
     <title>Github Actions 自动部署hugo至vps</title>
-    <link>https://fengqigang.cn/posts/github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</link>
+    <link>http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</link>
     <pubDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://fengqigang.cn/posts/github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</guid>
-    <description><![CDATA[Password:
-8!aSXVL]Q6-7z9qG
-系统版本 1 2 3 4 5 6 7 8 9 10 11 12  root@vultr:~# hostnamectl Static hostname: vultr.guest Icon name: computer-vm Chassis: vm Machine ID: 014b2aed70f7e09db32693a85feeb49a Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3 Virtualization: kvm Operating System: Debian GNU/Linux 9 (stretch) Kernel: Linux 4.9.0-14-amd64 Architecture: x86-64   我使用的是Debian 9
-安装宝塔 1  wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh   1 2 3 4  外网面板地址: http://141.164.50.150:8888/066aa3f1 内网面板地址: http://141.164.50.150:8888/066aa3f1 username: ikend6fd password: 11f1caf3   添加 Github Actions 代码: 1.]]></description>
-</item><item>
-    <title>搭建hugo</title>
-    <link>https://fengqigang.cn/posts/%E6%90%AD%E5%BB%BAhugo/</link>
-    <pubDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://fengqigang.cn/posts/%E6%90%AD%E5%BB%BAhugo/</guid>
-    <description><![CDATA[搭建hugo 环境  hugo  sudo pacman -S hugo    初始化 1  hugo new site name    Create a new site in the provided directory. The new site will have the correct structure, but no content or theme yet.  下载主题 1 2  git submodule add https://github.com/guangsizhongbin/LoveIt themes /Love   ]]></description>
+    <guid>http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</guid>
+    <description><![CDATA[系统版本 1 2 3 4 5 6 7 8 9 10 11 12  root@vultr:~# hostnamectl Static hostname: vultr.guest Icon name: computer-vm Chassis: vm Machine ID: 014b2aed70f7e09db32693a85feeb49a Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3 Virtualization: kvm Operating System: Debian GNU/Linux 9 (stretch) Kernel: Linux 4.9.0-14-amd64 Architecture: x86-64   我使用的是Debian 9
+安装宝塔 1  wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh   上传Hugo源文件至Github  不需要上传public中的文件  Note    不跟踪某个public文件夹(git status不再提醒)
+ 修改 .]]></description>
 </item></channel>
 </rss>
