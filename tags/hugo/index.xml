@@ -10,8 +10,37 @@
     <pubDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</guid>
-    <description><![CDATA[系统版本 1 2 3 4 5 6 7 8 9 10 11 12  root@vultr:~# hostnamectl Static hostname: vultr.guest Icon name: computer-vm Chassis: vm Machine ID: 014b2aed70f7e09db32693a85feeb49a Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3 Virtualization: kvm Operating System: Debian GNU/Linux 9 (stretch) Kernel: Linux 4.9.0-14-amd64 Architecture: x86-64   我使用的是Debian 9
-安装宝塔 1  wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh   上传Hugo源文件至Github  不需要上传public中的文件  Note    不跟踪某个public文件夹(git status不再提醒)
- 修改 .]]></description>
+    <description><![CDATA[<h2 id="系统版本">系统版本</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@vultr:~# hostnamectl
+
+  Static hostname: vultr.guest
+        Icon name: computer-vm
+          Chassis: vm
+       Machine ID: 014b2aed70f7e09db32693a85feeb49a
+          Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3
+   Virtualization: kvm
+ Operating System: Debian GNU/Linux <span class="m">9</span> <span class="o">(</span>stretch<span class="o">)</span>
+           Kernel: Linux 4.9.0-14-amd64
+     Architecture: x86-64
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
 </item></channel>
 </rss>
