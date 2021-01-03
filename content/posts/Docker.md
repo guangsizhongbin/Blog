@@ -1,12 +1,12 @@
 ---
 title: "Docker"
 date: 2021-01-02T19:34:39+08:00
-lastmod: 2021-01-02
+lastmod: 2021-01-03
 author: "xiaonan"
 
 tags: [docker]
 categories: [docker]
-draft: true
+draft: false
 ---
 
 ## Docker 三大基本概念
@@ -16,6 +16,8 @@ draft: true
 `容器`(Container)
 
 `仓库`(Repository)
+
+<!--more-->
 
 ## 安装Docker(Debian)
 
@@ -170,4 +172,82 @@ docker container stop f9b87ce69941
 如
 ```bash
 docker container rm wekan-db
+```
+
+### 进入容器
+
+- 为什么要进入容器?
+	
+	在使用`-d`参数时，容器启动后会进入后台运行
+
+- 可以采取什么样的方式进入容器？
+
+	`attach`和`exec`
+
+| 命令   | 使用方法                                                                                 | 注意                                  |
+|--------|------------------------------------------------------------------------------------------|---------------------------------------|
+| attach | docker attach <CONTAINER ID>                                                             | 使用这个stdin中`exit`, 会导致容器停止 |
+| exec   | `-i` 没有分配伪终端，只返回命令执行结果\\ `-t` 分配一个伪终端, 可以看到Linux命令提示符号 |使用这个stdin中的`exit`, 不会导致容器停止，推荐使用这个|
+
+```bash
+# docker attach 命令
+
+## docker run -dit ubuntu
+d9e6bc65a0ee15a5af4494e5ff214a62983b09d3df4c343481ce46436ce1bbbf
+
+## docker container ls
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
+d9e6bc65a0ee        ubuntu                "/bin/bash"              3 seconds ago       Up 2 seconds                                 reverent_hypatia
+
+## docker attach exit 测试(对应的容器会停止)
+
+root@vultr:~# docker container ls
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
+d9e6bc65a0ee        ubuntu                "/bin/bash"              3 seconds ago       Up 2 seconds                                 reverent_hypatia
+2a79a5b6fa27        quay.io/wekan/wekan   "node /build/main.js"    16 hours ago        Up 16 hours         0.0.0.0:9001->8080/tcp   wekan
+922469c10a12        mongo:3.2.20          "docker-entrypoint.s…"   16 hours ago        Up 16 hours         27017/tcp                wekan-db
+root@vultr:~# docker attach d9
+root@d9e6bc65a0ee:/# exit
+exit
+root@vultr:~# docker container ls
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
+2a79a5b6fa27        quay.io/wekan/wekan   "node /build/main.js"    16 hours ago        Up 16 hours         0.0.0.0:9001->8080/tcp   wekan
+922469c10a12        mongo:3.2.20          "docker-entrypoint.s…"   17 hours ago        Up 17 hours         27017/tcp                wekan-db
+
+```
+
+```
+# docker exec 命令
+
+## docker run -dit ubuntu
+78c1a1cfdb4f648dfd44be0d9b32725f3b258a2a4dc1ea3dc6ff9d053ec0b2ba
+
+## docker container ls
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
+78c1a1cfdb4f        ubuntu                "/bin/bash"              3 minutes ago       Up 3 minutes                                 musing_brown
+
+## docker exec -i 测试(不会出现Linux命令提示符号)
+root@vultr:~# docker exec -i 78c bash
+ls
+bin
+boot
+dev
+etc
+home
+lib
+lib32
+lib64
+libx32
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
 ```

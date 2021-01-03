@@ -27,6 +27,8 @@ root@vultr:~# hostnamectl
 
 ```
 
+<!--more-->
+
 `我使用的是Debian 9`
 
 ## 安装宝塔
