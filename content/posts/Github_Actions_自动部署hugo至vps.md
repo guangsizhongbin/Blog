@@ -144,7 +144,7 @@ Sun Jan 17 10:55:22 AM CST 2021
 	- `%M` minute (00..59)
 	- `%S` second (00..60)
 
-**day of month** 是小写的d
+**day of month** 和 **month** 都是小写
 
 ```bash
 // 显示当前时间
