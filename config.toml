@@ -15,7 +15,6 @@ theme = "LoveIt"
 	defaultTheme = "auto"
 	dataFormat = "2006-01-02"
 
-
 	[params.search]
     enable = true
     type = "lunr"
@@ -94,6 +93,8 @@ theme = "LoveIt"
 			enable = true
 			blockLeftDelimiter = ""
 			blockRightDelimiter = ""
+			inlineLeftDelimiter = ""
+			inlineRightDelimiter = ""
 			copyTex = true
 			mhchem = true
 

@@ -3,6 +3,8 @@ title: "Bubble_Sort"
 date: 2021-01-04T20:48:16+08:00
 lastmod: 2021-01-04
 author: "xiaonan"
+math:
+ enable: true
 
 tags: [algorithm]
 categories: [数据结构]
@@ -20,7 +22,7 @@ void print_list(int arr[], int len);
 void bubble_sort(int arr[], int len);
 
 void bubble_sort(int arr[], int len)
-{
+	{
 	int i, j, temp;
 	printf("初始list为:");
 	print_list(arr, len);
@@ -89,14 +91,14 @@ void bubble_sort(int arr[], int len)
 
 | 语句                | cost | times                                                              |
 |---------------------|------|--------------------------------------------------------------------|
-| int i, j, temp      | c1   | 1                                                                  |
-| i < len - 1         | c2   | n(n次判断)                                                         |
-| i++                 | c3   | n - 1(不满足条件不加)                                              |
-| j=0                 | c4   | i++只会执行n-1次，即j=0执行n-1次                                   |
-| j < len - 1 - i     | c5   | t1(i=0) + t1(i=1) + ... + t1(i = n-2) + t1(i = n-1), 最多执行n-1次 |
-| j++                 | c6   | t2(i=0) + t2(i=1) + ... + t2(i = n-2) + t2(i = n-1)                |
-| arr[j + 1] < arr[j] | c7   | t3(i=0) + t3(i=1) + ... + t3(i = n-2) + t3(i = n-1)                |
-| swap(arr, j, j+1)   | c8   | t4(i=0) + t4(i=1) + ... + t4(i = n-2) + t4(i = n-1)                |
+| int i, j, temp      | $C_1$   | 1                                                                  |
+| i < len - 1         | $C_2$   | n(n次判断)                                                         |
+| i++                 | $C_3$   | n - 1(不满足条件不加)                                              |
+| j=0                 | $C_4$   | i++只会执行n-1次，即j=0执行n-1次                                   |
+| j < len - 1 - i     | $C_5$   | $t_1$(i=0) + $t_1$(i=1) + ... + $t_1$(i = n-2) + $t_1$(i = n-1), 最多执行n-1次 |
+| j++                 | $C_6$   | $t_2$(i=0) + $t_2$(i=1) + ... + $t_2$(i = n-2) + $t_2$(i = n-1)                |
+| arr[j + 1] < arr[j] | $C_7$   | $t_3$(i=0) + $t_3$(i=1) + ... + $t_3$(i = n-2) + $t_3$(i = n-1)                |
+| swap(arr, j, j+1)   | $C_8$   | $t_4$(i=0) + $t_4$(i=1) + ... + $t_4$(i = n-2) + $t_4$(i = n-1)                |
 
 算法总的运行时间是第一条语句执行时间之和。如果执行一条语句需要c_i步，又共执行了n次这条语句。那么它在运行时间中占cin为计算总运行时间T[n], 对第一对cost与times这积求和。
 
@@ -112,7 +114,7 @@ T(n) = C1 + C2n + C3(n - 1) + C4(n - 1) + C5[t1(i=0) + t1(i=1) + ... + t1(i=n-1)
 
 即可T(n) = O(n^2)
 
-### 最坏时间复杂度
+#### 最坏时间复杂度
 
 第8步，均执行
 
@@ -147,6 +149,9 @@ void bubble_sort(int arr[], int len)
 
 T(n) = C1 + C2 + C3 + C4(n - 1) + C5(n - 1) + c6(n - 1)
 
+
+
 ## 参考
 
-[Bubble Sort](https://www.geeksforgeeks.org/bubble-sort/)
+1. [Bubble Sort](https://www.geeksforgeeks.org/bubble-sort/)
+2. [冒泡排序](https://www.runoob.com/w3cnote/bubble-sort.html)
