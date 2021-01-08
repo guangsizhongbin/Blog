@@ -29,7 +29,7 @@
     <pubDate>Tue, 05 Jan 2021 19:30:27 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/selectionsort/</guid>
-    <description><![CDATA[选择排序 C语言实现 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  #include &lt;stdio.h&gt; void swap(int *a, int *b) void selection_sort(int arr[], int len) void selection_sort(int arr[], int len) { int i, j; for(i=0; i&lt;len -1; i++) { int min = i; for(j = i+1; j &lt; len; j++) if (arr[j] &lt; arr[min]) min = j; swap(&amp;arr[min], &amp;arr[i]); } }   Note    前面的元素与后面的元素一一对比, 若后面的元素小，将最小元素的的序号替换成它, 最后前的元素的值与最小序号所对的值替换]]></description>
+    <description><![CDATA[选择排序 C语言实现 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49  #include &lt;stdio.h&gt; void print_list(int arr[], int len); void selection_sort(int arr[], int len); void swap(int *a, int *b); void selection_sort(int arr[], int len) { int i, j; printf(&#34;初始list:&#34;); print_list(arr, len); printf(&#34;\n&#34;); int k = 1; for(i=0; i&lt;len -1; i++) { int min = i; for(j = i + 1; j &lt; len; j++) if (arr[j] &lt; arr[min]) min = j; swap(&amp;arr[min], &amp;arr[i]); printf(&#34;第%d次交换后的list:&#34;, k); print_list(arr, len); printf(&#34;\n&#34;); k+=1; } } void swap(int *a, int *b) { int temp = *a; *a = *b; *b = temp; } void print_list(int arr[], int len) { int i; for (i=0; i&lt; len; i++) printf(&#34;%d &#34;, arr[i]); } int main() { int arr[] = { 22, 34, 3, 4, 5, 9}; int len = (int) sizeof(arr) / sizeof(*arr); selection_sort(arr, len); return 0; }   Note    前面的元素与后面的元素一一对比, 若后面的元素小，将最小元素的的序号替换成它, 最后前的元素的值与最小序号所对的值替换]]></description>
 </item><item>
     <title>Bubble_Sort</title>
     <link>http://fengqigang.cn/posts/bubble_sort/</link>
