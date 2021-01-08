@@ -13,6 +13,8 @@ categories: [数据结构]
 ## 冒泡排序
 ![](https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif)
 
+<!--more-->
+
 ## C语言实现
 
 ```C

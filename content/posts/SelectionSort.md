@@ -14,6 +14,8 @@ categories: [数据结构]
 
 ![](https://img.fengqigang.cn//img/selectionSort.gif)
 
+<!--more-->
+
 ## C语言实现
 
 ```c
