@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>树莓派 - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</link>
+        <description>树莓派 - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 09 Jan 2021 20:47:57 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="self" type="application/rss+xml" /><item>
+    <title>树莓派踩坑记</title>
+    <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/</link>
+    <pubDate>Sat, 09 Jan 2021 20:47:57 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/</guid>
+    <description><![CDATA[今天总有拿到树莓派4B+, 想着搭建一个下载机器，供家里人使用。
+各个接口功能 第一次入手，刚开始连电源键都没有找到, 官网提供了说明.
+安装Raspberry Pi OS 下载系统 系统下载地址Raspberry Pi OS
+烧录镜像  sudo fdisk -l  先查看SD卡的名称
+sudo dd bs=4M if=系统路径 of=/dev/SD名称 status=progress oflag=sync
+Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用dd时，报错 d: opening /dev/sdc: Read-only file system   dd参数
+    bs=BYTES read and write up to BYTES bytes at a time (default:512); overrides ibs and obs
+  status=LEVEL The LEVEL of information to print to sederr; none suppresses everything but error messages, noxfer suppresses the final transfer statistics, progress shows periodic transfer statistics.]]></description>
+</item></channel>
+</rss>

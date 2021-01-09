@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>树莓派踩坑记 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="树莓派踩坑记" />
+<meta property="og:description" content="今天总有拿到树莓派4B&#43;, 想着搭建一个下载机器，供家里人使用。
+各个接口功能 第一次入手，刚开始连电源键都没有找到, 官网提供了说明.
+安装Raspberry Pi OS 下载系统 系统下载地址Raspberry Pi OS
+烧录镜像  sudo fdisk -l  先查看SD卡的名称
+sudo dd bs=4M if=系统路径 of=/dev/SD名称 status=progress oflag=sync
+Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用dd时，报错 d: opening /dev/sdc: Read-only file system   dd参数
+    bs=BYTES read and write up to BYTES bytes at a time (default:512); overrides ibs and obs
+  status=LEVEL The LEVEL of information to print to sederr; none suppresses everything but error messages, noxfer suppresses the final transfer statistics, progress shows periodic transfer statistics." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/" />
+<meta property="article:published_time" content="2021-01-09T20:47:57+08:00" />
+<meta property="article:modified_time" content="2021-01-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="树莓派踩坑记"/>
+<meta name="twitter:description" content="今天总有拿到树莓派4B&#43;, 想着搭建一个下载机器，供家里人使用。
+各个接口功能 第一次入手，刚开始连电源键都没有找到, 官网提供了说明.
+安装Raspberry Pi OS 下载系统 系统下载地址Raspberry Pi OS
+烧录镜像  sudo fdisk -l  先查看SD卡的名称
+sudo dd bs=4M if=系统路径 of=/dev/SD名称 status=progress oflag=sync
+Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用dd时，报错 d: opening /dev/sdc: Read-only file system   dd参数
+    bs=BYTES read and write up to BYTES bytes at a time (default:512); overrides ibs and obs
+  status=LEVEL The LEVEL of information to print to sederr; none suppresses everything but error messages, noxfer suppresses the final transfer statistics, progress shows periodic transfer statistics."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/" /><link rel="prev" href="http://fengqigang.cn/posts/shellsort/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "树莓派踩坑记",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0\/"
+        },"genre": "posts","keywords": "nginx, smbd","wordcount":  188 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0\/","datePublished": "2021-01-09T20:47:57+08:00","dateModified": "2021-01-09T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">树莓派踩坑记</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-09">2021-01-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;188 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#各个接口功能">各个接口功能</a></li>
+    <li><a href="#安装raspberry-pi-os">安装Raspberry Pi OS</a>
+      <ul>
+        <li><a href="#下载系统">下载系统</a></li>
+        <li><a href="#烧录镜像">烧录镜像</a></li>
+        <li><a href="#开启ssh并连接">开启SSH，并连接</a></li>
+        <li><a href="#配置">配置</a>
+          <ul>
+            <li><a href="#设置镜像">设置镜像</a></li>
+            <li><a href="#下载并配置samba">下载并配置samba</a></li>
+            <li><a href="#下载并配置aria2">下载并配置aria2</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>今天总有拿到<code>树莓派4B+</code>, 想着搭建一个下载机器，供家里人使用。</p>
+<h2 id="各个接口功能">各个接口功能</h2>
+<p>第一次入手，刚开始连电源键都没有找到, 官网提供了说明.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210109205553.png"
+        data-srcset="https://img.fengqigang.cn//img/20210109205553.png, https://img.fengqigang.cn//img/20210109205553.png 1.5x, https://img.fengqigang.cn//img/20210109205553.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210109205553.png"
+        title="https://img.fengqigang.cn//img/20210109205553.png" /></p>
+<h2 id="安装raspberry-pi-os">安装Raspberry Pi OS</h2>
+<h3 id="下载系统">下载系统</h3>
+<p>系统下载地址<a href="https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit" target="_blank" rel="noopener noreffer">Raspberry Pi OS</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210109205903.png"
+        data-srcset="https://img.fengqigang.cn//img/20210109205903.png, https://img.fengqigang.cn//img/20210109205903.png 1.5x, https://img.fengqigang.cn//img/20210109205903.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210109205903.png"
+        title="https://img.fengqigang.cn//img/20210109205903.png" /></p>
+<h3 id="烧录镜像">烧录镜像</h3>
+<ol>
+<li><code>sudo fdisk -l</code></li>
+</ol>
+<p>先查看SD卡的名称</p>
+<p><code>sudo dd bs=4M if=系统路径 of=/dev/SD名称 status=progress oflag=sync</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210109210156.png"
+        data-srcset="https://img.fengqigang.cn//img/20210109210156.png, https://img.fengqigang.cn//img/20210109210156.png 1.5x, https://img.fengqigang.cn//img/20210109210156.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210109210156.png"
+        title="https://img.fengqigang.cn//img/20210109210156.png" /></p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ol>
+<li>
+<p>使用<code>dd</code>时，写SD卡的名称，不要写SD卡分区的名称
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210109210804.png"
+        data-srcset="https://img.fengqigang.cn//img/20210109210804.png, https://img.fengqigang.cn//img/20210109210804.png 1.5x, https://img.fengqigang.cn//img/20210109210804.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210109210804.png"
+        title="https://img.fengqigang.cn//img/20210109210804.png" /></p>
+</li>
+<li>
+<p>使用<code>dd</code>时，报错
+<code>d: opening /dev/sdc: Read-only file system</code>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210109211035.png"
+        data-srcset="https://img.fengqigang.cn//img/20210109211035.png, https://img.fengqigang.cn//img/20210109211035.png 1.5x, https://img.fengqigang.cn//img/20210109211035.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210109211035.png"
+        title="https://img.fengqigang.cn//img/20210109211035.png" /></p>
+</li>
+<li>
+<p><code>dd</code>参数</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><code>bs=BYTES</code>
+read and write up to BYTES bytes at a time (default:512); overrides ibs and obs</p>
+</li>
+<li>
+<p><code>status=LEVEL</code>
+The LEVEL of information to print to sederr; <code>none</code> suppresses everything but error messages, <code>noxfer</code> suppresses the final transfer statistics, <code>progress</code> shows periodic transfer statistics.</p>
+</li>
+<li>
+<p><code>nocache</code>
+Request to drop cache. See also oflag=sync</p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h3 id="开启ssh并连接">开启SSH，并连接</h3>
+<ol>
+<li>
+<p><code>SD卡的</code>boot<code>，创建名为</code>ssh`的文件即可</p>
+</li>
+<li>
+<p>ssh pi@pi_ip_address</p>
+</li>
+</ol>
+<p>默认密码<code>raspberry</code></p>
+<h3 id="配置">配置</h3>
+<h4 id="设置镜像">设置镜像</h4>
+<p><code>切换到清华源</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210109212312.png"
+        data-srcset="https://img.fengqigang.cn//img/20210109212312.png, https://img.fengqigang.cn//img/20210109212312.png 1.5x, https://img.fengqigang.cn//img/20210109212312.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210109212312.png"
+        title="https://img.fengqigang.cn//img/20210109212312.png" /></p>
+<h4 id="下载并配置samba">下载并配置samba</h4>
+<ol>
+<li>
+<p>sudo apt install samba samba-common-bin // 下载samba</p>
+</li>
+<li>
+<p>sudo apt install vim // 下载vim</p>
+</li>
+<li>
+<p>sudo vim /etc/samba/smb.conf //配置samba</p>
+</li>
+</ol>
+<p>末尾加入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[MyNAS]
+	valid users = pi, root
+	path = /media/pi
+	browseable = yes
+	writable = yes
+	create mask = 0644
+	directory mask = 0775
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>
+<p>testparm //测试是否通过</p>
+</li>
+<li>
+<p>sudo smbpassed -a pi //smb加入pi用户</p>
+</li>
+<li>
+<p>systemctl enable smbd //开机启动smbd</p>
+</li>
+<li>
+<p>systemctl start smbd //启动smbd</p>
+</li>
+</ol>
+<h4 id="下载并配置aria2">下载并配置aria2</h4>
+<ol>
+<li>
+<p>sudo apt install nginx</p>
+</li>
+<li>
+<p>sudo apt install aria2</p>
+</li>
+<li>
+<p>cd /var/www/html</p>
+</li>
+<li>
+<p>sudo wget <a href="https://github.com/mayswind/AriaNg/releases/download/1.1.7/AriaNg-1.1.7-AllInOne.zip">https://github.com/mayswind/AriaNg/releases/download/1.1.7/AriaNg-1.1.7-AllInOne.zip</a></p>
+</li>
+<li>
+<p>unzip AriaNg-1.1.7-AllInOne.zip</p>
+</li>
+<li>
+<p>systemctl start nginx //启动nginx</p>
+</li>
+<li>
+<p>systemctl enable nginx //开机启动nginx</p>
+</li>
+</ol>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Tip<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>创建<code>root</code>用户</p>
+<p><code>sudo passwd root</code></p>
+</div>
+        </div>
+    </div>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/" target="_blank" rel="noopener noreffer">raspberrypi.org</a></p>
+<p><a href="https://raspberrypi.stackexchange.com/questions/8225/trying-to-image-sd-card-not-working-read-only-file-system" target="_blank" rel="noopener noreffer">raspberrypi.stackexchange.com</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-01-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">nginx</a>,&nbsp;<a href="/tags/smbd/">smbd</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/shellsort/" class="prev" rel="prev" title="ShellSort"><i class="fas fa-angle-left fa-fw"></i>ShellSort</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
