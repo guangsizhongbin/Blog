@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 09 Jan 2021 20:47:57 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 10 Jan 2021 21:58:38 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>树莓派实现内网穿透</title>
+    <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
+    <pubDate>Sun, 10 Jan 2021 21:58:38 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
+    <description><![CDATA[内网穿通SSH  修改服务器端的frps.ini  1 2  [common] bind_port = 7000    服务器端开启frp ./frps -c ./frps.ini
+  客户端修改frpc.ini
+  1 2 3 4 5 6 7 8 9  [common] server_addr = x.x.x.x server_port = 7000 [ssh] type = tcp local_ip = 127.x.x.x local_port = 22 remote_port = 6000    开启客户端的frpc ./frpc -c ./frpc.ini
+  通过ssh连接 ssh user@x.x.x.x -p 6000
+  参考 github]]></description>
+</item><item>
     <title>树莓派踩坑记</title>
     <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/</link>
     <pubDate>Sat, 09 Jan 2021 20:47:57 &#43;0800</pubDate>
