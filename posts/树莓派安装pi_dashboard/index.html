@@ -5,37 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>树莓派实现内网穿透 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="树莓派实现内网穿透" />
-<meta property="og:description" content="内网穿通SSH  修改服务器端的frps.ini  1 2  [common] bind_port = 7000    服务器端开启frp ./frps -c ./frps.ini
-  客户端修改frpc.ini
-  1 2 3 4 5 6 7 8 9  [common] server_addr = x.x.x.x server_port = 7000 [ssh] type = tcp local_ip = 127.x.x.x local_port = 22 remote_port = 6000    开启客户端的frpc ./frpc -c ./frpc.ini
-  通过ssh连接 ssh user@x.x.x.x -p 6000
-  参考 github" />
+        <title>树莓派安装pi_Dashboard - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="树莓派安装pi_Dashboard" />
+<meta property="og:description" content="安装Nginx和PHP 1 2 3 4  sudo apt-get update sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi sudo service nginx start sudo service php7.3-fpm restart   使Nginx能处理PHP sudo nano /etc/nginx/sites-available/default
+1 2 3 4 5  location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; }   修改为
+1 2 3 4 5 6 7 8 9 10  location / { index index." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" />
-<meta property="article:published_time" content="2021-01-10T21:58:38+08:00" />
-<meta property="article:modified_time" content="2021-01-10T00:00:00+00:00" />
+<meta property="og:url" content="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/" />
+<meta property="article:published_time" content="2021-01-11T22:53:10+08:00" />
+<meta property="article:modified_time" content="2021-01-11T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="树莓派实现内网穿透"/>
-<meta name="twitter:description" content="内网穿通SSH  修改服务器端的frps.ini  1 2  [common] bind_port = 7000    服务器端开启frp ./frps -c ./frps.ini
-  客户端修改frpc.ini
-  1 2 3 4 5 6 7 8 9  [common] server_addr = x.x.x.x server_port = 7000 [ssh] type = tcp local_ip = 127.x.x.x local_port = 22 remote_port = 6000    开启客户端的frpc ./frpc -c ./frpc.ini
-  通过ssh连接 ssh user@x.x.x.x -p 6000
-  参考 github"/>
+<meta name="twitter:title" content="树莓派安装pi_Dashboard"/>
+<meta name="twitter:description" content="安装Nginx和PHP 1 2 3 4  sudo apt-get update sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi sudo service nginx start sudo service php7.3-fpm restart   使Nginx能处理PHP sudo nano /etc/nginx/sites-available/default
+1 2 3 4 5  location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; }   修改为
+1 2 3 4 5 6 7 8 9 10  location / { index index."/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" /><link rel="prev" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/" /><link rel="next" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/" /><link rel="prev" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "树莓派实现内网穿透",
+        "headline": "树莓派安装pi_Dashboard",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F\/"
-        },"genre": "posts","keywords": "frp","wordcount":  53 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F\/","datePublished": "2021-01-10T21:58:38+08:00","dateModified": "2021-01-10T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard\/"
+        },"genre": "posts","keywords": "Dashboard","wordcount":  128 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard\/","datePublished": "2021-01-11T22:53:10+08:00","dateModified": "2021-01-11T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -109,9 +105,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">树莓派实现内网穿透</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">树莓派安装pi_Dashboard</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-10">2021-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;53 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-11">2021-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;128 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -120,33 +116,28 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#内网穿通ssh">内网穿通SSH</a></li>
+    <li><a href="#安装nginx和php">安装Nginx和PHP</a></li>
+    <li><a href="#下载pi-dashboard">下载pi-dashboard</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="内网穿通ssh">内网穿通SSH</h2>
-<ol>
-<li>修改服务器端的<code>frps.ini</code></li>
-</ol>
+            </div><div class="content" id="content"><h2 id="安装nginx和php">安装Nginx和PHP</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[common]</span>
-<span class="na">bind_port</span> <span class="o">=</span> <span class="s">7000</span>
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update
+sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi
+sudo service nginx start
+sudo service php7.3-fpm restart
 </code></pre></td></tr></table>
 </div>
-</div><ol start="2">
-<li>
-<p>服务器端开启<code>frp</code>
-<code>./frps -c ./frps.ini</code></p>
-</li>
-<li>
-<p>客户端修改<code>frpc.ini</code></p>
-</li>
-</ol>
+</div><p>使<code>Nginx</code>能处理<code>PHP</code>
+<code>sudo nano /etc/nginx/sites-available/default</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -154,48 +145,67 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[common]</span>
-<span class="na">server_addr</span> <span class="o">=</span> <span class="s">x.x.x.x</span>
-<span class="na">server_port</span> <span class="o">=</span> <span class="s">7000</span>
-
-<span class="k">[ssh]</span>
-<span class="na">type</span> <span class="o">=</span> <span class="s">tcp</span>
-<span class="na">local_ip</span> <span class="o">=</span> <span class="s">127.x.x.x</span>
-<span class="na">local_port</span> <span class="o">=</span> <span class="s">22</span>
-<span class="na">remote_port</span> <span class="o">=</span> <span class="s">6000</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
 </code></pre></td></tr></table>
 </div>
-</div><ol start="4">
-<li>
-<p>开启客户端的<code>frpc</code>
-./frpc -c ./frpc.ini</p>
-</li>
-<li>
-<p>通过ssh连接
-ssh <a href="mailto:user@x.x.x.x">user@x.x.x.x</a> -p 6000</p>
-</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210110220955.png"
-        data-srcset="https://img.fengqigang.cn//img/20210110220955.png, https://img.fengqigang.cn//img/20210110220955.png 1.5x, https://img.fengqigang.cn//img/20210110220955.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210110220955.png"
-        title="https://img.fengqigang.cn//img/20210110220955.png" /></p>
+</div><p>修改为</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">location / {
+index  index.html index.htm index.php default.html default.htm default.php;
+}
+ 
+location ~\.php$ {
+fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+#fastcgi_pass 127.0.0.1:9000;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+include fastcgi_params;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>重启<code>nginx</code></p>
+<p><code>sudo service nginx restart</code></p>
+<h2 id="下载pi-dashboard">下载pi-dashboard</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get install git
+<span class="nb">cd</span> /var/www/html
+sudo git clone https://github.com/nxez/pi-dashboard.git
+sudo chown -R www-data pi-dashboard
+</code></pre></td></tr></table>
+</div>
+</div><p>通过<code>http://树莓派IP/pi-dashboard</code>访问部署好的<code>Pi Dashboard</code></p>
 <h2 id="参考">参考</h2>
-<p><a href="https://github.com/fatedier/frp" target="_blank" rel="noopener noreffer">github</a></p>
+<p><a href="https://make.quwj.com/project/10" target="_blank" rel="noopener noreffer">Pi Dashboard (Pi 仪表盘)</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-01-10</span>
+                <span>Updated on 2021-01-11</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -208,14 +218,13 @@ ssh <a href="mailto:user@x.x.x.x">user@x.x.x.x</a> -p 6000</p>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/frp/">frp</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/dashboard/">Dashboard</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/" class="prev" rel="prev" title="树莓派踩坑记"><i class="fas fa-angle-left fa-fw"></i>树莓派踩坑记</a>
-            <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/" class="next" rel="next" title="树莓派安装pi_Dashboard">树莓派安装pi_Dashboard<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="prev" rel="prev" title="树莓派实现内网穿透"><i class="fas fa-angle-left fa-fw"></i>树莓派实现内网穿透</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
