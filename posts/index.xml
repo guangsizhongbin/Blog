@@ -4,7 +4,34 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 11 Jan 2021 22:53:10 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Corn使用</title>
+    <link>http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[Install cron1 sudo pacman -S cronie
+Quick running config setting default Editor export EDITOR=/usr/bin/nvim
+systemctl systemctl enable cronie.service
+systemctl start cronie.service
+create cron job2   crontab -e
+    Crontab format1
+     Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example]]></description>
+</item><item>
+    <title>重复包含问题解决</title>
+    <link>http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
+    <pubDate>Tue, 12 Jan 2021 20:32:54 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+    <description><![CDATA[重复包含问题的解决 1. 在main.cpp中只需要包含xxx.h即可，不需要包含xxx.cpp   原因分析：
+PS: 命令中没有提到&quot;speak.h&quot;文件(原因是:在&quot;speak.cpp&quot;中已经包含了&quot;speak.h&quot;)
+  2. 在xxx.h中，需要写上, 而xxx.cpp不需要写 1 2 3 4  #ifndef xxxxx #define xxxxx (...) #endif     原因分析：
+C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(防止同一个.o文件中包含多个相同的.h内容)
+  3. 使用xxx.h与xxx.cpp这种方式的时候，声明放在xxx.h中，定义放在xxx.cpp中   原因分析：
+C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(在将多个.o文件链接成可执行程序的时候，有可能会在不同的.o文件中含有相同的定义)
+  参考文章 注意头文件规则，避免链接错误：重复定义(multiple defination) 编译链接 C++
+Compiling Cpp]]></description>
+</item><item>
     <title>树莓派安装pi_Dashboard</title>
     <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/</link>
     <pubDate>Mon, 11 Jan 2021 22:53:10 &#43;0800</pubDate>
@@ -81,53 +108,5 @@ Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用d
 <p><code>镜像</code>(Image)</p>
 <p><code>容器</code>(Container)</p>
 <p><code>仓库</code>(Repository)</p>]]></description>
-</item><item>
-    <title>SHH地址和HTTPS地址相互转换</title>
-    <link>http://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</link>
-    <pubDate>Sat, 02 Jan 2021 07:43:29 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</guid>
-    <description><![CDATA[<h2 id="为什么需要转换shh地址和https">为什么需要转换SHH地址和HTTPS?</h2>
-<ol>
-<li>SSH地址在<code>push</code>, <code>pull</code>时均不需要输入账号密码</li>
-</ol>]]></description>
-</item><item>
-    <title>Github Actions 自动部署hugo至vps</title>
-    <link>http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</link>
-    <pubDate>Fri, 01 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/</guid>
-    <description><![CDATA[<h2 id="系统版本">系统版本</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@vultr:~# hostnamectl
-
-  Static hostname: vultr.guest
-        Icon name: computer-vm
-          Chassis: vm
-       Machine ID: 014b2aed70f7e09db32693a85feeb49a
-          Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3
-   Virtualization: kvm
- Operating System: Debian GNU/Linux <span class="m">9</span> <span class="o">(</span>stretch<span class="o">)</span>
-           Kernel: Linux 4.9.0-14-amd64
-     Architecture: x86-64
-
-</code></pre></td></tr></table>
-</div>
-</div>]]></description>
 </item></channel>
 </rss>

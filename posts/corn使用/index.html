@@ -5,33 +5,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>树莓派安装pi_Dashboard - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="树莓派安装pi_Dashboard" />
-<meta property="og:description" content="安装Nginx和PHP 1 2 3 4  sudo apt-get update sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi sudo service nginx start sudo service php7.3-fpm restart   使Nginx能处理PHP sudo nano /etc/nginx/sites-available/default
-1 2 3 4 5  location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; }   修改为
-1 2 3 4 5 6 7 8 9 10  location / { index index." />
+        <title>Corn使用 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Corn使用" />
+<meta property="og:description" content="Install cron1 sudo pacman -S cronie
+Quick running config setting default Editor export EDITOR=/usr/bin/nvim
+systemctl systemctl enable cronie.service
+systemctl start cronie.service
+create cron job2   crontab -e
+    Crontab format1
+     Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/" />
-<meta property="article:published_time" content="2021-01-11T22:53:10+08:00" />
-<meta property="article:modified_time" content="2021-01-11T00:00:00+00:00" />
+<meta property="og:url" content="http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/" />
+<meta property="article:published_time" content="2021-01-12T20:34:08+08:00" />
+<meta property="article:modified_time" content="2021-01-12T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="树莓派安装pi_Dashboard"/>
-<meta name="twitter:description" content="安装Nginx和PHP 1 2 3 4  sudo apt-get update sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi sudo service nginx start sudo service php7.3-fpm restart   使Nginx能处理PHP sudo nano /etc/nginx/sites-available/default
-1 2 3 4 5  location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; }   修改为
-1 2 3 4 5 6 7 8 9 10  location / { index index."/>
+<meta name="twitter:title" content="Corn使用"/>
+<meta name="twitter:description" content="Install cron1 sudo pacman -S cronie
+Quick running config setting default Editor export EDITOR=/usr/bin/nvim
+systemctl systemctl enable cronie.service
+systemctl start cronie.service
+create cron job2   crontab -e
+    Crontab format1
+     Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/" /><link rel="prev" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" /><link rel="next" href="http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "树莓派安装pi_Dashboard",
+        "headline": "Corn使用",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard\/"
-        },"genre": "posts","keywords": "Dashboard","wordcount":  128 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard\/","datePublished": "2021-01-11T22:53:10+08:00","dateModified": "2021-01-11T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/corn%E4%BD%BF%E7%94%A8\/"
+        },"genre": "posts","keywords": "corn","wordcount":  133 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/corn%E4%BD%BF%E7%94%A8\/","datePublished": "2021-01-12T20:34:08+08:00","dateModified": "2021-01-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -105,9 +113,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">树莓派安装pi_Dashboard</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-11">2021-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;128 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animated flipInX">Corn使用</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-12">2021-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;133 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -116,96 +124,123 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#安装nginx和php">安装Nginx和PHP</a></li>
-    <li><a href="#下载pi-dashboard">下载pi-dashboard</a></li>
-    <li><a href="#参考">参考</a></li>
+    <li><a href="#install-cronarchlinux">Install cron</a></li>
+    <li><a href="#quick-running">Quick running</a>
+      <ul>
+        <li><a href="#config">config</a>
+          <ul>
+            <li><a href="#setting-default-editor">setting default Editor</a></li>
+            <li><a href="#systemctl">systemctl</a></li>
+          </ul>
+        </li>
+        <li><a href="#create-cron-jobyoutube">create cron job</a></li>
+        <li><a href="#command">command</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="安装nginx和php">安装Nginx和PHP</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get update
-sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi
-sudo service nginx start
-sudo service php7.3-fpm restart
-</code></pre></td></tr></table>
-</div>
-</div><p>使<code>Nginx</code>能处理<code>PHP</code>
-<code>sudo nano /etc/nginx/sites-available/default</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">location / {
-                # First attempt to serve request as file, then
-                # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ =404;
-        }
-</code></pre></td></tr></table>
-</div>
-</div><p>修改为</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">location / {
-index  index.html index.htm index.php default.html default.htm default.php;
-}
- 
-location ~\.php$ {
-fastcgi_pass unix:/run/php/php7.3-fpm.sock;
-#fastcgi_pass 127.0.0.1:9000;
-fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-include fastcgi_params;
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>重启<code>nginx</code></p>
-<p><code>sudo service nginx restart</code></p>
-<h2 id="下载pi-dashboard">下载pi-dashboard</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get install git
-<span class="nb">cd</span> /var/www/html
-sudo git clone https://github.com/nxez/pi-dashboard.git
-sudo chown -R www-data pi-dashboard
-</code></pre></td></tr></table>
-</div>
-</div><p>通过<code>http://树莓派IP/pi-dashboard</code>访问部署好的<code>Pi Dashboard</code></p>
-<h2 id="参考">参考</h2>
-<p><a href="https://make.quwj.com/project/10" target="_blank" rel="noopener noreffer">Pi Dashboard (Pi 仪表盘)</a></p>
+            </div><div class="content" id="content"><h2 id="install-cronarchlinux">Install cron<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
+<p><code>sudo pacman -S cronie</code></p>
+<h2 id="quick-running">Quick running</h2>
+<h3 id="config">config</h3>
+<h4 id="setting-default-editor">setting default Editor</h4>
+<p><code>export EDITOR=/usr/bin/nvim</code></p>
+<h4 id="systemctl">systemctl</h4>
+<p><code>systemctl enable cronie.service</code></p>
+<p><code>systemctl start cronie.service</code></p>
+<h3 id="create-cron-jobyoutube">create cron job<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h3>
+<ol>
+<li>
+<p>crontab -e</p>
+</li>
+<li>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20201105163753.png"
+        data-srcset="https://img.fengqigang.cn//img/20201105163753.png, https://img.fengqigang.cn//img/20201105163753.png 1.5x, https://img.fengqigang.cn//img/20201105163753.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20201105163753.png"
+        title="https://img.fengqigang.cn//img/20201105163753.png" /></p>
+</li>
+<li>
+<p>Crontab format<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Symbol</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">Wildcard, specifies every possible time interval</td>
+</tr>
+<tr>
+<td style="text-align:center">,</td>
+<td style="text-align:center">List multiple values separated by a comma.</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">Specify a range between two numbers, separated by a hyphen</td>
+</tr>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:center">Specify a periodicity/frequency using a slash</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>
+<p>example</p>
+<ul>
+<li>
+<p>run every ten minutes</p>
+<p>*/10 * * * * echo &lsquo;Hello&rsquo; &raquo; /tmp/test.txt</p>
+</li>
+<li>
+<p>run every hours from 1-5 am</p>
+<p>0 1-5 * * * * echo &lsquo;Hello&rsquo; &raquo; /tmp/test.txt</p>
+</li>
+<li>
+<p>run every 30 minutes Mon-Fri 9am-5pm</p>
+<p>*/30 9-17 * * 1-5 echo &lsquo;Hello&rsquo; &raquo; /tmp/test.txt</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="command">command</h3>
+<ol>
+<li>user</li>
+</ol>
+<p><code>crontab -u user</code></p>
+<ol start="2">
+<li>list</li>
+</ol>
+<p><code>crontab -l</code></p>
+<ol start="3">
+<li>remove</li>
+</ol>
+<p><code>crontab -r</code></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://wiki.archlinux.org/index.php/Cron" target="_blank" rel="noopener noreffer">Cron-Archwiki</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://www.youtube.com/watch?v=QZJ1drMQz1A" target="_blank" rel="noopener noreffer">Linux/Mac Tutorial: Cron Jobs - How to Schedule Commands with crontab</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-01-11</span>
+                <span>Updated on 2021-01-12</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -218,14 +253,13 @@ sudo chown -R www-data pi-dashboard
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/dashboard/">Dashboard</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/corn/">corn</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" class="prev" rel="prev" title="树莓派实现内网穿透"><i class="fas fa-angle-left fa-fw"></i>树莓派实现内网穿透</a>
-            <a href="/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="next" rel="next" title="重复包含问题解决">重复包含问题解决<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" class="prev" rel="prev" title="重复包含问题解决"><i class="fas fa-angle-left fa-fw"></i>重复包含问题解决</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

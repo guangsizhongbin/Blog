@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>C - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/c/</link>
+        <description>C - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 12 Jan 2021 20:32:54 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/c/" rel="self" type="application/rss+xml" /><item>
+    <title>重复包含问题解决</title>
+    <link>http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
+    <pubDate>Tue, 12 Jan 2021 20:32:54 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
+    <description><![CDATA[重复包含问题的解决 1. 在main.cpp中只需要包含xxx.h即可，不需要包含xxx.cpp   原因分析：
+PS: 命令中没有提到&quot;speak.h&quot;文件(原因是:在&quot;speak.cpp&quot;中已经包含了&quot;speak.h&quot;)
+  2. 在xxx.h中，需要写上, 而xxx.cpp不需要写 1 2 3 4  #ifndef xxxxx #define xxxxx (...) #endif     原因分析：
+C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(防止同一个.o文件中包含多个相同的.h内容)
+  3. 使用xxx.h与xxx.cpp这种方式的时候，声明放在xxx.h中，定义放在xxx.cpp中   原因分析：
+C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(在将多个.o文件链接成可执行程序的时候，有可能会在不同的.o文件中含有相同的定义)
+  参考文章 注意头文件规则，避免链接错误：重复定义(multiple defination) 编译链接 C++
+Compiling Cpp]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>linux - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/linux/</link>
+        <description>linux - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Corn使用</title>
+    <link>http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[Install cron1 sudo pacman -S cronie
+Quick running config setting default Editor export EDITOR=/usr/bin/nvim
+systemctl systemctl enable cronie.service
+systemctl start cronie.service
+create cron job2   crontab -e
+    Crontab format1
+     Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example]]></description>
+</item></channel>
+</rss>
