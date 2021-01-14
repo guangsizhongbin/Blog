@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>顺序表 - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/</link>
+        <description>顺序表 - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" rel="self" type="application/rss+xml" /><item>
+    <title>顺序表代码实现</title>
+    <link>http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+    <pubDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+    <description><![CDATA[顺序表代码实现  #define 与 typedef 的区别: 1   #define OK 1
+当使用OK的时候会替换成1
+#define 归预处理器管
+  typedef int Status 定义int 为Status类型
+typedef 归编译器管
+     命名规范：
+  SqList 这样的两个单词的合并，首字母要大写, 如ElemType, GetElem, ListDelete
+  使用#define后全要大写, 如#define TRUE 1
+    . 与 -&gt; 使用
+  当传递的是数组本身的时候用.
+  当传递的是指针的时候用-&gt;
+    定义SqList思路
+  ElemType 类型的 data[MAXSIZE]数组
+  必须确定当前的线性表的长度 int length]]></description>
+</item></channel>
+</rss>

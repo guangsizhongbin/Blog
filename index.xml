@@ -4,9 +4,36 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>顺序表代码实现</title>
+    <link>http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
+    <pubDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</guid>
+    <description><![CDATA[顺序表代码实现  #define 与 typedef 的区别: 1   #define OK 1
+当使用OK的时候会替换成1
+#define 归预处理器管
+  typedef int Status 定义int 为Status类型
+typedef 归编译器管
+     命名规范：
+  SqList 这样的两个单词的合并，首字母要大写, 如ElemType, GetElem, ListDelete
+  使用#define后全要大写, 如#define TRUE 1
+    . 与 -&gt; 使用
+  当传递的是数组本身的时候用.
+  当传递的是指针的时候用-&gt;
+    定义SqList思路
+  ElemType 类型的 data[MAXSIZE]数组
+  必须确定当前的线性表的长度 int length]]></description>
+</item><item>
+    <title>树莓派实现旁路由功能</title>
+    <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/</link>
+    <pubDate>Thu, 14 Jan 2021 21:20:01 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/</guid>
+    <description><![CDATA[什么是旁路由？ 旁路由在哪里？ ]]></description>
+</item><item>
     <title>Corn使用</title>
     <link>http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</pubDate>
@@ -92,23 +119,5 @@ Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用d
     <guid>http://fengqigang.cn/posts/selectionsort/</guid>
     <description><![CDATA[<h2 id="选择排序">选择排序</h2>
 <p></p>]]></description>
-</item><item>
-    <title>Bubble_Sort</title>
-    <link>http://fengqigang.cn/posts/bubble_sort/</link>
-    <pubDate>Mon, 04 Jan 2021 20:48:16 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/bubble_sort/</guid>
-    <description><![CDATA[<h2 id="冒泡排序">冒泡排序</h2>
-<p></p>]]></description>
-</item><item>
-    <title>Docker</title>
-    <link>http://fengqigang.cn/posts/docker/</link>
-    <pubDate>Sat, 02 Jan 2021 19:34:39 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/docker/</guid>
-    <description><![CDATA[<h2 id="docker-三大基本概念">Docker 三大基本概念</h2>
-<p><code>镜像</code>(Image)</p>
-<p><code>容器</code>(Container)</p>
-<p><code>仓库</code>(Repository)</p>]]></description>
 </item></channel>
 </rss>

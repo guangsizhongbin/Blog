@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>顺序表代码实现 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="顺序表代码实现" />
+<meta property="og:description" content="顺序表代码实现  #define 与 typedef 的区别: 1   #define OK 1
+当使用OK的时候会替换成1
+#define 归预处理器管
+  typedef int Status 定义int 为Status类型
+typedef 归编译器管
+     命名规范：
+  SqList 这样的两个单词的合并，首字母要大写, 如ElemType, GetElem, ListDelete
+  使用#define后全要大写, 如#define TRUE 1
+    . 与 -&gt; 使用
+  当传递的是数组本身的时候用.
+  当传递的是指针的时候用-&gt;
+    定义SqList思路
+  ElemType 类型的 data[MAXSIZE]数组
+  必须确定当前的线性表的长度 int length" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" />
+<meta property="article:published_time" content="2021-01-14T22:48:26+08:00" />
+<meta property="article:modified_time" content="2021-01-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="顺序表代码实现"/>
+<meta name="twitter:description" content="顺序表代码实现  #define 与 typedef 的区别: 1   #define OK 1
+当使用OK的时候会替换成1
+#define 归预处理器管
+  typedef int Status 定义int 为Status类型
+typedef 归编译器管
+     命名规范：
+  SqList 这样的两个单词的合并，首字母要大写, 如ElemType, GetElem, ListDelete
+  使用#define后全要大写, 如#define TRUE 1
+    . 与 -&gt; 使用
+  当传递的是数组本身的时候用.
+  当传递的是指针的时候用-&gt;
+    定义SqList思路
+  ElemType 类型的 data[MAXSIZE]数组
+  必须确定当前的线性表的长度 int length"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/" /><link rel="prev" href="http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "顺序表代码实现",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0\/"
+        },"genre": "posts","keywords": "顺序表","wordcount":  552 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0\/","datePublished": "2021-01-14T22:48:26+08:00","dateModified": "2021-01-14T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">顺序表代码实现</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><i class="far fa-folder fa-fw"></i>数据结构</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-14">2021-01-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;552 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#顺序表代码实现">顺序表代码实现</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="顺序表代码实现">顺序表代码实现</h2>
+<ol>
+<li><code>#define</code> 与 <code>typedef</code> 的区别: <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>
+<ul>
+<li>
+<p><code>#define OK 1</code></p>
+<p>当使用OK的时候会替换成1</p>
+<p><code>#define</code> 归预处理器管</p>
+</li>
+<li>
+<p><code>typedef int Status</code> 定义int 为Status类型</p>
+<p><code>typedef</code> 归编译器管</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li>
+<p>命名规范：</p>
+<ul>
+<li>
+<p><code>SqList</code> 这样的两个单词的合并，首字母要大写, 如<code>ElemType</code>, <code>GetElem</code>, <code>ListDelete</code></p>
+</li>
+<li>
+<p>使用<code>#define</code>后全要大写, 如<code>#define TRUE 1</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>.</code> 与 <code>-&gt;</code> 使用</p>
+<ul>
+<li>
+<p>当传递的是数组本身的时候用<code>.</code></p>
+</li>
+<li>
+<p>当传递的是指针的时候用<code>-&gt;</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>定义<code>SqList</code>思路</p>
+<ul>
+<li>
+<p><code>ElemType</code> 类型的 <code>data[MAXSIZE]</code>数组</p>
+</li>
+<li>
+<p>必须确定当前的线性表的长度 <code>int length</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>GetElem</code>的思路</p>
+<ul>
+<li>
+<p>不需要对数组进行修改，所以不传递数组指针<code>SqList *</code></p>
+</li>
+<li>
+<p>返回位序为i的元素的值, 需要指针来返回 <code>ElemType *e</code>, 数组下标是从0开始的，所以用<code>*e=L.data[i-1]</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>ListInsert</code>的思路</p>
+<ul>
+<li>
+<p>边界上: 位序可以插入到第一个位置到当前长度+1的所有位置(在不满的情况下)</p>
+</li>
+<li>
+<p>移动上: 从后往前移，此时操作的是数组，将位序转化为数组语言</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++">    <span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&gt;=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">k</span><span class="o">--</span><span class="p">)</span>
+    <span class="c1">//位序所对应位置的元素也需要移动
+</span><span class="c1"></span>        <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">e</span><span class="p">;</span> <span class="c1">//插入新的元素
+</span></code></pre></td></tr></table>
+</div>
+</div><p>``</p>
+</li>
+<li>
+<p><code>ListDelete</code>的思路</p>
+<ul>
+<li>
+<p>边界上: 可以删除第一个位置到当前长度</p>
+</li>
+<li>
+<p>移动上: 从位序开始，后面元素依次覆盖掉前面的元素</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">for (k = i; k &lt; L-&gt;length; k++)
+
+    L-&gt;data[k-1] = L-&gt;data[k];
+</code></pre></td></tr></table>
+</div>
+</div><p>``</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//linerlist.h
+</span><span class="c1"></span>
+<span class="cp">#ifndef LEETCODE_LINERLIST_H
+</span><span class="cp">#define LEETCODE_LINERLIST_H
+</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#define MAXSIZE 20 </span><span class="cm">/* 存储空间初始分配量*/</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cp">#define OK 1
+</span><span class="cp">#define ERROR 0
+</span><span class="cp">#define TRUE 1
+</span><span class="cp">#define FALSE 0
+</span><span class="cp"></span><span class="k">typedef</span> <span class="kt">int</span> <span class="n">Status</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">ElemType</span><span class="p">;</span> <span class="cm">/* 将ElemType 类型定为int */</span>
+
+<span class="k">typedef</span> <span class="k">struct</span>
+<span class="p">{</span>
+    <span class="n">ElemType</span> <span class="n">data</span><span class="p">[</span><span class="n">MAXSIZE</span><span class="p">];</span> <span class="cm">/*数组存储数据元素，最大值为MAXSIZE;*/</span>
+    <span class="kt">int</span> <span class="n">length</span><span class="p">;</span> <span class="cm">/*线性表当前长度*/</span>
+<span class="p">}</span><span class="n">SqList</span><span class="p">;</span>
+
+
+<span class="c1">// 获得元素操作
+</span><span class="c1"></span><span class="n">Status</span> <span class="nf">GetElem</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">*</span><span class="n">e</span><span class="p">);</span>
+
+<span class="c1">// 插入操作
+</span><span class="c1"></span><span class="n">Status</span> <span class="nf">ListInsert</span><span class="p">(</span><span class="n">SqList</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">);</span>
+
+<span class="c1">// 删除操作
+</span><span class="c1"></span><span class="n">Status</span> <span class="nf">ListDelete</span><span class="p">(</span><span class="n">SqList</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">*</span><span class="n">e</span><span class="p">);</span>
+
+<span class="c1">// 遍历操作
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">TravelList</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">);</span>
+
+<span class="c1">// 按值查找
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">LocateElem</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">);</span>
+
+
+<span class="cp">#endif </span><span class="c1">//LEETCODE_LINERLIST_H
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">// linerlist.cpp
+</span><span class="c1"></span>
+<span class="cp">#include</span> <span class="cpf">&#34;SequenceList.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cm">/*Status 是函数的类型，其值是函数结果状态代码，如OK等*/</span>
+<span class="cm">/*初始条件： 顺序线性表L已存在， 1&lt;=i&lt;=ListLength(L)*/</span>
+<span class="cm">/*操作结果: 用e返回L中第i个数据元素的值*/</span>
+<span class="n">Status</span> <span class="nf">GetElem</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">*</span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span> <span class="o">||</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">)</span>
+       <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+   <span class="o">*</span><span class="n">e</span><span class="o">=</span><span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+   <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*初始条件： 顺序线性表L已存在， i&lt;=i&lt;=ListLength(L)*/</span>
+<span class="cm">/*操作结果： 在L中第i位置之前插入新的数据元素e, L的长度加1*/</span>
+<span class="n">Status</span> <span class="nf">ListInsert</span><span class="p">(</span><span class="n">SqList</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">==</span><span class="n">MAXSIZE</span><span class="p">)</span> <span class="cm">/*顺序线性表已经满*/</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">1</span> <span class="o">||</span> <span class="n">i</span><span class="o">&gt;</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="cm">/*当i不在范围内时*/</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">)</span> <span class="cm">/*若插入数据位置不在表尾*/</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&gt;=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">--</span><span class="p">)</span>
+            <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span> <span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">e</span><span class="p">;</span> <span class="cm">/*将新元素插入*/</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*初始条件： 顺序线性表L已在在, i&lt;=i&lt;=ListLength(L)*/</span>
+<span class="cm">/*操作结果: 删除L的第i个数据元素，并用e返回其值，L的长度减1*/</span>
+<span class="n">Status</span> <span class="nf">ListDelete</span> <span class="p">(</span><span class="n">SqList</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">ElemType</span> <span class="o">*</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">)</span> <span class="cm">/*删除位置不正确*/</span>
+        <span class="k">return</span> <span class="n">ERROR</span><span class="p">;</span>
+    <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*如果删除不是最后位置*/</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="cm">/*将删除位置后继元素前移*/</span>
+            <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">--</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/*初始条件： 顺序线性表L已在在, i&lt;=i&lt;=ListLength(L)*/</span>
+<span class="cm">/*操作结果: 返回顺序表L中的所有元素， 用空格分开*/</span>
+<span class="kt">void</span> <span class="nf">TravelList</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+   <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+       <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d &#34;</span><span class="p">,</span> <span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/*初始条件： 顺序线性表L已存在， i&lt;=i&lt;=ListLength(L)*/</span>
+<span class="cm">/*操作结果： 返回顺序表L中值为e的元素的位序*/</span>
+<span class="kt">int</span> <span class="nf">LocateElem</span><span class="p">(</span><span class="n">SqList</span> <span class="n">L</span><span class="p">,</span> <span class="n">ElemType</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">L</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">L</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C++" data-lang="C++"><span class="c1">//main.cpp
+</span><span class="c1"></span>
+<span class="cp">#include</span> <span class="cpf">&#34;SequenceList.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+    <span class="n">SqList</span> <span class="n">L</span><span class="p">;</span>
+    <span class="n">L</span><span class="p">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">//插入测试
+</span><span class="c1"></span>    <span class="n">ListInsert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+    <span class="n">ListInsert</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;当前线性表中所有的元素:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+    <span class="n">TravelList</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+
+    <span class="c1">//删除测试
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">e</span><span class="p">;</span>
+    <span class="n">ListDelete</span><span class="p">(</span><span class="o">&amp;</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;被删除的元素是 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;当前线性表中所有的元素:</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+    <span class="n">TravelList</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+
+    <span class="c1">//查找测试
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">GetElem</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;第1个元素是: %d </span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;数值为3的元素在哪里？ %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">LocateElem</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+
+
+
+
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://www.zhihu.com/question/29798061" target="_blank" rel="noopener noreffer">知乎</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-01-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/" class="prev" rel="prev" title="树莓派实现旁路由功能"><i class="fas fa-angle-left fa-fw"></i>树莓派实现旁路由功能</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
