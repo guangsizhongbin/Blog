@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Github_Actions_自动部署hugo至vps.md",
+            "file": "基于docker部署wekan.md",
             "mode": "source"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Github_Actions_自动部署hugo至vps.md",
+                "file": "基于docker部署wekan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -86,11 +86,11 @@
     "collapsed": true
   },
   "lastOpenFiles": [
+    "基于docker部署wekan.md",
     "Github_Actions_自动部署hugo至vps.md",
     "使用git协议克隆.md",
     "Docker.md",
     "Github_SSH地址和HTTPS地址相互转换.md",
-    "基于docker部署wekan.md",
     "搭建hugo.md"
   ]
 }
