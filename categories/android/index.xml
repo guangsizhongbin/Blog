@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>android - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/android/</link>
+        <description>android - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 15 Jan 2021 20:57:29 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/android/" rel="self" type="application/rss+xml" /><item>
+    <title>删除手机内置app</title>
+    <link>http://fengqigang.cn/posts/%E5%88%A0%E9%99%A4%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AEapp/</link>
+    <pubDate>Fri, 15 Jan 2021 20:57:29 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E5%88%A0%E9%99%A4%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AEapp/</guid>
+    <description><![CDATA[下载adb  sudo pacman -S adb
+查看当前连接的设备  adb devices
+授权后，由unauthorized变成如图
+查看当前所有软件  adb shell pm list packages
+以删除美团为例子    搜索软件
+adb shell pm list packages | grep meituan
+   删除软件    进入交互模式
+adb shell
+   卸载软件
+pm uninstall -k --user 0 com.sankuai.meituan
+  Tip  -k: keep the data and cache directories
+--user 0: Where 0 is ID of main user in Android system.]]></description>
+</item></channel>
+</rss>
