@@ -2,12 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/python/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/categories/python/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/</loc><lastmod>2021-01-16T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/android/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/android/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/%E5%88%A0%E9%99%A4%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AEapp/</loc><lastmod>2021-01-15T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc><lastmod>2021-01-14T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/</loc><lastmod>2021-01-14T00:00:00&#43;00:00</lastmod></url><url>

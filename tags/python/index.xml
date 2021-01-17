@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>python - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/python/</link>
+        <description>python - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 16 Jan 2021 22:20:28 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>同步与异步</title>
+    <link>http://fengqigang.cn/posts/%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/</link>
+    <pubDate>Sat, 16 Jan 2021 22:20:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/</guid>
+    <description><![CDATA[asyncio1 1 2 3 4 5 6 7 8 9 10 11 12  import time def hello(): time.sleep(1) def run(): for i in range(5) hello() print(&#39;Hello World:%s&#39; % time.time()) if __name__ == &#39;__main__&#39;: run()   Note  1. time.time1 Return the time in seconds since the epoch as a floating point number. The epoch is the point where the time starts, and is platform dependent. For Unix, the epoch is January 1, 1970, 00:00:00 (UTC)]]></description>
+</item></channel>
+</rss>
