@@ -4,9 +4,19 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 16 Jan 2021 22:20:28 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Momo</title>
+    <link>http://fengqigang.cn/posts/momo/</link>
+    <pubDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/momo/</guid>
+    <description><![CDATA[URL拼接 替换参数1 1 2  url = &#39;https://www.aliexpress.com/item/{}.html&#39;.format(123) print(url)    https://www.aliexpress.com/item/123.html
+ termcolor2  colored(text, color=None, on_color=None, attrs=None)
+ color: 字体颜色， on_color: 背景颜色
+1 2 3 4 5 6  from termcolor import colored, cprint text = colored(&#39;Hello, World!&#39;,&#39;red&#39;, &#39;on_white&#39;, attrs=[&#39;blink&#39;]) print(text) cprint(&#39;Hello, World!&#39;, &#39;red&#39;, &#39;on_white&#39;, attrs=[&#39;blink&#39;])   momo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73  #encoding: utf8 import aiohttp import asyncio from termcolor import colored from requests import get import re import time import sys ids = () def getProxy(completion, TargetNum, proxynum, ProxyList): global proxies if completion &gt;= TargetNum: return 0 ## print(&#39;[+] %s&#39; % colored(&#39;get proxy.]]></description>
+</item><item>
     <title>同步与异步</title>
     <link>http://fengqigang.cn/posts/%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/</link>
     <pubDate>Sat, 16 Jan 2021 22:20:28 &#43;0800</pubDate>
@@ -133,14 +143,5 @@ sudo dd bs=4M if=系统路径 of=/dev/SD名称 status=progress oflag=sync
 Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用dd时，报错 d: opening /dev/sdc: Read-only file system   dd参数
     bs=BYTES read and write up to BYTES bytes at a time (default:512); overrides ibs and obs
   status=LEVEL The LEVEL of information to print to sederr; none suppresses everything but error messages, noxfer suppresses the final transfer statistics, progress shows periodic transfer statistics.]]></description>
-</item><item>
-    <title>ShellSort</title>
-    <link>http://fengqigang.cn/posts/shellsort/</link>
-    <pubDate>Thu, 07 Jan 2021 09:34:11 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/shellsort/</guid>
-    <description><![CDATA[<h2 id="shellsort">ShellSort</h2>
-<p>Shell 排序动图</p>
-<p></p>]]></description>
 </item></channel>
 </rss>
