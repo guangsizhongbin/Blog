@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Samba服务器</title>
+    <link>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <pubDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+    <description><![CDATA[安装samba 1 2  sudo apt-get update sudo apt-get intall samba samba-common-bin   配置smb.conf /etc/samba/smb.conf
+1 2 3 4 5 6  [share] path = /home/pi valid users = pi browseable = yes public = yes writable = yes   重新运行smaba服务 sudo /etc/init.d/samba restart
+添加pi用户为Samba用户 sudo smbpasswd -a pi
+参考 树莓派4设置Samba的最新版本
+树莓派3-搭建SAMBA服务器]]></description>
+</item><item>
     <title>Momo</title>
     <link>http://fengqigang.cn/posts/momo/</link>
     <pubDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</pubDate>
@@ -127,19 +138,5 @@ Compiling Cpp]]></description>
   1 2 3 4 5 6 7 8 9  [common] server_addr = x.x.x.x server_port = 7000 [ssh] type = tcp local_ip = 127.x.x.x local_port = 22 remote_port = 6000    开启客户端的frpc ./frpc -c ./frpc.ini
   通过ssh连接 ssh user@x.x.x.x -p 6000
   参考 github]]></description>
-</item><item>
-    <title>树莓派踩坑记</title>
-    <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/</link>
-    <pubDate>Sat, 09 Jan 2021 20:47:57 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/</guid>
-    <description><![CDATA[今天总有拿到树莓派4B+, 想着搭建一个下载机器，供家里人使用。
-各个接口功能 第一次入手，刚开始连电源键都没有找到, 官网提供了说明.
-安装Raspberry Pi OS 下载系统 系统下载地址Raspberry Pi OS
-烧录镜像  sudo fdisk -l  先查看SD卡的名称
-sudo dd bs=4M if=系统路径 of=/dev/SD名称 status=progress oflag=sync
-Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用dd时，报错 d: opening /dev/sdc: Read-only file system   dd参数
-    bs=BYTES read and write up to BYTES bytes at a time (default:512); overrides ibs and obs
-  status=LEVEL The LEVEL of information to print to sederr; none suppresses everything but error messages, noxfer suppresses the final transfer statistics, progress shows periodic transfer statistics.]]></description>
 </item></channel>
 </rss>

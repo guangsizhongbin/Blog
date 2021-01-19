@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>samba - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/samba/</link>
+        <description>samba - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/samba/" rel="self" type="application/rss+xml" /><item>
+    <title>Samba服务器</title>
+    <link>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <pubDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+    <description><![CDATA[安装samba 1 2  sudo apt-get update sudo apt-get intall samba samba-common-bin   配置smb.conf /etc/samba/smb.conf
+1 2 3 4 5 6  [share] path = /home/pi valid users = pi browseable = yes public = yes writable = yes   重新运行smaba服务 sudo /etc/init.d/samba restart
+添加pi用户为Samba用户 sudo smbpasswd -a pi
+参考 树莓派4设置Samba的最新版本
+树莓派3-搭建SAMBA服务器]]></description>
+</item></channel>
+</rss>

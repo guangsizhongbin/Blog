@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</link>
         <description>树莓派 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 14 Jan 2021 21:20:01 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="self" type="application/rss+xml" /><item>
+    <title>Samba服务器</title>
+    <link>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
+    <pubDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
+    <description><![CDATA[安装samba 1 2  sudo apt-get update sudo apt-get intall samba samba-common-bin   配置smb.conf /etc/samba/smb.conf
+1 2 3 4 5 6  [share] path = /home/pi valid users = pi browseable = yes public = yes writable = yes   重新运行smaba服务 sudo /etc/init.d/samba restart
+添加pi用户为Samba用户 sudo smbpasswd -a pi
+参考 树莓派4设置Samba的最新版本
+树莓派3-搭建SAMBA服务器]]></description>
+</item><item>
     <title>树莓派实现旁路由功能</title>
     <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/</link>
     <pubDate>Thu, 14 Jan 2021 21:20:01 &#43;0800</pubDate>

@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/categories/</link>
         <description>Categories - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>树莓派</title>
+    <link>http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</link>
+    <pubDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>python</title>
     <link>http://fengqigang.cn/categories/python/</link>
     <pubDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</pubDate>
@@ -24,13 +31,6 @@
     <pubDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>树莓派</title>
-    <link>http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</link>
-    <pubDate>Thu, 14 Jan 2021 21:20:01 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>linux</title>
