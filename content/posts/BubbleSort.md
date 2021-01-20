@@ -1,5 +1,5 @@
 ---
-title: "Bubble_Sort"
+title: "BubbleSort"
 date: 2021-01-04T20:48:16+08:00
 lastmod: 2021-01-04
 author: "xiaonan"
