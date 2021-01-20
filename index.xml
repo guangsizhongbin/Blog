@@ -4,9 +4,30 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>QuickSort</title>
+    <link>http://fengqigang.cn/posts/quicksort/</link>
+    <pubDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/quicksort/</guid>
+    <description><![CDATA[123]]></description>
+</item><item>
+    <title>Java</title>
+    <link>http://fengqigang.cn/posts/java/</link>
+    <pubDate>Wed, 20 Jan 2021 14:22:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java/</guid>
+    <description><![CDATA[Java运行机制 高级语言的运行机制 编译型 使用专门的编译器, 针对特定平台(操作系统)将某种高级语言源代码一次性&rsquo;翻译&rsquo;成可被该平台硬件执行的机器码(包括机器指令和操作数), 并包装成该平台所能识别的可执行性的程序格式。
+解释型 使用专门的解释器对源程序逐行解释成特定的机器码并立即执行的语言
+Java安装 archlinux下安装 sudo pacman -S jdk
+输出Hello World 编写Hello World代码 HelloWorld.java
+1 2 3 4 5 6 7 8  public class HelloWorld { public static void main(String[] args) { System.out.println(&#34;Hello World!&#34;); } }   String 大写
+System 大写
+编译 javac -d . HelloWorld.java
+Note    javac      -d  Specify where to place generated class files      运行 java HelloWorld]]></description>
+</item><item>
     <title>Samba服务器</title>
     <link>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
     <pubDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</pubDate>
@@ -120,25 +141,5 @@ C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最
 C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(在将多个.o文件链接成可执行程序的时候，有可能会在不同的.o文件中含有相同的定义)
   参考文章 注意头文件规则，避免链接错误：重复定义(multiple defination) 编译链接 C++
 Compiling Cpp]]></description>
-</item><item>
-    <title>树莓派安装pi_Dashboard</title>
-    <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/</link>
-    <pubDate>Mon, 11 Jan 2021 22:53:10 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/</guid>
-    <description><![CDATA[安装Nginx和PHP 1 2 3 4  sudo apt-get update sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi sudo service nginx start sudo service php7.3-fpm restart   使Nginx能处理PHP sudo nano /etc/nginx/sites-available/default
-1 2 3 4 5  location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; }   修改为
-1 2 3 4 5 6 7 8 9 10  location / { index index.]]></description>
-</item><item>
-    <title>树莓派实现内网穿透</title>
-    <link>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link>
-    <pubDate>Sun, 10 Jan 2021 21:58:38 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid>
-    <description><![CDATA[内网穿通SSH  修改服务器端的frps.ini  1 2  [common] bind_port = 7000    服务器端开启frp ./frps -c ./frps.ini
-  客户端修改frpc.ini
-  1 2 3 4 5 6 7 8 9  [common] server_addr = x.x.x.x server_port = 7000 [ssh] type = tcp local_ip = 127.x.x.x local_port = 22 remote_port = 6000    开启客户端的frpc ./frpc -c ./frpc.ini
-  通过ssh连接 ssh user@x.x.x.x -p 6000
-  参考 github]]></description>
 </item></channel>
 </rss>

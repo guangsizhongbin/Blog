@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>java - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/java/</link>
+        <description>java - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 20 Jan 2021 14:22:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Java</title>
+    <link>http://fengqigang.cn/posts/java/</link>
+    <pubDate>Wed, 20 Jan 2021 14:22:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java/</guid>
+    <description><![CDATA[Java运行机制 高级语言的运行机制 编译型 使用专门的编译器, 针对特定平台(操作系统)将某种高级语言源代码一次性&rsquo;翻译&rsquo;成可被该平台硬件执行的机器码(包括机器指令和操作数), 并包装成该平台所能识别的可执行性的程序格式。
+解释型 使用专门的解释器对源程序逐行解释成特定的机器码并立即执行的语言
+Java安装 archlinux下安装 sudo pacman -S jdk
+输出Hello World 编写Hello World代码 HelloWorld.java
+1 2 3 4 5 6 7 8  public class HelloWorld { public static void main(String[] args) { System.out.println(&#34;Hello World!&#34;); } }   String 大写
+System 大写
+编译 javac -d . HelloWorld.java
+Note    javac      -d  Specify where to place generated class files      运行 java HelloWorld]]></description>
+</item></channel>
+</rss>

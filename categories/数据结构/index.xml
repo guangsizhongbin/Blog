@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
         <description>数据结构 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="self" type="application/rss+xml" /><item>
+    <title>QuickSort</title>
+    <link>http://fengqigang.cn/posts/quicksort/</link>
+    <pubDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/quicksort/</guid>
+    <description><![CDATA[123]]></description>
+</item><item>
     <title>顺序表代码实现</title>
     <link>http://fengqigang.cn/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/</link>
     <pubDate>Thu, 14 Jan 2021 22:48:26 &#43;0800</pubDate>
@@ -50,11 +57,11 @@ typedef 归编译器管
     <description><![CDATA[<h2 id="选择排序">选择排序</h2>
 <p></p>]]></description>
 </item><item>
-    <title>Bubble_Sort</title>
-    <link>http://fengqigang.cn/posts/bubble_sort/</link>
+    <title>BubbleSort</title>
+    <link>http://fengqigang.cn/posts/bubblesort/</link>
     <pubDate>Mon, 04 Jan 2021 20:48:16 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://fengqigang.cn/posts/bubble_sort/</guid>
+    <guid>http://fengqigang.cn/posts/bubblesort/</guid>
     <description><![CDATA[<h2 id="冒泡排序">冒泡排序</h2>
 <p></p>]]></description>
 </item></channel>
