@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 21 Jan 2021 17:36:39 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Nvim</title>
+    <link>http://fengqigang.cn/posts/nvim/</link>
+    <pubDate>Thu, 21 Jan 2021 17:36:39 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/nvim/</guid>
+    <description><![CDATA[自动安装vim-plug1 1 2 3 4 5  if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;)) silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC endif   Note    $MYVIMRC   The $MYVIMRC environment variable is set to the file that was first found, unless $MYVIMRC was already set and when using VIMINIT.   基本配置 行相关配置 1 2 3 4 5 6  set number set relativenumber set cursorline set tabstop=2 set shiftwidth=2 set softtabstop=2   Note  What is the difference between tabstop, shiftwidth, expandtab, softtabstop?]]></description>
+</item><item>
     <title>QuickSort</title>
     <link>http://fengqigang.cn/posts/quicksort/</link>
     <pubDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</pubDate>
@@ -125,19 +132,5 @@ systemctl start cronie.service
 create cron job2   crontab -e
     Crontab format1
      Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example]]></description>
-</item><item>
-    <title>重复包含问题解决</title>
-    <link>http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</link>
-    <pubDate>Tue, 12 Jan 2021 20:32:54 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</guid>
-    <description><![CDATA[重复包含问题的解决 1. 在main.cpp中只需要包含xxx.h即可，不需要包含xxx.cpp   原因分析：
-PS: 命令中没有提到&quot;speak.h&quot;文件(原因是:在&quot;speak.cpp&quot;中已经包含了&quot;speak.h&quot;)
-  2. 在xxx.h中，需要写上, 而xxx.cpp不需要写 1 2 3 4  #ifndef xxxxx #define xxxxx (...) #endif     原因分析：
-C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(防止同一个.o文件中包含多个相同的.h内容)
-  3. 使用xxx.h与xxx.cpp这种方式的时候，声明放在xxx.h中，定义放在xxx.cpp中   原因分析：
-C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(在将多个.o文件链接成可执行程序的时候，有可能会在不同的.o文件中含有相同的定义)
-  参考文章 注意头文件规则，避免链接错误：重复定义(multiple defination) 编译链接 C++
-Compiling Cpp]]></description>
 </item></channel>
 </rss>

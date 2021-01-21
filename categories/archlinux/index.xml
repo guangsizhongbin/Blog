@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>archlinux - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/archlinux/</link>
+        <description>archlinux - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 21 Jan 2021 17:36:39 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/archlinux/" rel="self" type="application/rss+xml" /><item>
+    <title>Nvim</title>
+    <link>http://fengqigang.cn/posts/nvim/</link>
+    <pubDate>Thu, 21 Jan 2021 17:36:39 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/nvim/</guid>
+    <description><![CDATA[自动安装vim-plug1 1 2 3 4 5  if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;)) silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim autocmd VimEnter * PlugInstall --sync | source $MYVIMRC endif   Note    $MYVIMRC   The $MYVIMRC environment variable is set to the file that was first found, unless $MYVIMRC was already set and when using VIMINIT.   基本配置 行相关配置 1 2 3 4 5 6  set number set relativenumber set cursorline set tabstop=2 set shiftwidth=2 set softtabstop=2   Note  What is the difference between tabstop, shiftwidth, expandtab, softtabstop?]]></description>
+</item></channel>
+</rss>
