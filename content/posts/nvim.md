@@ -163,3 +163,57 @@ set smartcase
 noremap <LEADER><CR> :nohlsearch<CR>
 ```
 
+#### scrolloff
+```
+set scrolloff=4
+```
+
+{{< admonition >}}
+`scrolloff`:
+
+Minimal number of screen lines to keep above and below the cursor. This will make some context visible around where you are working.
+{{< /admonition >}}
+
+
+#### Resize splits
+```
+noremap <up> :res +5<CR>
+noremap <down> :res -5<CR>
+noremap <left> :vertical resize -5<CR>
+noremap <right> :vertical resize +5<CR>
+```
+
+#### Markdowm Setting
+```
+noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap <buffer> ,f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
+autocmd Filetype markdown inoremap <buffer> ,w <Esc>/ <++><CR>:nohlsearch<CR>"_c5l<CR>
+autocmd Filetype markdown inoremap <buffer> ,m <!--more--><CR>
+autocmd Filetype markdown inoremap <buffer> ,a {{< admonition >}}<CR><++><CR>{{ /admonition }}<CR><++><Esc>
+autocmd Filetype markdown inoremap <buffer> ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap <buffer> ,l [](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap <buffer> ,p ![](<++>) <++><Esc>F[a
+```
+
+{{< admonition >}}
+> `_`
+1 lines downward, on the first non-blank
+
+> `["x]c{motion}`
+Delete `{motion}` text [into register x] adn start insert.
+
+> `l`
+`[count]` characters to the right.
+
+> `f{char}`
+To `[count]`'th occurrence of `{char}` to the right.
+
+> `F{char}`
+To the `[count]`'th occurrence of `{char}` to the right.
+
+> `"`
+Use register {a-zA-Z0-9.%#:-"} for next delete, yank or put (use uppercase character to append with delete and yank) ({.%#:} only work with put)
+{{ /admonition }}
+
+
+
