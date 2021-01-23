@@ -593,7 +593,7 @@ Markdowm Setting
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/nvim/" /><link rel="prev" href="http://fengqigang.cn/posts/quicksort/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/nvim/" /><link rel="prev" href="http://fengqigang.cn/posts/quicksort/" /><link rel="next" href="http://fengqigang.cn/posts/pdftoimage/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -602,7 +602,7 @@ Markdowm Setting
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/nvim\/"
-        },"genre": "posts","keywords": "Nvim","wordcount":  737 ,
+        },"genre": "posts","keywords": "Nvim","wordcount":  736 ,
         "url": "http:\/\/fengqigang.cn\/posts\/nvim\/","datePublished": "2021-01-21T17:36:39+08:00","dateModified": "2021-01-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -679,7 +679,7 @@ Markdowm Setting
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Nvim</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/archlinux/"><i class="far fa-folder fa-fw"></i>archlinux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;737 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-21">2021-01-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;736 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -1043,22 +1043,24 @@ noremap &lt;right&gt; :vertical resize +5&lt;CR&gt;
 </span><span class="lnt">32
 </span><span class="lnt">33
 </span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">
-&lt;div class=&#34;details admonition note open&#34;&gt;
+&lt;div class=&#34;details admonition tip open&#34;&gt;
         &lt;div class=&#34;details-summary admonition-title&#34;&gt;
-            &lt;i class=&#34;icon fas fa-pencil-alt fa-fw&#34;&gt;&lt;/i&gt;Note&lt;i class=&#34;details-icon fas fa-angle-right fa-fw&#34;&gt;&lt;/i&gt;
+            &lt;i class=&#34;icon fas fa-lightbulb fa-fw&#34;&gt;&lt;/i&gt;Tip&lt;i class=&#34;details-icon fas fa-angle-right fa-fw&#34;&gt;&lt;/i&gt;
         &lt;/div&gt;
         &lt;div class=&#34;details-content&#34;&gt;
             &lt;div class=&#34;admonition-content&#34;&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;_&lt;/code&gt;
-1 lines downward, on the first non-blank&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;_&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;1 lines downward, on the first non-blank&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;[&amp;quot;x]c{motion}&lt;/code&gt;
-Delete &lt;code&gt;{motion}&lt;/code&gt; text [into register x] adn start insert.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;[&amp;quot;x]c{motion}&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;Delete &lt;code&gt;{motion}&lt;/code&gt; text [into register x] adn start insert.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;l&lt;/code&gt;
 &lt;code&gt;[count]&lt;/code&gt; characters to the right.&lt;/p&gt;
@@ -1073,12 +1075,15 @@ To the &lt;code&gt;[count]&lt;/code&gt;&amp;lsquo;th occurrence of &lt;code&gt;{
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;&amp;quot;&lt;/code&gt;
-Use register {a-zA-Z0-9.%#:-&amp;quot;} for next delete, yank or put (use uppercase character to append with delete and yank) ({.%#:} only work with put)
-{{ /admonition }}&lt;/p&gt;
+Use register {a-zA-Z0-9.%#:-&amp;quot;} for next delete, yank or put (use uppercase character to append with delete and yank) ({.%#:} only work with put)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
         &lt;/div&gt;
-    &lt;/div&gt;</code></pre></td></tr></table>
+    &lt;/div&gt;
+
+
+
+</code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -1120,7 +1125,8 @@ Use register {a-zA-Z0-9.%#:-&amp;quot;} for next delete, yank or put (use upperc
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/quicksort/" class="prev" rel="prev" title="QuickSort"><i class="fas fa-angle-left fa-fw"></i>QuickSort</a></div>
+    <div class="post-nav"><a href="/posts/quicksort/" class="prev" rel="prev" title="QuickSort"><i class="fas fa-angle-left fa-fw"></i>QuickSort</a>
+            <a href="/posts/pdftoimage/" class="next" rel="next" title="PdfToImage">PdfToImage<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

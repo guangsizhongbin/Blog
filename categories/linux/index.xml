@@ -4,7 +4,17 @@
         <link>http://fengqigang.cn/categories/linux/</link>
         <description>linux - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 23 Jan 2021 20:21:14 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>PdfToImage</title>
+    <link>http://fengqigang.cn/posts/pdftoimage/</link>
+    <pubDate>Sat, 23 Jan 2021 20:21:14 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/pdftoimage/</guid>
+    <description><![CDATA[Install 1 2  sudo pacman -S imagemagick sudo pacman -S ghostscript   Error1 Tip   convert: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/408.
+  convert: no images defined `output.png' @ error/convert.c/ConvertImageCommand/3288.
+ /etc/ImageMagick-7/policy.xml
+1 2 3 4 5 6  -: &lt;policy domain=&#34;delegate&#34; rights=&#34;none&#34; pattern=&#34;gs&#34; /&gt; --- +: &lt;policy domain=&#34;coder&#34; rights=&#34;read | write&#34; pattern=&#34;PDF&#34; /&gt;      Convert2 1 2 3 4 5  # convert single page of PDF file to image convert presentation.]]></description>
+</item><item>
     <title>Corn使用</title>
     <link>http://fengqigang.cn/posts/corn%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Tue, 12 Jan 2021 20:34:08 &#43;0800</pubDate>
