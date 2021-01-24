@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/categories/python/</link>
         <description>python - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/python/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 24 Jan 2021 22:13:38 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/python/" rel="self" type="application/rss+xml" /><item>
+    <title>SolarToLunar</title>
+    <link>http://fengqigang.cn/posts/solartolunar/</link>
+    <pubDate>Sun, 24 Jan 2021 22:13:38 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/solartolunar/</guid>
+    <description><![CDATA[sxtw1 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22  import sxtwl def lunar_calendar(yyyy,mm,dd): import sxtwl lunar = sxtwl.Lunar() daylunar = lunar.getDayBySolar(yyyy, mm, dd) if daylunar.Lmc &gt; 1: ly, lmm = str(daylunar.y), str(daylunar.Lmc - 1) else: ly, lmm = str(daylunar.y - 1), str(daylunar.Lmc + 11) if daylunar.Lleap: lm=&#34;闰&#34;+lmm else: lm=lmm ld=str(daylunar.Ldi+1) ShX = [&#34;鼠&#34;, &#34;牛&#34;, &#34;虎&#34;, &#34;兔&#34;, &#34;龙&#34;, &#34;蛇&#34;, &#34;马&#34;, &#34;羊&#34;, &#34;猴&#34;, &#34;鸡&#34;, &#34;狗&#34;, &#34;猪&#34;] sx = ShX[daylunar.]]></description>
+</item><item>
     <title>Momo</title>
     <link>http://fengqigang.cn/posts/momo/</link>
     <pubDate>Mon, 18 Jan 2021 20:55:50 &#43;0800</pubDate>
