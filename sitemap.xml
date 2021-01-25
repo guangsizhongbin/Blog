@@ -2,15 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/categories/linux/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/xinput/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/xinput/</loc><lastmod>2021-01-25T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/python/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/python/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/solartolunar/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/convert/</loc><lastmod>2021-01-23T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/categories/linux/</loc><lastmod>2021-01-23T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/pdftoimage/</loc><lastmod>2021-01-23T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/archlinux/</loc><lastmod>2021-01-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/nvim/</loc><lastmod>2021-01-21T00:00:00&#43;00:00</lastmod></url><url>

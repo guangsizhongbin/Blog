@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>xinput - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/xinput/</link>
+        <description>xinput - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 25 Jan 2021 21:58:56 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/xinput/" rel="self" type="application/rss+xml" /><item>
+    <title>Xinput</title>
+    <link>http://fengqigang.cn/posts/xinput/</link>
+    <pubDate>Mon, 25 Jan 2021 21:58:56 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/xinput/</guid>
+    <description><![CDATA[To disable a laptop&rsquo;s internal keyboard
+xinput list1 Execute the command xinput list to list input devices.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  $ xinput list ⎡ Virtual core pointer id=2 [master pointer (3)] ⎜ ↳ Virtual core XTEST pointer id=4 [slave pointer (2)] ⎜ ↳ ETD2303:00 04F3:3083 Mouse id=11 [slave pointer (2)] ⎜ ↳ ETD2303:00 04F3:3083 Touchpad id=12 [slave pointer (2)] ⎜ ↳ ETPS/2 Elantech Touchpad id=17 [slave pointer (2)] ⎣ Virtual core keyboard id=3 [master keyboard (2)] ↳ Virtual core XTEST keyboard id=5 [slave keyboard (3)] ↳ Power Button id=6 [slave keyboard (3)] ↳ Video Bus id=7 [slave keyboard (3)] ↳ Power Button id=8 [slave keyboard (3)] ↳ Video Bus id=9 [slave keyboard (3)] ↳ XiaoMi USB 2.]]></description>
+</item></channel>
+</rss>
