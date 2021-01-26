@@ -10,7 +10,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://fengqigang.cn/" />
-<meta property="og:updated_time" content="2021-01-25T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-01-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="xiaonan&#39;s Blog"/>
 <meta name="twitter:description" content=""/>
@@ -100,6 +100,25 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/">树莓派实现旁路由功能</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-14">2021-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">什么是WAN口和LAN口?1   WAN端口用于连接至Internet
+  LAN端口用于连接局域网设备
+  图1不能访问的原因在于路由器2认为WAN口连接的是另外一个网络，而设备2访问设备1的IP地址是在同一个网络中，所以不会向WAN口发送网络包，因此不通。
+什么是网关？ 网关(Gateway)就是一个网络连接到另一个网络的&quot;关口&quot;
+什么是默认网关？ 一个房间可又有多扇门一样，一台主机可又有多个网关。默认网关的意思是一台主机如果找不到可用的网关，就把数据包给默认指定的网关，由这个网关来处理数据包。现在主机使用的网关，一般指的是默认网关。
+网关与路由器有什么关系？2   “网关”是一个概念，&ldquo;路由器&quot;是一个产品。
+  网关: 帮助两个不能直接互通的网络，进行数据转发的。
+  路由器，手机，防火墙均可实现网关功能:
+  路由器将家庭局域网和互联网相连
+  手机开了热点后，笔记本接进来，手机作为网关把笔记本和互联网相连
+  防火墙可能做网关，局域网连至防火墙，防火墙把局域网和互联网相连
+    旁路由如何实现？ 网络数据在其中会怎样流动？3 国内网站:
+ 局域网设备发出数据 -&gt; 到达主路由LAN1口 -&gt; 到达主路由LAN2口 -&gt; 到达旁路由LAN口 -&gt; 旁路由分析数据走位 -&gt; 到达旁路由LAN口 -&gt; 到达主路由LAN2口 -&gt; 到达主路由WAN口 -&gt; 到达互连网
+  互联网服务器返回数据 -&gt; 到达主路由WAN口 -&gt; 到达主路由LAN1口 -&gt; 到达局域网设备
+ 国外网站:</div><div class="post-footer">
+        <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%97%81%E8%B7%AF%E7%94%B1/">旁路由</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/corn%E4%BD%BF%E7%94%A8/">Corn使用</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-12">2021-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">Install cron1 sudo pacman -S cronie
 Quick running config setting default Editor export EDITOR=/usr/bin/nvim
@@ -150,20 +169,6 @@ Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用d
   status=LEVEL The LEVEL of information to print to sederr; none suppresses everything but error messages, noxfer suppresses the final transfer statistics, progress shows periodic transfer statistics.</div><div class="post-footer">
         <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">nginx</a>,&nbsp;<a href="/tags/smbd/">smbd</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/shellsort/">ShellSort</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-07">2021-01-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><i class="far fa-folder fa-fw"></i>数据结构</a></span></div><div class="content"><h2 id="shellsort">ShellSort</h2>
-<p>Shell 排序动图</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif"
-        data-srcset="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif, https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif 1.5x, https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif"
-        title="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif" /></p></div><div class="post-footer">
-        <a href="/posts/shellsort/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">algorithm</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

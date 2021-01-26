@@ -4,9 +4,24 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 25 Jan 2021 21:58:56 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 26 Jan 2021 22:20:50 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>使用WebDAV关联坚果云与Joplin</title>
+    <link>http://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/</link>
+    <pubDate>Tue, 26 Jan 2021 22:20:50 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/</guid>
+    <description><![CDATA[关联方法1 1. 在坚果云上创建一个英文名称的根目录的文件夹, 如&quot;note&quot; 2. 配置Joplin WebDAV URL: https//dav.jiangguoyun.com/dav/note
+(note为刚才创建的文件夹名称)
+WebDAV 名称: 坚果云账号邮箱
+WebDAV 密码: 在坚果云中生成的第三方应用密码2
+3. 点击检查&quot;同步配置&quot; BUG 1. Too many requests are received recently 可以将同步的并发连接数调低(调成1后，等一会, 即可)3
+  如何使用WebDAV关联坚果云与Joplin? &#x21a9;&#xfe0e;
+ 坚果云第三方应用授权WebDAV开启方法 &#x21a9;&#xfe0e;
+ joplin使用坚果云webdav同步时出现以下问题如何解决？ &#x21a9;&#xfe0e;
+   ]]></description>
+</item><item>
     <title>Xinput</title>
     <link>http://fengqigang.cn/posts/xinput/</link>
     <pubDate>Mon, 25 Jan 2021 21:58:56 &#43;0800</pubDate>
@@ -376,23 +391,5 @@ Note    javac      -d  Specify where to place generated class files      运行 
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5/</guid>
     <description><![CDATA[asyncio1 1 2 3 4 5 6 7 8 9 10 11 12  import time def hello(): time.sleep(1) def run(): for i in range(5) hello() print(&#39;Hello World:%s&#39; % time.time()) if __name__ == &#39;__main__&#39;: run()   Note  1. time.time1 Return the time in seconds since the epoch as a floating point number. The epoch is the point where the time starts, and is platform dependent. For Unix, the epoch is January 1, 1970, 00:00:00 (UTC)]]></description>
-</item><item>
-    <title>删除手机内置app</title>
-    <link>http://fengqigang.cn/posts/%E5%88%A0%E9%99%A4%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AEapp/</link>
-    <pubDate>Fri, 15 Jan 2021 20:57:29 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/%E5%88%A0%E9%99%A4%E6%89%8B%E6%9C%BA%E5%86%85%E7%BD%AEapp/</guid>
-    <description><![CDATA[下载adb  sudo pacman -S adb
-查看当前连接的设备  adb devices
-授权后，由unauthorized变成如图
-查看当前所有软件  adb shell pm list packages
-以删除美团为例子    搜索软件
-adb shell pm list packages | grep meituan
-   删除软件    进入交互模式
-adb shell
-   卸载软件
-pm uninstall -k --user 0 com.sankuai.meituan
-  Tip  -k: keep the data and cache directories
---user 0: Where 0 is ID of main user in Android system.]]></description>
 </item></channel>
 </rss>

@@ -10,7 +10,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://fengqigang.cn/" />
-<meta property="og:updated_time" content="2021-01-25T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-01-26T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="xiaonan&#39;s Blog"/>
 <meta name="twitter:description" content=""/>
@@ -100,6 +100,20 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/shellsort/">ShellSort</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-07">2021-01-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><i class="far fa-folder fa-fw"></i>数据结构</a></span></div><div class="content"><h2 id="shellsort">ShellSort</h2>
+<p>Shell 排序动图</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif"
+        data-srcset="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif, https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif 1.5x, https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif"
+        title="https://img.fengqigang.cn//img/Sorting_shellsort_anim.gif" /></p></div><div class="post-footer">
+        <a href="/posts/shellsort/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">algorithm</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/insertionsort/">InsertionSort</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-06">2021-01-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><i class="far fa-folder fa-fw"></i>数据结构</a></span></div><div class="content"><h2 id="插入排序">插入排序</h2>
 <p><img
@@ -154,42 +168,6 @@
 </ol></div><div class="post-footer">
         <a href="/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/">Github Actions 自动部署hugo至vps</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-01">2021-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo/"><i class="far fa-folder fa-fw"></i>hugo</a></span></div><div class="content"><h2 id="系统版本">系统版本</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@vultr:~# hostnamectl
-
-  Static hostname: vultr.guest
-        Icon name: computer-vm
-          Chassis: vm
-       Machine ID: 014b2aed70f7e09db32693a85feeb49a
-          Boot ID: fe9876f6146f4fb4a3187f09d94f5ab3
-   Virtualization: kvm
- Operating System: Debian GNU/Linux <span class="m">9</span> <span class="o">(</span>stretch<span class="o">)</span>
-           Kernel: Linux 4.9.0-14-amd64
-     Architecture: x86-64
-
-</code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer">
-        <a href="/posts/github_actions_%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2hugo%E8%87%B3vps/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a>,&nbsp;<a href="/tags/hugo/">hugo</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
