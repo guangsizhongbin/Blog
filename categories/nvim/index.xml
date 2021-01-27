@@ -10,6 +10,10 @@
     <pubDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/</guid>
-    <description><![CDATA[Markdown1 1 2 3 4 5 6  Plug &#39;godlygeek/tabular&#39; &#34;必要插件 Plug &#39;plasticboy/vim-markdown&#39; &#34; To disable math conceal with LaTex math syntax enabled, add the following let g:tex_conceal = &#34;&#34; let g:vim_markdown_math = 1    [[: go to previous header. ]]: go to next header. ]c: go to Current header. ]u: go to parent header (Up). zR: opens all flods zM: folds everything all the way zr: reduces fold level throughout the buffer zm: increases fold level throughout the buffer  snippets2 UltisnipsEdit进入编辑页面3 1 2 3  snippet triggerWord &#34;Comment&#34; iAwrb your snippets endsnippet   triggerWord 为关键词]]></description>
+    <description><![CDATA[Markdown1 1 2 3 4 5 6  Plug &#39;godlygeek/tabular&#39; &#34;必要插件 Plug &#39;plasticboy/vim-markdown&#39; &#34; To disable math conceal with LaTex math syntax enabled, add the following let g:tex_conceal = &#34;&#34; let g:vim_markdown_math = 1     [[: go to previous header.
+  ]]: go to next header.
+  ]c: go to Current header.
+  ]u: go to parent header (Up).
+  zR: opens all flods]]></description>
 </item></channel>
 </rss>
