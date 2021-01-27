@@ -22,12 +22,19 @@ let g:vim_markdown_math = 1
 ```
 
 - `[[`: go to previous header.
+
 - `]]`: go to next header.
+
 - `]c`: go to Current header.
+
 - `]u`: go to parent header (Up).
+
 - `zR`: opens all flods
+
 - `zM`: folds everything all the way
+
 - `zr`: reduces fold level throughout the buffer
+
 - `zm`: increases fold level throughout the buffer
 
 ## snippets[^snippets]
