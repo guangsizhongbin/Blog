@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>nvim - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/nvim/</link>
+        <description>nvim - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/nvim/" rel="self" type="application/rss+xml" /><item>
+    <title>Nvim插件</title>
+    <link>http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/</link>
+    <pubDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/</guid>
+    <description><![CDATA[Markdown1 1 2 3 4 5 6  Plug &#39;godlygeek/tabular&#39; &#34;必要插件 Plug &#39;plasticboy/vim-markdown&#39; &#34; To disable math conceal with LaTex math syntax enabled, add the following let g:tex_conceal = &#34;&#34; let g:vim_markdown_math = 1    [[: go to previous header. ]]: go to next header. ]c: go to Current header. ]u: go to parent header (Up). zR: opens all flods zM: folds everything all the way zr: reduces fold level throughout the buffer zm: increases fold level throughout the buffer  snippets2 UltisnipsEdit进入编辑页面3 1 2 3  snippet triggerWord &#34;Comment&#34; iAwrb your snippets endsnippet   triggerWord 为关键词]]></description>
+</item></channel>
+</rss>

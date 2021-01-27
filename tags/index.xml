@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/tags/</link>
         <description>Tags - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 26 Jan 2021 22:20:50 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Nvim</title>
+    <link>http://fengqigang.cn/tags/nvim/</link>
+    <pubDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/tags/nvim/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>joplin</title>
     <link>http://fengqigang.cn/tags/joplin/</link>
     <pubDate>Tue, 26 Jan 2021 22:20:50 &#43;0800</pubDate>
@@ -31,13 +38,6 @@
     <pubDate>Sat, 23 Jan 2021 20:21:14 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/tags/convert/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Nvim</title>
-    <link>http://fengqigang.cn/tags/nvim/</link>
-    <pubDate>Thu, 21 Jan 2021 17:36:39 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/tags/nvim/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>sort</title>
