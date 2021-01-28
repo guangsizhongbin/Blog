@@ -66,6 +66,25 @@ snippet '([A-Za-z])(\d)' "auto subscript" wrA
 endsnippet
 ```
 
+{{< admonition >}}
+- `[A-Za-z]`: 匹配A-Z, a-z
+
+- python代码
+		- `fn` 表示当前文件名
+		- `path` 当前文件名的路径
+		- `t` 占位符的字典, 可以用`t[1], t[2], t.v`来取占位符内容
+		- `snip.rv` 表示 return value
+		- `snip.fn` 表示当前文件名
+		- `snip.ft` 表示当前文件类型
+		- `snip.v` 表示VISUAL模式变量
+		- `snip.v.mode` 表示模式类型
+		- `snip.v.text` 表示VISUAL模式中选择的字符
+
+- 占位符选择
+		- `/<tab>` 切换下一个占位符
+		- `<shift-tab>` 切换上一个占位符
+{{< /admonition >}
+
 #### 创建表格
 
 ```
@@ -86,3 +105,49 @@ snip.rv=out
 endsnippet
 ```
 
+
+```
+# 若输入 ‘/’，则检查符号前的字符是否为数字或者字母，
+# 将数字或字母作为分子扩展为Latex分数形式然后在分母部分等待输入
+priority 1000
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+snippet talk "something"
+Talk is ${1:cheap}, show me the ${2:code} $0
+endsnippet
+
+# code
+snippet code "code"
+\`\`\` ${1:language}
+${2:code}
+\`\`\`
+$0
+endsnippet
+
+# more
+snippet more "more"
+<!--more-->
+endsnippet
+
+# admonition
+snippet ad "admonition"
+{{< admonition >}}
+${1:admonition}
+{{< /admonition >}}
+$0
+endsnippet
+
+# link
+snippet link "link"
+[${1:name}](${2:link})
+$0
+endsnippet
+
+# picture
+snippet pic "pic link"
+![${1:name}](${2:link})
+$0
+endsnippet
+```
