@@ -10,7 +10,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://fengqigang.cn/" />
-<meta property="og:updated_time" content="2021-01-27T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-01-29T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="xiaonan&#39;s Blog"/>
 <meta name="twitter:description" content=""/>
@@ -100,6 +100,15 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">树莓派实现内网穿透</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-10">2021-01-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">内网穿通SSH  修改服务器端的frps.ini  1 2  [common] bind_port = 7000    服务器端开启frp ./frps -c ./frps.ini
+  客户端修改frpc.ini
+  1 2 3 4 5 6 7 8 9  [common] server_addr = x.x.x.x server_port = 7000 [ssh] type = tcp local_ip = 127.x.x.x local_port = 22 remote_port = 6000    开启客户端的frpc ./frpc -c ./frpc.ini
+  通过ssh连接 ssh user@x.x.x.x -p 6000
+  参考 github</div><div class="post-footer">
+        <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/frp/">frp</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%B8%A9%E5%9D%91%E8%AE%B0/">树莓派踩坑记</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-09">2021-01-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">今天总有拿到树莓派4B+, 想着搭建一个下载机器，供家里人使用。
 各个接口功能 第一次入手，刚开始连电源键都没有找到, 官网提供了说明.
@@ -164,14 +173,6 @@ Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用d
         title="https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif" /></p></div><div class="post-footer">
         <a href="/posts/bubblesort/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">algorithm</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/docker/">Docker</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-02">2021-01-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/docker/"><i class="far fa-folder fa-fw"></i>docker</a></span></div><div class="content"><h2 id="docker-三大基本概念">Docker 三大基本概念</h2>
-<p><code>镜像</code>(Image)</p>
-<p><code>容器</code>(Container)</p>
-<p><code>仓库</code>(Repository)</p></div><div class="post-footer">
-        <a href="/posts/docker/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/docker/">docker</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

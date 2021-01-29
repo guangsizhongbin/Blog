@@ -2,13 +2,16 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/archlinux/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/archlinux/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/categories/archlinux/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/nvim/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/nvim/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/joplin/</loc><lastmod>2021-01-26T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/linux/</loc><lastmod>2021-01-26T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/</loc><lastmod>2021-01-26T00:00:00&#43;00:00</lastmod></url><url>
@@ -19,7 +22,6 @@
             <loc>http://fengqigang.cn/posts/solartolunar/</loc><lastmod>2021-01-24T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/convert/</loc><lastmod>2021-01-23T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/pdftoimage/</loc><lastmod>2021-01-23T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/categories/archlinux/</loc><lastmod>2021-01-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/nvim/</loc><lastmod>2021-01-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/quicksort/</loc><lastmod>2021-01-20T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/sort/</loc><lastmod>2021-01-20T00:00:00&#43;00:00</lastmod></url><url>

@@ -10,7 +10,7 @@
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://fengqigang.cn/" />
-<meta property="og:updated_time" content="2021-01-27T00:00:00+00:00" />
+<meta property="og:updated_time" content="2021-01-29T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="xiaonan&#39;s Blog"/>
 <meta name="twitter:description" content=""/>
@@ -100,12 +100,206 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/archlinux/">Archlinux</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-29">2021-01-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/archlinux/"><i class="far fa-folder fa-fw"></i>archlinux</a></span></div><div class="content"><p>Arch Linux is an independently developed, x86_64-optimised Linux distribution targeted at competent Linux users.</p></div><div class="post-footer">
+        <a href="/posts/archlinux/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/archlinux/">archlinux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/nvim%E6%8F%92%E4%BB%B6/">Nvim插件</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-27">2021-01-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nvim/"><i class="far fa-folder fa-fw"></i>nvim</a></span></div><div class="content">Markdown1 1 2 3 4 5 6  Plug &#39;godlygeek/tabular&#39; &#34;必要插件 Plug &#39;plasticboy/vim-markdown&#39; &#34; To disable math conceal with LaTex math syntax enabled, add the following let g:tex_conceal = &#34;&#34; let g:vim_markdown_math = 1     [[: go to previous header.
-  ]]: go to next header.
-  ]c: go to Current header.
-  ]u: go to parent header (Up).
-  zR: opens all flods</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-27">2021-01-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nvim/"><i class="far fa-folder fa-fw"></i>nvim</a></span></div><div class="content"><h2 id="markdownmarkdown">Markdown<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Plug &#39;godlygeek/tabular&#39; &#34;必要插件
+Plug &#39;plasticboy/vim-markdown&#39;
+
+&#34; To disable math conceal with LaTex math syntax enabled, add the following
+let g:tex_conceal = &#34;&#34;
+let g:vim_markdown_math = 1
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><code>[[</code>: go to previous header.</p>
+</li>
+<li>
+<p><code>]]</code>: go to next header.</p>
+</li>
+<li>
+<p><code>]c</code>: go to Current header.</p>
+</li>
+<li>
+<p><code>]u</code>: go to parent header (Up).</p>
+</li>
+<li>
+<p><code>zR</code>: opens all flods</p>
+</li>
+<li>
+<p><code>zM</code>: folds everything all the way</p>
+</li>
+<li>
+<p><code>zr</code>: reduces fold level throughout the buffer</p>
+</li>
+<li>
+<p><code>zm</code>: increases fold level throughout the buffer</p>
+</li>
+</ul>
+<h2 id="snippetssnippets">snippets<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h2>
+<h3 id="ultisnipsedit进入编辑页面edit"><code>UltisnipsEdit</code>进入编辑页面<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet triggerWord &#34;Comment&#34; iAwrb
+your snippets
+endsnippet
+</code></pre></td></tr></table>
+</div>
+</div><p><code>triggerWord</code> 为关键词</p>
+<p><code>iAwrb</code>为snippet的选项
+- i 表示片段可在句中被触发
+- A 表示片段会被自动出发
+- w 表示片段会在关键词为单独单词的情况下被触发
+- r 表示关键词语使用正则表达式, 正则表达式必须用两个引号'&lsquo;包围
+- b 表示只有在一行的开头才会被触发</p>
+<h4 id="数学模式下自动加下标">数学模式下自动加下标</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;([A-Za-z])(\d)&#39; &#34;auto subscript&#34; wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<p><code>[A-Za-z]</code>: 匹配A-Z, a-z</p>
+</li>
+<li>
+<p>python代码
+- <code>fn</code> 表示当前文件名
+- <code>path</code> 当前文件名的路径
+- <code>t</code> 占位符的字典, 可以用<code>t[1], t[2], t.v</code>来取占位符内容
+- <code>snip.rv</code> 表示 return value
+- <code>snip.fn</code> 表示当前文件名
+- <code>snip.ft</code> 表示当前文件类型
+- <code>snip.v</code> 表示VISUAL模式变量
+- <code>snip.v.mode</code> 表示模式类型
+- <code>snip.v.text</code> 表示VISUAL模式中选择的字符</p>
+</li>
+<li>
+<p>占位符选择
+- <code>/&lt;tab&gt;</code> 切换下一个占位符
+- <code>&lt;shift-tab&gt;</code> 切换上一个占位符</p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h4 id="创建表格">创建表格</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;(?&lt;!\\)([0-9])([0-9])tb&#39; &#34;new table&#34; r
+$1`!p 
+x=match.group(1)
+y=match.group(2)
+row1=&#34;&#34;
+row2=&#34;&#34; 
+for i in range(int(x)):
+	row1+=&#34;| &#34;
+	row2+=&#34;|:-:&#34;
+row1+=&#34;|\n&#34;
+row2+=&#34;|\n&#34;
+out=row1+row2+int(y)*row1
+snip.rv=out
+`$0
+endsnippet
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd"></div><div class="post-footer">
         <a href="/posts/nvim%E6%8F%92%E4%BB%B6/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nvim/">Nvim</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
@@ -141,299 +335,6 @@ xinput list1 Execute the command xinput list to list input devices.
 1 2 3 4 5 6  -: &lt;policy domain=&#34;delegate&#34; rights=&#34;none&#34; pattern=&#34;gs&#34; /&gt; --- +: &lt;policy domain=&#34;coder&#34; rights=&#34;read | write&#34; pattern=&#34;PDF&#34; /&gt;      Convert2 1 2 3 4 5  # convert single page of PDF file to image convert presentation.</div><div class="post-footer">
         <a href="/posts/pdftoimage/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/convert/">convert</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/nvim/">Nvim</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-21">2021-01-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/archlinux/"><i class="far fa-folder fa-fw"></i>archlinux</a></span></div><div class="content"><h2 id="自动安装vim-plugjunegunnvim-plug">自动安装vim-plug<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><blockquote>
-<ol>
-<li><code>$MYVIMRC</code></li>
-</ol>
-</blockquote>
-<p>The <code>$MYVIMRC</code> environment variable is set to the file that was first found, unless <code>$MYVIMRC</code> was already set and when using VIMINIT.</div>
-        </div>
-    </div>
-<h2 id="基本配置">基本配置</h2>
-<h3 id="行相关配置">行相关配置</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set number
-set relativenumber
-set cursorline
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>What is the difference between <code>tabstop</code>, <code>shiftwidth</code>, <code>expandtab</code>, <code>softtabstop</code>?</p>
-<p><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
-<blockquote>
-<ol>
-<li><code>tabstop</code>
-effectively how many columns of whitespace a <code>\t</code> is worth</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li><code>shiftwidth</code>
-how many colums of whitespace a &ldquo;level of identation&rdquo; is worth</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li><code>expandtab</code>
-Setting <code>expandtab</code> means that you never wanna see a <code>\t</code> again in your file</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="4">
-<li><code>softtabtop</code>
-how many columns of whitespace a <code>tab</code> keypress or a <code>backspace</code> keypress is worth</li>
-</ol>
-</blockquote>
-<section class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="https://arisweedler.medium.com/tab-settings-in-vim-1ea0863c5990#:~:text=tabstop%20is%20effectively%20how%20many,a%20backspace%20keypress%20is%20worth." target="_blank" rel="noopener noreffer">Tab settings in Vim</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</section>
-</div>
-        </div>
-    </div>
-<h4 id="swap-backup-undo-files-配置vim-remove-swap-backup-and-undo-files-from-working-directory">swap, backup, undo Files 配置<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">silent !mkdir -p ~/.config/nvim/tmp/backup
-silent !mkdir -p ~/.config/nvim/tmp/undo
-
-set backupdir=~/.config/nvim/tmp/backup,.
-set directory=~/.config/nvim/tmp/backup,.
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><ol>
-<li>
-<p>Swap file
-<code>.myfile.txt.swp</code> is a <code>swap file</code>, containg the unsaved changes.</p>
-</li>
-<li>
-<p>Backup file
-<code>myfile.txt`` is a backup file -- the version of </code>myfile.txt` before your edited it.</p>
-</li>
-<li>
-<p>Undo file
-`.myfile.txt.un`` is an undo file, containing the undo trees of the file edited.</p>
-</li>
-<li>
-<p>directory
-List of directory names for the swap file, separated with commas.</p>
-</li>
-</ol>
-</div>
-        </div>
-    </div>
-<h4 id="updatetime">updatetime</h4>
-<p>If this many milliseconds nothing is type the swap file will be written to disk（default 4000）</p>
-<h4 id="colorcolumn">colorcolumn</h4>
-<p><code>colorcolum</code> is a comma separated list of screen columns that are highlighted with ColorColumn hl-ColorColumn.</p>
-<h3 id="basic-mappings">Basic Mappings</h3>
-<h4 id="leader"><code>&lt;LEADER&gt;</code></h4>
-<p><code>let mapleader=&quot; &quot;</code></p>
-<div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><code>let {var-name} = {expr1}</code>
-Set internal variable <code>{var-name}</code> to the result of the expression <code>{expr1}</code>. The variable will get the type from the <code>{expr}</code>. If <code>{var-name}</code> didn&rsquo;t exist yet, it is created.</div>
-        </div>
-    </div>
-<h4 id="save--quit">Save &amp; quit</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap Q :q&lt;CR&gt;
-noremap &lt;C-q&gt; :qa&lt;CR&gt;
-noremap S :w&lt;CR&gt;
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><code>noremap {lhs} {rhs}</code>
-Map the key sequence <code>{lhs}</code> to <code>{rhs}</code> for the modes where the map command applies. Disallow mapping of <code>{rhs}</code>, to avoid nested and <code>recursive</code> mappings.</div>
-        </div>
-    </div>
-<h5 id="what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping-commands-in-vim-what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping-commands-in-vim">What is the difference between the <code>remap</code>, <code>noremap</code>, <code>nnoremap</code> and <code>vnoremap</code> mapping commands in Vim? <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></h5>
-<p><code>remap</code> is an option that makes mappings work recursively.</p>
-<p><code>:map</code> and <code>:noremap</code> are recursive and non-recursive versions of the various mapping commands.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:map j gg				(moves cursor to first line)
-:map Q j				(moves cursor to first line)
-:noremap w j		(moves cursor to down one line)
-</code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>
-<p><code>j</code> will be mapped to <code>gg</code>.</p>
-</li>
-<li>
-<p><code>Q</code> will also be mapped to <code>gg</code>, because <code>j</code> will be expanded for the recursive mapping.</p>
-</li>
-<li>
-<p><code>W</code> will be mapped to <code>j</code> (and not to <code>gg</code>) because <code>j</code> will not be expanded for the non-recursive mapping.</p>
-</li>
-</ul>
-<p>normal modes: <code>:map</code> and <code>:nnoremap</code></p>
-<p>visual modes: <code>:vmap</code> and <code>:vnoremap</code></p>
-<p>Select modes: <code>:smap</code> adn <code>:snoremap</code></p>
-<h4 id="open-the-vimrc-file-in-anytime">Open the vimrc file in anytime</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;LEADER&gt; :e ~/.config/nvim/init.vim&lt;CR&gt;
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="copy-content">copy content</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34; make Y to copy till the end of the line
-nnoremap Y y$
-
-&#34; Copy to system clipboard
-vnoremap Y &#34;+y
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="search">Search</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set ignorecase
-set smartcase
-noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="scrolloff">scrolloff</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set scrolloff=4
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p><code>scrolloff</code>:</p>
-<p>Minimal number of screen lines to keep above and below the cursor. This will make some context visible around where you are working.</p>
-</div>
-        </div>
-    </div>
-<h4 id="resize-splits">Resize splits</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;up&gt; :res +5&lt;CR&gt;
-noremap &lt;down&gt; :res -5&lt;CR&gt;
-noremap &lt;left&gt; :vertical resize -5&lt;CR&gt;
-noremap &lt;right&gt; :vertical resize +5&lt;CR&gt;
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="markdowm-setting">Markdowm Setting</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd"></div><div class="post-footer">
-        <a href="/posts/nvim/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nvim/">Nvim</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

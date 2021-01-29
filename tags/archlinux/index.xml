@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>archlinux - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/archlinux/</link>
+        <description>archlinux - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 29 Jan 2021 21:41:22 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/archlinux/" rel="self" type="application/rss+xml" /><item>
+    <title>Archlinux</title>
+    <link>http://fengqigang.cn/posts/archlinux/</link>
+    <pubDate>Fri, 29 Jan 2021 21:41:22 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/archlinux/</guid>
+    <description><![CDATA[<p>Arch Linux is an independently developed, x86_64-optimised Linux distribution targeted at competent Linux users.</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Archlinux - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Archlinux" />
+<meta property="og:description" content="Arch Linux is an independently developed, x86_64-optimised Linux distribution targeted at competent Linux users." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/archlinux/" />
+<meta property="article:published_time" content="2021-01-29T21:41:22+08:00" />
+<meta property="article:modified_time" content="2021-01-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Archlinux"/>
+<meta name="twitter:description" content="Arch Linux is an independently developed, x86_64-optimised Linux distribution targeted at competent Linux users."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/archlinux/" /><link rel="prev" href="http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Archlinux",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/archlinux\/"
+        },"genre": "posts","keywords": "archlinux","wordcount":  701 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/archlinux\/","datePublished": "2021-01-29T21:41:22+08:00","dateModified": "2021-01-29T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Archlinux</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/archlinux/"><i class="far fa-folder fa-fw"></i>archlinux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-29">2021-01-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;701 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#download">download</a>
+      <ul>
+        <li><a href="#ios">ios</a></li>
+        <li><a href="#copy">copy</a></li>
+        <li><a href="#partition-the-disks">Partition the disks</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#connect-to-the-internet">connect to the internet</a></li>
+    <li><a href="#update-the-system-clock">Update the system clock</a></li>
+    <li><a href="#select-the-mirrors">Select the mirrors</a></li>
+    <li><a href="#install-essential-packages">Install essential packages</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#fstab">Fstab</a></li>
+    <li><a href="#chroot">chroot</a></li>
+    <li><a href="#time-zone">Time zone</a></li>
+    <li><a href="#localization">Localization</a></li>
+    <li><a href="#network-configuration">Network configuration</a></li>
+    <li><a href="#root-password">Root password</a></li>
+    <li><a href="#boot-loader">Boot loader</a></li>
+    <li><a href="#intel-ucode">Intel-ucode</a></li>
+    <li><a href="#reboot">Reboot</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#kde-plasma">KDE Plasma</a></li>
+    <li><a href="#add-a-user-to-wheel-group">Add a user to Wheel group</a></li>
+    <li><a href="#reboot-1">Reboot</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#archlinxcn">archlinxcn</a></li>
+    <li><a href="#git">git</a></li>
+    <li><a href="#yay">yay</a></li>
+    <li><a href="#font">font</a></li>
+    <li><a href="#v2ray">v2ray</a></li>
+    <li><a href="#joplin">joplin</a></li>
+    <li><a href="#obsidian">Obsidian</a>
+      <ul>
+        <li><a href="#support-nvim">support nvim</a></li>
+      </ul>
+    </li>
+    <li><a href="#anki">anki</a>
+      <ul>
+        <li><a href="#add-on">add-on</a></li>
+      </ul>
+    </li>
+    <li><a href="#gpu">GPU</a></li>
+    <li><a href="#kde-connect">kde connect</a></li>
+    <li><a href="#screen-shot">screen-shot</a></li>
+    <li><a href="#widget">widget</a></li>
+    <li><a href="#music">music</a></li>
+    <li><a href="#googlechrome">googlechrome</a>
+      <ul>
+        <li><a href="#plugin">plugin</a></li>
+      </ul>
+    </li>
+    <li><a href="#video">video</a></li>
+    <li><a href="#neovim">neovim</a></li>
+    <li><a href="#fcitx">fcitx</a></li>
+    <li><a href="#download-1">download</a>
+      <ul>
+        <li><a href="#aria2--youtube-dl">aria2 + youtube-dl</a></li>
+      </ul>
+    </li>
+    <li><a href="#zsh">zsh</a></li>
+    <li><a href="#bluetooth">bluetooth</a></li>
+    <li><a href="#pdf">pdf</a></li>
+    <li><a href="#clion">Clion</a></li>
+    <li><a href="#java">java</a></li>
+    <li><a href="#compressdecompress">compress/decompress</a></li>
+    <li><a href="#drawing">drawing</a></li>
+    <li><a href="#图像查看">图像查看</a></li>
+    <li><a href="#downloader">downloader</a></li>
+    <li><a href="#wps">WPS</a></li>
+    <li><a href="#nutstore">nutstore</a></li>
+    <li><a href="#timeout">timeout</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Arch Linux is an independently developed, x86_64-optimised Linux distribution targeted at competent Linux users.</p>
+<h1 id="pre-installation">Pre-installation</h1>
+<h2 id="download">download</h2>
+<h3 id="ios">ios</h3>
+<p><a href="https://www.archlinux.org/download/" target="_blank" rel="noopener noreffer">download</a></p>
+<h3 id="copy">copy</h3>
+<ol>
+<li>sudo fdisk -l</li>
+<li>dd bs=4M if=path/archlinux.iso of=/dev/sdx status=progress oflag=sync</li>
+</ol>
+<h3 id="partition-the-disks">Partition the disks</h3>
+<ol>
+<li>fidsk -l</li>
+<li>cfdisk xxx</li>
+<li>format
+<ul>
+<li>Boot: mkfs.fat -F32 /dev/sdx_Boot</li>
+<li>Root: mkfs.ext4 /dev/sdx_Root</li>
+</ul>
+</li>
+<li>mount
+<ul>
+<li>mount /dev/sdx_Root /mnt</li>
+<li>mkdir /mnt/boot</li>
+<li>mount /dev/sdx_Boot /mnt/boot</li>
+</ul>
+</li>
+</ol>
+<h1 id="installation">Installation</h1>
+<h2 id="connect-to-the-internet">connect to the internet</h2>
+<ol>
+<li>iwctl</li>
+<li>device list</li>
+<li>station <wlan0> scan</li>
+<li>station <wlan0> get-networks</li>
+<li>station <wlan0> connect xxxx</li>
+<li>quit</li>
+</ol>
+<h2 id="update-the-system-clock">Update the system clock</h2>
+<p>timedatectl set-ntp true</p>
+<h2 id="select-the-mirrors">Select the mirrors</h2>
+<p>vim /etc/pacman.d/mirrorlist</p>
+<p>reflector &ndash;verbose &ndash;latest 5 &ndash;country China &ndash;sort rate &ndash;save /etc/pacman.d/mirrorlist</p>
+<h2 id="install-essential-packages">Install essential packages</h2>
+<p>pacstrap /mnt base linux linux-firmware vim sudo</p>
+<h1 id="configure-the-system">configure the system</h1>
+<h2 id="fstab">Fstab</h2>
+<p>genfstab -L /mnt &raquo; /mnt/etc/fstab</p>
+<p><code>-L</code> define by labels</p>
+<h2 id="chroot">chroot</h2>
+<p>arch-chroot /mnt</p>
+<h2 id="time-zone">Time zone</h2>
+<ol>
+<li>
+<p>Set the time zone
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</p>
+</li>
+<li>
+<p>Run hwclock
+hwclock &ndash;systohc</p>
+</li>
+</ol>
+<h2 id="localization">Localization</h2>
+<ol>
+<li>
+<p>Uncomment <code>en_US.UTF-8 UTF-8</code> in <code>/etc/locale.gen</code> and generate it with <code>locale-gen</code></p>
+</li>
+<li>
+<p>Create the <code>/etc/locale.conf</code> file, and set the <code>LANG</code> variable accordingly:<code>LANG=&quot;en_US.UTF-8&quot;</code></p>
+</li>
+</ol>
+<h2 id="network-configuration">Network configuration</h2>
+<ol>
+<li>Create the hostname file in <code>/etc/hostname</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">myhostname
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Add matching entries to <code>/etc/hosts</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">127.0.0.1	localhost
+::1			localhost
+127.0.1.1	myhostname.localdomain	myhostname
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="root-password">Root password</h2>
+<p>passwd</p>
+<h2 id="boot-loader">Boot loader</h2>
+<ol>
+<li>Install Boot loader packages</li>
+</ol>
+<p>pacman -S os-prober ntfs-3g grub efibootmgr</p>
+<ol start="2">
+<li>grub-install</li>
+</ol>
+<p>grub-install &ndash;target=x86_64-efi &ndash;efi-directory=/boot &ndash;bootloader-id=grub</p>
+<ol start="3">
+<li>grub-mkconfig</li>
+</ol>
+<p>grub-mkconfig -o /boot/grub/grub.cfg</p>
+<h2 id="intel-ucode">Intel-ucode</h2>
+<p>pacman -S intel-ucode</p>
+<h2 id="reboot">Reboot</h2>
+<ol>
+<li>umount /mnt/boot</li>
+<li>umount /mnt</li>
+<li>reboot</li>
+</ol>
+<h1 id="post-installation">Post-installation</h1>
+<h2 id="kde-plasma">KDE Plasma</h2>
+<ol>
+<li>install Xorg</li>
+</ol>
+<p>sudo pacman -S xorg</p>
+<ol start="2">
+<li>KDE applications</li>
+</ol>
+<p>sudo pacman -S plasma konsole dolphin</p>
+<ol start="5">
+<li>systemctl enable</li>
+</ol>
+<p>sudo systemctl enable NetworkManager
+sudo systemctl enable sddm</p>
+<h2 id="add-a-user-to-wheel-group">Add a user to Wheel group</h2>
+<ol>
+<li>add User</li>
+</ol>
+<p>useradd -m -G wheel -s /bin/bash xxx</p>
+<ol start="2">
+<li><code>visudo</code></li>
+</ol>
+<p>uncomment <code>#</code>#%wheel ALL=(ALL)</p>
+<ol start="3">
+<li>passwd</li>
+</ol>
+<p>passwd xxx</p>
+<h2 id="reboot-1">Reboot</h2>
+<h1 id="software-installtion">software Installtion</h1>
+<h2 id="archlinxcn">archlinxcn</h2>
+<ol>
+<li>vim <code>/etc/pacman.conf</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.cloud.tencent.com/archlinuxcn/$arch
+Server = https://mirrors.zju.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>sudo pacman -S archlinuxcn-keyring</li>
+</ol>
+<h2 id="git">git</h2>
+<ol>
+<li>download</li>
+</ol>
+<p>sudo pacman -S git</p>
+<ol start="2">
+<li>config</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git config --global user.name feng
+git config --global user.email guangsizhongbin@gmail.com
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>SSH key</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">ssh-keygen -t rsa -C &#34;guangsizhongbin@gmail.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>test connect</li>
+</ol>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192918.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192918.png, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192918.png 1.5x, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192918.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192918.png"
+        title="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192918.png" /></p>
+<ol start="4">
+<li>upload id_ras.pub to github</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192435.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192435.png, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192435.png 1.5x, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192435.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192435.png"
+        title="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611192435.png" /></p>
+<h2 id="yay">yay</h2>
+<ol>
+<li>git clone <a href="https://aur.archlinux.org/yay.git">https://aur.archlinux.org/yay.git</a></li>
+<li>cd yay</li>
+<li>sudo pacman -S base-devel</li>
+<li>makepkg -si</li>
+</ol>
+<h2 id="font">font</h2>
+<ol>
+<li>sudo pacman -S nerd-fonts-complete</li>
+<li>sudo pacman -S wqy-zenhei wqy-bitmapfont wqy-microhei ttf-wps-fonts adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts</li>
+</ol>
+<h2 id="v2ray">v2ray</h2>
+<p>sudo pacman -Sy v2ray</p>
+<p>sudo pacman -Sy qv2ray</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20201109111828.png"
+        data-srcset="https://img.fengqigang.cn//img/20201109111828.png, https://img.fengqigang.cn//img/20201109111828.png 1.5x, https://img.fengqigang.cn//img/20201109111828.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20201109111828.png"
+        title="https://img.fengqigang.cn//img/20201109111828.png" /></p>
+<h2 id="joplin">joplin</h2>
+<p>yay joplin</p>
+<h2 id="obsidian">Obsidian</h2>
+<p>yay -S obsidaian</p>
+<h3 id="support-nvim">support nvim</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200618_2115_1592486139.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200618_2115_1592486139.png, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200618_2115_1592486139.png 1.5x, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200618_2115_1592486139.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200618_2115_1592486139.png"
+        title="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200618_2115_1592486139.png" /></p>
+<h2 id="anki">anki</h2>
+<p>sudo pacman -S anki</p>
+<h3 id="add-on">add-on</h3>
+<ol>
+<li>AwesomeTTS (Google Cloud Text-to-Speech) [unofficial] <code>814349176</code></li>
+<li>Fast Word Query: Multi-threaded queries for words from local or web dictionaries <code>1807206748</code></li>
+<li>Image Occlusion Enhanced for Anki 2.1 (alpha) <code>1374772155</code></li>
+<li>ReviewHeatmap <code>723520343</code></li>
+<li>Browser: Table/Editor side-by-side <code>831846358</code></li>
+<li>Beautify Anki (Material design , Deck Background and icon ) <code>1150874988</code></li>
+<li>Batch Editing <code>291119185</code></li>
+<li>editor: apply font color, background color, custom class, custom style <code>1899278645</code>
+9.Edit Field During Review <code>1020366288</code></li>
+</ol>
+<h2 id="gpu">GPU</h2>
+<p>sudo pacman -S linux-headers</p>
+<p>sudo pacman -S nvidia bbswitch optimus-manager-qt-kde</p>
+<p>systemctl enable optimus-manager.service</p>
+<h2 id="kde-connect">kde connect</h2>
+<p>sudo pacman -S kdeconnect</p>
+<h2 id="screen-shot">screen-shot</h2>
+<ol>
+<li>yay flameshot (community)</li>
+</ol>
+<ul>
+<li>shortcuts(<code>flameshot gui</code>)</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611_1855_1591872921.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611_1855_1591872921.png, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611_1855_1591872921.png 1.5x, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611_1855_1591872921.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611_1855_1591872921.png"
+        title="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611_1855_1591872921.png" /></p>
+<ol start="2">
+<li>sudo pacman -S peek</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611190005.png"
+        data-srcset="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611190005.png, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611190005.png 1.5x, https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611190005.png 2x"
+        data-sizes="auto"
+        alt="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611190005.png"
+        title="https://cdn.jsdelivr.net/gh/guangsizhongbin/picture/20200611190005.png" /></p>
+<ul>
+<li>xclip
+sudo pacman -S xclip</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20200912184425.png"
+        data-srcset="https://img.fengqigang.cn//img/20200912184425.png, https://img.fengqigang.cn//img/20200912184425.png 1.5x, https://img.fengqigang.cn//img/20200912184425.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20200912184425.png"
+        title="https://img.fengqigang.cn//img/20200912184425.png" /></p>
+<h2 id="widget">widget</h2>
+<ul>
+<li>Network speed</li>
+<li>pager</li>
+</ul>
+<h2 id="music">music</h2>
+<p>sudo pacman -S iease-music</p>
+<h2 id="googlechrome">googlechrome</h2>
+<p>sudo pacman -S google-chrome</p>
+<h3 id="plugin">plugin</h3>
+<ul>
+<li>Dark Reader</li>
+<li>沙拉查词</li>
+<li>AdBlock</li>
+<li>Vimium</li>
+<li>infinity</li>
+<li>octotree</li>
+<li>language Tool</li>
+<li>SimpleExManage</li>
+</ul>
+<h2 id="video">video</h2>
+<p>sudo pacman -S mpv
+sudo pacman -S vlc</p>
+<h2 id="neovim">neovim</h2>
+<p>sudo pacman -S neovim</p>
+<ul>
+<li>
+<p>plugin
+sudo pacman -S ctags</p>
+</li>
+<li>
+<p>clipboard
+sudo pacman -S xclip</p>
+</li>
+<li>
+<p>node.js
+sudo npm install -g neovim</p>
+</li>
+<li>
+<p>python
+pip install neovim</p>
+</li>
+<li>
+<p>C/C++
+sudo pacman -S ccls</p>
+</li>
+</ul>
+<h2 id="fcitx">fcitx</h2>
+<ol>
+<li>download</li>
+</ol>
+<p>sudo pacman -S fcitx fctix-im kcm-fcitx</p>
+<ol start="2">
+<li>vim <code>~/.xprofile</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=&#34;@im=fcitx&#34;
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>sogou-input</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">	yay -Sy fcitx-sogoupinyin
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="download-1">download</h2>
+<ol>
+<li>you-get</li>
+</ol>
+<p>sudo pacman -S python-pip</p>
+<p>sudo pip3 install you-get</p>
+<ol start="2">
+<li>youtube-dl</li>
+</ol>
+<p>sudo pip3 install youtube-dl</p>
+<h3 id="aria2--youtube-dl">aria2 + youtube-dl</h3>
+<p>youtube-dl -f 22 <a href="https://www.youtube.com/playlist">https://www.youtube.com/playlist</a>?list=PLFx-dS8yeeGPPQAdpV6hiAqgi4Qzohcmk &ndash;external-downloader aria2c &ndash;external-downloader-args &ldquo;-x 16  -k 1M&rdquo;</p>
+<ol start="3">
+<li>wget
+sudo pacman -S wget</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">wget -c &#34;www.baidu.com&#34; -O baidu.index.html
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>aria2
+sudo pacman -S aria2</li>
+</ol>
+<h2 id="zsh">zsh</h2>
+<ol>
+<li>
+<p>zsh
+sudo pacman -S zsh</p>
+</li>
+<li>
+<p>export https_proxy=&ldquo;https://0.0.0.0:8119&rdquo;</p>
+</li>
+<li>
+<p>oh-my-zsh
+<code>export https_proxy=&quot;http://0.0.0.0:8189&quot;</code></p>
+</li>
+</ol>
+<p><code>sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></p>
+<ol start="4">
+<li>plugin</li>
+</ol>
+<ul>
+<li>zsh-autosuggestions
+<code>git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions</code></li>
+</ul>
+<h2 id="bluetooth">bluetooth</h2>
+<p>sudo pacman -S  pulseaudio-alsa pulseaudio-bluetooth bluez bluez-libs bluez-utils</p>
+<p>yay -S bluez-firmware</p>
+<p>systemctl enable bluetooth</p>
+<p>systemctl start bluetooth</p>
+<h2 id="pdf">pdf</h2>
+<p>yay Okular</p>
+<h2 id="clion">Clion</h2>
+<p>sudo pacman -S clion clion-jre clion-cmake clion-gdb clion-lidb</p>
+<h2 id="java">java</h2>
+<p>sudo pacman -S jdk</p>
+<h2 id="compressdecompress">compress/decompress</h2>
+<p>sudo pacman -S ark</p>
+<h2 id="drawing">drawing</h2>
+<p>sudo pacman -S KolourPaint</p>
+<h2 id="图像查看">图像查看</h2>
+<p>sudo pacman -S Gwenview</p>
+<h2 id="downloader">downloader</h2>
+<pre><code>- motrix
+</code></pre>
+<p>yay -S aur/motrix</p>
+<h2 id="wps">WPS</h2>
+<p>sudo pacman -S wps-office-cn</p>
+<p>yay -S wps-office-mui-zh-cn ttf-wps-fonts</p>
+<h2 id="nutstore">nutstore</h2>
+<p>sudo pacman -S nutstore</p>
+<h2 id="timeout">timeout</h2>
+<p>sudo pacman -Syyu &ndash;disable-download-timeout</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-01-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/archlinux/">archlinux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/nvim%E6%8F%92%E4%BB%B6/" class="prev" rel="prev" title="Nvim插件"><i class="fas fa-angle-left fa-fw"></i>Nvim插件</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
