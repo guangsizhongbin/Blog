@@ -12,6 +12,7 @@ categories: [nvim]
 
 ## Markdown[^markdown]
 [^markdown]: [vim-markdown](https://github.com/plasticboy/vim-markdown/issues?q=is%3Aissue+is%3Aopen+vim-plug)
+
 ```
 Plug 'godlygeek/tabular' "必要插件
 Plug 'plasticboy/vim-markdown'
@@ -83,7 +84,7 @@ endsnippet
 - 占位符选择
 		- `/<tab>` 切换下一个占位符
 		- `<shift-tab>` 切换上一个占位符
-{{< /admonition >}
+{{< /admonition >}}
 
 #### 创建表格
 
@@ -109,7 +110,7 @@ endsnippet
 ```
 # 若输入 ‘/’，则检查符号前的字符是否为数字或者字母，
 # 将数字或字母作为分子扩展为Latex分数形式然后在分母部分等待输入
-priority 1000
+priority 100
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
