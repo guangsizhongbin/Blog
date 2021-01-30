@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ultisnips - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/ultisnips/</link>
+        <description>ultisnips - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/ultisnips/" rel="self" type="application/rss+xml" /><item>
+    <title>UltiSnip中的正则</title>
+    <link>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</link>
+    <pubDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</guid>
+    <description><![CDATA[1 1 2 3  snippet &#34;(\w+).par&#34; &#34;Parenthesis (postfix)&#34; r (`!p snip.rv = match.group(1)`$1)$0 endsnippet   Tip    \w+ 匹配一个或多个字母、数字、下划线
+  () 分组
+  $0 结束位置
+  $1 结果时光标位置
+     2 1 2 3  snippet &#34;([^\s].*)\.return&#34; &#34;Return (postfix)&#34; r return `!p snip.rv = match.group(1)`$0 endsnippet   Note    \s 匹配所有空白符，包括换行
+  [^\s] 除去所有空白符，包括换行
+     3 1 2 3  snippet t &lt;tag&gt;${VISUAL:inside text/should/is/g}&lt;/tag&gt; endsnippet   Note   ${VISUAL} The syntax is:  ${VISUAL:default/search/replace/option}   4 1 2 3 4 5 6  snippet &#34;be(gin)?]]></description>
+</item></channel>
+</rss>

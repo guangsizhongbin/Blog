@@ -2,15 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/categories/nvim/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/tags/ultisnips/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/archlinux/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/archlinux/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/archlinux/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/categories/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/posts/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/tags/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/</loc><lastmod>2021-01-29T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/nvim/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>http://fengqigang.cn/categories/nvim/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/</loc><lastmod>2021-01-27T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/tags/joplin/</loc><lastmod>2021-01-26T00:00:00&#43;00:00</lastmod></url><url>
             <loc>http://fengqigang.cn/categories/linux/</loc><lastmod>2021-01-26T00:00:00&#43;00:00</lastmod></url><url>

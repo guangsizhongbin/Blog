@@ -4,9 +4,22 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 29 Jan 2021 21:41:22 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>UltiSnip中的正则</title>
+    <link>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</link>
+    <pubDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</guid>
+    <description><![CDATA[1 1 2 3  snippet &#34;(\w+).par&#34; &#34;Parenthesis (postfix)&#34; r (`!p snip.rv = match.group(1)`$1)$0 endsnippet   Tip    \w+ 匹配一个或多个字母、数字、下划线
+  () 分组
+  $0 结束位置
+  $1 结果时光标位置
+     2 1 2 3  snippet &#34;([^\s].*)\.return&#34; &#34;Return (postfix)&#34; r return `!p snip.rv = match.group(1)`$0 endsnippet   Note    \s 匹配所有空白符，包括换行
+  [^\s] 除去所有空白符，包括换行
+     3 1 2 3  snippet t &lt;tag&gt;${VISUAL:inside text/should/is/g}&lt;/tag&gt; endsnippet   Note   ${VISUAL} The syntax is:  ${VISUAL:default/search/replace/option}   4 1 2 3 4 5 6  snippet &#34;be(gin)?]]></description>
+</item><item>
     <title>Archlinux</title>
     <link>http://fengqigang.cn/posts/archlinux/</link>
     <pubDate>Fri, 29 Jan 2021 21:41:22 &#43;0800</pubDate>
@@ -570,16 +583,5 @@ Java安装 archlinux下安装 sudo pacman -S jdk
 System 大写
 编译 javac -d . HelloWorld.java
 Note    javac      -d  Specify where to place generated class files      运行 java HelloWorld]]></description>
-</item><item>
-    <title>Samba服务器</title>
-    <link>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</link>
-    <pubDate>Tue, 19 Jan 2021 21:00:08 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/</guid>
-    <description><![CDATA[安装samba 1 2  sudo apt-get update sudo apt-get intall samba samba-common-bin   配置smb.conf /etc/samba/smb.conf
-1 2 3 4 5 6  [share] path = /home/pi valid users = pi browseable = yes public = yes writable = yes   重新运行smaba服务 sudo /etc/init.d/samba restart
-添加pi用户为Samba用户 sudo smbpasswd -a pi
-参考 树莓派4设置Samba的最新版本
-树莓派3-搭建SAMBA服务器]]></description>
 </item></channel>
 </rss>
