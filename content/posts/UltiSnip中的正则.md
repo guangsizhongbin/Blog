@@ -88,6 +88,118 @@ endsnippet
 匹配一个或多个非空白字符
 {{< /admonition >}}
 
+### 5
+
+```
+global !p
+def upper_right(inp):
+	return (75 - 2 * len(inp))* ' ' + inp.upper()
+endglobal
+
+snippet wow
+${1:Text}`!p snip.rv = upper_right(t[1])`
+endsnippet
+```
+
+{{< admonition >}}
+1. `75 - 2 * len(inp)`
+
+![](https://img.fengqigang.cn//img/20210131094547.png)
+
+
+{{< /admonition >}}
+
+### 6
+
+``` 
+snippet letter
+Dear $1,
+$0
+Yours sincerely,
+$2
+endsnippet
+```
+
+{{< admonition >}}
+1. `$0`
+It is always the last tabstop in the snippet no matter how many tabstops are defined.
+{{< /admonition >}}
+
+
+### 7. choice tabstop
+
+```
+snippet q
+Your age: ${1|<18,18~60,>60|}
+Your height: ${2|<120cm,120cm~180cm,>180cm|}
+endsnippet
+```
+
+{{< admonition >}}
+`${1|item1, item2, item3, ...|}`
+{{< /admonition >}}
+
+### 8. mirrors
+
+```
+snippet env
+\begi{${1:enumerate}}
+	$0
+\end{$1}
+endsnippet
+```
+### 9. Transformations
+
+{{< admonition >}}
+{<tab_stop_no/regular_expression/replacement/options}
+
+The components are defined as follows:
+|components | defined|
+|:-:|:-:|
+|tab_stop_no | The number of the tabstop to reference|
+|regular_expression | The regular expression the value of the referenced tabstop is matched on|
+|replacement |The replacement string, explained in detail below |
+|options | Options for the regular expression|
+
+The options can be any combination of
+| options|combination |
+|:-:|:-:|
+| g|global replace |
+|i | case insensitive|
+|m | multiline|
+|a | ascii conversion|
+{{< /admonition >}}
+
+```
+snippet title "Title transformation"
+${1:a text}
+${1/\w+\s*/\u$0/}
+endsnippet
+```
+
+{{< admonition >}}
+`\w+` 匹配一个或多个字母、数字、下划线
+
+`\s*` 匹配零个或多个任何空白字符
+
+`\u` Uppercase next letter
+{{< /admonition >}}
+
+```
+snippet title "Title transformation"
+${1:a text}
+${1/\w+\s*/\u$0/g}
+endsnippet
+```
+
+{{< admonition >}}
+- `g` 
+		- blobal replace
+			By default, only the first match of the regular expression is replaced. With this option allmatches are replaced.
+{{< /admonition >}}
+
+
+
 
 
 ### 参考文章
