@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "java.md",
+            "file": "重复包含问题解决.md",
             "mode": "preview"
           }
         }
@@ -80,7 +80,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "java.md",
+                "file": "重复包含问题解决.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,14 +97,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
+    "重复包含问题解决.md",
+    "树莓派实现内网穿透.md",
+    "搭建hugo.md",
+    "使用WebDAV关联坚果云与Joplin.md",
+    "ShellSort.md",
+    "MergeSort.md",
     "java.md",
     "Github_SSH地址和HTTPS地址相互转换.md",
     "Docker.md",
-    "corn使用.md",
-    "Bubble_Sort.md",
-    "基于docker部署wekan.md",
-    "Github_Actions_自动部署hugo至vps.md",
-    "使用git协议克隆.md",
-    "搭建hugo.md"
+    "corn使用.md"
   ]
 }
