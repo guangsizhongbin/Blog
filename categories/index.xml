@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/categories/</link>
         <description>Categories - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 01 Feb 2021 20:46:27 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 15 Feb 2021 21:57:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>鸟哥的私房菜</title>
+    <link>http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/</link>
+    <pubDate>Mon, 15 Feb 2021 21:57:09 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>hugo</title>
     <link>http://fengqigang.cn/categories/hugo/</link>
     <pubDate>Mon, 01 Feb 2021 20:46:27 &#43;0800</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Fri, 15 Jan 2021 20:57:29 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/categories/android/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>C</title>
-    <link>http://fengqigang.cn/categories/c/</link>
-    <pubDate>Tue, 12 Jan 2021 20:32:54 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/categories/c/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
