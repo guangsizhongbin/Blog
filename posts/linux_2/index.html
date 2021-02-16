@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux_2 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux_2" />
+<meta property="og:description" content="个人电脑架构与相关设备元件 Intel芯片架构 Intel芯片架构-什么是南北桥?它们是干什么的？1 北桥: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)
+  CPU
+  内存
+  显卡接口等
+  南桥: 负责链接速度较慢的元件
+  硬盘
+  USB
+  网卡
+  Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？ 首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。
+Intel芯片架构-什么是CPU的频率？2 即CPU每秒钟可以进行的工作次数
+速度单位使用的是十进制
+即$3.5 \times 10 ^ 9$MHz
+Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？ 外频: CPU与外部元件进行数据传输时的速度
+倍频: CPU内部用来加速工作性能的一个倍数
+首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在 CPU内部进行加速。
+Intel芯片架构-如何查看计算机的外频与倍频？ 即总线速度为外频
+核心速度 = 倍频 x 总线速度
+Intel芯片架构-超频指的是超什么频？ 首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。
+Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side Bus)
+CPU中的所有数据都是由内存提供的
+查看内存信息
+1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/linux_2/" />
+<meta property="article:published_time" content="2021-02-16T22:07:36+08:00" />
+<meta property="article:modified_time" content="2021-02-16T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux_2"/>
+<meta name="twitter:description" content="个人电脑架构与相关设备元件 Intel芯片架构 Intel芯片架构-什么是南北桥?它们是干什么的？1 北桥: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)
+  CPU
+  内存
+  显卡接口等
+  南桥: 负责链接速度较慢的元件
+  硬盘
+  USB
+  网卡
+  Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？ 首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。
+Intel芯片架构-什么是CPU的频率？2 即CPU每秒钟可以进行的工作次数
+速度单位使用的是十进制
+即$3.5 \times 10 ^ 9$MHz
+Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？ 外频: CPU与外部元件进行数据传输时的速度
+倍频: CPU内部用来加速工作性能的一个倍数
+首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在 CPU内部进行加速。
+Intel芯片架构-如何查看计算机的外频与倍频？ 即总线速度为外频
+核心速度 = 倍频 x 总线速度
+Intel芯片架构-超频指的是超什么频？ 首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。
+Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side Bus)
+CPU中的所有数据都是由内存提供的
+查看内存信息
+1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/linux_2/" /><link rel="prev" href="http://fengqigang.cn/posts/linux_1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux_2",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/linux_2\/"
+        },"genre": "posts","keywords": "linux","wordcount":  76 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/linux_2\/","datePublished": "2021-02-16T22:07:36+08:00","dateModified": "2021-02-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux_2</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-16">2021-02-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;76 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intel芯片架构">Intel芯片架构</a>
+      <ul>
+        <li><a href="#intel芯片架构-什么是南北桥它们是干什么的南桥与北桥">Intel芯片架构-什么是南北桥?它们是干什么的？</a></li>
+        <li><a href="#intel芯片架构-为什么现在的主流架构中要将北桥内存控制器整合到cpu中">Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？</a></li>
+        <li><a href="#intel芯片架构-什么是cpu的频率cpuz">Intel芯片架构-什么是CPU的频率？</a></li>
+        <li><a href="#intel芯片架构-什么是cpu的外频与倍频什么会有外频和倍频出现">Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？</a></li>
+        <li><a href="#intel芯片架构-如何查看计算机的外频与倍频">Intel芯片架构-如何查看计算机的外频与倍频？</a></li>
+        <li><a href="#intel芯片架构-超频指的是超什么频">Intel芯片架构-超频指的是超什么频？</a></li>
+        <li><a href="#intel芯片架构-前端总线速度是什么">Intel芯片架构-前端总线速度是什么？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="个人电脑架构与相关设备元件">个人电脑架构与相关设备元件</h1>
+<h2 id="intel芯片架构">Intel芯片架构</h2>
+<h3 id="intel芯片架构-什么是南北桥它们是干什么的南桥与北桥">Intel芯片架构-什么是南北桥?它们是干什么的？<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h3>
+<p><code>北桥</code>: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)</p>
+<ul>
+<li>
+<p>CPU</p>
+</li>
+<li>
+<p>内存</p>
+</li>
+<li>
+<p>显卡接口等</p>
+</li>
+</ul>
+<p><code>南桥</code>: 负责链接速度较慢的元件</p>
+<ul>
+<li>
+<p>硬盘</p>
+</li>
+<li>
+<p>USB</p>
+</li>
+<li>
+<p>网卡</p>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216205121.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216205121.png, https://img.fengqigang.cn//img/20210216205121.png 1.5x, https://img.fengqigang.cn//img/20210216205121.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216205121.png"
+        title="https://img.fengqigang.cn//img/20210216205121.png" /></p>
+<h3 id="intel芯片架构-为什么现在的主流架构中要将北桥内存控制器整合到cpu中">Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？</h3>
+<p>首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。</p>
+<h3 id="intel芯片架构-什么是cpu的频率cpuz">Intel芯片架构-什么是CPU的频率？<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h3>
+<p>即CPU每秒钟可以进行的工作次数</p>
+<p>速度单位使用的是<code>十进制</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216210114.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216210114.png, https://img.fengqigang.cn//img/20210216210114.png 1.5x, https://img.fengqigang.cn//img/20210216210114.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216210114.png"
+        title="https://img.fengqigang.cn//img/20210216210114.png" /></p>
+<p>即$3.5 \times 10 ^ 9$MHz</p>
+<h3 id="intel芯片架构-什么是cpu的外频与倍频什么会有外频和倍频出现">Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？</h3>
+<p>外频: CPU与外部元件进行数据传输时的速度</p>
+<p>倍频: CPU内部用来加速工作性能的一个倍数</p>
+<p>首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在
+CPU内部进行加速。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216205121.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216205121.png, https://img.fengqigang.cn//img/20210216205121.png 1.5x, https://img.fengqigang.cn//img/20210216205121.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216205121.png"
+        title="https://img.fengqigang.cn//img/20210216205121.png" /></p>
+<h3 id="intel芯片架构-如何查看计算机的外频与倍频">Intel芯片架构-如何查看计算机的外频与倍频？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216212320.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216212320.png, https://img.fengqigang.cn//img/20210216212320.png 1.5x, https://img.fengqigang.cn//img/20210216212320.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216212320.png"
+        title="https://img.fengqigang.cn//img/20210216212320.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216212441.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216212441.png, https://img.fengqigang.cn//img/20210216212441.png 1.5x, https://img.fengqigang.cn//img/20210216212441.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216212441.png"
+        title="https://img.fengqigang.cn//img/20210216212441.png" /></p>
+<p>即总线速度为外频</p>
+<p>核心速度 = 倍频 x 总线速度</p>
+<h3 id="intel芯片架构-超频指的是超什么频">Intel芯片架构-超频指的是超什么频？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216213049.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216213049.png, https://img.fengqigang.cn//img/20210216213049.png 1.5x, https://img.fengqigang.cn//img/20210216213049.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216213049.png"
+        title="https://img.fengqigang.cn//img/20210216213049.png" /></p>
+<p>首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。</p>
+<h3 id="intel芯片架构-前端总线速度是什么">Intel芯片架构-前端总线速度是什么？</h3>
+<p>前端总线速度(Front Side Bus)</p>
+<p>CPU中的所有数据都是由内存提供的</p>
+<p>查看内存信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo dmidecode -t memory
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216214527.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216214527.png, https://img.fengqigang.cn//img/20210216214527.png 1.5x, https://img.fengqigang.cn//img/20210216214527.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216214527.png"
+        title="https://img.fengqigang.cn//img/20210216214527.png" /></p>
+<p><strong>MT/s 与 MHz有什么关系?</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>等价</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216215343.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216215343.png, https://img.fengqigang.cn//img/20210216215343.png 1.5x, https://img.fengqigang.cn//img/20210216215343.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216215343.png"
+        title="https://img.fengqigang.cn//img/20210216215343.png" /></p>
+<p>CPU可能从内存中取得的最快带宽是2400 MHz x 64 bit = 2400 MHz 8 Bytes = 19.2GB/s</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210216220455.png"
+        data-srcset="https://img.fengqigang.cn//img/20210216220455.png, https://img.fengqigang.cn//img/20210216220455.png 1.5x, https://img.fengqigang.cn//img/20210216220455.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210216220455.png"
+        title="https://img.fengqigang.cn//img/20210216220455.png" /></p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://my.oschina.net/u/914655/blog/338903" target="_blank" rel="noopener noreffer">南北桥架构的演变</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="http://www.lotpc.com/yjzs/4626.html" target="_blank" rel="noopener noreffer">CPU-Z的参数怎么看 CPU-Z检测CPU型号全面解析</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://linustechtips.com/topic/462465-mts-mhz/" target="_blank" rel="noopener noreffer">MT/s=MHz?</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-02-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux_1/" class="prev" rel="prev" title="Linux_1"><i class="fas fa-angle-left fa-fw"></i>Linux_1</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.80.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
