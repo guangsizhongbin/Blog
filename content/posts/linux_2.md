@@ -197,3 +197,4 @@ BIOS(Basic Input Output System)是一套程序，这套程序是写死到主板�
 ![](https://img.fengqigang.cn//img/20210217214042.png)
 
 
+
