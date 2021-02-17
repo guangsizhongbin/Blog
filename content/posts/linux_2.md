@@ -100,4 +100,100 @@ CPU可能从内存中取得的最快带宽是2400 MHz x 64 bit = 2400 MHz 8 Byte
 
 ![](https://img.fengqigang.cn//img/20210216220455.png)
 
+### Intel芯片架构-什么是CPU字组大小?[^对2^32]
+[^对2^32]: [32位CPU最多支持4G内存是怎么算出来的？（解惑篇）](https://blog.csdn.net/liujianyangbj/article/details/108074167)
+
+CPU每次能够处理的数据量称为字组大小(word size)
+
+32位的CPU最多支持最大到4GBytes
+
+**如何计算？**
+
+首先, CPU计算的时候不能直接访问硬盘的数据，但是可以直接访问内存里的数据。其次，32位的CPU是指它能寻找到$2^32$个地址，不是存储空间有多大。最后，若一个地址单元为8位，则32位的CPU最多为4GBytes.
+
+$2^{32}$个地址 = $2^{32} \times 8 / 8$ Byte = $2^{22}$ KByte = $2^{12}$ MByte = $2^2$GB = $4$GB
+
+
+### Intel芯片架构-什么是CPU的超线程?
+
+超线程 Hyper-Threading, HT
+
+线程是操作系统进行运算调动的最小单位, 它被包含在进程之中，是进程中实际运作单位，一个进程中可又并发多个线程。
+
+超线程技术是把一个物理处理器在软件层变成两个逻辑处理器，可以使处理器在某一时刻，同步并行处理更多指令数据。
+
+超线程是一种将CPU内部暂时闲置处理资源充分"调动"起来的技术，在多加入一个逻辑处理单元 ，这让CPU可以同时执行多个程序而共享一颗CPU内的资源，当两个线程都同时需要某一个资源时，其中一个要暂时停止，并让出资源，直到这些资源闲置后才能继续。
+
+
+## 内存
+### 内存-什么是动态随机存取内存？
+
+动态随机存取内存: Dynamic Random Access Memory, DRAM
+
+只有在通电时才能记录与使用，断电后数据就消失，因此也称这种RAM为挥发性内存
+
+### 内存-什么是SDRAM与DDR SDRAM?
+
+DDR 是所谓的双倍数据传送速度(Double Data Rate)
+
+![](https://img.fengqigang.cn//img/20210217110832.png)
+
+### 内存-什么是多通道设计?
+
+传统的总线宽度一般大约为64位，为了要加大这个宽度，因此芯片组厂商就将两个内存汇总在一起，如果一支内存可达64位，两支内存可达到128位了
+
+![](https://img.fengqigang.cn//img/20210217111300.png)
+
+两支内存最好容量大小，型号也最好相同
+
+### 内存-什么是DRAM与SRAM?
+
+动态随机存取内存: Dynamic Random Access Memory, DRAM
+
+静态随机存取内存: Static Random Access Memory, SRAM
+
+![](https://img.fengqigang.cn//img/20210217111630.png)
+
+L2 cache即采用的是SRAM设计，L2内存速度必须要与CPU频率相同，在设计上使用的电晶体较多，且价格较高，且L2内存速度必须要与CPU频率相同，在设计上使用的电晶体较多，价格较高，且不易做成大容量
+
+### 内存-什么是ROM?
+
+只读存储器: Read Only Memory, ROM
+
+ROM是一种非挥发性的内存
+
+BIOS(Basic Input Output System)是一套程序，这套程序是写死到主板上面的一个内存芯片中，这个内存芯片在没有通电时也能够将数据记录下来。
+
+## 显卡
+### 显卡-假设你的桌面使用1024x768分辨率，且使用全彩色(每个像素占用3Bytes的容量), 请问你的显卡至少需要多少内存才能使用这样的彩度？
+
+1024 x 768 x 3 Bytes = 2.359296 MBytes
+
+![](https://img.fengqigang.cn//img/20210217113015.png)
+
+## 硬盘与存储设备
+### 对于机械硬盘，它的扇区，磁道，柱面都要什么？[^Vol072]
+[^Vol072]: [Vol 072 你的硬盘是如何储存数据的？](https://www.youtube.com/watch?v=svhIPM2VT8U&ab_channel=%E5%9B%9E%E5%BD%A2%E9%92%88PaperClip)
+
+磁道(track): 即不同大小的同心圆
+![](https://img.fengqigang.cn//img/20210217211606.png)
+
+
+扇区(sector): 磁盘存储数据最小的数据块
+	- 因为同心圆外圈的圆比较大，占用的面积比内圈多，为了善用这些空间，会将外围的圆分配更多的扇区
+	![](https://img.fengqigang.cn//img/20210217212027.png)
+
+![](https://img.fengqigang.cn//img/20210217211521.png)
+
+柱面(cylinder): 所有盘片上面的同一个磁道组合成所谓的柱面
+
+![](https://img.fengqigang.cn//img/20210217212719.png)
+
+### 对于机械硬盘-如何计算它的容量？
+![](https://img.fengqigang.cn//img/20210217213715.png)
+
+容量 = 磁道 x 扇区 x 柱面 x Units
+
+![](https://img.fengqigang.cn//img/20210217214042.png)
+
 
