@@ -5,45 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Linux_3 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux_3" />
-<meta property="og:description" content="Linux是什么? 关于GNU计划、自由软件与开源代码 什么是Free Software? Free Software 即自由软件
-自由软件关乎的是自由而非价格
-它允许任何人使用、复制和/或再分发
-开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL都有什么区别？1 GPL: - 只要在一个软件中使用GPL协议的产品，则该软件产品必须也采用GPL协议，即开源和免费
-BSD: - &ldquo;为所欲为&quot;的BSD协议需要满足三个条件
-MIT: MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任何其他限制，必须在发行版里包含原许可协议的声明。
-LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通过类库引用方式使用LGPL类库而不需要开源商业软件的代码
-  开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL的区别 &#x21a9;&#xfe0e;
-   " />
+        <title>Linux_4 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux_4" />
+<meta property="og:description" content="假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？ 虚拟机使用的是/dev/vd[a-p]来命名的
+所以其名为/dev/vda
+如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
+且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
+SATA1: /dev/sda SATA5: /dev/sdb USB磁盘(开机完成后才被系统捉到): /dev/sdc" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/linux_3/" />
-<meta property="article:published_time" content="2021-02-20T22:23:57+08:00" />
-<meta property="article:modified_time" content="2021-02-20T00:00:00+00:00" />
+<meta property="og:url" content="http://fengqigang.cn/posts/linux_4/" />
+<meta property="article:published_time" content="2021-02-22T22:24:21+08:00" />
+<meta property="article:modified_time" content="2021-02-22T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux_3"/>
-<meta name="twitter:description" content="Linux是什么? 关于GNU计划、自由软件与开源代码 什么是Free Software? Free Software 即自由软件
-自由软件关乎的是自由而非价格
-它允许任何人使用、复制和/或再分发
-开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL都有什么区别？1 GPL: - 只要在一个软件中使用GPL协议的产品，则该软件产品必须也采用GPL协议，即开源和免费
-BSD: - &ldquo;为所欲为&quot;的BSD协议需要满足三个条件
-MIT: MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任何其他限制，必须在发行版里包含原许可协议的声明。
-LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通过类库引用方式使用LGPL类库而不需要开源商业软件的代码
-  开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL的区别 &#x21a9;&#xfe0e;
-   "/>
+<meta name="twitter:title" content="Linux_4"/>
+<meta name="twitter:description" content="假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？ 虚拟机使用的是/dev/vd[a-p]来命名的
+所以其名为/dev/vda
+如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
+且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
+SATA1: /dev/sda SATA5: /dev/sdb USB磁盘(开机完成后才被系统捉到): /dev/sdc"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/linux_3/" /><link rel="prev" href="http://fengqigang.cn/posts/linux_2/" /><link rel="next" href="http://fengqigang.cn/posts/linux_4/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/linux_4/" /><link rel="prev" href="http://fengqigang.cn/posts/linux_3/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Linux_3",
+        "headline": "Linux_4",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/linux_3\/"
-        },"genre": "posts","keywords": "linux","wordcount":  22 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/linux_3\/","datePublished": "2021-02-20T22:23:57+08:00","dateModified": "2021-02-20T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/linux_4\/"
+        },"genre": "posts","keywords": "linux","wordcount":  13 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/linux_4\/","datePublished": "2021-02-22T22:24:21+08:00","dateModified": "2021-02-22T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -117,9 +109,9 @@ LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通�
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Linux_3</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux_4</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-20">2021-02-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;22 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-22">2021-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;13 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -128,66 +120,36 @@ LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通�
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#关于gnu计划自由软件与开源代码">关于GNU计划、自由软件与开源代码</a>
+    <li>
       <ul>
-        <li><a href="#什么是free-software">什么是Free Software?</a></li>
-        <li><a href="#开源许可证gplbsdmitmozillaapache和lgpl都有什么区别开源许可证gplbsdmitmozillaapache和lgpl的区别">开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL都有什么区别？</a></li>
+        <li><a href="#假设你的主机为虚拟机里面仅有一颗virtio接口的磁盘请问他在linux操作系统里面的设备文件名为何">假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？</a></li>
+        <li><a href="#如果你的pc上面有两个sata磁盘以及一个usb磁盘而主板上面有六个sata的插槽这两个磁盘分别安插在主板上的sata1-sata5插槽上请问这三个磁盘linux中设备文件名为何">如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="linux是什么">Linux是什么?</h1>
-<h2 id="关于gnu计划自由软件与开源代码">关于GNU计划、自由软件与开源代码</h2>
-<h3 id="什么是free-software">什么是Free Software?</h3>
-<p>Free Software 即自由软件</p>
-<p>自由软件关乎的是自由而非价格</p>
-<p>它允许任何人使用、复制和/或再分发</p>
+            </div><div class="content" id="content"><h3 id="假设你的主机为虚拟机里面仅有一颗virtio接口的磁盘请问他在linux操作系统里面的设备文件名为何">假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210221204423.png"
-        data-srcset="https://img.fengqigang.cn//img/20210221204423.png, https://img.fengqigang.cn//img/20210221204423.png 1.5x, https://img.fengqigang.cn//img/20210221204423.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210222222136.png"
+        data-srcset="https://img.fengqigang.cn//img/20210222222136.png, https://img.fengqigang.cn//img/20210222222136.png 1.5x, https://img.fengqigang.cn//img/20210222222136.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210221204423.png"
-        title="https://img.fengqigang.cn//img/20210221204423.png" /></p>
-<h3 id="开源许可证gplbsdmitmozillaapache和lgpl都有什么区别开源许可证gplbsdmitmozillaapache和lgpl的区别">开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL都有什么区别？<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210221210628.png"
-        data-srcset="https://img.fengqigang.cn//img/20210221210628.png, https://img.fengqigang.cn//img/20210221210628.png 1.5x, https://img.fengqigang.cn//img/20210221210628.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210221210628.png"
-        title="https://img.fengqigang.cn//img/20210221210628.png" /></p>
-<p>GPL:
-- 只要在一个软件中使用GPL协议的产品，则该软件产品必须也采用GPL协议，即开源和免费</p>
-<p>BSD:
-- &ldquo;为所欲为&quot;的BSD协议需要满足三个条件</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210221205831.png"
-        data-srcset="https://img.fengqigang.cn//img/20210221205831.png, https://img.fengqigang.cn//img/20210221205831.png 1.5x, https://img.fengqigang.cn//img/20210221205831.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210221205831.png"
-        title="https://img.fengqigang.cn//img/20210221205831.png" /></p>
-<p>MIT:
-MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任何其他限制，必须在发行版里包含原许可协议的声明。</p>
-<p>LGPL:
-主要是为类库使用设计的开源协议。LGPL允许商业软件通过类库引用方式使用LGPL类库而不需要开源商业软件的代码</p>
-<section class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1" role="doc-endnote">
-<p><a href="https://www.geek-workshop.com/thread-1860-1-1.html" target="_blank" rel="noopener noreffer">开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL的区别</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</section>
+        alt="https://img.fengqigang.cn//img/20210222222136.png"
+        title="https://img.fengqigang.cn//img/20210222222136.png" /></p>
+<p>虚拟机使用的是/dev/vd[a-p]来命名的</p>
+<p>所以其名为/dev/vda</p>
+<h3 id="如果你的pc上面有两个sata磁盘以及一个usb磁盘而主板上面有六个sata的插槽这两个磁盘分别安插在主板上的sata1-sata5插槽上请问这三个磁盘linux中设备文件名为何">如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？</h3>
+<p>USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的</p>
+<p>且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关</p>
+<p>SATA1: /dev/sda
+SATA5: /dev/sdb
+USB磁盘(开机完成后才被系统捉到): /dev/sdc</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-02-20</span>
+                <span>Updated on 2021-02-22</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -206,8 +168,7 @@ MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任何�
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux_2/" class="prev" rel="prev" title="Linux_2"><i class="fas fa-angle-left fa-fw"></i>Linux_2</a>
-            <a href="/posts/linux_4/" class="next" rel="next" title="Linux_4">Linux_4<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/linux_3/" class="prev" rel="prev" title="Linux_3"><i class="fas fa-angle-left fa-fw"></i>Linux_3</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
