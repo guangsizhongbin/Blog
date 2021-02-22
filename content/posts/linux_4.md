@@ -25,6 +25,8 @@ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
 且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
 
 SATA1: /dev/sda
+
 SATA5: /dev/sdb
+
 USB磁盘(开机完成后才被系统捉到): /dev/sdc
 
