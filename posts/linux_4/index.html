@@ -10,7 +10,9 @@
 所以其名为/dev/vda
 如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
 且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
-SATA1: /dev/sda SATA5: /dev/sdb USB磁盘(开机完成后才被系统捉到): /dev/sdc" />
+SATA1: /dev/sda
+SATA5: /dev/sdb
+USB磁盘(开机完成后才被系统捉到): /dev/sdc" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/linux_4/" />
 <meta property="article:published_time" content="2021-02-22T22:24:21+08:00" />
@@ -21,7 +23,9 @@ SATA1: /dev/sda SATA5: /dev/sdb USB磁盘(开机完成后才被系统捉到): /d
 所以其名为/dev/vda
 如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
 且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
-SATA1: /dev/sda SATA5: /dev/sdb USB磁盘(开机完成后才被系统捉到): /dev/sdc"/>
+SATA1: /dev/sda
+SATA5: /dev/sdb
+USB磁盘(开机完成后才被系统捉到): /dev/sdc"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -142,9 +146,9 @@ SATA1: /dev/sda SATA5: /dev/sdb USB磁盘(开机完成后才被系统捉到): /d
 <h3 id="如果你的pc上面有两个sata磁盘以及一个usb磁盘而主板上面有六个sata的插槽这两个磁盘分别安插在主板上的sata1-sata5插槽上请问这三个磁盘linux中设备文件名为何">如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？</h3>
 <p>USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的</p>
 <p>且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关</p>
-<p>SATA1: /dev/sda
-SATA5: /dev/sdb
-USB磁盘(开机完成后才被系统捉到): /dev/sdc</p>
+<p>SATA1: /dev/sda</p>
+<p>SATA5: /dev/sdb</p>
+<p>USB磁盘(开机完成后才被系统捉到): /dev/sdc</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
