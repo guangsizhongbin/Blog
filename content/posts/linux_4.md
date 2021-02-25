@@ -30,3 +30,4 @@ SATA5: /dev/sdb
 
 USB磁盘(开机完成后才被系统捉到): /dev/sdc
 
+### 什么是MSDOS（MBR）分区
