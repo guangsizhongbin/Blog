@@ -4,7 +4,24 @@
         <link>http://fengqigang.cn/tags/linux/</link>
         <description>linux - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 22 Feb 2021 22:24:21 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 25 Feb 2021 22:19:48 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux_5</title>
+    <link>http://fengqigang.cn/posts/linux_5/</link>
+    <pubDate>Thu, 25 Feb 2021 22:19:48 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/linux_5/</guid>
+    <description><![CDATA[主机规划与磁盘分区 Linux与硬件的搭配 各硬件设备在Linux中的文件名 虚拟机中的磁盘名称是什么? 在虚拟机的环境下，为了加速会使用/dev/vd[a-p]这种设备文件名。
+SATA接口的磁盘名称是什么? 由于SATA/USB/SAS等硬盘接口都是SCSI模块来驱动，因此这些接口的磁盘设备文件都是/dev/sd[a-p]的格式。
+磁盘分区 MSDOS(MBR)与GTP磁盘分区表 MSDOS的结构是什么样的？ MBR (Master Boot Record, 主要开机记录区)
+这个区在磁盘的第一个扇区，其放转置着开机管理程序记录区与分区表
+通常为512 Bytes
+ 主要开机记录区(Master Boot Record, MBR): 可以安装开机管理程序的地方。 446 Bytes 分区表(partition table): 记录整颗硬盘分区的状态 64 Bytes  为什么要分区？  数据安全  重装系统时，各个分区之间不会相互影响
+性能考虑   P1: /dev/sda1 P2: /dev/sda2 P3: /dev/sda3 P4: /dev/sda4  分区表只记录四组数据，则分出多于四个分区是如何实现的？ P1 为主要分区(Primary)
+p2 为延伸分区(Extended)
+p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)
+设备文件名分别为:
+ P1: /dev/sda1 P2: /dev/sda2 L1: /dev/sda5 L2: /dev/sda6 L3: /dev/sda7 L4: /dev/sda8 L5: /dev/sda9  /dev/sda3与/dev/sda4是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始]]></description>
+</item><item>
     <title>Linux_4</title>
     <link>http://fengqigang.cn/posts/linux_4/</link>
     <pubDate>Mon, 22 Feb 2021 22:24:21 &#43;0800</pubDate>
@@ -16,7 +33,8 @@
 且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
 SATA1: /dev/sda
 SATA5: /dev/sdb
-USB磁盘(开机完成后才被系统捉到): /dev/sdc]]></description>
+USB磁盘(开机完成后才被系统捉到): /dev/sdc
+什么是MSDOS（MBR）分区 ]]></description>
 </item><item>
     <title>Linux_3</title>
     <link>http://fengqigang.cn/posts/linux_3/</link>

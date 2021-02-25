@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux_5 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux_5" />
+<meta property="og:description" content="主机规划与磁盘分区 Linux与硬件的搭配 各硬件设备在Linux中的文件名 虚拟机中的磁盘名称是什么? 在虚拟机的环境下，为了加速会使用/dev/vd[a-p]这种设备文件名。
+SATA接口的磁盘名称是什么? 由于SATA/USB/SAS等硬盘接口都是SCSI模块来驱动，因此这些接口的磁盘设备文件都是/dev/sd[a-p]的格式。
+磁盘分区 MSDOS(MBR)与GTP磁盘分区表 MSDOS的结构是什么样的？ MBR (Master Boot Record, 主要开机记录区)
+这个区在磁盘的第一个扇区，其放转置着开机管理程序记录区与分区表
+通常为512 Bytes
+ 主要开机记录区(Master Boot Record, MBR): 可以安装开机管理程序的地方。 446 Bytes 分区表(partition table): 记录整颗硬盘分区的状态 64 Bytes  为什么要分区？  数据安全  重装系统时，各个分区之间不会相互影响
+性能考虑   P1: /dev/sda1 P2: /dev/sda2 P3: /dev/sda3 P4: /dev/sda4  分区表只记录四组数据，则分出多于四个分区是如何实现的？ P1 为主要分区(Primary)
+p2 为延伸分区(Extended)
+p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)
+设备文件名分别为:
+ P1: /dev/sda1 P2: /dev/sda2 L1: /dev/sda5 L2: /dev/sda6 L3: /dev/sda7 L4: /dev/sda8 L5: /dev/sda9  /dev/sda3与/dev/sda4是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/linux_5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-25T22:19:48&#43;08:00" />
+<meta property="article:modified_time" content="2021-02-25T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux_5"/>
+<meta name="twitter:description" content="主机规划与磁盘分区 Linux与硬件的搭配 各硬件设备在Linux中的文件名 虚拟机中的磁盘名称是什么? 在虚拟机的环境下，为了加速会使用/dev/vd[a-p]这种设备文件名。
+SATA接口的磁盘名称是什么? 由于SATA/USB/SAS等硬盘接口都是SCSI模块来驱动，因此这些接口的磁盘设备文件都是/dev/sd[a-p]的格式。
+磁盘分区 MSDOS(MBR)与GTP磁盘分区表 MSDOS的结构是什么样的？ MBR (Master Boot Record, 主要开机记录区)
+这个区在磁盘的第一个扇区，其放转置着开机管理程序记录区与分区表
+通常为512 Bytes
+ 主要开机记录区(Master Boot Record, MBR): 可以安装开机管理程序的地方。 446 Bytes 分区表(partition table): 记录整颗硬盘分区的状态 64 Bytes  为什么要分区？  数据安全  重装系统时，各个分区之间不会相互影响
+性能考虑   P1: /dev/sda1 P2: /dev/sda2 P3: /dev/sda3 P4: /dev/sda4  分区表只记录四组数据，则分出多于四个分区是如何实现的？ P1 为主要分区(Primary)
+p2 为延伸分区(Extended)
+p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)
+设备文件名分别为:
+ P1: /dev/sda1 P2: /dev/sda2 L1: /dev/sda5 L2: /dev/sda6 L3: /dev/sda7 L4: /dev/sda8 L5: /dev/sda9  /dev/sda3与/dev/sda4是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/linux_5/" /><link rel="prev" href="http://fengqigang.cn/posts/linux_4/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux_5",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/linux_5\/"
+        },"genre": "posts","keywords": "linux","wordcount":  128 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/linux_5\/","datePublished": "2021-02-25T22:19:48+08:00","dateModified": "2021-02-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux_5</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-25">2021-02-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;128 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux与硬件的搭配">Linux与硬件的搭配</a>
+      <ul>
+        <li><a href="#各硬件设备在linux中的文件名">各硬件设备在Linux中的文件名</a>
+          <ul>
+            <li><a href="#虚拟机中的磁盘名称是什么">虚拟机中的磁盘名称是什么?</a></li>
+            <li><a href="#sata接口的磁盘名称是什么">SATA接口的磁盘名称是什么?</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#磁盘分区">磁盘分区</a>
+      <ul>
+        <li><a href="#msdosmbr与gtp磁盘分区表">MSDOS(MBR)与GTP磁盘分区表</a>
+          <ul>
+            <li><a href="#msdos的结构是什么样的">MSDOS的结构是什么样的？</a></li>
+            <li><a href="#为什么要分区">为什么要分区？</a></li>
+            <li><a href="#分区表只记录四组数据则分出多于四个分区是如何实现的">分区表只记录四组数据，则分出多于四个分区是如何实现的？</a></li>
+            <li><a href="#20210225213713httpsimgfengqigangcnimg20210225213713png"><img src="https://img.fengqigang.cn//img/20210225213713.png" alt="20210225213713">?</a></li>
+            <li><a href="#20210225214253httpsimgfengqigangcnimg20210225214253png"><img src="https://img.fengqigang.cn//img/20210225214253.png" alt="20210225214253">?</a></li>
+            <li><a href="#20210225214729httpsimgfengqigangcnimg20210225214729png"><img src="https://img.fengqigang.cn//img/20210225214729.png" alt="20210225214729"></a></li>
+            <li><a href="#为什么会出现gpt">为什么会出现GPT?</a></li>
+            <li><a href="#gpt的结构是什么样的">GPT的结构是什么样的？</a></li>
+          </ul>
+        </li>
+        <li><a href="#开机流程中的bios与开机检测程序">开机流程中的BIOS与开机检测程序</a></li>
+        <li><a href="#主机的服务规划与硬件的关系">主机的服务规划与硬件的关系</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="主机规划与磁盘分区">主机规划与磁盘分区</h1>
+<h2 id="linux与硬件的搭配">Linux与硬件的搭配</h2>
+<h3 id="各硬件设备在linux中的文件名">各硬件设备在Linux中的文件名</h3>
+<h4 id="虚拟机中的磁盘名称是什么">虚拟机中的磁盘名称是什么?</h4>
+<p>在虚拟机的环境下，为了加速会使用/dev/vd[a-p]这种设备文件名。</p>
+<h4 id="sata接口的磁盘名称是什么">SATA接口的磁盘名称是什么?</h4>
+<p>由于SATA/USB/SAS等硬盘接口都是SCSI模块来驱动，因此这些接口的磁盘设备文件都是/dev/sd[a-p]的格式。</p>
+<h2 id="磁盘分区">磁盘分区</h2>
+<h3 id="msdosmbr与gtp磁盘分区表">MSDOS(MBR)与GTP磁盘分区表</h3>
+<h4 id="msdos的结构是什么样的">MSDOS的结构是什么样的？</h4>
+<p>MBR (Master Boot Record, 主要开机记录区)</p>
+<p>这个区在磁盘的第一个扇区，其放转置着开机管理程序记录区与分区表</p>
+<p>通常为<code>512 Bytes</code></p>
+<ul>
+<li>主要开机记录区(Master Boot Record, MBR): 可以安装开机管理程序的地方。 <code>446 Bytes</code></li>
+<li>分区表(partition table): 记录整颗硬盘分区的状态 <code>64 Bytes</code></li>
+</ul>
+<h4 id="为什么要分区">为什么要分区？</h4>
+<ol>
+<li>数据安全</li>
+</ol>
+<p>重装系统时，各个分区之间不会相互影响</p>
+<ol start="2">
+<li>性能考虑</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225212740.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225212740.png, https://img.fengqigang.cn//img/20210225212740.png 1.5x, https://img.fengqigang.cn//img/20210225212740.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225212740.png"
+        title="20210225212740" /></p>
+<ul>
+<li>P1: /dev/sda1</li>
+<li>P2: /dev/sda2</li>
+<li>P3: /dev/sda3</li>
+<li>P4: /dev/sda4</li>
+</ul>
+<h4 id="分区表只记录四组数据则分出多于四个分区是如何实现的">分区表只记录四组数据，则分出多于四个分区是如何实现的？</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225213049.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225213049.png, https://img.fengqigang.cn//img/20210225213049.png 1.5x, https://img.fengqigang.cn//img/20210225213049.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225213049.png"
+        title="20210225213049" /></p>
+<p>P1 为主要分区(Primary)</p>
+<p>p2 为延伸分区(Extended)</p>
+<p>p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)</p>
+<p>设备文件名分别为:</p>
+<ul>
+<li>P1: /dev/sda1</li>
+<li>P2: /dev/sda2</li>
+<li>L1: /dev/sda5</li>
+<li>L2: /dev/sda6</li>
+<li>L3: /dev/sda7</li>
+<li>L4: /dev/sda8</li>
+<li>L5: /dev/sda9</li>
+</ul>
+<p><code>/dev/sda3与/dev/sda4</code>是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始</p>
+<h4 id="20210225213713httpsimgfengqigangcnimg20210225213713png"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225213713.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225213713.png, https://img.fengqigang.cn//img/20210225213713.png 1.5x, https://img.fengqigang.cn//img/20210225213713.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225213713.png"
+        title="20210225213713" />?</h4>
+<ol>
+<li>
+<p>当D与E盘均属于延伸分区内的逻辑分区，将两个分区删除，然后再重新创建一个新的分区，能够在不影响其他分区的情况下，将两个分区的容量整合成为一个。</p>
+</li>
+<li>
+<p>当D与E分属于主分区与逻辑分区时，两者不能够整合在一起，除非将延伸分区破坏掉后再重新分区。但如此一来会影响到所有的逻辑分区。</p>
+</li>
+</ol>
+<h4 id="20210225214253httpsimgfengqigangcnimg20210225214253png"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225214253.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225214253.png, https://img.fengqigang.cn//img/20210225214253.png 1.5x, https://img.fengqigang.cn//img/20210225214253.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225214253.png"
+        title="20210225214253" />?</h4>
+<ol>
+<li>
+<p>因为P(Primary) + E(Extended)最多只能有四个，若有4个P了，即便还有剩余容量，因为无法再继续分区，所以容量就被浪费掉了</p>
+</li>
+<li>
+<p>想要将所有的四笔记录都花光，则P+P+P+E比较好</p>
+</li>
+</ol>
+<h4 id="20210225214729httpsimgfengqigangcnimg20210225214729png"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225214729.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225214729.png, https://img.fengqigang.cn//img/20210225214729.png 1.5x, https://img.fengqigang.cn//img/20210225214729.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225214729.png"
+        title="20210225214729" /></h4>
+<p>因为P(Primary) + E(extended)最多为4个</p>
+<ol>
+<li>P+P+P+E的环境
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225215235.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225215235.png, https://img.fengqigang.cn//img/20210225215235.png 1.5x, https://img.fengqigang.cn//img/20210225215235.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225215235.png"
+        title="20210225215235" /></li>
+<li>P+E的环境
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225215248.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225215248.png, https://img.fengqigang.cn//img/20210225215248.png 1.5x, https://img.fengqigang.cn//img/20210225215248.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225215248.png"
+        title="20210225215248" /></li>
+</ol>
+<h4 id="为什么会出现gpt">为什么会出现GPT?</h4>
+<ol>
+<li>
+<p>操作系统无法抓取到2.2T以上的磁盘容量</p>
+</li>
+<li>
+<p>MBR仅有一个区块，若被破坏后，经常无法或很难援救</p>
+</li>
+<li>
+<p>MBR内的存放开机管理程序的区块仅446Bytes, 无法容纳较多的程序码</p>
+</li>
+</ol>
+<h4 id="gpt的结构是什么样的">GPT的结构是什么样的？</h4>
+<p>GPT: GUID partition table</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210225215857.png"
+        data-srcset="https://img.fengqigang.cn//img/20210225215857.png, https://img.fengqigang.cn//img/20210225215857.png 1.5x, https://img.fengqigang.cn//img/20210225215857.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210225215857.png"
+        title="20210225215857" /></p>
+<ul>
+<li>
+<p>LBA0 (MBR相容区块)</p>
+<ul>
+<li><code>446 Bytes</code> 第一阶段开机管理程序</li>
+<li>特殊标志分区,用来表示此磁盘为GPT格式</li>
+</ul>
+</li>
+<li>
+<p>LBA1 (GPT表头纪录)</p>
+<ul>
+<li>分区表本身的位置与大小</li>
+<li>备份用的GPT分区(最后34个LBA区块)放置位置</li>
+<li>分区表的检验机制码(CRC32)</li>
+</ul>
+</li>
+<li>
+<p>LBA2-33 (实际纪录分区信息处)</p>
+<ul>
+<li>每个LBA可以记录4笔分区记录， 即32*4笔记录</li>
+<li>每个LBA有512 Bytes, 则每笔记录用于128 Bytes的空间</li>
+<li>GPT在每笔记录中分别提供了 64 bits 来记载开始/结束的磁区号码</li>
+<li>对于GPT分区表对于单一分区来说，它的最大容量为:$2^{64} *512bytes = 2^{63} * 1Kbytes = 2^{33}*TB = 8 ZB$</li>
+</ul>
+</li>
+</ul>
+<h3 id="开机流程中的bios与开机检测程序">开机流程中的BIOS与开机检测程序</h3>
+<h3 id="主机的服务规划与硬件的关系">主机的服务规划与硬件的关系</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-02-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux_4/" class="prev" rel="prev" title="Linux_4"><i class="fas fa-angle-left fa-fw"></i>Linux_4</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
