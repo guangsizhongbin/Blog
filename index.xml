@@ -4,9 +4,22 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 25 Feb 2021 22:19:48 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Java基础练习题</title>
+    <link>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
+    <pubDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</guid>
+    <description><![CDATA[基础概念问答    请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？     Java语言是跨平台的，但JVM不是跨平台的，不同的平台有不同的JVM。 首先, 后缀为 &quot;*.java&quot; 的文件，经过javac命令编译后会生成public class定义类名称的.class文件(字节码文件)。然后, 不同平台的JVM会根据不同操作系统所提供的接口，实现.class文件中的功能。
+ 例如: Hello.java所对应的程序
+1 2 3 4 5  public class Hello { public static void main(String args[]){ System.out.println(&#34;Hello, World!&#34;); } }   编译后(Hello.class):
+再经过linux中的jre-openjdk中的jvm执行hello.class使得java看起来具有跨平台的能力。
+环境变量   设置环境变量使QQ或者微信可以在任意平台下，通过命令行执行    linux平台下:
+1  export 文件路径:$PATH   使用永久化:
+1  echo &#34;export 文件路径:$PATH&#34; &gt;&gt; .zshrc   3.[入门题目] 独立编写Hello World程序，并在命令行下运行 hello.java]]></description>
+</item><item>
     <title>Linux_5</title>
     <link>http://fengqigang.cn/posts/linux_5/</link>
     <pubDate>Thu, 25 Feb 2021 22:19:48 &#43;0800</pubDate>
@@ -321,20 +334,5 @@ endsnippet
 </span><span class="lnt">44
 </span></code></pre></td>
 <td class="lntd">]]></description>
-</item><item>
-    <title>使用WebDAV关联坚果云与Joplin</title>
-    <link>http://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/</link>
-    <pubDate>Tue, 26 Jan 2021 22:20:50 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/</guid>
-    <description><![CDATA[关联方法1 1. 在坚果云上创建一个英文名称的根目录的文件夹, 如&quot;note&quot; 2. 配置Joplin WebDAV URL: https//dav.jiangguoyun.com/dav/note
-(note为刚才创建的文件夹名称)
-WebDAV 名称: 坚果云账号邮箱
-WebDAV 密码: 在坚果云中生成的第三方应用密码2
-3. 点击检查&quot;同步配置&quot; BUG 1. Too many requests are received recently 可以将同步的并发连接数调低(调成1后，等一会, 即可)3
-  如何使用WebDAV关联坚果云与Joplin? &#x21a9;&#xfe0e;
- 坚果云第三方应用授权WebDAV开启方法 &#x21a9;&#xfe0e;
- joplin使用坚果云webdav同步时出现以下问题如何解决？ &#x21a9;&#xfe0e;
-   ]]></description>
 </item></channel>
 </rss>

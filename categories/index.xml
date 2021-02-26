@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/categories/</link>
         <description>Categories - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 25 Feb 2021 22:19:48 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>java</title>
+    <link>http://fengqigang.cn/categories/java/</link>
+    <pubDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/categories/java/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>鸟哥的私房菜</title>
     <link>http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/</link>
     <pubDate>Thu, 25 Feb 2021 22:19:48 &#43;0800</pubDate>
@@ -52,13 +59,6 @@
     <pubDate>Wed, 20 Jan 2021 14:52:17 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>java</title>
-    <link>http://fengqigang.cn/categories/java/</link>
-    <pubDate>Wed, 20 Jan 2021 14:22:51 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/categories/java/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>树莓派</title>
