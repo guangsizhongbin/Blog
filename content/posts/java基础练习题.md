@@ -10,6 +10,8 @@ tags: [java]
 categories: [java]
 ---
 
+JAVA语言基础练习题
+
 ## 基础概念问答
 - 1. 请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？
 
@@ -202,6 +204,7 @@ public class diffnum{
 ![](https://img.fengqigang.cn//img/20210226203007.png)
 
 ## 9.左移右移
+
 ```java
 public class TestOdd {
 	public static void main(String args[]){
@@ -298,6 +301,43 @@ public class palnum{
 
 ## 12.switch分支
 
+```java
+public class score{
+	public static void main(String args[])
+	{
+
+		int score = 100;
+
+		// 获取十位数
+		int tens = (score % 100 - score % 10) / 10;
+
+
+		switch (tens){
+			case  1,2,3,4,5: {
+				System.out.println("不及格");
+				break;
+			}
+			case 6: {
+				System.out.println("及格");
+				break;
+			}
+			case 7: {
+				System.out.println("中");
+				break;
+			}
+			case 8:{
+				System.out.println("良");
+			}
+			case 9, 0:{
+			
+				System.out.println("优");
+			}
+	}
+}
+}
+```
+
+![20210227072502](https://img.fengqigang.cn//img/20210227072502.png)
 
 ## 13.水仙花数
 
@@ -328,9 +368,49 @@ public class dafnum{
 
 ## 14.输出素数
 
+
+
 ## 15.简单排序
 
+```java
+public class sort{
+	public static void main(String args[]){
+		int a = 1;
+		int b = 2;
+		int c = 3;
+
+		if ((a > b) && (a > c))	{
+			if (b > c){
+				System.out.println("a > b > c");
+			} else {
+				System.out.println("a > c > b");
+			}
+		}else if ((a > b) && (a < c)){
+			System.out.println("c > a > b");
+		}else if ((a < b) && (a < c)){
+			if (b > c){
+				System.out.println("b > c > a");
+			} else {
+				System.out.println("c > b > a");
+			}
+		}else if ((a < b) && (c > a)){
+			if (b > c){
+				System.out.println("b > c > a");
+			} else {
+				System.out.println("c > b > a");
+			}
+		}
+	}
+} 
+```
+
+![20210227081159](https://img.fengqigang.cn//img/20210227081159.png)
+
+
 ## 16.打印三角形图案
+
+
+
 
 ## 17.打印9*9乘法表
 
@@ -350,6 +430,253 @@ public class NtimesN{
 
 ![](https://img.fengqigang.cn//img/20210226214412.png)
 
+
+## 18. 求完数
+
+```java
+public class factor{
+	public static void main(String args[]){
+
+		for (int num =1; num<100; num++){
+			int count = 0;
+
+			for(int i = 1; i < num; i++)
+			{
+				if(num % i == 0 ){
+					count += i;
+				}
+			}
+
+			if (count == num){
+				System.out.println(num + "是完数");
+			}
+		}
+	}
+}
+```
+
+![20210227095719](https://img.fengqigang.cn//img/20210227095719.png)
+
+
+## 19. 求不重复数字
+
+```java
+public class NotRepeat{
+	public static void main(String args[]){
+		for (int i = 1; i <= 4; i++){
+			for (int j = 1; j <=4; j++){
+				for (int k = 1; k <=4; k++){
+					if (i == j | i == k | j == k)
+						continue;
+					System.out.println(i*100 + j*10 + k);
+				}
+			}
+		}
+	}
+}
+```
+
+![20210227101516](https://img.fengqigang.cn//img/20210227101516.png)
+
+## 20. 求日期
+
+```java
+public class daysum{
+	public static void main(String args[]){
+		int year = 2012;
+		int month = 12;
+		int day = 5;
+		int day_count = 0;
+
+		int Jan = 31;
+		int Feb = 28;
+		int Mar = 31;
+		int Apr = 30;
+		int May = 31;
+		int Jun = 30;
+		int Jul = 31;
+		int Aug = 31;
+		int Sept = 30;
+		int Oct = 31;
+		int Nov = 30;
+
+
+
+		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)){
+			System.out.println("该年是闰年");
+			Feb = 29;
+		}
+
+		switch (month){
+			case 1: {
+								day_count = day;
+								break;
+			}
+			case 2: {
+								day_count = Jan + day;
+								break;
+			}
+			case 3: {
+								day_count = Jan + Feb + day;
+								break;
+			}
+			case 4: {
+								day_count = Jan + Feb + Mar + day;
+								break;
+			}
+			case 5: {
+								day_count = Jan + Feb + Mar + Apr + day;
+								break;
+			}
+			case 6: {
+								day_count = Jan + Feb + Mar + Apr + May + day;
+								break;
+			}
+			case 7: {
+								day_count = Jan + Feb + Mar + Apr + May + Jun + day;
+								break;
+			}
+			case 8: {
+								day_count = Jan + Feb + Mar + Apr + May + Jun + Jul + day;
+								break;
+			}
+			case 9: {
+								day_count = Jan + Feb + Mar + Apr + May + Jun + Jul + Aug + day;
+								break;
+			}
+			case 10: {
+								 day_count = Jan + Feb + Mar + Apr + May + Jun + Jul + Aug + Sept + day;
+								 break;
+			}
+			case 11: {
+								 day_count = Jan + Feb + Mar + Apr + May + Jun + Jul + Aug + Sept + Oct + day;
+								 break;
+			}
+			case 12: {
+								 day_count = Jan + Feb + Mar + Apr + May + Jun + Jul + Aug + Sept + Oct + Nov + day;
+								 break;
+			}
+		}
+
+		System.out.println(day_count);
+	}
+}
+```
+
+![20210227112417](https://img.fengqigang.cn//img/20210227112417.png)
+
+## 21. 根据条件求数字
+
+```java
+import java.lang.Math;
+
+public class findnum{
+	public static void main(String args[]){
+
+		for(int num = 0 ; num <= 100000 ; num ++){
+			if (Math.round(Math.sqrt(Math.sqrt(num + 100)+ 268)) == num)
+				System.out.println(num);
+		}
+	}
+}
+```
+
+![20210227113938](https://img.fengqigang.cn//img/20210227113938.png)
+
+## 22. 根据输入求输出
+
+## 23. 求前20项之和
+
+## 24. 求阶乘
+
+```java
+public class factorial{
+	public static void main(String args[]){
+	
+		int count = 0;
+		for(int i = 1; i <= 20; i++){
+			count = count + sum(i);
+		}
+
+		System.out.println(count);
+	}
+
+
+	public static int sum(int num){
+		if (num == 1){
+			return 1;
+		}
+		return num * sum(num - 1);
+	}
+}
+```
+
+![20210227201331](https://img.fengqigang.cn//img/20210227201331.png)
+
+## 25.回文数
+
+
+## 26.求星期几
+
+
+## 27.求素数
+
+
+## 28.排序算法
+
+
+## 29.杨辉三角
+
+
+## 30.被9整除
+
+## 31.三个数排序
+
+## 32.加密
+
+## 33.数组排序
+
+```java
+public class ArrayDemo{
+	public static void main(String args[]){
+		int temp;
+
+		int data[] = new int[]{1, 2, 3, 4};
+
+
+		int i = 0;
+		int j = data.length - 1;
+		while (i < j){
+			temp = data[i];
+			data[i] = data[j];
+			data[j] = temp;
+			i+=1;
+			j-=1;
+		}
+
+
+		for(int x = 0; x < data.length; x++){
+			System.out.print(data[x] + "、");
+		}
+	}
+}
+```
+
+![20210227203835](https://img.fengqigang.cn//img/20210227203835.png)
+
+## 34.左移右移
+
+## 35.求奇数的个数
+
+## 36.打印星号
+
+## 37.最大最小交换
+
+## 38.输入数字求和
+
+## 39.求最大公约数及最小公倍数
+
+## 40.分数累加
 
 
 
