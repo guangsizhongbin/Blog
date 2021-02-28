@@ -10,7 +10,6 @@ tags: [java]
 categories: [java]
 ---
 
-JAVA语言基础练习题
 
 ## 基础概念问答
 - 1. 请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？
@@ -368,6 +367,34 @@ public class dafnum{
 
 ## 14.输出素数
 
+```java
+import java.lang.Math;
+
+public class prime{
+	public static void main(String args[]){
+
+		boolean	flag = false;
+
+		for (int num = 101; num <= 200; num++){
+			flag = false;
+
+			for (int a = 2; a <= Math.sqrt(num); a++){
+
+
+				if ( num % a == 0 ){
+					flag = true;
+					break;}
+
+			}
+
+			if ( flag == false ){System.out.println(num + "是素数");}
+		}
+	}
+}
+```
+
+![20210228093353](https://img.fengqigang.cn//img/20210228093353.png)
+
 
 
 ## 15.简单排序
@@ -409,8 +436,33 @@ public class sort{
 
 ## 16.打印三角形图案
 
+```java
+public class intrangle{
+	public static void main(String args[]){
+		int num = (7+1)/2 -1;
 
+		for(int i = 1; i <= 7; i++){
 
+			if (i%2 == 0){
+				System.out.println("");
+				continue;
+			}else{
+				for(int j = num; j > 0; j--)
+					System.out.print(" ");
+				num-=1;
+			}
+
+			for(int k = 1; k <= i; k++){
+				System.out.print("*");
+			}
+			System.out.println("");
+
+		}
+	}
+}
+```
+
+![20210228091116](https://img.fengqigang.cn//img/20210228091116.png)
 
 ## 17.打印9*9乘法表
 
@@ -585,6 +637,7 @@ public class findnum{
 
 ## 22. 根据输入求输出
 
+
 ## 23. 求前20项之和
 
 ## 24. 求阶乘
@@ -615,11 +668,65 @@ public class factorial{
 
 ## 25.回文数
 
+```java
+public class palnum{
+	public static void main(String args[]){
+		int num = 12322;
+
+		int digit = num % 10; //个位数
+		int tens = (num % 100 - num % 10) / 10; //十位数
+		int thou = (num % 10000 - num % 1000) / 1000; //千分位
+		int ten_t = (num % 100000 - num % 10000) / 10000; //万分位
+
+		/*
+		System.out.println(digit);
+		System.out.println(tens);
+		System.out.println(thou);
+		System.out.println(ten_t);
+		*/
+
+		if (digit == ten_t && tens == thou)
+			System.out.println( num + "是回文数" );
+		else System.out.println( num + "不是回文数");
+	}
+}
+```
+
+![](https://img.fengqigang.cn//img/20210226212134.png)
+
 
 ## 26.求星期几
 
 
 ## 27.求素数
+
+```java
+import java.lang.Math;
+
+public class prime{
+	public static void main(String args[]){
+
+		boolean	flag = false;
+
+		for (int num = 1; num <= 100; num++){
+			flag = false;
+
+			for (int a = 2; a <= Math.sqrt(num); a++){
+
+
+				if ( num % a == 0 ){
+					flag = true;
+					break;}
+
+			}
+
+			if ( flag == false ){System.out.println(num + "是素数");}
+		}
+	}
+}
+```
+
+![20210228093648](https://img.fengqigang.cn//img/20210228093648.png)
 
 
 ## 28.排序算法
@@ -630,11 +737,27 @@ public class factorial{
 
 ## 30.被9整除
 
+```java
+public class number3{
+	public static void main(String args[]){
+		int num = 81;
+
+		if (num % 9 == 0){
+			int count = 1;
+			if (num/9 == 9)
+			{
+				count += 1;
+			}
+
+			System.out.println(num + "能被" + count + "个" + "9除净");
+		}else {System.out.println(num + "不能被9整除");}
+	}
+}
+```
+
+![20210228102743](https://img.fengqigang.cn//img/20210228102743.png)
+
 ## 31.三个数排序
-
-## 32.加密
-
-## 33.数组排序
 
 ```java
 public class ArrayDemo{
@@ -664,19 +787,421 @@ public class ArrayDemo{
 
 ![20210227203835](https://img.fengqigang.cn//img/20210227203835.png)
 
+
+## 32.加密
+
+```java
+public class encry{
+	public static void main(String args[]){
+		int num = 1234;
+		encryNum(num);
+
+	}
+
+	public static void encryNum(int num){
+		int first = num % 10;
+		int second = (num % 100 - first) / 10;
+		int third = (num % 1000 - second) / 100;
+		int four = (num % 10000) / 1000;
+
+		System.out.println(first + " " + second + " " + third + " " + four);
+
+		first = (first + 5)%10;
+		second = (second + 5)%10;
+		third = (third + 5)%10;
+		four = (four + 5)%10;
+		
+		System.out.println(first + " " + second + " " + third + " " + four);
+
+
+		int temp;
+
+		temp = first;
+		first = four;
+		four = temp;
+
+		temp = second;
+		second = third;
+		third = temp;
+
+		System.out.println(first * 1000 + second * 100 + third * 10 + four);
+
+	}
+}
+```
+
+![20210228191922](https://img.fengqigang.cn//img/20210228191922.png)
+
+## 33.数组排序
+
+```java
+public class reverse{
+	public static void main(String args[]){
+		int Array_origial[] = new int []{1, 2, 3, 5};
+		Array_origial = reverseArray(Array_origial);
+		traverse(Array_origial);
+		
+	}
+
+	public static int[] reverseArray(int Array_origial[]){
+		int temp [] = new int [Array_origial.length];
+
+		int foot = temp.length - 1;
+
+		for(int x = 0; x < temp.length; x++){
+			temp[x] = Array_origial[foot];
+			foot --;
+		}
+
+		return temp;
+
+	}
+
+	public static void traverse(int temp[]){
+		for(int x = 0; x < temp.length; x++)
+		{
+			System.out.print(temp[x] + " ");
+		}
+	}
+}
+```
+
+![20210228141053](https://img.fengqigang.cn//img/20210228141053.png)
+
+
+
+
+
 ## 34.左移右移
+
+```java
+public class selectnum{
+	public static void main(String args[]){
+		int num = 1234567;
+		System.out.println(select(num));
+
+	}
+
+	public static int select(int num){
+		int fourToseven = (((num % 10000000) - num % 1000) / 1000);
+		return fourToseven;
+	}
+}
+
+```
+
+![20210228172839](https://img.fengqigang.cn//img/20210228172839.png)
 
 ## 35.求奇数的个数
 
 ## 36.打印星号
 
 ## 37.最大最小交换
+```
+public class arrayChange{
+	public static void main(String args[]){
+		int Array [] = new int[] {11, 1, 0, 6, 5};
+		int positionMax = findMax(Array);
+		int positionMin = findMin(Array);
+
+		int changeMax [] = changeMax(Array, positionMax);
+		System.out.println("替换最大的元素后:");
+		traverse(changeMax);
+		int changeMin [] = changeMin(changeMax, positionMin);
+		System.out.println();
+		System.out.println("替换最小的元素后:");
+
+
+		traverse(changeMin);
+		
+	}
+
+	public static int findMax(int temp[]){
+		int max = 0;
+		for(int x = 1; x < temp.length; x++)
+		{
+			if(temp[x] > temp[max]){max = x;};
+		}
+		return max;
+	}
+
+	public static int findMin(int temp[]){
+		int min = 0;
+		for(int x = 1; x < temp.length; x++)
+		{
+			if(temp[x] < temp[min]){min = x;};
+		}
+		return min;
+	}
+
+	public static int[] changeMax(int temp[], int position){
+		int tempNum = temp[0];
+		temp[0] = temp[position];
+		temp[position] = tempNum;
+		return temp;
+	}
+
+	public static int[] changeMin(int temp[], int position){
+		int tempNum = temp[temp.length - 1];
+		temp[temp.length - 1] = temp[position];
+		temp[position] = tempNum;
+		return temp;
+	}
+
+	public static void traverse(int temp[]){
+		for(int x = 0 ;x < temp.length; x++)
+		{
+			System.out.print(temp[x] + " ");
+		}
+	}
+}
+```
+
+![20210228144853](https://img.fengqigang.cn//img/20210228144853.png)
 
 ## 38.输入数字求和
+```java
+public class numsum{
+	public static void main(String args[]){
+		System.out.println(num(2,5));
+		}
+
+	public static int num (int a, int b){
+		if (b == 1)
+			return a;
+		if (b == 2)
+			return a*10 + a + num(a, 1) ;
+		else{return num(a, b-1)*10 + a + num(a, b - 2);}
+	}
+}
+```
+
+![20210228150706](https://img.fengqigang.cn//img/20210228150706.png)
 
 ## 39.求最大公约数及最小公倍数
 
 ## 40.分数累加
 
+```java
+public class acc{
+	public static void main(String args[]){
+		int num1=2;
+		int num2=3;
 
+		System.out.println(sum(num1));
+		System.out.println(sum(num2));
+
+	}
+
+	public static double sum(int num){
+		double sum = 0;
+		if (num % 2 == 0){
+			for(double i = 2.0; i <= num; i+=2)
+			{
+				sum += (1)/i;
+			}
+		}else{
+			for(double i = 1.0; i <= num; i+=2){
+				sum += (1)/i;
+			}
+			}
+	return sum;
+	}
+
+}
+```
+![20210228171922](https://img.fengqigang.cn//img/20210228171922.png)
+
+
+## 41.自由落体
+
+```java
+public class rec{
+	public static void main(String args[]){
+
+		double meter = 100;
+		int num = 10;
+
+		for(int x = 1; x <= num-1; x++)
+		{
+			meter += high(x) * 2;
+		}
+
+		System.out.println("第10次落地时共经过了" + meter + "米");
+		System.out.println("第10次反弹有" + high(10) + "米");
+	}
+
+
+		public static double high(int num)
+		{
+			if (num == 1)
+				return 50;
+			else {return (high( num - 1) / 2);}
+		}
+}
+```
+
+![20210228195427](https://img.fengqigang.cn//img/20210228195427.png)
+
+## 42.不死神兔子
+```java
+public class rabbit{
+	public static void main(String args[]){
+
+		int sum = 0;
+
+
+		for(int day = 1; day <= 31; day++){
+			sum += count(day);
+		}
+
+		System.out.println(sum);
+	}
+
+
+	public static int count(int day)
+	{
+
+		if (day == 1){
+			return 1;
+		}else if (day == 2){
+			return 1;
+		}else{return count(day - 1) + count(day - 2);}
+	}
+}
+```
+
+![20210228200746](https://img.fengqigang.cn//img/20210228200746.png)
+
+
+## 43.猴子吃桃子问题
+```java
+public class monkey{
+	public static void main(String args[]){
+
+	System.out.println(peach(10));
+	}
+	
+	public static int peach(int day){
+		if (day == 1){return 1;} 
+		else { return peach( day - 1 ) * 2 + 1; }
+	}
+}
+```
+
+![20210228204413](https://img.fengqigang.cn//img/20210228204413.png)
+
+## 44.球赛
+
+
+
+## 45.递归求阶乘
+```java
+public class renum{
+	public static void main(String args[]){
+
+		System.out.println(rec(5));
+
+	}
+
+
+	public static int rec(int num)
+	{
+		if(num == 1)
+		{
+			return 1;
+		}else{return rec(num - 1) * num;}
+	}
+
+}
+```
+
+![20210228213433](https://img.fengqigang.cn//img/20210228213433.png)
+
+
+## 46.求岁数
+
+```java
+public class age{
+	public static void main(String args[]){
+
+		System.out.println(whatAge(5));
+
+	}
+
+	public static int whatAge(int people){
+		if(people == 1){
+			return 10;
+		}
+		else{
+			return whatAge(people - 1) + 2;
+		}
+
+
+	}
+}
+```
+
+![20210228214421](https://img.fengqigang.cn//img/20210228214421.png)
+
+## 47.插入数字
+
+## 48.移动位置
+
+```java
+public class move{
+	public static void main(String args[]){
+
+		int data[] = {1, 2, 3, 4, 5, 6, 7};
+		movePosition(data);
+
+	}
+
+	public static void movePosition(int data[]){
+		int middle;
+
+		if(data.length % 2 == 0){
+
+			middle = data.length / 2;
+			int tmpData[] = new int[middle];
+
+			for(int i = 0, x = middle; i < middle; i++, x++)
+			{
+
+				tmpData[i] = data[i];
+				data[i] = data[x];
+				data[x] = tmpData[i];
+			}
+
+		}
+		else	{
+
+			middle = (data.length - 1) / 2;
+			int tmpData[] = new int[middle];
+
+			for(int i = 0, x = middle+1; i < middle; i++, x++)
+			{
+
+				tmpData[i] = data[i];
+				data[i] = data[x];
+				data[x] = tmpData[i];
+			}
+		};
+
+			travel(data);
+	}
+
+	public static void travel(int data[]){
+		for(int j = 0; j < data.length; j++){
+			System.out.print(data[j] + " ");
+		}
+	}
+}
+```
+
+
+
+## 49.报数
+
+## 50.猴子分桃
 
