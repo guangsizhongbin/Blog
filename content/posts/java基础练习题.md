@@ -10,7 +10,6 @@ tags: [java]
 categories: [java]
 ---
 
-
 ## 基础概念问答
 - 1. 请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？
 
@@ -637,8 +636,82 @@ public class findnum{
 
 ## 22. 根据输入求输出
 
+```java
+public class rev{
+	public static void main(String args[]){
+		int num = 12345;
+		digts(num);
+	}
+
+
+	public static void digts(int num){
+		int first = num % 10;
+		int second = (num % 100 - first) / 10;
+		int third = (num % 1000 - second) / 100;
+		int four = (num % 10000 - third) / 1000;
+		int five = (num % 100000 - four) / 10000;
+
+		System.out.println("原来的数:" + num);
+
+		if(num % 10 == num){
+			System.out.println("此数为一位数");
+		}else if(num % 100 == num){
+			System.out.println("此数为二位数");
+		}else if(num % 1000 == num){
+			System.out.println("此数为三位数");
+		}else if(num % 10000 == num){
+			System.out.println("此数为四位数");
+		}else {System.out.println("此数五位数");}
+
+		System.out.println("转换后的数:" + first + second + third + third + five );
+	}
+}
+```
+
+![20210301113942](https://img.fengqigang.cn//img/20210301113942.png)
+
 
 ## 23. 求前20项之和
+
+```java
+public class sum{
+	public static void main(String args[]){
+
+		number(20);
+
+	}
+
+	public static void number(int num){
+		double a = 2;
+		double b = 1;
+		double c = a;
+
+		double member;
+		double denominator;
+
+		double sum = 0;
+
+
+		for(int i = 1; i <= num; i++){
+
+			member = a;
+			denominator = b;
+
+			sum += a/b;
+
+
+			c = a + b;
+			b = a;
+			a = c;
+
+		}
+		System.out.println(sum);
+	}
+}
+
+```
+
+![20210301124037](https://img.fengqigang.cn//img/20210301124037.png)
 
 ## 24. 求阶乘
 
@@ -697,6 +770,82 @@ public class palnum{
 
 ## 26.求星期几
 
+```java
+public class week{
+	public static void main(String args[]){
+		char first_word = 'T';
+		char second_word = 'u';
+
+		weekday (first_word, second_word);
+
+		/*
+		 * Monday
+		 * Tuesday
+		 * Wednesday
+		 * Thursday
+		 * Friday
+		 * Saturday
+		 * Sunday
+		 */
+
+	}
+
+	public static void weekday(char firstword, char secondword){
+
+		switch (firstword){
+			case 'M' :{
+									System.out.println("星期一");
+									break;
+			}
+
+			case 'T' : {
+									 switch(secondword){
+										 case 'u' :{
+																 System.out.println("星期二");
+																 break;
+										 }
+
+										 case 'h' :{
+																 System.out.println("星期四");
+																 break;
+										 }
+									 }
+									 break;
+			}
+
+			case 'W' : {
+									 System.out.println("星期四");
+									 break;
+			}
+
+			case 'F' : {
+									 System.out.println("星期五");
+									 break;
+			}
+
+			case 'S' : {
+									 switch(secondword){
+										 case 'a' :{
+																 System.out.println("星期二");
+																 break;
+										 }
+
+										 case 'u' :{
+																 System.out.println("星期四");
+																 break;
+										 }
+									 }
+									 break;
+			}
+
+		}
+	}
+}
+```
+
+
+
+
 
 ## 27.求素数
 
@@ -731,8 +880,94 @@ public class prime{
 
 ## 28.排序算法
 
+```java
+public class sort{
+	public static void main(String args[]){
+		int data[] = new int[]{1, 5, 3, 2, 6, 4, 7, 8, 9, 10};
+
+		traverse(data);
+		int [] sort_data = sortnum(data);
+		traverse(sort_data);
+	}
+
+	public static int[] sortnum(int[] data)
+	{
+		int min = 0;
+		int temp;
+
+		for(int x = 0;x < data.length; x++){
+			for(int y = x + 1; y < data.length; y++){
+				if(data[y] < data[min])
+				{
+					min = y;
+				}
+			}
+			temp = data[x];
+			data[x] = data[min];
+			data[min] = temp;
+
+			min = x+1;
+		}
+
+		return data;
+	}
+
+	public static void traverse(int[] data){
+		for(int x = 0; x < data.length; x++){
+			System.out.print(data[x] + " ");
+		}
+		System.out.println();
+	}
+
+}
+```
+
+
 
 ## 29.杨辉三角
+
+```java
+public class triangle{
+	public static void main(String args[]){
+		int a[] = {0, 1, 0};
+
+		for(int i = 1; i < 10; i++){
+			for(int y = 10 - i; y > 1; y--){
+				System.out.print(" ");
+			}
+			traverse(a);
+			a = tri(a);
+		}
+	}
+
+
+
+	public static int[] tri(int[] data){
+	//	int data[] = new int[] {0, 1, 0};
+	
+		int dataNew[] = new int[data.length + 1];
+		dataNew[0] = 0;
+		dataNew[dataNew.length - 1] = 0;
+
+		for(int x = 0, y = 1; y < data.length; x++, y++){
+			dataNew[y] = (data[x] + data[y]);
+		}
+
+		return dataNew;
+	}
+
+	public static void traverse(int[] data){
+		for(int x = 1; x < data.length - 1; x++)
+		{
+			System.out.print(data[x] + " ");
+
+		}
+		System.out.println();
+	}
+}
+```
+
+![20210301161735](https://img.fengqigang.cn//img/20210301161735.png)
 
 
 ## 30.被9整除
@@ -786,6 +1021,8 @@ public class ArrayDemo{
 ```
 
 ![20210227203835](https://img.fengqigang.cn//img/20210227203835.png)
+
+
 
 
 ## 32.加密
@@ -894,7 +1131,34 @@ public class selectnum{
 
 ## 35.求奇数的个数
 
+
+
+
 ## 36.打印星号
+
+```java
+public class asterisk{
+	public static void main(String args[]){
+
+		int data[] = {1, 2, 3, 4, 5, 6, 7};
+
+		for(int y = 0; y < data.length; y++){
+			printaster(data[y]);
+		}
+	}
+
+	public static void printaster(int num){
+		for(int x = 1; x <= num; x++){
+			System.out.print("*");
+		}
+		System.out.println("");
+	}
+}
+```
+
+![20210301162800](https://img.fengqigang.cn//img/20210301162800.png)
+
+
 
 ## 37.最大最小交换
 ```
@@ -979,6 +1243,29 @@ public class numsum{
 ![20210228150706](https://img.fengqigang.cn//img/20210228150706.png)
 
 ## 39.求最大公约数及最小公倍数
+
+```java
+public class elimination{
+	public static void main(String args[]){
+		int m = 12;
+		int n = 30;
+
+		System.out.println(eli(m, n) + "是最大公约数");
+		System.out.println(((m * n) / eli(m, n)) + "是最小公倍数");
+
+	}
+
+	public static int eli(int m, int n){
+		int c = m % n;
+
+		if (c == 0){
+			return n;
+		}else {return eli(n, c);}
+	}
+
+}
+```
+
 
 ## 40.分数累加
 
@@ -1146,6 +1433,8 @@ public class age{
 
 ## 47.插入数字
 
+
+
 ## 48.移动位置
 
 ```java
@@ -1203,5 +1492,42 @@ public class move{
 
 ## 49.报数
 
+
+
 ## 50.猴子分桃
+
+```java
+public class monkey{
+	public static void main(String args[]){
+
+		boolean flag = false;
+
+		for(int i = 1; i<=5000; i++)
+		{
+			if(peach(i, flag) == true){break;}
+		}
+	}
+
+	public static boolean peach(int i, boolean flag){
+		
+		if((1.25 * i + 1) % 5 == 1 ){ //第一只猴子分之前
+			if((1.25 * (1.25 * i + 1) + 1) % 5 == 1){ //第二只猴子分之前
+				if((1.25 * (1.25 * (1.25 * i + 1) + 1) + 1) % 5 == 1){ //第三只猴子分之前
+					if((1.25 * (1.25 * (1.25 * (1.25 * i + 1) + 1) + 1) + 1) % 5 == 1){ //第四只猴子分之前
+						if((1.25 * (1.25 * (1.25 * (1.25 * (1.25 * i + 1) + 1) + 1) + 1)+1) % 5 == 1){ //第五只猴子分之前
+							System.out.println(i);
+							flag = true;
+						}
+						else {return flag;};
+					}
+						else {return flag;};
+				}
+						else {return flag;};
+			}
+						else {return flag;};
+		}
+		return flag;
+	}
+}
+```
 
