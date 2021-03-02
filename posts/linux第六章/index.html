@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux第六章 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux第六章" />
+<meta property="og:description" content="如何回到之前的目录？ cd -
+ 如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
+ 如何创建一次创建 test1/test2/test3/test4 这样的目录， /test1~4均未创建? mkdir -p test1/test2/test3/test4
+-p --parents:
+no error if existing, make parent directories as needed.
+ 如何创建一个权限为rwx--x--x的目录test2? mkdir -m 711 test2
+-m --mode=MODE:
+set file mode (as in chomd), not a=rwx - umask
+ 如何使root在任何目录均可执行/root下面的ls? PATH = &quot;${PATH}:/root&quot;
+ 如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
+-a, --archive
+ 如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-02T21:49:05&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-02T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux第六章"/>
+<meta name="twitter:description" content="如何回到之前的目录？ cd -
+ 如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
+ 如何创建一次创建 test1/test2/test3/test4 这样的目录， /test1~4均未创建? mkdir -p test1/test2/test3/test4
+-p --parents:
+no error if existing, make parent directories as needed.
+ 如何创建一个权限为rwx--x--x的目录test2? mkdir -m 711 test2
+-m --mode=MODE:
+set file mode (as in chomd), not a=rwx - umask
+ 如何使root在任何目录均可执行/root下面的ls? PATH = &quot;${PATH}:/root&quot;
+ 如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
+-a, --archive
+ 如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/" /><link rel="prev" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux第六章",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/"
+        },"genre": "posts","keywords": "linux","wordcount":  94 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/","datePublished": "2021-03-02T21:49:05+08:00","dateModified": "2021-03-02T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux第六章</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;94 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#20210302190450httpsimgfengqigangcnimg20210302190450png如何回到之前的目录"><img src="https://img.fengqigang.cn//img/20210302190450.png" alt="20210302190450">如何回到之前的目录？</a></li>
+        <li><a href="#20210302191131httpsimgfengqigangcnimg20210302191131png如何显示其正确的完整路径而不是其链接的数据显示"><img src="https://img.fengqigang.cn//img/20210302191131.png" alt="20210302191131">如何显示其正确的完整路径，而不是其链接的数据显示?</a></li>
+        <li><a href="#如何创建一次创建-test1test2test3test4-这样的目录-test14均未创建">如何创建一次创建 <code>test1/test2/test3/test4</code> 这样的目录， <code>/test1~4</code>均未创建?</a></li>
+        <li><a href="#如何创建一个权限为rwx--x--x的目录test2">如何创建一个权限为<code>rwx--x--x</code>的目录<code>test2</code>?</a></li>
+        <li><a href="#如何使root在任何目录均可执行root下面的ls">如何使root在任何目录均可执行<code>/root</code>下面的ls?</a></li>
+        <li><a href="#如何复制-varlogwtmp文件到-wtmp_2-并且它的文件权限一模一样">如何复制 <code>/var/log/wtmp</code>文件到 <code>~/wtmp_2</code>, 并且它的文件权限一模一样?</a></li>
+        <li><a href="#如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<code>bashrc</code>的实体链接(hard link)和符号链接(symbolic link)?</a></li>
+        <li><a href="#如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <code>~/.bashrc</code> 比 <code>/tmp/bashrc</code> 新时则复制?</a></li>
+        <li><a href="#若bashrc_slink是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若<code>bashrc_slink</code>是软链接文件，则<img src="https://img.fengqigang.cn//img/20210302202250.png" alt="20210302202250">复制的是什么？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="20210302190450httpsimgfengqigangcnimg20210302190450png如何回到之前的目录"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302190450.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302190450.png, https://img.fengqigang.cn//img/20210302190450.png 1.5x, https://img.fengqigang.cn//img/20210302190450.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302190450.png"
+        title="20210302190450" />如何回到之前的目录？</h3>
+<p><code>cd -</code></p>
+<hr>
+<h3 id="20210302191131httpsimgfengqigangcnimg20210302191131png如何显示其正确的完整路径而不是其链接的数据显示"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302191131.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302191131.png, https://img.fengqigang.cn//img/20210302191131.png 1.5x, https://img.fengqigang.cn//img/20210302191131.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302191131.png"
+        title="20210302191131" />如何显示其正确的完整路径，而不是其链接的数据显示?</h3>
+<p><code>pwd -P</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302191248.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302191248.png, https://img.fengqigang.cn//img/20210302191248.png 1.5x, https://img.fengqigang.cn//img/20210302191248.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302191248.png"
+        title="20210302191248" /></p>
+<hr>
+<h3 id="如何创建一次创建-test1test2test3test4-这样的目录-test14均未创建">如何创建一次创建 <code>test1/test2/test3/test4</code> 这样的目录， <code>/test1~4</code>均未创建?</h3>
+<p><code>mkdir -p test1/test2/test3/test4</code></p>
+<p><code>-p --parents:</code></p>
+<p>no error if existing, make parent directories as needed.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302191718.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302191718.png, https://img.fengqigang.cn//img/20210302191718.png 1.5x, https://img.fengqigang.cn//img/20210302191718.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302191718.png"
+        title="20210302191718" /></p>
+<hr>
+<h3 id="如何创建一个权限为rwx--x--x的目录test2">如何创建一个权限为<code>rwx--x--x</code>的目录<code>test2</code>?</h3>
+<p><code>mkdir -m 711 test2</code></p>
+<p><code>-m --mode=MODE:</code></p>
+<p>set file mode (as in chomd), not a=rwx - umask</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302192336.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302192336.png, https://img.fengqigang.cn//img/20210302192336.png 1.5x, https://img.fengqigang.cn//img/20210302192336.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302192336.png"
+        title="20210302192336" /></p>
+<hr>
+<h3 id="如何使root在任何目录均可执行root下面的ls">如何使root在任何目录均可执行<code>/root</code>下面的ls?</h3>
+<p><code>PATH = &quot;${PATH}:/root&quot;</code></p>
+<hr>
+<h3 id="如何复制-varlogwtmp文件到-wtmp_2-并且它的文件权限一模一样">如何复制 <code>/var/log/wtmp</code>文件到 <code>~/wtmp_2</code>, 并且它的文件权限一模一样?</h3>
+<p>cp -a</p>
+<p><code>-a, --archive</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302194445.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302194445.png, https://img.fengqigang.cn//img/20210302194445.png 1.5x, https://img.fengqigang.cn//img/20210302194445.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302194445.png"
+        title="20210302194445" /></p>
+<hr>
+<h3 id="如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<code>bashrc</code>的实体链接(hard link)和符号链接(symbolic link)?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302195555.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302195555.png, https://img.fengqigang.cn//img/20210302195555.png 1.5x, https://img.fengqigang.cn//img/20210302195555.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302195555.png"
+        title="20210302195555" /></p>
+<hr>
+<h3 id="如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <code>~/.bashrc</code> 比 <code>/tmp/bashrc</code> 新时则复制?</h3>
+<p>cp -u ~/.bashrc /tmp/bashrc</p>
+<p><code>-u, --update</code></p>
+<pre><code>copy only when the SOURCE file is newer than the destination file or when the destination file is missing
+</code></pre>
+<hr>
+<h3 id="若bashrc_slink是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若<code>bashrc_slink</code>是软链接文件，则<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210302202250.png"
+        data-srcset="https://img.fengqigang.cn//img/20210302202250.png, https://img.fengqigang.cn//img/20210302202250.png 1.5x, https://img.fengqigang.cn//img/20210302202250.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210302202250.png"
+        title="20210302202250" />复制的是什么？</h3>
+<p>没有加任何选项时，cp复制的是原始文件，而非链接文件的属性</p>
+<p>若加<code>-d</code>选项，则复制的是链接文件的属性</p>
+<p><code>-d</code></p>
+<pre><code>same as --no-dereference --preserve=links
+</code></pre>
+<hr>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-02</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="prev" rel="prev" title="Linux第五章"><i class="fas fa-angle-left fa-fw"></i>Linux第五章</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
