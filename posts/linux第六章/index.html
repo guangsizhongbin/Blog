@@ -49,7 +49,7 @@ set file mode (as in chomd), not a=rwx - umask
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  94 ,
+        },"genre": "posts","keywords": "linux","wordcount":  256 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/","datePublished": "2021-03-02T21:49:05+08:00","dateModified": "2021-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -126,8 +126,8 @@ set file mode (as in chomd), not a=rwx - umask
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第六章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;94 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;256 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -146,6 +146,21 @@ set file mode (as in chomd), not a=rwx - umask
         <li><a href="#如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<code>bashrc</code>的实体链接(hard link)和符号链接(symbolic link)?</a></li>
         <li><a href="#如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <code>~/.bashrc</code> 比 <code>/tmp/bashrc</code> 新时则复制?</a></li>
         <li><a href="#若bashrc_slink是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若<code>bashrc_slink</code>是软链接文件，则<img src="https://img.fengqigang.cn//img/20210302202250.png" alt="20210302202250">复制的是什么？</a></li>
+        <li><a href="#能否使用feng的身份完整的复制varlogwtmp文件到tmp下面">能否使用feng的身份，完整的复制<code>/var/log/wtmp</code>文件到<code>/tmp</code>下面？</a></li>
+        <li><a href="#如何获取-etcsysconfignetwork-中最后的文件名">如何获取 <code>/etc/sysconfig/network</code> 中最后的文件名？</a></li>
+        <li><a href="#如何获取-etcsysconfignetwork-的目录名">如何获取 <code>/etc/sysconfig/network</code> 的目录名？</a></li>
+        <li><a href="#如何使-cat-etcissue-能够显示行号">如何使 <code>cat /etc/issue</code> 能够显示行号？</a></li>
+        <li><a href="#如果只想列出-etcman_dbconf-前20行-该如何操作">如果只想列出 <code>/etc/man_db.conf</code> 前20行， 该如何操作？</a></li>
+        <li><a href="#如何只想列出-etcman_dbconf-最后20行该如何操作">如何只想列出 <code>/etc/man_db.conf</code> 最后20行，该如何操作？</a></li>
+        <li><a href="#不知道etcman_dbconf有几行但想列出120行后的数据该如何操作">不知道<code>/etc/man_db.conf</code>有几行，但想列出120行后的数据，该如何操作？</a></li>
+        <li><a href="#如何想显示-etcman_dbconf的第11到第20行该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，该如何操作？</a></li>
+        <li><a href="#如何想显示-etcman_dbconf的第11到第20行且行号存在-该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，且行号存在， 该如何操作？</a></li>
+        <li><a href="#如何将usrbinpasswd的内容用ascii方式展现">如何将<code>/usr/bin/passwd</code>的内容用ASCII方式展现？</a></li>
+        <li><a href="#如何将etcissue这个文件内容以8进位列出储存值与ascii的对照表">如何将<code>/etc/issue</code>这个文件内容以8进位列出储存值与ASCII的对照表?</a></li>
+        <li><a href="#如何立即找到password这几个字的ascii对照-该如何通过od来判断">如何立即找到password这几个字的ASCII对照， 该如何通过od来判断？</a></li>
+        <li><a href="#当复制一个文件时复制所有的属性ctime这个属性可以复制吗">当复制一个文件时，复制所有的属性，ctime这个属性可以复制吗？</a></li>
+        <li><a href="#若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homedmtsai-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</a></li>
+        <li><a href="#我想在-tmp-下面创建一个目录这个目录名称为-chapter6_1-并且这个目录拥有者为-feng-群组为feng-此外任何人都可以进入该目录浏览文件不过除了feng之外其他人都不能修改这目录下的文件">我想在 /tmp 下面创建一个目录，这个目录名称为 chapter6_1, 并且这个目录拥有者为 feng, 群组为feng, 此外，任何人都可以进入该目录浏览文件，不过除了feng之外，其他人都不能修改这目录下的文件</a></li>
       </ul>
     </li>
   </ul>
@@ -249,6 +264,162 @@ set file mode (as in chomd), not a=rwx - umask
 <pre><code>same as --no-dereference --preserve=links
 </code></pre>
 <hr>
+<h3 id="能否使用feng的身份完整的复制varlogwtmp文件到tmp下面">能否使用feng的身份，完整的复制<code>/var/log/wtmp</code>文件到<code>/tmp</code>下面？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303101458.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303101458.png, https://img.fengqigang.cn//img/20210303101458.png 1.5x, https://img.fengqigang.cn//img/20210303101458.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303101458.png"
+        title="20210303101458" /></p>
+<p>因为feng身份并不能随意修改文件的拥有者与群组，因此虽然能够复制wtmp的相关权限与时间等属性，但是与拥有者、群组相关的，feng无法身份无法进行操作。</p>
+<hr>
+<h3 id="如何获取-etcsysconfignetwork-中最后的文件名">如何获取 <code>/etc/sysconfig/network</code> 中最后的文件名？</h3>
+<p><code>basename /etc/sysconfig/network</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303102017.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303102017.png, https://img.fengqigang.cn//img/20210303102017.png 1.5x, https://img.fengqigang.cn//img/20210303102017.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303102017.png"
+        title="20210303102017" /></p>
+<hr>
+<h3 id="如何获取-etcsysconfignetwork-的目录名">如何获取 <code>/etc/sysconfig/network</code> 的目录名？</h3>
+<p><code>dirname /etc/sysconfig/network</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303102123.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303102123.png, https://img.fengqigang.cn//img/20210303102123.png 1.5x, https://img.fengqigang.cn//img/20210303102123.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303102123.png"
+        title="20210303102123" /></p>
+<hr>
+<h3 id="如何使-cat-etcissue-能够显示行号">如何使 <code>cat /etc/issue</code> 能够显示行号？</h3>
+<p><code>cat -n /etc/issue</code></p>
+<p><code>-n, --number</code></p>
+<pre><code>number all output lines
+</code></pre>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303102338.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303102338.png, https://img.fengqigang.cn//img/20210303102338.png 1.5x, https://img.fengqigang.cn//img/20210303102338.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303102338.png"
+        title="20210303102338" /></p>
+<hr>
+<h3 id="如果只想列出-etcman_dbconf-前20行-该如何操作">如果只想列出 <code>/etc/man_db.conf</code> 前20行， 该如何操作？</h3>
+<p><code>head - n 20 /etc/man_db.conf</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303102849.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303102849.png, https://img.fengqigang.cn//img/20210303102849.png 1.5x, https://img.fengqigang.cn//img/20210303102849.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303102849.png"
+        title="20210303102849" /></p>
+<hr>
+<h3 id="如何只想列出-etcman_dbconf-最后20行该如何操作">如何只想列出 <code>/etc/man_db.conf</code> 最后20行，该如何操作？</h3>
+<p><code>tail -n 20 /etc/man_db.conf</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303103032.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303103032.png, https://img.fengqigang.cn//img/20210303103032.png 1.5x, https://img.fengqigang.cn//img/20210303103032.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303103032.png"
+        title="20210303103032" /></p>
+<p>&ndash;</p>
+<h3 id="不知道etcman_dbconf有几行但想列出120行后的数据该如何操作">不知道<code>/etc/man_db.conf</code>有几行，但想列出120行后的数据，该如何操作？</h3>
+<p><code>tail -n +120 /etc/man_db.conf</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303103247.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303103247.png, https://img.fengqigang.cn//img/20210303103247.png 1.5x, https://img.fengqigang.cn//img/20210303103247.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303103247.png"
+        title="20210303103247" /></p>
+<hr>
+<h3 id="如何想显示-etcman_dbconf的第11到第20行该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，该如何操作？</h3>
+<p><code>head -n 20 /etc/man_db.conf | tail -n 10</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303103500.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303103500.png, https://img.fengqigang.cn//img/20210303103500.png 1.5x, https://img.fengqigang.cn//img/20210303103500.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303103500.png"
+        title="20210303103500" /></p>
+<hr>
+<h3 id="如何想显示-etcman_dbconf的第11到第20行且行号存在-该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，且行号存在， 该如何操作？</h3>
+<p><code>cat -n /etc/man_db.conf | head -n 20 | tail -n 10</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303103656.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303103656.png, https://img.fengqigang.cn//img/20210303103656.png 1.5x, https://img.fengqigang.cn//img/20210303103656.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303103656.png"
+        title="20210303103656" /></p>
+<hr>
+<h3 id="如何将usrbinpasswd的内容用ascii方式展现">如何将<code>/usr/bin/passwd</code>的内容用ASCII方式展现？</h3>
+<p><code>od -t c /usr/bin/passwd</code></p>
+<hr>
+<h3 id="如何将etcissue这个文件内容以8进位列出储存值与ascii的对照表">如何将<code>/etc/issue</code>这个文件内容以8进位列出储存值与ASCII的对照表?</h3>
+<p><code>od -t oCc /etc/issue</code></p>
+<p>-t: <code>-t, --format=Type</code></p>
+<pre><code>Select output format or formats
+</code></pre>
+<p>C: <code>SIZE may also be C for sizeof(char)</code></p>
+<p>c: <code>printable character or backslash escape</code></p>
+<p>o: <code>octal, SIZE bytes per integer</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303104914.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303104914.png, https://img.fengqigang.cn//img/20210303104914.png 1.5x, https://img.fengqigang.cn//img/20210303104914.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303104914.png"
+        title="20210303104914" /></p>
+<hr>
+<h3 id="如何立即找到password这几个字的ascii对照-该如何通过od来判断">如何立即找到password这几个字的ASCII对照， 该如何通过od来判断？</h3>
+<p>echo password | od -t oCc echo</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303105534.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303105534.png, https://img.fengqigang.cn//img/20210303105534.png 1.5x, https://img.fengqigang.cn//img/20210303105534.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303105534.png"
+        title="20210303105534" /></p>
+<hr>
+<h3 id="当复制一个文件时复制所有的属性ctime这个属性可以复制吗">当复制一个文件时，复制所有的属性，ctime这个属性可以复制吗？</h3>
+<p>不可以， <code>ctime</code> 是记录这个文件最近的状态(status)被改变的时间</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210303110734.png"
+        data-srcset="https://img.fengqigang.cn//img/20210303110734.png, https://img.fengqigang.cn//img/20210303110734.png 1.5x, https://img.fengqigang.cn//img/20210303110734.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210303110734.png"
+        title="20210303110734" /></p>
+<p><code>mtime</code>: 文件的&quot;内容数据&quot;变更时，就会更新这个时间</p>
+<p><code>ctime</code>: 文件的状态更改时，就会更新这个时间</p>
+<p><code>atime</code>: 当文件被取用时，会更新这个时间</p>
+<hr>
+<h3 id="若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homedmtsai-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</h3>
+<p>cp ~/.bashrc ~feng/bashrc</p>
+<p>chown feng:feng ~feng/bashrc</p>
+<hr>
+<h3 id="我想在-tmp-下面创建一个目录这个目录名称为-chapter6_1-并且这个目录拥有者为-feng-群组为feng-此外任何人都可以进入该目录浏览文件不过除了feng之外其他人都不能修改这目录下的文件">我想在 /tmp 下面创建一个目录，这个目录名称为 chapter6_1, 并且这个目录拥有者为 feng, 群组为feng, 此外，任何人都可以进入该目录浏览文件，不过除了feng之外，其他人都不能修改这目录下的文件</h3>
+<p>整个目录权限应为 <code>drwxr-xr-x</code></p>
+<p>mkdir /tmp/chapter6_1</p>
+<p>chown -R feng:feng /tmp/chapter6_1</p>
+<p>chmod -R 755 /tmp/chapter6_1</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
