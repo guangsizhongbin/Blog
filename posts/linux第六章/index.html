@@ -8,15 +8,15 @@
         <title>Linux第六章 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux第六章" />
 <meta property="og:description" content="如何回到之前的目录？ cd -
  如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
- 如何创建一次创建 test1/test2/test3/test4 这样的目录， /test1~4均未创建? mkdir -p test1/test2/test3/test4
--p --parents:
+ 如何创建一次创建 test1/test2/test3/test4 这样的目录，/test1~4均未创建? mkdir -p test1/test2/test3/test4
+-p &ndash;parents:
 no error if existing, make parent directories as needed.
- 如何创建一个权限为rwx--x--x的目录test2? mkdir -m 711 test2
--m --mode=MODE:
+ 如何创建一个权限为rwx&ndash;x&ndash;x的目录test2? mkdir -m 711 test2
+-m &ndash;mode=MODE:
 set file mode (as in chomd), not a=rwx - umask
- 如何使root在任何目录均可执行/root下面的ls? PATH = &quot;${PATH}:/root&quot;
+ 如何在任何目录均可执行 /root 下面的命令? PATH = &ldquo;${PATH}:/root&rdquo;
  如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
--a, --archive
+-a, &ndash;archive
  如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/" /><meta property="article:section" content="posts" />
@@ -27,15 +27,15 @@ set file mode (as in chomd), not a=rwx - umask
 <meta name="twitter:title" content="Linux第六章"/>
 <meta name="twitter:description" content="如何回到之前的目录？ cd -
  如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
- 如何创建一次创建 test1/test2/test3/test4 这样的目录， /test1~4均未创建? mkdir -p test1/test2/test3/test4
--p --parents:
+ 如何创建一次创建 test1/test2/test3/test4 这样的目录，/test1~4均未创建? mkdir -p test1/test2/test3/test4
+-p &ndash;parents:
 no error if existing, make parent directories as needed.
- 如何创建一个权限为rwx--x--x的目录test2? mkdir -m 711 test2
--m --mode=MODE:
+ 如何创建一个权限为rwx&ndash;x&ndash;x的目录test2? mkdir -m 711 test2
+-m &ndash;mode=MODE:
 set file mode (as in chomd), not a=rwx - umask
- 如何使root在任何目录均可执行/root下面的ls? PATH = &quot;${PATH}:/root&quot;
+ 如何在任何目录均可执行 /root 下面的命令? PATH = &ldquo;${PATH}:/root&rdquo;
  如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
--a, --archive
+-a, &ndash;archive
  如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/."/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -49,7 +49,7 @@ set file mode (as in chomd), not a=rwx - umask
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  256 ,
+        },"genre": "posts","keywords": "linux","wordcount":  376 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/","datePublished": "2021-03-02T21:49:05+08:00","dateModified": "2021-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -126,7 +126,7 @@ set file mode (as in chomd), not a=rwx - umask
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第六章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;256 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;376 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -138,29 +138,38 @@ set file mode (as in chomd), not a=rwx - umask
     <li>
       <ul>
         <li><a href="#20210302190450httpsimgfengqigangcnimg20210302190450png如何回到之前的目录"><img src="https://img.fengqigang.cn//img/20210302190450.png" alt="20210302190450">如何回到之前的目录？</a></li>
-        <li><a href="#20210302191131httpsimgfengqigangcnimg20210302191131png如何显示其正确的完整路径而不是其链接的数据显示"><img src="https://img.fengqigang.cn//img/20210302191131.png" alt="20210302191131">如何显示其正确的完整路径，而不是其链接的数据显示?</a></li>
-        <li><a href="#如何创建一次创建-test1test2test3test4-这样的目录-test14均未创建">如何创建一次创建 <code>test1/test2/test3/test4</code> 这样的目录， <code>/test1~4</code>均未创建?</a></li>
-        <li><a href="#如何创建一个权限为rwx--x--x的目录test2">如何创建一个权限为<code>rwx--x--x</code>的目录<code>test2</code>?</a></li>
-        <li><a href="#如何使root在任何目录均可执行root下面的ls">如何使root在任何目录均可执行<code>/root</code>下面的ls?</a></li>
-        <li><a href="#如何复制-varlogwtmp文件到-wtmp_2-并且它的文件权限一模一样">如何复制 <code>/var/log/wtmp</code>文件到 <code>~/wtmp_2</code>, 并且它的文件权限一模一样?</a></li>
-        <li><a href="#如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<code>bashrc</code>的实体链接(hard link)和符号链接(symbolic link)?</a></li>
-        <li><a href="#如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <code>~/.bashrc</code> 比 <code>/tmp/bashrc</code> 新时则复制?</a></li>
-        <li><a href="#若bashrc_slink是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若<code>bashrc_slink</code>是软链接文件，则<img src="https://img.fengqigang.cn//img/20210302202250.png" alt="20210302202250">复制的是什么？</a></li>
-        <li><a href="#能否使用feng的身份完整的复制varlogwtmp文件到tmp下面">能否使用feng的身份，完整的复制<code>/var/log/wtmp</code>文件到<code>/tmp</code>下面？</a></li>
-        <li><a href="#如何获取-etcsysconfignetwork-中最后的文件名">如何获取 <code>/etc/sysconfig/network</code> 中最后的文件名？</a></li>
-        <li><a href="#如何获取-etcsysconfignetwork-的目录名">如何获取 <code>/etc/sysconfig/network</code> 的目录名？</a></li>
-        <li><a href="#如何使-cat-etcissue-能够显示行号">如何使 <code>cat /etc/issue</code> 能够显示行号？</a></li>
-        <li><a href="#如果只想列出-etcman_dbconf-前20行-该如何操作">如果只想列出 <code>/etc/man_db.conf</code> 前20行， 该如何操作？</a></li>
-        <li><a href="#如何只想列出-etcman_dbconf-最后20行该如何操作">如何只想列出 <code>/etc/man_db.conf</code> 最后20行，该如何操作？</a></li>
-        <li><a href="#不知道etcman_dbconf有几行但想列出120行后的数据该如何操作">不知道<code>/etc/man_db.conf</code>有几行，但想列出120行后的数据，该如何操作？</a></li>
-        <li><a href="#如何想显示-etcman_dbconf的第11到第20行该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，该如何操作？</a></li>
-        <li><a href="#如何想显示-etcman_dbconf的第11到第20行且行号存在-该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，且行号存在， 该如何操作？</a></li>
-        <li><a href="#如何将usrbinpasswd的内容用ascii方式展现">如何将<code>/usr/bin/passwd</code>的内容用ASCII方式展现？</a></li>
-        <li><a href="#如何将etcissue这个文件内容以8进位列出储存值与ascii的对照表">如何将<code>/etc/issue</code>这个文件内容以8进位列出储存值与ASCII的对照表?</a></li>
+        <li><a href="#20210302191133httpsimgfengqigangcnimg20210302191131png如何显示其正确的完整路径而不是其链接的数据显示"><img src="https://img.fengqigang.cn//img/20210302191131.png" alt="20210302191133">如何显示其正确的完整路径，而不是其链接的数据显示?</a></li>
+        <li><a href="#如何创建一次创建-test1test2test3test4-这样的目录test14均未创建">如何创建一次创建 <strong>test1/test2/test3/test4</strong> 这样的目录，<strong>/test1~4</strong>均未创建?</a></li>
+        <li><a href="#如何创建一个权限为rwx--x--x的目录test2">如何创建一个权限为<strong>rwx&ndash;x&ndash;x</strong>的目录<strong>test2</strong>?</a></li>
+        <li><a href="#如何在任何目录均可执行-root-下面的命令">如何在任何目录均可执行 <strong>/root</strong> 下面的命令?</a></li>
+        <li><a href="#如何复制-varlogwtmp文件到-wtmp_2-并且它的文件权限一模一样">如何复制 <strong>/var/log/wtmp</strong>文件到 <strong>~/wtmp_2</strong>, 并且它的文件权限一模一样?</a></li>
+        <li><a href="#如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<strong>bashrc</strong>的实体链接(hard link)和符号链接(symbolic link)?</a></li>
+        <li><a href="#如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <strong>~/.bashrc</strong> 比 <strong>/tmp/bashrc</strong> 新时则复制?</a></li>
+        <li><a href="#若-bashrc_slink-是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若 <strong>bashrc_slink</strong> 是软链接文件，则<img src="https://img.fengqigang.cn//img/20210302202250.png" alt="20210302202250">复制的是什么？</a></li>
+        <li><a href="#能否使用feng的身份完整的复制-varlogwtmp-文件到-tmp-下面">能否使用feng的身份，完整的复制 <strong>/var/log/wtmp</strong> 文件到 <strong>/tmp</strong> 下面？</a></li>
+        <li><a href="#如何获取-etcsysconfignetwork-中最后的文件名">如何获取 <strong>/etc/sysconfig/network</strong> 中最后的文件名？</a></li>
+        <li><a href="#如何获取-etcsysconfignetwork-的目录名">如何获取 <strong>/etc/sysconfig/network</strong> 的目录名？</a></li>
+        <li><a href="#如何使-cat-etcissue-能够显示行号">如何使 <strong>cat /etc/issue</strong> 能够显示行号？</a></li>
+        <li><a href="#如果只想列出-etcman_dbconf-前20行-该如何操作">如果只想列出 <strong>/etc/man_db.conf</strong> 前20行， 该如何操作？</a></li>
+        <li><a href="#如何只想列出-etcman_dbconf-最后20行该如何操作">如何只想列出 <strong>/etc/man_db.conf</strong> 最后20行，该如何操作？</a></li>
+        <li><a href="#不知道-etcman_dbconf-有几行但想列出120行后的数据该如何操作">不知道 <strong>/etc/man_db.conf</strong> 有几行，但想列出120行后的数据，该如何操作？</a></li>
+        <li><a href="#如何想显示-etcman_dbconf的第11到第20行该如何操作">如何想显示 <strong>/etc/man_db.conf</strong>的第11到第20行，该如何操作？</a></li>
+        <li><a href="#如何想显示-etcman_dbconf的第11到第20行且行号存在-该如何操作">如何想显示 <strong>/etc/man_db.conf</strong>的第11到第20行，且行号存在， 该如何操作？</a></li>
+        <li><a href="#如何将-usrbinpasswd-的内容用ascii方式展现">如何将 <strong>/usr/bin/passwd</strong> 的内容用ASCII方式展现？</a></li>
+        <li><a href="#如何将-etcissue-这个文件内容以8进位列出储存值与ascii的对照表">如何将 <strong>/etc/issue</strong> 这个文件内容以8进位列出储存值与ASCII的对照表?</a></li>
         <li><a href="#如何立即找到password这几个字的ascii对照-该如何通过od来判断">如何立即找到password这几个字的ASCII对照， 该如何通过od来判断？</a></li>
         <li><a href="#当复制一个文件时复制所有的属性ctime这个属性可以复制吗">当复制一个文件时，复制所有的属性，ctime这个属性可以复制吗？</a></li>
         <li><a href="#若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homedmtsai-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</a></li>
         <li><a href="#我想在-tmp-下面创建一个目录这个目录名称为-chapter6_1-并且这个目录拥有者为-feng-群组为feng-此外任何人都可以进入该目录浏览文件不过除了feng之外其他人都不能修改这目录下的文件">我想在 /tmp 下面创建一个目录，这个目录名称为 chapter6_1, 并且这个目录拥有者为 feng, 群组为feng, 此外，任何人都可以进入该目录浏览文件，不过除了feng之外，其他人都不能修改这目录下的文件</a></li>
+        <li><a href="#如何查看使用者在创建文件或目录时候的权限默认值">如何查看使用者在创建文件或目录时候的权限默认值?</a></li>
+        <li><a href="#umask的分数指的是什么为什么它们会不一样20210304113959httpsimgfengqigangcnimg20210304113959png">umask的分数指的是什么？为什么它们会不一样<img src="https://img.fengqigang.cn//img/20210304113959.png" alt="20210304113959">？</a></li>
+        <li><a href="#若想自己创建的文件给群组的使用者共同编辑时umask应如何设置">若想自己创建的文件给群组的使用者共同编辑时，umask应如何设置？</a></li>
+        <li><a href="#假设你的umask为003-请问该umask情况下创建的文件与目录权限为">假设你的umask为003, 请问该umask情况下，创建的文件与目录权限为？</a></li>
+        <li><a href="#如何使一个文件不能删除改名设置链接也无法写入或新增数据">如何使一个文件不能删除、改名、设置链接也无法写入或新增数据?</a></li>
+        <li><a href="#如何使一个文件只能增加数据而不能删除也不能修改数据">如何使一个文件只能增加数据，而不能删除也不能修改数据？</a></li>
+        <li><a href="#如何查看当前文件的隐藏属性">如何查看当前文件的隐藏属性？</a></li>
+        <li><a href="#20210304130336httpsimgfengqigangcnimg20210304130336png这里的s是什么权限"><img src="https://img.fengqigang.cn//img/20210304130336.png" alt="20210304130336">这里的s是什么权限？</a></li>
+        <li><a href="#什么是suid和sgid呢">什么是SUID和SGID呢？</a></li>
       </ul>
     </li>
   </ul>
@@ -173,17 +182,25 @@ set file mode (as in chomd), not a=rwx - umask
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210302190450.png"
         title="20210302190450" />如何回到之前的目录？</h3>
-<p><code>cd -</code></p>
+<p><strong>cd -</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304132518.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304132518.png, https://img.fengqigang.cn//img/20210304132518.png 1.5x, https://img.fengqigang.cn//img/20210304132518.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304132518.png"
+        title="20210304132518" /></p>
 <hr>
-<h3 id="20210302191131httpsimgfengqigangcnimg20210302191131png如何显示其正确的完整路径而不是其链接的数据显示"><img
+<h3 id="20210302191133httpsimgfengqigangcnimg20210302191131png如何显示其正确的完整路径而不是其链接的数据显示"><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://img.fengqigang.cn//img/20210302191131.png"
         data-srcset="https://img.fengqigang.cn//img/20210302191131.png, https://img.fengqigang.cn//img/20210302191131.png 1.5x, https://img.fengqigang.cn//img/20210302191131.png 2x"
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210302191131.png"
-        title="20210302191131" />如何显示其正确的完整路径，而不是其链接的数据显示?</h3>
-<p><code>pwd -P</code></p>
+        title="20210302191133" />如何显示其正确的完整路径，而不是其链接的数据显示?</h3>
+<p><strong>pwd -P</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -193,9 +210,9 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210302191248.png"
         title="20210302191248" /></p>
 <hr>
-<h3 id="如何创建一次创建-test1test2test3test4-这样的目录-test14均未创建">如何创建一次创建 <code>test1/test2/test3/test4</code> 这样的目录， <code>/test1~4</code>均未创建?</h3>
-<p><code>mkdir -p test1/test2/test3/test4</code></p>
-<p><code>-p --parents:</code></p>
+<h3 id="如何创建一次创建-test1test2test3test4-这样的目录test14均未创建">如何创建一次创建 <strong>test1/test2/test3/test4</strong> 这样的目录，<strong>/test1~4</strong>均未创建?</h3>
+<p><strong>mkdir -p test1/test2/test3/test4</strong></p>
+<p><strong>-p &ndash;parents:</strong></p>
 <p>no error if existing, make parent directories as needed.</p>
 <p><img
         class="lazyload"
@@ -206,9 +223,9 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210302191718.png"
         title="20210302191718" /></p>
 <hr>
-<h3 id="如何创建一个权限为rwx--x--x的目录test2">如何创建一个权限为<code>rwx--x--x</code>的目录<code>test2</code>?</h3>
-<p><code>mkdir -m 711 test2</code></p>
-<p><code>-m --mode=MODE:</code></p>
+<h3 id="如何创建一个权限为rwx--x--x的目录test2">如何创建一个权限为<strong>rwx&ndash;x&ndash;x</strong>的目录<strong>test2</strong>?</h3>
+<p><strong>mkdir -m 711 test2</strong></p>
+<p><strong>-m &ndash;mode=MODE:</strong></p>
 <p>set file mode (as in chomd), not a=rwx - umask</p>
 <p><img
         class="lazyload"
@@ -219,12 +236,12 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210302192336.png"
         title="20210302192336" /></p>
 <hr>
-<h3 id="如何使root在任何目录均可执行root下面的ls">如何使root在任何目录均可执行<code>/root</code>下面的ls?</h3>
-<p><code>PATH = &quot;${PATH}:/root&quot;</code></p>
+<h3 id="如何在任何目录均可执行-root-下面的命令">如何在任何目录均可执行 <strong>/root</strong> 下面的命令?</h3>
+<p><strong>PATH = &ldquo;${PATH}:/root&rdquo;</strong></p>
 <hr>
-<h3 id="如何复制-varlogwtmp文件到-wtmp_2-并且它的文件权限一模一样">如何复制 <code>/var/log/wtmp</code>文件到 <code>~/wtmp_2</code>, 并且它的文件权限一模一样?</h3>
-<p>cp -a</p>
-<p><code>-a, --archive</code></p>
+<h3 id="如何复制-varlogwtmp文件到-wtmp_2-并且它的文件权限一模一样">如何复制 <strong>/var/log/wtmp</strong>文件到 <strong>~/wtmp_2</strong>, 并且它的文件权限一模一样?</h3>
+<p><strong>cp -a</strong></p>
+<p><strong>-a, &ndash;archive</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -234,7 +251,7 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210302194445.png"
         title="20210302194445" /></p>
 <hr>
-<h3 id="如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<code>bashrc</code>的实体链接(hard link)和符号链接(symbolic link)?</h3>
+<h3 id="如何创建bashrc的实体链接hard-link和符号链接symbolic-link">如何创建<strong>bashrc</strong>的实体链接(hard link)和符号链接(symbolic link)?</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -244,13 +261,12 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210302195555.png"
         title="20210302195555" /></p>
 <hr>
-<h3 id="如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <code>~/.bashrc</code> 比 <code>/tmp/bashrc</code> 新时则复制?</h3>
-<p>cp -u ~/.bashrc /tmp/bashrc</p>
-<p><code>-u, --update</code></p>
-<pre><code>copy only when the SOURCE file is newer than the destination file or when the destination file is missing
-</code></pre>
+<h3 id="如何当-bashrc-比-tmpbashrc-新时则复制">如何当 <strong>~/.bashrc</strong> 比 <strong>/tmp/bashrc</strong> 新时则复制?</h3>
+<p><strong>cp -u ~/.bashrc /tmp/bashrc</strong></p>
+<p><strong>-u, &ndash;update</strong></p>
+<p>copy only when the SOURCE file is newer than the destination file or when the destination file is missing</p>
 <hr>
-<h3 id="若bashrc_slink是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若<code>bashrc_slink</code>是软链接文件，则<img
+<h3 id="若-bashrc_slink-是软链接文件则20210302202250httpsimgfengqigangcnimg20210302202250png复制的是什么">若 <strong>bashrc_slink</strong> 是软链接文件，则<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://img.fengqigang.cn//img/20210302202250.png"
@@ -259,12 +275,11 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210302202250.png"
         title="20210302202250" />复制的是什么？</h3>
 <p>没有加任何选项时，cp复制的是原始文件，而非链接文件的属性</p>
-<p>若加<code>-d</code>选项，则复制的是链接文件的属性</p>
-<p><code>-d</code></p>
-<pre><code>same as --no-dereference --preserve=links
-</code></pre>
+<p>若加 <strong>-d</strong> 选项，则复制的是链接文件的属性</p>
+<p><strong>-d</strong></p>
+<p>same as &ndash;no-dereference &ndash;preserve=links</p>
 <hr>
-<h3 id="能否使用feng的身份完整的复制varlogwtmp文件到tmp下面">能否使用feng的身份，完整的复制<code>/var/log/wtmp</code>文件到<code>/tmp</code>下面？</h3>
+<h3 id="能否使用feng的身份完整的复制-varlogwtmp-文件到-tmp-下面">能否使用feng的身份，完整的复制 <strong>/var/log/wtmp</strong> 文件到 <strong>/tmp</strong> 下面？</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -275,8 +290,8 @@ set file mode (as in chomd), not a=rwx - umask
         title="20210303101458" /></p>
 <p>因为feng身份并不能随意修改文件的拥有者与群组，因此虽然能够复制wtmp的相关权限与时间等属性，但是与拥有者、群组相关的，feng无法身份无法进行操作。</p>
 <hr>
-<h3 id="如何获取-etcsysconfignetwork-中最后的文件名">如何获取 <code>/etc/sysconfig/network</code> 中最后的文件名？</h3>
-<p><code>basename /etc/sysconfig/network</code></p>
+<h3 id="如何获取-etcsysconfignetwork-中最后的文件名">如何获取 <strong>/etc/sysconfig/network</strong> 中最后的文件名？</h3>
+<p><strong>basename /etc/sysconfig/network</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -286,8 +301,8 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303102017.png"
         title="20210303102017" /></p>
 <hr>
-<h3 id="如何获取-etcsysconfignetwork-的目录名">如何获取 <code>/etc/sysconfig/network</code> 的目录名？</h3>
-<p><code>dirname /etc/sysconfig/network</code></p>
+<h3 id="如何获取-etcsysconfignetwork-的目录名">如何获取 <strong>/etc/sysconfig/network</strong> 的目录名？</h3>
+<p><strong>dirname /etc/sysconfig/network</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -297,9 +312,9 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303102123.png"
         title="20210303102123" /></p>
 <hr>
-<h3 id="如何使-cat-etcissue-能够显示行号">如何使 <code>cat /etc/issue</code> 能够显示行号？</h3>
-<p><code>cat -n /etc/issue</code></p>
-<p><code>-n, --number</code></p>
+<h3 id="如何使-cat-etcissue-能够显示行号">如何使 <strong>cat /etc/issue</strong> 能够显示行号？</h3>
+<p><strong>cat -n /etc/issue</strong></p>
+<p><strong>-n, &ndash;number</strong></p>
 <pre><code>number all output lines
 </code></pre>
 <p><img
@@ -311,8 +326,8 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303102338.png"
         title="20210303102338" /></p>
 <hr>
-<h3 id="如果只想列出-etcman_dbconf-前20行-该如何操作">如果只想列出 <code>/etc/man_db.conf</code> 前20行， 该如何操作？</h3>
-<p><code>head - n 20 /etc/man_db.conf</code></p>
+<h3 id="如果只想列出-etcman_dbconf-前20行-该如何操作">如果只想列出 <strong>/etc/man_db.conf</strong> 前20行， 该如何操作？</h3>
+<p><strong>head - n 20 /etc/man_db.conf</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -322,8 +337,8 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303102849.png"
         title="20210303102849" /></p>
 <hr>
-<h3 id="如何只想列出-etcman_dbconf-最后20行该如何操作">如何只想列出 <code>/etc/man_db.conf</code> 最后20行，该如何操作？</h3>
-<p><code>tail -n 20 /etc/man_db.conf</code></p>
+<h3 id="如何只想列出-etcman_dbconf-最后20行该如何操作">如何只想列出 <strong>/etc/man_db.conf</strong> 最后20行，该如何操作？</h3>
+<p><strong>tail -n 20 /etc/man_db.conf</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -333,8 +348,8 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303103032.png"
         title="20210303103032" /></p>
 <p>&ndash;</p>
-<h3 id="不知道etcman_dbconf有几行但想列出120行后的数据该如何操作">不知道<code>/etc/man_db.conf</code>有几行，但想列出120行后的数据，该如何操作？</h3>
-<p><code>tail -n +120 /etc/man_db.conf</code></p>
+<h3 id="不知道-etcman_dbconf-有几行但想列出120行后的数据该如何操作">不知道 <strong>/etc/man_db.conf</strong> 有几行，但想列出120行后的数据，该如何操作？</h3>
+<p><strong>tail -n +120 /etc/man_db.conf</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -344,8 +359,8 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303103247.png"
         title="20210303103247" /></p>
 <hr>
-<h3 id="如何想显示-etcman_dbconf的第11到第20行该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，该如何操作？</h3>
-<p><code>head -n 20 /etc/man_db.conf | tail -n 10</code></p>
+<h3 id="如何想显示-etcman_dbconf的第11到第20行该如何操作">如何想显示 <strong>/etc/man_db.conf</strong>的第11到第20行，该如何操作？</h3>
+<p><strong>head -n 20 /etc/man_db.conf | tail -n 10</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -355,8 +370,8 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303103500.png"
         title="20210303103500" /></p>
 <hr>
-<h3 id="如何想显示-etcman_dbconf的第11到第20行且行号存在-该如何操作">如何想显示 <code>/etc/man_db.conf</code>的第11到第20行，且行号存在， 该如何操作？</h3>
-<p><code>cat -n /etc/man_db.conf | head -n 20 | tail -n 10</code></p>
+<h3 id="如何想显示-etcman_dbconf的第11到第20行且行号存在-该如何操作">如何想显示 <strong>/etc/man_db.conf</strong>的第11到第20行，且行号存在， 该如何操作？</h3>
+<p><strong>cat -n /etc/man_db.conf | head -n 20 | tail -n 10</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -366,17 +381,17 @@ set file mode (as in chomd), not a=rwx - umask
         alt="https://img.fengqigang.cn//img/20210303103656.png"
         title="20210303103656" /></p>
 <hr>
-<h3 id="如何将usrbinpasswd的内容用ascii方式展现">如何将<code>/usr/bin/passwd</code>的内容用ASCII方式展现？</h3>
-<p><code>od -t c /usr/bin/passwd</code></p>
+<h3 id="如何将-usrbinpasswd-的内容用ascii方式展现">如何将 <strong>/usr/bin/passwd</strong> 的内容用ASCII方式展现？</h3>
+<p><strong>od -t c /usr/bin/passwd</strong></p>
 <hr>
-<h3 id="如何将etcissue这个文件内容以8进位列出储存值与ascii的对照表">如何将<code>/etc/issue</code>这个文件内容以8进位列出储存值与ASCII的对照表?</h3>
-<p><code>od -t oCc /etc/issue</code></p>
-<p>-t: <code>-t, --format=Type</code></p>
+<h3 id="如何将-etcissue-这个文件内容以8进位列出储存值与ascii的对照表">如何将 <strong>/etc/issue</strong> 这个文件内容以8进位列出储存值与ASCII的对照表?</h3>
+<p><strong>od -t oCc /etc/issue</strong></p>
+<p>-t: <strong>-t, &ndash;format=Type</strong></p>
 <pre><code>Select output format or formats
 </code></pre>
-<p>C: <code>SIZE may also be C for sizeof(char)</code></p>
-<p>c: <code>printable character or backslash escape</code></p>
-<p>o: <code>octal, SIZE bytes per integer</code></p>
+<p>C: <strong>SIZE may also be C for sizeof(char)</strong></p>
+<p>c: <strong>printable character or backslash escape</strong></p>
+<p>o: <strong>octal, SIZE bytes per integer</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -387,7 +402,7 @@ set file mode (as in chomd), not a=rwx - umask
         title="20210303104914" /></p>
 <hr>
 <h3 id="如何立即找到password这几个字的ascii对照-该如何通过od来判断">如何立即找到password这几个字的ASCII对照， 该如何通过od来判断？</h3>
-<p>echo password | od -t oCc echo</p>
+<p><strong>echo password | od -t oCc echo</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -398,7 +413,7 @@ set file mode (as in chomd), not a=rwx - umask
         title="20210303105534" /></p>
 <hr>
 <h3 id="当复制一个文件时复制所有的属性ctime这个属性可以复制吗">当复制一个文件时，复制所有的属性，ctime这个属性可以复制吗？</h3>
-<p>不可以， <code>ctime</code> 是记录这个文件最近的状态(status)被改变的时间</p>
+<p>不可以， <strong>ctime</strong> 是记录这个文件最近的状态(status)被改变的时间</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -407,19 +422,168 @@ set file mode (as in chomd), not a=rwx - umask
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210303110734.png"
         title="20210303110734" /></p>
-<p><code>mtime</code>: 文件的&quot;内容数据&quot;变更时，就会更新这个时间</p>
-<p><code>ctime</code>: 文件的状态更改时，就会更新这个时间</p>
-<p><code>atime</code>: 当文件被取用时，会更新这个时间</p>
+<p><strong>mtime</strong>: 文件的&quot;内容数据&quot;变更时，就会更新这个时间</p>
+<p><strong>ctime</strong>: 文件的状态更改时，就会更新这个时间</p>
+<p><strong>atime</strong>: 当文件被取用时，会更新这个时间</p>
 <hr>
 <h3 id="若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homedmtsai-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</h3>
 <p>cp ~/.bashrc ~feng/bashrc</p>
 <p>chown feng:feng ~feng/bashrc</p>
 <hr>
 <h3 id="我想在-tmp-下面创建一个目录这个目录名称为-chapter6_1-并且这个目录拥有者为-feng-群组为feng-此外任何人都可以进入该目录浏览文件不过除了feng之外其他人都不能修改这目录下的文件">我想在 /tmp 下面创建一个目录，这个目录名称为 chapter6_1, 并且这个目录拥有者为 feng, 群组为feng, 此外，任何人都可以进入该目录浏览文件，不过除了feng之外，其他人都不能修改这目录下的文件</h3>
-<p>整个目录权限应为 <code>drwxr-xr-x</code></p>
+<p>整个目录权限应为 <strong>drwxr-xr-x</strong></p>
 <p>mkdir /tmp/chapter6_1</p>
 <p>chown -R feng:feng /tmp/chapter6_1</p>
 <p>chmod -R 755 /tmp/chapter6_1</p>
+<h3 id="如何查看使用者在创建文件或目录时候的权限默认值">如何查看使用者在创建文件或目录时候的权限默认值?</h3>
+<p><strong>umask</strong> 和 <strong>umask -S</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304112415.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304112415.png, https://img.fengqigang.cn//img/20210304112415.png 1.5x, https://img.fengqigang.cn//img/20210304112415.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304112415.png"
+        title="20210304112415" /></p>
+<p><strong>-S</strong></p>
+<pre><code>Display readline key sequences bound to macros and the strings they output
+</code></pre>
+<h3 id="umask的分数指的是什么为什么它们会不一样20210304113959httpsimgfengqigangcnimg20210304113959png">umask的分数指的是什么？为什么它们会不一样<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304113959.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304113959.png, https://img.fengqigang.cn//img/20210304113959.png 1.5x, https://img.fengqigang.cn//img/20210304113959.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304113959.png"
+        title="20210304113959" />？</h3>
+<p>首先创建文件目录是不一样的:</p>
+<ul>
+<li>
+<p>创建&quot;文件&quot;默认没有可执行(x)权限， 只有rw这两个权限， 最大为666分， 默认权限为: -rw-rw-rw-</p>
+</li>
+<li>
+<p>创建&quot;目录&quot;时, x权限是否可以进入此目录有关，因此默认所有权限均开放, 最大为777分， 默认权限为: drwxrwxrwx</p>
+</li>
+</ul>
+<p>umask 的分数是指文件或目录需要减去的分数</p>
+<p>如umask 为022,</p>
+<ul>
+<li>
+<p>则创建文件时的分数为 666-022 = 644, 即-rw-r&ndash;r&ndash;</p>
+</li>
+<li>
+<p>则创建目录时的分数为 777-022 = 755, 即drwxr-xr-x</p>
+</li>
+</ul>
+<p>注意这样直接相减的结果不一定正确</p>
+<h3 id="若想自己创建的文件给群组的使用者共同编辑时umask应如何设置">若想自己创建的文件给群组的使用者共同编辑时，umask应如何设置？</h3>
+<p>默认 umask: 022;</p>
+<p>意味着 G没有w权限</p>
+<p>将 umask 改成 002即可</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304115232.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304115232.png, https://img.fengqigang.cn//img/20210304115232.png 1.5x, https://img.fengqigang.cn//img/20210304115232.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304115232.png"
+        title="20210304115232" /></p>
+<h3 id="假设你的umask为003-请问该umask情况下创建的文件与目录权限为">假设你的umask为003, 请问该umask情况下，创建的文件与目录权限为？</h3>
+<p>umask 为 003, 所以拿掉的权限为&mdash;&mdash;&ndash;wx</p>
+<p>文件: (-rw-rw-rw-) - (&mdash;&mdash;&ndash;wx) = -rw-rw-r&ndash;</p>
+<p>目录: (drwxrwxrwx) - (d&mdash;&mdash;-wx) = drwxrwxr&ndash;</p>
+<p>注意不要用666 - 003 = 663, 即文件的权限为-rw-rw&ndash;wx, 原来没有x权限，这样一减就有了x权限， 这是不对的</p>
+<h3 id="如何使一个文件不能删除改名设置链接也无法写入或新增数据">如何使一个文件不能删除、改名、设置链接也无法写入或新增数据?</h3>
+<p><strong>chattr +i</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304120344.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304120344.png, https://img.fengqigang.cn//img/20210304120344.png 1.5x, https://img.fengqigang.cn//img/20210304120344.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304120344.png"
+        title="20210304120344" /></p>
+<h3 id="如何使一个文件只能增加数据而不能删除也不能修改数据">如何使一个文件只能增加数据，而不能删除也不能修改数据？</h3>
+<p><strong>chattr +a</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304130024.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304130024.png, https://img.fengqigang.cn//img/20210304130024.png 1.5x, https://img.fengqigang.cn//img/20210304130024.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304130024.png"
+        title="20210304130024" /></p>
+<h3 id="如何查看当前文件的隐藏属性">如何查看当前文件的隐藏属性？</h3>
+<p><strong>lsattr</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304130159.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304130159.png, https://img.fengqigang.cn//img/20210304130159.png 1.5x, https://img.fengqigang.cn//img/20210304130159.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304130159.png"
+        title="20210304130159" /></p>
+<h3 id="20210304130336httpsimgfengqigangcnimg20210304130336png这里的s是什么权限"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304130336.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304130336.png, https://img.fengqigang.cn//img/20210304130336.png 1.5x, https://img.fengqigang.cn//img/20210304130336.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304130336.png"
+        title="20210304130336" />这里的s是什么权限？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304131000.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304131000.png, https://img.fengqigang.cn//img/20210304131000.png 1.5x, https://img.fengqigang.cn//img/20210304131000.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304131000.png"
+        title="20210304131000" /></p>
+<p>例如:</p>
+<ol>
+<li>
+<p><strong>/etc/shadow</strong> 只有root用户才可以修改</p>
+</li>
+<li>
+<p>feng用户对于**/usr/bin/passwd**有x权限，表示feng可以执行passwd</p>
+</li>
+<li>
+<p>passwd的拥有者是root这个账号</p>
+</li>
+<li>
+<p>因为**/usr/bin/passwd**中的**s**权限， feng在执行passwd的过程中，会暂时获得root权限</p>
+</li>
+<li>
+<p><strong>/etc/shadow</strong>就可以被feng所执行的passwd修改</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304131401.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304131401.png, https://img.fengqigang.cn//img/20210304131401.png 1.5x, https://img.fengqigang.cn//img/20210304131401.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304131401.png"
+        title="20210304131401" /></p>
+<h3 id="什么是suid和sgid呢">什么是SUID和SGID呢？</h3>
+<p>当s标志在文件拥有者的x项目为SUID (Set UID)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304131901.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304131901.png, https://img.fengqigang.cn//img/20210304131901.png 1.5x, https://img.fengqigang.cn//img/20210304131901.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304131901.png"
+        title="20210304131901" /></p>
+<p>当s在群组的x时则称为SGID (Set GID)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210304131958.png"
+        data-srcset="https://img.fengqigang.cn//img/20210304131958.png, https://img.fengqigang.cn//img/20210304131958.png 1.5x, https://img.fengqigang.cn//img/20210304131958.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210304131958.png"
+        title="20210304131958" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

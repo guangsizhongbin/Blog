@@ -103,15 +103,15 @@
         <a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/">Linux第六章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-02">2021-03-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">如何回到之前的目录？ cd -
  如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
- 如何创建一次创建 test1/test2/test3/test4 这样的目录， /test1~4均未创建? mkdir -p test1/test2/test3/test4
--p --parents:
+ 如何创建一次创建 test1/test2/test3/test4 这样的目录，/test1~4均未创建? mkdir -p test1/test2/test3/test4
+-p &ndash;parents:
 no error if existing, make parent directories as needed.
- 如何创建一个权限为rwx--x--x的目录test2? mkdir -m 711 test2
--m --mode=MODE:
+ 如何创建一个权限为rwx&ndash;x&ndash;x的目录test2? mkdir -m 711 test2
+-m &ndash;mode=MODE:
 set file mode (as in chomd), not a=rwx - umask
- 如何使root在任何目录均可执行/root下面的ls? PATH = &quot;${PATH}:/root&quot;
+ 如何在任何目录均可执行 /root 下面的命令? PATH = &ldquo;${PATH}:/root&rdquo;
  如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
--a, --archive
+-a, &ndash;archive
  如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/.</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
