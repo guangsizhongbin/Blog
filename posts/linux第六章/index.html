@@ -49,7 +49,7 @@ set file mode (as in chomd), not a=rwx - umask
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  376 ,
+        },"genre": "posts","keywords": "linux","wordcount":  544 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AD%E7%AB%A0\/","datePublished": "2021-03-02T21:49:05+08:00","dateModified": "2021-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -126,8 +126,8 @@ set file mode (as in chomd), not a=rwx - umask
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第六章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;376 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-02">2021-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;544 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -159,7 +159,7 @@ set file mode (as in chomd), not a=rwx - umask
         <li><a href="#如何将-etcissue-这个文件内容以8进位列出储存值与ascii的对照表">如何将 <strong>/etc/issue</strong> 这个文件内容以8进位列出储存值与ASCII的对照表?</a></li>
         <li><a href="#如何立即找到password这几个字的ascii对照-该如何通过od来判断">如何立即找到password这几个字的ASCII对照， 该如何通过od来判断？</a></li>
         <li><a href="#当复制一个文件时复制所有的属性ctime这个属性可以复制吗">当复制一个文件时，复制所有的属性，ctime这个属性可以复制吗？</a></li>
-        <li><a href="#若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homedmtsai-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</a></li>
+        <li><a href="#若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homefeng-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/feng, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</a></li>
         <li><a href="#我想在-tmp-下面创建一个目录这个目录名称为-chapter6_1-并且这个目录拥有者为-feng-群组为feng-此外任何人都可以进入该目录浏览文件不过除了feng之外其他人都不能修改这目录下的文件">我想在 /tmp 下面创建一个目录，这个目录名称为 chapter6_1, 并且这个目录拥有者为 feng, 群组为feng, 此外，任何人都可以进入该目录浏览文件，不过除了feng之外，其他人都不能修改这目录下的文件</a></li>
         <li><a href="#如何查看使用者在创建文件或目录时候的权限默认值">如何查看使用者在创建文件或目录时候的权限默认值?</a></li>
         <li><a href="#umask的分数指的是什么为什么它们会不一样20210304113959httpsimgfengqigangcnimg20210304113959png">umask的分数指的是什么？为什么它们会不一样<img src="https://img.fengqigang.cn//img/20210304113959.png" alt="20210304113959">？</a></li>
@@ -170,6 +170,22 @@ set file mode (as in chomd), not a=rwx - umask
         <li><a href="#如何查看当前文件的隐藏属性">如何查看当前文件的隐藏属性？</a></li>
         <li><a href="#20210304130336httpsimgfengqigangcnimg20210304130336png这里的s是什么权限"><img src="https://img.fengqigang.cn//img/20210304130336.png" alt="20210304130336">这里的s是什么权限？</a></li>
         <li><a href="#什么是suid和sgid呢">什么是SUID和SGID呢？</a></li>
+        <li><a href="#20210305103029httpsimgfengqigangcnimg20210305103029png这里的t是对应的什么权限"><img src="https://img.fengqigang.cn//img/20210305103029.png" alt="20210305103029">这里的t是对应的什么权限?</a></li>
+        <li><a href="#如何设置suidsgidsbit这三个权限">如何设置SUID、SGID、SBIT这三个权限？</a></li>
+        <li><a href="#20210305104231httpsimgfengqigangcnimg20210305104231png为什么这里的s和t是大写的"><img src="https://img.fengqigang.cn//img/20210305104231.png" alt="20210305104231">为什么这里的S和T是大写的?</a></li>
+        <li><a href="#如何给-test-文件加上sgid和sbit权限">如何给 <strong>test</strong> 文件加上SGID和SBIT权限?</a></li>
+        <li><a href="#如何查看-bashrc-的基本数据-是属于ascii或者是data还是binary">如何查看 <strong>~/.bashrc</strong> 的基本数据， 是属于ASCII或者是data，还是binary?</a></li>
+        <li><a href="#20210305105303httpsimgfengqigangcnimg20210305105303png-为什么history找不到"><img src="https://img.fengqigang.cn//img/20210305105303.png" alt="20210305105303"> 为什么history找不到？</a></li>
+        <li><a href="#如何用-find-找出过去系统上面24小时内有更动过内容mtime的文件">如何用 find 找出过去系统上面24小时内有更动过内容(mtime)的文件?</a></li>
+        <li><a href="#如何用-find-找出3天前系统上面24小时内有更动过内容mtime的文件">如何用 find 找出3天前系统上面24小时内有更动过内容(mtime)的文件?</a></li>
+        <li><a href="#如何在-etc-下面的文件如果其日期比-etcpasswd-新就列出">如何在 /etc 下面的文件，如果其日期比 /etc/passwd 新就列出?</a></li>
+        <li><a href="#如何在-home-下找到属于feng的文件">如何在 /home 下找到属于feng的文件?</a></li>
+        <li><a href="#如何找出系统中不属于任何人的文件">如何找出系统中不属于任何人的文件?</a></li>
+        <li><a href="#如何找出-run-目录下文件类型为-socket-的文件名有哪些">如何找出 /run 目录下，文件类型为 Socket 的文件名有哪些？</a></li>
+        <li><a href="#如何找出文件中含有sgid-或-suid-或-sbit的属性">如何找出文件中含有SGID 或 SUID 或 SBIT的属性?</a></li>
+        <li><a href="#如何找出-usrbin-usrsbin-下-只要具有-suid-或-sgid-的文件">如何找出 /usr/bin, /usr/sbin 下， 只要具有 SUID 或 SGID 的文件?</a></li>
+        <li><a href="#如何找出-usrbin-usrsbin-下-只要具有-suid-或-sgid-的文件-并将找到的文件用ls--l列出来">如何找出 /usr/bin, /usr/sbin 下， 只要具有 SUID 或 SGID 的文件, 并将找到的文件用ls -l列出来？</a></li>
+        <li><a href="#让一个使用者feng能够进行cp-dir1file1-dir2的指令时则说明dir1-file1-dir2的最小所需权限为何">让一个使用者feng能够进行&quot;cp /dir1/file1 /dir2&quot;的指令时，则说明dir1, file1, dir2的最小所需权限为何?</a></li>
       </ul>
     </li>
   </ul>
@@ -426,7 +442,7 @@ set file mode (as in chomd), not a=rwx - umask
 <p><strong>ctime</strong>: 文件的状态更改时，就会更新这个时间</p>
 <p><strong>atime</strong>: 当文件被取用时，会更新这个时间</p>
 <hr>
-<h3 id="若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homedmtsai-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</h3>
+<h3 id="若你的系统有个一般身份使用者-feng-他的群组属于-feng-他的主文件夹在-homefeng-你是root-你想将你的bashrc复制给他可以怎么作">若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/feng, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？</h3>
 <p>cp ~/.bashrc ~feng/bashrc</p>
 <p>chown feng:feng ~feng/bashrc</p>
 <hr>
@@ -545,26 +561,18 @@ set file mode (as in chomd), not a=rwx - umask
 <p><strong>/etc/shadow</strong> 只有root用户才可以修改</p>
 </li>
 <li>
-<p>feng用户对于**/usr/bin/passwd**有x权限，表示feng可以执行passwd</p>
+<p>feng用户对于 <strong>/usr/bin/passwd</strong> 有x权限，表示feng可以执行passwd</p>
 </li>
 <li>
 <p>passwd的拥有者是root这个账号</p>
 </li>
 <li>
-<p>因为**/usr/bin/passwd**中的**s**权限， feng在执行passwd的过程中，会暂时获得root权限</p>
+<p>因为 <strong>/usr/bin/passwd</strong> 中的 <strong>s</strong> 权限， feng在执行passwd的过程中，会暂时获得root权限</p>
 </li>
 <li>
-<p><strong>/etc/shadow</strong>就可以被feng所执行的passwd修改</p>
+<p><strong>/etc/shadow</strong> 就可以被feng所执行的passwd修改</p>
 </li>
 </ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210304131401.png"
-        data-srcset="https://img.fengqigang.cn//img/20210304131401.png, https://img.fengqigang.cn//img/20210304131401.png 1.5x, https://img.fengqigang.cn//img/20210304131401.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210304131401.png"
-        title="20210304131401" /></p>
 <h3 id="什么是suid和sgid呢">什么是SUID和SGID呢？</h3>
 <p>当s标志在文件拥有者的x项目为SUID (Set UID)</p>
 <p><img
@@ -584,6 +592,136 @@ set file mode (as in chomd), not a=rwx - umask
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210304131958.png"
         title="20210304131958" /></p>
+<h3 id="20210305103029httpsimgfengqigangcnimg20210305103029png这里的t是对应的什么权限"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305103029.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305103029.png, https://img.fengqigang.cn//img/20210305103029.png 1.5x, https://img.fengqigang.cn//img/20210305103029.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305103029.png"
+        title="20210305103029" />这里的t是对应的什么权限?</h3>
+<p>t 是Sticky Bit, 仅对目录有效</p>
+<p><strong>/tmp</strong> 的权限是 <strong>drwxrwxrwt</strong></p>
+<p>任何人都可以在 <strong>/tmp</strong> 内新增、修改文件</p>
+<p>但仅有该文件/目录创建者与root能够删除自己的目录或文件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305103602.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305103602.png, https://img.fengqigang.cn//img/20210305103602.png 1.5x, https://img.fengqigang.cn//img/20210305103602.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305103602.png"
+        title="20210305103602" /></p>
+<h3 id="如何设置suidsgidsbit这三个权限">如何设置SUID、SGID、SBIT这三个权限？</h3>
+<p><strong>只对文件设置</strong>:</p>
+<p>4 为 SUID</p>
+<p>2 为 SGID</p>
+<p><strong>只对目录设置</strong>:</p>
+<p>1 为 SBIT</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305103845.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305103845.png, https://img.fengqigang.cn//img/20210305103845.png 1.5x, https://img.fengqigang.cn//img/20210305103845.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305103845.png"
+        title="20210305103845" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305103934.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305103934.png, https://img.fengqigang.cn//img/20210305103934.png 1.5x, https://img.fengqigang.cn//img/20210305103934.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305103934.png"
+        title="20210305103934" /></p>
+<h3 id="20210305104231httpsimgfengqigangcnimg20210305104231png为什么这里的s和t是大写的"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305104231.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305104231.png, https://img.fengqigang.cn//img/20210305104231.png 1.5x, https://img.fengqigang.cn//img/20210305104231.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305104231.png"
+        title="20210305104231" />为什么这里的S和T是大写的?</h3>
+<p>s,t 是替代x权限的，而666中 <strong>user</strong> , <strong>group</strong> , <strong>others</strong> 都没有x权限，ST代表为空</p>
+<h3 id="如何给-test-文件加上sgid和sbit权限">如何给 <strong>test</strong> 文件加上SGID和SBIT权限?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305104732.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305104732.png, https://img.fengqigang.cn//img/20210305104732.png 1.5x, https://img.fengqigang.cn//img/20210305104732.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305104732.png"
+        title="20210305104732" /></p>
+<h3 id="如何查看-bashrc-的基本数据-是属于ascii或者是data还是binary">如何查看 <strong>~/.bashrc</strong> 的基本数据， 是属于ASCII或者是data，还是binary?</h3>
+<p><strong>file</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305104951.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305104951.png, https://img.fengqigang.cn//img/20210305104951.png 1.5x, https://img.fengqigang.cn//img/20210305104951.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305104951.png"
+        title="20210305104951" /></p>
+<h3 id="20210305105303httpsimgfengqigangcnimg20210305105303png-为什么history找不到"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305105303.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305105303.png, https://img.fengqigang.cn//img/20210305105303.png 1.5x, https://img.fengqigang.cn//img/20210305105303.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305105303.png"
+        title="20210305105303" /> 为什么history找不到？</h3>
+<p>因为 <strong>history</strong> 是bash的内置命令， 不在 <strong>PATH</strong> 中</p>
+<h3 id="如何用-find-找出过去系统上面24小时内有更动过内容mtime的文件">如何用 find 找出过去系统上面24小时内有更动过内容(mtime)的文件?</h3>
+<p><strong>find / -mtime 0</strong></p>
+<h3 id="如何用-find-找出3天前系统上面24小时内有更动过内容mtime的文件">如何用 find 找出3天前系统上面24小时内有更动过内容(mtime)的文件?</h3>
+<p><strong>find / -mtime 3</strong></p>
+<h3 id="如何在-etc-下面的文件如果其日期比-etcpasswd-新就列出">如何在 /etc 下面的文件，如果其日期比 /etc/passwd 新就列出?</h3>
+<p><strong>find /etc -newer /etc/passwd</strong></p>
+<h3 id="如何在-home-下找到属于feng的文件">如何在 /home 下找到属于feng的文件?</h3>
+<p><strong>find /home -user feng</strong></p>
+<h3 id="如何找出系统中不属于任何人的文件">如何找出系统中不属于任何人的文件?</h3>
+<p><strong>find / -nouser</strong></p>
+<h3 id="如何找出-run-目录下文件类型为-socket-的文件名有哪些">如何找出 /run 目录下，文件类型为 Socket 的文件名有哪些？</h3>
+<p><strong>find /run -type s</strong></p>
+<h3 id="如何找出文件中含有sgid-或-suid-或-sbit的属性">如何找出文件中含有SGID 或 SUID 或 SBIT的属性?</h3>
+<p><strong>find / -perm /7000</strong></p>
+<p>7000 就是 &mdash;s&ndash;s&ndash;t</p>
+<p>只要含有s或t的就列出， 使用/7000
+同时含有三个权限，使用-7000</p>
+<h3 id="如何找出-usrbin-usrsbin-下-只要具有-suid-或-sgid-的文件">如何找出 /usr/bin, /usr/sbin 下， 只要具有 SUID 或 SGID 的文件?</h3>
+<p><strong>find /usr/bin /usr/sbin -perm /6000</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305110925.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305110925.png, https://img.fengqigang.cn//img/20210305110925.png 1.5x, https://img.fengqigang.cn//img/20210305110925.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305110925.png"
+        title="20210305110925" /></p>
+<h3 id="如何找出-usrbin-usrsbin-下-只要具有-suid-或-sgid-的文件-并将找到的文件用ls--l列出来">如何找出 /usr/bin, /usr/sbin 下， 只要具有 SUID 或 SGID 的文件, 并将找到的文件用ls -l列出来？</h3>
+<p><strong>find /usr/bin /usr/sbin -perm /7000 -exec ls -l {} ;</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305111812.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305111812.png, https://img.fengqigang.cn//img/20210305111812.png 1.5x, https://img.fengqigang.cn//img/20210305111812.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305111812.png"
+        title="20210305111812" /></p>
+<p><strong>{}</strong> 代表由 <strong>find</strong> 找到的内容，
+<strong>-exec</strong> 是开始位置， <strong>;</strong> 是结束位置</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210305111438.png"
+        data-srcset="https://img.fengqigang.cn//img/20210305111438.png, https://img.fengqigang.cn//img/20210305111438.png 1.5x, https://img.fengqigang.cn//img/20210305111438.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210305111438.png"
+        title="20210305111438" /></p>
+<h3 id="让一个使用者feng能够进行cp-dir1file1-dir2的指令时则说明dir1-file1-dir2的最小所需权限为何">让一个使用者feng能够进行&quot;cp /dir1/file1 /dir2&quot;的指令时，则说明dir1, file1, dir2的最小所需权限为何?</h3>
+<p>dir1: x
+fiel1: r
+dir2: w, x</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
