@@ -223,7 +223,7 @@ o: **octal, SIZE bytes per integer**
 
 ---
 
-### 若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/dmtsai, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？
+### 若你的系统有个一般身份使用者 feng, 他的群组属于 feng, 他的主文件夹在 /home/feng, 你是root, 你想将你的~/.bashrc复制给他，可以怎么作？
 
 cp ~/.bashrc ~feng/bashrc
 
@@ -315,15 +315,14 @@ umask 为 003, 所以拿掉的权限为--------wx
 例如: 
 1. **/etc/shadow** 只有root用户才可以修改
 
-2. feng用户对于**/usr/bin/passwd**有x权限，表示feng可以执行passwd
+2. feng用户对于 **/usr/bin/passwd** 有x权限，表示feng可以执行passwd
 
 3. passwd的拥有者是root这个账号
 
-4. 因为**/usr/bin/passwd**中的**s**权限， feng在执行passwd的过程中，会暂时获得root权限
+4. 因为 **/usr/bin/passwd** 中的 **s** 权限， feng在执行passwd的过程中，会暂时获得root权限
 
-5. **/etc/shadow**就可以被feng所执行的passwd修改
+5. **/etc/shadow** 就可以被feng所执行的passwd修改
 
-![20210304131401](https://img.fengqigang.cn//img/20210304131401.png)
 
 ### 什么是SUID和SGID呢？
 
@@ -334,4 +333,106 @@ umask 为 003, 所以拿掉的权限为--------wx
 当s在群组的x时则称为SGID (Set GID)
 
 ![20210304131958](https://img.fengqigang.cn//img/20210304131958.png)
+
+### ![20210305103029](https://img.fengqigang.cn//img/20210305103029.png)这里的t是对应的什么权限?
+
+t 是Sticky Bit, 仅对目录有效
+
+**/tmp** 的权限是 **drwxrwxrwt**
+
+任何人都可以在 **/tmp** 内新增、修改文件
+
+但仅有该文件/目录创建者与root能够删除自己的目录或文件
+
+![20210305103602](https://img.fengqigang.cn//img/20210305103602.png)
+
+### 如何设置SUID、SGID、SBIT这三个权限？
+
+**只对文件设置**:
+
+4 为 SUID
+
+2 为 SGID
+
+**只对目录设置**:
+
+1 为 SBIT 
+
+![20210305103845](https://img.fengqigang.cn//img/20210305103845.png)
+
+![20210305103934](https://img.fengqigang.cn//img/20210305103934.png)
+
+### ![20210305104231](https://img.fengqigang.cn//img/20210305104231.png)为什么这里的S和T是大写的?
+
+s,t 是替代x权限的，而666中 **user** , **group** , **others** 都没有x权限，ST代表为空
+
+### 如何给 **test** 文件加上SGID和SBIT权限?
+
+![20210305104732](https://img.fengqigang.cn//img/20210305104732.png)
+
+### 如何查看 **~/.bashrc** 的基本数据， 是属于ASCII或者是data，还是binary?
+
+**file**
+
+![20210305104951](https://img.fengqigang.cn//img/20210305104951.png)
+
+### ![20210305105303](https://img.fengqigang.cn//img/20210305105303.png) 为什么history找不到？
+
+因为 **history** 是bash的内置命令， 不在 **PATH** 中
+
+### 如何用 find 找出过去系统上面24小时内有更动过内容(mtime)的文件?
+
+**find / -mtime 0** 
+
+### 如何用 find 找出3天前系统上面24小时内有更动过内容(mtime)的文件?
+
+**find / -mtime 3**
+
+### 如何在 /etc 下面的文件，如果其日期比 /etc/passwd 新就列出?
+
+**find /etc -newer /etc/passwd**
+
+### 如何在 /home 下找到属于feng的文件?
+
+**find /home -user feng**
+
+### 如何找出系统中不属于任何人的文件?
+
+**find / -nouser**
+
+### 如何找出 /run 目录下，文件类型为 Socket 的文件名有哪些？
+
+**find /run -type s**
+
+### 如何找出文件中含有SGID 或 SUID 或 SBIT的属性?
+
+**find / -perm /7000**
+
+7000 就是 ---s--s--t
+
+只要含有s或t的就列出， 使用/7000
+同时含有三个权限，使用-7000
+
+### 如何找出 /usr/bin, /usr/sbin 下， 只要具有 SUID 或 SGID 的文件?
+
+**find /usr/bin /usr/sbin -perm /6000**
+
+![20210305110925](https://img.fengqigang.cn//img/20210305110925.png)
+
+### 如何找出 /usr/bin, /usr/sbin 下， 只要具有 SUID 或 SGID 的文件, 并将找到的文件用ls -l列出来？
+
+**find /usr/bin /usr/sbin -perm /7000 -exec ls -l {} \;**
+
+![20210305111812](https://img.fengqigang.cn//img/20210305111812.png)
+
+**{}** 代表由 **find** 找到的内容，
+**-exec** 是开始位置， **\;** 是结束位置
+
+![20210305111438](https://img.fengqigang.cn//img/20210305111438.png)
+
+### 让一个使用者feng能够进行"cp /dir1/file1 /dir2"的指令时，则说明dir1, file1, dir2的最小所需权限为何?
+
+dir1: x
+fiel1: r
+dir2: w, x
 

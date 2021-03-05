@@ -162,3 +162,4 @@ theme = "LoveIt"
 
 [outputs]
 	home = ["HTML", "RSS", "JSON"]
+
