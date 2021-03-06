@@ -4,7 +4,30 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 02 Mar 2021 21:49:05 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 06 Mar 2021 12:32:45 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux第七章</title>
+    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/</link>
+    <pubDate>Sat, 06 Mar 2021 12:32:45 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/</guid>
+    <description><![CDATA[为什么硬盘在分区后需要进行格式化呢? 因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。
+在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
+inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
+block: 实际记录文件的内容，若文件太大时，会占用多个block
+为什么在window系统下常听到磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+其采取的方法是这样的
+当数据过于离散的时候，读取一个文件有可能要转好几圈。
+若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
+则一个文件将浪费4096 - 50 = 4046 Bytes.
+4046 * 10000 / 1024 / 1024 = 38. 58MB
+如何找出目前系统有被格式化的设备? blkid
+每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
+则若一个block为1KB,
+12个直接: 12 x 1KB = 12KB
+1个间接: 256 x 1KB = 256KB
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录
+1个双间接: 256 x 256 x 1KB = $256^2$ KB]]></description>
+</item><item>
     <title>Linux第六章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/</link>
     <pubDate>Tue, 02 Mar 2021 21:49:05 &#43;0800</pubDate>
@@ -149,18 +172,5 @@ CPU-什么是精简指令集(RISC)？ RISC 即 Reduced Instruction Set Computer.
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/hugo/</guid>
     <description><![CDATA[<p>Hugo is one of the most popular open-source static site generators.</p>]]></description>
-</item><item>
-    <title>UltiSnip中的正则</title>
-    <link>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</link>
-    <pubDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</guid>
-    <description><![CDATA[1 1 2 3  snippet &#34;(\w+).par&#34; &#34;Parenthesis (postfix)&#34; r (`!p snip.rv = match.group(1)`$1)$0 endsnippet   Tip    \w+ 匹配一个或多个字母、数字、下划线
-  () 分组
-  $0 结束位置
-  $1 结果时光标位置
-     2 1 2 3  snippet &#34;([^\s].*)\.return&#34; &#34;Return (postfix)&#34; r return `!p snip.rv = match.group(1)`$0 endsnippet   Note    \s 匹配所有空白符，包括换行
-  [^\s] 除去所有空白符，包括换行
-     3 1 2 3  snippet t &lt;tag&gt;${VISUAL:inside text/should/is/g}&lt;/tag&gt; endsnippet   Note   ${VISUAL} The syntax is:  ${VISUAL:default/search/replace/option}   4 1 2 3 4 5 6  snippet &#34;be(gin)?]]></description>
 </item></channel>
 </rss>

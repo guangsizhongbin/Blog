@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux第七章 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux第七章" />
+<meta property="og:description" content="为什么硬盘在分区后需要进行格式化呢? 因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。
+在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
+inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
+block: 实际记录文件的内容，若文件太大时，会占用多个block
+为什么在window系统下常听到磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+其采取的方法是这样的
+当数据过于离散的时候，读取一个文件有可能要转好几圈。
+若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
+则一个文件将浪费4096 - 50 = 4046 Bytes.
+4046 * 10000 / 1024 / 1024 = 38. 58MB
+如何找出目前系统有被格式化的设备? blkid
+每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
+则若一个block为1KB,
+12个直接: 12 x 1KB = 12KB
+1个间接: 256 x 1KB = 256KB
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录
+1个双间接: 256 x 256 x 1KB = $256^2$ KB" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-06T12:32:45&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-06T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux第七章"/>
+<meta name="twitter:description" content="为什么硬盘在分区后需要进行格式化呢? 因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。
+在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
+inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
+block: 实际记录文件的内容，若文件太大时，会占用多个block
+为什么在window系统下常听到磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+其采取的方法是这样的
+当数据过于离散的时候，读取一个文件有可能要转好几圈。
+若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
+则一个文件将浪费4096 - 50 = 4046 Bytes.
+4046 * 10000 / 1024 / 1024 = 38. 58MB
+如何找出目前系统有被格式化的设备? blkid
+每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
+则若一个block为1KB,
+12个直接: 12 x 1KB = 12KB
+1个间接: 256 x 1KB = 256KB
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录
+1个双间接: 256 x 256 x 1KB = $256^2$ KB"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/" /><link rel="prev" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux第七章",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/"
+        },"genre": "posts","keywords": "linux","wordcount":  176 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/","datePublished": "2021-03-06T12:32:45+08:00","dateModified": "2021-03-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux第七章</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;176 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#为什么硬盘在分区后需要进行格式化呢">为什么硬盘在分区后需要进行格式化呢?</a></li>
+        <li><a href="#在ext2中-superblock-inode和block是什么样的关系">在ext2中, superblock, inode和block是什么样的关系?</a></li>
+        <li><a href="#为什么在window系统下常听到磁盘整理">为什么在window系统下常听到磁盘整理？</a></li>
+        <li><a href="#若ext2文件系统使用4k-block-而该文件系统中有10000个小文件每个文件大小均为50bytes-请问此时磁盘会浪费多少容量">若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量?</a></li>
+        <li><a href="#如何找出目前系统有被格式化的设备">如何找出目前系统有被格式化的设备?</a></li>
+        <li><a href="#每个inode大小均固定为128bytes-而inode记录一个block号码要花掉4byte-假设一个文件有400mb-且每个block为4kb那么至少也要10万条block号码的记录inode哪有这么多的可以记录的信息它采用了什么样的方法解决这个问题">每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题?</a></li>
+        <li><a href="#若在linux下的ext2文件系统新建一个目录ext2会做什么">若在Linux下的ext2文件系统新建一个目录，ext2会做什么？</a></li>
+        <li><a href="#如何查看root目录内的文件所占用的inode号码">如何查看root目录内的文件所占用的inode号码?</a></li>
+        <li><a href="#为什么这些文件夹的大小都是1024的倍数20210306111904httpsimgfengqigangcnimg20210306111904png">为什么这些文件夹的大小都是1024的倍数?<img src="https://img.fengqigang.cn//img/20210306111904.png" alt="20210306111904"></a></li>
+        <li><a href="#为什么-proc-文件夹的大小为0-20210306112557httpsimgfengqigangcnimg20210306112557png">为什么 <strong>/proc</strong> 文件夹的大小为0? <img src="https://img.fengqigang.cn//img/20210306112557.png" alt="20210306112557"></a></li>
+        <li><a href="#若在ext2下新建一个100kb的文件block为4kb-ext2会怎么做">若在ext2下新建一个100KB的文件，block为4KB, ext2会怎么做?</a></li>
+        <li><a href="#linux是如何读取-etcpasswd这个文件的20210306115242httpsimgfengqigangcnimg20210306115242png">linux是如何读取 <strong>/etc/passwd</strong>这个文件的?<img src="https://img.fengqigang.cn//img/20210306115242.png" alt="20210306115242"></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="为什么硬盘在分区后需要进行格式化呢">为什么硬盘在分区后需要进行格式化呢?</h3>
+<p>因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。</p>
+<h3 id="在ext2中-superblock-inode和block是什么样的关系">在ext2中, superblock, inode和block是什么样的关系?</h3>
+<p><strong>superblock</strong> : 记录此 <strong>filesystem</strong>的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。</p>
+<p><strong>inode</strong>: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。</p>
+<p><strong>block</strong>: 实际记录文件的内容，若文件太大时，会占用多个block</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306104037.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306104037.png, https://img.fengqigang.cn//img/20210306104037.png 1.5x, https://img.fengqigang.cn//img/20210306104037.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306104037.png"
+        title="20210306104037" /></p>
+<h3 id="为什么在window系统下常听到磁盘整理">为什么在window系统下常听到磁盘整理？</h3>
+<p>如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来</p>
+<p><strong>其采取的方法是这样的</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306104251.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306104251.png, https://img.fengqigang.cn//img/20210306104251.png 1.5x, https://img.fengqigang.cn//img/20210306104251.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306104251.png"
+        title="20210306104251" /></p>
+<p>当数据过于离散的时候，读取一个文件有可能要转好几圈。</p>
+<h3 id="若ext2文件系统使用4k-block-而该文件系统中有10000个小文件每个文件大小均为50bytes-请问此时磁盘会浪费多少容量">若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量?</h3>
+<p>在Ext2文件系统中一个block仅能容纳一个文件，</p>
+<p>则一个文件将浪费4096 - 50 = 4046 Bytes.</p>
+<p>4046 * 10000 / 1024 / 1024 = 38. 58MB</p>
+<h3 id="如何找出目前系统有被格式化的设备">如何找出目前系统有被格式化的设备?</h3>
+<p><strong>blkid</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306095400.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306095400.png, https://img.fengqigang.cn//img/20210306095400.png 1.5x, https://img.fengqigang.cn//img/20210306095400.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306095400.png"
+        title="20210306095400" /></p>
+<h3 id="每个inode大小均固定为128bytes-而inode记录一个block号码要花掉4byte-假设一个文件有400mb-且每个block为4kb那么至少也要10万条block号码的记录inode哪有这么多的可以记录的信息它采用了什么样的方法解决这个问题">每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题?</h3>
+<p>系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306105450.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306105450.png, https://img.fengqigang.cn//img/20210306105450.png 1.5x, https://img.fengqigang.cn//img/20210306105450.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306105450.png"
+        title="20210306105450" /></p>
+<p>则若一个block为1KB,</p>
+<p>12个直接: 12 x 1KB = 12KB</p>
+<p>1个间接: 256 x 1KB = 256KB</p>
+<p><strong>每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录</strong></p>
+<p>1个双间接: 256 x 256 x 1KB = $256^2$ KB</p>
+<p>1个三间接: 256 x 256 x 256 x 1KB = $256^3$ KB</p>
+<p>即: 当文件系统将block格式化为1K大小时，能够容纳最大文件为16GB</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306110539.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306110539.png, https://img.fengqigang.cn//img/20210306110539.png 1.5x, https://img.fengqigang.cn//img/20210306110539.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306110539.png"
+        title="20210306110539" /></p>
+<h3 id="若在linux下的ext2文件系统新建一个目录ext2会做什么">若在Linux下的ext2文件系统新建一个目录，ext2会做什么？</h3>
+<p><strong>ext2</strong> 至少会分配一个 <strong>inode</strong> 与至少一块 <strong>block</strong> 给该目录</p>
+<p><strong>inode</strong> 记录该目录的相关权限与属性, 并记录分配到的那块block号码</p>
+<p><strong>block</strong> 则是记录在这个目录下的文件名与该文件名占用的 <strong>inode</strong> 号码数据</p>
+<h3 id="如何查看root目录内的文件所占用的inode号码">如何查看root目录内的文件所占用的inode号码?</h3>
+<p><strong>ls -li</strong></p>
+<p>-i, &ndash;inode</p>
+<p>print the index number of each file</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306111643.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306111643.png, https://img.fengqigang.cn//img/20210306111643.png 1.5x, https://img.fengqigang.cn//img/20210306111643.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306111643.png"
+        title="20210306111643" /></p>
+<h3 id="为什么这些文件夹的大小都是1024的倍数20210306111904httpsimgfengqigangcnimg20210306111904png">为什么这些文件夹的大小都是1024的倍数?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306111904.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306111904.png, https://img.fengqigang.cn//img/20210306111904.png 1.5x, https://img.fengqigang.cn//img/20210306111904.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306111904.png"
+        title="20210306111904" /></h3>
+<p>因为 <strong>/dev/sda2</strong> 采用的 <strong>Block size</strong> 为 <strong>4096</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306112234.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306112234.png, https://img.fengqigang.cn//img/20210306112234.png 1.5x, https://img.fengqigang.cn//img/20210306112234.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306112234.png"
+        title="20210306112234" /></p>
+<h3 id="为什么-proc-文件夹的大小为0-20210306112557httpsimgfengqigangcnimg20210306112557png">为什么 <strong>/proc</strong> 文件夹的大小为0? <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306112557.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306112557.png, https://img.fengqigang.cn//img/20210306112557.png 1.5x, https://img.fengqigang.cn//img/20210306112557.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306112557.png"
+        title="20210306112557" /></h3>
+<p>因为这个目录是一个虚拟文件系统(virtual filestem). 它放置的数据都是在内在当中。</p>
+<p>因为这个目录下的数据都是在内在当中，所以本身不占任何硬盘空间。</p>
+<h3 id="若在ext2下新建一个100kb的文件block为4kb-ext2会怎么做">若在ext2下新建一个100KB的文件，block为4KB, ext2会怎么做?</h3>
+<p>在linux下的ext2新建一个文件时，ext2分分配一个inode与相对于该文件大小的block数量给该文件。</p>
+<p>当文件为100KB时，linux会分配一个 <strong>inode</strong>, 与25个 <strong>block</strong>来记录数据</p>
+<p>但inode仅有12个直接指向 <strong>block记录</strong> ，因此还要多一个block间接指向另外的13个 <strong>block记录</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306114906.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306114906.png, https://img.fengqigang.cn//img/20210306114906.png 1.5x, https://img.fengqigang.cn//img/20210306114906.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306114906.png"
+        title="20210306114906" /></p>
+<h3 id="linux是如何读取-etcpasswd这个文件的20210306115242httpsimgfengqigangcnimg20210306115242png">linux是如何读取 <strong>/etc/passwd</strong>这个文件的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210306115242.png"
+        data-srcset="https://img.fengqigang.cn//img/20210306115242.png, https://img.fengqigang.cn//img/20210306115242.png 1.5x, https://img.fengqigang.cn//img/20210306115242.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210306115242.png"
+        title="20210306115242" /></h3>
+<ol>
+<li>
+<p>**/**的 inode: 通过挂载点的信息找到inode号码为2的根目录inode, 且 <strong>inode</strong> 规范的权限让我们可以读该block的内容(有r与x)</p>
+</li>
+<li>
+<p>**/**的 block: 通过上个步骤取得block的号码，并找到该内容有 <strong>/etc</strong> inode号码(5767169)</p>
+</li>
+<li>
+<p>**etc/**的 inode: 读取5767169号 inode 得知feng具有r与x权限，因此可以读取 <strong>etc/</strong> 的block内容</p>
+</li>
+<li>
+<p>**etc/**的 block: 经过上个步骤取得block号码，并找到有 <strong>passwd</strong> 文件的 <strong>inode</strong> 号码 (5775935)</p>
+</li>
+<li>
+<p><strong>passwd</strong> 的inode: 读取 5775935 号inode得知feng具有r的权限，因此可以读取<strong>passwd</strong>的内容</p>
+</li>
+<li>
+<p><strong>passwd</strong> 的block: 最后将该block内容的数据读出来</p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/" class="prev" rel="prev" title="Linux第六章"><i class="fas fa-angle-left fa-fw"></i>Linux第六章</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
