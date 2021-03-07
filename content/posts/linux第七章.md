@@ -24,7 +24,7 @@ categories: [鸟哥的私房菜]
 
 ![20210306104037](https://img.fengqigang.cn//img/20210306104037.png)
 
-### 为什么在window系统下常听到磁盘整理？
+### 为什么在window系统下常听到需要磁盘整理？
 
 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
 
@@ -33,7 +33,6 @@ categories: [鸟哥的私房菜]
 ![20210306104251](https://img.fengqigang.cn//img/20210306104251.png)
 
 当数据过于离散的时候，读取一个文件有可能要转好几圈。
-
 
 ### 若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量?
 
@@ -46,6 +45,8 @@ categories: [鸟哥的私房菜]
 ### 如何找出目前系统有被格式化的设备?
 
 **blkid**
+
+**\*\* locate/print block device attributes ****
 
 ![20210306095400](https://img.fengqigang.cn//img/20210306095400.png)
 
@@ -97,9 +98,9 @@ print the index number of each file
 
 ### 为什么 **/proc** 文件夹的大小为0? ![20210306112557](https://img.fengqigang.cn//img/20210306112557.png)
 
-因为这个目录是一个虚拟文件系统(virtual filestem). 它放置的数据都是在内在当中。
+因为这个目录是一个虚拟文件系统(virtual filestem). 它放置的数据都是在内存当中。
 
-因为这个目录下的数据都是在内在当中，所以本身不占任何硬盘空间。
+因为这个目录下的数据都是在内存当中，所以本身不占任何硬盘空间。
 
 ### 若在ext2下新建一个100KB的文件，block为4KB, ext2会怎么做?
 
@@ -111,23 +112,124 @@ print the index number of each file
 
 ![20210306114906](https://img.fengqigang.cn//img/20210306114906.png)
 
-### linux是如何读取 **/etc/passwd**这个文件的?![20210306115242](https://img.fengqigang.cn//img/20210306115242.png)
+### ext2是如何读取 **/etc/passwd**这个文件的?![20210306115242](https://img.fengqigang.cn//img/20210306115242.png)
 
-1. **/**的 inode: 通过挂载点的信息找到inode号码为2的根目录inode, 且 **inode** 规范的权限让我们可以读该block的内容(有r与x)
+1.  \*\*/\*\* 的 inode: 通过挂载点的信息找到inode号码为2的根目录inode, 且 **inode** 规范的权限让我们可以读该block的内容(有r与x)
+    
+2.  \*\*/\*\* 的 block: 通过上个步骤取得block的号码，并找到该内容有 **/etc** inode号码(5767169)
+    
+3.  \*\*etc/\*\* 的 inode: 读取5767169号 inode 得知feng具有r与x权限，因此可以读取 **etc/** 的block内容
+    
+4.  \*\*etc/\*\* 的 block: 经过上个步骤取得block号码，并找到有 **passwd** 文件的 **inode** 号码 (5775935)
+    
+5.  **passwd** 的inode: 读取 5775935 号inode得知feng具有r的权限，因此可以读取**passwd**的内容
+    
+6.  **passwd** 的block: 最后将该block内容的数据读出来
 
-2. **/**的 block: 通过上个步骤取得block的号码，并找到该内容有 **/etc** inode号码(5767169)
+### 如何需要新建一个文件或目录时，Ext2是如何处理的呢?
 
-3. **etc/**的 inode: 读取5767169号 inode 得知feng具有r与x权限，因此可以读取 **etc/** 的block内容
+1. 先确定用户对欲添加文件的目录是否具有w与x的权限，若有的话才能添加
 
-4. **etc/**的 block: 经过上个步骤取得block号码，并找到有 **passwd** 文件的 **inode** 号码 (5775935)
+2. 根据 **inode bitmap** 找到没有使用的 **inode** 号码， 并将新文件的权限/属性写入
 
-5. **passwd** 的inode: 读取 5775935 号inode得知feng具有r的权限，因此可以读取**passwd**的内容
+3. 根据 **block bit map** 找到没有使用的 **block** 号码， 并将实际的数据写入 **block** 中， 且更新 **inode** 的 **block** 指向数据
 
-6. **passwd** 的block: 最后将该block内容的数据读出来
+4. 将刚才写入的 **inode** 与 **block** 数据同步更新 **inode bitmap** 与 **block bitmap**, 并更新**superblock**的内容
+
+### 若在新建一个文件的时候，仅写入 **inode table** 及 **data block** ， 但因突然停电 **inode bitmap** 与 **block bitmap**, **superblock**都没有更新，此时linux是如何解决这个问题的?
+
+**文件系统中会规划出一个块，该块专门记录写入或修订文件时的步骤**
+
+1. 预备: 当系统要写入一个文件时，会先在日志记录块中记录某个文件准备要写入的信息
+
+2. 实际写入: 开始写入文件的权限与数据；开始更新meta data的数据
+
+3. 结束: 完成数据与 meta data 的更新后，在日志记录块当中完成文件的记录
 
 
 
+![20210307101155](https://img.fengqigang.cn//img/20210307101155.png)
+
+### **/ /. /..** 是什么关系?
+
+![20210307102029](https://img.fengqigang.cn//img/20210307102029.png)
+
+**/ /. /..** 三个文件所对应的 **inode** 是2, 它们都是相同的，所以这几个文件是相同的
+
+### 如何将系统内所有的文件系统列出来?
+
+**df**
+
+![20210307102439](https://img.fengqigang.cn//img/20210307102439.png)
+
+### 如何将系统内所有的文件系统更出来同时容量结果以易读的容量格式显示出来?
+
+**df -h**
+
+**-h, --human-readable**
+
+print sizes in powers of 1024
 
 
+![20210307102604](https://img.fengqigang.cn//img/20210307102604.png)
+
+### 如何将系统内所有特殊文件格式入名称及名称都列出来, 如 **/proc** 挂载点的文件?
+
+**df -aT**
+
+**-a, --all**
+
+include pseudo, duplicate, inaccessible file systems
+
+**-T, --print-type**
+
+print file system type
+
+![20210307103044](https://img.fengqigang.cn//img/20210307103044.png)
+
+### 如何将 **/etc** 下面的可用的磁盘容量以容量以易读的容量格式显示?
+
+**df -h /etc**
+
+![20210307103234](https://img.fengqigang.cn//img/20210307103234.png)
+
+### 如何将目前各个分区当中可用的 **inode** 数量列出?
+
+**df -ih**
+
+![20210307103412](https://img.fengqigang.cn//img/20210307103412.png)
+
+### 如何列出目录下所有目录的容量，包括自己?
+
+**du**
+
+![20210307103915](https://img.fengqigang.cn//img/20210307103915.png)
+
+### 如何列出目录下所有文件的容量?
+
+**du -a**
+
+**-a, --all**
+
+write counts for all files, not just directories
+
+![20210307104030](https://img.fengqigang.cn//img/20210307104030.png)
+
+### 如何检查根目录下面每个目录所占用的容量?
+
+**sudo du -sm /***
+
+**-s, --summarize**
+
+display only a total for each argument
+
+**-m**
+
+like --block-size=1M
+
+
+### hard link的原理是什么样的?
+
+![20210307104833](https://img.fengqigang.cn//img/20210307104833.png)
 
 
