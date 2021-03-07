@@ -10,19 +10,19 @@
 在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
 inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
 block: 实际记录文件的内容，若文件太大时，会占用多个block
-为什么在window系统下常听到磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+为什么在window系统下常听到需要磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
 其采取的方法是这样的
 当数据过于离散的时候，读取一个文件有可能要转好几圈。
 若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
 则一个文件将浪费4096 - 50 = 4046 Bytes.
 4046 * 10000 / 1024 / 1024 = 38. 58MB
 如何找出目前系统有被格式化的设备? blkid
+**** locate/print block device attributes ****
 每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
 则若一个block为1KB,
 12个直接: 12 x 1KB = 12KB
 1个间接: 256 x 1KB = 256KB
-每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录
-1个双间接: 256 x 256 x 1KB = $256^2$ KB" />
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-06T12:32:45&#43;08:00" />
@@ -34,19 +34,19 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
 inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
 block: 实际记录文件的内容，若文件太大时，会占用多个block
-为什么在window系统下常听到磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+为什么在window系统下常听到需要磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
 其采取的方法是这样的
 当数据过于离散的时候，读取一个文件有可能要转好几圈。
 若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
 则一个文件将浪费4096 - 50 = 4046 Bytes.
 4046 * 10000 / 1024 / 1024 = 38. 58MB
 如何找出目前系统有被格式化的设备? blkid
+**** locate/print block device attributes ****
 每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
 则若一个block为1KB,
 12个直接: 12 x 1KB = 12KB
 1个间接: 256 x 1KB = 256KB
-每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录
-1个双间接: 256 x 256 x 1KB = $256^2$ KB"/>
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -59,7 +59,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  176 ,
+        },"genre": "posts","keywords": "linux","wordcount":  335 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/","datePublished": "2021-03-06T12:32:45+08:00","dateModified": "2021-03-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -136,8 +136,8 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第七章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;176 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;335 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -149,7 +149,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
       <ul>
         <li><a href="#为什么硬盘在分区后需要进行格式化呢">为什么硬盘在分区后需要进行格式化呢?</a></li>
         <li><a href="#在ext2中-superblock-inode和block是什么样的关系">在ext2中, superblock, inode和block是什么样的关系?</a></li>
-        <li><a href="#为什么在window系统下常听到磁盘整理">为什么在window系统下常听到磁盘整理？</a></li>
+        <li><a href="#为什么在window系统下常听到需要磁盘整理">为什么在window系统下常听到需要磁盘整理？</a></li>
         <li><a href="#若ext2文件系统使用4k-block-而该文件系统中有10000个小文件每个文件大小均为50bytes-请问此时磁盘会浪费多少容量">若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量?</a></li>
         <li><a href="#如何找出目前系统有被格式化的设备">如何找出目前系统有被格式化的设备?</a></li>
         <li><a href="#每个inode大小均固定为128bytes-而inode记录一个block号码要花掉4byte-假设一个文件有400mb-且每个block为4kb那么至少也要10万条block号码的记录inode哪有这么多的可以记录的信息它采用了什么样的方法解决这个问题">每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题?</a></li>
@@ -158,7 +158,19 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         <li><a href="#为什么这些文件夹的大小都是1024的倍数20210306111904httpsimgfengqigangcnimg20210306111904png">为什么这些文件夹的大小都是1024的倍数?<img src="https://img.fengqigang.cn//img/20210306111904.png" alt="20210306111904"></a></li>
         <li><a href="#为什么-proc-文件夹的大小为0-20210306112557httpsimgfengqigangcnimg20210306112557png">为什么 <strong>/proc</strong> 文件夹的大小为0? <img src="https://img.fengqigang.cn//img/20210306112557.png" alt="20210306112557"></a></li>
         <li><a href="#若在ext2下新建一个100kb的文件block为4kb-ext2会怎么做">若在ext2下新建一个100KB的文件，block为4KB, ext2会怎么做?</a></li>
-        <li><a href="#linux是如何读取-etcpasswd这个文件的20210306115242httpsimgfengqigangcnimg20210306115242png">linux是如何读取 <strong>/etc/passwd</strong>这个文件的?<img src="https://img.fengqigang.cn//img/20210306115242.png" alt="20210306115242"></a></li>
+        <li><a href="#ext2是如何读取-etcpasswd这个文件的20210306115242httpsimgfengqigangcnimg20210306115242png">ext2是如何读取 <strong>/etc/passwd</strong>这个文件的?<img src="https://img.fengqigang.cn//img/20210306115242.png" alt="20210306115242"></a></li>
+        <li><a href="#如何需要新建一个文件或目录时ext2是如何处理的呢">如何需要新建一个文件或目录时，Ext2是如何处理的呢?</a></li>
+        <li><a href="#若在新建一个文件的时候仅写入-inode-table-及-data-block--但因突然停电-inode-bitmap-与-block-bitmap-superblock都没有更新此时linux是如何解决这个问题的">若在新建一个文件的时候，仅写入 <strong>inode table</strong> 及 <strong>data block</strong> ， 但因突然停电 <strong>inode bitmap</strong> 与 <strong>block bitmap</strong>, <strong>superblock</strong>都没有更新，此时linux是如何解决这个问题的?</a></li>
+        <li><a href="#---是什么关系"><strong>/ /. /..</strong> 是什么关系?</a></li>
+        <li><a href="#如何将系统内所有的文件系统列出来">如何将系统内所有的文件系统列出来?</a></li>
+        <li><a href="#如何将系统内所有的文件系统更出来同时容量结果以易读的容量格式显示出来">如何将系统内所有的文件系统更出来同时容量结果以易读的容量格式显示出来?</a></li>
+        <li><a href="#如何将系统内所有特殊文件格式入名称及名称都列出来-如-proc-挂载点的文件">如何将系统内所有特殊文件格式入名称及名称都列出来, 如 <strong>/proc</strong> 挂载点的文件?</a></li>
+        <li><a href="#如何将-etc-下面的可用的磁盘容量以容量以易读的容量格式显示">如何将 <strong>/etc</strong> 下面的可用的磁盘容量以容量以易读的容量格式显示?</a></li>
+        <li><a href="#如何将目前各个分区当中可用的-inode-数量列出">如何将目前各个分区当中可用的 <strong>inode</strong> 数量列出?</a></li>
+        <li><a href="#如何列出目录下所有目录的容量包括自己">如何列出目录下所有目录的容量，包括自己?</a></li>
+        <li><a href="#如何列出目录下所有文件的容量">如何列出目录下所有文件的容量?</a></li>
+        <li><a href="#如何检查根目录下面每个目录所占用的容量">如何检查根目录下面每个目录所占用的容量?</a></li>
+        <li><a href="#hard-link的原理是什么样的">hard link的原理是什么样的?</a></li>
       </ul>
     </li>
   </ul>
@@ -177,7 +189,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210306104037.png"
         title="20210306104037" /></p>
-<h3 id="为什么在window系统下常听到磁盘整理">为什么在window系统下常听到磁盘整理？</h3>
+<h3 id="为什么在window系统下常听到需要磁盘整理">为什么在window系统下常听到需要磁盘整理？</h3>
 <p>如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来</p>
 <p><strong>其采取的方法是这样的</strong></p>
 <p><img
@@ -195,6 +207,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 <p>4046 * 10000 / 1024 / 1024 = 38. 58MB</p>
 <h3 id="如何找出目前系统有被格式化的设备">如何找出目前系统有被格式化的设备?</h3>
 <p><strong>blkid</strong></p>
+<p>**** locate/print block device attributes ****</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -269,8 +282,8 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210306112557.png"
         title="20210306112557" /></h3>
-<p>因为这个目录是一个虚拟文件系统(virtual filestem). 它放置的数据都是在内在当中。</p>
-<p>因为这个目录下的数据都是在内在当中，所以本身不占任何硬盘空间。</p>
+<p>因为这个目录是一个虚拟文件系统(virtual filestem). 它放置的数据都是在内存当中。</p>
+<p>因为这个目录下的数据都是在内存当中，所以本身不占任何硬盘空间。</p>
 <h3 id="若在ext2下新建一个100kb的文件block为4kb-ext2会怎么做">若在ext2下新建一个100KB的文件，block为4KB, ext2会怎么做?</h3>
 <p>在linux下的ext2新建一个文件时，ext2分分配一个inode与相对于该文件大小的block数量给该文件。</p>
 <p>当文件为100KB时，linux会分配一个 <strong>inode</strong>, 与25个 <strong>block</strong>来记录数据</p>
@@ -283,7 +296,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210306114906.png"
         title="20210306114906" /></p>
-<h3 id="linux是如何读取-etcpasswd这个文件的20210306115242httpsimgfengqigangcnimg20210306115242png">linux是如何读取 <strong>/etc/passwd</strong>这个文件的?<img
+<h3 id="ext2是如何读取-etcpasswd这个文件的20210306115242httpsimgfengqigangcnimg20210306115242png">ext2是如何读取 <strong>/etc/passwd</strong>这个文件的?<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://img.fengqigang.cn//img/20210306115242.png"
@@ -293,16 +306,16 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         title="20210306115242" /></h3>
 <ol>
 <li>
-<p>**/**的 inode: 通过挂载点的信息找到inode号码为2的根目录inode, 且 <strong>inode</strong> 规范的权限让我们可以读该block的内容(有r与x)</p>
+<p>**/** 的 inode: 通过挂载点的信息找到inode号码为2的根目录inode, 且 <strong>inode</strong> 规范的权限让我们可以读该block的内容(有r与x)</p>
 </li>
 <li>
-<p>**/**的 block: 通过上个步骤取得block的号码，并找到该内容有 <strong>/etc</strong> inode号码(5767169)</p>
+<p>**/** 的 block: 通过上个步骤取得block的号码，并找到该内容有 <strong>/etc</strong> inode号码(5767169)</p>
 </li>
 <li>
-<p>**etc/**的 inode: 读取5767169号 inode 得知feng具有r与x权限，因此可以读取 <strong>etc/</strong> 的block内容</p>
+<p>**etc/** 的 inode: 读取5767169号 inode 得知feng具有r与x权限，因此可以读取 <strong>etc/</strong> 的block内容</p>
 </li>
 <li>
-<p>**etc/**的 block: 经过上个步骤取得block号码，并找到有 <strong>passwd</strong> 文件的 <strong>inode</strong> 号码 (5775935)</p>
+<p>**etc/** 的 block: 经过上个步骤取得block号码，并找到有 <strong>passwd</strong> 文件的 <strong>inode</strong> 号码 (5775935)</p>
 </li>
 <li>
 <p><strong>passwd</strong> 的inode: 读取 5775935 号inode得知feng具有r的权限，因此可以读取<strong>passwd</strong>的内容</p>
@@ -311,6 +324,145 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 <p><strong>passwd</strong> 的block: 最后将该block内容的数据读出来</p>
 </li>
 </ol>
+<h3 id="如何需要新建一个文件或目录时ext2是如何处理的呢">如何需要新建一个文件或目录时，Ext2是如何处理的呢?</h3>
+<ol>
+<li>
+<p>先确定用户对欲添加文件的目录是否具有w与x的权限，若有的话才能添加</p>
+</li>
+<li>
+<p>根据 <strong>inode bitmap</strong> 找到没有使用的 <strong>inode</strong> 号码， 并将新文件的权限/属性写入</p>
+</li>
+<li>
+<p>根据 <strong>block bit map</strong> 找到没有使用的 <strong>block</strong> 号码， 并将实际的数据写入 <strong>block</strong> 中， 且更新 <strong>inode</strong> 的 <strong>block</strong> 指向数据</p>
+</li>
+<li>
+<p>将刚才写入的 <strong>inode</strong> 与 <strong>block</strong> 数据同步更新 <strong>inode bitmap</strong> 与 <strong>block bitmap</strong>, 并更新<strong>superblock</strong>的内容</p>
+</li>
+</ol>
+<h3 id="若在新建一个文件的时候仅写入-inode-table-及-data-block--但因突然停电-inode-bitmap-与-block-bitmap-superblock都没有更新此时linux是如何解决这个问题的">若在新建一个文件的时候，仅写入 <strong>inode table</strong> 及 <strong>data block</strong> ， 但因突然停电 <strong>inode bitmap</strong> 与 <strong>block bitmap</strong>, <strong>superblock</strong>都没有更新，此时linux是如何解决这个问题的?</h3>
+<p><strong>文件系统中会规划出一个块，该块专门记录写入或修订文件时的步骤</strong></p>
+<ol>
+<li>
+<p>预备: 当系统要写入一个文件时，会先在日志记录块中记录某个文件准备要写入的信息</p>
+</li>
+<li>
+<p>实际写入: 开始写入文件的权限与数据；开始更新meta data的数据</p>
+</li>
+<li>
+<p>结束: 完成数据与 meta data 的更新后，在日志记录块当中完成文件的记录</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307101155.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307101155.png, https://img.fengqigang.cn//img/20210307101155.png 1.5x, https://img.fengqigang.cn//img/20210307101155.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307101155.png"
+        title="20210307101155" /></p>
+<h3 id="---是什么关系"><strong>/ /. /..</strong> 是什么关系?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307102029.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307102029.png, https://img.fengqigang.cn//img/20210307102029.png 1.5x, https://img.fengqigang.cn//img/20210307102029.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307102029.png"
+        title="20210307102029" /></p>
+<p><strong>/ /. /..</strong> 三个文件所对应的 <strong>inode</strong> 是2, 它们都是相同的，所以这几个文件是相同的</p>
+<h3 id="如何将系统内所有的文件系统列出来">如何将系统内所有的文件系统列出来?</h3>
+<p><strong>df</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307102439.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307102439.png, https://img.fengqigang.cn//img/20210307102439.png 1.5x, https://img.fengqigang.cn//img/20210307102439.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307102439.png"
+        title="20210307102439" /></p>
+<h3 id="如何将系统内所有的文件系统更出来同时容量结果以易读的容量格式显示出来">如何将系统内所有的文件系统更出来同时容量结果以易读的容量格式显示出来?</h3>
+<p><strong>df -h</strong></p>
+<p><strong>-h, &ndash;human-readable</strong></p>
+<p>print sizes in powers of 1024</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307102604.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307102604.png, https://img.fengqigang.cn//img/20210307102604.png 1.5x, https://img.fengqigang.cn//img/20210307102604.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307102604.png"
+        title="20210307102604" /></p>
+<h3 id="如何将系统内所有特殊文件格式入名称及名称都列出来-如-proc-挂载点的文件">如何将系统内所有特殊文件格式入名称及名称都列出来, 如 <strong>/proc</strong> 挂载点的文件?</h3>
+<p><strong>df -aT</strong></p>
+<p><strong>-a, &ndash;all</strong></p>
+<p>include pseudo, duplicate, inaccessible file systems</p>
+<p><strong>-T, &ndash;print-type</strong></p>
+<p>print file system type</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307103044.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307103044.png, https://img.fengqigang.cn//img/20210307103044.png 1.5x, https://img.fengqigang.cn//img/20210307103044.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307103044.png"
+        title="20210307103044" /></p>
+<h3 id="如何将-etc-下面的可用的磁盘容量以容量以易读的容量格式显示">如何将 <strong>/etc</strong> 下面的可用的磁盘容量以容量以易读的容量格式显示?</h3>
+<p><strong>df -h /etc</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307103234.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307103234.png, https://img.fengqigang.cn//img/20210307103234.png 1.5x, https://img.fengqigang.cn//img/20210307103234.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307103234.png"
+        title="20210307103234" /></p>
+<h3 id="如何将目前各个分区当中可用的-inode-数量列出">如何将目前各个分区当中可用的 <strong>inode</strong> 数量列出?</h3>
+<p><strong>df -ih</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307103412.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307103412.png, https://img.fengqigang.cn//img/20210307103412.png 1.5x, https://img.fengqigang.cn//img/20210307103412.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307103412.png"
+        title="20210307103412" /></p>
+<h3 id="如何列出目录下所有目录的容量包括自己">如何列出目录下所有目录的容量，包括自己?</h3>
+<p><strong>du</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307103915.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307103915.png, https://img.fengqigang.cn//img/20210307103915.png 1.5x, https://img.fengqigang.cn//img/20210307103915.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307103915.png"
+        title="20210307103915" /></p>
+<h3 id="如何列出目录下所有文件的容量">如何列出目录下所有文件的容量?</h3>
+<p><strong>du -a</strong></p>
+<p><strong>-a, &ndash;all</strong></p>
+<p>write counts for all files, not just directories</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307104030.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307104030.png, https://img.fengqigang.cn//img/20210307104030.png 1.5x, https://img.fengqigang.cn//img/20210307104030.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307104030.png"
+        title="20210307104030" /></p>
+<h3 id="如何检查根目录下面每个目录所占用的容量">如何检查根目录下面每个目录所占用的容量?</h3>
+<p><strong>sudo du -sm /</strong>*</p>
+<p><strong>-s, &ndash;summarize</strong></p>
+<p>display only a total for each argument</p>
+<p><strong>-m</strong></p>
+<p>like &ndash;block-size=1M</p>
+<h3 id="hard-link的原理是什么样的">hard link的原理是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210307104833.png"
+        data-srcset="https://img.fengqigang.cn//img/20210307104833.png, https://img.fengqigang.cn//img/20210307104833.png 1.5x, https://img.fengqigang.cn//img/20210307104833.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210307104833.png"
+        title="20210307104833" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

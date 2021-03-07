@@ -105,19 +105,19 @@
 在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
 inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
 block: 实际记录文件的内容，若文件太大时，会占用多个block
-为什么在window系统下常听到磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+为什么在window系统下常听到需要磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
 其采取的方法是这样的
 当数据过于离散的时候，读取一个文件有可能要转好几圈。
 若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
 则一个文件将浪费4096 - 50 = 4046 Bytes.
 4046 * 10000 / 1024 / 1024 = 38. 58MB
 如何找出目前系统有被格式化的设备? blkid
+**** locate/print block device attributes ****
 每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
 则若一个block为1KB,
 12个直接: 12 x 1KB = 12KB
 1个间接: 256 x 1KB = 256KB
-每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录
-1个双间接: 256 x 256 x 1KB = $256^2$ KB</div><div class="post-footer">
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
