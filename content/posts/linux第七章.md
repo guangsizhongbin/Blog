@@ -230,6 +230,135 @@ like --block-size=1M
 
 ### hard link的原理是什么样的?
 
+因为:
+
+1. 每个文件都会占用一个 **inode**, 文件内容由 **inode** 的记录来指向
+
+2. 想要读取该文件，必须要经过目录记录的文件名来指向到正确的 **inode** 号码才能读取
+
+文件名只与目录有关，但是文件内容则与 **inode** 有关
+
 ![20210307104833](https://img.fengqigang.cn//img/20210307104833.png)
+
+![20210308094950](https://img.fengqigang.cn//img/20210308094950.png)
+
+**1** 和 **2** 都是通过自己的目录的 **inode** 指定的 **block** 找到两个不同的文件名，最终都可以通过 **real** 的 指向的 **inode** 来读取数据
+
+### 可以用 hard link制作目录吗? 为什么呢?
+
+不行
+
+
+![20210308095320](https://img.fengqigang.cn//img/20210308095320.png)
+
+**hard link** 链接到目录时，链接的数据需要连同被链接目录下面的所有数据都创建链接，会造成环境相当大的复杂度。
+
+### symbolic link的原理是什么样的?
+
+![20210308095657](https://img.fengqigang.cn//img/20210308095657.png)
+
+两个文件指向不同的 **inode** , 所以这是两个不同的文件
+
+**456.md** 有6 Bytes，是因为 **456.md** 占6个Bytes.
+
+![20210308095832](https://img.fengqigang.cn//img/20210308095832.png)
+
+**Symbolic Link** 相当于 **Window** 的快捷方式
+
+### 在创建一个新的目录的时候，它的默认link是多少?
+
+![20210308100204](https://img.fengqigang.cn//img/20210308100204.png)
+
+新的目录会有 **/video** ,  **/video/.** ,  **/video/..**
+
+其中 **/video** 与 **/video/.** 相同
+
+**/video** 指代上一目录
+
+因此， 在创建新目录时, 新目录的 **link** 为2, 而上层目录的 **link** 数会增加1
+
+![20210308100513](https://img.fengqigang.cn//img/20210308100513.png)
+
+### 如何列出当前系统上的所有磁盘列表?
+
+**lsblk** list block device
+
+![20210308100748](https://img.fengqigang.cn//img/20210308100748.png)
+
+### 如何只列出 /dev/sda 设备内的所有数据的完整文件名?
+
+**lsblk -ip /dev/sda**
+
+**-i, --ascii**
+
+Use ASCII characters for tree formatting
+
+**-p, --paths**
+
+Print full device paths
+
+![20210308101417](https://img.fengqigang.cn//img/20210308101417.png)
+
+### 什么是设备的UUID?如何获取?
+
+UUID 是全域单一识别码 (universally unique identifier)
+
+Linux会将系统内的所有设备都给予一个独一无二的识别码, 这个识别码就可以拿来作为挂载或者是使用这个设备/文件系统之用了
+
+![20210308101742](https://img.fengqigang.cn//img/20210308101742.png)
+
+### 如何输出 **/dev/sda** 的分区信息?
+
+**sudo parted /dev/sda print**
+
+**print**
+
+Display the partition table.
+
+![20210308101933](https://img.fengqigang.cn//img/20210308101933.png)
+
+### **MBR** 分区表和 **GPT** 分区表使用什么工具来分区?
+
+**MBR** 分区表使用 **fdisk**
+
+**GPT** 分区表使用 **gdisk**
+
+### ![20210308104750](https://img.fengqigang.cn//img/20210308104750.png)如何将 **/vdb** 分成GPT分区表，创建 **/vdb1** 和 **/vdb2** 各10G的ext4格式的分区?
+
+
+1. 建立 **GPT** 分区表
+
+![20210308112112](https://img.fengqigang.cn//img/20210308112112.png)
+
+2. 分区
+
+![20210308113632](https://img.fengqigang.cn//img/20210308113632.png)
+
+3. 格式化
+
+![20210308113321](https://img.fengqigang.cn//img/20210308113321.png)
+
+
+![20210308113844](https://img.fengqigang.cn//img/20210308113844.png)
+
+### 如何挂载centos光盘到 **/data/cdrom** 吗?![20210308114303](https://img.fengqigang.cn//img/20210308114303.png)
+
+**mount /dev/sr0 /data/cdrom**
+
+![20210308114231](https://img.fengqigang.cn//img/20210308114231.png)
+
+### 如何找出 **/dev/vdb1** 的UUID, 并以UUID挂载到/data/xfs
+
+1. 找出UUID
+
+![20210308114530](https://img.fengqigang.cn//img/20210308114530.png)
+
+2. 挂载
+
+![20210308114650](https://img.fengqigang.cn//img/20210308114650.png)
+
+
+
+
 
 
