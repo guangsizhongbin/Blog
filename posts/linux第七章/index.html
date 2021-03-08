@@ -59,7 +59,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  335 ,
+        },"genre": "posts","keywords": "linux","wordcount":  485 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/","datePublished": "2021-03-06T12:32:45+08:00","dateModified": "2021-03-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -136,8 +136,8 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第七章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;335 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;485 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -171,6 +171,17 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         <li><a href="#如何列出目录下所有文件的容量">如何列出目录下所有文件的容量?</a></li>
         <li><a href="#如何检查根目录下面每个目录所占用的容量">如何检查根目录下面每个目录所占用的容量?</a></li>
         <li><a href="#hard-link的原理是什么样的">hard link的原理是什么样的?</a></li>
+        <li><a href="#可以用-hard-link制作目录吗-为什么呢">可以用 hard link制作目录吗? 为什么呢?</a></li>
+        <li><a href="#symbolic-link的原理是什么样的">symbolic link的原理是什么样的?</a></li>
+        <li><a href="#在创建一个新的目录的时候它的默认link是多少">在创建一个新的目录的时候，它的默认link是多少?</a></li>
+        <li><a href="#如何列出当前系统上的所有磁盘列表">如何列出当前系统上的所有磁盘列表?</a></li>
+        <li><a href="#如何只列出-devsda-设备内的所有数据的完整文件名">如何只列出 /dev/sda 设备内的所有数据的完整文件名?</a></li>
+        <li><a href="#什么是设备的uuid如何获取">什么是设备的UUID?如何获取?</a></li>
+        <li><a href="#如何输出-devsda-的分区信息">如何输出 <strong>/dev/sda</strong> 的分区信息?</a></li>
+        <li><a href="#mbr-分区表和-gpt-分区表使用什么工具来分区"><strong>MBR</strong> 分区表和 <strong>GPT</strong> 分区表使用什么工具来分区?</a></li>
+        <li><a href="#20210308104750httpsimgfengqigangcnimg20210308104750png如何将-vdb-分成gpt分区表创建-vdb1-和-vdb2-各10g的ext4格式的分区"><img src="https://img.fengqigang.cn//img/20210308104750.png" alt="20210308104750">如何将 <strong>/vdb</strong> 分成GPT分区表，创建 <strong>/vdb1</strong> 和 <strong>/vdb2</strong> 各10G的ext4格式的分区?</a></li>
+        <li><a href="#如何挂载centos光盘到-datacdrom-吗20210308114303httpsimgfengqigangcnimg20210308114303png">如何挂载centos光盘到 <strong>/data/cdrom</strong> 吗?<img src="https://img.fengqigang.cn//img/20210308114303.png" alt="20210308114303"></a></li>
+        <li><a href="#如何找出-devvdb1-的uuid-并以uuid挂载到dataxfs">如何找出 <strong>/dev/vdb1</strong> 的UUID, 并以UUID挂载到/data/xfs</a></li>
       </ul>
     </li>
   </ul>
@@ -455,6 +466,16 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 <p><strong>-m</strong></p>
 <p>like &ndash;block-size=1M</p>
 <h3 id="hard-link的原理是什么样的">hard link的原理是什么样的?</h3>
+<p>因为:</p>
+<ol>
+<li>
+<p>每个文件都会占用一个 <strong>inode</strong>, 文件内容由 <strong>inode</strong> 的记录来指向</p>
+</li>
+<li>
+<p>想要读取该文件，必须要经过目录记录的文件名来指向到正确的 <strong>inode</strong> 号码才能读取</p>
+</li>
+</ol>
+<p>文件名只与目录有关，但是文件内容则与 <strong>inode</strong> 有关</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -463,6 +484,206 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210307104833.png"
         title="20210307104833" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308094950.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308094950.png, https://img.fengqigang.cn//img/20210308094950.png 1.5x, https://img.fengqigang.cn//img/20210308094950.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308094950.png"
+        title="20210308094950" /></p>
+<p><strong>1</strong> 和 <strong>2</strong> 都是通过自己的目录的 <strong>inode</strong> 指定的 <strong>block</strong> 找到两个不同的文件名，最终都可以通过 <strong>real</strong> 的 指向的 <strong>inode</strong> 来读取数据</p>
+<h3 id="可以用-hard-link制作目录吗-为什么呢">可以用 hard link制作目录吗? 为什么呢?</h3>
+<p>不行</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308095320.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308095320.png, https://img.fengqigang.cn//img/20210308095320.png 1.5x, https://img.fengqigang.cn//img/20210308095320.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308095320.png"
+        title="20210308095320" /></p>
+<p><strong>hard link</strong> 链接到目录时，链接的数据需要连同被链接目录下面的所有数据都创建链接，会造成环境相当大的复杂度。</p>
+<h3 id="symbolic-link的原理是什么样的">symbolic link的原理是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308095657.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308095657.png, https://img.fengqigang.cn//img/20210308095657.png 1.5x, https://img.fengqigang.cn//img/20210308095657.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308095657.png"
+        title="20210308095657" /></p>
+<p>两个文件指向不同的 <strong>inode</strong> , 所以这是两个不同的文件</p>
+<p><strong>456.md</strong> 有6 Bytes，是因为 <strong>456.md</strong> 占6个Bytes.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308095832.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308095832.png, https://img.fengqigang.cn//img/20210308095832.png 1.5x, https://img.fengqigang.cn//img/20210308095832.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308095832.png"
+        title="20210308095832" /></p>
+<p><strong>Symbolic Link</strong> 相当于 <strong>Window</strong> 的快捷方式</p>
+<h3 id="在创建一个新的目录的时候它的默认link是多少">在创建一个新的目录的时候，它的默认link是多少?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308100204.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308100204.png, https://img.fengqigang.cn//img/20210308100204.png 1.5x, https://img.fengqigang.cn//img/20210308100204.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308100204.png"
+        title="20210308100204" /></p>
+<p>新的目录会有 <strong>/video</strong> ,  <strong>/video/.</strong> ,  <strong>/video/..</strong></p>
+<p>其中 <strong>/video</strong> 与 <strong>/video/.</strong> 相同</p>
+<p><strong>/video</strong> 指代上一目录</p>
+<p>因此， 在创建新目录时, 新目录的 <strong>link</strong> 为2, 而上层目录的 <strong>link</strong> 数会增加1</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308100513.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308100513.png, https://img.fengqigang.cn//img/20210308100513.png 1.5x, https://img.fengqigang.cn//img/20210308100513.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308100513.png"
+        title="20210308100513" /></p>
+<h3 id="如何列出当前系统上的所有磁盘列表">如何列出当前系统上的所有磁盘列表?</h3>
+<p><strong>lsblk</strong> list block device</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308100748.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308100748.png, https://img.fengqigang.cn//img/20210308100748.png 1.5x, https://img.fengqigang.cn//img/20210308100748.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308100748.png"
+        title="20210308100748" /></p>
+<h3 id="如何只列出-devsda-设备内的所有数据的完整文件名">如何只列出 /dev/sda 设备内的所有数据的完整文件名?</h3>
+<p><strong>lsblk -ip /dev/sda</strong></p>
+<p><strong>-i, &ndash;ascii</strong></p>
+<p>Use ASCII characters for tree formatting</p>
+<p><strong>-p, &ndash;paths</strong></p>
+<p>Print full device paths</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308101417.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308101417.png, https://img.fengqigang.cn//img/20210308101417.png 1.5x, https://img.fengqigang.cn//img/20210308101417.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308101417.png"
+        title="20210308101417" /></p>
+<h3 id="什么是设备的uuid如何获取">什么是设备的UUID?如何获取?</h3>
+<p>UUID 是全域单一识别码 (universally unique identifier)</p>
+<p>Linux会将系统内的所有设备都给予一个独一无二的识别码, 这个识别码就可以拿来作为挂载或者是使用这个设备/文件系统之用了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308101742.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308101742.png, https://img.fengqigang.cn//img/20210308101742.png 1.5x, https://img.fengqigang.cn//img/20210308101742.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308101742.png"
+        title="20210308101742" /></p>
+<h3 id="如何输出-devsda-的分区信息">如何输出 <strong>/dev/sda</strong> 的分区信息?</h3>
+<p><strong>sudo parted /dev/sda print</strong></p>
+<p><strong>print</strong></p>
+<p>Display the partition table.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308101933.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308101933.png, https://img.fengqigang.cn//img/20210308101933.png 1.5x, https://img.fengqigang.cn//img/20210308101933.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308101933.png"
+        title="20210308101933" /></p>
+<h3 id="mbr-分区表和-gpt-分区表使用什么工具来分区"><strong>MBR</strong> 分区表和 <strong>GPT</strong> 分区表使用什么工具来分区?</h3>
+<p><strong>MBR</strong> 分区表使用 <strong>fdisk</strong></p>
+<p><strong>GPT</strong> 分区表使用 <strong>gdisk</strong></p>
+<h3 id="20210308104750httpsimgfengqigangcnimg20210308104750png如何将-vdb-分成gpt分区表创建-vdb1-和-vdb2-各10g的ext4格式的分区"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308104750.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308104750.png, https://img.fengqigang.cn//img/20210308104750.png 1.5x, https://img.fengqigang.cn//img/20210308104750.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308104750.png"
+        title="20210308104750" />如何将 <strong>/vdb</strong> 分成GPT分区表，创建 <strong>/vdb1</strong> 和 <strong>/vdb2</strong> 各10G的ext4格式的分区?</h3>
+<ol>
+<li>建立 <strong>GPT</strong> 分区表</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308112112.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308112112.png, https://img.fengqigang.cn//img/20210308112112.png 1.5x, https://img.fengqigang.cn//img/20210308112112.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308112112.png"
+        title="20210308112112" /></p>
+<ol start="2">
+<li>分区</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308113632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308113632.png, https://img.fengqigang.cn//img/20210308113632.png 1.5x, https://img.fengqigang.cn//img/20210308113632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308113632.png"
+        title="20210308113632" /></p>
+<ol start="3">
+<li>格式化</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308113321.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308113321.png, https://img.fengqigang.cn//img/20210308113321.png 1.5x, https://img.fengqigang.cn//img/20210308113321.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308113321.png"
+        title="20210308113321" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308113844.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308113844.png, https://img.fengqigang.cn//img/20210308113844.png 1.5x, https://img.fengqigang.cn//img/20210308113844.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308113844.png"
+        title="20210308113844" /></p>
+<h3 id="如何挂载centos光盘到-datacdrom-吗20210308114303httpsimgfengqigangcnimg20210308114303png">如何挂载centos光盘到 <strong>/data/cdrom</strong> 吗?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308114303.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308114303.png, https://img.fengqigang.cn//img/20210308114303.png 1.5x, https://img.fengqigang.cn//img/20210308114303.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308114303.png"
+        title="20210308114303" /></h3>
+<p><strong>mount /dev/sr0 /data/cdrom</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308114231.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308114231.png, https://img.fengqigang.cn//img/20210308114231.png 1.5x, https://img.fengqigang.cn//img/20210308114231.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308114231.png"
+        title="20210308114231" /></p>
+<h3 id="如何找出-devvdb1-的uuid-并以uuid挂载到dataxfs">如何找出 <strong>/dev/vdb1</strong> 的UUID, 并以UUID挂载到/data/xfs</h3>
+<ol>
+<li>找出UUID</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308114530.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308114530.png, https://img.fengqigang.cn//img/20210308114530.png 1.5x, https://img.fengqigang.cn//img/20210308114530.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308114530.png"
+        title="20210308114530" /></p>
+<ol start="2">
+<li>挂载</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210308114650.png"
+        data-srcset="https://img.fengqigang.cn//img/20210308114650.png, https://img.fengqigang.cn//img/20210308114650.png 1.5x, https://img.fengqigang.cn//img/20210308114650.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210308114650.png"
+        title="20210308114650" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
