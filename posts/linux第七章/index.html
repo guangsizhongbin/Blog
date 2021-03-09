@@ -59,7 +59,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  661 ,
+        },"genre": "posts","keywords": "linux","wordcount":  665 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/","datePublished": "2021-03-06T12:32:45+08:00","dateModified": "2021-03-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -136,7 +136,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第七章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;661 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;665 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -758,6 +758,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 <p>count=N</p>
 <p>copy only N input blocks</p>
 <h3 id="如何在原本的分区不更动原有的环境下制作出一个新的分区">如何在原本的分区不更动原有的环境下制作出一个新的分区?</h3>
+<p><strong>注意一开始就要使用root用户</strong></p>
 <ol>
 <li>新创建一个分区, 假设是512M的文件</li>
 </ol>
@@ -786,6 +787,18 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 <li>挂载</li>
 </ol>
 <p><strong>mount -o loop UUID=&ldquo;6fcbfc5b-f7b6-4e11-a845-adadb3d4dce0&rdquo; /mnt</strong></p>
+<ol start="4">
+<li>查看是否挂载上</li>
+</ol>
+<p><strong>df /mnt</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210309151319.png"
+        data-srcset="https://img.fengqigang.cn//img/20210309151319.png, https://img.fengqigang.cn//img/20210309151319.png 1.5x, https://img.fengqigang.cn//img/20210309151319.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210309151319.png"
+        title="20210309151319" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
