@@ -416,6 +416,8 @@ copy only N input blocks
 
 ###  如何在原本的分区不更动原有的环境下制作出一个新的分区?
 
+**注意一开始就要使用root用户**
+
 1. 新创建一个分区, 假设是512M的文件
 
 **dd if=/dev/zero of=/tmp/512 bs=1M count=512**
@@ -431,6 +433,12 @@ copy only N input blocks
 3. 挂载
 
 **mount -o loop UUID="6fcbfc5b-f7b6-4e11-a845-adadb3d4dce0" /mnt**
+
+4. 查看是否挂载上
+
+**df /mnt**
+
+![20210309151319](https://img.fengqigang.cn//img/20210309151319.png)
 
 
 
