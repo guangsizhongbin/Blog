@@ -358,6 +358,82 @@ Display the partition table.
 ![20210308114650](https://img.fengqigang.cn//img/20210308114650.png)
 
 
+### 如何将 **/var** 挂载到另外一个目录去，而不是挂载整个 **/**?
+
+**sudo mount --bind /var /data/var**
+
+**-B, --bind**
+
+Remount a subtree somewhere else (so that its contents are available in both places).
+
+![20210309104625](https://img.fengqigang.cn//img/20210309104625.png)
+
+### 如何将 **/data/var** 设备卸载?
+
+**umount /data/var**
+
+![20210309105006](https://img.fengqigang.cn//img/20210309105006.png)
+
+### 假设要将 **/dev/nvme0n1p1** 每次开机才自动挂载到 **/data/var**, 该如何进行? ![20210309110318](https://img.fengqigang.cn//img/20210309110318.png) 
+
+1. 填写 **/etc/fstab**
+
+![20210309110410](https://img.fengqigang.cn//img/20210309110410.png)
+
+2. 测试是否能载入
+
+![20210309110453](https://img.fengqigang.cn//img/20210309110453.png)
+
+### 万一 **/etc/fstab** 输入的数据错误， 导致无法顺利开机成功，而进入单人维护模式当中， **/** 是 **read only**, 无法修改 **/etc/fstab** , 该怎么办?
+
+**/etc/fstab** 是开机时的配置文件，不过，实际 **filesystem** 的挂载是记录到 **/etc/mtab** 与 **/proc/mounts** 这两个文件当中的, 每次在更动 **filestem** 的挂载时，也会同时更动这两个文件.
+
+**mount -n -o remount, rw /**
+
+-n, --no-mtab
+
+Mount without writing in **/etc/mtab**. This is necessary for example when **/etc** is on a read-only filesystem.
+
+-o, --options opts
+
+Use the specified mount option. THe opts argument is a comma-separeated list.
+
+remount
+
+Attempt to remount an already-mounted filesystem. This is commonly used to change the mount flags for filesystem, especially to make a readonly filesystem writable.
+
+### 如何创建一个 512M 的文件在 /tmp 下?
+
+**dd if=/dev/zero of=/tmp/512 bs=1M count=512**
+
+bs=BYTES
+
+read and write up to BYTES bytes at a time(default: 512); overrides ibs and obs
+
+count=N
+
+copy only N input blocks
+
+###  如何在原本的分区不更动原有的环境下制作出一个新的分区?
+
+1. 新创建一个分区, 假设是512M的文件
+
+**dd if=/dev/zero of=/tmp/512 bs=1M count=512**
+
+![20210309112236](https://img.fengqigang.cn//img/20210309112236.png)
+
+2. 格式化
+
+**mkfs.xfs -f /tmp/512**
+
+![20210309112259](https://img.fengqigang.cn//img/20210309112259.png)
+
+3. 挂载
+
+**mount -o loop UUID="6fcbfc5b-f7b6-4e11-a845-adadb3d4dce0" /mnt**
+
+
+
 
 
 
