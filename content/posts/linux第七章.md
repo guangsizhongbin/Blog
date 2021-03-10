@@ -440,6 +440,74 @@ copy only N input blocks
 
 ![20210309151319](https://img.fengqigang.cn//img/20210309151319.png)
 
+### ** swap ** 分区是干什么用的?
+
+**CPU** 所读取的数据都来自于内存，那当内存不足的时候，为了让后续的程序可以顺利的运行, 因此在内存中暂时不使用的程序与数据就会被挪 **swap** 中了。 此时内存就会空出来给需要执行的程序载入。 由于 **swap** 是用磁盘来暂时放置内存中的信息, 所以用到 **swap** 时, 主机磁盘灯就会开始闪个不停。
+
+### 如何分出 **512M** 磁盘分区作为 **swap** ?
+
+1. 分区
+
+![20210310091916](https://img.fengqigang.cn//img/20210310091916.png)
+
+![20210310091957](https://img.fengqigang.cn//img/20210310091957.png)
+
+2. 创建 **swap** 格式
+
+![20210310092109](https://img.fengqigang.cn//img/20210310092109.png)
+
+3. 观察并载入
+
+![20210310092208](https://img.fengqigang.cn//img/20210310092208.png)
+
+![20210310092234](https://img.fengqigang.cn//img/20210310092234.png)
+
+![20210310092650](https://img.fengqigang.cn//img/20210310092650.png)
+
+![20210310092614](https://img.fengqigang.cn//img/20210310092614.png)
+
+
+### 如何使用文件创建 **swap** (/home/feng/swap)下
+
+1. **dd if=/dev/zero of=/home/feng/swap bs=1M count=128**
+
+![20210310093405](https://img.fengqigang.cn//img/20210310093405.png)
+
+2. **mkswap /tmp/feng/swap**
+
+![20210310093438](https://img.fengqigang.cn//img/20210310093438.png)
+
+3. **swapon /tmp/feng/swap**
+
+![20210310094055](https://img.fengqigang.cn//img/20210310094055.png)
+
+4. **swapon -s**
+
+![20210310094114](https://img.fengqigang.cn//img/20210310094114.png)
+
+### 如何取消掉 **swap** , 并设置自动启用?
+
+1. 设置 **/etc/fstab**
+
+![20210310094317](https://img.fengqigang.cn//img/20210310094317.png)
+
+
+2. **swapoff /home/feng/swap**
+
+![20210310094719](https://img.fengqigang.cn//img/20210310094719.png)
+
+### ![20210310095229](https://img.fengqigang.cn//img/20210310095229.png)为什么 **4Bytes** 的文件要占用4K的容量?
+
+1. 整个文件系统中包括 **superblock** , **indoe** , **table**与其他中介数据都会浪费磁盘容量.
+
+2. crontab 虽然只有 **4Bytes**, 但它会用整个 **block** (每个block为4K)
+
+
+
+
+
+
+
 
 
 
