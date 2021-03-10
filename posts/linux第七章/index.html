@@ -59,7 +59,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  665 ,
+        },"genre": "posts","keywords": "linux","wordcount":  729 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B8%83%E7%AB%A0\/","datePublished": "2021-03-06T12:32:45+08:00","dateModified": "2021-03-06T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -136,7 +136,7 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第七章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;665 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-06">2021-03-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;729 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -188,6 +188,11 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         <li><a href="#万一-etcfstab-输入的数据错误-导致无法顺利开机成功而进入单人维护模式当中--是-read-only-无法修改-etcfstab--该怎么办">万一 <strong>/etc/fstab</strong> 输入的数据错误， 导致无法顺利开机成功，而进入单人维护模式当中， <strong>/</strong> 是 <strong>read only</strong>, 无法修改 <strong>/etc/fstab</strong> , 该怎么办?</a></li>
         <li><a href="#如何创建一个-512m-的文件在-tmp-下">如何创建一个 512M 的文件在 /tmp 下?</a></li>
         <li><a href="#如何在原本的分区不更动原有的环境下制作出一个新的分区">如何在原本的分区不更动原有的环境下制作出一个新的分区?</a></li>
+        <li><a href="#-swap--分区是干什么用的">** swap ** 分区是干什么用的?</a></li>
+        <li><a href="#如何分出-512m-磁盘分区作为-swap-">如何分出 <strong>512M</strong> 磁盘分区作为 <strong>swap</strong> ?</a></li>
+        <li><a href="#如何使用文件创建-swap-homefengswap下">如何使用文件创建 <strong>swap</strong> (/home/feng/swap)下</a></li>
+        <li><a href="#如何取消掉-swap--并设置自动启用">如何取消掉 <strong>swap</strong> , 并设置自动启用?</a></li>
+        <li><a href="#20210310095229httpsimgfengqigangcnimg20210310095229png为什么-4bytes-的文件要占用4k的容量"><img src="https://img.fengqigang.cn//img/20210310095229.png" alt="20210310095229">为什么 <strong>4Bytes</strong> 的文件要占用4K的容量?</a></li>
       </ul>
     </li>
   </ul>
@@ -799,6 +804,158 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210309151319.png"
         title="20210309151319" /></p>
+<h3 id="-swap--分区是干什么用的">** swap ** 分区是干什么用的?</h3>
+<p><strong>CPU</strong> 所读取的数据都来自于内存，那当内存不足的时候，为了让后续的程序可以顺利的运行, 因此在内存中暂时不使用的程序与数据就会被挪 <strong>swap</strong> 中了。 此时内存就会空出来给需要执行的程序载入。 由于 <strong>swap</strong> 是用磁盘来暂时放置内存中的信息, 所以用到 <strong>swap</strong> 时, 主机磁盘灯就会开始闪个不停。</p>
+<h3 id="如何分出-512m-磁盘分区作为-swap-">如何分出 <strong>512M</strong> 磁盘分区作为 <strong>swap</strong> ?</h3>
+<ol>
+<li>分区</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310091916.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310091916.png, https://img.fengqigang.cn//img/20210310091916.png 1.5x, https://img.fengqigang.cn//img/20210310091916.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310091916.png"
+        title="20210310091916" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310091957.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310091957.png, https://img.fengqigang.cn//img/20210310091957.png 1.5x, https://img.fengqigang.cn//img/20210310091957.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310091957.png"
+        title="20210310091957" /></p>
+<ol start="2">
+<li>创建 <strong>swap</strong> 格式</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310092109.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310092109.png, https://img.fengqigang.cn//img/20210310092109.png 1.5x, https://img.fengqigang.cn//img/20210310092109.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310092109.png"
+        title="20210310092109" /></p>
+<ol start="3">
+<li>观察并载入</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310092208.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310092208.png, https://img.fengqigang.cn//img/20210310092208.png 1.5x, https://img.fengqigang.cn//img/20210310092208.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310092208.png"
+        title="20210310092208" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310092234.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310092234.png, https://img.fengqigang.cn//img/20210310092234.png 1.5x, https://img.fengqigang.cn//img/20210310092234.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310092234.png"
+        title="20210310092234" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310092650.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310092650.png, https://img.fengqigang.cn//img/20210310092650.png 1.5x, https://img.fengqigang.cn//img/20210310092650.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310092650.png"
+        title="20210310092650" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310092614.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310092614.png, https://img.fengqigang.cn//img/20210310092614.png 1.5x, https://img.fengqigang.cn//img/20210310092614.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310092614.png"
+        title="20210310092614" /></p>
+<h3 id="如何使用文件创建-swap-homefengswap下">如何使用文件创建 <strong>swap</strong> (/home/feng/swap)下</h3>
+<ol>
+<li><strong>dd if=/dev/zero of=/home/feng/swap bs=1M count=128</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310093405.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310093405.png, https://img.fengqigang.cn//img/20210310093405.png 1.5x, https://img.fengqigang.cn//img/20210310093405.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310093405.png"
+        title="20210310093405" /></p>
+<ol start="2">
+<li><strong>mkswap /tmp/feng/swap</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310093438.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310093438.png, https://img.fengqigang.cn//img/20210310093438.png 1.5x, https://img.fengqigang.cn//img/20210310093438.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310093438.png"
+        title="20210310093438" /></p>
+<ol start="3">
+<li><strong>swapon /tmp/feng/swap</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310094055.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310094055.png, https://img.fengqigang.cn//img/20210310094055.png 1.5x, https://img.fengqigang.cn//img/20210310094055.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310094055.png"
+        title="20210310094055" /></p>
+<ol start="4">
+<li><strong>swapon -s</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310094114.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310094114.png, https://img.fengqigang.cn//img/20210310094114.png 1.5x, https://img.fengqigang.cn//img/20210310094114.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310094114.png"
+        title="20210310094114" /></p>
+<h3 id="如何取消掉-swap--并设置自动启用">如何取消掉 <strong>swap</strong> , 并设置自动启用?</h3>
+<ol>
+<li>设置 <strong>/etc/fstab</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310094317.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310094317.png, https://img.fengqigang.cn//img/20210310094317.png 1.5x, https://img.fengqigang.cn//img/20210310094317.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310094317.png"
+        title="20210310094317" /></p>
+<ol start="2">
+<li><strong>swapoff /home/feng/swap</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310094719.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310094719.png, https://img.fengqigang.cn//img/20210310094719.png 1.5x, https://img.fengqigang.cn//img/20210310094719.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310094719.png"
+        title="20210310094719" /></p>
+<h3 id="20210310095229httpsimgfengqigangcnimg20210310095229png为什么-4bytes-的文件要占用4k的容量"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210310095229.png"
+        data-srcset="https://img.fengqigang.cn//img/20210310095229.png, https://img.fengqigang.cn//img/20210310095229.png 1.5x, https://img.fengqigang.cn//img/20210310095229.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210310095229.png"
+        title="20210310095229" />为什么 <strong>4Bytes</strong> 的文件要占用4K的容量?</h3>
+<ol>
+<li>
+<p>整个文件系统中包括 <strong>superblock</strong> , <strong>indoe</strong> , <strong>table</strong>与其他中介数据都会浪费磁盘容量.</p>
+</li>
+<li>
+<p>crontab 虽然只有 <strong>4Bytes</strong>, 但它会用整个 <strong>block</strong> (每个block为4K)</p>
+</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
