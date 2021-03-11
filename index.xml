@@ -4,9 +4,25 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 06 Mar 2021 12:32:45 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 11 Mar 2021 09:56:33 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux第八章</title>
+    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</link>
+    <pubDate>Thu, 11 Mar 2021 09:56:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</guid>
+    <description><![CDATA[什么是压缩的原理是什么? 压缩 :
+如果数据为&quot;111&hellip;&ldquo;共用100个, 压缩技术会记录为&quot;100个1&quot;而不是真的有100个1的位存在
+如何用 tar 备份 /etc (tar.gz)?   切换成 root 用户
+  time tar -zpcv -f /root/etc.tar.gz /etc
+  -z, &ndash;gzip, &ndash;gunzip, &ndash;ungzip
+Filter the archive through gzip
+-p, &ndash;preserve-permissions, &ndash;same-permissions
+extract information about file permissions(default for superuser)
+-c, &ndash;create
+Cteate a new archive. Arguments supply the names of the files to be archived. Directories are archived recursively, unless the &ndash;no-recursion option is given.]]></description>
+</item><item>
     <title>Linux第七章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/</link>
     <pubDate>Sat, 06 Mar 2021 12:32:45 &#43;0800</pubDate>
@@ -167,12 +183,5 @@ CPU-什么是精简指令集(RISC)？ RISC 即 Reduced Instruction Set Computer.
  甲骨文的SPARC CPU  学术领域的大型工作站 银行金融体系的主要服务器   IBM的Power Architecture  索尼的Play Station 3   安谋(ARM Holdings)的ARM CPU  手机 PDA(Personaldigital assistant) 导航系统 网络设备(交换器、路由器)    CPU-什么是复杂指令集(CISC)? CISC 即 Complex Instruction Set Computer.
 其特点是:
  每个微指令集可又执行一些较低阶的硬件操作 指令数目多而且复杂 每条指令的长度并不相同  CPU-所谓的x86架构是如何而来的？ 因为最早的Intel发展出来的CPU代号称为8086, 后来依此架构以开发出80286, 80386&hellip;, 因此这种架构的CPU就被称为x86架构]]></description>
-</item><item>
-    <title>Hugo</title>
-    <link>http://fengqigang.cn/posts/hugo/</link>
-    <pubDate>Mon, 01 Feb 2021 20:46:27 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/hugo/</guid>
-    <description><![CDATA[<p>Hugo is one of the most popular open-source static site generators.</p>]]></description>
 </item></channel>
 </rss>

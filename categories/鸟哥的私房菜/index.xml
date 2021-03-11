@@ -4,7 +4,23 @@
         <link>http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/</link>
         <description>鸟哥的私房菜 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 06 Mar 2021 12:32:45 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 11 Mar 2021 09:56:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux第八章</title>
+    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</link>
+    <pubDate>Thu, 11 Mar 2021 09:56:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</guid>
+    <description><![CDATA[什么是压缩的原理是什么? 压缩 :
+如果数据为&quot;111&hellip;&ldquo;共用100个, 压缩技术会记录为&quot;100个1&quot;而不是真的有100个1的位存在
+如何用 tar 备份 /etc (tar.gz)?   切换成 root 用户
+  time tar -zpcv -f /root/etc.tar.gz /etc
+  -z, &ndash;gzip, &ndash;gunzip, &ndash;ungzip
+Filter the archive through gzip
+-p, &ndash;preserve-permissions, &ndash;same-permissions
+extract information about file permissions(default for superuser)
+-c, &ndash;create
+Cteate a new archive. Arguments supply the names of the files to be archived. Directories are archived recursively, unless the &ndash;no-recursion option is given.]]></description>
+</item><item>
     <title>Linux第七章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/</link>
     <pubDate>Sat, 06 Mar 2021 12:32:45 &#43;0800</pubDate>
