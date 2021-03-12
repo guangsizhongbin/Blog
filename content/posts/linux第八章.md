@@ -102,8 +102,114 @@ List the contents of an archive. Arguments are optional. When given, they specif
 最好将 **-f filename** 与其他选项项独立出来
 
 
+### 如何将 **/root/etc.tar.bz2** 解压到 **/tmp** 下?
+
+**tar -jxv -f /root/etc.tar.bz2 -C /tmp**
+
+**-C, --directory=DIR**
+
+Change to DIR before performing any operations. This option is order0sensitive, i.e. it affects all options that follow.
 
 
+**-j, --bzip2**
+
+Filter the archive through bzip2
+
+**-v, --verbose**
+
+Verbosely list files processed. Each instance of this option on the command line increases the verbosity level by one. The maximum verbosity level is 3.
+
+### 如何将 **/root/etc.tar.bz2** 中的 **etc/shadow** 解压出来?
+
+1. 找一找看有没有 **shadow**
+
+**tar -jtv -f /root/etc.tar.bz2 | grep 'shadow'**
+
+
+**-j, --bzip2**
+
+Filter the archive through bzip2
+
+**-t, --list**
+
+List the contents of an archive. Arguments are optional. When given, they specify the names of the members to list.
+
+**-v, --verbose**
+
+Verbosely list files processed. Each instance of this option on the command line increases the verbosity level by one. The maximum verbosity level is 3.
+
+2. 解压 **etc/shadow**
+
+**tar -jxv -f /root/etc.tar.bz2 etc/shadow**
+
+### 若想用 **tar** 打包 **/etc /root** 但不想打包 **/root/etc*** 开头的文件，该如何做?
+
+**--exclude=**
+
+tar -jcv -f /root/system.tar.bz2 --exclude=/root/etc* \
+--exclude=/root/system.tar.bz2 /etc /root
+
+不包括 **/root/etc**, 同时不能包括自己
+
+### 如何用 **tar** 备份 **/etc/passwd** 中比 **/etc/passwd** 还要新的文件?
+
+1. 找出比 **/etc/passwd** 还要新的文件
+
+**find /etc -newer /etc/passwd**
+
+2. 查看 **/etc/passwd** 的 **mtime**
+
+![20210312101216](https://img.fengqigang.cn//img/20210312101216.png)
+
+3. 打包
+
+tar -jcv -f /root/etc.newer.then.passwd.tar.bz2 \
+--newer-mtime="2021/03/01" /etc/*
+
+4. 显示出文件
+
+tar -jtv -f /root/etc.newer.then.passwd.tar.bz2 | grep -v "/$"
+
+调出非 / 的文件名
+
+### 如何将 **/home,  /root, /etc** 备份到磁带机 **/dev/st0** 上?
+
+tar -cv -f /dev/st0 /home /root /etc
+
+### 如何用 **tar** 一边将 **/etc** 整个目录打包一边在 **/tmp** 解开?
+
+tar -cvf - /etc | tar -xvf -
+
+**-**
+
+表示被打包的文件
+
+### 如何用 **tar** 对系统备份?
+
+- /etc/ (配置文件)
+
+- /home/ (使用者的主文件夹)
+
+- /var/spool/mail/ (系统中，所有账号的邮件信箱)
+
+- /var/spool/cron/ (所有账号的工作排成配置文件)
+
+- /root (系统管理员的主文件夹)
+
+1. 设置备份数据的目录与权限
+
+mkdir /backups
+
+chmod 700 /backups
+
+ls -d /backups
+
+![20210312102701](https://img.fengqigang.cn//img/20210312102701.png)
+
+2. 备份
+
+tar -jcv -f /bakups/backup-system-20210312.tar.bz2 \
+/etc /home /var/spool/mail /var/spool/cron /root
 
 
 
