@@ -45,7 +45,7 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AB%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  205 ,
+        },"genre": "posts","keywords": "linux","wordcount":  467 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AB%E7%AB%A0\/","datePublished": "2021-03-11T09:56:33+08:00","dateModified": "2021-03-11T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -122,8 +122,8 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第八章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-11">2021-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;205 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-11">2021-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;467 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -139,6 +139,13 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
         <li><a href="#如何查看-rootetctarbz2-内的文件">如何查看 <strong>/root/etc.tar.bz2</strong> 内的文件?</a></li>
         <li><a href="#为什么查看-rootetctarbz2-里面的文件都没有根目录20210311092259httpsimgfengqigangcnimg20210311092259png">为什么查看 <strong>/root/etc.tar.bz2</strong> 里面的文件，都没有根目录?<img src="https://img.fengqigang.cn//img/20210311092259.png" alt="20210311092259"></a></li>
         <li><a href="#tar--jcvf-filename-和-tar--jvfc-filename-是一样的吗"><strong>tar -jcvf filename</strong> 和 <strong>tar -jvfc filename</strong> 是一样的吗?</a></li>
+        <li><a href="#如何将-rootetctarbz2-解压到-tmp-下">如何将 <strong>/root/etc.tar.bz2</strong> 解压到 <strong>/tmp</strong> 下?</a></li>
+        <li><a href="#如何将-rootetctarbz2-中的-etcshadow-解压出来">如何将 <strong>/root/etc.tar.bz2</strong> 中的 <strong>etc/shadow</strong> 解压出来?</a></li>
+        <li><a href="#若想用-tar-打包-etc-root-但不想打包-rootetc-开头的文件该如何做">若想用 <strong>tar</strong> 打包 <strong>/etc /root</strong> 但不想打包 <strong>/root/etc</strong>* 开头的文件，该如何做?</a></li>
+        <li><a href="#如何用-tar-备份-etcpasswd-中比-etcpasswd-还要新的文件">如何用 <strong>tar</strong> 备份 <strong>/etc/passwd</strong> 中比 <strong>/etc/passwd</strong> 还要新的文件?</a></li>
+        <li><a href="#如何将-home--root-etc-备份到磁带机-devst0-上">如何将 <strong>/home,  /root, /etc</strong> 备份到磁带机 <strong>/dev/st0</strong> 上?</a></li>
+        <li><a href="#如何用-tar-一边将-etc-整个目录打包一边在-tmp-解开">如何用 <strong>tar</strong> 一边将 <strong>/etc</strong> 整个目录打包一边在 <strong>/tmp</strong> 解开?</a></li>
+        <li><a href="#如何用-tar-对系统备份">如何用 <strong>tar</strong> 对系统备份?</a></li>
       </ul>
     </li>
   </ul>
@@ -236,6 +243,103 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
 <p>不一样</p>
 <p>-jvfc 会导致产生的文件名变成 <strong>c</strong></p>
 <p>最好将 <strong>-f filename</strong> 与其他选项项独立出来</p>
+<h3 id="如何将-rootetctarbz2-解压到-tmp-下">如何将 <strong>/root/etc.tar.bz2</strong> 解压到 <strong>/tmp</strong> 下?</h3>
+<p><strong>tar -jxv -f /root/etc.tar.bz2 -C /tmp</strong></p>
+<p><strong>-C, &ndash;directory=DIR</strong></p>
+<p>Change to DIR before performing any operations. This option is order0sensitive, i.e. it affects all options that follow.</p>
+<p><strong>-j, &ndash;bzip2</strong></p>
+<p>Filter the archive through bzip2</p>
+<p><strong>-v, &ndash;verbose</strong></p>
+<p>Verbosely list files processed. Each instance of this option on the command line increases the verbosity level by one. The maximum verbosity level is 3.</p>
+<h3 id="如何将-rootetctarbz2-中的-etcshadow-解压出来">如何将 <strong>/root/etc.tar.bz2</strong> 中的 <strong>etc/shadow</strong> 解压出来?</h3>
+<ol>
+<li>找一找看有没有 <strong>shadow</strong></li>
+</ol>
+<p><strong>tar -jtv -f /root/etc.tar.bz2 | grep &lsquo;shadow&rsquo;</strong></p>
+<p><strong>-j, &ndash;bzip2</strong></p>
+<p>Filter the archive through bzip2</p>
+<p><strong>-t, &ndash;list</strong></p>
+<p>List the contents of an archive. Arguments are optional. When given, they specify the names of the members to list.</p>
+<p><strong>-v, &ndash;verbose</strong></p>
+<p>Verbosely list files processed. Each instance of this option on the command line increases the verbosity level by one. The maximum verbosity level is 3.</p>
+<ol start="2">
+<li>解压 <strong>etc/shadow</strong></li>
+</ol>
+<p><strong>tar -jxv -f /root/etc.tar.bz2 etc/shadow</strong></p>
+<h3 id="若想用-tar-打包-etc-root-但不想打包-rootetc-开头的文件该如何做">若想用 <strong>tar</strong> 打包 <strong>/etc /root</strong> 但不想打包 <strong>/root/etc</strong>* 开头的文件，该如何做?</h3>
+<p><strong>&ndash;exclude=</strong></p>
+<p>tar -jcv -f /root/system.tar.bz2 &ndash;exclude=/root/etc*<br>
+&ndash;exclude=/root/system.tar.bz2 /etc /root</p>
+<p>不包括 <strong>/root/etc</strong>, 同时不能包括自己</p>
+<h3 id="如何用-tar-备份-etcpasswd-中比-etcpasswd-还要新的文件">如何用 <strong>tar</strong> 备份 <strong>/etc/passwd</strong> 中比 <strong>/etc/passwd</strong> 还要新的文件?</h3>
+<ol>
+<li>找出比 <strong>/etc/passwd</strong> 还要新的文件</li>
+</ol>
+<p><strong>find /etc -newer /etc/passwd</strong></p>
+<ol start="2">
+<li>查看 <strong>/etc/passwd</strong> 的 <strong>mtime</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210312101216.png"
+        data-srcset="https://img.fengqigang.cn//img/20210312101216.png, https://img.fengqigang.cn//img/20210312101216.png 1.5x, https://img.fengqigang.cn//img/20210312101216.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210312101216.png"
+        title="20210312101216" /></p>
+<ol start="3">
+<li>打包</li>
+</ol>
+<p>tar -jcv -f /root/etc.newer.then.passwd.tar.bz2<br>
+&ndash;newer-mtime=&ldquo;2021/03/01&rdquo; /etc/*</p>
+<ol start="4">
+<li>显示出文件</li>
+</ol>
+<p>tar -jtv -f /root/etc.newer.then.passwd.tar.bz2 | grep -v &ldquo;/$&rdquo;</p>
+<p>调出非 / 的文件名</p>
+<h3 id="如何将-home--root-etc-备份到磁带机-devst0-上">如何将 <strong>/home,  /root, /etc</strong> 备份到磁带机 <strong>/dev/st0</strong> 上?</h3>
+<p>tar -cv -f /dev/st0 /home /root /etc</p>
+<h3 id="如何用-tar-一边将-etc-整个目录打包一边在-tmp-解开">如何用 <strong>tar</strong> 一边将 <strong>/etc</strong> 整个目录打包一边在 <strong>/tmp</strong> 解开?</h3>
+<p>tar -cvf - /etc | tar -xvf -</p>
+<p><strong>-</strong></p>
+<p>表示被打包的文件</p>
+<h3 id="如何用-tar-对系统备份">如何用 <strong>tar</strong> 对系统备份?</h3>
+<ul>
+<li>
+<p>/etc/ (配置文件)</p>
+</li>
+<li>
+<p>/home/ (使用者的主文件夹)</p>
+</li>
+<li>
+<p>/var/spool/mail/ (系统中，所有账号的邮件信箱)</p>
+</li>
+<li>
+<p>/var/spool/cron/ (所有账号的工作排成配置文件)</p>
+</li>
+<li>
+<p>/root (系统管理员的主文件夹)</p>
+</li>
+</ul>
+<ol>
+<li>设置备份数据的目录与权限</li>
+</ol>
+<p>mkdir /backups</p>
+<p>chmod 700 /backups</p>
+<p>ls -d /backups</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210312102701.png"
+        data-srcset="https://img.fengqigang.cn//img/20210312102701.png, https://img.fengqigang.cn//img/20210312102701.png 1.5x, https://img.fengqigang.cn//img/20210312102701.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210312102701.png"
+        title="20210312102701" /></p>
+<ol start="2">
+<li>备份</li>
+</ol>
+<p>tar -jcv -f /bakups/backup-system-20210312.tar.bz2<br>
+/etc /home /var/spool/mail /var/spool/cron /root</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
