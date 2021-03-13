@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 13 Mar 2021 21:21:35 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Java第一章</title>
+    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/</link>
+    <pubDate>Sat, 13 Mar 2021 21:21:35 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/</guid>
+    <description><![CDATA[如何查看当前 java 版本? 1  archlinux-jav status   如何编写 Hello.java? 1 2 3 4 5  public class Hello { public static void mian(String args[]){ System.out.println(&#34;Hello World!&#34;); } }   ]]></description>
+</item><item>
     <title>Java基础练习题</title>
     <link>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
     <pubDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</pubDate>
