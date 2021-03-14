@@ -45,7 +45,7 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AB%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  467 ,
+        },"genre": "posts","keywords": "linux","wordcount":  497 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%85%AB%E7%AB%A0\/","datePublished": "2021-03-11T09:56:33+08:00","dateModified": "2021-03-11T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -122,7 +122,7 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第八章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-11">2021-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;467 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-11">2021-03-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;497 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -146,6 +146,8 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
         <li><a href="#如何将-home--root-etc-备份到磁带机-devst0-上">如何将 <strong>/home,  /root, /etc</strong> 备份到磁带机 <strong>/dev/st0</strong> 上?</a></li>
         <li><a href="#如何用-tar-一边将-etc-整个目录打包一边在-tmp-解开">如何用 <strong>tar</strong> 一边将 <strong>/etc</strong> 整个目录打包一边在 <strong>/tmp</strong> 解开?</a></li>
         <li><a href="#如何用-tar-对系统备份">如何用 <strong>tar</strong> 对系统备份?</a></li>
+        <li><a href="#如何将--etcpasswd--备份到--tmppasswdback--当中">如何将 ** /etc/passwd ** 备份到 ** /tmp/passwd.back ** 当中?</a></li>
+        <li><a href="#如何将--boot--整个文件系统通过-dd-备份下来">如何将 ** /boot ** 整个文件系统通过 <strong>dd</strong> 备份下来?</a></li>
       </ul>
     </li>
   </ul>
@@ -340,6 +342,43 @@ Cteate a new archive. Arguments supply the names of the files to be archived. Di
 </ol>
 <p>tar -jcv -f /bakups/backup-system-20210312.tar.bz2<br>
 /etc /home /var/spool/mail /var/spool/cron /root</p>
+<h3 id="如何将--etcpasswd--备份到--tmppasswdback--当中">如何将 ** /etc/passwd ** 备份到 ** /tmp/passwd.back ** 当中?</h3>
+<p>dd if=/etc/passwd of=/tmp/passwd.back</p>
+<h3 id="如何将--boot--整个文件系统通过-dd-备份下来">如何将 ** /boot ** 整个文件系统通过 <strong>dd</strong> 备份下来?</h3>
+<ol>
+<li>df -h /boot</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210314211134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210314211134.png, https://img.fengqigang.cn//img/20210314211134.png 1.5x, https://img.fengqigang.cn//img/20210314211134.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210314211134.png"
+        title="20210314211134" /></p>
+<ol start="2">
+<li>dd if=/dev/sda1 of=/tmp/vda1.img</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210314211221.png"
+        data-srcset="https://img.fengqigang.cn//img/20210314211221.png, https://img.fengqigang.cn//img/20210314211221.png 1.5x, https://img.fengqigang.cn//img/20210314211221.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210314211221.png"
+        title="20210314211221" /></p>
+<ol start="3">
+<li>ls -lh /tmp/vda2.img</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210314211302.png"
+        data-srcset="https://img.fengqigang.cn//img/20210314211302.png, https://img.fengqigang.cn//img/20210314211302.png 1.5x, https://img.fengqigang.cn//img/20210314211302.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210314211302.png"
+        title="20210314211302" /></p>
+<p>文件大小 会跟整颗磁盘的最大量一样大</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
