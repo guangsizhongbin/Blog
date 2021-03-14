@@ -211,5 +211,23 @@ ls -d /backups
 tar -jcv -f /bakups/backup-system-20210312.tar.bz2 \
 /etc /home /var/spool/mail /var/spool/cron /root
 
+### 如何将 ** /etc/passwd ** 备份到 ** /tmp/passwd.back ** 当中?
 
+dd if=/etc/passwd of=/tmp/passwd.back
+
+### 如何将 ** /boot ** 整个文件系统通过 **dd** 备份下来?
+
+1. df -h /boot
+
+![20210314211134](https://img.fengqigang.cn//img/20210314211134.png)
+
+2. dd if=/dev/sda1 of=/tmp/vda1.img
+
+![20210314211221](https://img.fengqigang.cn//img/20210314211221.png)
+
+3. ls -lh /tmp/vda2.img
+
+![20210314211302](https://img.fengqigang.cn//img/20210314211302.png)
+
+文件大小 会跟整颗磁盘的最大量一样大
 
