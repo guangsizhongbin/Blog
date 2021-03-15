@@ -10,7 +10,13 @@
     <pubDate>Sat, 13 Mar 2021 21:21:35 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/</guid>
-    <description><![CDATA[如何查看当前 java 版本? 1  archlinux-jav status   如何编写 Hello.java? 1 2 3 4 5  public class Hello { public static void mian(String args[]){ System.out.println(&#34;Hello World!&#34;); } }   ]]></description>
+    <description><![CDATA[如何查看当前 java 版本? 1  archlinux-jav status   如何编写 Hello.java? 1 2 3 4 5  public class Hello { public static void mian(String args[]){ System.out.println(&#34;Hello World!&#34;); } }   public 定义的的class有什么特点?   类名称必须与文件名称保持一致
+  在一个 *.java 中只能有一个public class
+  普通的class有什么特点?   类的名称可以和文件名不致， 但是生成的class定义的名称
+  一个*.java程序中可以同时存在多个class定义，编译后会分为不同的*.class文件
+  System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
+  System.out.println 输出后换行
+  ]]></description>
 </item><item>
     <title>Linux第八章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</link>
