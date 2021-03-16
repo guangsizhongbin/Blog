@@ -12,7 +12,7 @@
   一个*.java程序中可以同时存在多个class定义，编译后会分为不同的*.class文件
   System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
   System.out.println 输出后换行
-  " />
+  类的命名规范是什么样的? 每一个单词的开关首字母大写" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-13T21:21:35&#43;08:00" />
@@ -26,7 +26,7 @@
   一个*.java程序中可以同时存在多个class定义，编译后会分为不同的*.class文件
   System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
   System.out.println 输出后换行
-  "/>
+  类的命名规范是什么样的? 每一个单词的开关首字母大写"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -39,7 +39,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%80%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  45 ,
+        },"genre": "posts","keywords": "java","wordcount":  99 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%80%E7%AB%A0\/","datePublished": "2021-03-13T21:21:35+08:00","dateModified": "2021-03-13T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -116,7 +116,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第一章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-13">2021-03-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;45 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-13">2021-03-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;99 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -132,6 +132,11 @@
         <li><a href="#public-定义的的class有什么特点">public 定义的的class有什么特点?</a></li>
         <li><a href="#普通的class有什么特点">普通的class有什么特点?</a></li>
         <li><a href="#systemoutprint-与-systemoutprintln-有什么区别">System.out.print 与 System.out.println 有什么区别?</a></li>
+        <li><a href="#类的命名规范是什么样的">类的命名规范是什么样的?</a></li>
+        <li><a href="#classpath-与-jvm-有什么关系"><strong>CLASSPATH</strong> 与 <strong>JVM</strong> 有什么关系?</a></li>
+        <li><a href="#path-与-classpath-的区别是什么"><strong>PATH</strong> 与 <strong>CLASSPATH</strong> 的区别是什么?</a></li>
+        <li><a href="#java-源程序文件的后缀和-java字节码文件的后缀-分别是什么">Java 源程序文件的后缀和 Java字节码文件的后缀 分别是什么?</a></li>
+        <li><a href="#java-application-与-java-applet-程序有什么区别">Java Application 与 Java Applet 程序有什么区别?</a></li>
       </ul>
     </li>
   </ul>
@@ -197,6 +202,21 @@
 <p>System.out.println 输出后换行</p>
 </li>
 </ol>
+<h3 id="类的命名规范是什么样的">类的命名规范是什么样的?</h3>
+<p>每一个单词的开关首字母大写</p>
+<p><strong>TestDemo</strong></p>
+<h3 id="classpath-与-jvm-有什么关系"><strong>CLASSPATH</strong> 与 <strong>JVM</strong> 有什么关系?</h3>
+<p>而 <strong>JVM</strong> 在运行的时候，需要通过 <strong>CLASSPATH</strong> 加载所需要的类</p>
+<p><strong>CLASSPATH</strong> 是指类的运行路径, 默认情况下 <strong>CLASSPATH</strong> 指向当前目录</p>
+<h3 id="path-与-classpath-的区别是什么"><strong>PATH</strong> 与 <strong>CLASSPATH</strong> 的区别是什么?</h3>
+<p><strong>PATH</strong> 是操作系统的环境属性，指的是可以执行命令的程序路径。</p>
+<p><strong>CLASSPATH</strong> 是所有 *.class 文件的执行路径， Java 命令执行时将利用此路径加载所需要的 *.class 文件.</p>
+<h3 id="java-源程序文件的后缀和-java字节码文件的后缀-分别是什么">Java 源程序文件的后缀和 Java字节码文件的后缀 分别是什么?</h3>
+<p>源程序文件: *.java</p>
+<p>字节码文件: *.class</p>
+<h3 id="java-application-与-java-applet-程序有什么区别">Java Application 与 Java Applet 程序有什么区别?</h3>
+<p><strong>Java Applet</strong> 主要是在网页中嵌入的 Java 程序</p>
+<p><strong>Application</strong> 是指有 main 方法的程序</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

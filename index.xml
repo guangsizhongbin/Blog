@@ -18,7 +18,7 @@
   一个*.java程序中可以同时存在多个class定义，编译后会分为不同的*.class文件
   System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
   System.out.println 输出后换行
-  ]]></description>
+  类的命名规范是什么样的? 每一个单词的开关首字母大写]]></description>
 </item><item>
     <title>Linux第八章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</link>
