@@ -4,9 +4,29 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 13 Mar 2021 21:21:35 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 17 Mar 2021 22:50:33 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Java第二章</title>
+    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/</link>
+    <pubDate>Wed, 17 Mar 2021 22:50:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/</guid>
+    <description><![CDATA[如何做文档注释? 以 /** 开头， 以 */
+如
+/**
+ @author gaungsizhongbin   */
+在JAVA中数据类型分为哪几种? 基本数据类型
+引用数据类型
+基本类型 与 引用类型 有什么区别? 基本类型会涉及内存的分配
+引用类型不会涉及内存的分配
+基本类型 包括哪几种? 数值型
+- 整数类型 (byte, short, int, long) - 浮点类型 (float, double)  字符型(char)
+布尔型(boolean)
+byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
+short 可表示的数据范围是多少? short 是16位大小, $- (2^16 / 2)$ ~ $(2^16 / 2) - 1$
+int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ $(2^32 / 2) - 1$]]></description>
+</item><item>
     <title>Java第一章</title>
     <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/</link>
     <pubDate>Sat, 13 Mar 2021 21:21:35 &#43;0800</pubDate>
@@ -154,33 +174,5 @@ MIT: MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任
 LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通过类库引用方式使用LGPL类库而不需要开源商业软件的代码
   开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL的区别 &#x21a9;&#xfe0e;
    ]]></description>
-</item><item>
-    <title>Linux_2</title>
-    <link>http://fengqigang.cn/posts/linux_2/</link>
-    <pubDate>Tue, 16 Feb 2021 22:07:36 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux_2/</guid>
-    <description><![CDATA[个人电脑架构与相关设备元件 Intel芯片架构 Intel芯片架构-什么是南北桥?它们是干什么的？1 北桥: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)
-  CPU
-  内存
-  显卡接口等
-  南桥: 负责链接速度较慢的元件
-  硬盘
-  USB
-  网卡
-  Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？ 首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。
-Intel芯片架构-什么是CPU的频率？2 即CPU每秒钟可以进行的工作次数
-速度单位使用的是十进制
-即$3.5 \times 10 ^ 9$MHz
-Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？ 外频: CPU与外部元件进行数据传输时的速度
-倍频: CPU内部用来加速工作性能的一个倍数
-首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在 CPU内部进行加速。
-Intel芯片架构-如何查看计算机的外频与倍频？ 即总线速度为外频
-核心速度 = 倍频 x 总线速度
-Intel芯片架构-超频指的是超什么频？ 首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。
-Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side Bus)
-CPU中的所有数据都是由内存提供的
-查看内存信息
-1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?]]></description>
 </item></channel>
 </rss>

@@ -100,6 +100,24 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/">Java第二章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-17">2021-03-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">如何做文档注释? 以 /** 开头， 以 */
+如
+/**
+ @author gaungsizhongbin   */
+在JAVA中数据类型分为哪几种? 基本数据类型
+引用数据类型
+基本类型 与 引用类型 有什么区别? 基本类型会涉及内存的分配
+引用类型不会涉及内存的分配
+基本类型 包括哪几种? 数值型
+- 整数类型 (byte, short, int, long) - 浮点类型 (float, double)  字符型(char)
+布尔型(boolean)
+byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
+short 可表示的数据范围是多少? short 是16位大小, $- (2^16 / 2)$ ~ $(2^16 / 2) - 1$
+int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ $(2^32 / 2) - 1$</div><div class="post-footer">
+        <a href="/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/">Java第一章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-13">2021-03-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">如何查看当前 java 版本? 1  archlinux-jav status   如何编写 Hello.java? 1 2 3 4 5  public class Hello { public static void mian(String args[]){ System.out.println(&#34;Hello World!&#34;); } }   public 定义的的class有什么特点?   类名称必须与文件名称保持一致
   在一个 *.java 中只能有一个public class
@@ -178,17 +196,6 @@ set file mode (as in chomd), not a=rwx - umask
  在FHS(filesystem hierarchy standard)规定下，各个文件夹都是放什么的?？1   /bin (User Binaries) 与 /sbin (System Binaries)</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/">Java基础练习题</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-26">2021-02-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">基础概念问答    请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？     Java语言是跨平台的，但JVM不是跨平台的，不同的平台有不同的JVM。 首先, 后缀为 &quot;*.java&quot; 的文件，经过javac命令编译后会生成public class定义类名称的.class文件(字节码文件)。然后, 不同平台的JVM会根据不同操作系统所提供的接口，实现.class文件中的功能。
- 例如: Hello.java所对应的程序
-1 2 3 4 5  public class Hello { public static void main(String args[]){ System.out.println(&#34;Hello, World!&#34;); } }   编译后(Hello.class):
-再经过linux中的jre-openjdk中的jvm执行hello.class使得java看起来具有跨平台的能力。
-环境变量   设置环境变量使QQ或者微信可以在任意平台下，通过命令行执行    linux平台下:
-1  export 文件路径:$PATH   使用永久化:
-1  echo &#34;export 文件路径:$PATH&#34; &gt;&gt; .zshrc   3.[入门题目] 独立编写Hello World程序，并在命令行下运行 hello.java</div><div class="post-footer">
-        <a href="/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
