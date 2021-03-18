@@ -15,11 +15,12 @@
 基本类型 与 引用类型 有什么区别? 基本类型会涉及内存的分配
 引用类型不会涉及内存的分配
 基本类型 包括哪几种? 数值型
-- 整数类型 (byte, short, int, long) - 浮点类型 (float, double)  字符型(char)
+  整数类型 (byte, short, int, long)
+  浮点类型 (float, double)
+  字符型(char)
 布尔型(boolean)
 byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
-short 可表示的数据范围是多少? short 是16位大小, $- (2^16 / 2)$ ~ $(2^16 / 2) - 1$
-int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ $(2^32 / 2) - 1$" />
+short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-17T22:50:33&#43;08:00" />
@@ -36,11 +37,12 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
 基本类型 与 引用类型 有什么区别? 基本类型会涉及内存的分配
 引用类型不会涉及内存的分配
 基本类型 包括哪几种? 数值型
-- 整数类型 (byte, short, int, long) - 浮点类型 (float, double)  字符型(char)
+  整数类型 (byte, short, int, long)
+  浮点类型 (float, double)
+  字符型(char)
 布尔型(boolean)
 byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
-short 可表示的数据范围是多少? short 是16位大小, $- (2^16 / 2)$ ~ $(2^16 / 2) - 1$
-int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ $(2^32 / 2) - 1$"/>
+short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -53,7 +55,7 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%BA%8C%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  114 ,
+        },"genre": "posts","keywords": "java","wordcount":  247 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%BA%8C%E7%AB%A0\/","datePublished": "2021-03-17T22:50:33+08:00","dateModified": "2021-03-17T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -130,8 +132,8 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第二章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-17">2021-03-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;114 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-17">2021-03-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;247 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -150,8 +152,15 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
         <li><a href="#int-可表示的数据的范围是多少"><strong>int</strong> 可表示的数据的范围是多少?</a></li>
         <li><a href="#long-可表示的数据的范围是多少"><strong>long</strong> 可表示的数据的范围是多少?</a></li>
         <li><a href="#char-可表示的数据的范围是多少-其默认值什么"><strong>char</strong> 可表示的数据的范围是多少, 其默认值什么?</a></li>
-        <li><a href="#为什么在-char-为-16位大小-其表示的数据范围是0255-而不是--216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^16 / 2)$ ~ $(2^16 / 2) - 1$?</a></li>
+        <li><a href="#为什么在-char-为-16位大小-其表示的数据范围是0255-而不是--216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$?</a></li>
         <li><a href="#为什么在表示数据的范围时最小负数绝对值总比最大正数多1">为什么在表示数据的范围时，最小负数绝对值总比最大正数多1?</a></li>
+        <li><a href="#如果要描述日期时间数字或者表示文件或内存大小时用什么基本数据类型好">如果要描述日期时间数字或者表示文件或内存大小时，用什么基本数据类型好?</a></li>
+        <li><a href="#如果要实现内容传递io-操作网络编程或者是编码转换jsp开发中使用utf-8编码-用什么数据类型好">如果要实现内容传递(IO 操作、网络编程)或者是编码转换(JSP开发中使用UTF-8编码), 用什么数据类型好?</a></li>
+        <li><a href="#如果要想实现逻辑的控制使用什么数据类型好">如果要想实现逻辑的控制，使用什么数据类型好?</a></li>
+        <li><a href="#如果要想算是中文使用什么数据类型可以避免乱码问题">如果要想算是中文，使用什么数据类型可以避免乱码问题?</a></li>
+        <li><a href="#如何避免由于编译器bug所造成的非正常性语法的编译错误">如何避免由于编译器bug所造成的非正常性语法的编译错误?</a></li>
+        <li><a href="#如何通过代码实现求int的最大值和最小值并且实现超过其最大值和最小值的结果">如何通过代码实现求int的最大值和最小值，并且实现超过其最大值和最小值的结果?</a></li>
+        <li><a href="#为了解决数据溢出的问题想将-int-型的变量或常量变为-long-数据类型该怎么做">为了解决数据溢出的问题，想将 <strong>int</strong> 型的变量或常量变为 <strong>long</strong> 数据类型，该怎么做?</a></li>
       </ul>
     </li>
   </ul>
@@ -181,10 +190,14 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
 <p>引用类型不会涉及内存的分配</p>
 <h3 id="基本类型-包括哪几种"><strong>基本类型</strong> 包括哪几种?</h3>
 <p>数值型</p>
-<pre><code>- 整数类型 (byte, short, int, long)
-
-- 浮点类型 (float, double)
-</code></pre>
+<ul>
+<li>
+<p>整数类型 (byte, short, int, long)</p>
+</li>
+<li>
+<p>浮点类型 (float, double)</p>
+</li>
+</ul>
 <p>字符型(char)</p>
 <p>布尔型(boolean)</p>
 <h3 id="byte-可表示的数据范围是多少"><strong>byte</strong> 可表示的数据范围是多少?</h3>
@@ -198,7 +211,7 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
         alt="https://img.fengqigang.cn//img/20210317222133.png"
         title="20210317222133" /></p>
 <h3 id="short-可表示的数据范围是多少"><strong>short</strong> 可表示的数据范围是多少?</h3>
-<p><em>short</em> 是16位大小, $- (2^16 / 2)$ ~ $(2^16 / 2) - 1$</p>
+<p><em>short</em> 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -208,7 +221,7 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
         alt="https://img.fengqigang.cn//img/20210317222156.png"
         title="20210317222156" /></p>
 <h3 id="int-可表示的数据的范围是多少"><strong>int</strong> 可表示的数据的范围是多少?</h3>
-<p><em>int</em> 是32位大小，$- (2^32 / 2)$ ~ $(2^32 / 2) - 1$</p>
+<p><em>int</em> 是32位大小，$- (2^{32} / 2)$ ~ $(2^{32} / 2) - 1$</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -218,7 +231,7 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
         alt="https://img.fengqigang.cn//img/20210317222348.png"
         title="20210317222348" /></p>
 <h3 id="long-可表示的数据的范围是多少"><strong>long</strong> 可表示的数据的范围是多少?</h3>
-<p><em>long</em> 是64位大小, $- (2^64 / 2)$ ~ $(2^64 / 2) - 1$</p>
+<p><em>long</em> 是64位大小, $- (2^{64} / 2)$ ~ $(2^{64} / 2) - 1$</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -228,9 +241,113 @@ int 可表示的数据的范围是多少? int 是32位大小，$- (2^32 / 2)$ ~ 
         alt="https://img.fengqigang.cn//img/20210317222514.png"
         title="20210317222514" /></p>
 <h3 id="char-可表示的数据的范围是多少-其默认值什么"><strong>char</strong> 可表示的数据的范围是多少, 其默认值什么?</h3>
-<p><em>char</em> 是16位大小， $0~255$, 其默认值为 $<code>\u0000</code>$</p>
-<h3 id="为什么在-char-为-16位大小-其表示的数据范围是0255-而不是--216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^16 / 2)$ ~ $(2^16 / 2) - 1$?</h3>
+<p><em>char</em> 是16位大小， 0~255, 其默认值为 <code>\u0000</code></p>
+<h3 id="为什么在-char-为-16位大小-其表示的数据范围是0255-而不是--216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$?</h3>
 <h3 id="为什么在表示数据的范围时最小负数绝对值总比最大正数多1">为什么在表示数据的范围时，最小负数绝对值总比最大正数多1?</h3>
+<h3 id="如果要描述日期时间数字或者表示文件或内存大小时用什么基本数据类型好">如果要描述日期时间数字或者表示文件或内存大小时，用什么基本数据类型好?</h3>
+<p>long</p>
+<h3 id="如果要实现内容传递io-操作网络编程或者是编码转换jsp开发中使用utf-8编码-用什么数据类型好">如果要实现内容传递(IO 操作、网络编程)或者是编码转换(JSP开发中使用UTF-8编码), 用什么数据类型好?</h3>
+<p>byte</p>
+<h3 id="如果要想实现逻辑的控制使用什么数据类型好">如果要想实现逻辑的控制，使用什么数据类型好?</h3>
+<p>boolean</p>
+<h3 id="如果要想算是中文使用什么数据类型可以避免乱码问题">如果要想算是中文，使用什么数据类型可以避免乱码问题?</h3>
+<p>char</p>
+<h3 id="如何避免由于编译器bug所造成的非正常性语法的编译错误">如何避免由于编译器bug所造成的非正常性语法的编译错误?</h3>
+<p>在每一个操作中都加上一个&quot; &quot; 空格</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210318221642.png"
+        data-srcset="https://img.fengqigang.cn//img/20210318221642.png, https://img.fengqigang.cn//img/20210318221642.png 1.5x, https://img.fengqigang.cn//img/20210318221642.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210318221642.png"
+        title="20210318221642" /></p>
+<h3 id="如何通过代码实现求int的最大值和最小值并且实现超过其最大值和最小值的结果">如何通过代码实现求int的最大值和最小值，并且实现超过其最大值和最小值的结果?</h3>
+<p><strong>Interger.Min_VALUE</strong></p>
+<p><strong>Interger.MAX_VALUE</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">interger_text</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">arg</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span> <span class="c1">//取出最大值
+</span><span class="c1"></span>		<span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span> <span class="c1">//取出最小值
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">min</span><span class="o">);</span>
+
+		<span class="c1">// int 变量 + int 型变量 = int 型数据
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">max</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">min</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210318222619.png"
+        data-srcset="https://img.fengqigang.cn//img/20210318222619.png, https://img.fengqigang.cn//img/20210318222619.png 1.5x, https://img.fengqigang.cn//img/20210318222619.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210318222619.png"
+        title="20210318222619" /></p>
+<h3 id="为了解决数据溢出的问题想将-int-型的变量或常量变为-long-数据类型该怎么做">为了解决数据溢出的问题，想将 <strong>int</strong> 型的变量或常量变为 <strong>long</strong> 数据类型，该怎么做?</h3>
+<p><strong>常量</strong>:</p>
+<p>数字L</p>
+<p><strong>变量</strong>:</p>
+<p>(long) 变量名称</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntToLong</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
+
+		<span class="c1">// int 变量 + long型常量 = long 型数据
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">max</span> <span class="o">+</span> <span class="n">1L</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">min</span> <span class="o">-</span> <span class="o">(</span><span class="kt">long</span><span class="o">)</span> <span class="n">1</span><span class="o">);</span>
+
+		<span class="c1">// long 变量 - int 型常量 = long 型数据
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">long</span><span class="o">)</span> <span class="n">min</span> <span class="o">-</span> <span class="n">2</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210318223719.png"
+        data-srcset="https://img.fengqigang.cn//img/20210318223719.png, https://img.fengqigang.cn//img/20210318223719.png 1.5x, https://img.fengqigang.cn//img/20210318223719.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210318223719.png"
+        title="20210318223719" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
