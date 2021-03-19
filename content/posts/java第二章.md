@@ -75,7 +75,7 @@ categories: [java]
 
 *char* 是16位大小， 0~255, 其默认值为 `\u0000`
 
-### 为什么在 **char** 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$?
+### 为什么在 **char** 为 16位大小， 其表示的数据范围是$0$ ~ $255$, 而不是 - $(2^{16} / 2)$ ~ $(2^{16} / 2)$ - $1$?
 
 
 ### 为什么在表示数据的范围时，最小负数绝对值总比最大正数多1?
@@ -152,6 +152,186 @@ public class IntToLong{
 ```
 
 ![20210318223719](https://img.fengqigang.cn//img/20210318223719.png)
+
+### 如何将long num = 100, 变成int num的数据类型?
+
+int (num)
+
+```java
+public class LongToIntP{
+	public static void main(String args[]){
+		long num = 1000;
+		int x = int (num);
+		System.out.println(x);
+	}
+}
+```
+
+![20210319143115](https://img.fengqigang.cn//img/20210319143115.png)
+
+### long num = 2147483650L; 其转换成int会怎样?
+
+**int** 是32位大小， 2147483650L已超过其数据范围
+
+```
+public class LongToIntOverflow{
+	public static void main(String args[]){
+	long num = 2147483650L;
+	int x = (int) num;
+	System.out.println(x);
+	}
+}
+```
+
+![20210319143811](https://img.fengqigang.cn//img/20210319143811.png)
+
+### **Java** 中的自动类型转换是如何规定的, 以 **byte** 变成 **int** 为例?
+
+如果使用的数据变量类型为 **byte**, 
+
+1. 如果设置的内容在 **byte** 数据范围 **之内**，就会自动帮助用户实现数据类型的转换
+
+2. 如果设置的内容在 **byte** 数据范围 **之外** ，就会强制进行类型转换
+
+### 默认情况下 **java** 只要是小数，其对应的默认数据类型就是 **double**, 如何实现 **double** 向 **float** 转换?
+
+1. 使用字母 "F" 或 "f"
+
+2. 在变量或常量前使用 "(float)" 声明
+
+```
+public class DoubleToFloat{
+	public static void main(String args[]){
+	float f1 = 10.2F;
+	float f2 = (float)10.2;
+	System.out.println(f1 * f2);
+	}
+}
+```
+
+![20210319145717](https://img.fengqigang.cn//img/20210319145717.png)
+
+### int, char, long型可以保存小数吗?
+
+不可以， 只有 **float** 和 **double** 才可以保存小数
+
+![20210319150204](https://img.fengqigang.cn//img/20210319150204.png)
+
+### ![20210319150514](https://img.fengqigang.cn//img/20210319150514.png) 其计算结果有小数吗?为什么?
+
+没有小数
+
+因为两个 **int** 类型的变量计算后还是 **int** 类型
+
+而 **int** 类型是不保存小数的，只有 **double** 和 **float** 类型才可以保存小数
+
+![20210319150835](https://img.fengqigang.cn//img/20210319150835.png)
+
+将其必成 **double** 类型，其最终的结果也会自动转换成 **double** 类型
+
+### 大写字母范围与小写字母范围是多少？ 它们之间差了多少? 如何用代码实现 'A' 向 'a' 转换?
+
+大写字母范围: 65 ~ 90
+
+小写字母范围: 97 ~ 122
+
+它们之间差了32
+
+```java
+public class aToA{
+	public static void main(String args[]){
+		char c = 'A';
+		int num = c;
+		num = num + 32;
+		c = (char) num;
+		System.out.println(c);
+	}
+}
+```
+
+![20210319152102](https://img.fengqigang.cn//img/20210319152102.png)
+
+### char 可以与 int 型互相转换吗? 为什么?
+
+可以
+
+```java
+public class NumberToChar {
+	public static void main(String args[]){
+		char c = 'A';
+		int num = c;
+		System.out.println(c);
+		System.out.println(num);
+	}
+}
+```
+
+![20210319151611](https://img.fengqigang.cn//img/20210319151611.png)
+
+### char 可以保存中问字符吗? 为什么?
+
+可以， **java** 中， 使用了 **UNICODE** 编码，这种 **十六进制** 编码可以保存任意的文字
+
+```
+public class ChineseChar{
+	public static void main(String args[]){
+		char c = '王';
+		int num = c;
+		System.out.println(num);
+	}
+}
+```
+
+![20210319152535](https://img.fengqigang.cn//img/20210319152535.png)
+
+### **java** 中可以用 0 或 1 来填充布尔型的变量内容吗?
+
+不可以, 只可以用 **false** , **true**, 并且区分大小写
+
+![20210319152941](https://img.fengqigang.cn//img/20210319152941.png)
+
+![20210319153044](https://img.fengqigang.cn//img/20210319153044.png)
+
+### 如何实现在 str = "Hello" 基础上，再加上 "World!!!"? 
+
+**+=**
+
+![20210319154150](https://img.fengqigang.cn//img/20210319154150.png)
+
+![20210319154309](https://img.fengqigang.cn//img/20210319154309.png)
+
+### 如何使用三目运算符号实现 int max 是 num A 与 num B 中最大的一个?
+
+**数据类型 变量 = 布尔表达式 ? 满足此表达式时设置的内容 : 不满足此表达式时设置的内容**
+
+```java
+public class TernaryOperator{
+	public static void main(String args[]){
+		int numA = 10;
+		int numB = 20;
+
+		int max = numA > numB ? numA: numB;
+		System.out.println(max);
+	}
+}
+```
+
+![20210319154915](https://img.fengqigang.cn//img/20210319154915.png)
+
+### 普通(&) 与 短路(&&), 普通(|) 与 短路(||) 有什么区别?
+
+&& 只要第一个条件 **不成立** 就不执行了
+
+![20210319155503](https://img.fengqigang.cn//img/20210319155503.png)
+
+|| 只要第一个条件 **成立** 就不执行了
+
+![20210319155451](https://img.fengqigang.cn//img/20210319155451.png)
+
+
+而 & 和 | 都需要全部执行完
+
+### 如何用代码实现十进制转二进制?
 
 
 
