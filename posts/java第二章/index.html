@@ -55,7 +55,7 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%BA%8C%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  247 ,
+        },"genre": "posts","keywords": "java","wordcount":  630 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%BA%8C%E7%AB%A0\/","datePublished": "2021-03-17T22:50:33+08:00","dateModified": "2021-03-17T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -132,8 +132,8 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第二章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-17">2021-03-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;247 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-17">2021-03-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;630 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -152,7 +152,7 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         <li><a href="#int-可表示的数据的范围是多少"><strong>int</strong> 可表示的数据的范围是多少?</a></li>
         <li><a href="#long-可表示的数据的范围是多少"><strong>long</strong> 可表示的数据的范围是多少?</a></li>
         <li><a href="#char-可表示的数据的范围是多少-其默认值什么"><strong>char</strong> 可表示的数据的范围是多少, 其默认值什么?</a></li>
-        <li><a href="#为什么在-char-为-16位大小-其表示的数据范围是0255-而不是--216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$?</a></li>
+        <li><a href="#为什么在-char-为-16位大小-其表示的数据范围是0--255-而不是---216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0$ ~ $255$, 而不是 - $(2^{16} / 2)$ ~ $(2^{16} / 2)$ - $1$?</a></li>
         <li><a href="#为什么在表示数据的范围时最小负数绝对值总比最大正数多1">为什么在表示数据的范围时，最小负数绝对值总比最大正数多1?</a></li>
         <li><a href="#如果要描述日期时间数字或者表示文件或内存大小时用什么基本数据类型好">如果要描述日期时间数字或者表示文件或内存大小时，用什么基本数据类型好?</a></li>
         <li><a href="#如果要实现内容传递io-操作网络编程或者是编码转换jsp开发中使用utf-8编码-用什么数据类型好">如果要实现内容传递(IO 操作、网络编程)或者是编码转换(JSP开发中使用UTF-8编码), 用什么数据类型好?</a></li>
@@ -161,6 +161,20 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         <li><a href="#如何避免由于编译器bug所造成的非正常性语法的编译错误">如何避免由于编译器bug所造成的非正常性语法的编译错误?</a></li>
         <li><a href="#如何通过代码实现求int的最大值和最小值并且实现超过其最大值和最小值的结果">如何通过代码实现求int的最大值和最小值，并且实现超过其最大值和最小值的结果?</a></li>
         <li><a href="#为了解决数据溢出的问题想将-int-型的变量或常量变为-long-数据类型该怎么做">为了解决数据溢出的问题，想将 <strong>int</strong> 型的变量或常量变为 <strong>long</strong> 数据类型，该怎么做?</a></li>
+        <li><a href="#如何将long-num--100-变成int-num的数据类型">如何将long num = 100, 变成int num的数据类型?</a></li>
+        <li><a href="#long-num--2147483650l-其转换成int会怎样">long num = 2147483650L; 其转换成int会怎样?</a></li>
+        <li><a href="#java-中的自动类型转换是如何规定的-以-byte-变成-int-为例"><strong>Java</strong> 中的自动类型转换是如何规定的, 以 <strong>byte</strong> 变成 <strong>int</strong> 为例?</a></li>
+        <li><a href="#默认情况下-java-只要是小数其对应的默认数据类型就是-double-如何实现-double-向-float-转换">默认情况下 <strong>java</strong> 只要是小数，其对应的默认数据类型就是 <strong>double</strong>, 如何实现 <strong>double</strong> 向 <strong>float</strong> 转换?</a></li>
+        <li><a href="#int-char-long型可以保存小数吗">int, char, long型可以保存小数吗?</a></li>
+        <li><a href="#20210319150514httpsimgfengqigangcnimg20210319150514png-其计算结果有小数吗为什么"><img src="https://img.fengqigang.cn//img/20210319150514.png" alt="20210319150514"> 其计算结果有小数吗?为什么?</a></li>
+        <li><a href="#大写字母范围与小写字母范围是多少-它们之间差了多少-如何用代码实现-a-向-a-转换">大写字母范围与小写字母范围是多少？ 它们之间差了多少? 如何用代码实现 &lsquo;A&rsquo; 向 &lsquo;a&rsquo; 转换?</a></li>
+        <li><a href="#char-可以与-int-型互相转换吗-为什么">char 可以与 int 型互相转换吗? 为什么?</a></li>
+        <li><a href="#char-可以保存中问字符吗-为什么">char 可以保存中问字符吗? 为什么?</a></li>
+        <li><a href="#java-中可以用-0-或-1-来填充布尔型的变量内容吗"><strong>java</strong> 中可以用 0 或 1 来填充布尔型的变量内容吗?</a></li>
+        <li><a href="#如何实现在-str--hello-基础上再加上-world">如何实现在 str = &ldquo;Hello&rdquo; 基础上，再加上 &ldquo;World!!!&rdquo;?</a></li>
+        <li><a href="#如何使用三目运算符号实现-int-max-是-num-a-与-num-b-中最大的一个">如何使用三目运算符号实现 int max 是 num A 与 num B 中最大的一个?</a></li>
+        <li><a href="#普通-与-短路-普通-与-短路-有什么区别">普通(&amp;) 与 短路(&amp;&amp;), 普通(|) 与 短路(||) 有什么区别?</a></li>
+        <li><a href="#如何用代码实现十进制转二进制">如何用代码实现十进制转二进制?</a></li>
       </ul>
     </li>
   </ul>
@@ -242,7 +256,7 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         title="20210317222514" /></p>
 <h3 id="char-可表示的数据的范围是多少-其默认值什么"><strong>char</strong> 可表示的数据的范围是多少, 其默认值什么?</h3>
 <p><em>char</em> 是16位大小， 0~255, 其默认值为 <code>\u0000</code></p>
-<h3 id="为什么在-char-为-16位大小-其表示的数据范围是0255-而不是--216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0~255$, 而不是$- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$?</h3>
+<h3 id="为什么在-char-为-16位大小-其表示的数据范围是0--255-而不是---216--2--216--2---1">为什么在 <strong>char</strong> 为 16位大小， 其表示的数据范围是$0$ ~ $255$, 而不是 - $(2^{16} / 2)$ ~ $(2^{16} / 2)$ - $1$?</h3>
 <h3 id="为什么在表示数据的范围时最小负数绝对值总比最大正数多1">为什么在表示数据的范围时，最小负数绝对值总比最大正数多1?</h3>
 <h3 id="如果要描述日期时间数字或者表示文件或内存大小时用什么基本数据类型好">如果要描述日期时间数字或者表示文件或内存大小时，用什么基本数据类型好?</h3>
 <p>long</p>
@@ -348,6 +362,332 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210318223719.png"
         title="20210318223719" /></p>
+<h3 id="如何将long-num--100-变成int-num的数据类型">如何将long num = 100, 变成int num的数据类型?</h3>
+<p>int (num)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LongToIntP</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">long</span> <span class="n">num</span> <span class="o">=</span> <span class="n">1000</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="kt">int</span> <span class="o">(</span><span class="n">num</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319143115.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319143115.png, https://img.fengqigang.cn//img/20210319143115.png 1.5x, https://img.fengqigang.cn//img/20210319143115.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319143115.png"
+        title="20210319143115" /></p>
+<h3 id="long-num--2147483650l-其转换成int会怎样">long num = 2147483650L; 其转换成int会怎样?</h3>
+<p><strong>int</strong> 是32位大小， 2147483650L已超过其数据范围</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public class LongToIntOverflow{
+	public static void main(String args[]){
+	long num = 2147483650L;
+	int x = (int) num;
+	System.out.println(x);
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319143811.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319143811.png, https://img.fengqigang.cn//img/20210319143811.png 1.5x, https://img.fengqigang.cn//img/20210319143811.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319143811.png"
+        title="20210319143811" /></p>
+<h3 id="java-中的自动类型转换是如何规定的-以-byte-变成-int-为例"><strong>Java</strong> 中的自动类型转换是如何规定的, 以 <strong>byte</strong> 变成 <strong>int</strong> 为例?</h3>
+<p>如果使用的数据变量类型为 <strong>byte</strong>,</p>
+<ol>
+<li>
+<p>如果设置的内容在 <strong>byte</strong> 数据范围 <strong>之内</strong>，就会自动帮助用户实现数据类型的转换</p>
+</li>
+<li>
+<p>如果设置的内容在 <strong>byte</strong> 数据范围 <strong>之外</strong> ，就会强制进行类型转换</p>
+</li>
+</ol>
+<h3 id="默认情况下-java-只要是小数其对应的默认数据类型就是-double-如何实现-double-向-float-转换">默认情况下 <strong>java</strong> 只要是小数，其对应的默认数据类型就是 <strong>double</strong>, 如何实现 <strong>double</strong> 向 <strong>float</strong> 转换?</h3>
+<ol>
+<li>
+<p>使用字母 &ldquo;F&rdquo; 或 &ldquo;f&rdquo;</p>
+</li>
+<li>
+<p>在变量或常量前使用 &ldquo;(float)&rdquo; 声明</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public class DoubleToFloat{
+	public static void main(String args[]){
+	float f1 = 10.2F;
+	float f2 = (float)10.2;
+	System.out.println(f1 * f2);
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319145717.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319145717.png, https://img.fengqigang.cn//img/20210319145717.png 1.5x, https://img.fengqigang.cn//img/20210319145717.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319145717.png"
+        title="20210319145717" /></p>
+<h3 id="int-char-long型可以保存小数吗">int, char, long型可以保存小数吗?</h3>
+<p>不可以， 只有 <strong>float</strong> 和 <strong>double</strong> 才可以保存小数</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319150204.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319150204.png, https://img.fengqigang.cn//img/20210319150204.png 1.5x, https://img.fengqigang.cn//img/20210319150204.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319150204.png"
+        title="20210319150204" /></p>
+<h3 id="20210319150514httpsimgfengqigangcnimg20210319150514png-其计算结果有小数吗为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319150514.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319150514.png, https://img.fengqigang.cn//img/20210319150514.png 1.5x, https://img.fengqigang.cn//img/20210319150514.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319150514.png"
+        title="20210319150514" /> 其计算结果有小数吗?为什么?</h3>
+<p>没有小数</p>
+<p>因为两个 <strong>int</strong> 类型的变量计算后还是 <strong>int</strong> 类型</p>
+<p>而 <strong>int</strong> 类型是不保存小数的，只有 <strong>double</strong> 和 <strong>float</strong> 类型才可以保存小数</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319150835.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319150835.png, https://img.fengqigang.cn//img/20210319150835.png 1.5x, https://img.fengqigang.cn//img/20210319150835.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319150835.png"
+        title="20210319150835" /></p>
+<p>将其必成 <strong>double</strong> 类型，其最终的结果也会自动转换成 <strong>double</strong> 类型</p>
+<h3 id="大写字母范围与小写字母范围是多少-它们之间差了多少-如何用代码实现-a-向-a-转换">大写字母范围与小写字母范围是多少？ 它们之间差了多少? 如何用代码实现 &lsquo;A&rsquo; 向 &lsquo;a&rsquo; 转换?</h3>
+<p>大写字母范围: 65 ~ 90</p>
+<p>小写字母范围: 97 ~ 122</p>
+<p>它们之间差了32</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">aToA</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">c</span><span class="o">;</span>
+		<span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="n">32</span><span class="o">;</span>
+		<span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)</span> <span class="n">num</span><span class="o">;</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319152102.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319152102.png, https://img.fengqigang.cn//img/20210319152102.png 1.5x, https://img.fengqigang.cn//img/20210319152102.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319152102.png"
+        title="20210319152102" /></p>
+<h3 id="char-可以与-int-型互相转换吗-为什么">char 可以与 int 型互相转换吗? 为什么?</h3>
+<p>可以</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumberToChar</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">c</span><span class="o">;</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319151611.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319151611.png, https://img.fengqigang.cn//img/20210319151611.png 1.5x, https://img.fengqigang.cn//img/20210319151611.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319151611.png"
+        title="20210319151611" /></p>
+<h3 id="char-可以保存中问字符吗-为什么">char 可以保存中问字符吗? 为什么?</h3>
+<p>可以， <strong>java</strong> 中， 使用了 <strong>UNICODE</strong> 编码，这种 <strong>十六进制</strong> 编码可以保存任意的文字</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public class ChineseChar{
+	public static void main(String args[]){
+		char c = &#39;王&#39;;
+		int num = c;
+		System.out.println(num);
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319152535.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319152535.png, https://img.fengqigang.cn//img/20210319152535.png 1.5x, https://img.fengqigang.cn//img/20210319152535.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319152535.png"
+        title="20210319152535" /></p>
+<h3 id="java-中可以用-0-或-1-来填充布尔型的变量内容吗"><strong>java</strong> 中可以用 0 或 1 来填充布尔型的变量内容吗?</h3>
+<p>不可以, 只可以用 <strong>false</strong> , <strong>true</strong>, 并且区分大小写</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319152941.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319152941.png, https://img.fengqigang.cn//img/20210319152941.png 1.5x, https://img.fengqigang.cn//img/20210319152941.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319152941.png"
+        title="20210319152941" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319153044.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319153044.png, https://img.fengqigang.cn//img/20210319153044.png 1.5x, https://img.fengqigang.cn//img/20210319153044.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319153044.png"
+        title="20210319153044" /></p>
+<h3 id="如何实现在-str--hello-基础上再加上-world">如何实现在 str = &ldquo;Hello&rdquo; 基础上，再加上 &ldquo;World!!!&rdquo;?</h3>
+<p><strong>+=</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319154150.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319154150.png, https://img.fengqigang.cn//img/20210319154150.png 1.5x, https://img.fengqigang.cn//img/20210319154150.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319154150.png"
+        title="20210319154150" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319154309.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319154309.png, https://img.fengqigang.cn//img/20210319154309.png 1.5x, https://img.fengqigang.cn//img/20210319154309.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319154309.png"
+        title="20210319154309" /></p>
+<h3 id="如何使用三目运算符号实现-int-max-是-num-a-与-num-b-中最大的一个">如何使用三目运算符号实现 int max 是 num A 与 num B 中最大的一个?</h3>
+<p><strong>数据类型 变量 = 布尔表达式 ? 满足此表达式时设置的内容 : 不满足此表达式时设置的内容</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TernaryOperator</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">numA</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">numB</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+
+		<span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">numA</span> <span class="o">&gt;</span> <span class="n">numB</span> <span class="o">?</span> <span class="n">numA</span><span class="o">:</span> <span class="n">numB</span><span class="o">;</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">max</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319154915.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319154915.png, https://img.fengqigang.cn//img/20210319154915.png 1.5x, https://img.fengqigang.cn//img/20210319154915.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319154915.png"
+        title="20210319154915" /></p>
+<h3 id="普通-与-短路-普通-与-短路-有什么区别">普通(&amp;) 与 短路(&amp;&amp;), 普通(|) 与 短路(||) 有什么区别?</h3>
+<p>&amp;&amp; 只要第一个条件 <strong>不成立</strong> 就不执行了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319155503.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319155503.png, https://img.fengqigang.cn//img/20210319155503.png 1.5x, https://img.fengqigang.cn//img/20210319155503.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319155503.png"
+        title="20210319155503" /></p>
+<p>|| 只要第一个条件 <strong>成立</strong> 就不执行了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210319155451.png"
+        data-srcset="https://img.fengqigang.cn//img/20210319155451.png, https://img.fengqigang.cn//img/20210319155451.png 1.5x, https://img.fengqigang.cn//img/20210319155451.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210319155451.png"
+        title="20210319155451" /></p>
+<p>而 &amp; 和 | 都需要全部执行完</p>
+<h3 id="如何用代码实现十进制转二进制">如何用代码实现十进制转二进制?</h3>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
