@@ -10,6 +10,7 @@ tags: [java]
 categories: [java]
 ---
 
+
 ### 如何做文档注释?
 
 以 /** 开头， 以 */
@@ -268,7 +269,7 @@ public class NumberToChar {
 
 ![20210319151611](https://img.fengqigang.cn//img/20210319151611.png)
 
-### char 可以保存中问字符吗? 为什么?
+### char 可以保存中文字符吗? 为什么?
 
 可以， **java** 中， 使用了 **UNICODE** 编码，这种 **十六进制** 编码可以保存任意的文字
 
@@ -333,5 +334,42 @@ public class TernaryOperator{
 
 ### 如何用代码实现十进制转二进制?
 
+### 如何更快的计算出2的3次方?
 
+左移2位
+
+```
+public class TwoToEight {
+	public static void main(String args[]){
+		int x = 2;
+		System.out.println(x << 2);
+	}
+}
+```
+
+![20210320193816](https://img.fengqigang.cn//img/20210320193816.png)
+
+### 什么时候用 **if**? 什么时候用 **switch** ?
+
+范围判断时用 **if**
+
+值判断时用 **switch**
+
+```java
+public class CoreDegree {
+	public static void main(String args[]){
+		double score = 30.0;
+
+		if(score < 60.0){
+			System.out.println("小白的成绩");
+		} else if(score >= 60 && score <= 90){
+			System.out.println("成绩中等");
+		} else if(score > 90 && score <= 100){
+			System.out.println("成绩优秀");
+		} else {
+			System.out.println("不可能");
+		}
+	}
+}
+```
 
