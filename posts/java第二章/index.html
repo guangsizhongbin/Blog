@@ -55,7 +55,7 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%BA%8C%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  724 ,
+        },"genre": "posts","keywords": "java","wordcount":  989 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%BA%8C%E7%AB%A0\/","datePublished": "2021-03-17T22:50:33+08:00","dateModified": "2021-03-17T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -132,8 +132,8 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第二章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-17">2021-03-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;724 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-17">2021-03-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;989 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -177,6 +177,11 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         <li><a href="#如何用代码实现十进制转二进制">如何用代码实现十进制转二进制?</a></li>
         <li><a href="#如何更快的计算出2的3次方">如何更快的计算出2的3次方?</a></li>
         <li><a href="#什么时候用-if-什么时候用-switch-">什么时候用 <strong>if</strong>? 什么时候用 <strong>switch</strong> ?</a></li>
+        <li><a href="#java-中的-while-循环有哪两种"><strong>JAVA</strong> 中的 <strong>while</strong> 循环有哪两种?</a></li>
+        <li><a href="#如何用-dowhile-循环实现100以内的加法">如何用 <strong>do&hellip;while</strong> 循环实现100以内的加法?</a></li>
+        <li><a href="#如何用-while-循环实现100以内的加法">如何用 while 循环实现100以内的加法?</a></li>
+        <li><a href="#在工作中什么时候用for循环和while循环">在工作中什么时候用for循环和while循环？</a></li>
+        <li><a href="#continue-与-while-有什么区别"><strong>continue</strong> 与 <strong>while</strong> 有什么区别?</a></li>
       </ul>
     </li>
   </ul>
@@ -720,7 +725,6 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
         title="20210320193816" /></p>
 <h3 id="什么时候用-if-什么时候用-switch-">什么时候用 <strong>if</strong>? 什么时候用 <strong>switch</strong> ?</h3>
 <p>范围判断时用 <strong>if</strong></p>
-<p>值判断时用 <strong>switch</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -757,7 +761,217 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><p>值判断时用 <strong>switch</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GuessNum</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+		<span class="k">switch</span> <span class="o">(</span><span class="n">ch</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">case</span> <span class="n">2</span><span class="o">:</span> <span class="o">{</span>
+								<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;内容是2&#34;</span><span class="o">);</span>
+								<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="k">case</span> <span class="n">1</span><span class="o">:</span> <span class="o">{</span>
+								<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;内容是1&#34;</span><span class="o">);</span>
+								<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="k">case</span> <span class="n">3</span><span class="o">:</span> <span class="o">{</span>
+								<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;内容是3&#34;</span><span class="o">);</span>
+								<span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="k">default</span><span class="o">:</span> <span class="o">{</span>
+								 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;没有匹配内容&#34;</span><span class="o">);</span>
+								 <span class="k">break</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="java-中的-while-循环有哪两种"><strong>JAVA</strong> 中的 <strong>while</strong> 循环有哪两种?</h3>
+<p>while 循环</p>
+<p>do&hellip;while 循环</p>
+<h3 id="如何用-dowhile-循环实现100以内的加法">如何用 <strong>do&hellip;while</strong> 循环实现100以内的加法?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public class DoWhileToHundred{
+	public static void main(String args[]){
+		int sum = 0;
+		int current = 1;
+		do{
+			sum += current;
+			current++;
+		} while (current &lt;= 100);
+		System.out.println(sum);
+	}
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210322195116.png"
+        data-srcset="https://img.fengqigang.cn//img/20210322195116.png, https://img.fengqigang.cn//img/20210322195116.png 1.5x, https://img.fengqigang.cn//img/20210322195116.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210322195116.png"
+        title="https://img.fengqigang.cn//img/20210322195116.png" /></p>
+<h3 id="如何用-while-循环实现100以内的加法">如何用 while 循环实现100以内的加法?</h3>
+<p><strong>这个在实际开发中比较常用</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WhileToHundred</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">current</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+		<span class="k">while</span><span class="o">(</span><span class="n">current</span> <span class="o">&lt;=</span> <span class="n">100</span><span class="o">){</span>
+			<span class="n">sum</span> <span class="o">+=</span> <span class="n">current</span><span class="o">;</span>
+			<span class="n">current</span><span class="o">++;</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sum</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210322195556.png"
+        data-srcset="https://img.fengqigang.cn//img/20210322195556.png, https://img.fengqigang.cn//img/20210322195556.png 1.5x, https://img.fengqigang.cn//img/20210322195556.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210322195556.png"
+        title="20210322195556" /></p>
+<h3 id="在工作中什么时候用for循环和while循环">在工作中什么时候用for循环和while循环？</h3>
+<p><strong>while</strong> 循环: 在 <strong>不确定循环次数</strong> ，但是确定循环结束条件的情况下使用</p>
+<p><strong>for</strong> 循环: <strong>确定循环次数</strong> 的情况下使用</p>
+<p>如:</p>
+<p>一口口的吃饭，一直吃到饱为止，可是并不知道要吃多少口，只知道结束条件，</p>
+<p>用 <strong>while</strong></p>
+<p>围着操场跑两圈步，已经明确知道了循环的次数，</p>
+<p>用 <strong>for</strong></p>
+<h3 id="continue-与-while-有什么区别"><strong>continue</strong> 与 <strong>while</strong> 有什么区别?</h3>
+<p><strong>continue</strong> 会结束当前一次循环，直接进行下一次循环的操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ObserveContinue</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">3</span><span class="o">){</span>
+				<span class="k">continue</span><span class="o">;</span>
+			<span class="o">}</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&#34;x = &#34;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210322200851.png"
+        data-srcset="https://img.fengqigang.cn//img/20210322200851.png, https://img.fengqigang.cn//img/20210322200851.png 1.5x, https://img.fengqigang.cn//img/20210322200851.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210322200851.png"
+        title="20210322200851" /></p>
+<p><strong>break</strong> 会直接挑出最近的循环</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ObserveBreak</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">3</span><span class="o">){</span>
+			<span class="k">break</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;x = &#34;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210322201203.png"
+        data-srcset="https://img.fengqigang.cn//img/20210322201203.png, https://img.fengqigang.cn//img/20210322201203.png 1.5x, https://img.fengqigang.cn//img/20210322201203.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210322201203.png"
+        title="https://img.fengqigang.cn//img/20210322201203.png" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
@@ -785,7 +999,7 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>
