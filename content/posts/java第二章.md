@@ -10,7 +10,6 @@ tags: [java]
 categories: [java]
 ---
 
-
 ### 如何做文档注释?
 
 以 /** 开头， 以 */
@@ -353,7 +352,6 @@ public class TwoToEight {
 
 范围判断时用 **if**
 
-值判断时用 **switch**
 
 ```java
 public class CoreDegree {
@@ -372,4 +370,130 @@ public class CoreDegree {
 	}
 }
 ```
+
+值判断时用 **switch**
+
+```java
+public class GuessNum{
+	public static void main(String args[]){
+		int ch = 1;
+		switch (ch) {
+			case 2: {
+								System.out.println("内容是2");
+								break;
+			}
+			case 1: {
+								System.out.println("内容是1");
+								break;
+			}
+			case 3: {
+								System.out.println("内容是3");
+								break;
+			}
+			default: {
+								 System.out.println("没有匹配内容");
+								 break;
+			}
+		}
+	}
+}
+```
+
+### **JAVA** 中的 **while** 循环有哪两种?
+
+while 循环
+
+do...while 循环
+
+### 如何用 **do...while** 循环实现100以内的加法?
+
+```
+public class DoWhileToHundred{
+	public static void main(String args[]){
+		int sum = 0;
+		int current = 1;
+		do{
+			sum += current;
+			current++;
+		} while (current <= 100);
+		System.out.println(sum);
+	}
+}
+```
+
+![](https://img.fengqigang.cn//img/20210322195116.png)
+
+### 如何用 while 循环实现100以内的加法?
+
+**这个在实际开发中比较常用**
+
+```java
+public class WhileToHundred {
+	public static void main(String args[]){
+		int sum = 0;
+		int current = 1;
+		while(current <= 100){
+			sum += current;
+			current++;
+		}
+		System.out.println(sum);
+	}
+}
+```
+
+![20210322195556](https://img.fengqigang.cn//img/20210322195556.png)
+
+### 在工作中什么时候用for循环和while循环？
+
+**while** 循环: 在 **不确定循环次数** ，但是确定循环结束条件的情况下使用
+
+**for** 循环: **确定循环次数** 的情况下使用
+
+如:
+
+一口口的吃饭，一直吃到饱为止，可是并不知道要吃多少口，只知道结束条件，
+
+用 **while**
+
+围着操场跑两圈步，已经明确知道了循环的次数，
+
+用 **for**
+
+### **continue** 与 **while** 有什么区别?
+
+**continue** 会结束当前一次循环，直接进行下一次循环的操作
+
+```java
+public class ObserveContinue{
+	public static void main(String args[]){
+		for(int x = 0; x < 10; x++){
+			if(x == 3){
+				continue;
+			}
+			System.out.print("x = " + x + "、");
+		}
+	}
+}
+```
+
+![20210322200851](https://img.fengqigang.cn//img/20210322200851.png)
+
+**break** 会直接挑出最近的循环
+
+```java
+public class ObserveBreak{
+	public static void main(String args[]){
+		for(int x = 0; x < 10; x++){
+		if(x == 3){
+			break;
+		}
+		System.out.println("x = " + x + "、");
+		}
+	}
+}
+```
+
+![](https://img.fengqigang.cn//img/20210322201203.png)
+
+
 
