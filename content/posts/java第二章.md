@@ -495,5 +495,83 @@ public class ObserveBreak{
 
 ![](https://img.fengqigang.cn//img/20210322201203.png)
 
+### 其他语言中的函数与 JAVA 中的方法有什么关系?
+
+方法又被称为函数，
+
+Java 中的英文单词是 **Method**
+
+其他语言中的英文单词是 **Function**
+
+### 如何写出一个没有参数，没有返回值的方法 **printInfo**?
+
+方法要用 **static** 修饰
+
+```java
+public class NoReturnMethod {
+	public static void main(String args[]) {
+		printInfo();
+		printInfo();
+	}
+
+	public static void printInfo() {
+		System.out.println("*****************");
+		System.out.println("* fengqigang.cn *");
+		System.out.println("*****************");
+	}
+}
+```
+
+![20210323221425](https://img.fengqigang.cn//img/20210323221425.png)
+
+### 在JAVA中，如何要给方法命名，其规范是什么?
+
+第一个单词小写，之后每个单词首字母大写
+
+如：
+
+printInfo()
+
+getMessage()
+
+### 写文档注释需要注意什么?如何写出其文档注释![20210323221952](https://img.fengqigang.cn//img/20210323221952.png)?
+
+1. 整个方法的用途
+2. @param 变量的作用
+
+![20210323222214](https://img.fengqigang.cn//img/20210323222214.png)
+
+### 如何写出其文档注释?![20210323222504](https://img.fengqigang.cn//img/20210323222504.png) 
+
+![20210323222652](https://img.fengqigang.cn//img/20210323222652.png)
+
+### 在 **Java** 中, method 的 return 如何使用?
+
+1. 方法有返回值声明，那么必须返回相应类型的数据
+
+2. 方法没有返回值声明，可以直接编写 **return**
+
+```java
+public class NoneReturnMethod {
+	public static void main (String args[]) {
+		set(100);
+		set(3);
+		set(10);
+	}
+	/**
+	 * 定义一个设置数据的操作方法，如果该数据为3将无法设置
+	 * @param x 要设置的数据内容
+	 */
+	public static void set(int x) {
+		if (x == 3) {
+			return;
+		}
+		System.out.println("x =" + x);
+	}
+}
+```
+
+
+
 
 
