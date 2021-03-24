@@ -173,7 +173,7 @@ public class LongToIntP{
 
 **int** 是32位大小， 2147483650L已超过其数据范围
 
-```
+```java
 public class LongToIntOverflow{
 	public static void main(String args[]){
 	long num = 2147483650L;
@@ -185,7 +185,7 @@ public class LongToIntOverflow{
 
 ![20210319143811](https://img.fengqigang.cn//img/20210319143811.png)
 
-### **Java** 中的自动类型转换是如何规定的, 以 **byte** 变成 **int** 为例?
+### **ava** 中的自动类型转换是如何规定的, 以 **byte** 变成 **int** 为例?
 
 如果使用的数据变量类型为 **byte**, 
 
@@ -199,7 +199,7 @@ public class LongToIntOverflow{
 
 2. 在变量或常量前使用 "(float)" 声明
 
-```
+```java
 public class DoubleToFloat{
 	public static void main(String args[]){
 	float f1 = 10.2F;
@@ -272,7 +272,7 @@ public class NumberToChar {
 
 可以， **java** 中， 使用了 **UNICODE** 编码，这种 **十六进制** 编码可以保存任意的文字
 
-```
+```java
 public class ChineseChar{
 	public static void main(String args[]){
 		char c = '王';
@@ -337,7 +337,7 @@ public class TernaryOperator{
 
 左移2位
 
-```
+```java
 public class TwoToEight {
 	public static void main(String args[]){
 		int x = 2;
@@ -407,7 +407,7 @@ do...while 循环
 
 ### 如何用 **do...while** 循环实现100以内的加法?
 
-```
+```java
 public class DoWhileToHundred{
 	public static void main(String args[]){
 		int sum = 0;
@@ -572,6 +572,89 @@ public class NoneReturnMethod {
 ```
 
 
+### 在 **Java** 中，什么是方法的重载?
 
+是指 **方法名称相同** ，**参数的类型或个数不同** ，调用的时候将会按照传递的类型和个数完成不同方法全的执行
 
+```java
+public class MethodReload {
+	public static void main(String args[]) {
+		System.out.println("两个整型参数:" + add(10, 20));
+		System.out.println("三个整型参数:" + add(10,20, 30));
+		System.out.println("两个浮点型参数:" + add(10.2, 20.3));
+	}
+
+	/**
+	 * 实现两个整型数字的加法计算操作
+	 * @param x 操作数字一
+	 * @param y 操作数字二
+	 * @return 两个整型数据的加法计算结果
+	 */
+	public static int add(int x, int y){
+		return x + y;
+	}
+
+	/**
+	 * 实现三个整型数字的加法计算操作
+	 * @param x 操作数字一
+	 * @param y 操作数字二
+	 * @param z 操作数字三
+	 * @return 三个整型数据的加法计算结果
+	 */
+	public static int add(int x, int y, int z){
+		return x + y + z;
+	}
+
+	/**
+	 * 实现三个小数的加法计算操作
+	 * @param x 操作数字一
+	 * @param y 操作数字二
+	 * @return 两个小数的加法计算结果
+	 */
+	public static double add(double x, double y){
+		return x + y;
+	}
+}
+```
+
+![20210324215507](https://img.fengqigang.cn//img/20210324215507.png)
+
+### 在设计方法重载时需要注意什么?
+
+1. 所有重载后的方法使用同一种返回值类型
+
+2. 根据 **参数类型及个数来区分不同的方法** ，而不是依靠返回值的不同来确定的
+
+### 什么是递归调用?
+
+是指方法自己调用自己形式
+
+### 若使用递归操作需要满足什么条件?
+
+1. 必须有结束条件
+
+2. 第次调用时都需要改变传递的参数
+
+![20210324220022](https://img.fengqigang.cn//img/20210324220022.png)
+
+### 如何用递归写出1-100累加?
+
+```java
+public class RecusiveAddToHundred {
+	public static void main(String args[]){
+		System.out.println(sum(100));
+	}
+	/**
+	 * 数据的累加操作
+	 * @param num 要进行累加的操作
+	 * @return 数据的累加结果
+	 */
+	public static int sum(int num){
+		if (num == 1){
+			return 1;
+		}
+		return num + sum(num - 1);
+	}
+}
+```
 
