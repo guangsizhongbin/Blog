@@ -4,7 +4,24 @@
         <link>http://fengqigang.cn/categories/java/</link>
         <description>java - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 17 Mar 2021 22:50:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Java第三章</title>
+    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</link>
+    <pubDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</guid>
+    <description><![CDATA[什么是类? 什么是对象? 类:
+表示一个客观世界中某类群体的一些基本特征抽象
+如:
+汽车， 轮船，书
+对象:
+一个个具体的事物
+如:
+张三同学， 李四账户， 王五的汽车
+总结:
+类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
+如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.]]></description>
+</item><item>
     <title>Java第二章</title>
     <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/</link>
     <pubDate>Wed, 17 Mar 2021 22:50:33 &#43;0800</pubDate>

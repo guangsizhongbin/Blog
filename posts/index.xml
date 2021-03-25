@@ -4,7 +4,24 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 21 Mar 2021 10:30:12 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java第三章</title>
+    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</link>
+    <pubDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</guid>
+    <description><![CDATA[什么是类? 什么是对象? 类:
+表示一个客观世界中某类群体的一些基本特征抽象
+如:
+汽车， 轮船，书
+对象:
+一个个具体的事物
+如:
+张三同学， 李四账户， 王五的汽车
+总结:
+类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
+如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.]]></description>
+</item><item>
     <title>Linux第九章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/</link>
     <pubDate>Sun, 21 Mar 2021 10:30:12 &#43;0800</pubDate>
@@ -158,19 +175,5 @@ p2 为延伸分区(Extended)
 p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)
 设备文件名分别为:
  P1: /dev/sda1 P2: /dev/sda2 L1: /dev/sda5 L2: /dev/sda6 L3: /dev/sda7 L4: /dev/sda8 L5: /dev/sda9  /dev/sda3与/dev/sda4是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始]]></description>
-</item><item>
-    <title>Linux_4</title>
-    <link>http://fengqigang.cn/posts/linux_4/</link>
-    <pubDate>Mon, 22 Feb 2021 22:24:21 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux_4/</guid>
-    <description><![CDATA[假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？ 虚拟机使用的是/dev/vd[a-p]来命名的
-所以其名为/dev/vda
-如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
-且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
-SATA1: /dev/sda
-SATA5: /dev/sdb
-USB磁盘(开机完成后才被系统捉到): /dev/sdc
-什么是MSDOS（MBR）分区 ]]></description>
 </item></channel>
 </rss>

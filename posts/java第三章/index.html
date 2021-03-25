@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java第三章 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Java第三章" />
+<meta property="og:description" content="什么是类? 什么是对象? 类:
+表示一个客观世界中某类群体的一些基本特征抽象
+如:
+汽车， 轮船，书
+对象:
+一个个具体的事物
+如:
+张三同学， 李四账户， 王五的汽车
+总结:
+类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
+如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; &#43; title &#43; &#34;, 价格:&#34; &#43; price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-25T22:54:33&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-25T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java第三章"/>
+<meta name="twitter:description" content="什么是类? 什么是对象? 类:
+表示一个客观世界中某类群体的一些基本特征抽象
+如:
+汽车， 轮船，书
+对象:
+一个个具体的事物
+如:
+张三同学， 李四账户， 王五的汽车
+总结:
+类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
+如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; &#43; title &#43; &#34;, 价格:&#34; &#43; price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/" /><link rel="prev" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java第三章",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
+        },"genre": "posts","keywords": "java","wordcount":  159 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;159 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是类-什么是对象">什么是类? 什么是对象?</a></li>
+        <li><a href="#如何定义一个类为-book-并提供一个方法-输出图书的名称和价格">如何定义一个类为 <strong>Book</strong>, 并提供一个方法, 输出图书的名称和价格?</a></li>
+        <li><a href="#httpsimgfengqigangcnimg20210325223421png如何定义一个book类为bk-bk的title为-java-开发-bk的price为899"><img src="https://img.fengqigang.cn//img/20210325223421.png" alt="">如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9?</a></li>
+        <li><a href="#httpsimgfengqigangcnimg20210325223739png-如何调用类中的-getinfo-方法"><img src="https://img.fengqigang.cn//img/20210325223739.png" alt=""> 如何调用类中的 getInfo() 方法?</a></li>
+        <li><a href="#在-java-中什么是堆内存-heap-和-栈内存-stack-">在 <strong>java</strong> 中什么是堆内存 (heap) 和 栈内存 (stack) ?</a></li>
+        <li><a href="#20210325224724httpsimgfengqigangcnimg20210325224724png-以本程序为例子分析其堆内存与栈内存"><img src="https://img.fengqigang.cn//img/20210325224724.png" alt="20210325224724"> 以本程序为例子，分析其堆内存与栈内存?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是类-什么是对象">什么是类? 什么是对象?</h3>
+<p><strong>类</strong>:</p>
+<p>表示一个客观世界中某类群体的一些基本特征抽象</p>
+<p>如:</p>
+<p>汽车， 轮船，书</p>
+<p><strong>对象</strong>:</p>
+<p>一个个具体的事物</p>
+<p>如:</p>
+<p>张三同学， 李四账户， 王五的汽车</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325222315.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325222315.png, https://img.fengqigang.cn//img/20210325222315.png 1.5x, https://img.fengqigang.cn//img/20210325222315.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325222315.png"
+        title="https://img.fengqigang.cn//img/20210325222315.png" /></p>
+<p>总结:</p>
+<p><strong>类</strong> 实际上是对象操作的 <strong>模板</strong> ，但是类不能够直接使用，必须通过 <strong>实例对象</strong> 来使用</p>
+<h3 id="如何定义一个类为-book-并提供一个方法-输出图书的名称和价格">如何定义一个类为 <strong>Book</strong>, 并提供一个方法, 输出图书的名称和价格?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+	<span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+	<span class="kt">double</span> <span class="n">price</span><span class="o">;</span>
+	<span class="cm">/*
+</span><span class="cm">	 * 输出对象完整信息
+</span><span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getInfo</span><span class="o">()</span> <span class="o">{</span> 
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;图书名称:&#34;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s">&#34;, 价格:&#34;</span> <span class="o">+</span> <span class="n">price</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="httpsimgfengqigangcnimg20210325223421png如何定义一个book类为bk-bk的title为-java-开发-bk的price为899"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325223421.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325223421.png, https://img.fengqigang.cn//img/20210325223421.png 1.5x, https://img.fengqigang.cn//img/20210325223421.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325223421.png"
+        title="https://img.fengqigang.cn//img/20210325223421.png" />如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+	<span class="n">String</span> <span class="n">title</span><span class="o">;</span>
+	<span class="kt">double</span> <span class="n">price</span><span class="o">;</span>
+	<span class="cm">/*
+</span><span class="cm">	 * 输出对象完整信息
+</span><span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">getInfo</span><span class="o">()</span> <span class="o">{</span> 
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;图书名称:&#34;</span> <span class="o">+</span> <span class="n">title</span> <span class="o">+</span> <span class="s">&#34;, 价格:&#34;</span> <span class="o">+</span> <span class="n">price</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassBook</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">Book</span> <span class="n">bk</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Book</span><span class="o">();</span>
+		<span class="n">bk</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="s">&#34;Java 开发&#34;</span><span class="o">;</span>
+		<span class="n">bk</span><span class="o">.</span><span class="na">price</span> <span class="o">=</span> <span class="n">89</span><span class="o">.</span><span class="na">9</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="httpsimgfengqigangcnimg20210325223739png-如何调用类中的-getinfo-方法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325223739.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325223739.png, https://img.fengqigang.cn//img/20210325223739.png 1.5x, https://img.fengqigang.cn//img/20210325223739.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325223739.png"
+        title="https://img.fengqigang.cn//img/20210325223739.png" /> 如何调用类中的 getInfo() 方法?</h3>
+<p>** bk.getInfo() **</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325223920.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325223920.png, https://img.fengqigang.cn//img/20210325223920.png 1.5x, https://img.fengqigang.cn//img/20210325223920.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325223920.png"
+        title="https://img.fengqigang.cn//img/20210325223920.png" /></p>
+<h3 id="在-java-中什么是堆内存-heap-和-栈内存-stack-">在 <strong>java</strong> 中什么是堆内存 (heap) 和 栈内存 (stack) ?</h3>
+<p><strong>栈内存</strong> :</p>
+<p>保存的是一块对内存的空间地址</p>
+<p><strong>堆内存</strong> :</p>
+<p>保存对象的真正数据, 都是每一个对象的属性内容</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325224425.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325224425.png, https://img.fengqigang.cn//img/20210325224425.png 1.5x, https://img.fengqigang.cn//img/20210325224425.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325224425.png"
+        title="20210325224425" /></p>
+<h3 id="20210325224724httpsimgfengqigangcnimg20210325224724png-以本程序为例子分析其堆内存与栈内存"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325224724.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325224724.png, https://img.fengqigang.cn//img/20210325224724.png 1.5x, https://img.fengqigang.cn//img/20210325224724.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325224724.png"
+        title="20210325224724" /> 以本程序为例子，分析其堆内存与栈内存?</h3>
+<ol>
+<li>声明并实例化对象</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325225319.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325225319.png, https://img.fengqigang.cn//img/20210325225319.png 1.5x, https://img.fengqigang.cn//img/20210325225319.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325225319.png"
+        title="20210325225319" /></p>
+<ol start="2">
+<li>设置 <strong>title</strong> 属性内容</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325225332.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325225332.png, https://img.fengqigang.cn//img/20210325225332.png 1.5x, https://img.fengqigang.cn//img/20210325225332.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325225332.png"
+        title="20210325225332" /></p>
+<ol start="3">
+<li>设置 <strong>price</strong> 属性内容</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210325225345.png"
+        data-srcset="https://img.fengqigang.cn//img/20210325225345.png, https://img.fengqigang.cn//img/20210325225345.png 1.5x, https://img.fengqigang.cn//img/20210325225345.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210325225345.png"
+        title="20210325225345" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-25</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/" class="prev" rel="prev" title="Linux第九章"><i class="fas fa-angle-left fa-fw"></i>Linux第九章</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
