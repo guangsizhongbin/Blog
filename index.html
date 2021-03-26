@@ -100,6 +100,12 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/twosum/">TwoSum</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-26">2021-03-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>algorithm</a></span></div><div class="content">Two Sum 001
+我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x ++){ for (int y = x + 1; y &lt; nums.length; y ++){ if (nums[x] + nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表</div><div class="post-footer">
+        <a href="/posts/twosum/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Java第三章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-25">2021-03-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">什么是类? 什么是对象? 类:
 表示一个客观世界中某类群体的一些基本特征抽象
@@ -169,27 +175,6 @@ extract information about file permissions(default for superuser)
 -c, &ndash;create
 Cteate a new archive. Arguments supply the names of the files to be archived. Directories are archived recursively, unless the &ndash;no-recursion option is given.</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Linux第七章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-06">2021-03-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">为什么硬盘在分区后需要进行格式化呢? 因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。
-在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
-inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
-block: 实际记录文件的内容，若文件太大时，会占用多个block
-为什么在window系统下常听到需要磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
-其采取的方法是这样的
-当数据过于离散的时候，读取一个文件有可能要转好几圈。
-若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
-则一个文件将浪费4096 - 50 = 4046 Bytes.
-4046 * 10000 / 1024 / 1024 = 38. 58MB
-如何找出目前系统有被格式化的设备? blkid
-**** locate/print block device attributes ****
-每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
-则若一个block为1KB,
-12个直接: 12 x 1KB = 12KB
-1个间接: 256 x 1KB = 256KB
-每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录</div><div class="post-footer">
-        <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
