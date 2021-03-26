@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  159 ,
+        },"genre": "posts","keywords": "java","wordcount":  385 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;159 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;385 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -141,6 +141,26 @@
         <li><a href="#httpsimgfengqigangcnimg20210325223739png-如何调用类中的-getinfo-方法"><img src="https://img.fengqigang.cn//img/20210325223739.png" alt=""> 如何调用类中的 getInfo() 方法?</a></li>
         <li><a href="#在-java-中什么是堆内存-heap-和-栈内存-stack-">在 <strong>java</strong> 中什么是堆内存 (heap) 和 栈内存 (stack) ?</a></li>
         <li><a href="#20210325224724httpsimgfengqigangcnimg20210325224724png-以本程序为例子分析其堆内存与栈内存"><img src="https://img.fengqigang.cn//img/20210325224724.png" alt="20210325224724"> 以本程序为例子，分析其堆内存与栈内存?</a></li>
+        <li><a href="#所有在类中定义的属性应该如何封装">所有在类中定义的属性，应该如何封装?</a></li>
+        <li><a href="#在类中已用-private-封装的属性应该如何在外部使用">在类中已用 <strong>private</strong> 封装的属性，应该如何在外部使用?</a></li>
+        <li><a href="#20210326165049httpsimgfengqigangcnimg20210326165049png-定义了一个book类-如何给这些属性设置-setter--getter-操作"><img src="https://img.fengqigang.cn//img/20210326165049.png" alt="20210326165049"> 定义了一个Book类， 如何给这些属性设置 <strong>setter</strong> 、 <strong>getter</strong> 操作?</a></li>
+        <li><a href="#20210326165507httpsimgfengqigangcnimg20210326165507png-若程序没有使用-getter-方法-是否可以不定义"><img src="https://img.fengqigang.cn//img/20210326165507.png" alt="20210326165507"> 若程序没有使用 <strong>getter</strong> 方法， 是否可以不定义?</a></li>
+        <li><a href="#什么是构造方法">什么是构造方法?</a></li>
+        <li><a href="#20210326171922httpsimgfengqigangcnimg20210326171922png-在对象的实例化的格式中存在构造方法的使用吗"><img src="https://img.fengqigang.cn//img/20210326171922.png" alt="20210326171922"> 在对象的实例化的格式中存在构造方法的使用吗?</a></li>
+        <li><a href="#构造方法与普通方法有什么区别呢">构造方法与普通方法有什么区别呢?</a></li>
+        <li><a href="#20210326173812httpsimgfengqigangcnimg20210326173812png既然构造方法没有返回值为什么不使用-void-来声明构造方法呢"><img src="https://img.fengqigang.cn//img/20210326173812.png" alt="20210326173812">既然构造方法没有返回值，为什么不使用 <strong>void</strong> 来声明构造方法呢?</a></li>
+        <li><a href="#20210326181758httpsimgfengqigangcnimg20210326181758png如何用构造方法来为属性赋值"><img src="https://img.fengqigang.cn//img/20210326181758.png" alt="20210326181758">如何用构造方法来为属性赋值?</a></li>
+        <li><a href="#当一个类中的结构包含属性构造方法普通方法在编写时应该采取什么样的顺序">当一个类中的结构包含属性、构造方法、普通方法、在编写时应该采取什么样的顺序?</a></li>
+        <li><a href="#在一个类中对构造方法重载时其编写顺序最好采取什么样的规范">在一个类中对构造方法重载时，其编写顺序，最好采取什么样的规范?</a></li>
+        <li><a href="#如何对-book-实现重载-无参-有一个参数-title-有两个参数-title-price--">如何对 <strong>Book</strong> 实现重载? [&ldquo;无参&rdquo;， &ldquo;有一个参数 title&rdquo;, &ldquo;有两个参数 title, price&rdquo; , ]</a></li>
+        <li><a href="#根据先编写属性然后构造方法最后普通方法的规则将settergetter放到前面对吗20210326190950httpsimgfengqigangcnimg20210326190950png">根据先编写属性，然后构造方法，最后普通方法的规则，将setter、getter放到前面对吗?<img src="https://img.fengqigang.cn//img/20210326190950.png" alt="20210326190950"></a></li>
+        <li><a href="#什么是匿名对象">什么是匿名对象?</a></li>
+        <li><a href="#20210326192136httpsimgfengqigangcnimg20210326192136png如何定义一个匿名对象"><img src="https://img.fengqigang.cn//img/20210326192136.png" alt="20210326192136">如何定义一个匿名对象?</a></li>
+        <li><a href="#简单-java-类有什么基本开发要求">简单 Java 类有什么基本开发要求?</a></li>
+        <li><a href="#声明并开辟数组有哪两种方法">声明并开辟数组有哪两种方法?</a></li>
+        <li><a href="#如何分步完成声明数组到开辟数组">如何分步完成声明数组到开辟数组?</a></li>
+        <li><a href="#int-data--new-int3-这里的3指的是什么"><strong>int data[] = new int[3];</strong> 这里的3指的是什么?</a></li>
+        <li><a href="#如何获取数组的长度-如-int-data--new-int3">如何获取数组的长度? 如 <strong>int data[] = new int[3];</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -312,6 +332,230 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210325225345.png"
         title="20210325225345" /></p>
+<h3 id="所有在类中定义的属性应该如何封装">所有在类中定义的属性，应该如何封装?</h3>
+<p>用 <strong>private</strong> 封装</p>
+<h3 id="在类中已用-private-封装的属性应该如何在外部使用">在类中已用 <strong>private</strong> 封装的属性，应该如何在外部使用?</h3>
+<p><strong>setter</strong> 设置内容</p>
+<p><strong>getter</strong>  取得属性内容</p>
+<h3 id="20210326165049httpsimgfengqigangcnimg20210326165049png-定义了一个book类-如何给这些属性设置-setter--getter-操作"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326165049.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326165049.png, https://img.fengqigang.cn//img/20210326165049.png 1.5x, https://img.fengqigang.cn//img/20210326165049.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326165049.png"
+        title="20210326165049" /> 定义了一个Book类， 如何给这些属性设置 <strong>setter</strong> 、 <strong>getter</strong> 操作?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326165450.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326165450.png, https://img.fengqigang.cn//img/20210326165450.png 1.5x, https://img.fengqigang.cn//img/20210326165450.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326165450.png"
+        title="20210326165450" /></p>
+<h3 id="20210326165507httpsimgfengqigangcnimg20210326165507png-若程序没有使用-getter-方法-是否可以不定义"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326165507.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326165507.png, https://img.fengqigang.cn//img/20210326165507.png 1.5x, https://img.fengqigang.cn//img/20210326165507.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326165507.png"
+        title="20210326165507" /> 若程序没有使用 <strong>getter</strong> 方法， 是否可以不定义?</h3>
+<p>不可以</p>
+<p>必须定义, 不管是否使用</p>
+<p>本程序中由于 <strong>Book</strong> 类提供有 <strong>getInfo()</strong> 方法， 所以就直接利用此方法进行内容的输出。</p>
+<p>但是对于 <strong>Book</strong> 类的使用还可能出现单独取得属性的情况，所以 <strong>getter</strong>, <strong>setter</strong> 必须同时提供</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326165637.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326165637.png, https://img.fengqigang.cn//img/20210326165637.png 1.5x, https://img.fengqigang.cn//img/20210326165637.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326165637.png"
+        title="20210326165637" /></p>
+<h3 id="什么是构造方法">什么是构造方法?</h3>
+<p>构造方法是一种特殊的方法， 它只在  <strong>新对象实例化</strong> 的时候调用</p>
+<p>其 <strong>定义的原则</strong> :</p>
+<p>方法名称 与 类名称相同， 没有返回值类型声明， 同时构造方法也可以进行重载</p>
+<h3 id="20210326171922httpsimgfengqigangcnimg20210326171922png-在对象的实例化的格式中存在构造方法的使用吗"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326171922.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326171922.png, https://img.fengqigang.cn//img/20210326171922.png 1.5x, https://img.fengqigang.cn//img/20210326171922.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326171922.png"
+        title="20210326171922" /> 在对象的实例化的格式中存在构造方法的使用吗?</h3>
+<p><strong>存在</strong></p>
+<ol>
+<li>类名称</li>
+</ol>
+<p>规定了对象的类型，即对象可以使用哪些属性与方法，都是由类定义的</p>
+<ol start="2">
+<li>对象名称</li>
+</ol>
+<p>如果想使用对象，需要有一个名字，这是一个唯一的标记</p>
+<ol start="3">
+<li>new</li>
+</ol>
+<p>开辟新的堆内存空间</p>
+<ol start="4">
+<li>类名称()</li>
+</ol>
+<p>调用了一个和类名称一样的方法</p>
+<p>在 java 类中， 为了保证程序可以正常的执行，即使用户没有定义任何构造方法，也会在程序编译之后自动地为类增加一个 <strong>没有参数</strong>、<strong>没有方法名称</strong>、<strong>类名称相同</strong>、<strong>没有返回值</strong>的构造方法</p>
+<h3 id="构造方法与普通方法有什么区别呢">构造方法与普通方法有什么区别呢?</h3>
+<p><strong>构造方法</strong></p>
+<p>在实例化新对象 (new) 的时候只调用一次</p>
+<p><strong>普通方法</strong></p>
+<p>在实例化新对象产生之后，通过 <strong>对象.方法</strong> 调用多次</p>
+<h3 id="20210326173812httpsimgfengqigangcnimg20210326173812png既然构造方法没有返回值为什么不使用-void-来声明构造方法呢"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326173812.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326173812.png, https://img.fengqigang.cn//img/20210326173812.png 1.5x, https://img.fengqigang.cn//img/20210326173812.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326173812.png"
+        title="20210326173812" />既然构造方法没有返回值，为什么不使用 <strong>void</strong> 来声明构造方法呢?</h3>
+<p>如果在构造方法上使用了 <strong>void</strong> , 其定义的结构与普通方法就完全一样，而 <strong>程序的编译是依靠定义结构来解析的</strong> ，所以不能有返回值声明。</p>
+<h3 id="20210326181758httpsimgfengqigangcnimg20210326181758png如何用构造方法来为属性赋值"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326181758.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326181758.png, https://img.fengqigang.cn//img/20210326181758.png 1.5x, https://img.fengqigang.cn//img/20210326181758.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326181758.png"
+        title="20210326181758" />如何用构造方法来为属性赋值?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326181827.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326181827.png, https://img.fengqigang.cn//img/20210326181827.png 1.5x, https://img.fengqigang.cn//img/20210326181827.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326181827.png"
+        title="20210326181827" /></p>
+<h3 id="当一个类中的结构包含属性构造方法普通方法在编写时应该采取什么样的顺序">当一个类中的结构包含属性、构造方法、普通方法、在编写时应该采取什么样的顺序?</h3>
+<ol>
+<li>
+<p>属性 (必须封装，同时提供 <strong>setter</strong>, <strong>getter</strong>)</p>
+</li>
+<li>
+<p>构造方法</p>
+</li>
+<li>
+<p>普通方法</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326182404.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326182404.png, https://img.fengqigang.cn//img/20210326182404.png 1.5x, https://img.fengqigang.cn//img/20210326182404.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326182404.png"
+        title="20210326182404" /></p>
+<h3 id="在一个类中对构造方法重载时其编写顺序最好采取什么样的规范">在一个类中对构造方法重载时，其编写顺序，最好采取什么样的规范?</h3>
+<p>重载的方法按照参数的个数由 <strong>多到少</strong> ，或由 <strong>少到多</strong> 排列</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326182706.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326182706.png, https://img.fengqigang.cn//img/20210326182706.png 1.5x, https://img.fengqigang.cn//img/20210326182706.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326182706.png"
+        title="20210326182706" /></p>
+<h3 id="如何对-book-实现重载-无参-有一个参数-title-有两个参数-title-price--">如何对 <strong>Book</strong> 实现重载? [&ldquo;无参&rdquo;， &ldquo;有一个参数 title&rdquo;, &ldquo;有两个参数 title, price&rdquo; , ]</h3>
+<p>注意 <strong>setter</strong> 和 <strong>getter</strong> 一定要设置</p>
+<p><strong>这里省略了</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326190551.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326190551.png, https://img.fengqigang.cn//img/20210326190551.png 1.5x, https://img.fengqigang.cn//img/20210326190551.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326190551.png"
+        title="20210326190551" /></p>
+<h3 id="根据先编写属性然后构造方法最后普通方法的规则将settergetter放到前面对吗20210326190950httpsimgfengqigangcnimg20210326190950png">根据先编写属性，然后构造方法，最后普通方法的规则，将setter、getter放到前面对吗?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326190950.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326190950.png, https://img.fengqigang.cn//img/20210326190950.png 1.5x, https://img.fengqigang.cn//img/20210326190950.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326190950.png"
+        title="20210326190950" /></h3>
+<p>不对，</p>
+<p><strong>setter</strong>, <strong>getter</strong> 所定义的就是普通方法，它应该放到构造方法后面</p>
+<h3 id="什么是匿名对象">什么是匿名对象?</h3>
+<p>栈内存没有指向堆内存</p>
+<p>这种开辟了堆内存空间的实例化对象，<strong>只能使用一次</strong>, 使用一次之后就将被GC回收</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326191504.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326191504.png, https://img.fengqigang.cn//img/20210326191504.png 1.5x, https://img.fengqigang.cn//img/20210326191504.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326191504.png"
+        title="20210326191504" /></p>
+<h3 id="20210326192136httpsimgfengqigangcnimg20210326192136png如何定义一个匿名对象"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210326192136.png"
+        data-srcset="https://img.fengqigang.cn//img/20210326192136.png, https://img.fengqigang.cn//img/20210326192136.png 1.5x, https://img.fengqigang.cn//img/20210326192136.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210326192136.png"
+        title="20210326192136" />如何定义一个匿名对象?</h3>
+<p><strong>new Book(&ldquo;Java开发&rdquo;, 69.8).getInfo();</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassBook</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="k">new</span> <span class="n">Book</span><span class="o">(</span><span class="s">&#34;Java 开发&#34;</span><span class="o">,</span> <span class="n">69</span><span class="o">.</span><span class="na">8</span><span class="o">).</span><span class="na">getInfo</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="简单-java-类有什么基本开发要求">简单 Java 类有什么基本开发要求?</h3>
+<ol>
+<li>
+<p>类名称必须存在意义， 例如: Book、 Emp;</p>
+</li>
+<li>
+<p>类中所有的属性必须 <strong>private</strong> 封装， 封装后的属性必须提供 <strong>setter</strong>、 <strong>getter</strong>;</p>
+</li>
+<li>
+<p>类中可以提供任意多个构造语句，但是必须保留一个 <strong>无参构造方法</strong></p>
+</li>
+<li>
+<p>类中不允许出现任何输出语句，所有信息输出必须交给被调出处输出</p>
+</li>
+<li>
+<p>类中需要提供有一个取得对象完整信息的方法， 暂定为 <strong>getInfo()</strong>, 而且返回 <strong>String</strong> 型数据</p>
+</li>
+</ol>
+<h3 id="声明并开辟数组有哪两种方法">声明并开辟数组有哪两种方法?</h3>
+<p>数据类型 数组名称 [] = new 数据类型 [长度];</p>
+<p>数据类型 [] 数组名称 = new 数据类型 [长度];</p>
+<h3 id="如何分步完成声明数组到开辟数组">如何分步完成声明数组到开辟数组?</h3>
+<p><strong>声明数组</strong>:</p>
+<p>数据类型 数组名称 [] = null;</p>
+<p><strong>开辟数组</strong>:</p>
+<p>数组名称 = new 数据类型 [长度]</p>
+<p>如:</p>
+<p>int data[] = num;</p>
+<p>data = new int [3];</p>
+<h3 id="int-data--new-int3-这里的3指的是什么"><strong>int data[] = new int[3];</strong> 这里的3指的是什么?</h3>
+<p>是指数组的长度为3</p>
+<p>即</p>
+<p><strong>data[0]</strong>, <strong>data[1]</strong>, <strong>data[2]</strong></p>
+<h3 id="如何获取数组的长度-如-int-data--new-int3">如何获取数组的长度? 如 <strong>int data[] = new int[3];</strong></h3>
+<p>数组名称.length</p>
+<p>data.length</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
