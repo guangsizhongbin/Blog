@@ -74,7 +74,7 @@ public class ClassBook {
 
 ### ![](https://img.fengqigang.cn//img/20210325223739.png) 如何调用类中的 getInfo() 方法?
 
-** bk.getInfo() **
+**bk.getInfo()**
 
 ![](https://img.fengqigang.cn//img/20210325223920.png)
 
@@ -104,7 +104,7 @@ public class ClassBook {
 
 ![20210325225345](https://img.fengqigang.cn//img/20210325225345.png)
 
-### 所有在类中定义的属性，应该如何封装?
+### 在类中定义的属性，应该如何封装?
 
 用 **private** 封装
 
@@ -277,3 +277,303 @@ data = new int [3];
 数组名称.length
 
 data.length
+
+### 如何开辟一个3个长度的数组data, data[0] 为 10, data[1] 为20, data[2] 为 30, 并遍历出来?
+
+```java
+public class ListArray {
+	public static void main(String args[]){
+		int data[] = new int[3];
+		data[0] = 10;
+		data[1] = 20;
+		data[2] = 30;
+		for (int x = 0; x < data.length; x++){
+			System.out.print(data[x] + "、");
+		}
+	}
+}
+```
+
+![20210327082605](https://img.fengqigang.cn//img/20210327082605.png)
+
+### 如何分步实现一个数组 **data[]** , **data[]** 的长度为3?
+
+int data[] = null;
+
+data = new int [3];
+
+![20210327082804](https://img.fengqigang.cn//img/20210327082804.png)
+
+### 数组的引用传递是什么原理?
+
+```java
+int data[] = new int[3];
+
+data[0] = 10;
+
+data[1] = 20;
+
+data[2] = 30;
+
+int temp[] = data;
+```
+
+![20210327083042](https://img.fengqigang.cn//img/20210327083042.png)
+
+### 什么是数组的静态初始化的操作? 有哪些方法?(以data为例)
+
+**简化格式**:
+
+数据类型 数组名称 [] = {值, 值, ...};
+
+**int data[] = {1, 2, 3, 4, 5};**
+
+**完整格式**:
+
+数据类型 数组名称 [] = new 数据类型 [] {值, 值, ...};
+
+**int data[] = new int[] {1, 2, 3, 4, 5};**
+
+### 初始化二维数组有什么方法?, (以data[3][3]为例)
+
+**动态初始化**:
+
+数据类型 数组名称[][] = new 数据类型[行的个数][列的个数];
+
+int data [][] = new int[3][3];
+
+**静态初始化**:
+
+数据类型 数组名称[][] = new 数据类型[][] {{值, 值, 值}, {值, 值, 值}};
+
+int data [][] = new int [][]{
+	{1, 2, 3},{4, 5, 6}, {7, 8, 9}
+};
+
+### ![20210327084511](https://img.fengqigang.cn//img/20210327084511.png) 如何遍历这个二维数组?
+
+![20210327084806](https://img.fengqigang.cn//img/20210327084806.png)
+
+**注意y 是小于data[x].length**
+
+### 在实际开发中推荐使用多维数组吗? 为什么?
+
+不推荐
+
+维数越多所描述的概念就越复杂
+
+**在实际开发中很少的情况会涉及多维开发**
+
+### ![20210327092041](https://img.fengqigang.cn//img/20210327092041.png)引用传递是什么原理?
+
+![20210327092056](https://img.fengqigang.cn//img/20210327092056.png)
+
+### ![20210327143424](https://img.fengqigang.cn//img/20210327143424.png) 如何实现由小到大排序?
+
+![20210327145121](https://img.fengqigang.cn//img/20210327145121.png)
+
+### ![20210327145539](https://img.fengqigang.cn//img/20210327145539.png)这是冒泡排序, 为什么out 要从 size - 1开始, out > 0?
+
+因为 **data[in] > data[in + 1]** 表达式
+
+所以 **out** 要从 **size - 1** 开始
+
+一直会比较到 **data[0] > data[1]**
+
+**out** 的最小值是1
+
+所以 **out** 大于等于 0 都可以
+
+### ![20210327150859](https://img.fengqigang.cn//img/20210327150859.png)如何实现冒泡排序?
+
+```java
+for (int out = size - 1; out > 0; out --){
+	for (int in = 0; in < out; in ++){
+		if(data[in] > data[in + 1]){
+			int temp = data[in];
+			data[in] = data[in + 1];
+			data[in + 1] = temp:
+		}
+	}
+}
+```
+
+
+### 转置一个数组有什么样的思路?
+
+1. 定义一个 **新的数组** ，将原始数组按照 **倒序** 的方式插入到新的数组中，最后 **改变原始数组引用** ，将其 **指向新的数组空间**
+
+特点:
+
+代码里面会产生垃圾，而在进行程序开发的过程中应该尽可能少地产生垃圾空间，这样的思路 **并不是最合理的**
+
+2. 尽可能的在 **一个数组** 里完成转置操作
+
+### ![20210327154356](https://img.fengqigang.cn//img/20210327154356.png)如何采取定义一个新的数组的方法，转置数组?
+
+```java
+public class ArrayReverse {
+	public static void main(String args[]){
+		int data [] = new int [] {1, 2, 3, 4, 5, 6, 7, 8};
+		int temp [] = new int [data.length];
+		int foot = data.length - 1;
+
+		for (int x = 0; x < temp.length; x++){
+			temp[x] = data[foot];
+			foot--;
+		}
+		data = temp;
+		print(data);
+	}
+
+	public static void print(int temp[]){
+		for (int x = 0; x < temp.length; x++){
+			System.out.print(temp[x] + "、");
+		}
+		System.out.println();
+	}
+}
+```
+
+![20210327155016](https://img.fengqigang.cn//img/20210327155016.png)
+
+![20210327155155](https://img.fengqigang.cn//img/20210327155155.png)
+
+### 利用算法，只在一个数组上，完成转置操作的思路是什么样的?
+
+**偶数**:
+
+原始数组: 1, 2, 3, 4, 5, 6
+
+第一次转置: **6** , 2, 3, 4, 5, **1**
+
+第二次转置: 6, **5**, 3, 4, **2**, 1
+
+第三次转置: 6, 5, **4**, **3** , 2, 1
+
+
+**奇数**
+
+原始数组: 1, 2, 3, 4, 5, 6, 7
+
+第一次转置: **7**, 2, 3, 4, 5, 6, **1**
+
+第二次转置: 7, **6**, 3, 4, 5, **2**, 1
+
+第三次转置: 7, 6, **5**, 4, **3**, 2, 1
+
+**不管数组的长度是奇数的个数还是偶数的个数，其转置的次数的计算方式是完全一样的**
+
+![20210327160105](https://img.fengqigang.cn//img/20210327160105.png)
+
+### 利用算法，只在一个数组上，完成转置操作, 其代码是如何实现的?
+
+![20210327160105](https://img.fengqigang.cn//img/20210327160105.png)
+
+```java
+public class ArrayReverse {
+	public static void main(String args[]){
+		int data [] = new int [] {1, 2, 3, 4, 5, 6, 7, 8};
+		reverse(data);
+		print(data);
+	}
+
+	public static void reverse(int arr[]){
+		int len = arr.length / 2;
+		int head = 0;
+		int tail = arr.length - 1;
+		for (int x = 0; x < len; x ++){
+			int temp = arr[head];
+			arr[head] = arr[tail];
+			arr[tail] = temp;
+			head ++;
+			tail --;
+		}
+	}
+
+	public static void print(int temp[]){
+		for (int x = 0; x < temp.length; x++){
+			System.out.print(temp[x] + "、");
+		}
+		System.out.println();
+	}
+}
+```
+![20210327161146](https://img.fengqigang.cn//img/20210327161146.png)
+
+### ![20210327161538](https://img.fengqigang.cn//img/20210327161538.png)二维数组(行与列相同)如何实现转置?
+
+**只有当行数与列数相同的时候才可以发生数据的交换操作**
+
+```java
+public class transpose {
+	public static void main(String args[]) {
+		int data [][] = new int [][] {
+			{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+		reverse(data);
+		print(data);
+	}
+
+public static void reverse(int[][] data){
+	for (int x = 0; x < data.length; x++){
+		for (int y = x; y < data[x].length; y++ ){
+			if (x != y) {
+				int temp = data[x][y];
+				data[x][y] = data[y][x];
+				data[y][x] = temp;
+			}
+		}
+	}
+}
+
+public static void print(int[][] data){
+	for (int x = 0; x < data.length; x++){
+		for (int y = 0; y < data[x].length; y++){
+			System.out.print(data[x][y] + "、");
+		}
+		System.out.println();
+	}
+	System.out.println();
+}
+}
+```
+
+!20210327162739](https://img.fengqigang.cn//img/20210327162739.png)
+
+
+### ![20210327162955](https://img.fengqigang.cn//img/20210327162955.png) 如何用代码实现这一步骤?
+
+
+public static void arraycopy (Object src, int srcPos, Object dest, int destPos, int length)
+
+src - the source array.
+
+srcPos - starting position in the **source array**.
+
+dest - the destionation array.
+
+destPos - starting position in the destination data.
+
+length - the number of array elements to be copied.
+
+```java
+public class ArrayCopy {
+	public static void main(String args[]) {
+		int dataA[] = new int[] {1, 2, 3, 4, 5, 6, 7, 8};
+		int dataB[] = new int[] {11, 22, 33, 44, 55, 66, 77, 88};
+		// 从第5个位置复制，复制到2的位置，复制3个
+		System.arraycopy(dataA, 4, dataB, 2, 3);
+		print(dataB);
+	}
+
+	public static void print(int temp[]) {
+		for (int x = 0; x < temp.length; x++){
+			System.out.print(temp[x] + "、");
+		}
+		System.out.print("");
+	}
+}
+```
+
+![20210327172214](https://img.fengqigang.cn//img/20210327172214.png)
+
