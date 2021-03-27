@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>TwoSum - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="TwoSum" />
-<meta property="og:description" content="Two Sum 001
-我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x &#43;&#43;){ for (int y = x &#43; 1; y &lt; nums.length; y &#43;&#43;){ if (nums[x] &#43; nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表" />
+        <title>RemoveElement - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="RemoveElement" />
+<meta property="og:description" content="27. Remove Element 双指针法  考虑 nums!= val 时, 加入到当前数组中  1 2 3 4 5 6 7 8 9 10 11 12  class Solution { public int removeElement(int[] nums, int val) { int i = 0; for (int x = 0; x &lt; nums.length; x&#43;&#43;){ if (nums[x] != val){ nums[i] = nums[x]; i &#43;=1; } } return i; } }    优化
+   1 2  nums[i] = nums[x]; i &#43;= 1;   可以直接写成" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/twosum/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-26T22:48:16&#43;08:00" />
-<meta property="article:modified_time" content="2021-03-26T00:00:00&#43;00:00" />
+<meta property="og:url" content="http://fengqigang.cn/posts/removeelement/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-27T22:21:14&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-27T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="TwoSum"/>
-<meta name="twitter:description" content="Two Sum 001
-我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x &#43;&#43;){ for (int y = x &#43; 1; y &lt; nums.length; y &#43;&#43;){ if (nums[x] &#43; nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表"/>
+<meta name="twitter:title" content="RemoveElement"/>
+<meta name="twitter:description" content="27. Remove Element 双指针法  考虑 nums!= val 时, 加入到当前数组中  1 2 3 4 5 6 7 8 9 10 11 12  class Solution { public int removeElement(int[] nums, int val) { int i = 0; for (int x = 0; x &lt; nums.length; x&#43;&#43;){ if (nums[x] != val){ nums[i] = nums[x]; i &#43;=1; } } return i; } }    优化
+   1 2  nums[i] = nums[x]; i &#43;= 1;   可以直接写成"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/twosum/" /><link rel="prev" href="http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/" /><link rel="next" href="http://fengqigang.cn/posts/removeelement/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/removeelement/" /><link rel="prev" href="http://fengqigang.cn/posts/twosum/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "TwoSum",
+        "headline": "RemoveElement",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/twosum\/"
-        },"genre": "posts","keywords": "java","wordcount":  90 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/twosum\/","datePublished": "2021-03-26T22:48:16+08:00","dateModified": "2021-03-26T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/removeelement\/"
+        },"genre": "posts","keywords": "array","wordcount":  148 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/removeelement\/","datePublished": "2021-03-27T22:21:14+08:00","dateModified": "2021-03-27T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -104,9 +104,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">TwoSum</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>algorithm</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-26">2021-03-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;90 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animated flipInX">RemoveElement</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/leetcode/"><i class="far fa-folder fa-fw"></i>leetcode</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-27">2021-03-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;148 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -117,14 +117,82 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#我的代码双指针法">我的代码(双指针法)</a></li>
-        <li><a href="#最优解hash表">最优解(hash表)</a></li>
+        <li><a href="#27-remove-element">27. Remove Element</a>
+          <ul>
+            <li><a href="#双指针法">双指针法</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p><a href="https://leetcode.com/problems/two-sum/submissions/" target="_blank" rel="noopener noreffer">Two Sum 001</a></p>
-<h3 id="我的代码双指针法">我的代码(双指针法)</h3>
+            </div><div class="content" id="content"><h3 id="27-remove-element">27. Remove Element</h3>
+<h4 id="双指针法">双指针法</h4>
+<ol>
+<li>考虑 nums<i class="far fa-check-square fa-fw"></i> != val 时, 加入到当前数组中</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">removeElement</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
+			<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+				<span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">!=</span> <span class="n">val</span><span class="o">){</span>
+					<span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">x</span><span class="o">];</span>
+					<span class="n">i</span> <span class="o">+=</span><span class="n">1</span><span class="o">;</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+			<span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><strong>优化</strong></p>
+<ol>
+<li></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">x</span><span class="o">];</span>
+<span class="n">i</span> <span class="o">+=</span> <span class="n">1</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以直接写成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">nums</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">nums</span><span class="o">[</span><span class="n">x</span><span class="o">];</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>疑问</strong></p>
+<ol>
+<li>空数组 与 只声明未赋值的数组 其长度是多少?</li>
+</ol>
+<hr>
+<ol start="2">
+<li>考虑 nums<i class="far fa-check-square fa-fw"></i> = val 时, 通过将最后的元素覆盖掉 nums<i class="far fa-check-square fa-fw"></i> 的值</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -144,38 +212,41 @@
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">twoSum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;</span> <span class="n">2</span><span class="o">){</span>
-                <span class="k">return</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
-            <span class="o">}</span>
-                
-			<span class="kt">int</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">2</span><span class="o">];</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">class Solution {
+    public int removeElement(int[] nums, int val) {
+			
+        int i = 0;
+				int n = nums.length;
 
-			<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span> <span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span> <span class="o">++){</span>
-				<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">y</span> <span class="o">++){</span>
-						<span class="k">if</span> <span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">+</span> <span class="n">nums</span><span class="o">[</span><span class="n">y</span><span class="o">]</span> <span class="o">==</span> <span class="n">target</span><span class="o">){</span>
-								<span class="n">data</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
-                <span class="n">data</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
-						<span class="o">}</span>
-				<span class="o">}</span>
-			<span class="o">}</span>
-                <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+				while(i &lt; n){
+					if (nums[i] == val){
+						nums[i] = nums[n - 1];
+						n--;
+					} else {
+						i++;
+					}
+				}
+				return n;
+    }
+}
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="最优解hash表">最优解(hash表)</h3>
-<p>待学hash表</p>
+</div><p><strong>优化</strong></p>
+<ol>
+<li>
+<p>else 后之有一条语句， 可以去掉</p>
+</li>
+<li>
+<p>考虑 <strong>nums</strong></p>
+</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-03-26</span>
+                <span>Updated on 2021-03-27</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -188,14 +259,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/array/">array</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="prev" rel="prev" title="Java第三章"><i class="fas fa-angle-left fa-fw"></i>Java第三章</a>
-            <a href="/posts/removeelement/" class="next" rel="next" title="RemoveElement">RemoveElement<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/twosum/" class="prev" rel="prev" title="TwoSum"><i class="fas fa-angle-left fa-fw"></i>TwoSum</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -4,9 +4,17 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 26 Mar 2021 22:48:16 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 27 Mar 2021 22:21:14 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>RemoveElement</title>
+    <link>http://fengqigang.cn/posts/removeelement/</link>
+    <pubDate>Sat, 27 Mar 2021 22:21:14 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/removeelement/</guid>
+    <description><![CDATA[27. Remove Element 双指针法  考虑 nums!= val 时, 加入到当前数组中  1 2 3 4 5 6 7 8 9 10 11 12  class Solution { public int removeElement(int[] nums, int val) { int i = 0; for (int x = 0; x &lt; nums.length; x++){ if (nums[x] != val){ nums[i] = nums[x]; i +=1; } } return i; } }    优化
+   1 2  nums[i] = nums[x]; i += 1;   可以直接写成]]></description>
+</item><item>
     <title>TwoSum</title>
     <link>http://fengqigang.cn/posts/twosum/</link>
     <pubDate>Fri, 26 Mar 2021 22:48:16 &#43;0800</pubDate>
@@ -155,18 +163,5 @@ set file mode (as in chomd), not a=rwx - umask
 但当有 x 权限的时候，就知道里面的数据在哪里，不需要有灯光，摸黑也可以找到
 只是，没有 r 的话，使用 [tab] 时，无法补齐文件名
  在FHS(filesystem hierarchy standard)规定下，各个文件夹都是放什么的?？1   /bin (User Binaries) 与 /sbin (System Binaries)]]></description>
-</item><item>
-    <title>Java基础练习题</title>
-    <link>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
-    <pubDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</guid>
-    <description><![CDATA[基础概念问答    请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？     Java语言是跨平台的，但JVM不是跨平台的，不同的平台有不同的JVM。 首先, 后缀为 &quot;*.java&quot; 的文件，经过javac命令编译后会生成public class定义类名称的.class文件(字节码文件)。然后, 不同平台的JVM会根据不同操作系统所提供的接口，实现.class文件中的功能。
- 例如: Hello.java所对应的程序
-1 2 3 4 5  public class Hello { public static void main(String args[]){ System.out.println(&#34;Hello, World!&#34;); } }   编译后(Hello.class):
-再经过linux中的jre-openjdk中的jvm执行hello.class使得java看起来具有跨平台的能力。
-环境变量   设置环境变量使QQ或者微信可以在任意平台下，通过命令行执行    linux平台下:
-1  export 文件路径:$PATH   使用永久化:
-1  echo &#34;export 文件路径:$PATH&#34; &gt;&gt; .zshrc   3.[入门题目] 独立编写Hello World程序，并在命令行下运行 hello.java]]></description>
 </item></channel>
 </rss>
