@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  385 ,
+        },"genre": "posts","keywords": "java","wordcount":  1239 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;385 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1239 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -141,7 +141,7 @@
         <li><a href="#httpsimgfengqigangcnimg20210325223739png-如何调用类中的-getinfo-方法"><img src="https://img.fengqigang.cn//img/20210325223739.png" alt=""> 如何调用类中的 getInfo() 方法?</a></li>
         <li><a href="#在-java-中什么是堆内存-heap-和-栈内存-stack-">在 <strong>java</strong> 中什么是堆内存 (heap) 和 栈内存 (stack) ?</a></li>
         <li><a href="#20210325224724httpsimgfengqigangcnimg20210325224724png-以本程序为例子分析其堆内存与栈内存"><img src="https://img.fengqigang.cn//img/20210325224724.png" alt="20210325224724"> 以本程序为例子，分析其堆内存与栈内存?</a></li>
-        <li><a href="#所有在类中定义的属性应该如何封装">所有在类中定义的属性，应该如何封装?</a></li>
+        <li><a href="#在类中定义的属性应该如何封装">在类中定义的属性，应该如何封装?</a></li>
         <li><a href="#在类中已用-private-封装的属性应该如何在外部使用">在类中已用 <strong>private</strong> 封装的属性，应该如何在外部使用?</a></li>
         <li><a href="#20210326165049httpsimgfengqigangcnimg20210326165049png-定义了一个book类-如何给这些属性设置-setter--getter-操作"><img src="https://img.fengqigang.cn//img/20210326165049.png" alt="20210326165049"> 定义了一个Book类， 如何给这些属性设置 <strong>setter</strong> 、 <strong>getter</strong> 操作?</a></li>
         <li><a href="#20210326165507httpsimgfengqigangcnimg20210326165507png-若程序没有使用-getter-方法-是否可以不定义"><img src="https://img.fengqigang.cn//img/20210326165507.png" alt="20210326165507"> 若程序没有使用 <strong>getter</strong> 方法， 是否可以不定义?</a></li>
@@ -161,6 +161,23 @@
         <li><a href="#如何分步完成声明数组到开辟数组">如何分步完成声明数组到开辟数组?</a></li>
         <li><a href="#int-data--new-int3-这里的3指的是什么"><strong>int data[] = new int[3];</strong> 这里的3指的是什么?</a></li>
         <li><a href="#如何获取数组的长度-如-int-data--new-int3">如何获取数组的长度? 如 <strong>int data[] = new int[3];</strong></a></li>
+        <li><a href="#如何开辟一个3个长度的数组data-data0-为-10-data1-为20-data2-为-30-并遍历出来">如何开辟一个3个长度的数组data, data[0] 为 10, data[1] 为20, data[2] 为 30, 并遍历出来?</a></li>
+        <li><a href="#如何分步实现一个数组-data--data-的长度为3">如何分步实现一个数组 <strong>data[]</strong> , <strong>data[]</strong> 的长度为3?</a></li>
+        <li><a href="#数组的引用传递是什么原理">数组的引用传递是什么原理?</a></li>
+        <li><a href="#什么是数组的静态初始化的操作-有哪些方法以data为例">什么是数组的静态初始化的操作? 有哪些方法?(以data为例)</a></li>
+        <li><a href="#初始化二维数组有什么方法-以data33为例">初始化二维数组有什么方法?, (以data[3][3]为例)</a></li>
+        <li><a href="#20210327084511httpsimgfengqigangcnimg20210327084511png-如何遍历这个二维数组"><img src="https://img.fengqigang.cn//img/20210327084511.png" alt="20210327084511"> 如何遍历这个二维数组?</a></li>
+        <li><a href="#在实际开发中推荐使用多维数组吗-为什么">在实际开发中推荐使用多维数组吗? 为什么?</a></li>
+        <li><a href="#20210327092041httpsimgfengqigangcnimg20210327092041png引用传递是什么原理"><img src="https://img.fengqigang.cn//img/20210327092041.png" alt="20210327092041">引用传递是什么原理?</a></li>
+        <li><a href="#20210327143424httpsimgfengqigangcnimg20210327143424png-如何实现由小到大排序"><img src="https://img.fengqigang.cn//img/20210327143424.png" alt="20210327143424"> 如何实现由小到大排序?</a></li>
+        <li><a href="#20210327145539httpsimgfengqigangcnimg20210327145539png这是冒泡排序-为什么out-要从-size---1开始-out--0"><img src="https://img.fengqigang.cn//img/20210327145539.png" alt="20210327145539">这是冒泡排序, 为什么out 要从 size - 1开始, out &gt; 0?</a></li>
+        <li><a href="#20210327150859httpsimgfengqigangcnimg20210327150859png如何实现冒泡排序"><img src="https://img.fengqigang.cn//img/20210327150859.png" alt="20210327150859">如何实现冒泡排序?</a></li>
+        <li><a href="#转置一个数组有什么样的思路">转置一个数组有什么样的思路?</a></li>
+        <li><a href="#20210327154356httpsimgfengqigangcnimg20210327154356png如何采取定义一个新的数组的方法转置数组"><img src="https://img.fengqigang.cn//img/20210327154356.png" alt="20210327154356">如何采取定义一个新的数组的方法，转置数组?</a></li>
+        <li><a href="#利用算法只在一个数组上完成转置操作的思路是什么样的">利用算法，只在一个数组上，完成转置操作的思路是什么样的?</a></li>
+        <li><a href="#利用算法只在一个数组上完成转置操作-其代码是如何实现的">利用算法，只在一个数组上，完成转置操作, 其代码是如何实现的?</a></li>
+        <li><a href="#20210327161538httpsimgfengqigangcnimg20210327161538png二维数组行与列相同如何实现转置"><img src="https://img.fengqigang.cn//img/20210327161538.png" alt="20210327161538">二维数组(行与列相同)如何实现转置?</a></li>
+        <li><a href="#20210327162955httpsimgfengqigangcnimg20210327162955png-如何用代码实现这一步骤"><img src="https://img.fengqigang.cn//img/20210327162955.png" alt="20210327162955"> 如何用代码实现这一步骤?</a></li>
       </ul>
     </li>
   </ul>
@@ -269,7 +286,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210325223739.png"
         title="https://img.fengqigang.cn//img/20210325223739.png" /> 如何调用类中的 getInfo() 方法?</h3>
-<p>** bk.getInfo() **</p>
+<p><strong>bk.getInfo()</strong></p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -332,7 +349,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210325225345.png"
         title="20210325225345" /></p>
-<h3 id="所有在类中定义的属性应该如何封装">所有在类中定义的属性，应该如何封装?</h3>
+<h3 id="在类中定义的属性应该如何封装">在类中定义的属性，应该如何封装?</h3>
 <p>用 <strong>private</strong> 封装</p>
 <h3 id="在类中已用-private-封装的属性应该如何在外部使用">在类中已用 <strong>private</strong> 封装的属性，应该如何在外部使用?</h3>
 <p><strong>setter</strong> 设置内容</p>
@@ -556,6 +573,515 @@
 <h3 id="如何获取数组的长度-如-int-data--new-int3">如何获取数组的长度? 如 <strong>int data[] = new int[3];</strong></h3>
 <p>数组名称.length</p>
 <p>data.length</p>
+<h3 id="如何开辟一个3个长度的数组data-data0-为-10-data1-为20-data2-为-30-并遍历出来">如何开辟一个3个长度的数组data, data[0] 为 10, data[1] 为20, data[2] 为 30, 并遍历出来?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ListArray</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">data</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
+		<span class="n">data</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+		<span class="n">data</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+		<span class="n">data</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">30</span><span class="o">;</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327082605.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327082605.png, https://img.fengqigang.cn//img/20210327082605.png 1.5x, https://img.fengqigang.cn//img/20210327082605.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327082605.png"
+        title="20210327082605" /></p>
+<h3 id="如何分步实现一个数组-data--data-的长度为3">如何分步实现一个数组 <strong>data[]</strong> , <strong>data[]</strong> 的长度为3?</h3>
+<p>int data[] = null;</p>
+<p>data = new int [3];</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327082804.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327082804.png, https://img.fengqigang.cn//img/20210327082804.png 1.5x, https://img.fengqigang.cn//img/20210327082804.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327082804.png"
+        title="20210327082804" /></p>
+<h3 id="数组的引用传递是什么原理">数组的引用传递是什么原理?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">data</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
+
+<span class="n">data</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+
+<span class="n">data</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+
+<span class="n">data</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">30</span><span class="o">;</span>
+
+<span class="kt">int</span> <span class="n">temp</span><span class="o">[]</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327083042.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327083042.png, https://img.fengqigang.cn//img/20210327083042.png 1.5x, https://img.fengqigang.cn//img/20210327083042.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327083042.png"
+        title="20210327083042" /></p>
+<h3 id="什么是数组的静态初始化的操作-有哪些方法以data为例">什么是数组的静态初始化的操作? 有哪些方法?(以data为例)</h3>
+<p><strong>简化格式</strong>:</p>
+<p>数据类型 数组名称 [] = {值, 值, &hellip;};</p>
+<p><strong>int data[] = {1, 2, 3, 4, 5};</strong></p>
+<p><strong>完整格式</strong>:</p>
+<p>数据类型 数组名称 [] = new 数据类型 [] {值, 值, &hellip;};</p>
+<p><strong>int data[] = new int[] {1, 2, 3, 4, 5};</strong></p>
+<h3 id="初始化二维数组有什么方法-以data33为例">初始化二维数组有什么方法?, (以data[3][3]为例)</h3>
+<p><strong>动态初始化</strong>:</p>
+<p>数据类型 数组名称[][] = new 数据类型[行的个数][列的个数];</p>
+<p>int data [][] = new int[3][3];</p>
+<p><strong>静态初始化</strong>:</p>
+<p>数据类型 数组名称[][] = new 数据类型[][] {{值, 值, 值}, {值, 值, 值}};</p>
+<p>int data [][] = new int [][]{
+{1, 2, 3},{4, 5, 6}, {7, 8, 9}
+};</p>
+<h3 id="20210327084511httpsimgfengqigangcnimg20210327084511png-如何遍历这个二维数组"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327084511.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327084511.png, https://img.fengqigang.cn//img/20210327084511.png 1.5x, https://img.fengqigang.cn//img/20210327084511.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327084511.png"
+        title="20210327084511" /> 如何遍历这个二维数组?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327084806.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327084806.png, https://img.fengqigang.cn//img/20210327084806.png 1.5x, https://img.fengqigang.cn//img/20210327084806.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327084806.png"
+        title="20210327084806" /></p>
+<p><strong>注意y 是小于data[x].length</strong></p>
+<h3 id="在实际开发中推荐使用多维数组吗-为什么">在实际开发中推荐使用多维数组吗? 为什么?</h3>
+<p>不推荐</p>
+<p>维数越多所描述的概念就越复杂</p>
+<p><strong>在实际开发中很少的情况会涉及多维开发</strong></p>
+<h3 id="20210327092041httpsimgfengqigangcnimg20210327092041png引用传递是什么原理"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327092041.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327092041.png, https://img.fengqigang.cn//img/20210327092041.png 1.5x, https://img.fengqigang.cn//img/20210327092041.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327092041.png"
+        title="20210327092041" />引用传递是什么原理?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327092056.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327092056.png, https://img.fengqigang.cn//img/20210327092056.png 1.5x, https://img.fengqigang.cn//img/20210327092056.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327092056.png"
+        title="20210327092056" /></p>
+<h3 id="20210327143424httpsimgfengqigangcnimg20210327143424png-如何实现由小到大排序"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327143424.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327143424.png, https://img.fengqigang.cn//img/20210327143424.png 1.5x, https://img.fengqigang.cn//img/20210327143424.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327143424.png"
+        title="20210327143424" /> 如何实现由小到大排序?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327145121.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327145121.png, https://img.fengqigang.cn//img/20210327145121.png 1.5x, https://img.fengqigang.cn//img/20210327145121.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327145121.png"
+        title="20210327145121" /></p>
+<h3 id="20210327145539httpsimgfengqigangcnimg20210327145539png这是冒泡排序-为什么out-要从-size---1开始-out--0"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327145539.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327145539.png, https://img.fengqigang.cn//img/20210327145539.png 1.5x, https://img.fengqigang.cn//img/20210327145539.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327145539.png"
+        title="20210327145539" />这是冒泡排序, 为什么out 要从 size - 1开始, out &gt; 0?</h3>
+<p>因为 <strong>data[in] &gt; data[in + 1]</strong> 表达式</p>
+<p>所以 <strong>out</strong> 要从 <strong>size - 1</strong> 开始</p>
+<p>一直会比较到 <strong>data[0] &gt; data[1]</strong></p>
+<p><strong>out</strong> 的最小值是1</p>
+<p>所以 <strong>out</strong> 大于等于 0 都可以</p>
+<h3 id="20210327150859httpsimgfengqigangcnimg20210327150859png如何实现冒泡排序"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327150859.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327150859.png, https://img.fengqigang.cn//img/20210327150859.png 1.5x, https://img.fengqigang.cn//img/20210327150859.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327150859.png"
+        title="20210327150859" />如何实现冒泡排序?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">out</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">out</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">;</span> <span class="n">out</span> <span class="o">--){</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">in</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">in</span> <span class="o">&lt;</span> <span class="n">out</span><span class="o">;</span> <span class="n">in</span> <span class="o">++){</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">in</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">data</span><span class="o">[</span><span class="n">in</span> <span class="o">+</span> <span class="n">1</span><span class="o">]){</span>
+			<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">in</span><span class="o">];</span>
+			<span class="n">data</span><span class="o">[</span><span class="n">in</span><span class="o">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">in</span> <span class="o">+</span> <span class="n">1</span><span class="o">];</span>
+			<span class="n">data</span><span class="o">[</span><span class="n">in</span> <span class="o">+</span> <span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">:</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="转置一个数组有什么样的思路">转置一个数组有什么样的思路?</h3>
+<ol>
+<li>定义一个 <strong>新的数组</strong> ，将原始数组按照 <strong>倒序</strong> 的方式插入到新的数组中，最后 <strong>改变原始数组引用</strong> ，将其 <strong>指向新的数组空间</strong></li>
+</ol>
+<p>特点:</p>
+<p>代码里面会产生垃圾，而在进行程序开发的过程中应该尽可能少地产生垃圾空间，这样的思路 <strong>并不是最合理的</strong></p>
+<ol start="2">
+<li>尽可能的在 <strong>一个数组</strong> 里完成转置操作</li>
+</ol>
+<h3 id="20210327154356httpsimgfengqigangcnimg20210327154356png如何采取定义一个新的数组的方法转置数组"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327154356.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327154356.png, https://img.fengqigang.cn//img/20210327154356.png 1.5x, https://img.fengqigang.cn//img/20210327154356.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327154356.png"
+        title="20210327154356" />如何采取定义一个新的数组的方法，转置数组?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayReverse</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">data</span> <span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="o">[]</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">7</span><span class="o">,</span> <span class="n">8</span><span class="o">};</span>
+		<span class="kt">int</span> <span class="n">temp</span> <span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="o">[</span><span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+		<span class="kt">int</span> <span class="n">foot</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">temp</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">foot</span><span class="o">];</span>
+			<span class="n">foot</span><span class="o">--;</span>
+		<span class="o">}</span>
+		<span class="n">data</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+		<span class="n">print</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="kt">int</span> <span class="n">temp</span><span class="o">[]){</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">temp</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327155016.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327155016.png, https://img.fengqigang.cn//img/20210327155016.png 1.5x, https://img.fengqigang.cn//img/20210327155016.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327155016.png"
+        title="20210327155016" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327155155.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327155155.png, https://img.fengqigang.cn//img/20210327155155.png 1.5x, https://img.fengqigang.cn//img/20210327155155.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327155155.png"
+        title="20210327155155" /></p>
+<h3 id="利用算法只在一个数组上完成转置操作的思路是什么样的">利用算法，只在一个数组上，完成转置操作的思路是什么样的?</h3>
+<p><strong>偶数</strong>:</p>
+<p>原始数组: 1, 2, 3, 4, 5, 6</p>
+<p>第一次转置: <strong>6</strong> , 2, 3, 4, 5, <strong>1</strong></p>
+<p>第二次转置: 6, <strong>5</strong>, 3, 4, <strong>2</strong>, 1</p>
+<p>第三次转置: 6, 5, <strong>4</strong>, <strong>3</strong> , 2, 1</p>
+<p><strong>奇数</strong></p>
+<p>原始数组: 1, 2, 3, 4, 5, 6, 7</p>
+<p>第一次转置: <strong>7</strong>, 2, 3, 4, 5, 6, <strong>1</strong></p>
+<p>第二次转置: 7, <strong>6</strong>, 3, 4, 5, <strong>2</strong>, 1</p>
+<p>第三次转置: 7, 6, <strong>5</strong>, 4, <strong>3</strong>, 2, 1</p>
+<p><strong>不管数组的长度是奇数的个数还是偶数的个数，其转置的次数的计算方式是完全一样的</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327160105.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327160105.png, https://img.fengqigang.cn//img/20210327160105.png 1.5x, https://img.fengqigang.cn//img/20210327160105.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327160105.png"
+        title="20210327160105" /></p>
+<h3 id="利用算法只在一个数组上完成转置操作-其代码是如何实现的">利用算法，只在一个数组上，完成转置操作, 其代码是如何实现的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327160105.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327160105.png, https://img.fengqigang.cn//img/20210327160105.png 1.5x, https://img.fengqigang.cn//img/20210327160105.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327160105.png"
+        title="20210327160105" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayReverse</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">data</span> <span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="o">[]</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">7</span><span class="o">,</span> <span class="n">8</span><span class="o">};</span>
+		<span class="n">reverse</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+		<span class="n">print</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">reverse</span><span class="o">(</span><span class="kt">int</span> <span class="n">arr</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">/</span> <span class="n">2</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">head</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+		<span class="kt">int</span> <span class="n">tail</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">len</span><span class="o">;</span> <span class="n">x</span> <span class="o">++){</span>
+			<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">head</span><span class="o">];</span>
+			<span class="n">arr</span><span class="o">[</span><span class="n">head</span><span class="o">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">tail</span><span class="o">];</span>
+			<span class="n">arr</span><span class="o">[</span><span class="n">tail</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+			<span class="n">head</span> <span class="o">++;</span>
+			<span class="n">tail</span> <span class="o">--;</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="kt">int</span> <span class="n">temp</span><span class="o">[]){</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">temp</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327161146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327161146.png, https://img.fengqigang.cn//img/20210327161146.png 1.5x, https://img.fengqigang.cn//img/20210327161146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327161146.png"
+        title="20210327161146" /></p>
+<h3 id="20210327161538httpsimgfengqigangcnimg20210327161538png二维数组行与列相同如何实现转置"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327161538.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327161538.png, https://img.fengqigang.cn//img/20210327161538.png 1.5x, https://img.fengqigang.cn//img/20210327161538.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327161538.png"
+        title="20210327161538" />二维数组(行与列相同)如何实现转置?</h3>
+<p><strong>只有当行数与列数相同的时候才可以发生数据的交换操作</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">transpose</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">data</span> <span class="o">[][]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span> <span class="o">[][]</span> <span class="o">{</span>
+			<span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">},</span> <span class="o">{</span><span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">},</span> <span class="o">{</span><span class="n">7</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">9</span><span class="o">}};</span>
+		<span class="n">reverse</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+		<span class="n">print</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">reverse</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">data</span><span class="o">){</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">y</span><span class="o">++</span> <span class="o">){</span>
+			<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+				<span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">];</span>
+				<span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">];</span>
+				<span class="n">data</span><span class="o">[</span><span class="n">y</span><span class="o">][</span><span class="n">x</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">data</span><span class="o">){</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">].</span><span class="na">length</span><span class="o">;</span> <span class="n">y</span><span class="o">++){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">][</span><span class="n">y</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+	<span class="o">}</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>!20210327162739](<a href="https://img.fengqigang.cn//img/20210327162739.png">https://img.fengqigang.cn//img/20210327162739.png</a>)</p>
+<h3 id="20210327162955httpsimgfengqigangcnimg20210327162955png-如何用代码实现这一步骤"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327162955.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327162955.png, https://img.fengqigang.cn//img/20210327162955.png 1.5x, https://img.fengqigang.cn//img/20210327162955.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327162955.png"
+        title="20210327162955" /> 如何用代码实现这一步骤?</h3>
+<p>public static void arraycopy (Object src, int srcPos, Object dest, int destPos, int length)</p>
+<p>src - the source array.</p>
+<p>srcPos - starting position in the <strong>source array</strong>.</p>
+<p>dest - the destionation array.</p>
+<p>destPos - starting position in the destination data.</p>
+<p>length - the number of array elements to be copied.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayCopy</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[])</span> <span class="o">{</span>
+		<span class="kt">int</span> <span class="n">dataA</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">5</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">7</span><span class="o">,</span> <span class="n">8</span><span class="o">};</span>
+		<span class="kt">int</span> <span class="n">dataB</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">11</span><span class="o">,</span> <span class="n">22</span><span class="o">,</span> <span class="n">33</span><span class="o">,</span> <span class="n">44</span><span class="o">,</span> <span class="n">55</span><span class="o">,</span> <span class="n">66</span><span class="o">,</span> <span class="n">77</span><span class="o">,</span> <span class="n">88</span><span class="o">};</span>
+		<span class="c1">// 从第5个位置复制，复制到2的位置，复制3个
+</span><span class="c1"></span>		<span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">dataA</span><span class="o">,</span> <span class="n">4</span><span class="o">,</span> <span class="n">dataB</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+		<span class="n">print</span><span class="o">(</span><span class="n">dataB</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="kt">int</span> <span class="n">temp</span><span class="o">[])</span> <span class="o">{</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">temp</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327172214.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327172214.png, https://img.fengqigang.cn//img/20210327172214.png 1.5x, https://img.fengqigang.cn//img/20210327172214.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327172214.png"
+        title="20210327172214" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
