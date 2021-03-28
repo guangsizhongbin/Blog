@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  1239 ,
+        },"genre": "posts","keywords": "java","wordcount":  1532 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1239 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1532 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -178,6 +178,24 @@
         <li><a href="#利用算法只在一个数组上完成转置操作-其代码是如何实现的">利用算法，只在一个数组上，完成转置操作, 其代码是如何实现的?</a></li>
         <li><a href="#20210327161538httpsimgfengqigangcnimg20210327161538png二维数组行与列相同如何实现转置"><img src="https://img.fengqigang.cn//img/20210327161538.png" alt="20210327161538">二维数组(行与列相同)如何实现转置?</a></li>
         <li><a href="#20210327162955httpsimgfengqigangcnimg20210327162955png-如何用代码实现这一步骤"><img src="https://img.fengqigang.cn//img/20210327162955.png" alt="20210327162955"> 如何用代码实现这一步骤?</a></li>
+        <li><a href="#使基本数据类型的数组按照由小到大的顺序排序的方法是什么">使基本数据类型的数组按照由小到大的顺序排序的方法是什么?</a></li>
+        <li><a href="#javautilarrayssort数组名称-为什么缺陷"><strong>java.util.Arrays.sort(数组名称)</strong> 为什么缺陷?</a></li>
+        <li><a href="#如何使用-javautilarrayssort-对-data-排序-data-为3-6-1-2-8-0">如何使用 <strong>java.util.Arrays.sort()</strong> 对 <strong>data</strong> 排序, data 为{3, 6, 1, 2, 8, 0}?</a></li>
+        <li><a href="#什么是对象数组">什么是对象数组?</a></li>
+        <li><a href="#对象数组有哪些初始化的方式">对象数组有哪些初始化的方式?</a></li>
+        <li><a href="#20210327214533httpsimgfengqigangcnimg20210327214533png对象数组的内存关系是什么样的"><img src="https://img.fengqigang.cn//img/20210327214533.png" alt="20210327214533">对象数组的内存关系是什么样的?</a></li>
+        <li><a href="#如何采用动态初始化的方法初始化20210327214648httpsimgfengqigangcnimg20210327214648png">如何采用动态初始化的方法初始化<img src="https://img.fengqigang.cn//img/20210327214648.png" alt="20210327214648">?</a></li>
+        <li><a href="#如何采用静态初始化的方法初始化20210327214748httpsimgfengqigangcnimg20210327214748png">如何采用静态初始化的方法初始化<img src="https://img.fengqigang.cn//img/20210327214748.png" alt="20210327214748">?</a></li>
+        <li><a href="#string-类有哪两种实例化的方式"><strong>String</strong> 类有哪两种实例化的方式?</a></li>
+        <li><a href="#如何采取直接赋值的方式对-string-类赋值-如-使str-为-fengqigangcn">如何采取直接赋值的方式对 <strong>String</strong> 类赋值 (如: 使str 为 &ldquo;fengqigang.cn&rdquo;)？</a></li>
+        <li><a href="#如何采取构造方法实例化的方式对-string-类赋值-如-使str-为-fengqigangcn">如何采取构造方法实例化的方式对 <strong>String</strong> 类赋值 (如: 使str 为 &ldquo;fengqigang.cn&rdquo;)？</a></li>
+        <li><a href="#在-java-中--可以应用到哪些数据类型中">在 <strong>java</strong> 中 &ldquo;==&rdquo; 可以应用到哪些数据类型中?</a></li>
+        <li><a href="#如何判断-直接赋值的string-与-采用构造方法的创造相同内容的string-它们是否相等以hello为例">如何判断 直接赋值的String 与 采用构造方法的创造相同内容的String, 它们是否相等(以hello为例)?</a></li>
+        <li><a href="#20210328105737httpsimgfengqigangcnimg20210328105737png-它两相等吗-为什么"><img src="https://img.fengqigang.cn//img/20210328105737.png" alt="20210328105737"> 它两相等吗? 为什么?</a></li>
+        <li><a href="#-所比较的是什么"><strong>==</strong> 所比较的是什么?</a></li>
+        <li><a href="#如何比较-string-类里面字符串的内容">如何比较 <strong>String</strong> 类里面字符串的内容?</a></li>
+        <li><a href="#20210328110321httpsimgfengqigangcnimg20210328110321png-如何实现他们三者在字符串内容上的比较"><img src="https://img.fengqigang.cn//img/20210328110321.png" alt="20210328110321"> 如何实现他们三者在字符串内容上的比较?</a></li>
+        <li><a href="#在-string-类中--和-equals-比较有什么区别">在 <strong>String</strong> 类中 &ldquo;==&rdquo; 和 &ldquo;equals()&rdquo; 比较有什么区别?</a></li>
       </ul>
     </li>
   </ul>
@@ -1021,7 +1039,14 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>!20210327162739](<a href="https://img.fengqigang.cn//img/20210327162739.png">https://img.fengqigang.cn//img/20210327162739.png</a>)</p>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327162739.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327162739.png, https://img.fengqigang.cn//img/20210327162739.png 1.5x, https://img.fengqigang.cn//img/20210327162739.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327162739.png"
+        title="20210327162739" /></p>
 <h3 id="20210327162955httpsimgfengqigangcnimg20210327162955png-如何用代码实现这一步骤"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -1082,6 +1107,248 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210327172214.png"
         title="20210327172214" /></p>
+<h3 id="使基本数据类型的数组按照由小到大的顺序排序的方法是什么">使基本数据类型的数组按照由小到大的顺序排序的方法是什么?</h3>
+<p><strong>java.util.Arrays.sort(数组名称)</strong></p>
+<h3 id="javautilarrayssort数组名称-为什么缺陷"><strong>java.util.Arrays.sort(数组名称)</strong> 为什么缺陷?</h3>
+<p>只能对基本数据类型，如 <strong>int[], double[], char[]</strong> 进行排序, 不能对引用数据排序</p>
+<h3 id="如何使用-javautilarrayssort-对-data-排序-data-为3-6-1-2-8-0">如何使用 <strong>java.util.Arrays.sort()</strong> 对 <strong>data</strong> 排序, data 为{3, 6, 1, 2, 8, 0}?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SortArray</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="kt">int</span> <span class="n">data</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">3</span><span class="o">,</span> <span class="n">6</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">8</span><span class="o">,</span> <span class="n">0</span><span class="o">};</span>
+		<span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Arrays</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+		<span class="n">print</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">(</span><span class="kt">int</span> <span class="n">temp</span><span class="o">[]){</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">temp</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327213624.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327213624.png, https://img.fengqigang.cn//img/20210327213624.png 1.5x, https://img.fengqigang.cn//img/20210327213624.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327213624.png"
+        title="20210327213624" /></p>
+<h3 id="什么是对象数组">什么是对象数组?</h3>
+<p>数组是 <strong>引用类型</strong></p>
+<p>类是 <strong>引用类型</strong></p>
+<p>对象数组表示一个引用类型里面 <strong>嵌套其他的引用类型</strong></p>
+<h3 id="对象数组有哪些初始化的方式">对象数组有哪些初始化的方式?</h3>
+<ol>
+<li>动态初始化</li>
+</ol>
+<p>类名称 对象数组名称 = new 类名称 [长度];</p>
+<p>Book books [] = new Book[3];
+books[0] = new Book{&ldquo;Java&rdquo;, 79.8};
+books[1] = new Book{&ldquo;JSP&rdquo;, 69.8};
+books[2] = new Book{&ldquo;Android&rdquo;, 89.8};</p>
+<ol start="2">
+<li>静态初始化</li>
+</ol>
+<p>类名称 对象数组名称 = new 类名称 [] {实例化对象, 实例化对象, &hellip;};</p>
+<p>Book books[] = new Book[] {
+new Book(&ldquo;Java&rdquo;, 79.8),
+new Book(&ldquo;JSP&rdquo;, 69.8),
+new Book(&ldquo;Android&rdquo;, 89.8);
+}</p>
+<h3 id="20210327214533httpsimgfengqigangcnimg20210327214533png对象数组的内存关系是什么样的"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327214533.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327214533.png, https://img.fengqigang.cn//img/20210327214533.png 1.5x, https://img.fengqigang.cn//img/20210327214533.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327214533.png"
+        title="20210327214533" />对象数组的内存关系是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327214548.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327214548.png, https://img.fengqigang.cn//img/20210327214548.png 1.5x, https://img.fengqigang.cn//img/20210327214548.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327214548.png"
+        title="20210327214548" /></p>
+<h3 id="如何采用动态初始化的方法初始化20210327214648httpsimgfengqigangcnimg20210327214648png">如何采用动态初始化的方法初始化<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327214648.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327214648.png, https://img.fengqigang.cn//img/20210327214648.png 1.5x, https://img.fengqigang.cn//img/20210327214648.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327214648.png"
+        title="20210327214648" />?</h3>
+<h3 id="如何采用静态初始化的方法初始化20210327214748httpsimgfengqigangcnimg20210327214748png">如何采用静态初始化的方法初始化<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210327214748.png"
+        data-srcset="https://img.fengqigang.cn//img/20210327214748.png, https://img.fengqigang.cn//img/20210327214748.png 1.5x, https://img.fengqigang.cn//img/20210327214748.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210327214748.png"
+        title="20210327214748" />?</h3>
+<h3 id="string-类有哪两种实例化的方式"><strong>String</strong> 类有哪两种实例化的方式?</h3>
+<ol>
+<li>
+<p>为 <strong>String</strong> 类对象直接赋值</p>
+</li>
+<li>
+<p>利用构造方法实例化</p>
+</li>
+</ol>
+<h3 id="如何采取直接赋值的方式对-string-类赋值-如-使str-为-fengqigangcn">如何采取直接赋值的方式对 <strong>String</strong> 类赋值 (如: 使str 为 &ldquo;fengqigang.cn&rdquo;)？</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringAttribute</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;fengqigang.cn&#34;</span><span class="o">;</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328104128.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328104128.png, https://img.fengqigang.cn//img/20210328104128.png 1.5x, https://img.fengqigang.cn//img/20210328104128.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328104128.png"
+        title="20210328104128" /></p>
+<h3 id="如何采取构造方法实例化的方式对-string-类赋值-如-使str-为-fengqigangcn">如何采取构造方法实例化的方式对 <strong>String</strong> 类赋值 (如: 使str 为 &ldquo;fengqigang.cn&rdquo;)？</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringAttribute</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">&#34;fengqigang.cn&#34;</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328104410.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328104410.png, https://img.fengqigang.cn//img/20210328104410.png 1.5x, https://img.fengqigang.cn//img/20210328104410.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328104410.png"
+        title="20210328104410" /></p>
+<h3 id="在-java-中--可以应用到哪些数据类型中">在 <strong>java</strong> 中 &ldquo;==&rdquo; 可以应用到哪些数据类型中?</h3>
+<p>可以应用在所有数据类型中</p>
+<p>包括基本数据类型与引用数据类型</p>
+<h3 id="如何判断-直接赋值的string-与-采用构造方法的创造相同内容的string-它们是否相等以hello为例">如何判断 直接赋值的String 与 采用构造方法的创造相同内容的String, 它们是否相等(以hello为例)?</h3>
+<p>不相等</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringCompare</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+		<span class="n">String</span> <span class="n">strb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">);</span>
+
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span> <span class="o">==</span> <span class="n">strb</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="20210328105737httpsimgfengqigangcnimg20210328105737png-它两相等吗-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328105737.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328105737.png, https://img.fengqigang.cn//img/20210328105737.png 1.5x, https://img.fengqigang.cn//img/20210328105737.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328105737.png"
+        title="20210328105737" /> 它两相等吗? 为什么?</h3>
+<p>相等</p>
+<p>都是指向相同的堆内存</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328105818.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328105818.png, https://img.fengqigang.cn//img/20210328105818.png 1.5x, https://img.fengqigang.cn//img/20210328105818.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328105818.png"
+        title="20210328105818" /></p>
+<h3 id="-所比较的是什么"><strong>==</strong> 所比较的是什么?</h3>
+<p>首先， 在整个Java中只要引用数据类型一定会存在内存地址</p>
+<p>&ldquo;==&rdquo; 可以用于所有的引用数据类型比较</p>
+<p><strong>比较的并不会是内容，永远都只是地址的数值内容, 比较的是内存地址</strong></p>
+<h3 id="如何比较-string-类里面字符串的内容">如何比较 <strong>String</strong> 类里面字符串的内容?</h3>
+<p><strong>public boolean equals(String str)</strong></p>
+<h3 id="20210328110321httpsimgfengqigangcnimg20210328110321png-如何实现他们三者在字符串内容上的比较"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328110321.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328110321.png, https://img.fengqigang.cn//img/20210328110321.png 1.5x, https://img.fengqigang.cn//img/20210328110321.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328110321.png"
+        title="20210328110321" /> 如何实现他们三者在字符串内容上的比较?</h3>
+<p><strong>equls</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328110459.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328110459.png, https://img.fengqigang.cn//img/20210328110459.png 1.5x, https://img.fengqigang.cn//img/20210328110459.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328110459.png"
+        title="20210328110459" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328110527.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328110527.png, https://img.fengqigang.cn//img/20210328110527.png 1.5x, https://img.fengqigang.cn//img/20210328110527.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328110527.png"
+        title="20210328110527" /></p>
+<h3 id="在-string-类中--和-equals-比较有什么区别">在 <strong>String</strong> 类中 &ldquo;==&rdquo; 和 &ldquo;equals()&rdquo; 比较有什么区别?</h3>
+<p>&ldquo;==&rdquo;</p>
+<p>是 <strong>Java</strong> 提供的关系运算符</p>
+<p>主要的功能进行数值相等判断，如果用在 <strong>String</strong> 对象上表示的是 <strong>内存地址数值</strong> 的方法</p>
+<p>&ldquo;equals()&rdquo;</p>
+<p>是由 <strong>String</strong> 提供的一个方法，此方法专门负责进行 <strong>字符串内容</strong> 的比较</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
