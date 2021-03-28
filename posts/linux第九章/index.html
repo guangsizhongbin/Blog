@@ -6,8 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Linux第九章 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Linux第九章" />
-<meta property="og:description" content="第九章 vim程序编辑器
-什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
+<meta property="og:description" content="什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
 在 vim 中, n &#43;  代表什么操作? 表示光标会向 右 移动 n 个字符
 在 vim 中, 如何移动到这一列的最后面字符处? $
 在 vim 中, 如何将光标移动到这个屏幕中央那一列的第一个字符? M
@@ -21,8 +20,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Linux第九章"/>
-<meta name="twitter:description" content="第九章 vim程序编辑器
-什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
+<meta name="twitter:description" content="什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
 在 vim 中, n &#43;  代表什么操作? 表示光标会向 右 移动 n 个字符
 在 vim 中, 如何移动到这一列的最后面字符处? $
 在 vim 中, 如何将光标移动到这个屏幕中央那一列的第一个字符? M
@@ -41,7 +39,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  214 ,
+        },"genre": "posts","keywords": "linux","wordcount":  421 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0\/","datePublished": "2021-03-21T10:30:12+08:00","dateModified": "2021-03-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -118,7 +116,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第九章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-21">2021-03-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;214 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-21">2021-03-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;421 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -163,12 +161,25 @@
         <li><a href="#在-vim-中-如何实现将-n1-到-n2-的内容储存成-filename-这个文件中">在 <strong>vim</strong> 中， 如何实现将 <strong>n1</strong> 到 <strong>n2</strong> 的内容储存成 <strong>filename</strong> 这个文件中?</a></li>
         <li><a href="#在-vim-中-如何暂时离开-vim-执行-bash-中的命令">在 <strong>vim</strong> 中， 如何暂时离开 <strong>vim</strong>, 执行 <strong>bash</strong> 中的命令?</a></li>
         <li><a href="#在-vim-中-如何设置显示行号">在 <strong>vim</strong> 中， 如何设置显示行号?</a></li>
+        <li><a href="#在-vim-中-如何进行区块选择用长方形的方式选择数据">在 <strong>vim</strong> 中， 如何进行区块选择（用长方形的方式选择数据）?</a></li>
+        <li><a href="#如何列出目前这个-vim-打开的所有文件">如何列出目前这个 <strong>vim</strong> 打开的所有文件?</a></li>
+        <li><a href="#在-vim-中-若同时打开多个文件如何编辑下一个文件">在 <strong>vim</strong> 中， 若同时打开多个文件，如何编辑下一个文件？</a></li>
+        <li><a href="#在-vim-中-若同时打开多个文件如何编辑上一个文件">在 <strong>vim</strong> 中， 若同时打开多个文件，如何编辑上一个文件？</a></li>
+        <li><a href="#在-vim-中-如何以当前目录内的文件名作为关键字予以补齐">在 <strong>vim</strong> 中， 如何以当前目录内的&quot;文件名&quot;作为关键字，予以补齐?</a></li>
+        <li><a href="#在-vim-中-如何以正在编辑的这个文件的内容文字作为关键字予以补齐">在 <strong>vim</strong> 中， 如何以正在编辑的这个&quot;文件的内容文字&quot;作为关键字，予以补齐?</a></li>
+        <li><a href="#在-vim-中-如何以扩展名作为语法补充以-vim-内置的关键字予以补齐">在 <strong>vim</strong> 中， 如何以扩展名作为语法补充，以 <strong>vim</strong> 内置的关键字，予以补齐?</a></li>
+        <li><a href="#viminfo-保存的是什么"><strong>~/.viminfo</strong> 保存的是什么?</a></li>
+        <li><a href="#如何查看到文件中的断行字符">如何查看到文件中的断行字符?</a></li>
+        <li><a href="#window-与-linux-中的断行字符是否相同"><strong>window</strong> 与 <strong>linux</strong> 中的断行字符是否相同?</a></li>
+        <li><a href="#如何将-etcman_dbconf-重新复制到-tmpvitest-下面并将其修改成为-dos-断行">如何将 <strong>/etc/man_db.conf</strong> 重新复制到 <strong>/tmp/vitest</strong> 下面，并将其修改成为 <strong>dos</strong> 断行?</a></li>
+        <li><a href="#如何将-man_dbconf-转成-linux-断行字符-并保留旧文件新文件放于-man_dbconflinux">如何将 <strong>man_db.conf</strong> 转成 <strong>Linux</strong> 断行字符, 并保留旧文件，新文件放于 <strong>man_db.conf.linux</strong></a></li>
+        <li><a href="#如何查看一个文件是-win-下创建的文件还是-linux-下创建的文件">如何查看一个文件是 <strong>win</strong> 下创建的文件还是 <strong>linux</strong> 下创建的文件？</a></li>
+        <li><a href="#如何将-vibig5-这个文件转成-viutf8">如何将 <strong>vi.big5</strong> 这个文件转成 <strong>vi.utf8</strong>?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>第九章 vim程序编辑器</p>
-<h3 id="什么是纯文本文件">什么是纯文本文件?</h3>
+            </div><div class="content" id="content"><h3 id="什么是纯文本文件">什么是纯文本文件?</h3>
 <p>文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字</p>
 <h3 id="在-vim-中--n--space-代表什么操作">在 <strong>vim</strong> 中,  n + <space> 代表什么操作?</h3>
 <p>表示光标会向 <strong>右</strong> 移动 <strong>n</strong> 个字符</p>
@@ -204,7 +215,7 @@
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">:1, <span class="nv">$1</span>/word1/word2/gc
+<pre class="chroma"><code class="language-bash" data-lang="bash">:1, <span class="nv">$1</span>/word1/word2/g
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="在-vim-中-如何向后删除n个字符">在 <strong>vim</strong> 中， 如何向后删除n个字符?</h3>
@@ -257,6 +268,147 @@
 <p>:! command</p>
 <h3 id="在-vim-中-如何设置显示行号">在 <strong>vim</strong> 中， 如何设置显示行号?</h3>
 <p>:set nu</p>
+<h3 id="在-vim-中-如何进行区块选择用长方形的方式选择数据">在 <strong>vim</strong> 中， 如何进行区块选择（用长方形的方式选择数据）?</h3>
+<p>[Ctrl] + V</p>
+<h3 id="如何列出目前这个-vim-打开的所有文件">如何列出目前这个 <strong>vim</strong> 打开的所有文件?</h3>
+<p><code>:files</code></p>
+<h3 id="在-vim-中-若同时打开多个文件如何编辑下一个文件">在 <strong>vim</strong> 中， 若同时打开多个文件，如何编辑下一个文件？</h3>
+<p><code>:n</code></p>
+<h3 id="在-vim-中-若同时打开多个文件如何编辑上一个文件">在 <strong>vim</strong> 中， 若同时打开多个文件，如何编辑上一个文件？</h3>
+<p><code>:N</code></p>
+<h3 id="在-vim-中-如何以当前目录内的文件名作为关键字予以补齐">在 <strong>vim</strong> 中， 如何以当前目录内的&quot;文件名&quot;作为关键字，予以补齐?</h3>
+<p><strong>[ctrl] + x &ndash;&gt; [Ctrl] + f</strong></p>
+<p><strong>file</strong></p>
+<p>CTRL-x_CTRL-F</p>
+<h3 id="在-vim-中-如何以正在编辑的这个文件的内容文字作为关键字予以补齐">在 <strong>vim</strong> 中， 如何以正在编辑的这个&quot;文件的内容文字&quot;作为关键字，予以补齐?</h3>
+<p><strong>[ctrl] + x &ndash;&gt; [Ctrl] + n</strong></p>
+<p><strong>Keywords in the current file</strong></p>
+<p>CTRL-x_CTRL-n</p>
+<h3 id="在-vim-中-如何以扩展名作为语法补充以-vim-内置的关键字予以补齐">在 <strong>vim</strong> 中， 如何以扩展名作为语法补充，以 <strong>vim</strong> 内置的关键字，予以补齐?</h3>
+<p><strong>[ctrl] + x -&gt; [ctrl] + O</strong></p>
+<p><strong>omni completion</strong></p>
+<p>CTRL-x_CTRL-O</p>
+<h3 id="viminfo-保存的是什么"><strong>~/.viminfo</strong> 保存的是什么?</h3>
+<p>它是记录动作的文件.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328093854.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328093854.png, https://img.fengqigang.cn//img/20210328093854.png 1.5x, https://img.fengqigang.cn//img/20210328093854.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328093854.png"
+        title="20210328093854" /></p>
+<h3 id="如何查看到文件中的断行字符">如何查看到文件中的断行字符?</h3>
+<p><strong>cat -A</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328094903.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328094903.png, https://img.fengqigang.cn//img/20210328094903.png 1.5x, https://img.fengqigang.cn//img/20210328094903.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328094903.png"
+        title="20210328094903" /></p>
+<h3 id="window-与-linux-中的断行字符是否相同"><strong>window</strong> 与 <strong>linux</strong> 中的断行字符是否相同?</h3>
+<p>不同</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328094903.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328094903.png, https://img.fengqigang.cn//img/20210328094903.png 1.5x, https://img.fengqigang.cn//img/20210328094903.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328094903.png"
+        title="20210328094903" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328095202.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328095202.png, https://img.fengqigang.cn//img/20210328095202.png 1.5x, https://img.fengqigang.cn//img/20210328095202.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328095202.png"
+        title="20210328095202" /></p>
+<h3 id="如何将-etcman_dbconf-重新复制到-tmpvitest-下面并将其修改成为-dos-断行">如何将 <strong>/etc/man_db.conf</strong> 重新复制到 <strong>/tmp/vitest</strong> 下面，并将其修改成为 <strong>dos</strong> 断行?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /tmp/vitest
+
+cp -a /etc/man_db.conf /tmp/vitest/
+
+unix2dos -k man_db.conf
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328100613.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328100613.png, https://img.fengqigang.cn//img/20210328100613.png 1.5x, https://img.fengqigang.cn//img/20210328100613.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328100613.png"
+        title="20210328100613" /></p>
+<p><strong>dos2unix</strong></p>
+<p>DOS/Mac to unix and vice versa text file format converter</p>
+<p><strong>-k</strong></p>
+<p>Keep the data stamp of output file same as input file</p>
+<h3 id="如何将-man_dbconf-转成-linux-断行字符-并保留旧文件新文件放于-man_dbconflinux">如何将 <strong>man_db.conf</strong> 转成 <strong>Linux</strong> 断行字符, 并保留旧文件，新文件放于 <strong>man_db.conf.linux</strong></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">dos2unix -k -n man_db.conf man_db.conf.linux
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328100843.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328100843.png, https://img.fengqigang.cn//img/20210328100843.png 1.5x, https://img.fengqigang.cn//img/20210328100843.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328100843.png"
+        title="20210328100843" /></p>
+<p><strong>-k</strong></p>
+<p>Keep the data stamp of output file same as input file</p>
+<p><strong>-n, &ndash;newfile INFILE OUTFILE &hellip;</strong></p>
+<p>New file mode. Convert file INFILE and write output to file OUTFILE.</p>
+<h3 id="如何查看一个文件是-win-下创建的文件还是-linux-下创建的文件">如何查看一个文件是 <strong>win</strong> 下创建的文件还是 <strong>linux</strong> 下创建的文件？</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">file man_db.conf*
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328100934.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328100934.png, https://img.fengqigang.cn//img/20210328100934.png 1.5x, https://img.fengqigang.cn//img/20210328100934.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328100934.png"
+        title="20210328100934" /></p>
+<h3 id="如何将-vibig5-这个文件转成-viutf8">如何将 <strong>vi.big5</strong> 这个文件转成 <strong>vi.utf8</strong>?</h3>
+<p>iconv -f BIG5 -t utf8 vi.big5 &gt; vi.utf8</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210328101405.png"
+        data-srcset="https://img.fengqigang.cn//img/20210328101405.png, https://img.fengqigang.cn//img/20210328101405.png 1.5x, https://img.fengqigang.cn//img/20210328101405.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210328101405.png"
+        title="20210328101405" /></p>
+<p><strong>iconv</strong></p>
+<p>convert text from one character encoding to another</p>
+<p><strong>-f from-encoding, &ndash;from-code=from0encoding</strong></p>
+<p>Use from-encoding for input characters</p>
+<p><strong>-t to-encoding, &ndash;to-code=to-encoding</strong></p>
+<p>Use to-encoding for output characters.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

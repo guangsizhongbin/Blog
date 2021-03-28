@@ -45,8 +45,7 @@
     <pubDate>Sun, 21 Mar 2021 10:30:12 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/</guid>
-    <description><![CDATA[第九章 vim程序编辑器
-什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
+    <description><![CDATA[什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
 在 vim 中, n +  代表什么操作? 表示光标会向 右 移动 n 个字符
 在 vim 中, 如何移动到这一列的最后面字符处? $
 在 vim 中, 如何将光标移动到这个屏幕中央那一列的第一个字符? M
