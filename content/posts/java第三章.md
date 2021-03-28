@@ -538,7 +538,7 @@ public static void print(int[][] data){
 }
 ```
 
-!20210327162739](https://img.fengqigang.cn//img/20210327162739.png)
+![20210327162739](https://img.fengqigang.cn//img/20210327162739.png)
 
 
 ### ![20210327162955](https://img.fengqigang.cn//img/20210327162955.png) 如何用代码实现这一步骤?
@@ -576,4 +576,164 @@ public class ArrayCopy {
 ```
 
 ![20210327172214](https://img.fengqigang.cn//img/20210327172214.png)
+
+
+### 使基本数据类型的数组按照由小到大的顺序排序的方法是什么?
+
+**java.util.Arrays.sort(数组名称)**
+
+### **java.util.Arrays.sort(数组名称)** 为什么缺陷?
+
+只能对基本数据类型，如 **int[], double[], char[]** 进行排序, 不能对引用数据排序
+
+### 如何使用 **java.util.Arrays.sort()** 对 **data** 排序, data 为{3, 6, 1, 2, 8, 0}?
+
+```java
+public class SortArray {
+	public static void main(String args[]){
+		int data[] = new int[] {3, 6, 1, 2, 8, 0};
+		java.util.Arrays.sort(data);
+		print(data);
+	}
+	public static void print(int temp[]){
+		for (int x = 0; x < temp.length; x++){
+			System.out.print(temp[x] + "、");
+		}
+	}
+}
+```
+
+![20210327213624](https://img.fengqigang.cn//img/20210327213624.png)
+
+
+### 什么是对象数组?
+
+数组是 **引用类型**
+
+类是 **引用类型**
+
+对象数组表示一个引用类型里面 **嵌套其他的引用类型**
+
+### 对象数组有哪些初始化的方式?
+
+1. 动态初始化
+
+类名称 对象数组名称 = new 类名称 [长度];
+
+Book books [] = new Book[3];
+books[0] = new Book{"Java", 79.8};
+books[1] = new Book{"JSP", 69.8};
+books[2] = new Book{"Android", 89.8};
+
+2. 静态初始化
+
+类名称 对象数组名称 = new 类名称 [] {实例化对象, 实例化对象, ...};
+
+Book books[] = new Book[] {
+	new Book("Java", 79.8),
+	new Book("JSP", 69.8),
+	new Book("Android", 89.8);
+}
+
+### ![20210327214533](https://img.fengqigang.cn//img/20210327214533.png)对象数组的内存关系是什么样的?
+
+![20210327214548](https://img.fengqigang.cn//img/20210327214548.png)
+
+### 如何采用动态初始化的方法初始化![20210327214648](https://img.fengqigang.cn//img/20210327214648.png)?
+
+
+### 如何采用静态初始化的方法初始化![20210327214748](https://img.fengqigang.cn//img/20210327214748.png)?
+
+### **String** 类有哪两种实例化的方式?
+
+1. 为 **String** 类对象直接赋值
+
+2. 利用构造方法实例化
+
+### 如何采取直接赋值的方式对 **String** 类赋值 (如: 使str 为 "fengqigang.cn")？
+
+```java
+public class StringAttribute {
+	public static void main(String args[]){
+		String str = "fengqigang.cn";
+		System.out.println(str);
+	}
+}
+```
+
+![20210328104128](https://img.fengqigang.cn//img/20210328104128.png)
+
+### 如何采取构造方法实例化的方式对 **String** 类赋值 (如: 使str 为 "fengqigang.cn")？
+
+```java
+public class StringAttribute {
+	public static void main(String args[]){
+		String str = new String("fengqigang.cn");
+		System.out.println(str);
+	}
+}
+```
+
+![20210328104410](https://img.fengqigang.cn//img/20210328104410.png)
+
+### 在 **java** 中 "==" 可以应用到哪些数据类型中?
+
+可以应用在所有数据类型中
+
+包括基本数据类型与引用数据类型
+
+### 如何判断 直接赋值的String 与 采用构造方法的创造相同内容的String, 它们是否相等(以hello为例)?
+
+不相等
+
+```java
+public class StringCompare {
+	public static void main(String args[]){
+		String stra = "hello";
+		String strb = new String("hello");
+
+		System.out.println(stra == strb);
+	}
+}
+```
+
+### ![20210328105737](https://img.fengqigang.cn//img/20210328105737.png) 它两相等吗? 为什么?
+
+相等
+
+都是指向相同的堆内存
+
+![20210328105818](https://img.fengqigang.cn//img/20210328105818.png)
+
+### **==** 所比较的是什么?
+
+首先， 在整个Java中只要引用数据类型一定会存在内存地址
+
+"==" 可以用于所有的引用数据类型比较
+
+**比较的并不会是内容，永远都只是地址的数值内容, 比较的是内存地址**
+
+### 如何比较 **String** 类里面字符串的内容?
+
+**public boolean equals(String str)**
+
+### ![20210328110321](https://img.fengqigang.cn//img/20210328110321.png) 如何实现他们三者在字符串内容上的比较?
+
+**equls**
+
+![20210328110459](https://img.fengqigang.cn//img/20210328110459.png)
+
+![20210328110527](https://img.fengqigang.cn//img/20210328110527.png)
+
+### 在 **String** 类中 "==" 和 "equals()" 比较有什么区别?
+
+"==" 
+
+是 **Java** 提供的关系运算符
+
+主要的功能进行数值相等判断，如果用在 **String** 对象上表示的是 **内存地址数值** 的方法
+
+"equals()"
+
+是由 **String** 提供的一个方法，此方法专门负责进行 **字符串内容** 的比较
 
