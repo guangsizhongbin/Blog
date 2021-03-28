@@ -9,9 +9,6 @@ math:
 tags: [linux]
 categories: [鸟哥的私房菜]
 ---
-
-第九章 vim程序编辑器
-
 ### 什么是纯文本文件?
 
 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
@@ -52,7 +49,7 @@ n <Enter>
 
 
 ```bash
-:1, $1/word1/word2/gc
+:1, $1/word1/word2/g
 ```
 
 ### 在 **vim** 中， 如何向后删除n个字符?
@@ -155,6 +152,129 @@ ZZ
 
 :set nu
 
+### 在 **vim** 中， 如何进行区块选择（用长方形的方式选择数据）?
+
+[Ctrl] + V
+
+### 如何列出目前这个 **vim** 打开的所有文件?
+
+`:files`
+
+
+### 在 **vim** 中， 若同时打开多个文件，如何编辑下一个文件？
+
+`:n`
+
+### 在 **vim** 中， 若同时打开多个文件，如何编辑上一个文件？
+
+`:N`
+
+### 在 **vim** 中， 如何以当前目录内的"文件名"作为关键字，予以补齐?
+
+**[ctrl] + x --> [Ctrl] + f**
+
+**file** 
+
+CTRL-x_CTRL-F
+
+### 在 **vim** 中， 如何以正在编辑的这个"文件的内容文字"作为关键字，予以补齐?
+
+**[ctrl] + x --> [Ctrl] + n**
+
+**Keywords in the current file** 
+
+CTRL-x_CTRL-n
+
+### 在 **vim** 中， 如何以扩展名作为语法补充，以 **vim** 内置的关键字，予以补齐?
+
+**[ctrl] + x -> [ctrl] + O**
+
+**omni completion**
+
+CTRL-x_CTRL-O
+
+### **~/.viminfo** 保存的是什么?
+
+它是记录动作的文件.
+
+![20210328093854](https://img.fengqigang.cn//img/20210328093854.png)
+
+### 如何查看到文件中的断行字符?
+
+**cat -A**
+
+![20210328094903](https://img.fengqigang.cn//img/20210328094903.png)
+
+### **window** 与 **linux** 中的断行字符是否相同?
+
+不同
+
+
+![20210328094903](https://img.fengqigang.cn//img/20210328094903.png)
+
+![20210328095202](https://img.fengqigang.cn//img/20210328095202.png)
+
+###  如何将 **/etc/man_db.conf** 重新复制到 **/tmp/vitest** 下面，并将其修改成为 **dos** 断行?
+
+```bash
+cd /tmp/vitest
+
+cp -a /etc/man_db.conf /tmp/vitest/
+
+unix2dos -k man_db.conf
+```
+
+![20210328100613](https://img.fengqigang.cn//img/20210328100613.png)
+
+**dos2unix**
+
+DOS/Mac to unix and vice versa text file format converter
+
+**-k**
+
+Keep the data stamp of output file same as input file
+
+### 如何将 **man_db.conf** 转成 **Linux** 断行字符, 并保留旧文件，新文件放于 **man_db.conf.linux**
+
+```bash
+dos2unix -k -n man_db.conf man_db.conf.linux
+```
+
+![20210328100843](https://img.fengqigang.cn//img/20210328100843.png)
+
+**-k**
+
+Keep the data stamp of output file same as input file
+
+**-n, --newfile INFILE OUTFILE ...**
+
+New file mode. Convert file INFILE and write output to file OUTFILE.	
+
+### 如何查看一个文件是 **win** 下创建的文件还是 **linux** 下创建的文件？
+
+```bash
+file man_db.conf*
+```
+
+![20210328100934](https://img.fengqigang.cn//img/20210328100934.png)
+
+### 如何将 **vi.big5** 这个文件转成 **vi.utf8**?
+
+iconv -f BIG5 -t utf8 vi.big5 > vi.utf8
+
+![20210328101405](https://img.fengqigang.cn//img/20210328101405.png)
+
+**iconv**
+
+convert text from one character encoding to another
+
+**-f from-encoding, --from-code=from0encoding**
+
+Use from-encoding for input characters
+
+**-t to-encoding, --to-code=to-encoding**
+
+Use to-encoding for output characters.
 
 
 
