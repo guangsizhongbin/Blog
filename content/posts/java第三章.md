@@ -620,20 +620,24 @@ public class SortArray {
 
 类名称 对象数组名称 = new 类名称 [长度];
 
+```java
 Book books [] = new Book[3];
 books[0] = new Book{"Java", 79.8};
 books[1] = new Book{"JSP", 69.8};
 books[2] = new Book{"Android", 89.8};
+```
 
 2. 静态初始化
 
 类名称 对象数组名称 = new 类名称 [] {实例化对象, 实例化对象, ...};
 
+```java
 Book books[] = new Book[] {
 	new Book("Java", 79.8),
 	new Book("JSP", 69.8),
 	new Book("Android", 89.8);
 }
+```
 
 ### ![20210327214533](https://img.fengqigang.cn//img/20210327214533.png)对象数组的内存关系是什么样的?
 
@@ -736,4 +740,160 @@ public class StringCompare {
 "equals()"
 
 是由 **String** 提供的一个方法，此方法专门负责进行 **字符串内容** 的比较
+
+### ![20210328144311](https://img.fengqigang.cn//img/20210328144311.png) 其结果是什么样的? 为什么?
+
+![20210328144338](https://img.fengqigang.cn//img/20210328144338.png)
+
+这是实现了堆内存空间的重用
+
+即采用直接赋值的方式，在相同内容的情况下不会开辟新的内存空间 ,  而会直接指向已有的内存空间
+
+![20210328144603](https://img.fengqigang.cn//img/20210328144603.png)
+
+在 **JVM** 的底层实际上会存在一个 **对象池** (不一定只保存 **String** 对象) , 当代码中使用了直接赋值的方式定义一个 **String** 类对象时，会将此字符串对象所使用的匿名对象入池保存。
+
+如果后续还有其他 **String** 类对象也采用了直接赋值的方式，并设置了同样的内容时，将不会开辟新的堆内存空间，而是使用已有的对象进行引用的分配, 从而继续使用。
+
+### **String** 采取直接赋值的方式实例化, 其语法是什么样的(以 "hello" 为例)?
+
+```java
+String 变量 = 字符串常量(匿名对象)
+
+String str = "hello";
+```
+
+![20210328150540](https://img.fengqigang.cn//img/20210328150540.png)
+
+
+### **String** 采取构造方法的方式实例化, 其语法是什么样的(以 "hello" 为例)?
+
+```java
+String str = new String("hello");
+```
+
+### **String** 采取构造方法的方式实例化, 其特点是什么?
+
+```java
+String str = new String("hello");
+```
+
+![20210328150836](https://img.fengqigang.cn//img/20210328150836.png)
+
+
+因为每一个字符串都是一个 **String** 类匿名对象
+
+会首先在堆内存中开辟一块空间保存字符串"hello", 然后使用关键字 **new**, 开辟另一块内存空间
+
+在真正使用的是关键字 **new** 开辟的堆内存， 而之前定义的字符串常量的堆内存空间将不会在任何的栈内存指向，将成为垃圾，等待被 **GC** 回收.
+
+总结:
+
+使用构造方法开辟的字符串对象，实际上会 **开辟两块空间** ，其中有 **一块空间将成为垃圾**
+
+
+### **String** 类有哪两种实例化的方式?
+
+1. 直接赋值实例化 **String** 类对象
+
+2. 构造方法实例化 **String** 类对象
+
+### 每一个字符串常量， 其本质上是什么? 为什么？
+
+**String** 匿名对象
+
+```java
+public class StringAnonymity {
+	public static void main(String args[]) {
+		String str = "hello";
+		System.out.println("hello".equals(str));
+	}
+}
+```
+
+![20210328150254](https://img.fengqigang.cn//img/20210328150254.png)
+
+**"hello"** 直接调用了 **equals()** 方法
+
+由于 **equals()**  方法是 **String** 类定义的，而类中的方法只有实例化对象才可以调用
+
+所以字符串常量就是 **String** 类的匿名对象
+
+### ![20210328151610](https://img.fengqigang.cn//img/20210328151610.png) 其结果是什么? 为什么?
+
+![20210328151704](https://img.fengqigang.cn//img/20210328151704.png)
+
+因为这种采取构造方法定义的内存空间，不会自动入池
+
+所以在使用赋值的方式声明 **String** 类对象后将开辟新的堆内存空间，因为两个堆内存的地址不同，所以最终的地址判断结果为 **false**
+
+### 若采取构造方法定义的新的内存空间如何手动入池?
+
+**new String("hello").intern()**
+
+![20210328152159](https://img.fengqigang.cn//img/20210328152159.png)
+
+![20210328152222](https://img.fengqigang.cn//img/20210328152222.png)
+
+### 采取 **直接赋值** (String str = "字符串";) 和 **构造方法** (String str = new String("字符串")) 实例化方式有什么区别?
+
+**直接赋值**
+
+只会开辟一块堆内存空间，并且会自动保存在对象池以供下次重复使用
+
+**构造方法**
+
+会开辟两块堆内存空间，其中一块空间将成为垃圾，并且不会自动入池，但是用户可以使用 **intern()** 方法手动入池
+
+### ![20210328152921](https://img.fengqigang.cn//img/20210328152921.png) 其本质上是什么样的?
+
+![20210328153010](https://img.fengqigang.cn//img/20210328153010.png)
+
+首先，声明了一个 **String*8 类对象, 然后修改了两次 **String** 类对象的内容 (实际上是发生了两次引用改变), 所以最终 **String** 类对象的内容就是 **"Hello, World!!!"**
+
+**只是 String 类的对象引用发生了改变，而字符串的内容并没有发生改变**
+
+
+### ![20210328153626](https://img.fengqigang.cn//img/20210328153626.png) 这种操作可以做吗? 为什么?
+
+修改 **String** 对象的值，相当于修改其引用关系，(**所有数据类型遇见String连接操作时都会自动向String类型转换**), 并且会产生大量的垃圾空间
+
+### 因为修改 **String** 对象的值，相当于修改其引用关系，若在一个项目中要大量的修改一个字符串，该如何解决?
+
+使用 **StringBuffer** 或 **StringBuilder**
+
+### 如何截取指定索引的字符(如截取第一个字符)?
+
+使用 **charAt()** 方法
+
+charAt(0) 截取第一个字符
+
+```java
+public class CharAt {
+	public static void main(String args[]) {
+		String str = "hello";
+		char c = str.charAt(0);
+		System.out.println(c);
+	}
+}
+```
+
+![20210328154608](https://img.fengqigang.cn//img/20210328154608.png)
+
+###  如何实现字符数组与字符串的转换?
+
+**toCharArray()**
+
+```java
+public class ToCharArray {
+	public static void main(String args[]) {
+		String str = "hello";
+		char[] data = str.toCharArray();
+		for (int x = 0; x < data.length; x++){
+			System.out.print(data[x] + "、");
+		}
+	}
+}
+```
+
 
