@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day1 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day1" />
+<meta property="og:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
+Java 运行时环境
+JDK(Java Development Kit)
+Java 开发者工具包
+除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
+Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
+  单词之间用下划线或横杠连接
+  如:
+student-manage
+如何给一个包命名? 以反转公司域名为规范
+包名应该 全部小写
+多级包名以点(.)分隔
+包名 com.baidu
+如何给类、接口命名? 采用大驼峰命名法
+public class TestDemo{}
+public class PersonDemo{}
+如何给变量和方法命名? 采用小驼峰命名法
+int num;
+String name;
+如何给常量命名? 全部用大写
+多个单词之间用下划线(_)隔开
+PI
+什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
+ 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-30T23:02:50&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-30T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day1"/>
+<meta name="twitter:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
+Java 运行时环境
+JDK(Java Development Kit)
+Java 开发者工具包
+除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
+Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
+  单词之间用下划线或横杠连接
+  如:
+student-manage
+如何给一个包命名? 以反转公司域名为规范
+包名应该 全部小写
+多级包名以点(.)分隔
+包名 com.baidu
+如何给类、接口命名? 采用大驼峰命名法
+public class TestDemo{}
+public class PersonDemo{}
+如何给变量和方法命名? 采用小驼峰命名法
+int num;
+String name;
+如何给常量命名? 全部用大写
+多个单词之间用下划线(_)隔开
+PI
+什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
+ 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day1/" /><link rel="prev" href="http://fengqigang.cn/posts/removeelement/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day1",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day1\/"
+        },"genre": "posts","keywords": "java","wordcount":  287 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day1\/","datePublished": "2021-03-30T23:02:50+08:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day1</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;287 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</a></li>
+        <li><a href="#java-程序的运行原理是什么样的"><strong>Java</strong> 程序的运行原理是什么样的?</a></li>
+        <li><a href="#给一个-project起名的规范是什么">给一个 <strong>project</strong>起名的规范是什么?</a></li>
+        <li><a href="#如何给一个包命名">如何给一个包命名?</a></li>
+        <li><a href="#如何给类接口命名">如何给类、接口命名?</a></li>
+        <li><a href="#如何给变量和方法命名">如何给变量和方法命名?</a></li>
+        <li><a href="#如何给常量命名">如何给常量命名?</a></li>
+        <li><a href="#什么是小鸵峰式命名法-lower-camel-case-">什么是小鸵峰式命名法( <strong>lower camel case</strong> )?</a></li>
+        <li><a href="#什么是大驼峰式命名法upper-camel-case">什么是大驼峰式命名法(<strong>upper camel case</strong>)?</a></li>
+        <li><a href="#如果想要一个整数的字面值常量数据类型为-long-应该如何做">如果想要一个整数的字面值常量数据类型为 <strong>long</strong>, 应该如何做?</a></li>
+        <li><a href="#如何想要一个浮点数字面值-常量数据类型为-float-应该如何做">如何想要一个浮点数字面值 常量数据类型为 <strong>float</strong>, 应该如何做?</a></li>
+        <li><a href="#byte-short-int-long-float-double-char-boolean-分别占用几个字节的空间"><strong>byte</strong>, <strong>short</strong>, <strong>int</strong>, <strong>long</strong>, <strong>float</strong>, <strong>double</strong>, <strong>char</strong>, <strong>boolean</strong> 分别占用几个字节的空间?</a></li>
+        <li><a href="#float-只有-4字节-会比-8-字节的-long-小吗"><strong>float</strong> 只有 4字节, 会比 8 字节的 <strong>long</strong> 小吗?</a></li>
+        <li><a href="#float-的有效位数是多少"><strong>float</strong> 的有效位数是多少?</a></li>
+        <li><a href="#double-的有效位数是多少"><strong>double</strong> 的有效位数是多少?</a></li>
+        <li><a href="#int-转成-float-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</a></li>
+        <li><a href="#long-转成-double-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</a></li>
+        <li><a href="#int-转成-double-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</a></li>
+        <li><a href="#long-转成-float-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</a></li>
+        <li><a href="#int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</a></li>
+        <li><a href="#如何实现-scanner-键盘录入">如何实现 <strong>Scanner</strong> 键盘录入?</a></li>
+        <li><a href="#next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</a></li>
+        <li><a href="#u0000-与----有什么区别"><strong>\u0000</strong> 与  ** ** 有什么区别?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</h3>
+<p><strong>JRE (Java Runtime Envirment)</strong></p>
+<p>Java 运行时环境</p>
+<p><strong>JDK(Java Development Kit)</strong></p>
+<p>Java 开发者工具包</p>
+<p><strong>除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)</strong></p>
+<h3 id="java-程序的运行原理是什么样的"><strong>Java</strong> 程序的运行原理是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330211314.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330211314.png, https://img.fengqigang.cn//img/20210330211314.png 1.5x, https://img.fengqigang.cn//img/20210330211314.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330211314.png"
+        title="https://img.fengqigang.cn//img/20210330211314.png" /></p>
+<h3 id="给一个-project起名的规范是什么">给一个 <strong>project</strong>起名的规范是什么?</h3>
+<ol>
+<li>
+<p>全部英文小写， 不要用中文</p>
+</li>
+<li>
+<p>单词之间用下划线或横杠连接</p>
+</li>
+</ol>
+<p>如:</p>
+<p><strong>student-manage</strong></p>
+<h3 id="如何给一个包命名">如何给一个包命名?</h3>
+<p>以反转公司域名为规范</p>
+<p>包名应该 <strong>全部小写</strong></p>
+<p>多级包名以点(.)分隔</p>
+<p><strong>包名 com.baidu</strong></p>
+<h3 id="如何给类接口命名">如何给类、接口命名?</h3>
+<p>采用大驼峰命名法</p>
+<p><strong>public class TestDemo{}</strong></p>
+<p><strong>public class PersonDemo{}</strong></p>
+<h3 id="如何给变量和方法命名">如何给变量和方法命名?</h3>
+<p>采用小驼峰命名法</p>
+<p><strong>int num</strong>;</p>
+<p><strong>String name</strong>;</p>
+<h3 id="如何给常量命名">如何给常量命名?</h3>
+<p>全部用大写</p>
+<p>多个单词之间用下划线(_)隔开</p>
+<p><strong>PI</strong></p>
+<h3 id="什么是小鸵峰式命名法-lower-camel-case-">什么是小鸵峰式命名法( <strong>lower camel case</strong> )?</h3>
+<p>多个单词组全成一个字符串</p>
+<ul>
+<li>第一个单词首字母 <strong>小写</strong></li>
+<li>第二个单词开始，首字母都要大写</li>
+</ul>
+<p><strong>myName</strong>,  <strong>myFirstJavaProgram</strong></p>
+<h3 id="什么是大驼峰式命名法upper-camel-case">什么是大驼峰式命名法(<strong>upper camel case</strong>)?</h3>
+<p>多个单词组合成一个字符串</p>
+<ul>
+<li>第一个单词首字母 <strong>大写</strong></li>
+<li>第二个单词开始，首字母都要大写</li>
+</ul>
+<p><strong>MyName</strong>, <strong>MyFirstJavaProgram</strong></p>
+<h3 id="如果想要一个整数的字面值常量数据类型为-long-应该如何做">如果想要一个整数的字面值常量数据类型为 <strong>long</strong>, 应该如何做?</h3>
+<p>需要在后缀上加l或L, <strong>推荐L</strong></p>
+<h3 id="如何想要一个浮点数字面值-常量数据类型为-float-应该如何做">如何想要一个浮点数字面值 常量数据类型为 <strong>float</strong>, 应该如何做?</h3>
+<p>需要在其后缀上加f 或F, <strong>推荐F</strong></p>
+<h3 id="byte-short-int-long-float-double-char-boolean-分别占用几个字节的空间"><strong>byte</strong>, <strong>short</strong>, <strong>int</strong>, <strong>long</strong>, <strong>float</strong>, <strong>double</strong>, <strong>char</strong>, <strong>boolean</strong> 分别占用几个字节的空间?</h3>
+<p><strong>byte</strong>	1个字节
+<strong>short</strong>	 2个字节
+<strong>int</strong>		 4个字节
+<strong>long</strong>	 8个字节</p>
+<p><strong>float</strong>	   4个字节
+<strong>double</strong>     8个字节</p>
+<p><strong>char</strong>	2个字节</p>
+<p><strong>boolean</strong></p>
+<p>JVM规范, 在内存中 <strong>boolean</strong> 当作 <strong>int</strong> 处理， 占4个字节</p>
+<p><strong>boolean</strong> 数组当成 <strong>byte</strong> 数组处理， 一个 <strong>boolean</strong> 元素占1个字节</p>
+<h3 id="float-只有-4字节-会比-8-字节的-long-小吗"><strong>float</strong> 只有 4字节, 会比 8 字节的 <strong>long</strong> 小吗?</h3>
+<p>不会， <strong>float</strong> 与 <strong>double</strong> 类型中都有 E, 会使得它比 <strong>int</strong> 和 <strong>long</strong> 要大</p>
+<h3 id="float-的有效位数是多少"><strong>float</strong> 的有效位数是多少?</h3>
+<p>7 ~ 8 位</p>
+<h3 id="double-的有效位数是多少"><strong>double</strong> 的有效位数是多少?</h3>
+<p>16 ~ 17 位</p>
+<h3 id="int-转成-float-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</h3>
+<p>会</p>
+<p><strong>int</strong> 的范围为 21亿出头</p>
+<p><strong>float</strong> 的有效位只有7 ~ 8位， 会出现精度丢失</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330215433.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330215433.png, https://img.fengqigang.cn//img/20210330215433.png 1.5x, https://img.fengqigang.cn//img/20210330215433.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330215433.png"
+        title="https://img.fengqigang.cn//img/20210330215433.png" /></p>
+<h3 id="long-转成-double-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</h3>
+<p>会</p>
+<p><strong>long</strong> 的范围为 922 亿亿</p>
+<p><strong>double</strong> 的范围为 16 ~ 17 位</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330215634.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330215634.png, https://img.fengqigang.cn//img/20210330215634.png 1.5x, https://img.fengqigang.cn//img/20210330215634.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330215634.png"
+        title="https://img.fengqigang.cn//img/20210330215634.png" /></p>
+<h3 id="int-转成-double-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</h3>
+<p>不会</p>
+<p><strong>int</strong> 的范围为 21亿出头</p>
+<p><strong>double</strong> 的范围为16 ~ 17 位，可以包括 <strong>int</strong> 的范围</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330215634.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330215634.png, https://img.fengqigang.cn//img/20210330215634.png 1.5x, https://img.fengqigang.cn//img/20210330215634.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330215634.png"
+        title="https://img.fengqigang.cn//img/20210330215634.png" /></p>
+<h3 id="long-转成-float-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</h3>
+<p>会</p>
+<p><strong>long</strong> 的范围为 922 亿亿</p>
+<p><strong>float</strong> 的有效位数只有7~8位
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330215634.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330215634.png, https://img.fengqigang.cn//img/20210330215634.png 1.5x, https://img.fengqigang.cn//img/20210330215634.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330215634.png"
+        title="https://img.fengqigang.cn//img/20210330215634.png" /></p>
+<h3 id="int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</h3>
+<p><strong>float</strong> 大， <strong>float</strong> 中有指数</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330220321.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330220321.png, https://img.fengqigang.cn//img/20210330220321.png 1.5x, https://img.fengqigang.cn//img/20210330220321.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330220321.png"
+        title="https://img.fengqigang.cn//img/20210330220321.png" /> 这些问题会出现什么结果?</p>
+<ol>
+<li>a</li>
+<li>98</li>
+<li>helloa1</li>
+<li>98hello</li>
+<li>5+555</li>
+<li>10=5+5</li>
+<li>10.0</li>
+<li>555.0</li>
+</ol>
+<p>总结:</p>
+<p>遇到 <strong>&lsquo;a&rsquo;</strong>, 直接输出</p>
+<p><strong>&lsquo;a&rsquo;</strong> + 1, 这种先考虑数值相加</p>
+<p><strong>&lsquo;a&rsquo;</strong> + 1 + &ldquo;hello&rdquo;, 先考虑数值相加，然后遇到 <strong>&quot;&quot;</strong> 时，合并字符串</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330224400.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330224400.png, https://img.fengqigang.cn//img/20210330224400.png 1.5x, https://img.fengqigang.cn//img/20210330224400.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330224400.png"
+        title="https://img.fengqigang.cn//img/20210330224400.png" /></p>
+<h3 id="如何实现-scanner-键盘录入">如何实现 <strong>Scanner</strong> 键盘录入?</h3>
+<ol>
+<li>导包</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>创建对象</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>接收从键盘录入的数据</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</h3>
+<p><strong>next(), nextInt() 等一系列方法</strong></p>
+<p>遇见 <strong>第一个有效字符</strong> 时，开始扫描</p>
+<p>当遇见<strong>第一个分隔符或结束符</strong>时，结束扫描，获取扫描到的内容</p>
+<p>即获取第一个扫描到的不含空格、换行符的单个字符串</p>
+<p><strong>nextLine()方法</strong></p>
+<p>获取一行的内容作为一个字符串被接收</p>
+<p>该方法不会因为空格或制表符号而结束扫描</p>
+<p>只会因车(换行)而结束扫描</p>
+<h3 id="u0000-与----有什么区别"><strong>\u0000</strong> 与  ** ** 有什么区别?</h3>
+<p><strong>\u0000</strong> 对应的是什么都没有</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330225632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330225632.png, https://img.fengqigang.cn//img/20210330225632.png 1.5x, https://img.fengqigang.cn//img/20210330225632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330225632.png"
+        title="https://img.fengqigang.cn//img/20210330225632.png" /></p>
+<p>** ** 对应的是一个空格</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210330225709.png"
+        data-srcset="https://img.fengqigang.cn//img/20210330225709.png, https://img.fengqigang.cn//img/20210330225709.png 1.5x, https://img.fengqigang.cn//img/20210330225709.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210330225709.png"
+        title="https://img.fengqigang.cn//img/20210330225709.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/removeelement/" class="prev" rel="prev" title="RemoveElement"><i class="fas fa-angle-left fa-fw"></i>RemoveElement</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

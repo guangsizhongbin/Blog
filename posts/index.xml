@@ -4,7 +4,37 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 27 Mar 2021 22:21:14 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 30 Mar 2021 23:02:50 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day1</title>
+    <link>http://fengqigang.cn/posts/day1/</link>
+    <pubDate>Tue, 30 Mar 2021 23:02:50 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day1/</guid>
+    <description><![CDATA[JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
+Java 运行时环境
+JDK(Java Development Kit)
+Java 开发者工具包
+除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
+Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
+  单词之间用下划线或横杠连接
+  如:
+student-manage
+如何给一个包命名? 以反转公司域名为规范
+包名应该 全部小写
+多级包名以点(.)分隔
+包名 com.baidu
+如何给类、接口命名? 采用大驼峰命名法
+public class TestDemo{}
+public class PersonDemo{}
+如何给变量和方法命名? 采用小驼峰命名法
+int num;
+String name;
+如何给常量命名? 全部用大写
+多个单词之间用下划线(_)隔开
+PI
+什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
+ 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram]]></description>
+</item><item>
     <title>RemoveElement</title>
     <link>http://fengqigang.cn/posts/removeelement/</link>
     <pubDate>Sat, 27 Mar 2021 22:21:14 &#43;0800</pubDate>
@@ -141,24 +171,5 @@ set file mode (as in chomd), not a=rwx - umask
  如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
 -a, &ndash;archive
  如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/.]]></description>
-</item><item>
-    <title>Linux第五章</title>
-    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/</link>
-    <pubDate>Tue, 02 Mar 2021 21:48:15 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/</guid>
-    <description><![CDATA[箭头和方框所指的是什么意思？   第一个箭头是指连接到此文件的数量
-  第二个箭头指的是文件的容量
-  方框所指的是文件最后修改的时间
-   如何用ls命令列出全部文件最后修改的确切时间？ ls -al --full-time
- 请问testgroup这个群组的成员与其他人(others)是否可以进入本目录？   test1 是本目录的拥有者，有[rwx]权限，可以对该目录进行任何操作
-  testgroup 这个群组[r-x], 即该组的成员可以进入本目录进行工作，但是不能在本目录下进行写入动作。
-  other [r&ndash;], 由于没有x的权限，因此others的使用者，并不能进入此目录
-   系统有个帐号名称为vbird, 这个帐号并没有支持root群组，请问vbird对这个目录有何权限? vbird 对此目录只有r的权限，但没有x权限，表示vbird没法进入该目录，即便有r权限，也无法执行。
- 普通用户dmtsai对这目录/文件的权限为何？ 其有r权限，可以查询到文件名，由于没有权限，会有一堆问号
- 为什么很多时候没有/dir1 的r权限，也可以对里面的数据进行操作？ 因为， r 代表&quot;这个抽屉里有灯光&quot;, 可以看到各个文件在哪里
-但当有 x 权限的时候，就知道里面的数据在哪里，不需要有灯光，摸黑也可以找到
-只是，没有 r 的话，使用 [tab] 时，无法补齐文件名
- 在FHS(filesystem hierarchy standard)规定下，各个文件夹都是放什么的?？1   /bin (User Binaries) 与 /sbin (System Binaries)]]></description>
 </item></channel>
 </rss>
