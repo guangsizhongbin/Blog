@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 31 Mar 2021 08:37:17 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 31 Mar 2021 22:56:56 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day3</title>
+    <link>http://fengqigang.cn/posts/day3/</link>
+    <pubDate>Wed, 31 Mar 2021 22:56:56 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day3/</guid>
+    <description><![CDATA[可变参数的实质是什么? 是用数组作为参数
+1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i++) { sumValue += arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   在使用可参数列表的时候，需要注意什么?   尽量不要使用带有两个可变参数的方法，构成方法重载时要慎重，因为很容易会导致两个方法都不可用
+  可变参数一定要在参数列表的最后一个
+  否则有可能运行不了
+什么是增强型 for 遍历数组? 1 2 3  for (int i : arr) { System.]]></description>
+</item><item>
     <title>Day2</title>
     <link>http://fengqigang.cn/posts/day2/</link>
     <pubDate>Wed, 31 Mar 2021 08:37:17 &#43;0800</pubDate>

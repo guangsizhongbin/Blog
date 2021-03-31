@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day3 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day3" />
+<meta property="og:description" content="可变参数的实质是什么? 是用数组作为参数
+1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i&#43;&#43;) { sumValue &#43;= arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   在使用可参数列表的时候，需要注意什么?   尽量不要使用带有两个可变参数的方法，构成方法重载时要慎重，因为很容易会导致两个方法都不可用
+  可变参数一定要在参数列表的最后一个
+  否则有可能运行不了
+什么是增强型 for 遍历数组? 1 2 3  for (int i : arr) { System." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-31T22:56:56&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-31T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day3"/>
+<meta name="twitter:description" content="可变参数的实质是什么? 是用数组作为参数
+1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i&#43;&#43;) { sumValue &#43;= arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   在使用可参数列表的时候，需要注意什么?   尽量不要使用带有两个可变参数的方法，构成方法重载时要慎重，因为很容易会导致两个方法都不可用
+  可变参数一定要在参数列表的最后一个
+  否则有可能运行不了
+什么是增强型 for 遍历数组? 1 2 3  for (int i : arr) { System."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day3/" /><link rel="prev" href="http://fengqigang.cn/posts/day2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day3",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day3\/"
+        },"genre": "posts","keywords": "java","wordcount":  153 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day3\/","datePublished": "2021-03-31T22:56:56+08:00","dateModified": "2021-03-31T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day3</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-31">2021-03-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;153 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#可变参数的实质是什么">可变参数的实质是什么?</a></li>
+        <li><a href="#在使用可参数列表的时候需要注意什么">在使用可参数列表的时候，需要注意什么?</a></li>
+        <li><a href="#什么是增强型-for-遍历数组">什么是增强型 <strong>for</strong> 遍历数组?</a></li>
+        <li><a href="#什么时候用普通for循环-什么时候用增强for循环">什么时候用普通for循环? 什么时候用增强for循环？</a></li>
+        <li><a href="#在定义可变参数时应注意什么">在定义可变参数时应注意什么?</a></li>
+        <li><a href="#什么是值传递-什么是引用传递">什么是值传递? 什么是引用传递？</a></li>
+        <li><a href="#如果方法重载同时有固定参数的方法恰好对应方法调用时会怎样做">如果方法重载，同时有固定参数的方法恰好对应，方法调用时会怎样做?</a></li>
+        <li><a href="#什么是语法糖">什么是语法糖？</a></li>
+        <li><a href="#若基本类型的值传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331200124png">若基本类型的值传递,其JVM内存图是什么样的?<img src="https://img.fengqigang.cn//img/20210331200124.png" alt=""></a></li>
+        <li><a href="#若基本类型的引用传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331200124png">若基本类型的引用传递,其JVM内存图是什么样的?<img src="https://img.fengqigang.cn//img/20210331200124.png" alt=""></a></li>
+        <li><a href="#交换两个数组的值传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203755png">交换两个数组的值传递，其JVM内存图是什么样的?<img src="https://img.fengqigang.cn//img/20210331203755.png" alt=""></a></li>
+        <li><a href="#交换两个数组的引用传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203755png">交换两个数组的引用传递，其JVM内存图是什么样的?<img src="https://img.fengqigang.cn//img/20210331203755.png" alt=""></a></li>
+        <li><a href="#引用数据类型数组的值传递是什么样的-其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203028png">引用数据类型（数组）的值传递是什么样的? 其JVM内存图是什么样的?<img src="https://img.fengqigang.cn//img/20210331203028.png" alt=""></a></li>
+        <li><a href="#引用数据类型数组的引用传递是什么样的-其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203028png">引用数据类型（数组）的引用传递是什么样的? 其JVM内存图是什么样的?<img src="https://img.fengqigang.cn//img/20210331203028.png" alt=""></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="可变参数的实质是什么">可变参数的实质是什么?</h3>
+<p>是用数组作为参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+	<span class="kt">int</span> <span class="n">sumValue</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+	<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+		<span class="n">sumValue</span> <span class="o">+=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+	<span class="o">}</span>
+	<span class="k">return</span> <span class="n">sumValue</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sum</span><span class="o">(</span><span class="kt">int</span><span class="o">...</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">return</span> <span class="n">1</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331194134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331194134.png, https://img.fengqigang.cn//img/20210331194134.png 1.5x, https://img.fengqigang.cn//img/20210331194134.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331194134.png"
+        title="https://img.fengqigang.cn//img/20210331194134.png" /></p>
+<h3 id="在使用可参数列表的时候需要注意什么">在使用可参数列表的时候，需要注意什么?</h3>
+<ol>
+<li>
+<p>尽量不要使用带有两个可变参数的方法，构成方法重载时要慎重，因为很容易会导致两个方法都不可用</p>
+</li>
+<li>
+<p>可变参数一定要在参数列表的最后一个</p>
+</li>
+</ol>
+<p>否则有可能运行不了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331195511.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331195511.png, https://img.fengqigang.cn//img/20210331195511.png 1.5x, https://img.fengqigang.cn//img/20210331195511.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331195511.png"
+        title="https://img.fengqigang.cn//img/20210331195511.png" /></p>
+<h3 id="什么是增强型-for-遍历数组">什么是增强型 <strong>for</strong> 遍历数组?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">arr</span><span class="o">)</span> <span class="o">{</span>
+	<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="s">&#34;\t&#34;</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>此时这里的i, 相当于数组中的元素，而不是数组中的下标</strong></p>
+<h3 id="什么时候用普通for循环-什么时候用增强for循环">什么时候用普通for循环? 什么时候用增强for循环？</h3>
+<ul>
+<li>
+<p>普通的 <strong>for</strong> 循环中有i， 是数组的下标</p>
+</li>
+<li>
+<p>增强 <strong>for</strong> 中没有下标，直接获取数组的元素</p>
+</li>
+</ul>
+<p><strong>因此</strong></p>
+<p>在遍历过程中，需要使用下标的话，必须要用普通for</p>
+<p>直接遍历的话， 使用 <strong>for</strong> 形式比较简单</p>
+<h3 id="在定义可变参数时应注意什么">在定义可变参数时应注意什么?</h3>
+<h3 id="什么是值传递-什么是引用传递">什么是值传递? 什么是引用传递？</h3>
+<p><strong>值传递</strong></p>
+<p>实际上参数只传入了它的拷贝</p>
+<p>方法结束后，随着方法栈帧的出栈，这个拷贝被销毁了，对原先的参数变量 <strong>没有影响</strong></p>
+<p><strong>引用传递</strong></p>
+<p>方法的实际参数传入的就是地址，就是把它本身传入了</p>
+<p>方法结束后，随着方法出栈帧，装地址的变量是被销毁了，原先的变量要 <strong>受到影响</strong></p>
+<h3 id="如果方法重载同时有固定参数的方法恰好对应方法调用时会怎样做">如果方法重载，同时有固定参数的方法恰好对应，方法调用时会怎样做?</h3>
+<p>会优先调用固定参数的方法</p>
+<h3 id="什么是语法糖">什么是语法糖？</h3>
+<p>在实现原理不变，实现效果不变的情况下，但是可以简化程序员的操作，在底层处理数据，底层进行封装</p>
+<h3 id="若基本类型的值传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331200124png">若基本类型的值传递,其JVM内存图是什么样的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331200124.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331200124.png, https://img.fengqigang.cn//img/20210331200124.png 1.5x, https://img.fengqigang.cn//img/20210331200124.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331200124.png"
+        title="https://img.fengqigang.cn//img/20210331200124.png" /></h3>
+<ol>
+<li>
+<p>基本数据类型不会 <strong>占用堆内存</strong></p>
+</li>
+<li>
+<p>值传递只是传递了它的拷贝， 方法结束后，随着方法栈帧出栈，这个拷贝被销毁.</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331200732.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331200732.png, https://img.fengqigang.cn//img/20210331200732.png 1.5x, https://img.fengqigang.cn//img/20210331200732.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331200732.png"
+        title="https://img.fengqigang.cn//img/20210331200732.png" /></p>
+<p>若其是值传递的，获取的是a的拷贝</p>
+<p>在方法中，a的取值变成了原先的2倍</p>
+<p>方法执行结束后，栈帧出栈，该拷贝销毁了</p>
+<p>原先的实参没有发生任何变化</p>
+<h3 id="若基本类型的引用传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331200124png">若基本类型的引用传递,其JVM内存图是什么样的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331200124.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331200124.png, https://img.fengqigang.cn//img/20210331200124.png 1.5x, https://img.fengqigang.cn//img/20210331200124.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331200124.png"
+        title="https://img.fengqigang.cn//img/20210331200124.png" /></h3>
+<ol>
+<li>
+<p>基本数据类型不会 <strong>占用堆内存</strong></p>
+</li>
+<li>
+<p>引用传递，实际传递的就是其地址，就是将其本身传入进去了</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331201312.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331201312.png, https://img.fengqigang.cn//img/20210331201312.png 1.5x, https://img.fengqigang.cn//img/20210331201312.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331201312.png"
+        title="https://img.fengqigang.cn//img/20210331201312.png" /></p>
+<p>如果它是引用传递的，获取的就是a的地址</p>
+<p>在方法中，把a变成2倍</p>
+<p>这样原先的实参a也变成2倍</p>
+<h3 id="交换两个数组的值传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203755png">交换两个数组的值传递，其JVM内存图是什么样的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331203755.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331203755.png, https://img.fengqigang.cn//img/20210331203755.png 1.5x, https://img.fengqigang.cn//img/20210331203755.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331203755.png"
+        title="https://img.fengqigang.cn//img/20210331203755.png" /></h3>
+<ol>
+<li>
+<p>引用数据类型会 <strong>占用堆内存空间</strong></p>
+</li>
+<li>
+<p>值传递只是传递了它的拷贝， 方法结束后，随着方法栈帧出栈，这个拷贝被销毁.</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331202014.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331202014.png, https://img.fengqigang.cn//img/20210331202014.png 1.5x, https://img.fengqigang.cn//img/20210331202014.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331202014.png"
+        title="https://img.fengqigang.cn//img/20210331202014.png" /></p>
+<p>如果是值传递，拿到的是引用的拷贝</p>
+<p>然后指向了原先的数组对象</p>
+<p>方法中交换了两个引用(地址)</p>
+<p>但是随着方法出栈，拷贝被销毁了</p>
+<p>原先的（实参）引用，没有被交换了</p>
+<h3 id="交换两个数组的引用传递其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203755png">交换两个数组的引用传递，其JVM内存图是什么样的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331203755.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331203755.png, https://img.fengqigang.cn//img/20210331203755.png 1.5x, https://img.fengqigang.cn//img/20210331203755.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331203755.png"
+        title="https://img.fengqigang.cn//img/20210331203755.png" /></h3>
+<ol>
+<li>
+<p>引用数据类型会 <strong>占用堆内存空间</strong></p>
+</li>
+<li>
+<p>引用传递，实际传递的就是其地址，就是将其本身传入进去了</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331202151.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331202151.png, https://img.fengqigang.cn//img/20210331202151.png 1.5x, https://img.fengqigang.cn//img/20210331202151.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331202151.png"
+        title="https://img.fengqigang.cn//img/20210331202151.png" /></p>
+<p>如果是引用传递，拿到的是引用的地址</p>
+<p>在方法中交换地址， 会成功</p>
+<p>并且会体现到实参的引用中</p>
+<h3 id="引用数据类型数组的值传递是什么样的-其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203028png">引用数据类型（数组）的值传递是什么样的? 其JVM内存图是什么样的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331203028.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331203028.png, https://img.fengqigang.cn//img/20210331203028.png 1.5x, https://img.fengqigang.cn//img/20210331203028.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331203028.png"
+        title="https://img.fengqigang.cn//img/20210331203028.png" /></h3>
+<ol>
+<li>
+<p>引用数据类型会 <strong>占用堆内存空间</strong></p>
+</li>
+<li>
+<p>值传递只是传递了它的拷贝， 方法结束后，随着方法栈帧出栈，这个拷贝被销毁.</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331203121.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331203121.png, https://img.fengqigang.cn//img/20210331203121.png 1.5x, https://img.fengqigang.cn//img/20210331203121.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331203121.png"
+        title="https://img.fengqigang.cn//img/20210331203121.png" /></p>
+<p>若它是值传递，获取的是引用的拷贝引用中装的是地址</p>
+<p>于是拷贝也拿到了地址指向了同一个数组对象</p>
+<p>那么用拷贝的引用修改原先的数组对象中的元素的取值，是能够成功的</p>
+<p>并且实参的那个引用，再去访问原先的数组，数组元素也发生了变化</p>
+<h3 id="引用数据类型数组的引用传递是什么样的-其jvm内存图是什么样的httpsimgfengqigangcnimg20210331203028png">引用数据类型（数组）的引用传递是什么样的? 其JVM内存图是什么样的?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331203028.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331203028.png, https://img.fengqigang.cn//img/20210331203028.png 1.5x, https://img.fengqigang.cn//img/20210331203028.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331203028.png"
+        title="https://img.fengqigang.cn//img/20210331203028.png" /></h3>
+<ol>
+<li>
+<p>引用数据类型会 <strong>占用堆内存空间</strong></p>
+</li>
+<li>
+<p>引用传递，实际传递的就是其地址，就是将其本身传入进去了</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210331203446.png"
+        data-srcset="https://img.fengqigang.cn//img/20210331203446.png, https://img.fengqigang.cn//img/20210331203446.png 1.5x, https://img.fengqigang.cn//img/20210331203446.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210331203446.png"
+        title="https://img.fengqigang.cn//img/20210331203446.png" /></p>
+<p>假设它是引用传递，获取的是引用的地址，这个地址就相当于拿到了这个引用</p>
+<p>方法里面拿到引用然后修改数组元素的取值是可以成功的</p>
+<p>然后方法出栈，这个装地址的变量被销毁了，原先的数组仍会被改变</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-03-31</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day2/" class="prev" rel="prev" title="Day2"><i class="fas fa-angle-left fa-fw"></i>Day2</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
