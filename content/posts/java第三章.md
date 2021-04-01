@@ -896,4 +896,248 @@ public class ToCharArray {
 }
 ```
 
+### 如何将字符串转为大写(hello)?
+
+大写字母比小写字母小 **32** 位
+
+**str.toCharArray()**
+
+```java
+public class smallTobig{
+	public static void main(String args[]){
+		String str = "hello";
+		char[] data = str.toCharArray();
+		for (int x = 0; x < data.length; x++){
+			data[x] -=32;
+		}
+		System.out.println(new String(data));
+	}
+}
+```
+
+![](https://img.fengqigang.cn//img/20210401094347.png)
+
+### 如何将字符串中的部份字符转成大写(hello, (EL))?
+
+**str.toCharArray()**
+
+```java
+public class SmallToBig {
+    public static void main(String[] args) {
+        String str = "hello";
+        char[] data = str.toCharArray();
+        for (int i = 0; i < data.length; i++) {
+            data[i] -= 32;
+        }
+        System.out.println(new String(data, 1, 2));
+    }
+}
+```
+
+**String(data, 位序， 位序)**
+
+![](https://img.fengqigang.cn//img/20210401102250.png)
+
+
+### 给定一个字符串，如何判断其是否由数字组成？(123456)
+
+**str.toCharArray()**
+
+```java
+public class SmallToBig {
+    public static void main(String[] args) {
+        String str = "12312423";
+        if (isNumber(str)){
+            System.out.println("该字符串全是由数字组成");
+        }else{
+            System.out.println("该字符串不全是由数字组成");
+        }
+    }
+
+    public static boolean isNumber(String str){
+        char[] data = str.toCharArray();
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] > '9' || data[i] < '0') {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+![20210401103207](https://img.fengqigang.cn//img/20210401103207.png)
+
+### 针对一种真或假判断，Java中的习惯性的命名是什么?
+
+isXxxx();
+
+如:
+**isNumber()**
+
+### 字符串如何全部转成字节数组(helloworld 转成 HELLOWORLD)?
+
+**str.getBytes()**
+
+```java
+public class StringToByteArray {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        byte[] data = str.getBytes();
+        for (int i = 0; i < data.length; i++) {
+            data[i] -= 32;
+        }
+        System.out.println(new String(data));
+    }
+}
+```
+
+![](https://img.fengqigang.cn//img/20210401135805.png)
+
+### 如何判断两个字符串是否相等(考虑大小写)？
+
+**stra.equals(strb)**
+
+```java
+public class IsNumber {
+    public static void main(String[] args) {
+        String stra = "Hello";
+        String strb = "hello";
+        System.out.println(stra.equals(strb));
+    }
+}
+```
+![](https://img.fengqigang.cn//img/20210401135245.png)
+
+### 如何判断两个字符串是否相等(不考虑大小写)？
+
+**stra.equalsIgnoreCase(strb)**
+
+```java
+public class IsNumber {
+    public static void main(String[] args) {
+        String stra = "Hello";
+        String strb = "hello";
+        System.out.println(stra.equalsIgnoreCase(strb));
+    }
+}
+```
+
+![20210401135454](https://img.fengqigang.cn//img/20210401135454.png)
+
+
+
+### stra = "Hello" 与 strb = "HEllo" 如何比较大小?
+
+**stra.compareTo(strb)**
+
+```java
+public class CompareTo {
+    public static void main(String[] args) {
+        String stra = "hello";
+        String strb = "Hello";
+        System.out.println(stra.compareTo(strb));
+        if (stra.compareTo(strb) > 0) {
+            System.out.println("大于");
+        }
+    }
+}
+```
+
+![20210401140356](https://img.fengqigang.cn//img/20210401140356.png)
+
+### 如何查找在 helloworld 满足 world, 第一个字母的索引?
+
+**indexOf**
+
+```java
+public class IndexOf {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        System.out.println(str.indexOf("world"));
+    }
+}
+```
+
+
+### 如何查找在 helloworld 中， 从第2个元素开始找e的素引位置?
+
+**indexOf("e", 1)**
+
+```java
+public class IndexOf {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        System.out.println(str.indexOf("e", 1));
+    }
+}
+```
+
+![20210401141118](https://img.fengqigang.cn//img/20210401141118.png)
+
+其返回的是位序
+
+### 如何判断 "helloworld" 中 是否存在 "world" ?
+
+**contains()** 返回 **true** 或 **false**
+
+**indexOf()** 返回元素的位置
+
+
+**indexOf()**
+
+```java
+public class Contains {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        if (str.indexOf("world") != -1) {
+            System.out.println("可以查询到数据");
+        }
+    }
+}
+```
+
+**contains()**
+
+```java
+public class Contains {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        if (str.contains("world") == true) {
+            System.out.println("可以查询到数据");
+        }
+    }
+}
+```
+
+### 如何判断 **##@@hello** 是否以 ## 开头?
+
+**str.startsWith("##")**
+
+```java
+public class StartWith {
+    public static void main(String[] args) {
+        String str = "##@@hello";
+        System.out.println(str.startsWith("##"));
+    }
+}
+```
+
+![20210401141906](https://img.fengqigang.cn//img/20210401141906.png)
+
+### 如何判断 **##@@hello** 是否以 **llo** 结尾?
+
+**str.endsWith("llo")**
+
+```java
+public class StartWith {
+    public static void main(String[] args) {
+        String str = "##@@hello";
+        System.out.println(str.endsWith("llo"));
+    }
+}
+```
+
+![20210401142041](https://img.fengqigang.cn//img/20210401142041.png)
+
 
