@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  1801 ,
+        },"genre": "posts","keywords": "java","wordcount":  2337 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1801 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2337 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -210,6 +210,19 @@
         <li><a href="#因为修改-string-对象的值相当于修改其引用关系若在一个项目中要大量的修改一个字符串该如何解决">因为修改 <strong>String</strong> 对象的值，相当于修改其引用关系，若在一个项目中要大量的修改一个字符串，该如何解决?</a></li>
         <li><a href="#如何截取指定索引的字符如截取第一个字符">如何截取指定索引的字符(如截取第一个字符)?</a></li>
         <li><a href="#如何实现字符数组与字符串的转换">如何实现字符数组与字符串的转换?</a></li>
+        <li><a href="#如何将字符串转为大写hello">如何将字符串转为大写(hello)?</a></li>
+        <li><a href="#如何将字符串中的部份字符转成大写hello-el">如何将字符串中的部份字符转成大写(hello, (EL))?</a></li>
+        <li><a href="#给定一个字符串如何判断其是否由数字组成123456">给定一个字符串，如何判断其是否由数字组成？(123456)</a></li>
+        <li><a href="#针对一种真或假判断java中的习惯性的命名是什么">针对一种真或假判断，Java中的习惯性的命名是什么?</a></li>
+        <li><a href="#字符串如何全部转成字节数组helloworld-转成-helloworld">字符串如何全部转成字节数组(helloworld 转成 HELLOWORLD)?</a></li>
+        <li><a href="#如何判断两个字符串是否相等考虑大小写">如何判断两个字符串是否相等(考虑大小写)？</a></li>
+        <li><a href="#如何判断两个字符串是否相等不考虑大小写">如何判断两个字符串是否相等(不考虑大小写)？</a></li>
+        <li><a href="#stra--hello-与-strb--hello-如何比较大小">stra = &ldquo;Hello&rdquo; 与 strb = &ldquo;HEllo&rdquo; 如何比较大小?</a></li>
+        <li><a href="#如何查找在-helloworld-满足-world-第一个字母的索引">如何查找在 helloworld 满足 world, 第一个字母的索引?</a></li>
+        <li><a href="#如何查找在-helloworld-中-从第2个元素开始找e的素引位置">如何查找在 helloworld 中， 从第2个元素开始找e的素引位置?</a></li>
+        <li><a href="#如何判断-helloworld-中-是否存在-world-">如何判断 &ldquo;helloworld&rdquo; 中 是否存在 &ldquo;world&rdquo; ?</a></li>
+        <li><a href="#如何判断-hello-是否以--开头">如何判断 <strong>##@@hello</strong> 是否以 ## 开头?</a></li>
+        <li><a href="#如何判断-hello-是否以-llo-结尾">如何判断 <strong>##@@hello</strong> 是否以 <strong>llo</strong> 结尾?</a></li>
       </ul>
     </li>
   </ul>
@@ -1631,7 +1644,427 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h3 id="如何将字符串转为大写hello">如何将字符串转为大写(hello)?</h3>
+<p>大写字母比小写字母小 <strong>32</strong> 位</p>
+<p><strong>str.toCharArray()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">smallTobig</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+		<span class="kt">char</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+		<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">x</span><span class="o">++){</span>
+			<span class="n">data</span><span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-=</span><span class="n">32</span><span class="o">;</span>
+		<span class="o">}</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401094347.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401094347.png, https://img.fengqigang.cn//img/20210401094347.png 1.5x, https://img.fengqigang.cn//img/20210401094347.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401094347.png"
+        title="https://img.fengqigang.cn//img/20210401094347.png" /></p>
+<h3 id="如何将字符串中的部份字符转成大写hello-el">如何将字符串中的部份字符转成大写(hello, (EL))?</h3>
+<p><strong>str.toCharArray()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmallToBig</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-=</span> <span class="n">32</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">1</span><span class="o">,</span> <span class="n">2</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>String(data, 位序， 位序)</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401102250.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401102250.png, https://img.fengqigang.cn//img/20210401102250.png 1.5x, https://img.fengqigang.cn//img/20210401102250.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401102250.png"
+        title="https://img.fengqigang.cn//img/20210401102250.png" /></p>
+<h3 id="给定一个字符串如何判断其是否由数字组成123456">给定一个字符串，如何判断其是否由数字组成？(123456)</h3>
+<p><strong>str.toCharArray()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SmallToBig</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;12312423&#34;</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isNumber</span><span class="o">(</span><span class="n">str</span><span class="o">)){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;该字符串全是由数字组成&#34;</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;该字符串不全是由数字组成&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isNumber</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">){</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="sc">&#39;9&#39;</span> <span class="o">||</span> <span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&lt;</span> <span class="sc">&#39;0&#39;</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401103207.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401103207.png, https://img.fengqigang.cn//img/20210401103207.png 1.5x, https://img.fengqigang.cn//img/20210401103207.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401103207.png"
+        title="20210401103207" /></p>
+<h3 id="针对一种真或假判断java中的习惯性的命名是什么">针对一种真或假判断，Java中的习惯性的命名是什么?</h3>
+<p>isXxxx();</p>
+<p>如:
+<strong>isNumber()</strong></p>
+<h3 id="字符串如何全部转成字节数组helloworld-转成-helloworld">字符串如何全部转成字节数组(helloworld 转成 HELLOWORLD)?</h3>
+<p><strong>str.getBytes()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringToByteArray</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">data</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-=</span> <span class="n">32</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401135805.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401135805.png, https://img.fengqigang.cn//img/20210401135805.png 1.5x, https://img.fengqigang.cn//img/20210401135805.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401135805.png"
+        title="https://img.fengqigang.cn//img/20210401135805.png" /></p>
+<h3 id="如何判断两个字符串是否相等考虑大小写">如何判断两个字符串是否相等(考虑大小写)？</h3>
+<p><strong>stra.equals(strb)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IsNumber</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="s">&#34;Hello&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">strb</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">strb</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401135245.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401135245.png, https://img.fengqigang.cn//img/20210401135245.png 1.5x, https://img.fengqigang.cn//img/20210401135245.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401135245.png"
+        title="https://img.fengqigang.cn//img/20210401135245.png" /></p>
+<h3 id="如何判断两个字符串是否相等不考虑大小写">如何判断两个字符串是否相等(不考虑大小写)？</h3>
+<p><strong>stra.equalsIgnoreCase(strb)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IsNumber</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="s">&#34;Hello&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">strb</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">strb</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401135454.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401135454.png, https://img.fengqigang.cn//img/20210401135454.png 1.5x, https://img.fengqigang.cn//img/20210401135454.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401135454.png"
+        title="20210401135454" /></p>
+<h3 id="stra--hello-与-strb--hello-如何比较大小">stra = &ldquo;Hello&rdquo; 与 strb = &ldquo;HEllo&rdquo; 如何比较大小?</h3>
+<p><strong>stra.compareTo(strb)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompareTo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="s">&#34;hello&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">strb</span> <span class="o">=</span> <span class="s">&#34;Hello&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">strb</span><span class="o">));</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">stra</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">strb</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;大于&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401140356.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401140356.png, https://img.fengqigang.cn//img/20210401140356.png 1.5x, https://img.fengqigang.cn//img/20210401140356.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401140356.png"
+        title="20210401140356" /></p>
+<h3 id="如何查找在-helloworld-满足-world-第一个字母的索引">如何查找在 helloworld 满足 world, 第一个字母的索引?</h3>
+<p><strong>indexOf</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IndexOf</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&#34;world&#34;</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何查找在-helloworld-中-从第2个元素开始找e的素引位置">如何查找在 helloworld 中， 从第2个元素开始找e的素引位置?</h3>
+<p><strong>indexOf(&ldquo;e&rdquo;, 1)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IndexOf</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&#34;e&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401141118.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401141118.png, https://img.fengqigang.cn//img/20210401141118.png 1.5x, https://img.fengqigang.cn//img/20210401141118.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401141118.png"
+        title="20210401141118" /></p>
+<p>其返回的是位序</p>
+<h3 id="如何判断-helloworld-中-是否存在-world-">如何判断 &ldquo;helloworld&rdquo; 中 是否存在 &ldquo;world&rdquo; ?</h3>
+<p><strong>contains()</strong> 返回 <strong>true</strong> 或 <strong>false</strong></p>
+<p><strong>indexOf()</strong> 返回元素的位置</p>
+<p><strong>indexOf()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Contains</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="s">&#34;world&#34;</span><span class="o">)</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可以查询到数据&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>contains()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Contains</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;world&#34;</span><span class="o">)</span> <span class="o">==</span> <span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;可以查询到数据&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何判断-hello-是否以--开头">如何判断 <strong>##@@hello</strong> 是否以 ## 开头?</h3>
+<p><strong>str.startsWith(&quot;##&quot;)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StartWith</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;##@@hello&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&#34;##&#34;</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401141906.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401141906.png, https://img.fengqigang.cn//img/20210401141906.png 1.5x, https://img.fengqigang.cn//img/20210401141906.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401141906.png"
+        title="20210401141906" /></p>
+<h3 id="如何判断-hello-是否以-llo-结尾">如何判断 <strong>##@@hello</strong> 是否以 <strong>llo</strong> 结尾?</h3>
+<p><strong>str.endsWith(&ldquo;llo&rdquo;)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StartWith</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;##@@hello&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&#34;llo&#34;</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210401142041.png"
+        data-srcset="https://img.fengqigang.cn//img/20210401142041.png, https://img.fengqigang.cn//img/20210401142041.png 1.5x, https://img.fengqigang.cn//img/20210401142041.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210401142041.png"
+        title="20210401142041" /></p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
