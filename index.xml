@@ -4,9 +4,36 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 31 Mar 2021 22:56:56 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 02 Apr 2021 23:08:09 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day4</title>
+    <link>http://fengqigang.cn/posts/day4/</link>
+    <pubDate>Fri, 02 Apr 2021 23:08:09 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day4/</guid>
+    <description><![CDATA[二维数组如何声明？ 数据类型[][] 二维数组名;
+int[] m, n[] 其是想表达什么? int[] m;
+int[] n[];
+int[][] arr4 = new int[2][3]; 其堆空间是什么样的? 如何调用一个方法访问二维数组中的某个一维数组? (Arrays.toString(arr[1])) System.out.println(Arrays.toString(arr[1]));
+如何调用一个方法去访问维数组? System.out.println(Arrays.deepToString(arr))
+stackOverflowError 其本质的栈内存是什么样的? 如何用一个方法捕获栈溢出这个错误？ catch (StackOverflowError error)
+什么是成员变量？ 定义在类中，除了方法体之外的区域
+语法:
+[各种修饰符] 数据类型 成员变量名
+什么是成员方法 指的是在成员位置, 不带 static 的方法
+语法:
+[访问权限修饰符] 返回值类型 方法名() {}
+什么是类的全限定类名？ 就是 类名 全称， 带包路径的用点隔开
+如:
+java.lang.String
+全限定名 = 包名 + 类型
+这里获取的地址是什么样的？ 类的全限定类名 + 地址值
+类和数据类型是否存在关联? 数据类型:
+一个数据集合 和 基于这个数据集合的 一组操作
+类的定义:
+类中包括： 成员变量 和 成员方法]]></description>
+</item><item>
     <title>Day3</title>
     <link>http://fengqigang.cn/posts/day3/</link>
     <pubDate>Wed, 31 Mar 2021 22:56:56 &#43;0800</pubDate>
@@ -146,21 +173,5 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
   System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
   System.out.println 输出后换行
   类的命名规范是什么样的? 每一个单词的开关首字母大写]]></description>
-</item><item>
-    <title>Linux第八章</title>
-    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</link>
-    <pubDate>Thu, 11 Mar 2021 09:56:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/</guid>
-    <description><![CDATA[什么是压缩的原理是什么? 压缩 :
-如果数据为&quot;111&hellip;&ldquo;共用100个, 压缩技术会记录为&quot;100个1&quot;而不是真的有100个1的位存在
-如何用 tar 备份 /etc (tar.gz)?   切换成 root 用户
-  time tar -zpcv -f /root/etc.tar.gz /etc
-  -z, &ndash;gzip, &ndash;gunzip, &ndash;ungzip
-Filter the archive through gzip
--p, &ndash;preserve-permissions, &ndash;same-permissions
-extract information about file permissions(default for superuser)
--c, &ndash;create
-Cteate a new archive. Arguments supply the names of the files to be archived. Directories are archived recursively, unless the &ndash;no-recursion option is given.]]></description>
 </item></channel>
 </rss>
