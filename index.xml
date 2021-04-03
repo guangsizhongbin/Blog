@@ -4,9 +4,38 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 02 Apr 2021 23:08:09 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day5</title>
+    <link>http://fengqigang.cn/posts/day5/</link>
+    <pubDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day5/</guid>
+    <description><![CDATA[什么是显式赋值? 直接赋值的方式
+1  String brand = &#34;华为&#34;;   其输出结果会是什么样? i 与 i8 会是一样的
+在相同的类中，整个程序的执行期间，类加载会执行多少次？ 只加载一次
+类加类是什么时候被触发(类加载的时机)?   new 对象的时候
+  启动一个类的 main() 方法时
+  像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
+类加载都是懒加载，不是必用时，它不会加载
+局部变量 与 成员变量 有什么区别？  在类中定义的位置  局部变量:
+局部位置(包含方法，大括号之间往往都是局部位置)
+成员变量:
+成员位置(类中方法外)
+ 在内存中的位置  局部变量
+栈帧中
+成员变量
+堆上的对象
+ 生命周期不同  局部变量
+和方法的栈帧同生共死，方法调用，局部变量生效，方法执行完毕出栈，局部变量销毁
+成员变量
+和对象同生共死，是不确定的，但是只要是对象的引用被销毁了，这些对象中的成员变量也没有意义了
+ 初始化值不同  局部变量
+没有默认初始化值， 必须手动初始化
+成员变量
+有默认初始值]]></description>
+</item><item>
     <title>Day4</title>
     <link>http://fengqigang.cn/posts/day4/</link>
     <pubDate>Fri, 02 Apr 2021 23:08:09 &#43;0800</pubDate>
@@ -160,18 +189,5 @@ PI
 布尔型(boolean)
 byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
 short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$]]></description>
-</item><item>
-    <title>Java第一章</title>
-    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/</link>
-    <pubDate>Sat, 13 Mar 2021 21:21:35 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/</guid>
-    <description><![CDATA[如何查看当前 java 版本? 1  archlinux-jav status   如何编写 Hello.java? 1 2 3 4 5  public class Hello { public static void mian(String args[]){ System.out.println(&#34;Hello World!&#34;); } }   public 定义的的class有什么特点?   类名称必须与文件名称保持一致
-  在一个 *.java 中只能有一个public class
-  普通的class有什么特点?   类的名称可以和文件名不致， 但是生成的class定义的名称
-  一个*.java程序中可以同时存在多个class定义，编译后会分为不同的*.class文件
-  System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
-  System.out.println 输出后换行
-  类的命名规范是什么样的? 每一个单词的开关首字母大写]]></description>
 </item></channel>
 </rss>
