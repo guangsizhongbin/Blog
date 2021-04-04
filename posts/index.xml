@@ -4,7 +4,28 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java第十章</title>
+    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/</link>
+    <pubDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/</guid>
+    <description><![CDATA[什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
+狭义:
+命令行方面的软件
+广义:
+包括图形接口的软件
+在 linux 把运行过后的指令保存在哪里? ~/.bash_history
+~/.bash_history 记录的是前一次登录以前执行过的指令
+而至于这一次登录所执行的指令都被 暂存在内存中 , 当成功的登出系统后，该指令记忆才会记录到 .vash_history 当中
+如何查看 cd 是否是 bash 的内置命令? type cd
+如何查看 ls 是否是 bash 的内置命令? type ls
+type -a ls
+在 bash 中如何将光标移动到整个指令串的最前面或最后面? [ctrl] + a 移动到最前面
+[ctrl] + e 移动到最后面
+如何输出 PATH 这个变量? echo ${PATH}
+如何定义一个变量 name， 其内容为 VBird ? 1 2  name=VBird echo ${name}   如何定义一个变量 name， 其内容为 VBird&rsquo;s name 中间不能出来空格]]></description>
+</item><item>
     <title>Day5</title>
     <link>http://fengqigang.cn/posts/day5/</link>
     <pubDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</pubDate>
@@ -166,26 +187,5 @@ PI
 在 vim 中, 如何移动到第n行? nG
 在 vim 中, 光标如何向下移动n行? n 
 在 vim 中, 如何在第 n1 与 n2 列之间寻找 word1 ， 并将该字串取代为 word2? 1  :n1, n2s/word1/word2/g   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2, 且在取代前显示提示字符给使用者确认? 1  :1, $1/word1/word2/gc   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2?]]></description>
-</item><item>
-    <title>Java第二章</title>
-    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/</link>
-    <pubDate>Wed, 17 Mar 2021 22:50:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/</guid>
-    <description><![CDATA[如何做文档注释? 以 /** 开头， 以 */
-如
-/**
- @author gaungsizhongbin   */
-在JAVA中数据类型分为哪几种? 基本数据类型
-引用数据类型
-基本类型 与 引用类型 有什么区别? 基本类型会涉及内存的分配
-引用类型不会涉及内存的分配
-基本类型 包括哪几种? 数值型
-  整数类型 (byte, short, int, long)
-  浮点类型 (float, double)
-  字符型(char)
-布尔型(boolean)
-byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
-short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$]]></description>
 </item></channel>
 </rss>

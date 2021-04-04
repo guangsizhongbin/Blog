@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Java第十章 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Java第十章" />
+<meta property="og:description" content="什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
+狭义:
+命令行方面的软件
+广义:
+包括图形接口的软件
+在 linux 把运行过后的指令保存在哪里? ~/.bash_history
+~/.bash_history 记录的是前一次登录以前执行过的指令
+而至于这一次登录所执行的指令都被 暂存在内存中 , 当成功的登出系统后，该指令记忆才会记录到 .vash_history 当中
+如何查看 cd 是否是 bash 的内置命令? type cd
+如何查看 ls 是否是 bash 的内置命令? type ls
+type -a ls
+在 bash 中如何将光标移动到整个指令串的最前面或最后面? [ctrl] &#43; a 移动到最前面
+[ctrl] &#43; e 移动到最后面
+如何输出 PATH 这个变量? echo ${PATH}
+如何定义一个变量 name， 其内容为 VBird ? 1 2  name=VBird echo ${name}   如何定义一个变量 name， 其内容为 VBird&rsquo;s name 中间不能出来空格" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-04T11:22:35&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-04T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java第十章"/>
+<meta name="twitter:description" content="什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
+狭义:
+命令行方面的软件
+广义:
+包括图形接口的软件
+在 linux 把运行过后的指令保存在哪里? ~/.bash_history
+~/.bash_history 记录的是前一次登录以前执行过的指令
+而至于这一次登录所执行的指令都被 暂存在内存中 , 当成功的登出系统后，该指令记忆才会记录到 .vash_history 当中
+如何查看 cd 是否是 bash 的内置命令? type cd
+如何查看 ls 是否是 bash 的内置命令? type ls
+type -a ls
+在 bash 中如何将光标移动到整个指令串的最前面或最后面? [ctrl] &#43; a 移动到最前面
+[ctrl] &#43; e 移动到最后面
+如何输出 PATH 这个变量? echo ${PATH}
+如何定义一个变量 name， 其内容为 VBird ? 1 2  name=VBird echo ${name}   如何定义一个变量 name， 其内容为 VBird&rsquo;s name 中间不能出来空格"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/" /><link rel="prev" href="http://fengqigang.cn/posts/day5/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Java第十章",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E5%8D%81%E7%AB%A0\/"
+        },"genre": "posts","keywords": "linux","wordcount":  188 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E5%8D%81%E7%AB%A0\/","datePublished": "2021-04-04T11:22:35+08:00","dateModified": "2021-04-04T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Java第十章</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;188 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是壳程序">什么是壳程序?</a></li>
+        <li><a href="#在-linux-把运行过后的指令保存在哪里">在 <strong>linux</strong> 把运行过后的指令保存在哪里?</a></li>
+        <li><a href="#如何查看-cd-是否是-bash-的内置命令">如何查看 <strong>cd</strong> 是否是 <strong>bash</strong> 的内置命令?</a></li>
+        <li><a href="#如何查看-ls-是否是-bash-的内置命令">如何查看 <strong>ls</strong> 是否是 <strong>bash</strong> 的内置命令?</a></li>
+        <li><a href="#在-bash-中如何将光标移动到整个指令串的最前面或最后面">在 <strong>bash</strong> 中如何将光标移动到整个指令串的最前面或最后面?</a></li>
+        <li><a href="#如何输出-path-这个变量">如何输出 <strong>PATH</strong> 这个变量?</a></li>
+        <li><a href="#如何定义一个变量-name-其内容为-vbird-">如何定义一个变量 <strong>name</strong>， 其内容为 <strong>VBird</strong> ?</a></li>
+        <li><a href="#如何定义一个变量-name-其内容为-vbirds-name">如何定义一个变量 <strong>name</strong>， 其内容为 <strong>VBird&rsquo;s name</strong></a></li>
+        <li><a href="#如何在-path-中累加-homefengbin-这个目录">如何在 <strong>PATH</strong> 中累加 <strong>:/home/feng/bin</strong> 这个目录?</a></li>
+        <li><a href="#什么是shell中的子程序">什么是Shell中的子程序?</a></li>
+        <li><a href="#20210404103835httpsimgfengqigangcnimg20210404103836png-最后一行命令可以输出吗"><img src="https://img.fengqigang.cn//img/20210404103836.png" alt="20210404103835"> 最后一行命令可以输出吗?</a></li>
+        <li><a href="#如何进入当前核心模块目录">如何进入当前核心模块目录?</a></li>
+        <li><a href="#如何取消设置这个-name">如何取消设置这个 <strong>name</strong>?</a></li>
+        <li><a href="#如何输出环境变量与常见环境变量的说明">如何输出环境变量与常见环境变量的说明?</a></li>
+        <li><a href="#如何在-bash-中生成一个-032767-的数">如何在 <strong>bash</strong> 中生成一个 <strong>0~32767</strong> 的数?</a></li>
+        <li><a href="#如何在-bash-中生成一个-09-之间的数值">如何在 <strong>bash</strong> 中生成一个 <strong>0~9</strong> 之间的数值?</a></li>
+        <li><a href="#在bash-中--表示的是什么">在bash 中 $ 表示的是什么?</a></li>
+        <li><a href="#在bash-中--表示的是什么-1">在<strong>bash</strong> 中 ? 表示的是什么?</a></li>
+        <li><a href="#在-bash-中什么是父程序-什么是子程序">在 <strong>bash</strong> 中什么是父程序? 什么是子程序?</a></li>
+        <li><a href="#程序与变量之间有什么关系">程序与变量之间有什么关系?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是壳程序">什么是壳程序?</h3>
+<p>能够操作 <strong>应用程序的接口</strong> 都能够称为壳程序</p>
+<p><strong>狭义</strong>:</p>
+<p>命令行方面的软件</p>
+<p><strong>广义</strong>:</p>
+<p>包括图形接口的软件</p>
+<h3 id="在-linux-把运行过后的指令保存在哪里">在 <strong>linux</strong> 把运行过后的指令保存在哪里?</h3>
+<p><strong>~/.bash_history</strong></p>
+<p><strong>~/.bash_history</strong> 记录的是前一次登录以前执行过的指令</p>
+<p>而至于这一次登录所执行的指令都被 <strong>暂存在内存中</strong> ,  当成功的登出系统后，该指令记忆才会记录到 <strong>.vash_history</strong> 当中</p>
+<h3 id="如何查看-cd-是否是-bash-的内置命令">如何查看 <strong>cd</strong> 是否是 <strong>bash</strong> 的内置命令?</h3>
+<p><strong>type cd</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404094640.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404094640.png, https://img.fengqigang.cn//img/20210404094640.png 1.5x, https://img.fengqigang.cn//img/20210404094640.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404094640.png"
+        title="20210404094640" /></p>
+<h3 id="如何查看-ls-是否是-bash-的内置命令">如何查看 <strong>ls</strong> 是否是 <strong>bash</strong> 的内置命令?</h3>
+<p><strong>type ls</strong></p>
+<p><strong>type -a ls</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404095838.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404095838.png, https://img.fengqigang.cn//img/20210404095838.png 1.5x, https://img.fengqigang.cn//img/20210404095838.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404095838.png"
+        title="20210404095838" /></p>
+<h3 id="在-bash-中如何将光标移动到整个指令串的最前面或最后面">在 <strong>bash</strong> 中如何将光标移动到整个指令串的最前面或最后面?</h3>
+<p><strong>[ctrl] + a</strong> 移动到最前面</p>
+<p><strong>[ctrl] + e</strong> 移动到最后面</p>
+<h3 id="如何输出-path-这个变量">如何输出 <strong>PATH</strong> 这个变量?</h3>
+<p><strong>echo ${PATH}</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404102418.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404102418.png, https://img.fengqigang.cn//img/20210404102418.png 1.5x, https://img.fengqigang.cn//img/20210404102418.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404102418.png"
+        title="20210404102418" /></p>
+<h3 id="如何定义一个变量-name-其内容为-vbird-">如何定义一个变量 <strong>name</strong>， 其内容为 <strong>VBird</strong> ?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">name</span><span class="o">=</span>VBird
+<span class="nb">echo</span> <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404102857.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404102857.png, https://img.fengqigang.cn//img/20210404102857.png 1.5x, https://img.fengqigang.cn//img/20210404102857.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404102857.png"
+        title="20210404102857" /></p>
+<h3 id="如何定义一个变量-name-其内容为-vbirds-name">如何定义一个变量 <strong>name</strong>， 其内容为 <strong>VBird&rsquo;s name</strong></h3>
+<p>中间不能出来空格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">name</span><span class="o">=</span><span class="s2">&#34;VBird&#39;s name&#34;</span>
+<span class="nb">echo</span> <span class="si">${</span><span class="nv">name</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404103206.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404103206.png, https://img.fengqigang.cn//img/20210404103206.png 1.5x, https://img.fengqigang.cn//img/20210404103206.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404103206.png"
+        title="20210404103206" /></p>
+<h3 id="如何在-path-中累加-homefengbin-这个目录">如何在 <strong>PATH</strong> 中累加 <strong>:/home/feng/bin</strong> 这个目录?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>:/home/feng/bin
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404103417.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404103417.png, https://img.fengqigang.cn//img/20210404103417.png 1.5x, https://img.fengqigang.cn//img/20210404103417.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404103417.png"
+        title="20210404103417" /></p>
+<h3 id="什么是shell中的子程序">什么是Shell中的子程序?</h3>
+<p>在目前这个 <strong>shell</strong> 的情况下，去启用一个新的 <strong>shell</strong> , 新的那个 <strong>shell</strong> 就量子程序</p>
+<p>一般的状态下，父程序的自订变量是无法在子程序内使用的。</p>
+<p>但是通过 <strong>export</strong> 将变量变成环境变量后，就能够在子程序下面应用了</p>
+<h3 id="20210404103835httpsimgfengqigangcnimg20210404103836png-最后一行命令可以输出吗"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404103836.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404103836.png, https://img.fengqigang.cn//img/20210404103836.png 1.5x, https://img.fengqigang.cn//img/20210404103836.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404103836.png"
+        title="20210404103835" /> 最后一行命令可以输出吗?</h3>
+<p>不可以</p>
+<p>一般的状态下，父程序的自订变量是无法在子程序内使用的。</p>
+<p>但是通过 <strong>export</strong> 将变量变成环境变量后，就能够在子程序下面应用了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404103940.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404103940.png, https://img.fengqigang.cn//img/20210404103940.png 1.5x, https://img.fengqigang.cn//img/20210404103940.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404103940.png"
+        title="20210404103940" /></p>
+<h3 id="如何进入当前核心模块目录">如何进入当前核心模块目录?</h3>
+<p>uname -r</p>
+<p>uname - print system information</p>
+<ul>
+<li>r, &ndash;kernel-release</li>
+</ul>
+<p>print the kernel release</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /lib/modules/<span class="k">$(</span>uname -r<span class="k">)</span>/kernel
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404104248.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404104248.png, https://img.fengqigang.cn//img/20210404104248.png 1.5x, https://img.fengqigang.cn//img/20210404104248.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404104248.png"
+        title="20210404104248" /></p>
+<h3 id="如何取消设置这个-name">如何取消设置这个 <strong>name</strong>?</h3>
+<p>unset name</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404104409.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404104409.png, https://img.fengqigang.cn//img/20210404104409.png 1.5x, https://img.fengqigang.cn//img/20210404104409.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404104409.png"
+        title="20210404104409" /></p>
+<h3 id="如何输出环境变量与常见环境变量的说明">如何输出环境变量与常见环境变量的说明?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">env
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404104953.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404104953.png, https://img.fengqigang.cn//img/20210404104953.png 1.5x, https://img.fengqigang.cn//img/20210404104953.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404104953.png"
+        title="20210404104953" /></p>
+<h3 id="如何在-bash-中生成一个-032767-的数">如何在 <strong>bash</strong> 中生成一个 <strong>0~32767</strong> 的数?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ehco <span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何在-bash-中生成一个-09-之间的数值">如何在 <strong>bash</strong> 中生成一个 <strong>0~9</strong> 之间的数值?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">declare</span> -i <span class="nv">number</span><span class="o">=</span><span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>*10/32768 <span class="p">;</span> <span class="nb">echo</span> <span class="nv">$number</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404105709.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404105709.png, https://img.fengqigang.cn//img/20210404105709.png 1.5x, https://img.fengqigang.cn//img/20210404105709.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404105709.png"
+        title="20210404105709" /></p>
+<h3 id="在bash-中--表示的是什么">在bash 中 $ 表示的是什么?</h3>
+<p>表示这个 <strong>Shell</strong> 中的 <strong>PID</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ehco <span class="nv">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404110642.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404110642.png, https://img.fengqigang.cn//img/20210404110642.png 1.5x, https://img.fengqigang.cn//img/20210404110642.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404110642.png"
+        title="20210404110642" /></p>
+<h3 id="在bash-中--表示的是什么-1">在<strong>bash</strong> 中 ? 表示的是什么?</h3>
+<p><strong>?</strong> 表示是上一个执行所回传的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="nv">$?</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404110830.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404110830.png, https://img.fengqigang.cn//img/20210404110830.png 1.5x, https://img.fengqigang.cn//img/20210404110830.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404110830.png"
+        title="20210404110830" /></p>
+<p>如果成功执行该指令，则会回传一个0值</p>
+<h3 id="在-bash-中什么是父程序-什么是子程序">在 <strong>bash</strong> 中什么是父程序? 什么是子程序?</h3>
+<p><strong>bash</strong> 就量一个独立的程序</p>
+<p>这个程序的识别使用的是一个称为程序识别码, <strong>PID</strong></p>
+<p>在这个 <strong>bash</strong> 下面所下达的任何指令都是由这个 <strong>bash</strong> 所衍生出来的，那些被下达的指令就被称为 <strong>子程序</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404111635.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404111635.png, https://img.fengqigang.cn//img/20210404111635.png 1.5x, https://img.fengqigang.cn//img/20210404111635.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404111635.png"
+        title="20210404111635" /></p>
+<h3 id="程序与变量之间有什么关系">程序与变量之间有什么关系?</h3>
+<p>子程序<strong>仅会继承父程序的环境变量</strong>, <strong>不会继承父程序的自订变量</strong></p>
+<p>通过 <strong>export</strong> 指令， 可以让该变量内容继续在子程序中使用</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-04</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day5/" class="prev" rel="prev" title="Day5"><i class="fas fa-angle-left fa-fw"></i>Day5</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

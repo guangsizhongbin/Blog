@@ -4,7 +4,28 @@
         <link>http://fengqigang.cn/tags/linux/</link>
         <description>linux - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 21 Mar 2021 10:30:12 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Java第十章</title>
+    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/</link>
+    <pubDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/</guid>
+    <description><![CDATA[什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
+狭义:
+命令行方面的软件
+广义:
+包括图形接口的软件
+在 linux 把运行过后的指令保存在哪里? ~/.bash_history
+~/.bash_history 记录的是前一次登录以前执行过的指令
+而至于这一次登录所执行的指令都被 暂存在内存中 , 当成功的登出系统后，该指令记忆才会记录到 .vash_history 当中
+如何查看 cd 是否是 bash 的内置命令? type cd
+如何查看 ls 是否是 bash 的内置命令? type ls
+type -a ls
+在 bash 中如何将光标移动到整个指令串的最前面或最后面? [ctrl] + a 移动到最前面
+[ctrl] + e 移动到最后面
+如何输出 PATH 这个变量? echo ${PATH}
+如何定义一个变量 name， 其内容为 VBird ? 1 2  name=VBird echo ${name}   如何定义一个变量 name， 其内容为 VBird&rsquo;s name 中间不能出来空格]]></description>
+</item><item>
     <title>Linux第九章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/</link>
     <pubDate>Sun, 21 Mar 2021 10:30:12 &#43;0800</pubDate>
@@ -167,19 +188,5 @@ Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side B
 CPU中的所有数据都是由内存提供的
 查看内存信息
 1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?]]></description>
-</item><item>
-    <title>Linux_1</title>
-    <link>http://fengqigang.cn/posts/linux_1/</link>
-    <pubDate>Mon, 15 Feb 2021 21:57:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux_1/</guid>
-    <description><![CDATA[电脑: 辅助人脑的好工具 计算机硬件的五大单元 计算机硬件有哪五大单元？  输入单元 输出单元 控制单元 算数逻辑单元 存储单元  cpu中包含哪些单元？ 控制、算术逻辑单元
-CPU-什么是CPU的架构？ 首先，使用软件都需要经过CPU内部的微指令集来达成才行。其次，这些指令集的设计主要被分为两种设计理念，也就是两种主要的CPU架构: 分别为:精简指令集(RISC)与复杂指令集(CISC)系统。
-CPU-什么是精简指令集(RISC)？ RISC 即 Reduced Instruction Set Computer.
-其特点是:
- 每个指令的执行时间很短 完成的动作单纯 指令的执行性能较佳 若做复杂的事情，需要多个指令来完成  其应用：
- 甲骨文的SPARC CPU  学术领域的大型工作站 银行金融体系的主要服务器   IBM的Power Architecture  索尼的Play Station 3   安谋(ARM Holdings)的ARM CPU  手机 PDA(Personaldigital assistant) 导航系统 网络设备(交换器、路由器)    CPU-什么是复杂指令集(CISC)? CISC 即 Complex Instruction Set Computer.
-其特点是:
- 每个微指令集可又执行一些较低阶的硬件操作 指令数目多而且复杂 每条指令的长度并不相同  CPU-所谓的x86架构是如何而来的？ 因为最早的Intel发展出来的CPU代号称为8086, 后来依此架构以开发出80286, 80386&hellip;, 因此这种架构的CPU就被称为x86架构]]></description>
 </item></channel>
 </rss>
