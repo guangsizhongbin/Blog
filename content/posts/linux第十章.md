@@ -1,5 +1,5 @@
 ---
-title: "Java第十章"
+title: "Linux第十章"
 date: 2021-04-04T11:22:35+08:00
 lastmod: 2021-04-04
 author: "xiaonan"
