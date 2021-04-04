@@ -4,9 +4,30 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day6</title>
+    <link>http://fengqigang.cn/posts/day6/</link>
+    <pubDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day6/</guid>
+    <description><![CDATA[如何在一个构造函数中调用另一个构造函数? 用 this
+1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
+不可以重名
+什么是匿名对象? 如何创建匿名对象? 匿名对象:
+没有名字的对象，没有引用指向它的对象
+创建匿名对象:
+new 类名();
+什么时候用匿名对象?  用 匿名对象调用方法  好处
+方便简洁， 如果只想调用一次该对象的成员方法
+没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率
+坏处
+如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底
+ 如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
+  如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
+  什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块]]></description>
+</item><item>
     <title>Linux第十章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/</link>
     <pubDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</pubDate>
@@ -176,18 +197,5 @@ PI
 总结:
 类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
 如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.]]></description>
-</item><item>
-    <title>Linux第九章</title>
-    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/</link>
-    <pubDate>Sun, 21 Mar 2021 10:30:12 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/</guid>
-    <description><![CDATA[什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
-在 vim 中, n +  代表什么操作? 表示光标会向 右 移动 n 个字符
-在 vim 中, 如何移动到这一列的最后面字符处? $
-在 vim 中, 如何将光标移动到这个屏幕中央那一列的第一个字符? M
-在 vim 中, 如何移动到第n行? nG
-在 vim 中, 光标如何向下移动n行? n 
-在 vim 中, 如何在第 n1 与 n2 列之间寻找 word1 ， 并将该字串取代为 word2? 1  :n1, n2s/word1/word2/g   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2, 且在取代前显示提示字符给使用者确认? 1  :1, $1/word1/word2/gc   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2?]]></description>
 </item></channel>
 </rss>

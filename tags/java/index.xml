@@ -4,7 +4,28 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Day6</title>
+    <link>http://fengqigang.cn/posts/day6/</link>
+    <pubDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day6/</guid>
+    <description><![CDATA[如何在一个构造函数中调用另一个构造函数? 用 this
+1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
+不可以重名
+什么是匿名对象? 如何创建匿名对象? 匿名对象:
+没有名字的对象，没有引用指向它的对象
+创建匿名对象:
+new 类名();
+什么时候用匿名对象?  用 匿名对象调用方法  好处
+方便简洁， 如果只想调用一次该对象的成员方法
+没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率
+坏处
+如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底
+ 如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
+  如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
+  什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块]]></description>
+</item><item>
     <title>Day5</title>
     <link>http://fengqigang.cn/posts/day5/</link>
     <pubDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</pubDate>
@@ -179,18 +200,5 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
   System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
   System.out.println 输出后换行
   类的命名规范是什么样的? 每一个单词的开关首字母大写]]></description>
-</item><item>
-    <title>Java基础练习题</title>
-    <link>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</link>
-    <pubDate>Fri, 26 Feb 2021 22:24:25 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/</guid>
-    <description><![CDATA[基础概念问答    请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？     Java语言是跨平台的，但JVM不是跨平台的，不同的平台有不同的JVM。 首先, 后缀为 &quot;*.java&quot; 的文件，经过javac命令编译后会生成public class定义类名称的.class文件(字节码文件)。然后, 不同平台的JVM会根据不同操作系统所提供的接口，实现.class文件中的功能。
- 例如: Hello.java所对应的程序
-1 2 3 4 5  public class Hello { public static void main(String args[]){ System.out.println(&#34;Hello, World!&#34;); } }   编译后(Hello.class):
-再经过linux中的jre-openjdk中的jvm执行hello.class使得java看起来具有跨平台的能力。
-环境变量   设置环境变量使QQ或者微信可以在任意平台下，通过命令行执行    linux平台下:
-1  export 文件路径:$PATH   使用永久化:
-1  echo &#34;export 文件路径:$PATH&#34; &gt;&gt; .zshrc   3.[入门题目] 独立编写Hello World程序，并在命令行下运行 hello.java]]></description>
 </item></channel>
 </rss>
