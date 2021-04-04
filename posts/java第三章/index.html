@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  2337 ,
+        },"genre": "posts","keywords": "java","wordcount":  3116 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2337 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3116 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;15 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -223,6 +223,27 @@
         <li><a href="#如何判断-helloworld-中-是否存在-world-">如何判断 &ldquo;helloworld&rdquo; 中 是否存在 &ldquo;world&rdquo; ?</a></li>
         <li><a href="#如何判断-hello-是否以--开头">如何判断 <strong>##@@hello</strong> 是否以 ## 开头?</a></li>
         <li><a href="#如何判断-hello-是否以-llo-结尾">如何判断 <strong>##@@hello</strong> 是否以 <strong>llo</strong> 结尾?</a></li>
+        <li><a href="#如何将字符串str--helloworld-中的-l-全部替换成-_">如何将字符串str = &ldquo;helloworld&rdquo; 中的 l 全部替换成 _?</a></li>
+        <li><a href="#如何将字符串str--helloworld-中的-l-首个替换成-_">如何将字符串str = &ldquo;helloworld&rdquo; 中的 l 首个替换成 _?</a></li>
+        <li><a href="#如何截取字符串str--helloworld-从第六个位置开始截取到最后一个">如何截取字符串str = &ldquo;helloworld&rdquo; 从第六个位置开始，截取到最后一个?</a></li>
+        <li><a href="#如何截取字符串str--helloworld-从第1个位置开始截取到第6个之前位置">如何截取字符串str = &ldquo;helloworld&rdquo; 从第1个位置开始，截取到第6个之前位置?</a></li>
+        <li><a href="#如何对字符串str--hello-yootk-nihao-mldn-按照空格拆分">如何对字符串str = &ldquo;hello yootk nihao mldn&rdquo; 按照空格拆分?</a></li>
+        <li><a href="#如何对字符串str--hello-yootk-全部拆分">如何对字符串str = &ldquo;hello yootk&rdquo; 全部拆分?</a></li>
+        <li><a href="#如何将字符串str--hello-yootk-nihao-mldn-按照空格拆分成2个">如何将字符串str = &ldquo;hello yootk nihao mldn&rdquo; 按照空格，拆分成2个?</a></li>
+        <li><a href="#如何将str--19216812-按照--拆分">如何将str = &ldquo;192.168.1.2&rdquo; 按照 &ldquo;.&rdquo; 拆分?</a></li>
+        <li><a href="#如何将-str--张三20李四21王五20-拆成-张三年龄20-这样的格式">如何将 str = &ldquo;张三:20|李四:21|王五:20&rdquo; 拆成 张三，年龄:20, 这样的格式?</a></li>
+        <li><a href="#如何将str--hello-全部转成大写">如何将str = &ldquo;(<em>(<em>Hello(</em>(</em>&rdquo; 全部转成大写?</a></li>
+        <li><a href="#如何将str--hello-全部转成小写">如何将str = &ldquo;(<em>(<em>Hello(</em>(</em>&rdquo; 全部转成小写?</a></li>
+        <li><a href="#如何去掉str----hello--world---左右两过的空格">如何去掉str = &quot;  hello  world  &quot; 左右两过的空格?</a></li>
+        <li><a href="#如何去掉str----hello--world---所有的空格">如何去掉str = &quot;  hello  world  &quot; 所有的空格?</a></li>
+        <li><a href="#获取-string类中的length-与-数组中的length-有什么区别">获取 <strong>String类中的length</strong> 与 <strong>数组中的length</strong> 有什么区别?</a></li>
+        <li><a href="#如何判断-str--helloworld-是否是空字符串">如何判断 str = &ldquo;helloworld&rdquo; 是否是空字符串?</a></li>
+        <li><a href="#如何实现str--yootk-中首字母大写">如何实现str = &ldquo;yootk&rdquo; 中首字母大写?</a></li>
+        <li><a href="#如何想用-this-调用本类方法-应该如何使用">如何想用 <strong>this</strong> 调用本类方法， 应该如何使用?</a></li>
+        <li><a href="#如何想用-this-调用本类的构造方法应该如何使用">如何想用 <strong>this</strong> 调用本类的构造方法，应该如何使用?</a></li>
+        <li><a href="#使用-this-调用构造方法时存在什么样的限制">使用 <strong>this</strong> 调用构造方法时，存在什么样的限制?</a></li>
+        <li><a href="#20210404223218httpsimgfengqigangcnimg20210404223218png-如何利用构造方法互调用简化代码"><img src="https://img.fengqigang.cn//img/20210404223218.png" alt="20210404223218"> 如何利用构造方法互调用简化代码?</a></li>
+        <li><a href="#20210404224933httpsimgfengqigangcnimg20210404224933png-它们输出的是一样的吗-为什么"><img src="https://img.fengqigang.cn//img/20210404224933.png" alt="20210404224933"> 它们输出的是一样的吗? 为什么?</a></li>
       </ul>
     </li>
   </ul>
@@ -2064,6 +2085,610 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210401142041.png"
         title="20210401142041" /></p>
+<h3 id="如何将字符串str--helloworld-中的-l-全部替换成-_">如何将字符串str = &ldquo;helloworld&rdquo; 中的 l 全部替换成 _?</h3>
+<p><strong>str.replaceAll(&ldquo;l&rdquo;, &ldquo;_&quot;)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34;l&#34;</span><span class="o">,</span> <span class="s">&#34;_&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404165607.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404165607.png, https://img.fengqigang.cn//img/20210404165607.png 1.5x, https://img.fengqigang.cn//img/20210404165607.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404165607.png"
+        title="20210404165607" /></p>
+<h3 id="如何将字符串str--helloworld-中的-l-首个替换成-_">如何将字符串str = &ldquo;helloworld&rdquo; 中的 l 首个替换成 _?</h3>
+<p><strong>str.replaceFirst(&ldquo;l&rdquo;, &ldquo;_&quot;)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">replaceFirst</span><span class="o">(</span><span class="s">&#34;l&#34;</span><span class="o">,</span> <span class="s">&#34;_&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404165746.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404165746.png, https://img.fengqigang.cn//img/20210404165746.png 1.5x, https://img.fengqigang.cn//img/20210404165746.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404165746.png"
+        title="20210404165746" /></p>
+<h3 id="如何截取字符串str--helloworld-从第六个位置开始截取到最后一个">如何截取字符串str = &ldquo;helloworld&rdquo; 从第六个位置开始，截取到最后一个?</h3>
+<p><strong>str.substring(5)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">5</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404170013.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404170013.png, https://img.fengqigang.cn//img/20210404170013.png 1.5x, https://img.fengqigang.cn//img/20210404170013.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404170013.png"
+        title="20210404170013" /></p>
+<h3 id="如何截取字符串str--helloworld-从第1个位置开始截取到第6个之前位置">如何截取字符串str = &ldquo;helloworld&rdquo; 从第1个位置开始，截取到第6个之前位置?</h3>
+<p><strong>str.substring(0,5)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;helloworld&#34;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">0</span><span class="o">,</span><span class="n">5</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404170332.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404170332.png, https://img.fengqigang.cn//img/20210404170332.png 1.5x, https://img.fengqigang.cn//img/20210404170332.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404170332.png"
+        title="20210404170332" /></p>
+<h3 id="如何对字符串str--hello-yootk-nihao-mldn-按照空格拆分">如何对字符串str = &ldquo;hello yootk nihao mldn&rdquo; 按照空格拆分?</h3>
+<p>str.split(&rdquo; &ldquo;);</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello yootk nihao mldn&#34;</span><span class="o">;</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">stra</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404170801.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404170801.png, https://img.fengqigang.cn//img/20210404170801.png 1.5x, https://img.fengqigang.cn//img/20210404170801.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404170801.png"
+        title="20210404170801" /></p>
+<h3 id="如何对字符串str--hello-yootk-全部拆分">如何对字符串str = &ldquo;hello yootk&rdquo; 全部拆分?</h3>
+<p>str.split(&quot;&quot;);</p>
+<p>设置一个空字符串，表示全部拆分</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello yootk&#34;</span><span class="o">;</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;&#34;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">stra</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;、&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404171048.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404171048.png, https://img.fengqigang.cn//img/20210404171048.png 1.5x, https://img.fengqigang.cn//img/20210404171048.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404171048.png"
+        title="20210404171048" /></p>
+<h3 id="如何将字符串str--hello-yootk-nihao-mldn-按照空格拆分成2个">如何将字符串str = &ldquo;hello yootk nihao mldn&rdquo; 按照空格，拆分成2个?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello yootk nihao mldn&#34;</span><span class="o">;</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">stra</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404212724.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404212724.png, https://img.fengqigang.cn//img/20210404212724.png 1.5x, https://img.fengqigang.cn//img/20210404212724.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404212724.png"
+        title="20210404212724" /></p>
+<h3 id="如何将str--19216812-按照--拆分">如何将str = &ldquo;192.168.1.2&rdquo; 按照 &ldquo;.&rdquo; 拆分?</h3>
+<p>直接用 &ldquo;.&rdquo; 是无法进行拆分的， 需要用 &ldquo;\.&rdquo; 来转义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;192.168.1.1&#34;</span><span class="o">;</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;\\.&#34;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">stra</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404212955.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404212955.png, https://img.fengqigang.cn//img/20210404212955.png 1.5x, https://img.fengqigang.cn//img/20210404212955.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404212955.png"
+        title="20210404212955" /></p>
+<h3 id="如何将-str--张三20李四21王五20-拆成-张三年龄20-这样的格式">如何将 str = &ldquo;张三:20|李四:21|王五:20&rdquo; 拆成 张三，年龄:20, 这样的格式?</h3>
+<p>这里需要第一次按照 <strong>|</strong> 来拆分， 第二次按照 <strong>:</strong> 来拆分</p>
+<p><strong>stra.splilt(&rdquo;.&quot;);</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;张三:20|李四:21|王五:22&#34;</span><span class="o">;</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">stra</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;\\|&#34;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">stra</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">String</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">stra</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">split</span><span class="o">(</span><span class="s">&#34;:&#34;</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;学生&#34;</span> <span class="o">+</span> <span class="n">temp</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">&#34;的年龄为&#34;</span> <span class="o">+</span> <span class="n">temp</span><span class="o">[</span><span class="n">1</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404214237.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404214237.png, https://img.fengqigang.cn//img/20210404214237.png 1.5x, https://img.fengqigang.cn//img/20210404214237.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404214237.png"
+        title="20210404214237" /></p>
+<h3 id="如何将str--hello-全部转成大写">如何将str = &ldquo;(<em>(<em>Hello(</em>(</em>&rdquo; 全部转成大写?</h3>
+<p><strong>str.toUpperCase()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;(*(*Hello(*(*&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404214036.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404214036.png, https://img.fengqigang.cn//img/20210404214036.png 1.5x, https://img.fengqigang.cn//img/20210404214036.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404214036.png"
+        title="20210404214036" /></p>
+<h3 id="如何将str--hello-全部转成小写">如何将str = &ldquo;(<em>(<em>Hello(</em>(</em>&rdquo; 全部转成小写?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;(*(*Hello(*(*&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404214134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404214134.png, https://img.fengqigang.cn//img/20210404214134.png 1.5x, https://img.fengqigang.cn//img/20210404214134.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404214134.png"
+        title="20210404214134" /></p>
+<h3 id="如何去掉str----hello--world---左右两过的空格">如何去掉str = &quot;  hello  world  &quot; 左右两过的空格?</h3>
+<p><strong>str.trim()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;  hello  world  &#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">trim</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404214510.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404214510.png, https://img.fengqigang.cn//img/20210404214510.png 1.5x, https://img.fengqigang.cn//img/20210404214510.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404214510.png"
+        title="20210404214510" /></p>
+<h3 id="如何去掉str----hello--world---所有的空格">如何去掉str = &quot;  hello  world  &quot; 所有的空格?</h3>
+<p><strong>str.replaceAll(&rdquo; &ldquo;,&quot;&quot;)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;  hello  world  &#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">,</span><span class="s">&#34;&#34;</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404214801.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404214801.png, https://img.fengqigang.cn//img/20210404214801.png 1.5x, https://img.fengqigang.cn//img/20210404214801.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404214801.png"
+        title="20210404214801" /></p>
+<h3 id="获取-string类中的length-与-数组中的length-有什么区别">获取 <strong>String类中的length</strong> 与 <strong>数组中的length</strong> 有什么区别?</h3>
+<p>String 中取得长度使用的是 <strong>length()</strong> 方法，只要是方法后面都要有&rdquo;()&rdquo;</p>
+<p>数组中没有 <strong>length()</strong> 方法只有 <strong>length</strong> 属性</p>
+<h3 id="如何判断-str--helloworld-是否是空字符串">如何判断 str = &ldquo;helloworld&rdquo; 是否是空字符串?</h3>
+<p><strong>str.isEmpty()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello,world&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404215207.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404215207.png, https://img.fengqigang.cn//img/20210404215207.png 1.5x, https://img.fengqigang.cn//img/20210404215207.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404215207.png"
+        title="20210404215207" /></p>
+<h3 id="如何实现str--yootk-中首字母大写">如何实现str = &ldquo;yootk&rdquo; 中首字母大写?</h3>
+<p><strong>temp.substring();</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Replace</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&#34;hello,world&#34;</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">initcap</span><span class="o">(</span><span class="n">str</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">initcap</span><span class="o">(</span><span class="n">String</span> <span class="n">temp</span><span class="o">){</span>
+        <span class="k">return</span> <span class="n">temp</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">0</span><span class="o">,</span><span class="n">1</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">()</span> <span class="o">+</span><span class="n">temp</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404215903.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404215903.png, https://img.fengqigang.cn//img/20210404215903.png 1.5x, https://img.fengqigang.cn//img/20210404215903.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404215903.png"
+        title="20210404215903" /></p>
+<h3 id="如何想用-this-调用本类方法-应该如何使用">如何想用 <strong>this</strong> 调用本类方法， 应该如何使用?</h3>
+<p><strong>this.方法()</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404221755.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404221755.png, https://img.fengqigang.cn//img/20210404221755.png 1.5x, https://img.fengqigang.cn//img/20210404221755.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404221755.png"
+        title="20210404221755" /></p>
+<h3 id="如何想用-this-调用本类的构造方法应该如何使用">如何想用 <strong>this</strong> 调用本类的构造方法，应该如何使用?</h3>
+<p><strong>this()</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404222131.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404222131.png, https://img.fengqigang.cn//img/20210404222131.png 1.5x, https://img.fengqigang.cn//img/20210404222131.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404222131.png"
+        title="20210404222131" /></p>
+<h3 id="使用-this-调用构造方法时存在什么样的限制">使用 <strong>this</strong> 调用构造方法时，存在什么样的限制?</h3>
+<ol>
+<li>
+<p><strong>this()</strong> 调用构造方式形式的代码只能够放在构造方法的首行</p>
+</li>
+<li>
+<p>进行构造方法互相调用时，一定要保留调用的出口</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404223146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404223146.png, https://img.fengqigang.cn//img/20210404223146.png 1.5x, https://img.fengqigang.cn//img/20210404223146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404223146.png"
+        title="20210404223146" /></p>
+<h3 id="20210404223218httpsimgfengqigangcnimg20210404223218png-如何利用构造方法互调用简化代码"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404223218.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404223218.png, https://img.fengqigang.cn//img/20210404223218.png 1.5x, https://img.fengqigang.cn//img/20210404223218.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404223218.png"
+        title="20210404223218" /> 如何利用构造方法互调用简化代码?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Employer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Emp</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">empno</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">ename</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">sal</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">dept</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Emp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="s">&#34;无名氏&#34;</span><span class="o">,</span> <span class="n">0</span><span class="o">.</span><span class="na">0</span><span class="o">,</span> <span class="s">&#34;未定&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Emp</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="s">&#34;临时工&#34;</span><span class="o">,</span> <span class="n">8000</span><span class="o">.</span><span class="na">0</span><span class="o">,</span> <span class="s">&#34;后勤部&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Emp</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="n">String</span> <span class="n">ename</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">empno</span><span class="o">,</span> <span class="n">ename</span><span class="o">,</span> <span class="n">2000</span><span class="o">.</span><span class="na">0</span><span class="o">,</span> <span class="s">&#34;技术部&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Emp</span><span class="o">(</span><span class="kt">int</span> <span class="n">empno</span><span class="o">,</span> <span class="n">String</span> <span class="n">ename</span><span class="o">,</span> <span class="kt">double</span> <span class="n">sal</span><span class="o">,</span> <span class="n">String</span> <span class="n">dept</span><span class="o">){</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">empno</span> <span class="o">=</span> <span class="n">empno</span><span class="o">;</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">ename</span> <span class="o">=</span> <span class="n">ename</span><span class="o">;</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">sal</span> <span class="o">=</span> <span class="n">sal</span><span class="o">;</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">dept</span> <span class="o">=</span> <span class="n">dept</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getInfo</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="s">&#34;雇员编号:&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">empno</span> <span class="o">+</span> <span class="s">&#34;, 姓名:&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">ename</span> <span class="o">+</span> <span class="s">&#34;, 工资:&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">sal</span> <span class="o">+</span> <span class="s">&#34;, 部门:&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">dept</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404224123.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404224123.png, https://img.fengqigang.cn//img/20210404224123.png 1.5x, https://img.fengqigang.cn//img/20210404224123.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404224123.png"
+        title="20210404224123" /></p>
+<h3 id="20210404224933httpsimgfengqigangcnimg20210404224933png-它们输出的是一样的吗-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404224933.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404224933.png, https://img.fengqigang.cn//img/20210404224933.png 1.5x, https://img.fengqigang.cn//img/20210404224933.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404224933.png"
+        title="20210404224933" /> 它们输出的是一样的吗? 为什么?</h3>
+<p>是一样的</p>
+<p><strong>this</strong> 关键字指的就是 <strong>当前正在调用类中方法的实例化对象</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404225214.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404225214.png, https://img.fengqigang.cn//img/20210404225214.png 1.5x, https://img.fengqigang.cn//img/20210404225214.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404225214.png"
+        title="20210404225214" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
