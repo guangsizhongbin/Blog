@@ -4,9 +4,18 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>IntellDebug</title>
+    <link>http://fengqigang.cn/posts/intelldebug/</link>
+    <pubDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/intelldebug/</guid>
+    <description><![CDATA[Breakpoints Notation  If a file with breakpoints was modified externally, for example, update through a VCS or changed in an external editor, and the line numbers have changed, the breakpoints will be moved accordingly.  Types of breakpoints(Add breakpoints) Setting Line breakpoint keymap
+ Line breakpoints  Click the gutter at the executable line of code or press keymap
+ Method breakpoints  Click the gutter at the line where the method is declared, or press keymap]]></description>
+</item><item>
     <title>Day6</title>
     <link>http://fengqigang.cn/posts/day6/</link>
     <pubDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</pubDate>
@@ -180,22 +189,5 @@ PI
     <guid>http://fengqigang.cn/posts/twosum/</guid>
     <description><![CDATA[Two Sum 001
 我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x ++){ for (int y = x + 1; y &lt; nums.length; y ++){ if (nums[x] + nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表]]></description>
-</item><item>
-    <title>Java第三章</title>
-    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</link>
-    <pubDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</guid>
-    <description><![CDATA[什么是类? 什么是对象? 类:
-表示一个客观世界中某类群体的一些基本特征抽象
-如:
-汽车， 轮船，书
-对象:
-一个个具体的事物
-如:
-张三同学， 李四账户， 王五的汽车
-总结:
-类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
-如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.]]></description>
 </item></channel>
 </rss>

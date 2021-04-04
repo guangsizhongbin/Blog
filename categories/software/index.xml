@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>software - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/software/</link>
+        <description>software - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/software/" rel="self" type="application/rss+xml" /><item>
+    <title>IntellDebug</title>
+    <link>http://fengqigang.cn/posts/intelldebug/</link>
+    <pubDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/intelldebug/</guid>
+    <description><![CDATA[Breakpoints Notation  If a file with breakpoints was modified externally, for example, update through a VCS or changed in an external editor, and the line numbers have changed, the breakpoints will be moved accordingly.  Types of breakpoints(Add breakpoints) Setting Line breakpoint keymap
+ Line breakpoints  Click the gutter at the executable line of code or press keymap
+ Method breakpoints  Click the gutter at the line where the method is declared, or press keymap]]></description>
+</item></channel>
+</rss>
