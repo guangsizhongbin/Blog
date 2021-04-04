@@ -1141,3 +1141,325 @@ public class StartWith {
 ![20210401142041](https://img.fengqigang.cn//img/20210401142041.png)
 
 
+### 如何将字符串str = "helloworld" 中的 l 全部替换成 _?
+
+**str.replaceAll("l", "_")**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        String stra = str.replaceAll("l", "_");
+        System.out.println(stra);
+    }
+}
+```
+
+![20210404165607](https://img.fengqigang.cn//img/20210404165607.png)
+
+### 如何将字符串str = "helloworld" 中的 l 首个替换成 _?
+
+**str.replaceFirst("l", "_")**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        String stra = str.replaceFirst("l", "_");
+        System.out.println(stra);
+    }
+}
+```
+
+![20210404165746](https://img.fengqigang.cn//img/20210404165746.png)
+
+### 如何截取字符串str = "helloworld" 从第六个位置开始，截取到最后一个?
+
+**str.substring(5)**
+
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        String stra = str.substring(5);
+        System.out.println(stra);
+    }
+}
+```
+
+![20210404170013](https://img.fengqigang.cn//img/20210404170013.png)
+
+### 如何截取字符串str = "helloworld" 从第1个位置开始，截取到第6个之前位置?
+
+**str.substring(0,5)**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "helloworld";
+        String stra = str.substring(0,5);
+        System.out.println(stra);
+    }
+}
+```
+
+![20210404170332](https://img.fengqigang.cn//img/20210404170332.png)
+
+### 如何对字符串str = "hello yootk nihao mldn" 按照空格拆分?
+
+str.split(" ");
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "hello yootk nihao mldn";
+        String[] stra = str.split(" ");
+        for (int i = 0; i < stra.length; i++) {
+            System.out.print(stra[i] + "、");
+        }
+    }
+}
+```
+
+![20210404170801](https://img.fengqigang.cn//img/20210404170801.png)
+
+### 如何对字符串str = "hello yootk" 全部拆分?
+
+str.split("");
+
+设置一个空字符串，表示全部拆分
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "hello yootk";
+        String[] stra = str.split("");
+        for (int i = 0; i < stra.length; i++) {
+            System.out.print(stra[i] + "、");
+        }
+    }
+}
+```
+
+![20210404171048](https://img.fengqigang.cn//img/20210404171048.png)
+
+### 如何将字符串str = "hello yootk nihao mldn" 按照空格，拆分成2个?
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "hello yootk nihao mldn";
+        String[] stra = str.split(" ", 2);
+        for (int i = 0; i < stra.length; i++) {
+            System.out.print(stra[i]);
+        }
+    }
+}
+```
+
+![20210404212724](https://img.fengqigang.cn//img/20210404212724.png)
+
+### 如何将str = "192.168.1.2" 按照 "." 拆分?
+
+直接用 "." 是无法进行拆分的， 需要用 "\\." 来转义
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "192.168.1.1";
+        String[] stra = str.split("\\.");
+        for (int i = 0; i < stra.length; i++) {
+            System.out.println(stra[i]);
+        }
+    }
+}
+```
+
+![20210404212955](https://img.fengqigang.cn//img/20210404212955.png)
+
+
+### 如何将 str = "张三:20|李四:21|王五:20" 拆成 张三，年龄:20, 这样的格式?
+
+这里需要第一次按照 **|** 来拆分， 第二次按照 **:** 来拆分
+
+**stra.splilt(".");**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "张三:20|李四:21|王五:22";
+        String[] stra = str.split("\\|");
+        for (int i = 0; i < stra.length; i++) {
+            String[] temp = stra[i].split(":");
+            System.out.println("学生" + temp[0] + "的年龄为" + temp[1]);
+        }
+    }
+}
+```
+
+![20210404214237](https://img.fengqigang.cn//img/20210404214237.png)
+
+### 如何将str = "(*(*Hello(*(*" 全部转成大写?
+
+**str.toUpperCase()**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "(*(*Hello(*(*";
+        System.out.println(str.toUpperCase());
+    }
+}
+```
+
+![20210404214036](https://img.fengqigang.cn//img/20210404214036.png)
+
+
+### 如何将str = "(*(*Hello(*(*" 全部转成小写?
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "(*(*Hello(*(*";
+        System.out.println(str.toLowerCase());
+    }
+}
+```
+
+![20210404214134](https://img.fengqigang.cn//img/20210404214134.png)
+
+
+### 如何去掉str = "  hello  world  " 左右两过的空格?
+
+**str.trim()**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "  hello  world  ";
+        System.out.println(str.trim());
+    }
+}
+```
+
+![20210404214510](https://img.fengqigang.cn//img/20210404214510.png)
+
+### 如何去掉str = "  hello  world  " 所有的空格?
+
+**str.replaceAll(" ","")**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "  hello  world  ";
+        System.out.println(str.replaceAll(" ",""));
+    }
+}
+```
+
+![20210404214801](https://img.fengqigang.cn//img/20210404214801.png)
+
+### 获取 **String类中的length** 与 **数组中的length** 有什么区别?
+
+String 中取得长度使用的是 **length()** 方法，只要是方法后面都要有"()"
+
+数组中没有 **length()** 方法只有 **length** 属性
+
+### 如何判断 str = "helloworld" 是否是空字符串?
+
+**str.isEmpty()**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "hello,world";
+        System.out.println(str.isEmpty());
+    }
+}
+```
+
+![20210404215207](https://img.fengqigang.cn//img/20210404215207.png)
+
+### 如何实现str = "yootk" 中首字母大写?
+
+**temp.substring();**
+
+```java
+public class Replace {
+    public static void main(String[] args) {
+        String str = "hello,world";
+        System.out.println(initcap(str));
+    }
+    public static String initcap(String temp){
+        return temp.substring(0,1).toUpperCase() +temp.substring(1);
+    }
+}
+```
+
+![20210404215903](https://img.fengqigang.cn//img/20210404215903.png)
+
+### 如何想用 **this** 调用本类方法， 应该如何使用?
+
+**this.方法()**
+
+![20210404221755](https://img.fengqigang.cn//img/20210404221755.png)
+
+### 如何想用 **this** 调用本类的构造方法，应该如何使用?
+
+**this()**
+
+![20210404222131](https://img.fengqigang.cn//img/20210404222131.png)
+
+### 使用 **this** 调用构造方法时，存在什么样的限制?
+
+1. **this()** 调用构造方式形式的代码只能够放在构造方法的首行
+
+2. 进行构造方法互相调用时，一定要保留调用的出口
+
+![20210404223146](https://img.fengqigang.cn//img/20210404223146.png)
+
+### ![20210404223218](https://img.fengqigang.cn//img/20210404223218.png) 如何利用构造方法互调用简化代码?
+
+```java
+public class Employer {
+    public static void main(String[] args) {
+    }
+}
+
+class Emp {
+    private int empno;
+    private String ename;
+    private double sal;
+    private String dept;
+    public Emp() {
+        this(0, "无名氏", 0.0, "未定");
+    }
+    public Emp(int empno){
+        this(empno, "临时工", 8000.0, "后勤部");
+    }
+    public Emp(int empno, String ename){
+        this(empno, ename, 2000.0, "技术部");
+    }
+    public Emp(int empno, String ename, double sal, String dept){
+       this.empno = empno;
+       this.ename = ename;
+       this.sal = sal;
+       this.dept = dept;
+    }
+    public String getInfo(){
+        return "雇员编号:" + this.empno + ", 姓名:" + this.ename + ", 工资:" + this.sal + ", 部门:" + this.dept;
+    }
+}
+```
+
+![20210404224123](https://img.fengqigang.cn//img/20210404224123.png)
+
+### ![20210404224933](https://img.fengqigang.cn//img/20210404224933.png) 它们输出的是一样的吗? 为什么?
+
+是一样的
+
+**this** 关键字指的就是 **当前正在调用类中方法的实例化对象**
+
+![20210404225214](https://img.fengqigang.cn//img/20210404225214.png)
+
