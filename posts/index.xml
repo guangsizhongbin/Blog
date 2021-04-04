@@ -6,10 +6,10 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
             <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Java第十章</title>
-    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/</link>
+    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/</link>
     <pubDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E5%8D%81%E7%AB%A0/</guid>
+    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/</guid>
     <description><![CDATA[什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
 狭义:
 命令行方面的软件
