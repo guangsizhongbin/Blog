@@ -19,7 +19,7 @@
     <pubDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/day6/</guid>
-    <description><![CDATA[如何在一个构造函数中调用另一个构造函数? 用 this
+    <description><![CDATA[如何在一个构造函数中调用另一个构造函数 用 this
 1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
 不可以重名
 什么是匿名对象? 如何创建匿名对象? 匿名对象:
