@@ -1463,3 +1463,88 @@ class Emp {
 
 ![20210404225214](https://img.fengqigang.cn//img/20210404225214.png)
 
+### 引用传递的核心意义是什么?
+
+同一块堆内存空间可以被不同的栈内存所指向，**不同栈内存** 可以对 **同一堆内存** 进行内容的修改
+
+### 画出此程序的内存结构图![20210405091320](https://img.fengqigang.cn//img/20210405091320.png)
+
+1. Message msg = new Message(30);
+
+实例化 **Message** 类对象
+
+![20210405092151](https://img.fengqigang.cn//img/20210405092151.png)
+
+2. fun(msg)
+
+引用传递，fun 的 temp 参数接收引用
+
+![20210405092300](https://img.fengqigang.cn//img/20210405092300.png)
+
+3. temp.setNum(100)
+
+在 fun() 方法中修改 num 内容为 100
+
+![20210405092413](https://img.fengqigang.cn//img/20210405092413.png)
+
+4. fun() 方法执行完毕
+
+![20210405092603](https://img.fengqigang.cn//img/20210405092603.png)
+
+
+### 画出此程序的内存结构图![20210405093210](https://img.fengqigang.cn//img/20210405093210.png)
+
+**String** 类对象内容的改变是通过引用的变更实现的，但是所有的变更都是在 **fun()** 方法中完成的，一旦 **fun()** 方法执行完毕 **temp** 将失效，其对应的堆内存也将成为垃圾
+
+1. String msg = "Hello"
+
+实例化 **String** 类对象
+
+![20210405093353](https://img.fengqigang.cn//img/20210405093353.png)
+
+2. fun(msg)
+
+引用传递， temp 与 msg 引用相同地址
+
+![20210405093544](https://img.fengqigang.cn//img/20210405093544.png)
+
+3. temp = "World"
+
+修改 temp 内容， 开辟新内容
+
+![20210405093740](https://img.fengqigang.cn//img/20210405093740.png)
+
+4. fun() 结束
+
+![20210405093910](https://img.fengqigang.cn//img/20210405093910.png)
+
+### 画出此程序的内存结构图![20210405094737](https://img.fengqigang.cn//img/20210405094737.png)
+
+1. Message msg = new Message("Hello");
+
+实例化 **Message** 类对象
+
+![20210405100308](https://img.fengqigang.cn//img/20210405100308.png)
+
+2. fun(msg)
+
+引用传递， temp 与 msg 引用相同
+
+![20210405100706](https://img.fengqigang.cn//img/20210405100706.png)
+
+3. temp.setInfo("World");
+
+修改 info 属性内容
+
+![20210405100852](https://img.fengqigang.cn//img/20210405100852.png)
+
+4. fun() 方法执行完毕
+
+方法执行完毕 temp 断开引用
+
+![20210405101036](https://img.fengqigang.cn//img/20210405101036.png)
+
+### ![20210405102957](https://img.fengqigang.cn//img/20210405102957.png) 如何实现?
+
+
+
