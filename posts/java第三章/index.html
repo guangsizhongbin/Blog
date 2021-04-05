@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/"
-        },"genre": "posts","keywords": "java","wordcount":  3116 ,
+        },"genre": "posts","keywords": "java","wordcount":  3200 ,
         "url": "http:\/\/fengqigang.cn\/posts\/java%E7%AC%AC%E4%B8%89%E7%AB%A0\/","datePublished": "2021-03-25T22:54:33+08:00","dateModified": "2021-03-25T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Java第三章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3116 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;15 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-25">2021-03-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3200 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;16 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -244,6 +244,11 @@
         <li><a href="#使用-this-调用构造方法时存在什么样的限制">使用 <strong>this</strong> 调用构造方法时，存在什么样的限制?</a></li>
         <li><a href="#20210404223218httpsimgfengqigangcnimg20210404223218png-如何利用构造方法互调用简化代码"><img src="https://img.fengqigang.cn//img/20210404223218.png" alt="20210404223218"> 如何利用构造方法互调用简化代码?</a></li>
         <li><a href="#20210404224933httpsimgfengqigangcnimg20210404224933png-它们输出的是一样的吗-为什么"><img src="https://img.fengqigang.cn//img/20210404224933.png" alt="20210404224933"> 它们输出的是一样的吗? 为什么?</a></li>
+        <li><a href="#引用传递的核心意义是什么">引用传递的核心意义是什么?</a></li>
+        <li><a href="#画出此程序的内存结构图20210405091320httpsimgfengqigangcnimg20210405091320png">画出此程序的内存结构图<img src="https://img.fengqigang.cn//img/20210405091320.png" alt="20210405091320"></a></li>
+        <li><a href="#画出此程序的内存结构图20210405093210httpsimgfengqigangcnimg20210405093210png">画出此程序的内存结构图<img src="https://img.fengqigang.cn//img/20210405093210.png" alt="20210405093210"></a></li>
+        <li><a href="#画出此程序的内存结构图20210405094737httpsimgfengqigangcnimg20210405094737png">画出此程序的内存结构图<img src="https://img.fengqigang.cn//img/20210405094737.png" alt="20210405094737"></a></li>
+        <li><a href="#20210405102957httpsimgfengqigangcnimg20210405102957png-如何实现"><img src="https://img.fengqigang.cn//img/20210405102957.png" alt="20210405102957"> 如何实现?</a></li>
       </ul>
     </li>
   </ul>
@@ -2689,6 +2694,183 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210404225214.png"
         title="20210404225214" /></p>
+<h3 id="引用传递的核心意义是什么">引用传递的核心意义是什么?</h3>
+<p>同一块堆内存空间可以被不同的栈内存所指向，<strong>不同栈内存</strong> 可以对 <strong>同一堆内存</strong> 进行内容的修改</p>
+<h3 id="画出此程序的内存结构图20210405091320httpsimgfengqigangcnimg20210405091320png">画出此程序的内存结构图<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405091320.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405091320.png, https://img.fengqigang.cn//img/20210405091320.png 1.5x, https://img.fengqigang.cn//img/20210405091320.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405091320.png"
+        title="20210405091320" /></h3>
+<ol>
+<li>Message msg = new Message(30);</li>
+</ol>
+<p>实例化 <strong>Message</strong> 类对象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405092151.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405092151.png, https://img.fengqigang.cn//img/20210405092151.png 1.5x, https://img.fengqigang.cn//img/20210405092151.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405092151.png"
+        title="20210405092151" /></p>
+<ol start="2">
+<li>fun(msg)</li>
+</ol>
+<p>引用传递，fun 的 temp 参数接收引用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405092300.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405092300.png, https://img.fengqigang.cn//img/20210405092300.png 1.5x, https://img.fengqigang.cn//img/20210405092300.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405092300.png"
+        title="20210405092300" /></p>
+<ol start="3">
+<li>temp.setNum(100)</li>
+</ol>
+<p>在 fun() 方法中修改 num 内容为 100</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405092413.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405092413.png, https://img.fengqigang.cn//img/20210405092413.png 1.5x, https://img.fengqigang.cn//img/20210405092413.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405092413.png"
+        title="20210405092413" /></p>
+<ol start="4">
+<li>fun() 方法执行完毕</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405092603.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405092603.png, https://img.fengqigang.cn//img/20210405092603.png 1.5x, https://img.fengqigang.cn//img/20210405092603.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405092603.png"
+        title="20210405092603" /></p>
+<h3 id="画出此程序的内存结构图20210405093210httpsimgfengqigangcnimg20210405093210png">画出此程序的内存结构图<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405093210.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405093210.png, https://img.fengqigang.cn//img/20210405093210.png 1.5x, https://img.fengqigang.cn//img/20210405093210.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405093210.png"
+        title="20210405093210" /></h3>
+<p><strong>String</strong> 类对象内容的改变是通过引用的变更实现的，但是所有的变更都是在 <strong>fun()</strong> 方法中完成的，一旦 <strong>fun()</strong> 方法执行完毕 <strong>temp</strong> 将失效，其对应的堆内存也将成为垃圾</p>
+<ol>
+<li>String msg = &ldquo;Hello&rdquo;</li>
+</ol>
+<p>实例化 <strong>String</strong> 类对象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405093353.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405093353.png, https://img.fengqigang.cn//img/20210405093353.png 1.5x, https://img.fengqigang.cn//img/20210405093353.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405093353.png"
+        title="20210405093353" /></p>
+<ol start="2">
+<li>fun(msg)</li>
+</ol>
+<p>引用传递， temp 与 msg 引用相同地址</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405093544.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405093544.png, https://img.fengqigang.cn//img/20210405093544.png 1.5x, https://img.fengqigang.cn//img/20210405093544.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405093544.png"
+        title="20210405093544" /></p>
+<ol start="3">
+<li>temp = &ldquo;World&rdquo;</li>
+</ol>
+<p>修改 temp 内容， 开辟新内容</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405093740.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405093740.png, https://img.fengqigang.cn//img/20210405093740.png 1.5x, https://img.fengqigang.cn//img/20210405093740.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405093740.png"
+        title="20210405093740" /></p>
+<ol start="4">
+<li>fun() 结束</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405093910.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405093910.png, https://img.fengqigang.cn//img/20210405093910.png 1.5x, https://img.fengqigang.cn//img/20210405093910.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405093910.png"
+        title="20210405093910" /></p>
+<h3 id="画出此程序的内存结构图20210405094737httpsimgfengqigangcnimg20210405094737png">画出此程序的内存结构图<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405094737.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405094737.png, https://img.fengqigang.cn//img/20210405094737.png 1.5x, https://img.fengqigang.cn//img/20210405094737.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405094737.png"
+        title="20210405094737" /></h3>
+<ol>
+<li>Message msg = new Message(&ldquo;Hello&rdquo;);</li>
+</ol>
+<p>实例化 <strong>Message</strong> 类对象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405100308.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405100308.png, https://img.fengqigang.cn//img/20210405100308.png 1.5x, https://img.fengqigang.cn//img/20210405100308.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405100308.png"
+        title="20210405100308" /></p>
+<ol start="2">
+<li>fun(msg)</li>
+</ol>
+<p>引用传递， temp 与 msg 引用相同</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405100706.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405100706.png, https://img.fengqigang.cn//img/20210405100706.png 1.5x, https://img.fengqigang.cn//img/20210405100706.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405100706.png"
+        title="20210405100706" /></p>
+<ol start="3">
+<li>temp.setInfo(&ldquo;World&rdquo;);</li>
+</ol>
+<p>修改 info 属性内容</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405100852.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405100852.png, https://img.fengqigang.cn//img/20210405100852.png 1.5x, https://img.fengqigang.cn//img/20210405100852.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405100852.png"
+        title="20210405100852" /></p>
+<ol start="4">
+<li>fun() 方法执行完毕</li>
+</ol>
+<p>方法执行完毕 temp 断开引用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405101036.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405101036.png, https://img.fengqigang.cn//img/20210405101036.png 1.5x, https://img.fengqigang.cn//img/20210405101036.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405101036.png"
+        title="20210405101036" /></p>
+<h3 id="20210405102957httpsimgfengqigangcnimg20210405102957png-如何实现"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210405102957.png"
+        data-srcset="https://img.fengqigang.cn//img/20210405102957.png, https://img.fengqigang.cn//img/20210405102957.png 1.5x, https://img.fengqigang.cn//img/20210405102957.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210405102957.png"
+        title="20210405102957" /> 如何实现?</h3>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
