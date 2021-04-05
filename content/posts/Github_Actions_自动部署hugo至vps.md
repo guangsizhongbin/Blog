@@ -103,7 +103,7 @@ if [ -d "$gitPath" ]; then
 		mv gittemp/.git .
 		rm -rf gittemp
 	fi
-	git reset --hard gh-papes
+	git reset --hard gh-pages
 	git pull
 	chown -R www:www $gitPath
 	echo "End"
