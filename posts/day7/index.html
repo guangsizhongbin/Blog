@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day7 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day7" />
+<meta property="og:description" content="什么是 package 关键字? 作用:
+用来声明当前类(当前的java文件中的所有类) 属于哪个包, package 后面跟上当前的包名
+  包名的书写，用逗号隔开
+  语法上，该声明语句一定位于一个 Java 源文件的有效代码的第一行, 否则会报错
+  什么是 import 关键字? 作用:
+就量用来导包的
+当一个别的类中的成员(方法和变量)时，编译器会优先从当前包中检索，如果找得到就去调用，如果找不到，它就会报错
+语法:
+import &#43; 全限定类名
+位置:
+最好写在 package 下面，不可用写在有效代码下面
+如何实现智能导包? import &#43; 包名 &#43; *
+什么叫有需求导包? 如果不导包就报错，那么它就会自动导包
+如果同包下已经有同名的类，那么它就不会去导包了
+什么是默认导包, 隐式导包? java.lang 包下的所有类，是 java 的核心类，它会自动隐式导入，不需要再写导包语句
+如果同包下和不同包下同名类都想使用，怎么办? 真的存在这种需求，建议改名一个
+用全限定类名去使用
+什么是面向过程与面向对象? 面向过程 procedureal oriented programming
+面向对象 oop
+面向过程的编程思想
+即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成
+面向对象的编程思想
+即程序是由一系列的对象&#43;对象之间交互(消息)组成
+面向过程有什么优缺点? 优点:
+代码执行效率高
+缺点:
+面向过程程序是一条线下来的，对程序员要求很高，需要程序员详细了解每个功能的细节，这就意味着，不利于合作开发，不利于处理复杂的大型项目
+应用场景:
+需要高效率的场景，比如说操作系统内核OS, 嵌入式开发，算法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day7/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-06T23:03:23&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-06T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day7"/>
+<meta name="twitter:description" content="什么是 package 关键字? 作用:
+用来声明当前类(当前的java文件中的所有类) 属于哪个包, package 后面跟上当前的包名
+  包名的书写，用逗号隔开
+  语法上，该声明语句一定位于一个 Java 源文件的有效代码的第一行, 否则会报错
+  什么是 import 关键字? 作用:
+就量用来导包的
+当一个别的类中的成员(方法和变量)时，编译器会优先从当前包中检索，如果找得到就去调用，如果找不到，它就会报错
+语法:
+import &#43; 全限定类名
+位置:
+最好写在 package 下面，不可用写在有效代码下面
+如何实现智能导包? import &#43; 包名 &#43; *
+什么叫有需求导包? 如果不导包就报错，那么它就会自动导包
+如果同包下已经有同名的类，那么它就不会去导包了
+什么是默认导包, 隐式导包? java.lang 包下的所有类，是 java 的核心类，它会自动隐式导入，不需要再写导包语句
+如果同包下和不同包下同名类都想使用，怎么办? 真的存在这种需求，建议改名一个
+用全限定类名去使用
+什么是面向过程与面向对象? 面向过程 procedureal oriented programming
+面向对象 oop
+面向过程的编程思想
+即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成
+面向对象的编程思想
+即程序是由一系列的对象&#43;对象之间交互(消息)组成
+面向过程有什么优缺点? 优点:
+代码执行效率高
+缺点:
+面向过程程序是一条线下来的，对程序员要求很高，需要程序员详细了解每个功能的细节，这就意味着，不利于合作开发，不利于处理复杂的大型项目
+应用场景:
+需要高效率的场景，比如说操作系统内核OS, 嵌入式开发，算法"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day7/" /><link rel="prev" href="http://fengqigang.cn/posts/intelldebug/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day7",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day7\/"
+        },"genre": "posts","keywords": "java","wordcount":  406 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day7\/","datePublished": "2021-04-06T23:03:23+08:00","dateModified": "2021-04-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day7</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-06">2021-04-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;406 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是-package-关键字">什么是 <strong>package</strong> 关键字?</a></li>
+        <li><a href="#什么是-import-关键字">什么是 <strong>import</strong> 关键字?</a></li>
+        <li><a href="#如何实现智能导包">如何实现智能导包?</a></li>
+        <li><a href="#什么叫有需求导包">什么叫有需求导包?</a></li>
+        <li><a href="#什么是默认导包-隐式导包">什么是默认导包, 隐式导包?</a></li>
+        <li><a href="#如果同包下和不同包下同名类都想使用怎么办">如果同包下和不同包下同名类都想使用，怎么办?</a></li>
+        <li><a href="#什么是面向过程与面向对象">什么是面向过程与面向对象?</a></li>
+        <li><a href="#面向过程有什么优缺点">面向过程有什么优缺点?</a></li>
+        <li><a href="#面向对象程序有什么优缺点">面向对象程序有什么优缺点?</a></li>
+        <li><a href="#如何查看工程中的依赖">如何查看工程中的依赖？</a></li>
+        <li><a href="#若类名中涉及到-class-该怎么办">若类名中涉及到 <strong>class</strong>, 该怎么办?</a></li>
+        <li><a href="#类中的成员访问权限修饰符有哪些">类中的成员访问权限修饰符有哪些?</a></li>
+        <li><a href="#private-访问权限修饰符是什么样的"><strong>private</strong> 访问权限修饰符是什么样的?</a></li>
+        <li><a href="#public-访问权限修饰符是什么样的"><strong>public</strong> 访问权限修饰符是什么样的?</a></li>
+        <li><a href="#默认的缺省的-访问权限修饰符是什么样的"><strong>默认的，缺省的</strong> 访问权限修饰符是什么样的?</a></li>
+        <li><a href="#如果类中没有访问权限里面的成员是-public-可以访问吗">如果类中没有访问权限，里面的成员是 <strong>public</strong> 可以访问吗?</a></li>
+        <li><a href="#如何嵌套定义一个类它是什么-有什么特点">如何嵌套定义一个类，它是什么? 有什么特点?</a></li>
+        <li><a href="#使用了访问权限就一定不可以获取类中的私有成员了吗">使用了访问权限，就一定不可以获取类中的私有成员了吗?</a></li>
+        <li><a href="#如何告诉用户这是工具类是不需要创建对象的">如何告诉用户这是工具类，是不需要创建对象的?</a></li>
+        <li><a href="#不使用权限控制符会有什么问题">不使用权限控制符，会有什么问题?</a></li>
+        <li><a href="#使用正确使用访问权限控制符">使用正确使用访问权限控制符?</a></li>
+        <li><a href="#使用-get-set-方法有什么好处">使用 <strong>get</strong>, <strong>set</strong> 方法有什么好处?</a></li>
+        <li><a href="#封装成员变量后如何给成员变量赋值">封装成员变量后，如何给成员变量赋值?</a></li>
+        <li><a href="#什么是继承-如何使用继承">什么是继承? 如何使用继承?</a></li>
+        <li><a href="#继承的基本思想是什么-什么是父类-什么是子类">继承的基本思想是什么? 什么是父类? 什么是子类?</a></li>
+        <li><a href="#父类和子类到底有什么关系呢">父类和子类到底有什么关系呢?</a></li>
+        <li><a href="#在实际的开发中可以凭借自己的经验去设置继承吗">在实际的开发中可以凭借自己的经验去设置继承吗?</a></li>
+        <li><a href="#子类可以看成父类那么父类和子类有关系吗">子类可以看成父类，那么父类和子类有关系吗?</a></li>
+        <li><a href="#什么是数据类型的向上转型和向下转型">什么是数据类型的向上转型和向下转型?</a></li>
+        <li><a href="#如何创建三种鸭子都能叫和游泳">如何创建三种鸭子，都能叫和游泳?</a></li>
+        <li><a href="#使用继承的有缺点是什么">使用继承的有缺点是什么?</a></li>
+        <li><a href="#不同包的子类中访问-protected-成员有几种方式">不同包的子类中访问 <strong>protected</strong> 成员有几种方式?</a></li>
+        <li><a href="#子类中创建父类对象然后用父类对象访问-protected-成员可以吗">子类中创建父类对象，然后用父类对象访问 <strong>protected</strong> 成员可以吗?</a></li>
+        <li><a href="#子类中创建自身对象然后访问-protected-成员可以吗">子类中创建自身对象，然后访问 <strong>protected</strong> 成员可以吗?</a></li>
+        <li><a href="#子类中创建兄弟类对象-然后访问它从父类中继承过来的-protected-成员可以吗">子类中创建&quot;兄弟类&quot;对象， 然后访问它从父类中继承过来的 <strong>protected</strong> 成员可以吗?</a></li>
+        <li><a href="#被-protected-修饰的成员其访问权限是什么样的">被 <strong>protected</strong> 修饰的成员，其访问权限是什么样的?</a></li>
+        <li><a href="#将-protected-设置复杂有什么意思">将 <strong>protected</strong> 设置复杂，有什么意思?</a></li>
+        <li><a href="#20210406201013httpsimgfengqigangcnimg20210406201013png-如何访问到这个方法"><img src="https://img.fengqigang.cn//img/20210406201013.png" alt="20210406201013"> 如何访问到这个方法?</a></li>
+        <li><a href="#20210406220313httpsimgfengqigangcnimg20210406220313png-这里访问clone可以实现吗"><img src="https://img.fengqigang.cn//img/20210406220313.png" alt="20210406220313"> 这里访问clone()可以实现吗?</a></li>
+        <li><a href="#什么是单继承多继承">什么是单继承，多继承?</a></li>
+        <li><a href="#java-中有没有多继承"><strong>java</strong> 中有没有多继承?</a></li>
+        <li><a href="#使用多继承有特点">使用多继承有特点?</a></li>
+        <li><a href="#族谱与继承有什么关系祖先类-继承层次继承链">族谱与继承有什么关系(祖先类, 继承层次，继承链)?</a></li>
+        <li><a href="#父类的私有成员可以继承吗">父类的私有成员可以继承吗?</a></li>
+        <li><a href="#如何证明子类继承了私有成员">如何证明子类继承了私有成员?</a></li>
+        <li><a href="#父类的构造方法可以继承吗">父类的构造方法可以继承吗?</a></li>
+        <li><a href="#父类和子类都是需要类加载的它们的顺序是什么">父类和子类都是需要类加载的，它们的顺序是什么?</a></li>
+        <li><a href="#创建子类对象同时会创建父类对象吗会在内存中真实创建几个对象父类成员可能会创建一个对象吗">创建子类对象同时会创建父类对象吗?会在内存中真实创建几个对象?父类成员可能会创建一个对象吗?</a></li>
+        <li><a href="#在创建s对象子类时其父类成员放在哪里">在创建S对象(子类)时，其父类成员放在哪里?</a></li>
+        <li><a href="#成员都是有初始化然后再赋值的过程请问父类的这些成员和子类独有的成员谁先谁后">成员都是有初始化然后再赋值的过程，请问父类的这些成员和子类独有的成员，谁先谁后?</a></li>
+        <li><a href="#创建对象后父类成员变量和子类成员变量谁先赋值">创建对象后，父类成员变量和子类成员变量谁先赋值?</a></li>
+        <li><a href="#20210406225842httpsimgfengqigangcnimg20210406225842png-其内存图是什么样的"><img src="https://img.fengqigang.cn//img/20210406225842.png" alt="20210406225842"> 其内存图是什么样的?</a></li>
+        <li><a href="#触发类加载的条件有哪些">触发类加载的条件有哪些?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是-package-关键字">什么是 <strong>package</strong> 关键字?</h3>
+<p><strong>作用</strong>:</p>
+<p>用来声明当前类(当前的java文件中的所有类) 属于哪个包, <strong>package</strong> 后面跟上当前的包名</p>
+<ul>
+<li>
+<p>包名的书写，用逗号隔开</p>
+</li>
+<li>
+<p>语法上，该声明语句一定位于一个 Java 源文件的有效代码的第一行, 否则会报错</p>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406165041.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406165041.png, https://img.fengqigang.cn//img/20210406165041.png 1.5x, https://img.fengqigang.cn//img/20210406165041.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406165041.png"
+        title="20210406165041" /></p>
+<h3 id="什么是-import-关键字">什么是 <strong>import</strong> 关键字?</h3>
+<p><strong>作用</strong>:</p>
+<p>就量用来导包的</p>
+<p>当一个别的类中的成员(方法和变量)时，编译器会优先从当前包中检索，如果找得到就去调用，如果找不到，它就会报错</p>
+<p><strong>语法</strong>:</p>
+<p>import + 全限定类名</p>
+<p><strong>位置</strong>:</p>
+<p>最好写在 <strong>package</strong> 下面，不可用写在有效代码下面</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406165407.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406165407.png, https://img.fengqigang.cn//img/20210406165407.png 1.5x, https://img.fengqigang.cn//img/20210406165407.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406165407.png"
+        title="20210406165407" /></p>
+<h3 id="如何实现智能导包">如何实现智能导包?</h3>
+<p>import + 包名 + *</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406165354.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406165354.png, https://img.fengqigang.cn//img/20210406165354.png 1.5x, https://img.fengqigang.cn//img/20210406165354.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406165354.png"
+        title="20210406165354" /></p>
+<h3 id="什么叫有需求导包">什么叫有需求导包?</h3>
+<p>如果不导包就报错，那么它就会自动导包</p>
+<p>如果同包下已经有同名的类，那么它就不会去导包了</p>
+<h3 id="什么是默认导包-隐式导包">什么是默认导包, 隐式导包?</h3>
+<p><strong>java.lang</strong> 包下的所有类，是 <strong>java</strong> 的核心类，它会自动隐式导入，不需要再写导包语句</p>
+<h3 id="如果同包下和不同包下同名类都想使用怎么办">如果同包下和不同包下同名类都想使用，怎么办?</h3>
+<p>真的存在这种需求，建议改名一个</p>
+<p>用全限定类名去使用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406165925.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406165925.png, https://img.fengqigang.cn//img/20210406165925.png 1.5x, https://img.fengqigang.cn//img/20210406165925.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406165925.png"
+        title="20210406165925" /></p>
+<h3 id="什么是面向过程与面向对象">什么是面向过程与面向对象?</h3>
+<p>面向过程 procedureal oriented programming</p>
+<p>面向对象 oop</p>
+<p><strong>面向过程的编程思想</strong></p>
+<p>即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成</p>
+<p><strong>面向对象的编程思想</strong></p>
+<p>即程序是由一系列的对象+对象之间交互(消息)组成</p>
+<h3 id="面向过程有什么优缺点">面向过程有什么优缺点?</h3>
+<p><strong>优点</strong>:</p>
+<p>代码执行效率高</p>
+<p><strong>缺点</strong>:</p>
+<p>面向过程程序是一条线下来的，对程序员要求很高，需要程序员详细了解每个功能的细节，这就意味着，不利于合作开发，不利于处理复杂的大型项目</p>
+<p><strong>应用场景</strong>:</p>
+<p>需要高效率的场景，比如说操作系统内核OS, 嵌入式开发，算法</p>
+<h3 id="面向对象程序有什么优缺点">面向对象程序有什么优缺点?</h3>
+<p><strong>优点</strong>:</p>
+<p>程序是按照功能模块划分的，对程序员的要求相对较小，不同的程序员负责不同的模块，各个模块之间不需要相互了解, 这样有利于程序员之间合作开发</p>
+<p><strong>缺点</strong>:</p>
+<p>思路没有那么清晰，代码会很冗余</p>
+<p>最重要的，面向对象程序会花费很多资源来创建对象和管理对象，效率相对较低</p>
+<h3 id="如何查看工程中的依赖">如何查看工程中的依赖？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406174635.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406174635.png, https://img.fengqigang.cn//img/20210406174635.png 1.5x, https://img.fengqigang.cn//img/20210406174635.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406174635.png"
+        title="20210406174635" /></p>
+<h3 id="若类名中涉及到-class-该怎么办">若类名中涉及到 <strong>class</strong>, 该怎么办?</h3>
+<p>不要直接写 <strong>class</strong> , 写成 <strong>clazz</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406183934.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406183934.png, https://img.fengqigang.cn//img/20210406183934.png 1.5x, https://img.fengqigang.cn//img/20210406183934.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406183934.png"
+        title="20210406183934" /></p>
+<h3 id="类中的成员访问权限修饰符有哪些">类中的成员访问权限修饰符有哪些?</h3>
+<ol>
+<li>
+<p>private</p>
+</li>
+<li>
+<p>public</p>
+</li>
+<li>
+<p>默认</p>
+</li>
+<li>
+<p>protected</p>
+</li>
+</ol>
+<h3 id="private-访问权限修饰符是什么样的"><strong>private</strong> 访问权限修饰符是什么样的?</h3>
+<p><strong>private</strong> 私有的，只能自己用，别人用不了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406184750.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406184750.png, https://img.fengqigang.cn//img/20210406184750.png 1.5x, https://img.fengqigang.cn//img/20210406184750.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406184750.png"
+        title="20210406184750" /></p>
+<h3 id="public-访问权限修饰符是什么样的"><strong>public</strong> 访问权限修饰符是什么样的?</h3>
+<p><strong>public</strong> 公共的，随便用，大家都能用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406184948.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406184948.png, https://img.fengqigang.cn//img/20210406184948.png 1.5x, https://img.fengqigang.cn//img/20210406184948.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406184948.png"
+        title="20210406184948" /></p>
+<h3 id="默认的缺省的-访问权限修饰符是什么样的"><strong>默认的，缺省的</strong> 访问权限修饰符是什么样的?</h3>
+<p>只能在同包下使用, 不同包下不能使用</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406185122.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406185122.png, https://img.fengqigang.cn//img/20210406185122.png 1.5x, https://img.fengqigang.cn//img/20210406185122.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406185122.png"
+        title="20210406185122" /></p>
+<h3 id="如果类中没有访问权限里面的成员是-public-可以访问吗">如果类中没有访问权限，里面的成员是 <strong>public</strong> 可以访问吗?</h3>
+<p>因为类中没有访问权限，所以里面的成员无法访问</p>
+<h3 id="如何嵌套定义一个类它是什么-有什么特点">如何嵌套定义一个类，它是什么? 有什么特点?</h3>
+<p><strong>内部类</strong></p>
+<p>内部类相当于类的成员了，那它立刻就有了四访问权限</p>
+<h3 id="使用了访问权限就一定不可以获取类中的私有成员了吗">使用了访问权限，就一定不可以获取类中的私有成员了吗?</h3>
+<p>不是，使用反射可以获取一个类中的私有成员</p>
+<p>访问权限最重要的的用途是告诉使用者，什么地方出触碰，什么地方不要触碰</p>
+<h3 id="如何告诉用户这是工具类是不需要创建对象的">如何告诉用户这是工具类，是不需要创建对象的?</h3>
+<p>采取私有化构造方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406190042.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406190042.png, https://img.fengqigang.cn//img/20210406190042.png 1.5x, https://img.fengqigang.cn//img/20210406190042.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406190042.png"
+        title="20210406190042" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406190631.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406190631.png, https://img.fengqigang.cn//img/20210406190631.png 1.5x, https://img.fengqigang.cn//img/20210406190631.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406190631.png"
+        title="20210406190631" /></p>
+<h3 id="不使用权限控制符会有什么问题">不使用权限控制符，会有什么问题?</h3>
+<ol>
+<li>
+<p>没有任何访问权限控制，默认权限，外界可以随便使用</p>
+</li>
+<li>
+<p>成员变量的访问和赋值都是用对象名, 不够细分，如果想对访问或赋值单独操作，没有实现， 比如改变访问结果或者赋值进行修正</p>
+</li>
+</ol>
+<h3 id="使用正确使用访问权限控制符">使用正确使用访问权限控制符?</h3>
+<ol>
+<li>
+<p>私有化成员变量</p>
+</li>
+<li>
+<p>提供赋值和访问的方法</p>
+</li>
+</ol>
+<h3 id="使用-get-set-方法有什么好处">使用 <strong>get</strong>, <strong>set</strong> 方法有什么好处?</h3>
+<ol>
+<li>
+<p>私有化成员变量, 隐藏实现细节</p>
+</li>
+<li>
+<p><strong>get</strong>，<strong>set</strong> 方法给私有成员变量，提供了一种访问方式</p>
+</li>
+<li>
+<p><strong>get</strong>, <strong>set</strong> 方法将成员变量的读、写分离了</p>
+</li>
+<li>
+<p>成员变量的访问从之前的不可控，变为了可控</p>
+</li>
+</ol>
+<h3 id="封装成员变量后如何给成员变量赋值">封装成员变量后，如何给成员变量赋值?</h3>
+<ol>
+<li>
+<p>无参构造方法创建对象</p>
+</li>
+<li>
+<p>有参构造方法</p>
+</li>
+</ol>
+<h3 id="什么是继承-如何使用继承">什么是继承? 如何使用继承?</h3>
+<p><strong>继承</strong>:</p>
+<p>当需要复用一个类的成员时，引入继承，来实现对成员的复用</p>
+<p><strong>语法</strong>:</p>
+<p>[访问权限修饰符] class 类名 extends 被继承的类 {}</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406191732.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406191732.png, https://img.fengqigang.cn//img/20210406191732.png 1.5x, https://img.fengqigang.cn//img/20210406191732.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406191732.png"
+        title="20210406191732" /></p>
+<h3 id="继承的基本思想是什么-什么是父类-什么是子类">继承的基本思想是什么? 什么是父类? 什么是子类?</h3>
+<p>继承的本质是利用代码</p>
+<p><strong>父类(parent class)</strong>：</p>
+<p>也称为超类(super class), 基类(base class)</p>
+<p>已存在的类，被继承的类，称为父类</p>
+<p><strong>子类</strong></p>
+<p>也称为派生类(derived class), 孩子类(child class)</p>
+<p>新创建的类, 继承被继承类的类， 称这为子类</p>
+<h3 id="父类和子类到底有什么关系呢">父类和子类到底有什么关系呢?</h3>
+<p><strong>子类可以看成一个父类，或者说子类 is-a 父类</strong></p>
+<ol>
+<li>代码层面上:</li>
+</ol>
+<p>可以用一个父类引用指向一个子类对象，这里其实说明了 <strong>子类就是一个父类对象</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406192806.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406192806.png, https://img.fengqigang.cn//img/20210406192806.png 1.5x, https://img.fengqigang.cn//img/20210406192806.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406192806.png"
+        title="20210406192806" /></p>
+<ol start="2">
+<li>引用数据类型的定义上:</li>
+</ol>
+<p>成员变量 + 成员方法， 继承后，子类得到了父类中的所有的成员，现在子类从定义上看，子类有了父类的所有功能，可以当父类用</p>
+<ol start="3">
+<li>从逻辑角度上看</li>
+</ol>
+<ul>
+<li>Person
+<ul>
+<li>Teacher</li>
+<li>学生</li>
+</ul>
+</li>
+</ul>
+<p>学生是人，老师也是人，子类就是一个父类</p>
+<h3 id="在实际的开发中可以凭借自己的经验去设置继承吗">在实际的开发中可以凭借自己的经验去设置继承吗?</h3>
+<p><strong>不可以</strong></p>
+<p>实际开发业务会很复杂，在设计继承时，需要根据自身对业务的了解和相关的文档来设计，不能直接靠经验</p>
+<h3 id="子类可以看成父类那么父类和子类有关系吗">子类可以看成父类，那么父类和子类有关系吗?</h3>
+<p>父类不一定可以看成一个子类，实际上大部分时间都不可以</p>
+<p><strong>子类扩展了父类，多数情况下子类都比父类功能要强大</strong></p>
+<h3 id="什么是数据类型的向上转型和向下转型">什么是数据类型的向上转型和向下转型?</h3>
+<p>父类引用指向子类对象发生了数据类型转换，转换了引用</p>
+<p>不需要写代码</p>
+<p><strong>从一个子类的引用转换成了父类的引用</strong></p>
+<p>实现了<strong>向上转型</strong></p>
+<p>同样手动写代码从父类向子类的转化, 就是向下转型</p>
+<h3 id="如何创建三种鸭子都能叫和游泳">如何创建三种鸭子，都能叫和游泳?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">SecondTypeDuck</span> <span class="n">std</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SecondTypeDuck</span><span class="o">();</span>
+        <span class="n">std</span><span class="o">.</span><span class="na">shout</span><span class="o">();</span>
+        <span class="n">std</span><span class="o">.</span><span class="na">swim</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Duck</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shout</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;嘎嘎嘎&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">swim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;白毛浮绿水&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">FirstTypeDuck</span> <span class="kd">extends</span> <span class="n">Duck</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">SecondTypeDuck</span> <span class="kd">extends</span> <span class="n">Duck</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThirdTypeDuck</span> <span class="kd">extends</span> <span class="n">Duck</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406194220.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406194220.png, https://img.fengqigang.cn//img/20210406194220.png 1.5x, https://img.fengqigang.cn//img/20210406194220.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406194220.png"
+        title="20210406194220" /></p>
+<h3 id="使用继承的有缺点是什么">使用继承的有缺点是什么?</h3>
+<p><strong>好处</strong>:</p>
+<p>减少了代码冗余，提高了代码的复用性</p>
+<p>更有利于功能的扩展，提升可维护性</p>
+<p><strong>弊端</strong>:</p>
+<p>父类中对成员进行修改，会体现到每一个子类中，不可选择具体哪个子类生效</p>
+<h3 id="不同包的子类中访问-protected-成员有几种方式">不同包的子类中访问 <strong>protected</strong> 成员有几种方式?</h3>
+<ol>
+<li>
+<p>子类中创建父类对象，然后用父类对象访问</p>
+</li>
+<li>
+<p>子类中创建自身对象，然后访问</p>
+</li>
+<li>
+<p>子类中创建 &ldquo;兄弟&rdquo; 类对象，然后访问</p>
+</li>
+</ol>
+<h3 id="子类中创建父类对象然后用父类对象访问-protected-成员可以吗">子类中创建父类对象，然后用父类对象访问 <strong>protected</strong> 成员可以吗?</h3>
+<p>不可以</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406194943.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406194943.png, https://img.fengqigang.cn//img/20210406194943.png 1.5x, https://img.fengqigang.cn//img/20210406194943.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406194943.png"
+        title="20210406194943" /></p>
+<h3 id="子类中创建自身对象然后访问-protected-成员可以吗">子类中创建自身对象，然后访问 <strong>protected</strong> 成员可以吗?</h3>
+<p>可以</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406195050.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406195050.png, https://img.fengqigang.cn//img/20210406195050.png 1.5x, https://img.fengqigang.cn//img/20210406195050.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406195050.png"
+        title="20210406195050" /></p>
+<h3 id="子类中创建兄弟类对象-然后访问它从父类中继承过来的-protected-成员可以吗">子类中创建&quot;兄弟类&quot;对象， 然后访问它从父类中继承过来的 <strong>protected</strong> 成员可以吗?</h3>
+<p>不可以</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406195258.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406195258.png, https://img.fengqigang.cn//img/20210406195258.png 1.5x, https://img.fengqigang.cn//img/20210406195258.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406195258.png"
+        title="20210406195258" /></p>
+<h3 id="被-protected-修饰的成员其访问权限是什么样的">被 <strong>protected</strong> 修饰的成员，其访问权限是什么样的?</h3>
+<ol>
+<li>
+<p>同类中，同包中，都可以任意访问(创建父类对象, 子类对象都可以)</p>
+</li>
+<li>
+<p>不同包时候，必须在子类的的那个类中，创建当前子类的对象才可以访问</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>创建别的子类对象，不能访问</p>
+</li>
+<li>
+<p>创建父类对象，不能访问</p>
+</li>
+</ul>
+<ol start="3">
+<li>子类只能在自己的作用范围内访问自己继承的那个父类 <strong>protected</strong> 域</li>
+</ol>
+<p>而无法到访问别的子类(同父类的亲兄弟) 所继承的 <strong>protected</strong> 域和父类对象的 <strong>protected</strong> 域</p>
+<p><strong>总结</strong>:</p>
+<p>子类继承自父类的 <strong>protected</strong> 成员，必须自己来处理，爸爸帮不了，兄弟姐妹更帮不了</p>
+<h3 id="将-protected-设置复杂有什么意思">将 <strong>protected</strong> 设置复杂，有什么意思?</h3>
+<p>如果类中某个成员，非常有价值，希望这个成员总是被子类使用，而不会被滥用</p>
+<ol>
+<li>
+<p>使用 <strong>protected</strong>  修饰成员以后，一定能够保证该成员被子类所使用</p>
+</li>
+<li>
+<p>保证子类只能用自己继承的</p>
+</li>
+</ol>
+<p>如</p>
+<p><strong>继承财产</strong></p>
+<h3 id="20210406201013httpsimgfengqigangcnimg20210406201013png-如何访问到这个方法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406201013.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406201013.png, https://img.fengqigang.cn//img/20210406201013.png 1.5x, https://img.fengqigang.cn//img/20210406201013.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406201013.png"
+        title="20210406201013" /> 如何访问到这个方法?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Test</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="20210406220313httpsimgfengqigangcnimg20210406220313png-这里访问clone可以实现吗"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406220313.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406220313.png, https://img.fengqigang.cn//img/20210406220313.png 1.5x, https://img.fengqigang.cn//img/20210406220313.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406220313.png"
+        title="20210406220313" /> 这里访问clone()可以实现吗?</h3>
+<p>不行</p>
+<p>因为 <strong>clone</strong> 是受保护的，只有在自身类中创建自身对象来访问</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Demo</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Demo</span><span class="o">();</span>
+<span class="n">d</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="什么是单继承多继承">什么是单继承，多继承?</h3>
+<p><strong>单继承</strong></p>
+<p>一个类有且仅有直接一个父类</p>
+<h3 id="java-中有没有多继承"><strong>java</strong> 中有没有多继承?</h3>
+<p>没有</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406220952.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406220952.png, https://img.fengqigang.cn//img/20210406220952.png 1.5x, https://img.fengqigang.cn//img/20210406220952.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406220952.png"
+        title="20210406220952" /></p>
+<h3 id="使用多继承有特点">使用多继承有特点?</h3>
+<ol>
+<li>
+<p>支持多继承可就同时获取多个类的成员，这样会更方便</p>
+</li>
+<li>
+<p>当遇到两个类中有同名的成员时会遇到麻烦</p>
+</li>
+</ol>
+<h3 id="族谱与继承有什么关系祖先类-继承层次继承链">族谱与继承有什么关系(祖先类, 继承层次，继承链)?</h3>
+<p><strong>祖先类</strong>:</p>
+<p>处在继承上层的类</p>
+<p><strong>继承层次</strong></p>
+<p>由某个祖先派生出来的 <strong>所有类的集合</strong> 叫做继承层次</p>
+<p><strong>继承链</strong></p>
+<p>从某一个子类开始，到其祖先类的路径</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406222222.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406222222.png, https://img.fengqigang.cn//img/20210406222222.png 1.5x, https://img.fengqigang.cn//img/20210406222222.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406222222.png"
+        title="20210406222222" /></p>
+<h3 id="父类的私有成员可以继承吗">父类的私有成员可以继承吗?</h3>
+<p>可以</p>
+<p>父类的私有成员在创建对象后，无法直接调用，看起来像没有继承</p>
+<p>但实际上是因为 <strong>没有权限</strong> ，而 <strong>不是没有继承</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406222802.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406222802.png, https://img.fengqigang.cn//img/20210406222802.png 1.5x, https://img.fengqigang.cn//img/20210406222802.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406222802.png"
+        title="20210406222802" /></p>
+<h3 id="如何证明子类继承了私有成员">如何证明子类继承了私有成员?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406223337.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406223337.png, https://img.fengqigang.cn//img/20210406223337.png 1.5x, https://img.fengqigang.cn//img/20210406223337.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406223337.png"
+        title="20210406223337" /></p>
+<h3 id="父类的构造方法可以继承吗">父类的构造方法可以继承吗?</h3>
+<p>构造器不属于成员，并且构造器是给自身类的对象的成员变量赋值用的，也没有必要被继承</p>
+<h3 id="父类和子类都是需要类加载的它们的顺序是什么">父类和子类都是需要类加载的，它们的顺序是什么?</h3>
+<p>先加载父类，再加载子类</p>
+<h3 id="创建子类对象同时会创建父类对象吗会在内存中真实创建几个对象父类成员可能会创建一个对象吗">创建子类对象同时会创建父类对象吗?会在内存中真实创建几个对象?父类成员可能会创建一个对象吗?</h3>
+<p>显然创建多个对象是不现实的，因为这样代价太高了，如果这么设计堆上应该全是 <strong>Object</strong> 对象</p>
+<h3 id="在创建s对象子类时其父类成员放在哪里">在创建S对象(子类)时，其父类成员放在哪里?</h3>
+<p>子类对象中的父类成员会在子类对象中，开辟一片独有的空间，用来存放这些成员</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406224736.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406224736.png, https://img.fengqigang.cn//img/20210406224736.png 1.5x, https://img.fengqigang.cn//img/20210406224736.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406224736.png"
+        title="20210406224736" /></p>
+<h3 id="成员都是有初始化然后再赋值的过程请问父类的这些成员和子类独有的成员谁先谁后">成员都是有初始化然后再赋值的过程，请问父类的这些成员和子类独有的成员，谁先谁后?</h3>
+<ol>
+<li>
+<p>根据常识，先父后子</p>
+</li>
+<li>
+<p>代码现象，子类的成员要依赖于父类的成员赋值，所以父类成员的赋值要在子类之前</p>
+</li>
+</ol>
+<h3 id="创建对象后父类成员变量和子类成员变量谁先赋值">创建对象后，父类成员变量和子类成员变量谁先赋值?</h3>
+<p>父类先完成赋值，因为子类成员依赖于父类</p>
+<p>必须先完成父类成员变量的赋值， 才能保证子类成员变量的赋值正确</p>
+<h3 id="20210406225842httpsimgfengqigangcnimg20210406225842png-其内存图是什么样的"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406225842.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406225842.png, https://img.fengqigang.cn//img/20210406225842.png 1.5x, https://img.fengqigang.cn//img/20210406225842.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406225842.png"
+        title="20210406225842" /> 其内存图是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210406225902.png"
+        data-srcset="https://img.fengqigang.cn//img/20210406225902.png, https://img.fengqigang.cn//img/20210406225902.png 1.5x, https://img.fengqigang.cn//img/20210406225902.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210406225902.png"
+        title="20210406225902" /></p>
+<h3 id="触发类加载的条件有哪些">触发类加载的条件有哪些?</h3>
+<ol>
+<li>
+<p>main</p>
+</li>
+<li>
+<p>创建对象 new</p>
+</li>
+<li>
+<p>静态成员</p>
+</li>
+<li>
+<p>创建这个类的子类对象</p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/intelldebug/" class="prev" rel="prev" title="IntellDebug"><i class="fas fa-angle-left fa-fw"></i>IntellDebug</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

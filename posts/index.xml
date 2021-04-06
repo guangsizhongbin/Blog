@@ -4,7 +4,42 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Apr 2021 23:03:23 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day7</title>
+    <link>http://fengqigang.cn/posts/day7/</link>
+    <pubDate>Tue, 06 Apr 2021 23:03:23 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day7/</guid>
+    <description><![CDATA[什么是 package 关键字? 作用:
+用来声明当前类(当前的java文件中的所有类) 属于哪个包, package 后面跟上当前的包名
+  包名的书写，用逗号隔开
+  语法上，该声明语句一定位于一个 Java 源文件的有效代码的第一行, 否则会报错
+  什么是 import 关键字? 作用:
+就量用来导包的
+当一个别的类中的成员(方法和变量)时，编译器会优先从当前包中检索，如果找得到就去调用，如果找不到，它就会报错
+语法:
+import + 全限定类名
+位置:
+最好写在 package 下面，不可用写在有效代码下面
+如何实现智能导包? import + 包名 + *
+什么叫有需求导包? 如果不导包就报错，那么它就会自动导包
+如果同包下已经有同名的类，那么它就不会去导包了
+什么是默认导包, 隐式导包? java.lang 包下的所有类，是 java 的核心类，它会自动隐式导入，不需要再写导包语句
+如果同包下和不同包下同名类都想使用，怎么办? 真的存在这种需求，建议改名一个
+用全限定类名去使用
+什么是面向过程与面向对象? 面向过程 procedureal oriented programming
+面向对象 oop
+面向过程的编程思想
+即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成
+面向对象的编程思想
+即程序是由一系列的对象+对象之间交互(消息)组成
+面向过程有什么优缺点? 优点:
+代码执行效率高
+缺点:
+面向过程程序是一条线下来的，对程序员要求很高，需要程序员详细了解每个功能的细节，这就意味着，不利于合作开发，不利于处理复杂的大型项目
+应用场景:
+需要高效率的场景，比如说操作系统内核OS, 嵌入式开发，算法]]></description>
+</item><item>
     <title>IntellDebug</title>
     <link>http://fengqigang.cn/posts/intelldebug/</link>
     <pubDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</pubDate>
@@ -179,13 +214,5 @@ PI
     <guid>http://fengqigang.cn/posts/removeelement/</guid>
     <description><![CDATA[27. Remove Element 双指针法  考虑 nums!= val 时, 加入到当前数组中  1 2 3 4 5 6 7 8 9 10 11 12  class Solution { public int removeElement(int[] nums, int val) { int i = 0; for (int x = 0; x &lt; nums.length; x++){ if (nums[x] != val){ nums[i] = nums[x]; i +=1; } } return i; } }    优化
    1 2  nums[i] = nums[x]; i += 1;   可以直接写成]]></description>
-</item><item>
-    <title>TwoSum</title>
-    <link>http://fengqigang.cn/posts/twosum/</link>
-    <pubDate>Fri, 26 Mar 2021 22:48:16 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/twosum/</guid>
-    <description><![CDATA[Two Sum 001
-我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x ++){ for (int y = x + 1; y &lt; nums.length; y ++){ if (nums[x] + nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表]]></description>
 </item></channel>
 </rss>
