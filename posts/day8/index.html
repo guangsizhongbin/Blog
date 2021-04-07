@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day8 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day8" />
+<meta property="og:description" content="Day 8
+若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
+   解决方法:
+  私有化构造方法
+  提供一个方法来创建对象, 访问权限是 public
+  这个方法必须是 静态方法
+  控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
+  在 set, get方法怎样赋值比较好( 如width )? 用 this 好
+如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
+在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day8/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-07T23:12:51&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-07T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day8"/>
+<meta name="twitter:description" content="Day 8
+若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
+   解决方法:
+  私有化构造方法
+  提供一个方法来创建对象, 访问权限是 public
+  这个方法必须是 静态方法
+  控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
+  在 set, get方法怎样赋值比较好( 如width )? 用 this 好
+如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
+在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day8/" /><link rel="prev" href="http://fengqigang.cn/posts/day7/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day8",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day8\/"
+        },"genre": "posts","keywords": "java","wordcount":  829 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day8\/","datePublished": "2021-04-07T23:12:51+08:00","dateModified": "2021-04-07T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day8</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-07">2021-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;829 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#若想限制创建-student-类个数-其思路是什么">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</a></li>
+        <li><a href="#在-set-get方法怎样赋值比较好-如width-">在 <strong>set</strong>, <strong>get</strong>方法怎样赋值比较好( 如width )?</a></li>
+        <li><a href="#如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <strong>=null</strong> 的对象，应该如何做?</a></li>
+        <li><a href="#在增删改时如果结果成功或失败了可以在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗?</a></li>
+        <li><a href="#为了防止-studs-出现空指针异常-可以习惯性怎么做">为了防止 <strong>studs</strong> 出现空指针异常， 可以习惯性怎么做?</a></li>
+        <li><a href="#在-jvm-中如何区分-this-和-super-关键字">在 <strong>jvm</strong> 中，如何区分 <strong>this</strong> 和 <strong>super</strong> 关键字?</a></li>
+        <li><a href="#构造代码块时父类的构造器执行了吗">构造代码块时，父类的构造器执行了吗?</a></li>
+        <li><a href="#子类对象的初始化方式称为什么具体是什么样的">子类对象的初始化方式称为什么?具体是什么样的?</a></li>
+        <li><a href="#创建子类对象会调用父类吗">创建子类对象会调用父类吗?</a></li>
+        <li><a href="#this-与-super-调用构造器都需要在第一行它们可以共存吗"><strong>this()</strong> 与 <strong>super()</strong> 调用构造器都需要在第一行，它们可以共存吗?</a></li>
+        <li><a href="#所有的类都是直接或间接的继承了-object-object-有没有无参构造">所有的类都是直接或间接的继承了 <strong>Object</strong>, <strong>Object</strong> 有没有无参构造?</a></li>
+        <li><a href="#super-和-this-有什么区别-有什么用途"><strong>super</strong> 和 <strong>this</strong> 有什么区别? 有什么用途?</a></li>
+        <li><a href="#如何使用-this-和-super-调用父类和子类的值20210407201035httpsimgfengqigangcnimg20210407201035png">如何使用 <strong>this</strong> 和 <strong>super</strong> 调用父类和子类的值?<img src="https://img.fengqigang.cn//img/20210407201035.png" alt="20210407201035"></a></li>
+        <li><a href="#父子类中可以出现同名的变量吗">父子类中可以出现同名的变量吗?</a></li>
+        <li><a href="#20210407201457httpsimgfengqigangcnimg20210407201457png输出的是20-这个a是被覆盖掉了还是因为某些原因没有覆盖但是访问不到-如何证明"><img src="https://img.fengqigang.cn//img/20210407201457.png" alt="20210407201457">输出的是20, 这个a是被覆盖掉了，还是因为某些原因没有覆盖但是访问不到, 如何证明?</a></li>
+        <li><a href="#当引用数据类型与它的具体类型不一样时会根据什么来决定它的最终取值">当引用数据类型与它的具体类型不一样时，会根据什么来决定它的最终取值?</a></li>
+        <li><a href="#成员变量隐藏的原理是什么样的">成员变量隐藏的原理是什么样的?</a></li>
+        <li><a href="#静态成员变量可以被子类继承吗">静态成员变量可以被子类继承吗?</a></li>
+        <li><a href="#父子类中同名的静态成员变量-它们之间有什么关系-覆盖了还是隐藏又或者是其他的了">父子类中同名的静态成员变量， 它们之间有什么关系? 覆盖了还是隐藏又或者是其他的了?</a></li>
+        <li><a href="#若继承中有静态成员的需求可以采用什么样的方法去访问父类的静态成员">若继承中有静态成员的需求，可以采用什么样的方法去访问父类的静态成员?</a></li>
+        <li><a href="#父子类能否出现同名的方法">父子类能否出现同名的方法?</a></li>
+        <li><a href="#创建子类对象并用子类的引用指向对象调用方法-它的访问结果是什么-20210407210207httpsimgfengqigangcnimg20210407210207png">创建子类对象，并用子类的引用指向对象，调用方法, 它的访问结果是什么? <img src="https://img.fengqigang.cn//img/20210407210207.png" alt="20210407210207"></a></li>
+        <li><a href="#在方法的覆盖原理中方法的最终执行结果是由什么所决定的">在方法的覆盖原理中，方法的最终执行结果，是由什么所决定的?</a></li>
+        <li><a href="#override-注解是什么样的-如何使用">@Override 注解是什么样的? 如何使用?</a></li>
+        <li><a href="#若要进行方法重写需要注意什么">若要进行方法重写，需要注意什么?</a></li>
+        <li><a href="#如果方法覆盖了可以访问被覆盖的方法吗20210407213009httpsimgfengqigangcnimg20210407213009png">如果方法覆盖了，可以访问被覆盖的方法吗?<img src="https://img.fengqigang.cn//img/20210407213009.png" alt="20210407213009"></a></li>
+        <li><a href="#静态方法可以继承和重写吗">静态方法可以继承和重写吗?</a></li>
+        <li><a href="#什么是-final-关键字">什么是 <strong>final</strong> 关键字?</a></li>
+        <li><a href="#什么时候用-final-来修饰类">什么时候用 <strong>final</strong> 来修饰类?</a></li>
+        <li><a href="#用-final-来修饰的类可以继承和重写吗">用 <strong>final</strong> 来修饰的类可以继承和重写吗?</a></li>
+        <li><a href="#final-修饰的变量-最终表示的是什么"><strong>final</strong> 修饰的变量， 最终表示的是什么?</a></li>
+        <li><a href="#常量的分类是什么样的">常量的分类是什么样的?</a></li>
+        <li><a href="#final-修饰一个成员变量会怎样"><strong>final</strong> 修饰一个成员变量会怎样?</a></li>
+        <li><a href="#final-修饰一个基本数据类型的变量会怎样"><strong>final</strong> 修饰一个基本数据类型的变量会怎样?</a></li>
+        <li><a href="#final-修饰一个引用数据类型的变量会怎样"><strong>final</strong> 修饰一个引用数据类型的变量会怎样?</a></li>
+        <li><a href="#在方法中有哪些地方有局部变量">在方法中有哪些地方有局部变量?</a></li>
+        <li><a href="#heading"></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Day 8</p>
+<h3 id="若想限制创建-student-类个数-其思路是什么">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</h3>
+<ol>
+<li>
+<p>如果允许外部直接创建对象，显然 <strong>无法控制创建对象的个数</strong></p>
+</li>
+<li>
+<p>需要计数器指示外部创建对象的个数</p>
+</li>
+</ol>
+<hr>
+<p><strong>解决方法</strong>:</p>
+<ol>
+<li>
+<p><strong>私有化构造方法</strong></p>
+</li>
+<li>
+<p>提供一个方法来创建对象, 访问权限是 <strong>public</strong></p>
+</li>
+<li>
+<p>这个方法必须是 <strong>静态方法</strong></p>
+</li>
+<li>
+<p>控制创建对象的计数器，应该是 <strong>静态成员变量</strong> ，被所有对象共享</p>
+</li>
+</ol>
+<h3 id="在-set-get方法怎样赋值比较好-如width-">在 <strong>set</strong>, <strong>get</strong>方法怎样赋值比较好( 如width )?</h3>
+<p>用 <strong>this</strong> 好</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407192954.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407192954.png, https://img.fengqigang.cn//img/20210407192954.png 1.5x, https://img.fengqigang.cn//img/20210407192954.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407192954.png"
+        title="20210407192954" /></p>
+<h3 id="如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <strong>=null</strong> 的对象，应该如何做?</h3>
+<p>私有化无参构造</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407193104.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407193104.png, https://img.fengqigang.cn//img/20210407193104.png 1.5x, https://img.fengqigang.cn//img/20210407193104.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407193104.png"
+        title="20210407193104" /></p>
+<h3 id="在增删改时如果结果成功或失败了可以在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗?</h3>
+<p>不可以， 输出成功或失败 <strong>不应该</strong> 是在 <strong>增删改</strong> 方法里该做的事情</p>
+<h3 id="为了防止-studs-出现空指针异常-可以习惯性怎么做">为了防止 <strong>studs</strong> 出现空指针异常， 可以习惯性怎么做?</h3>
+<p><strong>判null</strong> 和 <strong>判空</strong></p>
+<p>if (studs == null || studs.length == 0){
+return new Student[0]
+}</p>
+<h3 id="在-jvm-中如何区分-this-和-super-关键字">在 <strong>jvm</strong> 中，如何区分 <strong>this</strong> 和 <strong>super</strong> 关键字?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407193708.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407193708.png, https://img.fengqigang.cn//img/20210407193708.png 1.5x, https://img.fengqigang.cn//img/20210407193708.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407193708.png"
+        title="20210407193708" /></p>
+<h3 id="构造代码块时父类的构造器执行了吗">构造代码块时，父类的构造器执行了吗?</h3>
+<p>构造代码块会在创建对象的时候，<strong>随着构造器执行</strong></p>
+<p>父类的构造器也执行了，并且它 <strong>在子类的构造器之前执行</strong></p>
+<p>所以说，创建子类对象的时候，<strong>隐含了父类构造器的执行</strong></p>
+<h3 id="子类对象的初始化方式称为什么具体是什么样的">子类对象的初始化方式称为什么?具体是什么样的?</h3>
+<p>隐式初始化</p>
+<p>在子类的每个构造器当中， 如果第一行没有 <strong>this()</strong>, 它都隐含了一个 <strong>super()</strong> 去调用父类的无参构造</p>
+<h3 id="创建子类对象会调用父类吗">创建子类对象会调用父类吗?</h3>
+<p>若第一行没有 <strong>this()</strong> ,</p>
+<p>会从隐含 的 <strong>super()</strong> 去调父类的无参构造</p>
+<h3 id="this-与-super-调用构造器都需要在第一行它们可以共存吗"><strong>this()</strong> 与 <strong>super()</strong> 调用构造器都需要在第一行，它们可以共存吗?</h3>
+<p>不行</p>
+<p>因为, 第一行隐含了 <strong>super()</strong> 如果允许不在第一行， 会导致重复给父类成员赋值，显然是错误的</p>
+<h3 id="所有的类都是直接或间接的继承了-object-object-有没有无参构造">所有的类都是直接或间接的继承了 <strong>Object</strong>, <strong>Object</strong> 有没有无参构造?</h3>
+<p>若 <strong>Object</strong> 中没有构造器， <strong>默认采用无参构造</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407195552.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407195552.png, https://img.fengqigang.cn//img/20210407195552.png 1.5x, https://img.fengqigang.cn//img/20210407195552.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407195552.png"
+        title="20210407195552" /></p>
+<h3 id="super-和-this-有什么区别-有什么用途"><strong>super</strong> 和 <strong>this</strong> 有什么区别? 有什么用途?</h3>
+<p><strong>区别</strong>:</p>
+<p><strong>this</strong> 表示自己的对象，它不受访问权限控制</p>
+<p><strong>super</strong> 是在子类中表示父类的对象, 受访问权限控制</p>
+<p><strong>用途</strong>:</p>
+<p><strong>this</strong> 可以区分同名的成员变量和局部变量形参</p>
+<p><strong>super</strong> 和 <strong>this</strong> 一起使用可以用来区分父子类中同名的成员(包括方法和变量), 区分的 <strong>前提仍然是访问权限</strong></p>
+<h3 id="如何使用-this-和-super-调用父类和子类的值20210407201035httpsimgfengqigangcnimg20210407201035png">如何使用 <strong>this</strong> 和 <strong>super</strong> 调用父类和子类的值?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407201035.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407201035.png, https://img.fengqigang.cn//img/20210407201035.png 1.5x, https://img.fengqigang.cn//img/20210407201035.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407201035.png"
+        title="20210407201035" /></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Student</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;获取父类a的值&#34;</span><span class="o">);</span>
+        <span class="n">st</span><span class="o">.</span><span class="na">getSuper</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;获取this类a的值&#34;</span><span class="o">);</span>
+        <span class="n">st</span><span class="o">.</span><span class="na">getA</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSuper</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="kd">super</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getA</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407201117.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407201117.png, https://img.fengqigang.cn//img/20210407201117.png 1.5x, https://img.fengqigang.cn//img/20210407201117.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407201117.png"
+        title="20210407201117" /></p>
+<h3 id="父子类中可以出现同名的变量吗">父子类中可以出现同名的变量吗?</h3>
+<p>可以</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407201401.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407201401.png, https://img.fengqigang.cn//img/20210407201401.png 1.5x, https://img.fengqigang.cn//img/20210407201401.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407201401.png"
+        title="20210407201401" /></p>
+<h3 id="20210407201457httpsimgfengqigangcnimg20210407201457png输出的是20-这个a是被覆盖掉了还是因为某些原因没有覆盖但是访问不到-如何证明"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407201457.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407201457.png, https://img.fengqigang.cn//img/20210407201457.png 1.5x, https://img.fengqigang.cn//img/20210407201457.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407201457.png"
+        title="20210407201457" />输出的是20, 这个a是被覆盖掉了，还是因为某些原因没有覆盖但是访问不到, 如何证明?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Student</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;获取父类a的值&#34;</span><span class="o">);</span>
+        <span class="n">st</span><span class="o">.</span><span class="na">getSuper</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;获取this类a的值&#34;</span><span class="o">);</span>
+        <span class="n">st</span><span class="o">.</span><span class="na">getA</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Student</span> <span class="kd">extends</span> <span class="n">Person</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSuper</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="kd">super</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getA</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407202027.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407202027.png, https://img.fengqigang.cn//img/20210407202027.png 1.5x, https://img.fengqigang.cn//img/20210407202027.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407202027.png"
+        title="20210407202027" /></p>
+<p>a 不是被覆盖掉了, <strong>仍然可以去访问它</strong></p>
+<p>使用对象名点成员变量的方式访问变量时，<strong>编译器</strong> 存在一个 <strong>检索机制</strong></p>
+<p>它首先会去从引用所在的那个类中去找这个成员变量</p>
+<p>如果这个引用找不到，就去父类中找，找完所有的父类，直到 <strong>Object</strong>， 都找不到，它会编译报错</p>
+<h3 id="当引用数据类型与它的具体类型不一样时会根据什么来决定它的最终取值">当引用数据类型与它的具体类型不一样时，会根据什么来决定它的最终取值?</h3>
+<p>根据引用的类型来取值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Father</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Son</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">f</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Father</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getFatherA</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Son</span> <span class="kd">extends</span> <span class="n">Father</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSonA</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407203426.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407203426.png, https://img.fengqigang.cn//img/20210407203426.png 1.5x, https://img.fengqigang.cn//img/20210407203426.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407203426.png"
+        title="20210407203426" /></p>
+<h3 id="成员变量隐藏的原理是什么样的">成员变量隐藏的原理是什么样的?</h3>
+<p>当使用对象名点成员变量的方式访问变量时，编译器存在一个检索机制，会首先从引用所有的那个类中去找这个成员变量</p>
+<p>如果这个引用找不到，就去父类中找，找完所有的父类，直到 <strong>Object</strong>, 都找到，它会编译报错</p>
+<p>因为这种检索机制父子类中同名的成员变量就找到不父类中去了，父类的成员被隐藏了</p>
+<p>对象名点访问成员变量，在编译时期就能够确定它访问的是哪个类的成员变量，就是那个 <strong>引用的类</strong></p>
+<h3 id="静态成员变量可以被子类继承吗">静态成员变量可以被子类继承吗?</h3>
+<p>可以</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">B</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span><span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407204108.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407204108.png, https://img.fengqigang.cn//img/20210407204108.png 1.5x, https://img.fengqigang.cn//img/20210407204108.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407204108.png"
+        title="20210407204108" /></p>
+<h3 id="父子类中同名的静态成员变量-它们之间有什么关系-覆盖了还是隐藏又或者是其他的了">父子类中同名的静态成员变量， 它们之间有什么关系? 覆盖了还是隐藏又或者是其他的了?</h3>
+<p>静态的成员 <strong>不属于对象</strong>， 而我们讨论继承的时候，一般都是说对象的继承，对象和静态成员没有关系</p>
+<p>所以静态成员不要用继承去讨论，不同类的静态成员完全是独立的，它们 <strong>不存在隐藏或者覆盖</strong> 这种关系</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">B</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span><span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407205018.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407205018.png, https://img.fengqigang.cn//img/20210407205018.png 1.5x, https://img.fengqigang.cn//img/20210407205018.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407205018.png"
+        title="20210407205018" /></p>
+<h3 id="若继承中有静态成员的需求可以采用什么样的方法去访问父类的静态成员">若继承中有静态成员的需求，可以采用什么样的方法去访问父类的静态成员?</h3>
+<p>采用子类的类名访问静态成员</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">B</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+        <span class="n">B</span><span class="o">.</span><span class="na">a</span> <span class="o">=</span> <span class="n">888</span><span class="o">;</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">B</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">A</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407205421.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407205421.png, https://img.fengqigang.cn//img/20210407205421.png 1.5x, https://img.fengqigang.cn//img/20210407205421.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407205421.png"
+        title="20210407205421" /></p>
+<h3 id="父子类能否出现同名的方法">父子类能否出现同名的方法?</h3>
+<p>可以</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407205606.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407205606.png, https://img.fengqigang.cn//img/20210407205606.png 1.5x, https://img.fengqigang.cn//img/20210407205606.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407205606.png"
+        title="20210407205606" /></p>
+<h3 id="创建子类对象并用子类的引用指向对象调用方法-它的访问结果是什么-20210407210207httpsimgfengqigangcnimg20210407210207png">创建子类对象，并用子类的引用指向对象，调用方法, 它的访问结果是什么? <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407210207.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407210207.png, https://img.fengqigang.cn//img/20210407210207.png 1.5x, https://img.fengqigang.cn//img/20210407210207.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407210207.png"
+        title="20210407210207" /></h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407210226.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407210226.png, https://img.fengqigang.cn//img/20210407210226.png 1.5x, https://img.fengqigang.cn//img/20210407210226.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407210226.png"
+        title="20210407210226" /></p>
+<p>方法被覆盖了</p>
+<p>用对象名点方法名编译器同样有类似的 <strong>检索机制</strong>:</p>
+<p>先从引用的类型中去找，找不到, 从父类中找，直到完全找不到, 再报错</p>
+<p><strong>原因</strong>:</p>
+<p>对象名点方法名编译器同样有类似的检索机制:</p>
+<p>先从引用的类型中去找，找不到, 从父类中找，直到完全找不到报错</p>
+<p>这种检索机制导致引用类型中有的成员方法 才能被调用</p>
+<p>编译器在检索时，只能知道变量的类型，在编译时期，如果想要通过编译，所访问的成员，必须是这个类型中有的</p>
+<h3 id="在方法的覆盖原理中方法的最终执行结果是由什么所决定的">在方法的覆盖原理中，方法的最终执行结果，是由什么所决定的?</h3>
+<p>方法的最终执行结果，不是在编译时期决定的，而是程序运行起来以后，根据引用所指向的实际类型决定的</p>
+<p>如果有同名的方法，因为方法被覆盖掉了，所以显示出子类的一个特征</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407211155.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407211155.png, https://img.fengqigang.cn//img/20210407211155.png 1.5x, https://img.fengqigang.cn//img/20210407211155.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407211155.png"
+        title="20210407211155" /></p>
+<h3 id="override-注解是什么样的-如何使用">@Override 注解是什么样的? 如何使用?</h3>
+<p>两个父子类之间发生方法的重写后，可以用一个注解指示被覆盖的方法</p>
+<p>@Override 注解</p>
+<p>这个注解可以检查 两方法之间是否发生了方法重写，如果不是方法重写, 会报错</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407211514.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407211514.png, https://img.fengqigang.cn//img/20210407211514.png 1.5x, https://img.fengqigang.cn//img/20210407211514.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407211514.png"
+        title="20210407211514" /></p>
+<h3 id="若要进行方法重写需要注意什么">若要进行方法重写，需要注意什么?</h3>
+<p>不必要完全一模一样，但是肯定是有限制的</p>
+<p><strong>注意</strong></p>
+<p>重写的方法 <strong>访问权限</strong> 必须 <strong>大于等于</strong> 原方法，要比父类的方法的访问权限更 <strong>松</strong></p>
+<p>父类的私有方法</p>
+<p><strong>没有权限访问，不能够发生方法重写</strong></p>
+<h3 id="如果方法覆盖了可以访问被覆盖的方法吗20210407213009httpsimgfengqigangcnimg20210407213009png">如果方法覆盖了，可以访问被覆盖的方法吗?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407213009.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407213009.png, https://img.fengqigang.cn//img/20210407213009.png 1.5x, https://img.fengqigang.cn//img/20210407213009.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407213009.png"
+        title="20210407213009" /></h3>
+<p><strong>super</strong> 关键字可以用来区分子类同名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Cat</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cat</span><span class="o">();</span>
+        <span class="n">c</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+        <span class="n">c</span><span class="o">.</span><span class="na">invokeSonTest</span><span class="o">();</span>
+        <span class="n">c</span><span class="o">.</span><span class="na">invokeSonTest2</span><span class="o">();</span>
+        <span class="n">c</span><span class="o">.</span><span class="na">invokeFatherTest2</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Animal&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">extends</span> <span class="n">Animal</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Cat&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invokeSonTest</span><span class="o">()</span> <span class="o">{</span><span class="n">test</span><span class="o">();}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invokeSonTest2</span><span class="o">()</span> <span class="o">{</span><span class="k">this</span><span class="o">.</span><span class="na">test</span><span class="o">();}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invokeFatherTest2</span><span class="o">()</span> <span class="o">{</span><span class="kd">super</span><span class="o">.</span><span class="na">test</span><span class="o">();}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407213059.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407213059.png, https://img.fengqigang.cn//img/20210407213059.png 1.5x, https://img.fengqigang.cn//img/20210407213059.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407213059.png"
+        title="20210407213059" /></p>
+<h3 id="静态方法可以继承和重写吗">静态方法可以继承和重写吗?</h3>
+<p>子类 <strong>可以继承</strong> 父类的静态成员方法</p>
+<p>如果同名了，不是方法的重写，它们是独立的两个方法, 只不过凑巧同名了</p>
+<p>静态方法 <strong>不能重写</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">A</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+        <span class="n">B</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;A&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;B&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407213636.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407213636.png, https://img.fengqigang.cn//img/20210407213636.png 1.5x, https://img.fengqigang.cn//img/20210407213636.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407213636.png"
+        title="20210407213636" /></p>
+<h3 id="什么是-final-关键字">什么是 <strong>final</strong> 关键字?</h3>
+<p><strong>final</strong> 修饰类表示最终的类，表示一个不能被继承的类</p>
+<p><strong>final</strong> 修饰类时，放在访问权限修饰符和class之间，表示该类无法被继承</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407214140.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407214140.png, https://img.fengqigang.cn//img/20210407214140.png 1.5x, https://img.fengqigang.cn//img/20210407214140.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407214140.png"
+        title="20210407214140" /></p>
+<h3 id="什么时候用-final-来修饰类">什么时候用 <strong>final</strong> 来修饰类?</h3>
+<ol>
+<li>
+<p>不需要复用成员</p>
+</li>
+<li>
+<p>功能已经特别强大， 足够满足需求</p>
+</li>
+<li>
+<p>需要绝对保证安全，以致于不让它被继承</p>
+</li>
+</ol>
+<p><strong>常见的final类</strong></p>
+<ul>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>System</p>
+</li>
+<li>
+<p>Math</p>
+</li>
+</ul>
+<h3 id="用-final-来修饰的类可以继承和重写吗">用 <strong>final</strong> 来修饰的类可以继承和重写吗?</h3>
+<p><strong>final</strong> 应该放在访问权限修饰符的后面，返回值的前面</p>
+<p><strong>final</strong> 修饰的方法无法被重写，但是可以被继承</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">supertest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>&lsquo;test()&rsquo; cannot override &lsquo;test()&rsquo; in &lsquo;com.feng.A&rsquo;; overridden method is final</p>
+<h3 id="final-修饰的变量-最终表示的是什么"><strong>final</strong> 修饰的变量， 最终表示的是什么?</h3>
+<p>表示最终的变量，表示一个常量</p>
+<h3 id="常量的分类是什么样的">常量的分类是什么样的?</h3>
+<p><strong>字面值常量</strong></p>
+<p>&ldquo;hello world!&rdquo;</p>
+<p>10</p>
+<p>true</p>
+<p>null</p>
+<p><strong>自定义常量</strong></p>
+<p>用 <strong>final</strong> 修饰的变量就是自定义的常量</p>
+<h3 id="final-修饰一个成员变量会怎样"><strong>final</strong> 修饰一个成员变量会怎样?</h3>
+<p>它只是让这个变量的取值无法改变，但是在内存中的位置不变</p>
+<h3 id="final-修饰一个基本数据类型的变量会怎样"><strong>final</strong> 修饰一个基本数据类型的变量会怎样?</h3>
+<p>表示这个基本类型的变量取值无法改变</p>
+<h3 id="final-修饰一个引用数据类型的变量会怎样"><strong>final</strong> 修饰一个引用数据类型的变量会怎样?</h3>
+<p>表示引用是一个常量时，表示地址不变了，也就是指向的对象不变了，对象的属性(状态)仍然可以改变</p>
+<h3 id="在方法中有哪些地方有局部变量">在方法中有哪些地方有局部变量?</h3>
+<ol>
+<li>
+<p>方法体中</p>
+</li>
+<li>
+<p>形参列表</p>
+</li>
+</ol>
+<h3 id="heading"></h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day7/" class="prev" rel="prev" title="Day7"><i class="fas fa-angle-left fa-fw"></i>Day7</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

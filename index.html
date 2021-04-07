@@ -100,6 +100,23 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day8/">Day8</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-07">2021-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">Day 8
+若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
+   解决方法:
+  私有化构造方法
+  提供一个方法来创建对象, 访问权限是 public
+  这个方法必须是 静态方法
+  控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
+  在 set, get方法怎样赋值比较好( 如width )? 用 this 好
+如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
+在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }</div><div class="post-footer">
+        <a href="/posts/day8/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day7/">Day7</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-06">2021-04-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 package 关键字? 作用:
 用来声明当前类(当前的java文件中的所有类) 属于哪个包, package 后面跟上当前的包名
@@ -203,31 +220,6 @@ type -a ls
 成员变量
 有默认初始值</div><div class="post-footer">
         <a href="/posts/day5/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day4/">Day4</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-02">2021-04-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">二维数组如何声明？ 数据类型[][] 二维数组名;
-int[] m, n[] 其是想表达什么? int[] m;
-int[] n[];
-int[][] arr4 = new int[2][3]; 其堆空间是什么样的? 如何调用一个方法访问二维数组中的某个一维数组? (Arrays.toString(arr[1])) System.out.println(Arrays.toString(arr[1]));
-如何调用一个方法去访问维数组? System.out.println(Arrays.deepToString(arr))
-stackOverflowError 其本质的栈内存是什么样的? 如何用一个方法捕获栈溢出这个错误？ catch (StackOverflowError error)
-什么是成员变量？ 定义在类中，除了方法体之外的区域
-语法:
-[各种修饰符] 数据类型 成员变量名
-什么是成员方法 指的是在成员位置, 不带 static 的方法
-语法:
-[访问权限修饰符] 返回值类型 方法名() {}
-什么是类的全限定类名？ 就是 类名 全称， 带包路径的用点隔开
-如:
-java.lang.String
-全限定名 = 包名 + 类型
-这里获取的地址是什么样的？ 类的全限定类名 + 地址值
-类和数据类型是否存在关联? 数据类型:
-一个数据集合 和 基于这个数据集合的 一组操作
-类的定义:
-类中包括： 成员变量 和 成员方法</div><div class="post-footer">
-        <a href="/posts/day4/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

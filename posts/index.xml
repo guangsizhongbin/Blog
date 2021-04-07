@@ -4,7 +4,26 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Apr 2021 23:03:23 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 07 Apr 2021 23:12:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day8</title>
+    <link>http://fengqigang.cn/posts/day8/</link>
+    <pubDate>Wed, 07 Apr 2021 23:12:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day8/</guid>
+    <description><![CDATA[Day 8
+若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
+   解决方法:
+  私有化构造方法
+  提供一个方法来创建对象, 访问权限是 public
+  这个方法必须是 静态方法
+  控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
+  在 set, get方法怎样赋值比较好( 如width )? 用 this 好
+如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
+在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }]]></description>
+</item><item>
     <title>Day7</title>
     <link>http://fengqigang.cn/posts/day7/</link>
     <pubDate>Tue, 06 Apr 2021 23:03:23 &#43;0800</pubDate>
@@ -206,13 +225,5 @@ String name;
 PI
 什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
  第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram]]></description>
-</item><item>
-    <title>RemoveElement</title>
-    <link>http://fengqigang.cn/posts/removeelement/</link>
-    <pubDate>Sat, 27 Mar 2021 22:21:14 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/removeelement/</guid>
-    <description><![CDATA[27. Remove Element 双指针法  考虑 nums!= val 时, 加入到当前数组中  1 2 3 4 5 6 7 8 9 10 11 12  class Solution { public int removeElement(int[] nums, int val) { int i = 0; for (int x = 0; x &lt; nums.length; x++){ if (nums[x] != val){ nums[i] = nums[x]; i +=1; } } return i; } }    优化
-   1 2  nums[i] = nums[x]; i += 1;   可以直接写成]]></description>
 </item></channel>
 </rss>
