@@ -9,6 +9,8 @@
 <meta property="og:description" content="Day 8
 若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
   需要计数器指示外部创建对象的个数
+   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
    解决方法:
   私有化构造方法
   提供一个方法来创建对象, 访问权限是 public
@@ -17,8 +19,7 @@
   在 set, get方法怎样赋值比较好( 如width )? 用 this 好
 如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
 在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
-if (studs == null || studs.length == 0){ return new Student[0] }" />
+为了防止 studs 出现空指针异常， 可以习惯性怎么做?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/day8/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-07T23:12:51&#43;08:00" />
@@ -29,6 +30,8 @@ if (studs == null || studs.length == 0){ return new Student[0] }" />
 <meta name="twitter:description" content="Day 8
 若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
   需要计数器指示外部创建对象的个数
+   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
    解决方法:
   私有化构造方法
   提供一个方法来创建对象, 访问权限是 public
@@ -37,8 +40,7 @@ if (studs == null || studs.length == 0){ return new Student[0] }" />
   在 set, get方法怎样赋值比较好( 如width )? 用 this 好
 如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
 在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
-if (studs == null || studs.length == 0){ return new Student[0] }"/>
+为了防止 studs 出现空指针异常， 可以习惯性怎么做?"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -51,7 +53,7 @@ if (studs == null || studs.length == 0){ return new Student[0] }"/>
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day8\/"
-        },"genre": "posts","keywords": "java","wordcount":  829 ,
+        },"genre": "posts","keywords": "java","wordcount":  1137 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day8\/","datePublished": "2021-04-07T23:12:51+08:00","dateModified": "2021-04-07T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -128,8 +130,8 @@ if (studs == null || studs.length == 0){ return new Student[0] }"/>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day8</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-07">2021-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;829 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-07">2021-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1137 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -140,6 +142,7 @@ if (studs == null || studs.length == 0){ return new Student[0] }"/>
     <li>
       <ul>
         <li><a href="#若想限制创建-student-类个数-其思路是什么">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</a></li>
+        <li><a href="#若想限制创建-student-类个数-其思路是什么-1">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</a></li>
         <li><a href="#在-set-get方法怎样赋值比较好-如width-">在 <strong>set</strong>, <strong>get</strong>方法怎样赋值比较好( 如width )?</a></li>
         <li><a href="#如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <strong>=null</strong> 的对象，应该如何做?</a></li>
         <li><a href="#在增删改时如果结果成功或失败了可以在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗?</a></li>
@@ -175,13 +178,42 @@ if (studs == null || studs.length == 0){ return new Student[0] }"/>
         <li><a href="#final-修饰一个基本数据类型的变量会怎样"><strong>final</strong> 修饰一个基本数据类型的变量会怎样?</a></li>
         <li><a href="#final-修饰一个引用数据类型的变量会怎样"><strong>final</strong> 修饰一个引用数据类型的变量会怎样?</a></li>
         <li><a href="#在方法中有哪些地方有局部变量">在方法中有哪些地方有局部变量?</a></li>
-        <li><a href="#heading"></a></li>
+        <li><a href="#用-final-修饰方法体中的局部变量会怎样">用 <strong>final</strong> 修饰方法体中的局部变量会怎样?</a></li>
+        <li><a href="#用-final-修饰形参列表会怎么样">用 <strong>final</strong> 修饰形参列表，会怎么样?</a></li>
+        <li><a href="#final修饰成员变量哪些要求"><strong>final</strong>修饰成员变量哪些要求?</a></li>
+        <li><a href="#20210407234152httpsimgfengqigangcnimg20210407234152png-加上无参的构造方法会不会报错"><img src="https://img.fengqigang.cn//img/20210407234152.png" alt="20210407234152"> 加上无参的构造方法，会不会报错?</a></li>
+        <li><a href="#用-final-修饰-静态成员变量是什么">用 <strong>final</strong> 修饰 静态成员变量是什么?</a></li>
+        <li><a href="#final-修饰的变量其命名规范是什么"><strong>final</strong> 修饰的变量，其命名规范是什么?</a></li>
+        <li><a href="#final-在哪些时候可以修饰静态成员变量"><strong>final</strong> 在哪些时候可以修饰静态成员变量?</a></li>
+        <li><a href="#是用-final-static-还是-static-final-好">是用 <strong>final static</strong> 还是 <strong>static final</strong> 好?</a></li>
+        <li><a href="#访问-final-修饰的成员变量会触发类加载吗">访问 <strong>final</strong> 修饰的成员变量会触发类加载吗?</a></li>
+        <li><a href="#如何用-final-修饰引用数据数据会出现什么情况">如何用 <strong>final</strong> 修饰引用数据数据?会出现什么情况?</a></li>
+        <li><a href="#final-修饰匿名对象可以吗"><strong>final</strong> 修饰匿名对象可以吗?</a></li>
+        <li><a href="#什么是多态">什么是多态?</a></li>
+        <li><a href="#多态发生的条件是什么">多态发生的条件是什么?</a></li>
+        <li><a href="#20210408140637httpsimgfengqigangcnimg20210408140637png-如何实现其多态访问"><img src="https://img.fengqigang.cn//img/20210408140637.png" alt="20210408140637"> 如何实现其多态访问?</a></li>
+        <li><a href="#什么情况下不能使用多态">什么情况下不能使用多态?</a></li>
+        <li><a href="#成员变量中有没有多态现象">成员变量中有没有多态现象?</a></li>
+        <li><a href="#多态时无论多不多态都是一样的-成员变量的访问特征是什么样的">多态时(无论多不多态都是一样的), 成员变量的访问特征是什么样的?</a></li>
+        <li><a href="#方法中有没有多态现象">方法中有没有多态现象?</a></li>
+        <li><a href="#多态中的方法访问特征检索机制和访问机制是什么样的">多态中的方法访问特征(检索机制和访问机制)是什么样的?</a></li>
+        <li><a href="#多态的优缺点是什么">多态的优缺点是什么?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>Day 8</p>
 <h3 id="若想限制创建-student-类个数-其思路是什么">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</h3>
+<ol>
+<li>
+<p>如果允许外部直接创建对象，显然 <strong>无法控制创建对象的个数</strong></p>
+</li>
+<li>
+<p>需要计数器指示外部创建对象的个数</p>
+</li>
+</ol>
+<hr>
+<h3 id="若想限制创建-student-类个数-其思路是什么-1">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</h3>
 <ol>
 <li>
 <p>如果允许外部直接创建对象，显然 <strong>无法控制创建对象的个数</strong></p>
@@ -926,7 +958,321 @@ return new Student[0]
 <p>形参列表</p>
 </li>
 </ol>
-<h3 id="heading"></h3>
+<h3 id="用-final-修饰方法体中的局部变量会怎样">用 <strong>final</strong> 修饰方法体中的局部变量会怎样?</h3>
+<p>表示定义了一个局部的常量，意味着，方法的后面就不能修改它的取值了</p>
+<p>如果只声明了一个局部常量，那么可以赋值一次，后面就无法再赋值了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407233711.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407233711.png, https://img.fengqigang.cn//img/20210407233711.png 1.5x, https://img.fengqigang.cn//img/20210407233711.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407233711.png"
+        title="20210407233711" /></p>
+<h3 id="用-final-修饰形参列表会怎么样">用 <strong>final</strong> 修饰形参列表，会怎么样?</h3>
+<p>表示的是传入的参数已经成为一个常量了，无法修改</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407233913.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407233913.png, https://img.fengqigang.cn//img/20210407233913.png 1.5x, https://img.fengqigang.cn//img/20210407233913.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407233913.png"
+        title="20210407233913" /></p>
+<h3 id="final修饰成员变量哪些要求"><strong>final</strong>修饰成员变量哪些要求?</h3>
+<ol>
+<li>
+<p>显示赋值</p>
+</li>
+<li>
+<p>构造代码块</p>
+</li>
+<li>
+<p>构造器</p>
+</li>
+</ol>
+<p>以上三种方法，选择一种即可，介是也仅仅只能用一种，因为赋值一次，之后不能修改了</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407234119.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407234119.png, https://img.fengqigang.cn//img/20210407234119.png 1.5x, https://img.fengqigang.cn//img/20210407234119.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407234119.png"
+        title="20210407234119" /></p>
+<h3 id="20210407234152httpsimgfengqigangcnimg20210407234152png-加上无参的构造方法会不会报错"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210407234152.png"
+        data-srcset="https://img.fengqigang.cn//img/20210407234152.png, https://img.fengqigang.cn//img/20210407234152.png 1.5x, https://img.fengqigang.cn//img/20210407234152.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210407234152.png"
+        title="20210407234152" /> 加上无参的构造方法，会不会报错?</h3>
+<p>会，因为无参构造不能保证每个对象都能给常量赋值</p>
+<h3 id="用-final-修饰-静态成员变量是什么">用 <strong>final</strong> 修饰 静态成员变量是什么?</h3>
+<p><strong>final</strong>修饰静态成员变量是全局常量</p>
+<h3 id="final-修饰的变量其命名规范是什么"><strong>final</strong> 修饰的变量，其命名规范是什么?</h3>
+<p>字母全部大写，每个单词之间用下划线(&quot;_&quot;)</p>
+<p>如</p>
+<p>MY_AGE = 18</p>
+<p>MY_NAME = 长风</p>
+<h3 id="final-在哪些时候可以修饰静态成员变量"><strong>final</strong> 在哪些时候可以修饰静态成员变量?</h3>
+<p>静态成员变量的赋值方式：</p>
+<p><strong>类加载时期</strong>：</p>
+<ol>
+<li>
+<p>显式赋值</p>
+</li>
+<li>
+<p>静态代码块</p>
+</li>
+</ol>
+<p><strong>创建对象时期</strong>: (创建对象时，早已经触发类加载了)</p>
+<ol>
+<li>
+<p>构造代码块</p>
+</li>
+<li>
+<p>构造器</p>
+</li>
+</ol>
+<h3 id="是用-final-static-还是-static-final-好">是用 <strong>final static</strong> 还是 <strong>static final</strong> 好?</h3>
+<p>建议用 <strong>static final</strong></p>
+<h3 id="访问-final-修饰的成员变量会触发类加载吗">访问 <strong>final</strong> 修饰的成员变量会触发类加载吗?</h3>
+<ol>
+<li>
+<p>如果该全局常量是 <strong>基本数据类型</strong>， <strong>不会触发类加载</strong></p>
+</li>
+<li>
+<p>如果该全局常量是 <strong>引用数据类型</strong>, <strong>不一定会触发</strong></p>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>String</strong> 如果用 <strong>字面值常量</strong> 直接赋值的，<strong>不会触发类加载</strong></p>
+</li>
+<li>
+<p><strong>String</strong> 如果是 <strong>用构造器</strong> 创建的对象，<strong>会触发类加载</strong></p>
+</li>
+<li>
+<p>如果是除了 <strong>String</strong> 之外的 <strong>自定义类</strong>，<strong>会触发类加载</strong></p>
+</li>
+</ul>
+<h3 id="如何用-final-修饰引用数据数据会出现什么情况">如何用 <strong>final</strong> 修饰引用数据数据?会出现什么情况?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FinalTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="o">();</span>
+        <span class="n">c</span><span class="o">.</span><span class="na">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>表示该引用已经成为一个常量了，它里面的地址不能再改变了</p>
+<h3 id="final-修饰匿名对象可以吗"><strong>final</strong> 修饰匿名对象可以吗?</h3>
+<p>不可以，不合法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FinalTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="k">new</span> <span class="nf">C</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">C</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408091939.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408091939.png, https://img.fengqigang.cn//img/20210408091939.png 1.5x, https://img.fengqigang.cn//img/20210408091939.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408091939.png"
+        title="20210408091939" /></p>
+<h3 id="什么是多态">什么是多态?</h3>
+<p>同一个事物，在不同的情况下，表现出不同的行为</p>
+<p>在 <strong>java</strong> 面向对象当中， 多态指的是:</p>
+<ul>
+<li>
+<p>同一个事物: <strong>同一个引用</strong></p>
+</li>
+<li>
+<p>不同的情况: <strong>引用指向不同(实际对象)</strong></p>
+</li>
+<li>
+<p>不同行为: <strong>不同的方法结果</strong></p>
+</li>
+</ul>
+<h3 id="多态发生的条件是什么">多态发生的条件是什么?</h3>
+<ol>
+<li>
+<p>需要继承，父子类</p>
+</li>
+<li>
+<p>需要方法的重写</p>
+</li>
+<li>
+<p>需要父类引用指向(不同的)子类对象</p>
+</li>
+</ol>
+<h3 id="20210408140637httpsimgfengqigangcnimg20210408140637png-如何实现其多态访问"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408140637.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408140637.png, https://img.fengqigang.cn//img/20210408140637.png 1.5x, https://img.fengqigang.cn//img/20210408140637.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408140637.png"
+        title="20210408140637" /> 如何实现其多态访问?</h3>
+<p><strong>父类引用指向(不同的)子类对象</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Phone</span> <span class="n">p</span><span class="o">;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApplePhone</span><span class="o">();</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">call</span><span class="o">();</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SamsungPhone</span><span class="o">();</span>
+        <span class="n">p</span><span class="o">.</span><span class="na">call</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">p</span><span class="o">.</span><span class="na">price</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Phone</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">price</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;手机都能打电话&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ApplePhone</span> <span class="kd">extends</span> <span class="n">Phone</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hi siri&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">SamsungPhone</span> <span class="kd">extends</span> <span class="n">Phone</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;炸了&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="什么情况下不能使用多态">什么情况下不能使用多态?</h3>
+<ol>
+<li>
+<p>不能继承， <strong>final</strong> 修饰的类</p>
+</li>
+<li>
+<p>不能被重写的方法</p>
+</li>
+</ol>
+<p><strong>final</strong> , <strong>private</strong>, <strong>static</strong> , 构造方法</p>
+<ol start="3">
+<li>写代码，如何不按照类引用指向(不同的)子类对象，也没有多态</li>
+</ol>
+<h3 id="成员变量中有没有多态现象">成员变量中有没有多态现象?</h3>
+<p>多态指的是:</p>
+<p>有父类引用指向子类对象，多态是指方法的重写，<strong>与成员变量无关</strong></p>
+<h3 id="多态时无论多不多态都是一样的-成员变量的访问特征是什么样的">多态时(无论多不多态都是一样的), 成员变量的访问特征是什么样的?</h3>
+<ol>
+<li>
+<p>编译时，<strong>看左边</strong>，左边是什么类型就意味着可以访问这个类型中有的成员变量</p>
+</li>
+<li>
+<p>运行时 <strong>看左边</strong> ，编译时期就已经确定它取谁的值了，取左边引用类中成员的值</p>
+</li>
+</ol>
+<h3 id="方法中有没有多态现象">方法中有没有多态现象?</h3>
+<p>有， 但是有条件，必须是重写了继承父类的方法</p>
+<h3 id="多态中的方法访问特征检索机制和访问机制是什么样的">多态中的方法访问特征(检索机制和访问机制)是什么样的?</h3>
+<ol>
+<li>
+<p>编译时 <strong>看左边</strong>， 意味着引用类型中没有的方法，不能被调用</p>
+</li>
+<li>
+<p>运行时 <strong>看右边</strong>， 意味着方法的结果表现出引用所指向的实际类型</p>
+</li>
+</ol>
+<h3 id="多态的优缺点是什么">多态的优缺点是什么?</h3>
+<p><strong>优点</strong>:</p>
+<ol>
+<li>
+<p>要实现多态，必须要继承，提高了程序的可维护性性</p>
+</li>
+<li>
+<p>发生多态后，同一个引用调用方法产生不同的行为, 提高了程序的简洁性和扩展性</p>
+</li>
+</ol>
+<p><strong>缺点</strong></p>
+<ol>
+<li>父类的引用指向子类对象，就无法访问子类独有的行为，必须要做强制类型转换</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

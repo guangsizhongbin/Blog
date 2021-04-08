@@ -13,6 +13,8 @@
     <description><![CDATA[Day 8
 若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
   需要计数器指示外部创建对象的个数
+   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
+  需要计数器指示外部创建对象的个数
    解决方法:
   私有化构造方法
   提供一个方法来创建对象, 访问权限是 public
@@ -21,8 +23,7 @@
   在 set, get方法怎样赋值比较好( 如width )? 用 this 好
 如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
 在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
-if (studs == null || studs.length == 0){ return new Student[0] }]]></description>
+为了防止 studs 出现空指针异常， 可以习惯性怎么做?]]></description>
 </item><item>
     <title>Day7</title>
     <link>http://fengqigang.cn/posts/day7/</link>
