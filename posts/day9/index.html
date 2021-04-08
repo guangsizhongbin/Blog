@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day9 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day9" />
+<meta property="og:description" content="其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
+对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
+什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
+如果是就返回 true, 否则就返回 false
+怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
+否则会报 ClassCastException 类型转换异常的错误
+null instalceof 任何类其结果是什么? false
+对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
+###对于段程序其执行 会出现什么?
+方法 编译时看左边，运行时看右边
+为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
+  Animal 类只用来被继承，不用来创建对象
+  Animal 类中 shout 方法，不应该有方法体
+  抽象方法如何声明? 语法:
+[访问权限修饰符] abstract 返回值类型 方法名();
+Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day9/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-08T16:50:57&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-08T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day9"/>
+<meta name="twitter:description" content="其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
+对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
+什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
+如果是就返回 true, 否则就返回 false
+怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
+否则会报 ClassCastException 类型转换异常的错误
+null instalceof 任何类其结果是什么? false
+对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
+###对于段程序其执行 会出现什么?
+方法 编译时看左边，运行时看右边
+为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
+  Animal 类只用来被继承，不用来创建对象
+  Animal 类中 shout 方法，不应该有方法体
+  抽象方法如何声明? 语法:
+[访问权限修饰符] abstract 返回值类型 方法名();
+Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day9/" /><link rel="prev" href="http://fengqigang.cn/posts/day8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day9",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day9\/"
+        },"genre": "posts","keywords": "java","wordcount":  154 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day9\/","datePublished": "2021-04-08T16:50:57+08:00","dateModified": "2021-04-08T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day9</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-08">2021-04-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;154 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#20210408142941httpsimgfengqigangcnimg20210408142941png-其jvm内存结构图是什么样的"><img src="https://img.fengqigang.cn//img/20210408142941.png" alt="20210408142941"> 其<strong>jvm</strong>内存结构图是什么样的?</a></li>
+        <li><a href="#什么是隐式初始化">什么是隐式初始化?</a></li>
+        <li><a href="#对于编译而言怎么才能保证编译不报错">对于编译而言，怎么才能保证编译不报错?</a></li>
+        <li><a href="#什么是-instanceof-关键字如何使用">什么是 <strong>instanceof</strong> 关键字?如何使用?</a></li>
+        <li><a href="#怎么才能保证运行时不报错">怎么才能保证运行时不报错?</a></li>
+        <li><a href="#null-instalceof-任何类其结果是什么">null instalceof 任何类其结果是什么?</a></li>
+        <li><a href="#20210408145708httpsimgfengqigangcnimg20210408145708png-对于这段程序其执行-20210408145743httpsimgfengqigangcnimg20210408145743png-会出现什么"><img src="https://img.fengqigang.cn//img/20210408145708.png" alt="20210408145708"> 对于这段程序其执行 <img src="https://img.fengqigang.cn//img/20210408145743.png" alt="20210408145743"> 会出现什么?</a></li>
+        <li><a href="#为什么要有抽象方法">为什么要有抽象方法?</a></li>
+        <li><a href="#抽象方法如何声明">抽象方法如何声明?</a></li>
+        <li><a href="#如何声明一个抽象类">如何声明一个抽象类?</a></li>
+        <li><a href="#声明完抽象类后animal-还能不能创建对象">声明完抽象类后，<strong>Animal</strong> 还能不能创建对象?</a></li>
+        <li><a href="#抽象类一般如何命名">抽象类一般如何命名?</a></li>
+        <li><a href="#抽象类的成员变量与普通类的成员变量有区别吗">抽象类的成员变量与普通类的成员变量有区别吗?</a></li>
+        <li><a href="#抽象类可以允许定义成员方法吗">抽象类可以允许定义成员方法吗?</a></li>
+        <li><a href="#可以继承复用静态方法">可以继承复用静态方法?</a></li>
+        <li><a href="#抽象类中可以允许没有抽象方法吗">抽象类中可以允许没有抽象方法吗?</a></li>
+        <li><a href="#有些程序员喜欢直接将一个类加上-abstract-声明将该类变为抽象类目的是让这个类无法创建对象这种方式好吗-为什么">有些程序员喜欢直接将一个类加上 <strong>abstract</strong> 声明，将该类变为抽象类，目的是让这个类无法创建对象，这种方式好吗? 为什么?</a></li>
+        <li><a href="#抽象方法可以用-final--static-private-修饰吗">抽象方法可以用 <strong>final</strong> , <strong>static</strong>, <strong>private</strong> 修饰吗?</a></li>
+        <li><a href="#抽象类中有没有构造方法">抽象类中有没有构造方法?</a></li>
+        <li><a href="#java-中所有类都有构造方法吗"><strong>Java</strong> 中所有类都有构造方法吗?</a></li>
+        <li><a href="#抽象类的子类有要求吗只能是抽象类或具体类">抽象类的子类有要求吗?(只能是抽象类或具体类)</a></li>
+        <li><a href="#抽象类可以继承吗">抽象类可以继承吗?</a></li>
+        <li><a href="#抽象类可以继承一个具体类吗">抽象类可以继承一个具体类吗?</a></li>
+        <li><a href="#抽象类中可以继承一个抽象类吗">抽象类中可以继承一个抽象类吗?</a></li>
+        <li><a href="#abstrac-只能用来修饰什么"><strong>abstrac</strong> 只能用来修饰什么?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="20210408142941httpsimgfengqigangcnimg20210408142941png-其jvm内存结构图是什么样的"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408142941.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408142941.png, https://img.fengqigang.cn//img/20210408142941.png 1.5x, https://img.fengqigang.cn//img/20210408142941.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408142941.png"
+        title="20210408142941" /> 其<strong>jvm</strong>内存结构图是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408143109.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408143109.png, https://img.fengqigang.cn//img/20210408143109.png 1.5x, https://img.fengqigang.cn//img/20210408143109.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408143109.png"
+        title="20210408143109" /></p>
+<h3 id="什么是隐式初始化">什么是隐式初始化?</h3>
+<p><strong>隐式初始化</strong>，子类构造器中没有显式调用 <strong>super()</strong> 父类构造器</p>
+<h3 id="对于编译而言怎么才能保证编译不报错">对于编译而言，怎么才能保证编译不报错?</h3>
+<p>两个引用之间是父子关系</p>
+<h3 id="什么是-instanceof-关键字如何使用">什么是 <strong>instanceof</strong> 关键字?如何使用?</h3>
+<p>引用 <strong>instanceof</strong> 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)</p>
+<p>如果是就返回 <strong>true</strong>, 否则就返回 false</p>
+<h3 id="怎么才能保证运行时不报错">怎么才能保证运行时不报错?</h3>
+<p>该父类引用指向的子类对象，就是这个要强制的子类的对象</p>
+<p>否则会报 <strong>ClassCastException</strong> 类型转换异常的错误</p>
+<h3 id="null-instalceof-任何类其结果是什么">null instalceof 任何类其结果是什么?</h3>
+<p><strong>false</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408144819.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408144819.png, https://img.fengqigang.cn//img/20210408144819.png 1.5x, https://img.fengqigang.cn//img/20210408144819.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408144819.png"
+        title="20210408144819" /></p>
+<h3 id="20210408145708httpsimgfengqigangcnimg20210408145708png-对于这段程序其执行-20210408145743httpsimgfengqigangcnimg20210408145743png-会出现什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408145708.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408145708.png, https://img.fengqigang.cn//img/20210408145708.png 1.5x, https://img.fengqigang.cn//img/20210408145708.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408145708.png"
+        title="20210408145708" /> 对于这段程序其执行 <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408145743.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408145743.png, https://img.fengqigang.cn//img/20210408145743.png 1.5x, https://img.fengqigang.cn//img/20210408145743.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408145743.png"
+        title="20210408145743" /> 会出现什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408145913.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408145913.png, https://img.fengqigang.cn//img/20210408145913.png 1.5x, https://img.fengqigang.cn//img/20210408145913.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408145913.png"
+        title="20210408145913" /></p>
+<p>成员变量 <strong>编译时看左边</strong>，<strong>运行时看左边</strong></p>
+<p>###<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408150123.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408150123.png, https://img.fengqigang.cn//img/20210408150123.png 1.5x, https://img.fengqigang.cn//img/20210408150123.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408150123.png"
+        title="20210408150123" /> 对于段程序其执行 <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408150407.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408150407.png, https://img.fengqigang.cn//img/20210408150407.png 1.5x, https://img.fengqigang.cn//img/20210408150407.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408150407.png"
+        title="20210408150407" /> 会出现什么?</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408150655.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408150655.png, https://img.fengqigang.cn//img/20210408150655.png 1.5x, https://img.fengqigang.cn//img/20210408150655.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408150655.png"
+        title="20210408150655" /></p>
+<p>方法 <strong>编译时看左边</strong>，<strong>运行时看右边</strong></p>
+<h3 id="为什么要有抽象方法">为什么要有抽象方法?</h3>
+<p>如在 <strong>Animal</strong> 中的 <strong>shout</strong> 方法是不会被调用的，这个方法只是用来被重写的</p>
+<ol>
+<li>
+<p><strong>Animal</strong> 类只用来被继承，不用来创建对象</p>
+</li>
+<li>
+<p><strong>Animal</strong> 类中 <strong>shout</strong> 方法，不应该有方法体</p>
+</li>
+</ol>
+<h3 id="抽象方法如何声明">抽象方法如何声明?</h3>
+<p><strong>语法</strong>:</p>
+<p>[访问权限修饰符] abstract 返回值类型 方法名();</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408160450.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408160450.png, https://img.fengqigang.cn//img/20210408160450.png 1.5x, https://img.fengqigang.cn//img/20210408160450.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408160450.png"
+        title="20210408160450" /></p>
+<p><strong>Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;</strong></p>
+<p>一个类如果想要有抽象方法必须声明为抽象类，如果不想声明抽象类
+就不应该有抽象方法</p>
+<h3 id="如何声明一个抽象类">如何声明一个抽象类?</h3>
+<p><strong>语法</strong></p>
+<p>[访问权限修饰符] abstrac class 类名{}</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408160836.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408160836.png, https://img.fengqigang.cn//img/20210408160836.png 1.5x, https://img.fengqigang.cn//img/20210408160836.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408160836.png"
+        title="20210408160836" /></p>
+<h3 id="声明完抽象类后animal-还能不能创建对象">声明完抽象类后，<strong>Animal</strong> 还能不能创建对象?</h3>
+<p>不行</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408161017.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408161017.png, https://img.fengqigang.cn//img/20210408161017.png 1.5x, https://img.fengqigang.cn//img/20210408161017.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408161017.png"
+        title="20210408161017" /></p>
+<h3 id="抽象类一般如何命名">抽象类一般如何命名?</h3>
+<p>用 <strong>AbstractXxx</strong> 来命名抽象类</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408161148.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408161148.png, https://img.fengqigang.cn//img/20210408161148.png 1.5x, https://img.fengqigang.cn//img/20210408161148.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408161148.png"
+        title="20210408161148" /></p>
+<h3 id="抽象类的成员变量与普通类的成员变量有区别吗">抽象类的成员变量与普通类的成员变量有区别吗?</h3>
+<p><strong>没有区别</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408161339.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408161339.png, https://img.fengqigang.cn//img/20210408161339.png 1.5x, https://img.fengqigang.cn//img/20210408161339.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408161339.png"
+        title="20210408161339" /></p>
+<h3 id="抽象类可以允许定义成员方法吗">抽象类可以允许定义成员方法吗?</h3>
+<p>可以</p>
+<p>假设现有抽象类的子类中有一些方法的实现是可以被共用的，就可以抽取到抽象类中去共享它，去复用成员，复用代码</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408161503.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408161503.png, https://img.fengqigang.cn//img/20210408161503.png 1.5x, https://img.fengqigang.cn//img/20210408161503.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408161503.png"
+        title="20210408161503" /></p>
+<h3 id="可以继承复用静态方法">可以继承复用静态方法?</h3>
+<p><strong>静态方法</strong> 是不能被重写的，子类中同名的静态方法是独立的</p>
+<h3 id="抽象类中可以允许没有抽象方法吗">抽象类中可以允许没有抽象方法吗?</h3>
+<p>允许</p>
+<p>如果一个抽象类中没有抽象方法， 是没有太大的意义的</p>
+<p><strong>普遍来说，抽象类中就应该有抽象方法</strong></p>
+<h3 id="有些程序员喜欢直接将一个类加上-abstract-声明将该类变为抽象类目的是让这个类无法创建对象这种方式好吗-为什么">有些程序员喜欢直接将一个类加上 <strong>abstract</strong> 声明，将该类变为抽象类，目的是让这个类无法创建对象，这种方式好吗? 为什么?</h3>
+<p><strong>不好</strong></p>
+<p>因为抽象类是一个设计处于 <strong>顶层祖先类的抽象概念</strong> ，设计抽象类的目的不仅仅是创建对象</p>
+<p>想让一个类无法创建对象，最好还是私有化构造方法</p>
+<h3 id="抽象方法可以用-final--static-private-修饰吗">抽象方法可以用 <strong>final</strong> , <strong>static</strong>, <strong>private</strong> 修饰吗?</h3>
+<p><strong>都不可以</strong></p>
+<ol>
+<li><strong>private</strong></li>
+</ol>
+<p>私有的方法可以继承但是没有权限， 就无法重写，抽象方法没有方法体，如果不重写没有任何意义，所以抽象方法显然不能是 <strong>private</strong></p>
+<ol start="2">
+<li><strong>static</strong></li>
+</ol>
+<p>静态方法没有办法重写，所以也不能在抽象方法中</p>
+<ol start="3">
+<li><strong>final</strong></li>
+</ol>
+<p><strong>final</strong> 方法不能被重写， 所以也不能用在抽象方法中</p>
+<p><strong>总结:</strong></p>
+<p>抽象方法被声明出来，就量要被重写的，所以不应该限制它的重写，而应该去鼓励它重写，所以普遍来说抽象方法的访问权限都是 <strong>public</strong></p>
+<h3 id="抽象类中有没有构造方法">抽象类中有没有构造方法?</h3>
+<p>抽象类中是 <strong>有构造器</strong> 的</p>
+<p>抽象类自己不能用构造器，这个构造器 <strong>给子类对象初始化用的</strong></p>
+<h3 id="java-中所有类都有构造方法吗"><strong>Java</strong> 中所有类都有构造方法吗?</h3>
+<p><strong>类</strong></p>
+<p>普通类 + 抽象类</p>
+<p>它们都有构造方法</p>
+<h3 id="抽象类的子类有要求吗只能是抽象类或具体类">抽象类的子类有要求吗?(只能是抽象类或具体类)</h3>
+<p>抽旬类的子类可以是抽象类，也可以是具体类</p>
+<p><strong>具体类</strong></p>
+<p>只有当子类重写了，所有的继承自抽象类的方法，该子类才能被定义为具体类</p>
+<p><strong>抽象类</strong></p>
+<p>若抽象方法没有重写，则定义为抽象类</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210408164715.png"
+        data-srcset="https://img.fengqigang.cn//img/20210408164715.png, https://img.fengqigang.cn//img/20210408164715.png 1.5x, https://img.fengqigang.cn//img/20210408164715.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210408164715.png"
+        title="20210408164715" /></p>
+<h3 id="抽象类可以继承吗">抽象类可以继承吗?</h3>
+<p>可以</p>
+<h3 id="抽象类可以继承一个具体类吗">抽象类可以继承一个具体类吗?</h3>
+<p>可以</p>
+<h3 id="抽象类中可以继承一个抽象类吗">抽象类中可以继承一个抽象类吗?</h3>
+<p>可以</p>
+<h3 id="abstrac-只能用来修饰什么"><strong>abstrac</strong> 只能用来修饰什么?</h3>
+<p>只能用来修饰 <strong>class</strong> 和 方法</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day8/" class="prev" rel="prev" title="Day8"><i class="fas fa-angle-left fa-fw"></i>Day8</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

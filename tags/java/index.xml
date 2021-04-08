@@ -4,7 +4,29 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 07 Apr 2021 23:12:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 08 Apr 2021 16:50:57 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Day9</title>
+    <link>http://fengqigang.cn/posts/day9/</link>
+    <pubDate>Thu, 08 Apr 2021 16:50:57 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day9/</guid>
+    <description><![CDATA[其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
+对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
+什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
+如果是就返回 true, 否则就返回 false
+怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
+否则会报 ClassCastException 类型转换异常的错误
+null instalceof 任何类其结果是什么? false
+对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
+###对于段程序其执行 会出现什么?
+方法 编译时看左边，运行时看右边
+为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
+  Animal 类只用来被继承，不用来创建对象
+  Animal 类中 shout 方法，不应该有方法体
+  抽象方法如何声明? 语法:
+[访问权限修饰符] abstract 返回值类型 方法名();
+Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;]]></description>
+</item><item>
     <title>Day8</title>
     <link>http://fengqigang.cn/posts/day8/</link>
     <pubDate>Wed, 07 Apr 2021 23:12:51 &#43;0800</pubDate>
@@ -204,22 +226,5 @@ PI
     <guid>http://fengqigang.cn/posts/twosum/</guid>
     <description><![CDATA[Two Sum 001
 我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x ++){ for (int y = x + 1; y &lt; nums.length; y ++){ if (nums[x] + nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表]]></description>
-</item><item>
-    <title>Java第三章</title>
-    <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</link>
-    <pubDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</guid>
-    <description><![CDATA[什么是类? 什么是对象? 类:
-表示一个客观世界中某类群体的一些基本特征抽象
-如:
-汽车， 轮船，书
-对象:
-一个个具体的事物
-如:
-张三同学， 李四账户， 王五的汽车
-总结:
-类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
-如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.]]></description>
 </item></channel>
 </rss>

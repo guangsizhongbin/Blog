@@ -4,9 +4,31 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 07 Apr 2021 23:12:51 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 08 Apr 2021 16:50:57 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day9</title>
+    <link>http://fengqigang.cn/posts/day9/</link>
+    <pubDate>Thu, 08 Apr 2021 16:50:57 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day9/</guid>
+    <description><![CDATA[其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
+对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
+什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
+如果是就返回 true, 否则就返回 false
+怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
+否则会报 ClassCastException 类型转换异常的错误
+null instalceof 任何类其结果是什么? false
+对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
+###对于段程序其执行 会出现什么?
+方法 编译时看左边，运行时看右边
+为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
+  Animal 类只用来被继承，不用来创建对象
+  Animal 类中 shout 方法，不应该有方法体
+  抽象方法如何声明? 语法:
+[访问权限修饰符] abstract 返回值类型 方法名();
+Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;]]></description>
+</item><item>
     <title>Day8</title>
     <link>http://fengqigang.cn/posts/day8/</link>
     <pubDate>Wed, 07 Apr 2021 23:12:51 &#43;0800</pubDate>
@@ -198,35 +220,5 @@ JVM内存模型中JVM堆(heap)中有什么样的特点? 所有new出来的东西
   基本数据类型，打印变量名就是该变量具体的数值
   引用数据类型，打印变量名显示该引用变量堆上的内存地址
     堆上对象和栈中变量有什么区别?  从存储的类型来看:    堆上存储的是 new 出来的东西，是 引用数据类型 的对象]]></description>
-</item><item>
-    <title>Day1</title>
-    <link>http://fengqigang.cn/posts/day1/</link>
-    <pubDate>Tue, 30 Mar 2021 23:02:50 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day1/</guid>
-    <description><![CDATA[JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
-Java 运行时环境
-JDK(Java Development Kit)
-Java 开发者工具包
-除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
-Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
-  单词之间用下划线或横杠连接
-  如:
-student-manage
-如何给一个包命名? 以反转公司域名为规范
-包名应该 全部小写
-多级包名以点(.)分隔
-包名 com.baidu
-如何给类、接口命名? 采用大驼峰命名法
-public class TestDemo{}
-public class PersonDemo{}
-如何给变量和方法命名? 采用小驼峰命名法
-int num;
-String name;
-如何给常量命名? 全部用大写
-多个单词之间用下划线(_)隔开
-PI
-什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
- 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram]]></description>
 </item></channel>
 </rss>
