@@ -100,6 +100,21 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day10/">Day10</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-09">2021-04-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">子类对象初始化成员变量赋值的顺序是什么样的?   默认初始化, 默认值
+  去找创建子类对象会调用的构造方法，看第一行有没有 this(), super(), 如果有就去执行，如果没有，默认有 super() 仍然去执行
+  肯定要跳到 父类构造器 ，然后从 上到下 执行父类中的 显示赋值 和 构造代码块 ，最后执行父类的构造器
+  如果子类构造器中有 this, 回到子类 this 构造器. 如果没有 this, 直接就回去，从上到下执行子类中的显示赋值和构造代码块，然后执行 this 构造器，然后跳到最开始的构造器
+  直接执行该构造器，而不会显式赋值和构造代码块
+  如何定义接口? 语法:
+与 class 定义一样，接口是和 class 同等级别的数据类型
+[访问权限修饰符] interface 接口名{}
+接口的命名规范是什么? 采取 大驼峰式 的
+有些程序员，喜欢在接口名的第一个单词之前加一个&quot;I&quot; 用来区分这是一个接口
+1 2 3 4 5  interface ISpecialSkills{ public void walkUpright(){ } }   如何在接口中定义方法?</div><div class="post-footer">
+        <a href="/posts/day10/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day9/">Day9</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-08">2021-04-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
 对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
@@ -196,25 +211,6 @@ new 类名();
   什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块</div><div class="post-footer">
         <a href="/posts/day6/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/">Linux第十章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
-狭义:
-命令行方面的软件
-广义:
-包括图形接口的软件
-在 linux 把运行过后的指令保存在哪里? ~/.bash_history
-~/.bash_history 记录的是前一次登录以前执行过的指令
-而至于这一次登录所执行的指令都被 暂存在内存中 , 当成功的登出系统后，该指令记忆才会记录到 .vash_history 当中
-如何查看 cd 是否是 bash 的内置命令? type cd
-如何查看 ls 是否是 bash 的内置命令? type ls
-type -a ls
-在 bash 中如何将光标移动到整个指令串的最前面或最后面? [ctrl] + a 移动到最前面
-[ctrl] + e 移动到最后面
-如何输出 PATH 这个变量? echo ${PATH}
-如何定义一个变量 name， 其内容为 VBird ? 1 2  name=VBird echo ${name}   如何定义一个变量 name， 其内容为 VBird&rsquo;s name 中间不能出来空格</div><div class="post-footer">
-        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
