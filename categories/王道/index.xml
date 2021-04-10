@@ -4,7 +4,33 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 09 Apr 2021 23:09:08 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 10 Apr 2021 22:36:59 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day11</title>
+    <link>http://fengqigang.cn/posts/day11/</link>
+    <pubDate>Sat, 10 Apr 2021 22:36:59 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day11/</guid>
+    <description><![CDATA[new 类名().new 类名() 与 new 类名.new 这两种方式有什么区别? new 类名().new 类名()
+创建成员内部类
+new 外围类类名.new 静态内部类类名()
+创建静态内部类
+局部内部类有什么优缺点? 优点
+绝对的封装性，并且可以少创建一个 class, 相对来说简单一点
+缺点
+局部内部类作用域仅限于方法，如果别的类， 别的方法也想用这个类 做不到
+可以进行吗?为什么? 可以，任何时候都有父类，哪怕是实现了一个接口
+, 为什么 a++ 无法执行?  生命周期的问题  方法的局部变量的生命周期和方法同生共死, 方法出栈就销毁
+但是 局部内部类的方法会创建对象
+于是出现方法出栈后，局部变量销毁了，但是对象仍然需要使用该局部变量的情况
+为了解决这种生命周期的冲突，jvm 会在创建局部内部类对象时，把方法的局部变量作为对象的成员变量加了进去
+这个成员变量和局部变量值同步的问题  如果在局部内部类当中， 把这个局部变量给修改了，那就必须同步这个修改，否则程序就有问题
+但是这样显然太复杂了，java 的开发都觉得不想做了，于是直接把这个局部变量声明为 final 做为一个常量，直接不修改，就不需要考虑同步问题
+Java8 之前，如果想用局部内部类访问方法的局部变量， 该局部变量必须声明为 final
+Java8 之后， 这个限制被解除了，改为在底层直接加上 final, 不需要程序再加了
+这就是 语法糖
+匿名内部类 和 lambda 的局部变量有什么特殊的地方? 匿名内部类 和 lambda 本质的是 局部内部类
+它们的局部变量仍然是 final 修饰的]]></description>
+</item><item>
     <title>Day10</title>
     <link>http://fengqigang.cn/posts/day10/</link>
     <pubDate>Fri, 09 Apr 2021 23:09:08 &#43;0800</pubDate>
@@ -205,35 +231,5 @@ JVM内存模型中JVM堆(heap)中有什么样的特点? 所有new出来的东西
   基本数据类型，打印变量名就是该变量具体的数值
   引用数据类型，打印变量名显示该引用变量堆上的内存地址
     堆上对象和栈中变量有什么区别?  从存储的类型来看:    堆上存储的是 new 出来的东西，是 引用数据类型 的对象]]></description>
-</item><item>
-    <title>Day1</title>
-    <link>http://fengqigang.cn/posts/day1/</link>
-    <pubDate>Tue, 30 Mar 2021 23:02:50 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day1/</guid>
-    <description><![CDATA[JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
-Java 运行时环境
-JDK(Java Development Kit)
-Java 开发者工具包
-除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
-Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
-  单词之间用下划线或横杠连接
-  如:
-student-manage
-如何给一个包命名? 以反转公司域名为规范
-包名应该 全部小写
-多级包名以点(.)分隔
-包名 com.baidu
-如何给类、接口命名? 采用大驼峰命名法
-public class TestDemo{}
-public class PersonDemo{}
-如何给变量和方法命名? 采用小驼峰命名法
-int num;
-String name;
-如何给常量命名? 全部用大写
-多个单词之间用下划线(_)隔开
-PI
-什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
- 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram]]></description>
 </item></channel>
 </rss>

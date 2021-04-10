@@ -38,7 +38,7 @@
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day10/" /><link rel="prev" href="http://fengqigang.cn/posts/day9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day10/" /><link rel="prev" href="http://fengqigang.cn/posts/day9/" /><link rel="next" href="http://fengqigang.cn/posts/day11/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -47,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day10\/"
-        },"genre": "posts","keywords": "java","wordcount":  590 ,
+        },"genre": "posts","keywords": "java","wordcount":  1053 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day10\/","datePublished": "2021-04-09T23:09:08+08:00","dateModified": "2021-04-09T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -124,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day10</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-09">2021-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;590 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-09">2021-04-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1053 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -183,7 +183,33 @@
         <li><a href="#若成员内部类中和外围类成员有同名怎么办">若成员内部类中和外围类成员有同名，怎么办?</a></li>
         <li><a href="#如果成员内部类中静态成员变量同名怎么办">如果成员内部类中静态成员变量同名怎么办?</a></li>
         <li><a href="#如果成员内部类中全局常量同名怎么办">如果成员内部类中全局常量同名怎么办?</a></li>
-        <li><a href="#外围类如何访问成员内部类成员">外围类如何访问成员内部类成员?</a></li>
+        <li><a href="#什么是静态内部类">什么是静态内部类?</a></li>
+        <li><a href="#如何定义一个静态内部类">如何定义一个静态内部类?</a></li>
+        <li><a href="#静态内部类的外围普通类的访问权限修饰符有哪些">静态内部类的外围(普通)类的访问权限修饰符有哪些?</a></li>
+        <li><a href="#内部类的访问权限修饰符有哪些">内部类的访问权限修饰符有哪些?</a></li>
+        <li><a href="#静态内部类是外围类的静态成员吗">静态内部类是外围类的静态成员吗?</a></li>
+        <li><a href="#静态内部类可以独立做类它的成员和普通类有什么区别">静态内部类可以独立做类，它的成员和普通类有什么区别?</a></li>
+        <li><a href="#静态内部类可以继承-普通类-吗和-静态类-吗">静态内部类可以继承 <strong>普通类</strong> 吗和 <strong>静态类</strong> 吗?</a></li>
+        <li><a href="#静态内部类什么时候类加载-静态内部类类加载需不需要依赖外围类如何证明">静态内部类什么时候类加载? 静态内部类类加载需不需要依赖外围类?如何证明?</a></li>
+        <li><a href="#静态内部类的成员方法中有没有外围类对象">静态内部类的成员方法中，有没有外围类对象?</a></li>
+        <li><a href="#外围类对象的成员方法中有没有静态内部类">外围类对象的成员方法中，有没有静态内部类?</a></li>
+        <li><a href="#静态内部类访问外围类有什么特点">静态内部类访问外围类有什么特点?</a></li>
+        <li><a href="#外围类访问静态内部类成员有什么特点">外围类访问静态内部类成员有什么特点?</a></li>
+        <li><a href="#外部类访问静态内部类成员有什么特点">外部类访问静态内部类成员有什么特点?</a></li>
+        <li><a href="#静态内部类访问外部类成员有什么特点">静态内部类访问外部类成员有什么特点?</a></li>
+        <li><a href="#20210410163851httpsimgfengqigangcnimg20210410163851png其答案是什么"><img src="https://img.fengqigang.cn//img/20210410163851.png" alt="20210410163851">其答案是什么?</a></li>
+        <li><a href="#什么是局部内部类">什么是局部内部类?</a></li>
+        <li><a href="#局部内部类有没有访问权限修饰符">局部内部类有没有访问权限修饰符?</a></li>
+        <li><a href="#局部内部类有没有-static-修饰符">局部内部类有没有 <strong>static</strong> 修饰符?</a></li>
+        <li><a href="#局部内部类的类加载时机有哪些">局部内部类的类加载时机有哪些?</a></li>
+        <li><a href="#在方法体中创建局部内部类的对象应该写在哪里20210410165603httpsimgfengqigangcnimg20210410165603png-1处还是2处">在方法体中创建局部内部类的对象应该写在哪里<img src="https://img.fengqigang.cn//img/20210410165603.png" alt="20210410165603">? 1处还是2处?</a></li>
+        <li><a href="#局部内部类的成员特点是什么样的">局部内部类的成员特点是什么样的?</a></li>
+        <li><a href="#局部内部类定义在哪里">局部内部类定义在哪里?</a></li>
+        <li><a href="#什么时候用局部内部类">什么时候用局部内部类?</a></li>
+        <li><a href="#可以在外部类中创建局部内部类对象吗">可以在外部类中创建局部内部类对象吗?</a></li>
+        <li><a href="#20210410170805httpsimgfengqigangcnimg20210410170805png-调用这方法的思路是什么土办法调用"><img src="https://img.fengqigang.cn//img/20210410170805.png" alt="20210410170805"> 调用这方法的思路是什么?(土办法调用)?</a></li>
+        <li><a href="#20210410170805httpsimgfengqigangcnimg20210410170805png-调用这方法的思路是什么如何采用内部类的方式实现"><img src="https://img.fengqigang.cn//img/20210410170805.png" alt="20210410170805"> 调用这方法的思路是什么(如何采用内部类的方式实现)?</a></li>
+        <li><a href="#20210410173421httpsimgfengqigangcnimg20210410173421png-如何输出这三个-num-"><img src="https://img.fengqigang.cn//img/20210410173421.png" alt="20210410173421"> 如何输出这三个 <strong>num</strong> ?</a></li>
       </ul>
     </li>
   </ul>
@@ -799,10 +825,522 @@
 <p>成员内部类中 <strong>没有静态成员变量</strong></p>
 <h3 id="如果成员内部类中全局常量同名怎么办">如果成员内部类中全局常量同名怎么办?</h3>
 <p>用类名去区分</p>
-<h3 id="外围类如何访问成员内部类成员">外围类如何访问成员内部类成员?</h3>
+<h3 id="什么是静态内部类">什么是静态内部类?</h3>
+<p>在一个成员内部类基础上，加一个 <strong>static</strong> 修饰即可</p>
+<p>静态内部类也是处在 <strong>外围类</strong> 成员位置的内部类, 不同的是它需要使用 <strong>static</strong> 修饰</p>
+<h3 id="如何定义一个静态内部类">如何定义一个静态内部类?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">[</span><span class="n">访问权限修饰符</span><span class="o">]</span> <span class="kd">class</span> <span class="nc">EnclosedClazz</span> <span class="o">{</span>
+	<span class="o">[</span><span class="n">访问权限修饰符</span><span class="o">]</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">InnerClazz</span> <span class="o">{</span>
+
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410155531.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410155531.png, https://img.fengqigang.cn//img/20210410155531.png 1.5x, https://img.fengqigang.cn//img/20210410155531.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410155531.png"
+        title="20210410155531" /></p>
+<h3 id="静态内部类的外围普通类的访问权限修饰符有哪些">静态内部类的外围(普通)类的访问权限修饰符有哪些?</h3>
+<p><strong>public</strong> 和 缺省的</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410155821.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410155821.png, https://img.fengqigang.cn//img/20210410155821.png 1.5x, https://img.fengqigang.cn//img/20210410155821.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410155821.png"
+        title="20210410155821" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410155839.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410155839.png, https://img.fengqigang.cn//img/20210410155839.png 1.5x, https://img.fengqigang.cn//img/20210410155839.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410155839.png"
+        title="20210410155839" /></p>
+<h3 id="内部类的访问权限修饰符有哪些">内部类的访问权限修饰符有哪些?</h3>
+<p>4种</p>
+<p><strong>public</strong>, <strong>private</strong>, 缺省的, <strong>protected</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410155946.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410155946.png, https://img.fengqigang.cn//img/20210410155946.png 1.5x, https://img.fengqigang.cn//img/20210410155946.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410155946.png"
+        title="20210410155946" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410160005.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410160005.png, https://img.fengqigang.cn//img/20210410160005.png 1.5x, https://img.fengqigang.cn//img/20210410160005.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410160005.png"
+        title="20210410160005" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410160054.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410160054.png, https://img.fengqigang.cn//img/20210410160054.png 1.5x, https://img.fengqigang.cn//img/20210410160054.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410160054.png"
+        title="20210410160054" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410160155.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410160155.png, https://img.fengqigang.cn//img/20210410160155.png 1.5x, https://img.fengqigang.cn//img/20210410160155.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410160155.png"
+        title="20210410160155" /></p>
+<h3 id="静态内部类是外围类的静态成员吗">静态内部类是外围类的静态成员吗?</h3>
+<p><strong>不是</strong></p>
+<p>其实两个类没有太大关系</p>
+<p>静态内部类和外围类没有依赖关系，实际上它完全可以脱离外围类，独立的自己做一个类</p>
+<h3 id="静态内部类可以独立做类它的成员和普通类有什么区别">静态内部类可以独立做类，它的成员和普通类有什么区别?</h3>
+<p>它的成员和普通类没有区别</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410160717.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410160717.png, https://img.fengqigang.cn//img/20210410160717.png 1.5x, https://img.fengqigang.cn//img/20210410160717.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410160717.png"
+        title="20210410160717" /></p>
+<h3 id="静态内部类可以继承-普通类-吗和-静态类-吗">静态内部类可以继承 <strong>普通类</strong> 吗和 <strong>静态类</strong> 吗?</h3>
+<p>不可以继承 <strong>普通类</strong></p>
+<p>可以继承 <strong>静态类</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410161201.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410161201.png, https://img.fengqigang.cn//img/20210410161201.png 1.5x, https://img.fengqigang.cn//img/20210410161201.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410161201.png"
+        title="20210410161201" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410161021.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410161021.png, https://img.fengqigang.cn//img/20210410161021.png 1.5x, https://img.fengqigang.cn//img/20210410161021.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410161021.png"
+        title="20210410161021" /></p>
+<h3 id="静态内部类什么时候类加载-静态内部类类加载需不需要依赖外围类如何证明">静态内部类什么时候类加载? 静态内部类类加载需不需要依赖外围类?如何证明?</h3>
+<p>静态内部类和外围类没有依赖关系，实际上它完全可以脱离外围类，独立的自己做一个类</p>
+<p><strong>静态内部类的加载不需要依赖外围类</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410161647.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410161647.png, https://img.fengqigang.cn//img/20210410161647.png 1.5x, https://img.fengqigang.cn//img/20210410161647.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410161647.png"
+        title="20210410161647" /></p>
+<h3 id="静态内部类的成员方法中有没有外围类对象">静态内部类的成员方法中，有没有外围类对象?</h3>
+<p><strong>静态内部类与外围类互相不影响</strong></p>
+<p>静态内部类中 <strong>没有</strong> 外围类对象</p>
+<h3 id="外围类对象的成员方法中有没有静态内部类">外围类对象的成员方法中，有没有静态内部类?</h3>
+<p><strong>静态内部类与外围类互相不影响</strong></p>
+<p>外围类对象中 <strong>没有</strong> 静态内部类</p>
+<h3 id="静态内部类访问外围类有什么特点">静态内部类访问外围类有什么特点?</h3>
+<p>需要<strong>创建对象</strong>, 除了不受访问权限限制， 其它的和普通类访问一样</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span> <span class="c1">//外部类
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">EnclosedClazz</span><span class="o">.</span><span class="na">Inner</span> <span class="n">inner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EnclosedClazz</span><span class="o">.</span><span class="na">Inner</span><span class="o">();</span>
+        <span class="n">inner</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">EnclosedClazz</span> <span class="o">{</span> <span class="c1">//外围类
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">30</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">D</span> <span class="o">=</span> <span class="n">40</span><span class="o">;</span>
+
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Inner</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">100</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">200</span><span class="o">;</span>
+        <span class="kd">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">300</span><span class="o">;</span>
+        <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">D</span> <span class="o">=</span> <span class="n">400</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+            <span class="n">EnclosedClazz</span> <span class="n">ec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EnclosedClazz</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ec</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ec</span><span class="o">.</span><span class="na">b</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">EnclosedClazz</span><span class="o">.</span><span class="na">c</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">EnclosedClazz</span><span class="o">.</span><span class="na">D</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">a</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410162954.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410162954.png, https://img.fengqigang.cn//img/20210410162954.png 1.5x, https://img.fengqigang.cn//img/20210410162954.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410162954.png"
+        title="20210410162954" /></p>
+<h3 id="外围类访问静态内部类成员有什么特点">外围类访问静态内部类成员有什么特点?</h3>
+<p>需要<strong>创建对象</strong>, 除了不受访问权限限制， 其它的和普通类访问一样</p>
+<h3 id="外部类访问静态内部类成员有什么特点">外部类访问静态内部类成员有什么特点?</h3>
+<p>直接创建静态内部类对象， <strong>受访问权限限制</strong></p>
+<p>创建对象以后,访问成员，<strong>也受访问权限限制</strong></p>
+<h3 id="静态内部类访问外部类成员有什么特点">静态内部类访问外部类成员有什么特点?</h3>
+<p>直接创建外部类对象，<strong>受访问权限限制</strong></p>
+<h3 id="20210410163851httpsimgfengqigangcnimg20210410163851png其答案是什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410163851.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410163851.png, https://img.fengqigang.cn//img/20210410163851.png 1.5x, https://img.fengqigang.cn//img/20210410163851.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410163851.png"
+        title="20210410163851" />其答案是什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410163945.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410163945.png, https://img.fengqigang.cn//img/20210410163945.png 1.5x, https://img.fengqigang.cn//img/20210410163945.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410163945.png"
+        title="20210410163945" /></p>
+<h3 id="什么是局部内部类">什么是局部内部类?</h3>
+<p>定义在 <strong>一个方法或者一个作用域</strong> 里面的类</p>
+<p>将局部内部类看成是 <strong>局部变量</strong> 即可</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410164800.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410164800.png, https://img.fengqigang.cn//img/20210410164800.png 1.5x, https://img.fengqigang.cn//img/20210410164800.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410164800.png"
+        title="20210410164800" /></p>
+<h3 id="局部内部类有没有访问权限修饰符">局部内部类有没有访问权限修饰符?</h3>
+<p>没有， <strong>方法的作用域已经限制</strong> 了这个局部内部类，<strong>无需访问权限再限制</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410165023.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410165023.png, https://img.fengqigang.cn//img/20210410165023.png 1.5x, https://img.fengqigang.cn//img/20210410165023.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410165023.png"
+        title="20210410165023" /></p>
+<h3 id="局部内部类有没有-static-修饰符">局部内部类有没有 <strong>static</strong> 修饰符?</h3>
+<p>没有, 局部变量不需要 <strong>static</strong> 修饰</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410165209.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410165209.png, https://img.fengqigang.cn//img/20210410165209.png 1.5x, https://img.fengqigang.cn//img/20210410165209.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410165209.png"
+        title="20210410165209" /></p>
+<h3 id="局部内部类的类加载时机有哪些">局部内部类的类加载时机有哪些?</h3>
 <ol>
-<li>创建内部类对象</li>
+<li>
+<p>调用外面的方法</p>
+</li>
+<li>
+<p>在方法中创建这个局部内部类的对象</p>
+</li>
 </ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410165356.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410165356.png, https://img.fengqigang.cn//img/20210410165356.png 1.5x, https://img.fengqigang.cn//img/20210410165356.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410165356.png"
+        title="20210410165356" /></p>
+<h3 id="在方法体中创建局部内部类的对象应该写在哪里20210410165603httpsimgfengqigangcnimg20210410165603png-1处还是2处">在方法体中创建局部内部类的对象应该写在哪里<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410165603.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410165603.png, https://img.fengqigang.cn//img/20210410165603.png 1.5x, https://img.fengqigang.cn//img/20210410165603.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410165603.png"
+        title="20210410165603" />? 1处还是2处?</h3>
+<p><strong>2处</strong>, 在方法中，局部内部类的声明 <strong>下面创建对象</strong></p>
+<h3 id="局部内部类的成员特点是什么样的">局部内部类的成员特点是什么样的?</h3>
+<p>和成员内部类一样，没有静态成员，有全局常量</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410165921.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410165921.png, https://img.fengqigang.cn//img/20210410165921.png 1.5x, https://img.fengqigang.cn//img/20210410165921.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410165921.png"
+        title="20210410165921" /></p>
+<h3 id="局部内部类定义在哪里">局部内部类定义在哪里?</h3>
+<p>局部位置</p>
+<h3 id="什么时候用局部内部类">什么时候用局部内部类?</h3>
+<p>当在局部位置，碰到了一个麻烦的问题，需要使用类来解决</p>
+<p>但是又 <strong>不希望这个类被外界知道</strong> ，这种情况需要使用局部内部类</p>
+<h3 id="可以在外部类中创建局部内部类对象吗">可以在外部类中创建局部内部类对象吗?</h3>
+<p>不可以</p>
+<h3 id="20210410170805httpsimgfengqigangcnimg20210410170805png-调用这方法的思路是什么土办法调用"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410170805.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410170805.png, https://img.fengqigang.cn//img/20210410170805.png 1.5x, https://img.fengqigang.cn//img/20210410170805.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410170805.png"
+        title="20210410170805" /> 调用这方法的思路是什么?(土办法调用)?</h3>
+<ol>
+<li>
+<p>新建一个 <strong>class</strong>, 这个 <strong>class</strong> 中有 <strong>method</strong> 方法</p>
+</li>
+<li>
+<p><strong>class</strong> 是一个接口的实现, 接口中有 <strong>method</strong>, <strong>class</strong> 改写 <strong>method</strong> 接口</p>
+</li>
+<li>
+<p><strong>class</strong> 是 <strong>接口</strong> 的子类</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test</span><span class="o">(</span><span class="k">new</span> <span class="n">IAImpl</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="n">IA</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">a</span><span class="o">.</span><span class="na">method</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">IA</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">method</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">IAImpl</span> <span class="kd">implements</span> <span class="n">IA</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;土办法调用test()方法&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410171522.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410171522.png, https://img.fengqigang.cn//img/20210410171522.png 1.5x, https://img.fengqigang.cn//img/20210410171522.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410171522.png"
+        title="20210410171522" /></p>
+<h3 id="20210410170805httpsimgfengqigangcnimg20210410170805png-调用这方法的思路是什么如何采用内部类的方式实现"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410170805.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410170805.png, https://img.fengqigang.cn//img/20210410170805.png 1.5x, https://img.fengqigang.cn//img/20210410170805.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410170805.png"
+        title="20210410170805" /> 调用这方法的思路是什么(如何采用内部类的方式实现)?</h3>
+<ol>
+<li>
+<p>如果一个方法需要传入接口或抽象类，应该 <strong>传它们的子类对象</strong></p>
+</li>
+<li>
+<p>如果一个方法需要返回接口或抽象类，应该 <strong>返回它们的子类对象</strong></p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test</span><span class="o">(</span><span class="n">test2</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="n">IA</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">a</span><span class="o">.</span><span class="na">method</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">IA</span> <span class="nf">test2</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">class</span> <span class="nc">IAImpl</span> <span class="kd">implements</span> <span class="n">IA</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;高端的调用test()方法 &#34;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">IAImpl</span><span class="o">();</span>
+    <span class="o">}</span>
+
+
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">IA</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">method</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410173042.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410173042.png, https://img.fengqigang.cn//img/20210410173042.png 1.5x, https://img.fengqigang.cn//img/20210410173042.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410173042.png"
+        title="20210410173042" /></p>
+<h3 id="20210410173421httpsimgfengqigangcnimg20210410173421png-如何输出这三个-num-"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410173421.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410173421.png, https://img.fengqigang.cn//img/20210410173421.png 1.5x, https://img.fengqigang.cn//img/20210410173421.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410173421.png"
+        title="20210410173421" /> 如何输出这三个 <strong>num</strong> ?</h3>
+<p>Outer需要创建对象， 所以需要Outer().new</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Outer</span><span class="o">.</span><span class="na">Inner</span> <span class="n">inner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Outer</span><span class="o">().</span><span class="na">new</span> <span class="n">Inner</span><span class="o">();</span>
+        <span class="n">inner</span><span class="o">.</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+    <span class="kd">class</span> <span class="nc">Inner</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">20</span><span class="o">;</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">30</span><span class="o">;</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">num</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Outer</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">num</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210410173744.png"
+        data-srcset="https://img.fengqigang.cn//img/20210410173744.png, https://img.fengqigang.cn//img/20210410173744.png 1.5x, https://img.fengqigang.cn//img/20210410173744.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210410173744.png"
+        title="20210410173744" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -826,7 +1364,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/day9/" class="prev" rel="prev" title="Day9"><i class="fas fa-angle-left fa-fw"></i>Day9</a></div>
+    <div class="post-nav"><a href="/posts/day9/" class="prev" rel="prev" title="Day9"><i class="fas fa-angle-left fa-fw"></i>Day9</a>
+            <a href="/posts/day11/" class="next" rel="next" title="Day11">Day11<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
