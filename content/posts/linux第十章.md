@@ -87,7 +87,7 @@ PATH=${PATH}:/home/feng/bin
 
 ### 什么是Shell中的子程序?
 
-在目前这个 **shell** 的情况下，去启用一个新的 **shell** , 新的那个 **shell** 就量子程序
+在目前这个 **shell** 的情况下，去启用一个新的 **shell** , 新的那个 **shell** 就是子程序
 
 一般的状态下，父程序的自订变量是无法在子程序内使用的。
 
@@ -119,7 +119,7 @@ cd /lib/modules/$(uname -r)/kernel
 
 ![20210404104248](https://img.fengqigang.cn//img/20210404104248.png)
 
-### 如何取消设置这个 **name**?
+### ![20210404113619](https://img.fengqigang.cn//img/20210404113619.png) 如何取消设置这个 **name**?
 
 unset name
 
@@ -185,4 +185,305 @@ echo $?
 子程序**仅会继承父程序的环境变量**, **不会继承父程序的自订变量**
 
 通过 **export** 指令， 可以让该变量内容继续在子程序中使用
+
+### 如何查看系统中支持了多少的语系?
+
+**locale -a**
+
+![20210411091809](https://img.fengqigang.cn//img/20210411091809.png)
+
+### 为什么在 **tty1 ~ tty6** 环境下，如何设置 **LANG=zh_CN.utf8** 这个设置值生效后，使用 **ls -l** 这个参数时，还是会出现乱码?
+
+因为 **Linux** 主机的终端机接口环境下是无法显示像中文这么复杂的编码文字
+
+需要再 **加装一些中文化接口的软件** 才可以看到中文
+
+### 整体系统默认的语系定义在哪里?
+
+**/etc/locale.conf**
+
+![20210411092348](https://img.fengqigang.cn//img/20210411092348.png)
+
+### 若原本是中文语系，所有显示的数据通通是中文，但为了网页显示的关系，需要将输出转成英文(en_US.utf8)的语系来展示才行, 应该如何做?
+
+```bash
+locale
+
+LANG=en_US.utf8; locale
+```
+
+### 为什么环境变量的数据可以被子程序所引用呢?
+
+
+1. 当启动一个 **shell**, 操作系统会分配一记忆区块给 **shell** 使用，此内存内这变量可让子程序取用
+
+2. 若在父程序利用 **export** 功能， 可以让自订变量的内容写到上述的记忆区块当中(环境变量)
+
+3. 当载入另一个 **shell** (启动子程序，离开原本的父程序), 子 **shell** 可以将父 **shell** 的环境变量所在的记忆区块导入自己的环境变量区块当中
+
+### 如何让使用者由键盘输入一内容，将该内容变成名为 **atest** 变量?
+
+```bash
+read atest
+```
+
+![20210411093418](https://img.fengqigang.cn//img/20210411093418.png)
+
+### 如何提示使用者 30 秒内输入自己的名字，将该输入字符串作为名为 **named** 的变量内容?
+
+```bash
+read -p "Please keyin your name:" -t 30 named
+```
+
+![20210411095904](https://img.fengqigang.cn//img/20210411095904.png)
+
+### 在 **bash** 里 进行 **100+300+50** 的加总结果?
+
+```bash
+declare -i sum=100+300+50
+echo ${sum}
+```
+
+![20210411100059](https://img.fengqigang.cn//img/20210411100059.png)
+
+**-i to make NAMEs have the integer attribute**
+
+### 如何将 **sum**, 改成只读属性，不可更动?
+
+```bash
+declare -r sum
+```
+
+![20210411175611](https://img.fengqigang.cn//img/20210411175611.png)
+
+**-r to make NAMEs readonly**
+
+### 如何查看系统内置命令的帮助?
+
+**help 命令**
+
+如:
+
+**help declare**
+
+### 设置一个数组**var[1] ~ var[3]** , 其值分别为 **small min**, **big min**, **nice min**, 并输出它
+
+```bash
+var[1]="small min"
+var[2]="big min"
+var[3]="nice min"
+echo "${var[1]}, ${var[2]}, ${var[3]}"
+```
+
+![20210411180206](https://img.fengqigang.cn//img/20210411180206.png)
+
+### 如何查看当前身份所有限制数据数值?
+
+**ulimit -a**
+
+![20210411180408](https://img.fengqigang.cn//img/20210411180408.png)
+
+### 如何限制使用都仅能创建 **10MBytes** 以下的容量的文件?
+
+**ulimit -f 10240**
+
+-f
+
+Set (or report, if no blocks operand is present), the file size limit in blocks. The -f option shall also be the default case
+
+![20210411183933](https://img.fengqigang.cn//img/20210411183933.png)
+
+![20210411184153](https://img.fengqigang.cn//img/20210411184153.png)
+
+### 若账户设置了 **ulimit** , 如何取消?
+
+登出再登陆
+
+**一般用户者如果以ulimit设置了-f的大小，那么它只能继续减小文件大小，不能增加文件大小**
+
+### 如何自定一个小写的 **path** 与 **PATH** 内容相同?
+
+```bash
+path=${PATH}
+echo ${path}
+```
+
+![20210411184632](https://img.fengqigang.cn//img/20210411184632.png)
+
+### ![20210411184632](https://img.fengqigang.cn//img/20210411184632.png)如果不喜欢 **local/bin** , 如何将其删除并输出?
+
+```bash
+${variable#/*local/bin:}
+```
+
+![20210411185048](https://img.fengqigang.cn//img/20210411185048.png)
+
+### ![20210411184632](https://img.fengqigang.cn//img/20210411184632.png)如何删除最前面的一个目录?
+
+一个 **#** 代表删除最短的那个
+
+```bash
+${variable#/*:}
+```
+
+![20210411185458](https://img.fengqigang.cn//img/20210411185458.png)
+
+### ![20210411184632](https://img.fengqigang.cn//img/20210411184632.png)如何删除最前面的所有目录,仅保留最后一个?
+
+两个 **##** 代表删除最长的那个
+
+```bash
+o${variable##/*:}
+```
+
+![20210411185628](https://img.fengqigang.cn//img/20210411185628.png)
+
+### ![20210411191219](https://img.fengqigang.cn//img/20210411191219.png) 如何将 path 中的 **sbin** 转成 **SBIN**, 只替换一次?
+
+**${变量/旧字串/新字串}**
+
+```bash
+echo ${path/sbin/SBIN}
+```
+
+![20210411191322](https://img.fengqigang.cn//img/20210411191322.png)
+
+
+### ![20210411191219](https://img.fengqigang.cn//img/20210411191219.png) 如何将 path 中的 **sbin** 转成 **SBIN**, 全替换?
+
+**${变量/旧字串/新字串}**
+
+```bash
+echo ${path//sbin/SBIN}
+```
+
+![20210411191524](https://img.fengqigang.cn//img/20210411191524.png)
+
+### ![20210411191745](https://img.fengqigang.cn//img/20210411191745.png) 如何删除feng前面所有内容?
+
+也就是删除/ 与 / 的所有内容
+
+```bash
+echo ${MAIL##/*/}
+```
+
+![20210411191958](https://img.fengqigang.cn//img/20210411191958.png)
+
+### ![20210411191745](https://img.fengqigang.cn//img/20210411191745.png)如何只保留文件名?
+
+```bash
+echo ${MAIL%/*}
+```
+
+![20210411192146](https://img.fengqigang.cn//img/20210411192146.png)
+
+### ![20210411192615](https://img.fengqigang.cn//img/20210411192615.png) 如何从后往前删除删除到第一个 **bin:**
+
+![20210411192720](https://img.fengqigang.cn//img/20210411192720.png)
+
+### 如何测试 **username** 这个变量， 若 **不存在** 则给予 **username** 内容为 **root**?
+
+加上 **-**
+
+```bash
+username=${username-root}
+```
+
+![20210411192933](https://img.fengqigang.cn//img/20210411192933.png)
+
+### 如何测试 **username** 这个变量， 若 **不存在** 或 **空字串** 则给予 **username** 内容为 **root**?
+
+加上 **:-**
+
+```bash
+username=${username:-root}
+```
+
+### 如何判断str是否存在, 不存在则 **var** 的测试结果直接显示 **无此变量**?
+
+```bash
+var=${str?无此变量}
+```
+
+![20210411193836](https://img.fengqigang.cn//img/20210411193836.png)
+
+### 如何判断str是否存在, 存在则 **var** 与 **str** 相同?
+
+```bash
+str="oldvar"; var=${str?novar}
+echo "var=${var}, str=${str}"
+```
+
+![20210411194122](https://img.fengqigang.cn//img/20210411194122.png)
+
+### 如何查看当前系统所有的别名?
+
+```bash
+alias
+```
+
+![20210411194528](https://img.fengqigang.cn//img/20210411194528.png)
+
+### 如何使用 **vim** 就能打开 **nvim**?
+
+alias vim='nvim'
+
+![20210411194815](https://img.fengqigang.cn//img/20210411194815.png)
+
+### 如何 **取消使用** **vim** 就能打开 **nvim**
+
+unalias vim
+
+![20210411195005](https://img.fengqigang.cn//img/20210411195005.png)
+
+### **命令别名** 与 **变量** 有什么不同?
+
+**命令别名**
+
+新创一个新的指令，可以直接下达该指令
+
+**变量**
+
+需要 **echo** 指令才能调用出变量的内容
+
+### 如何列出目前内存内所有 **history** 记忆?
+
+**history**
+
+![20210411195455](https://img.fengqigang.cn//img/20210411195455.png)
+
+### 如何列出最近输入过以sudo为开头的指令?
+
+```bash
+!sudo
+```
+
+![20210411195635](https://img.fengqigang.cn//img/20210411195635.png)
+
+### 如何执行上一个指令?
+
+```bash
+!!
+```
+
+![20210411195710](https://img.fengqigang.cn//img/20210411195710.png)
+
+### 如何执行第66行指令?
+
+```bash
+!66
+```
+
+![20210411195808](https://img.fengqigang.cn//img/20210411195808.png)
+
+### 若同时开好几个 **bash** 接口，这些 **bash** 的身份都是 **root**, 这样会有**~/.bash_history** 的写入问题吗?
+
+有, 因为这些 **bash** 在同时以 **root** 的身份登陆，因此所有的 **bash** 都有自己的 1000 笔记录在内存中
+
+等到登出时才会更新记录文件，所以，最后登出的那个 **bash** 才会是最后写入的数据
+
+
+
+
+
 
