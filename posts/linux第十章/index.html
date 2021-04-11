@@ -55,7 +55,7 @@ type -a ls
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  188 ,
+        },"genre": "posts","keywords": "linux","wordcount":  533 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E7%AB%A0\/","datePublished": "2021-04-04T11:22:35+08:00","dateModified": "2021-04-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -132,8 +132,8 @@ type -a ls
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第十章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;188 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;533 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -155,7 +155,7 @@ type -a ls
         <li><a href="#什么是shell中的子程序">什么是Shell中的子程序?</a></li>
         <li><a href="#20210404103835httpsimgfengqigangcnimg20210404103836png-最后一行命令可以输出吗"><img src="https://img.fengqigang.cn//img/20210404103836.png" alt="20210404103835"> 最后一行命令可以输出吗?</a></li>
         <li><a href="#如何进入当前核心模块目录">如何进入当前核心模块目录?</a></li>
-        <li><a href="#如何取消设置这个-name">如何取消设置这个 <strong>name</strong>?</a></li>
+        <li><a href="#20210404113619httpsimgfengqigangcnimg20210404113619png-如何取消设置这个-name"><img src="https://img.fengqigang.cn//img/20210404113619.png" alt="20210404113619"> 如何取消设置这个 <strong>name</strong>?</a></li>
         <li><a href="#如何输出环境变量与常见环境变量的说明">如何输出环境变量与常见环境变量的说明?</a></li>
         <li><a href="#如何在-bash-中生成一个-032767-的数">如何在 <strong>bash</strong> 中生成一个 <strong>0~32767</strong> 的数?</a></li>
         <li><a href="#如何在-bash-中生成一个-09-之间的数值">如何在 <strong>bash</strong> 中生成一个 <strong>0~9</strong> 之间的数值?</a></li>
@@ -163,6 +163,42 @@ type -a ls
         <li><a href="#在bash-中--表示的是什么-1">在<strong>bash</strong> 中 ? 表示的是什么?</a></li>
         <li><a href="#在-bash-中什么是父程序-什么是子程序">在 <strong>bash</strong> 中什么是父程序? 什么是子程序?</a></li>
         <li><a href="#程序与变量之间有什么关系">程序与变量之间有什么关系?</a></li>
+        <li><a href="#如何查看系统中支持了多少的语系">如何查看系统中支持了多少的语系?</a></li>
+        <li><a href="#为什么在-tty1--tty6-环境下如何设置-langzh_cnutf8-这个设置值生效后使用-ls--l-这个参数时还是会出现乱码">为什么在 <strong>tty1 ~ tty6</strong> 环境下，如何设置 <strong>LANG=zh_CN.utf8</strong> 这个设置值生效后，使用 <strong>ls -l</strong> 这个参数时，还是会出现乱码?</a></li>
+        <li><a href="#整体系统默认的语系定义在哪里">整体系统默认的语系定义在哪里?</a></li>
+        <li><a href="#若原本是中文语系所有显示的数据通通是中文但为了网页显示的关系需要将输出转成英文en_usutf8的语系来展示才行-应该如何做">若原本是中文语系，所有显示的数据通通是中文，但为了网页显示的关系，需要将输出转成英文(en_US.utf8)的语系来展示才行, 应该如何做?</a></li>
+        <li><a href="#为什么环境变量的数据可以被子程序所引用呢">为什么环境变量的数据可以被子程序所引用呢?</a></li>
+        <li><a href="#如何让使用者由键盘输入一内容将该内容变成名为-atest-变量">如何让使用者由键盘输入一内容，将该内容变成名为 <strong>atest</strong> 变量?</a></li>
+        <li><a href="#如何提示使用者-30-秒内输入自己的名字将该输入字符串作为名为-named-的变量内容">如何提示使用者 30 秒内输入自己的名字，将该输入字符串作为名为 <strong>named</strong> 的变量内容?</a></li>
+        <li><a href="#在-bash-里-进行-10030050-的加总结果">在 <strong>bash</strong> 里 进行 <strong>100+300+50</strong> 的加总结果?</a></li>
+        <li><a href="#如何将-sum-改成只读属性不可更动">如何将 <strong>sum</strong>, 改成只读属性，不可更动?</a></li>
+        <li><a href="#如何查看系统内置命令的帮助">如何查看系统内置命令的帮助?</a></li>
+        <li><a href="#设置一个数组var1--var3--其值分别为-small-min-big-min-nice-min-并输出它">设置一个数组<strong>var[1] ~ var[3]</strong> , 其值分别为 <strong>small min</strong>, <strong>big min</strong>, <strong>nice min</strong>, 并输出它</a></li>
+        <li><a href="#如何查看当前身份所有限制数据数值">如何查看当前身份所有限制数据数值?</a></li>
+        <li><a href="#如何限制使用都仅能创建-10mbytes-以下的容量的文件">如何限制使用都仅能创建 <strong>10MBytes</strong> 以下的容量的文件?</a></li>
+        <li><a href="#若账户设置了-ulimit--如何取消">若账户设置了 <strong>ulimit</strong> , 如何取消?</a></li>
+        <li><a href="#如何自定一个小写的-path-与-path-内容相同">如何自定一个小写的 <strong>path</strong> 与 <strong>PATH</strong> 内容相同?</a></li>
+        <li><a href="#20210411184632httpsimgfengqigangcnimg20210411184632png如果不喜欢-localbin--如何将其删除并输出"><img src="https://img.fengqigang.cn//img/20210411184632.png" alt="20210411184632">如果不喜欢 <strong>local/bin</strong> , 如何将其删除并输出?</a></li>
+        <li><a href="#20210411184632httpsimgfengqigangcnimg20210411184632png如何删除最前面的一个目录"><img src="https://img.fengqigang.cn//img/20210411184632.png" alt="20210411184632">如何删除最前面的一个目录?</a></li>
+        <li><a href="#20210411184632httpsimgfengqigangcnimg20210411184632png如何删除最前面的所有目录仅保留最后一个"><img src="https://img.fengqigang.cn//img/20210411184632.png" alt="20210411184632">如何删除最前面的所有目录,仅保留最后一个?</a></li>
+        <li><a href="#20210411191219httpsimgfengqigangcnimg20210411191219png-如何将-path-中的-sbin-转成-sbin-只替换一次"><img src="https://img.fengqigang.cn//img/20210411191219.png" alt="20210411191219"> 如何将 path 中的 <strong>sbin</strong> 转成 <strong>SBIN</strong>, 只替换一次?</a></li>
+        <li><a href="#20210411191219httpsimgfengqigangcnimg20210411191219png-如何将-path-中的-sbin-转成-sbin-全替换"><img src="https://img.fengqigang.cn//img/20210411191219.png" alt="20210411191219"> 如何将 path 中的 <strong>sbin</strong> 转成 <strong>SBIN</strong>, 全替换?</a></li>
+        <li><a href="#20210411191745httpsimgfengqigangcnimg20210411191745png-如何删除feng前面所有内容"><img src="https://img.fengqigang.cn//img/20210411191745.png" alt="20210411191745"> 如何删除feng前面所有内容?</a></li>
+        <li><a href="#20210411191745httpsimgfengqigangcnimg20210411191745png如何只保留文件名"><img src="https://img.fengqigang.cn//img/20210411191745.png" alt="20210411191745">如何只保留文件名?</a></li>
+        <li><a href="#20210411192615httpsimgfengqigangcnimg20210411192615png-如何从后往前删除删除到第一个-bin"><img src="https://img.fengqigang.cn//img/20210411192615.png" alt="20210411192615"> 如何从后往前删除删除到第一个 <strong>bin:</strong></a></li>
+        <li><a href="#如何测试-username-这个变量-若-不存在-则给予-username-内容为-root">如何测试 <strong>username</strong> 这个变量， 若 <strong>不存在</strong> 则给予 <strong>username</strong> 内容为 <strong>root</strong>?</a></li>
+        <li><a href="#如何测试-username-这个变量-若-不存在-或-空字串-则给予-username-内容为-root">如何测试 <strong>username</strong> 这个变量， 若 <strong>不存在</strong> 或 <strong>空字串</strong> 则给予 <strong>username</strong> 内容为 <strong>root</strong>?</a></li>
+        <li><a href="#如何判断str是否存在-不存在则-var-的测试结果直接显示-无此变量">如何判断str是否存在, 不存在则 <strong>var</strong> 的测试结果直接显示 <strong>无此变量</strong>?</a></li>
+        <li><a href="#如何判断str是否存在-存在则-var-与-str-相同">如何判断str是否存在, 存在则 <strong>var</strong> 与 <strong>str</strong> 相同?</a></li>
+        <li><a href="#如何查看当前系统所有的别名">如何查看当前系统所有的别名?</a></li>
+        <li><a href="#如何使用-vim-就能打开-nvim">如何使用 <strong>vim</strong> 就能打开 <strong>nvim</strong>?</a></li>
+        <li><a href="#如何-取消使用-vim-就能打开-nvim">如何 <strong>取消使用</strong> <strong>vim</strong> 就能打开 <strong>nvim</strong></a></li>
+        <li><a href="#命令别名-与-变量-有什么不同"><strong>命令别名</strong> 与 <strong>变量</strong> 有什么不同?</a></li>
+        <li><a href="#如何列出目前内存内所有-history-记忆">如何列出目前内存内所有 <strong>history</strong> 记忆?</a></li>
+        <li><a href="#如何列出最近输入过以sudo为开头的指令">如何列出最近输入过以sudo为开头的指令?</a></li>
+        <li><a href="#如何执行上一个指令">如何执行上一个指令?</a></li>
+        <li><a href="#如何执行第66行指令">如何执行第66行指令?</a></li>
+        <li><a href="#若同时开好几个-bash-接口这些-bash-的身份都是-root-这样会有bash_history-的写入问题吗">若同时开好几个 <strong>bash</strong> 接口，这些 <strong>bash</strong> 的身份都是 <strong>root</strong>, 这样会有**~/.bash_history** 的写入问题吗?</a></li>
       </ul>
     </li>
   </ul>
@@ -268,7 +304,7 @@ type -a ls
         alt="https://img.fengqigang.cn//img/20210404103417.png"
         title="20210404103417" /></p>
 <h3 id="什么是shell中的子程序">什么是Shell中的子程序?</h3>
-<p>在目前这个 <strong>shell</strong> 的情况下，去启用一个新的 <strong>shell</strong> , 新的那个 <strong>shell</strong> 就量子程序</p>
+<p>在目前这个 <strong>shell</strong> 的情况下，去启用一个新的 <strong>shell</strong> , 新的那个 <strong>shell</strong> 就是子程序</p>
 <p>一般的状态下，父程序的自订变量是无法在子程序内使用的。</p>
 <p>但是通过 <strong>export</strong> 将变量变成环境变量后，就能够在子程序下面应用了</p>
 <h3 id="20210404103835httpsimgfengqigangcnimg20210404103836png-最后一行命令可以输出吗"><img
@@ -313,7 +349,14 @@ type -a ls
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210404104248.png"
         title="20210404104248" /></p>
-<h3 id="如何取消设置这个-name">如何取消设置这个 <strong>name</strong>?</h3>
+<h3 id="20210404113619httpsimgfengqigangcnimg20210404113619png-如何取消设置这个-name"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210404113619.png"
+        data-srcset="https://img.fengqigang.cn//img/20210404113619.png, https://img.fengqigang.cn//img/20210404113619.png 1.5x, https://img.fengqigang.cn//img/20210404113619.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210404113619.png"
+        title="20210404113619" /> 如何取消设置这个 <strong>name</strong>?</h3>
 <p>unset name</p>
 <p><img
         class="lazyload"
@@ -418,6 +461,564 @@ type -a ls
 <h3 id="程序与变量之间有什么关系">程序与变量之间有什么关系?</h3>
 <p>子程序<strong>仅会继承父程序的环境变量</strong>, <strong>不会继承父程序的自订变量</strong></p>
 <p>通过 <strong>export</strong> 指令， 可以让该变量内容继续在子程序中使用</p>
+<h3 id="如何查看系统中支持了多少的语系">如何查看系统中支持了多少的语系?</h3>
+<p><strong>locale -a</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411091809.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411091809.png, https://img.fengqigang.cn//img/20210411091809.png 1.5x, https://img.fengqigang.cn//img/20210411091809.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411091809.png"
+        title="20210411091809" /></p>
+<h3 id="为什么在-tty1--tty6-环境下如何设置-langzh_cnutf8-这个设置值生效后使用-ls--l-这个参数时还是会出现乱码">为什么在 <strong>tty1 ~ tty6</strong> 环境下，如何设置 <strong>LANG=zh_CN.utf8</strong> 这个设置值生效后，使用 <strong>ls -l</strong> 这个参数时，还是会出现乱码?</h3>
+<p>因为 <strong>Linux</strong> 主机的终端机接口环境下是无法显示像中文这么复杂的编码文字</p>
+<p>需要再 <strong>加装一些中文化接口的软件</strong> 才可以看到中文</p>
+<h3 id="整体系统默认的语系定义在哪里">整体系统默认的语系定义在哪里?</h3>
+<p><strong>/etc/locale.conf</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411092348.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411092348.png, https://img.fengqigang.cn//img/20210411092348.png 1.5x, https://img.fengqigang.cn//img/20210411092348.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411092348.png"
+        title="20210411092348" /></p>
+<h3 id="若原本是中文语系所有显示的数据通通是中文但为了网页显示的关系需要将输出转成英文en_usutf8的语系来展示才行-应该如何做">若原本是中文语系，所有显示的数据通通是中文，但为了网页显示的关系，需要将输出转成英文(en_US.utf8)的语系来展示才行, 应该如何做?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">locale
+
+<span class="nv">LANG</span><span class="o">=</span>en_US.utf8<span class="p">;</span> locale
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="为什么环境变量的数据可以被子程序所引用呢">为什么环境变量的数据可以被子程序所引用呢?</h3>
+<ol>
+<li>
+<p>当启动一个 <strong>shell</strong>, 操作系统会分配一记忆区块给 <strong>shell</strong> 使用，此内存内这变量可让子程序取用</p>
+</li>
+<li>
+<p>若在父程序利用 <strong>export</strong> 功能， 可以让自订变量的内容写到上述的记忆区块当中(环境变量)</p>
+</li>
+<li>
+<p>当载入另一个 <strong>shell</strong> (启动子程序，离开原本的父程序), 子 <strong>shell</strong> 可以将父 <strong>shell</strong> 的环境变量所在的记忆区块导入自己的环境变量区块当中</p>
+</li>
+</ol>
+<h3 id="如何让使用者由键盘输入一内容将该内容变成名为-atest-变量">如何让使用者由键盘输入一内容，将该内容变成名为 <strong>atest</strong> 变量?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">read</span> atest
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411093418.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411093418.png, https://img.fengqigang.cn//img/20210411093418.png 1.5x, https://img.fengqigang.cn//img/20210411093418.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411093418.png"
+        title="20210411093418" /></p>
+<h3 id="如何提示使用者-30-秒内输入自己的名字将该输入字符串作为名为-named-的变量内容">如何提示使用者 30 秒内输入自己的名字，将该输入字符串作为名为 <strong>named</strong> 的变量内容?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">read</span> -p <span class="s2">&#34;Please keyin your name:&#34;</span> -t <span class="m">30</span> named
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411095904.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411095904.png, https://img.fengqigang.cn//img/20210411095904.png 1.5x, https://img.fengqigang.cn//img/20210411095904.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411095904.png"
+        title="20210411095904" /></p>
+<h3 id="在-bash-里-进行-10030050-的加总结果">在 <strong>bash</strong> 里 进行 <strong>100+300+50</strong> 的加总结果?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">declare</span> -i <span class="nv">sum</span><span class="o">=</span>100+300+50
+<span class="nb">echo</span> <span class="si">${</span><span class="nv">sum</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411100059.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411100059.png, https://img.fengqigang.cn//img/20210411100059.png 1.5x, https://img.fengqigang.cn//img/20210411100059.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411100059.png"
+        title="20210411100059" /></p>
+<p><strong>-i to make NAMEs have the integer attribute</strong></p>
+<h3 id="如何将-sum-改成只读属性不可更动">如何将 <strong>sum</strong>, 改成只读属性，不可更动?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">declare</span> -r sum
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411175611.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411175611.png, https://img.fengqigang.cn//img/20210411175611.png 1.5x, https://img.fengqigang.cn//img/20210411175611.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411175611.png"
+        title="20210411175611" /></p>
+<p><strong>-r to make NAMEs readonly</strong></p>
+<h3 id="如何查看系统内置命令的帮助">如何查看系统内置命令的帮助?</h3>
+<p><strong>help 命令</strong></p>
+<p>如:</p>
+<p><strong>help declare</strong></p>
+<h3 id="设置一个数组var1--var3--其值分别为-small-min-big-min-nice-min-并输出它">设置一个数组<strong>var[1] ~ var[3]</strong> , 其值分别为 <strong>small min</strong>, <strong>big min</strong>, <strong>nice min</strong>, 并输出它</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">var<span class="o">[</span>1<span class="o">]=</span><span class="s2">&#34;small min&#34;</span>
+var<span class="o">[</span>2<span class="o">]=</span><span class="s2">&#34;big min&#34;</span>
+var<span class="o">[</span>3<span class="o">]=</span><span class="s2">&#34;nice min&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">var</span><span class="p">[1]</span><span class="si">}</span><span class="s2">, </span><span class="si">${</span><span class="nv">var</span><span class="p">[2]</span><span class="si">}</span><span class="s2">, </span><span class="si">${</span><span class="nv">var</span><span class="p">[3]</span><span class="si">}</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411180206.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411180206.png, https://img.fengqigang.cn//img/20210411180206.png 1.5x, https://img.fengqigang.cn//img/20210411180206.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411180206.png"
+        title="20210411180206" /></p>
+<h3 id="如何查看当前身份所有限制数据数值">如何查看当前身份所有限制数据数值?</h3>
+<p><strong>ulimit -a</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411180408.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411180408.png, https://img.fengqigang.cn//img/20210411180408.png 1.5x, https://img.fengqigang.cn//img/20210411180408.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411180408.png"
+        title="20210411180408" /></p>
+<h3 id="如何限制使用都仅能创建-10mbytes-以下的容量的文件">如何限制使用都仅能创建 <strong>10MBytes</strong> 以下的容量的文件?</h3>
+<p><strong>ulimit -f 10240</strong></p>
+<p>-f</p>
+<p>Set (or report, if no blocks operand is present), the file size limit in blocks. The -f option shall also be the default case</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411183933.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411183933.png, https://img.fengqigang.cn//img/20210411183933.png 1.5x, https://img.fengqigang.cn//img/20210411183933.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411183933.png"
+        title="20210411183933" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411184153.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411184153.png, https://img.fengqigang.cn//img/20210411184153.png 1.5x, https://img.fengqigang.cn//img/20210411184153.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411184153.png"
+        title="20210411184153" /></p>
+<h3 id="若账户设置了-ulimit--如何取消">若账户设置了 <strong>ulimit</strong> , 如何取消?</h3>
+<p>登出再登陆</p>
+<p><strong>一般用户者如果以ulimit设置了-f的大小，那么它只能继续减小文件大小，不能增加文件大小</strong></p>
+<h3 id="如何自定一个小写的-path-与-path-内容相同">如何自定一个小写的 <strong>path</strong> 与 <strong>PATH</strong> 内容相同?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">path</span><span class="o">=</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<span class="nb">echo</span> <span class="si">${</span><span class="nv">path</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411184632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411184632.png, https://img.fengqigang.cn//img/20210411184632.png 1.5x, https://img.fengqigang.cn//img/20210411184632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411184632.png"
+        title="20210411184632" /></p>
+<h3 id="20210411184632httpsimgfengqigangcnimg20210411184632png如果不喜欢-localbin--如何将其删除并输出"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411184632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411184632.png, https://img.fengqigang.cn//img/20210411184632.png 1.5x, https://img.fengqigang.cn//img/20210411184632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411184632.png"
+        title="20210411184632" />如果不喜欢 <strong>local/bin</strong> , 如何将其删除并输出?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="si">${</span><span class="nv">variable</span><span class="p">#/*local/bin:</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411185048.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411185048.png, https://img.fengqigang.cn//img/20210411185048.png 1.5x, https://img.fengqigang.cn//img/20210411185048.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411185048.png"
+        title="20210411185048" /></p>
+<h3 id="20210411184632httpsimgfengqigangcnimg20210411184632png如何删除最前面的一个目录"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411184632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411184632.png, https://img.fengqigang.cn//img/20210411184632.png 1.5x, https://img.fengqigang.cn//img/20210411184632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411184632.png"
+        title="20210411184632" />如何删除最前面的一个目录?</h3>
+<p>一个 <strong>#</strong> 代表删除最短的那个</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="si">${</span><span class="nv">variable</span><span class="p">#/*:</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411185458.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411185458.png, https://img.fengqigang.cn//img/20210411185458.png 1.5x, https://img.fengqigang.cn//img/20210411185458.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411185458.png"
+        title="20210411185458" /></p>
+<h3 id="20210411184632httpsimgfengqigangcnimg20210411184632png如何删除最前面的所有目录仅保留最后一个"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411184632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411184632.png, https://img.fengqigang.cn//img/20210411184632.png 1.5x, https://img.fengqigang.cn//img/20210411184632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411184632.png"
+        title="20210411184632" />如何删除最前面的所有目录,仅保留最后一个?</h3>
+<p>两个 <strong>##</strong> 代表删除最长的那个</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">o<span class="si">${</span><span class="nv">variable</span><span class="p">##/*:</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411185628.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411185628.png, https://img.fengqigang.cn//img/20210411185628.png 1.5x, https://img.fengqigang.cn//img/20210411185628.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411185628.png"
+        title="20210411185628" /></p>
+<h3 id="20210411191219httpsimgfengqigangcnimg20210411191219png-如何将-path-中的-sbin-转成-sbin-只替换一次"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191219.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191219.png, https://img.fengqigang.cn//img/20210411191219.png 1.5x, https://img.fengqigang.cn//img/20210411191219.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191219.png"
+        title="20210411191219" /> 如何将 path 中的 <strong>sbin</strong> 转成 <strong>SBIN</strong>, 只替换一次?</h3>
+<p><strong>${变量/旧字串/新字串}</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="si">${</span><span class="nv">path</span><span class="p">/sbin/SBIN</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191322.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191322.png, https://img.fengqigang.cn//img/20210411191322.png 1.5x, https://img.fengqigang.cn//img/20210411191322.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191322.png"
+        title="20210411191322" /></p>
+<h3 id="20210411191219httpsimgfengqigangcnimg20210411191219png-如何将-path-中的-sbin-转成-sbin-全替换"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191219.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191219.png, https://img.fengqigang.cn//img/20210411191219.png 1.5x, https://img.fengqigang.cn//img/20210411191219.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191219.png"
+        title="20210411191219" /> 如何将 path 中的 <strong>sbin</strong> 转成 <strong>SBIN</strong>, 全替换?</h3>
+<p><strong>${变量/旧字串/新字串}</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="si">${</span><span class="nv">path</span><span class="p">//sbin/SBIN</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191524.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191524.png, https://img.fengqigang.cn//img/20210411191524.png 1.5x, https://img.fengqigang.cn//img/20210411191524.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191524.png"
+        title="20210411191524" /></p>
+<h3 id="20210411191745httpsimgfengqigangcnimg20210411191745png-如何删除feng前面所有内容"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191745.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191745.png, https://img.fengqigang.cn//img/20210411191745.png 1.5x, https://img.fengqigang.cn//img/20210411191745.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191745.png"
+        title="20210411191745" /> 如何删除feng前面所有内容?</h3>
+<p>也就是删除/ 与 / 的所有内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="si">${</span><span class="nv">MAIL</span><span class="p">##/*/</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191958.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191958.png, https://img.fengqigang.cn//img/20210411191958.png 1.5x, https://img.fengqigang.cn//img/20210411191958.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191958.png"
+        title="20210411191958" /></p>
+<h3 id="20210411191745httpsimgfengqigangcnimg20210411191745png如何只保留文件名"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411191745.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411191745.png, https://img.fengqigang.cn//img/20210411191745.png 1.5x, https://img.fengqigang.cn//img/20210411191745.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411191745.png"
+        title="20210411191745" />如何只保留文件名?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="si">${</span><span class="nv">MAIL</span><span class="p">%/*</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411192146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411192146.png, https://img.fengqigang.cn//img/20210411192146.png 1.5x, https://img.fengqigang.cn//img/20210411192146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411192146.png"
+        title="20210411192146" /></p>
+<h3 id="20210411192615httpsimgfengqigangcnimg20210411192615png-如何从后往前删除删除到第一个-bin"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411192615.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411192615.png, https://img.fengqigang.cn//img/20210411192615.png 1.5x, https://img.fengqigang.cn//img/20210411192615.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411192615.png"
+        title="20210411192615" /> 如何从后往前删除删除到第一个 <strong>bin:</strong></h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411192720.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411192720.png, https://img.fengqigang.cn//img/20210411192720.png 1.5x, https://img.fengqigang.cn//img/20210411192720.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411192720.png"
+        title="20210411192720" /></p>
+<h3 id="如何测试-username-这个变量-若-不存在-则给予-username-内容为-root">如何测试 <strong>username</strong> 这个变量， 若 <strong>不存在</strong> 则给予 <strong>username</strong> 内容为 <strong>root</strong>?</h3>
+<p>加上 <strong>-</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">username</span><span class="o">=</span><span class="si">${</span><span class="nv">username</span><span class="p">-root</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411192933.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411192933.png, https://img.fengqigang.cn//img/20210411192933.png 1.5x, https://img.fengqigang.cn//img/20210411192933.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411192933.png"
+        title="20210411192933" /></p>
+<h3 id="如何测试-username-这个变量-若-不存在-或-空字串-则给予-username-内容为-root">如何测试 <strong>username</strong> 这个变量， 若 <strong>不存在</strong> 或 <strong>空字串</strong> 则给予 <strong>username</strong> 内容为 <strong>root</strong>?</h3>
+<p>加上 <strong>:-</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">username</span><span class="o">=</span><span class="si">${</span><span class="nv">username</span><span class="k">:-</span><span class="nv">root</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何判断str是否存在-不存在则-var-的测试结果直接显示-无此变量">如何判断str是否存在, 不存在则 <strong>var</strong> 的测试结果直接显示 <strong>无此变量</strong>?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">var</span><span class="o">=</span><span class="si">${</span><span class="nv">str</span><span class="p">?无此变量</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411193836.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411193836.png, https://img.fengqigang.cn//img/20210411193836.png 1.5x, https://img.fengqigang.cn//img/20210411193836.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411193836.png"
+        title="20210411193836" /></p>
+<h3 id="如何判断str是否存在-存在则-var-与-str-相同">如何判断str是否存在, 存在则 <strong>var</strong> 与 <strong>str</strong> 相同?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">str</span><span class="o">=</span><span class="s2">&#34;oldvar&#34;</span><span class="p">;</span> <span class="nv">var</span><span class="o">=</span><span class="si">${</span><span class="nv">str</span><span class="p">?novar</span><span class="si">}</span>
+<span class="nb">echo</span> <span class="s2">&#34;var=</span><span class="si">${</span><span class="nv">var</span><span class="si">}</span><span class="s2">, str=</span><span class="si">${</span><span class="nv">str</span><span class="si">}</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411194122.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411194122.png, https://img.fengqigang.cn//img/20210411194122.png 1.5x, https://img.fengqigang.cn//img/20210411194122.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411194122.png"
+        title="20210411194122" /></p>
+<h3 id="如何查看当前系统所有的别名">如何查看当前系统所有的别名?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">alias</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411194528.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411194528.png, https://img.fengqigang.cn//img/20210411194528.png 1.5x, https://img.fengqigang.cn//img/20210411194528.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411194528.png"
+        title="20210411194528" /></p>
+<h3 id="如何使用-vim-就能打开-nvim">如何使用 <strong>vim</strong> 就能打开 <strong>nvim</strong>?</h3>
+<p>alias vim=&lsquo;nvim&rsquo;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411194815.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411194815.png, https://img.fengqigang.cn//img/20210411194815.png 1.5x, https://img.fengqigang.cn//img/20210411194815.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411194815.png"
+        title="20210411194815" /></p>
+<h3 id="如何-取消使用-vim-就能打开-nvim">如何 <strong>取消使用</strong> <strong>vim</strong> 就能打开 <strong>nvim</strong></h3>
+<p>unalias vim</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411195005.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411195005.png, https://img.fengqigang.cn//img/20210411195005.png 1.5x, https://img.fengqigang.cn//img/20210411195005.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411195005.png"
+        title="20210411195005" /></p>
+<h3 id="命令别名-与-变量-有什么不同"><strong>命令别名</strong> 与 <strong>变量</strong> 有什么不同?</h3>
+<p><strong>命令别名</strong></p>
+<p>新创一个新的指令，可以直接下达该指令</p>
+<p><strong>变量</strong></p>
+<p>需要 <strong>echo</strong> 指令才能调用出变量的内容</p>
+<h3 id="如何列出目前内存内所有-history-记忆">如何列出目前内存内所有 <strong>history</strong> 记忆?</h3>
+<p><strong>history</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411195455.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411195455.png, https://img.fengqigang.cn//img/20210411195455.png 1.5x, https://img.fengqigang.cn//img/20210411195455.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411195455.png"
+        title="20210411195455" /></p>
+<h3 id="如何列出最近输入过以sudo为开头的指令">如何列出最近输入过以sudo为开头的指令?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">!sudo
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411195635.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411195635.png, https://img.fengqigang.cn//img/20210411195635.png 1.5x, https://img.fengqigang.cn//img/20210411195635.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411195635.png"
+        title="20210411195635" /></p>
+<h3 id="如何执行上一个指令">如何执行上一个指令?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">!!
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411195710.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411195710.png, https://img.fengqigang.cn//img/20210411195710.png 1.5x, https://img.fengqigang.cn//img/20210411195710.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411195710.png"
+        title="20210411195710" /></p>
+<h3 id="如何执行第66行指令">如何执行第66行指令?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">!66
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411195808.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411195808.png, https://img.fengqigang.cn//img/20210411195808.png 1.5x, https://img.fengqigang.cn//img/20210411195808.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411195808.png"
+        title="20210411195808" /></p>
+<h3 id="若同时开好几个-bash-接口这些-bash-的身份都是-root-这样会有bash_history-的写入问题吗">若同时开好几个 <strong>bash</strong> 接口，这些 <strong>bash</strong> 的身份都是 <strong>root</strong>, 这样会有**~/.bash_history** 的写入问题吗?</h3>
+<p>有, 因为这些 <strong>bash</strong> 在同时以 <strong>root</strong> 的身份登陆，因此所有的 <strong>bash</strong> 都有自己的 1000 笔记录在内存中</p>
+<p>等到登出时才会更新记录文件，所以，最后登出的那个 <strong>bash</strong> 才会是最后写入的数据</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
