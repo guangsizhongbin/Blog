@@ -65,7 +65,7 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day11\/"
-        },"genre": "posts","keywords": "java","wordcount":  107 ,
+        },"genre": "posts","keywords": "java","wordcount":  723 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day11\/","datePublished": "2021-04-10T22:36:59+08:00","dateModified": "2021-04-10T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -142,8 +142,8 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day11</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-10">2021-04-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;107 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-10">2021-04-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;723 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -163,6 +163,27 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
         <li><a href="#20210410201549httpsimgfengqigangcnimg20210410201549png-如何调用输出我在学习局部内部类"><img src="https://img.fengqigang.cn//img/20210410201549.png" alt="20210410201549"> 如何调用输出&quot;我在学习局部内部类&quot;?</a></li>
         <li><a href="#什么是匿名类anonymous-class">什么是匿名类(Anonymous Class)?</a></li>
         <li><a href="#如何定义一个匿名内部类">如何定义一个匿名内部类?</a></li>
+        <li><a href="#20210411205439httpsimgfengqigangcnimg20210411205439png-如何实现-朴素做法"><img src="https://img.fengqigang.cn//img/20210411205439.png" alt="20210411205439"> 如何实现? (朴素做法)</a></li>
+        <li><a href="#20210411205439httpsimgfengqigangcnimg20210411205439png-如何实现-高端做法"><img src="https://img.fengqigang.cn//img/20210411205439.png" alt="20210411205439"> 如何实现? (高端做法)</a></li>
+        <li><a href="#20210411211838httpsimgfengqigangcnimg20210411211838png-如何实现将匿名内部类作为-test-方法的参数重写-eat-方法"><img src="https://img.fengqigang.cn//img/20210411211838.png" alt="20210411211838"> 如何实现将匿名内部类作为 <strong>test()</strong> 方法的参数，重写 <strong>eat()</strong> 方法?</a></li>
+        <li><a href="#20210411213537httpsimgfengqigangcnimg20210411213537png如何通过创建出父类成员变量赋值过的匿名内部类对象"><img src="https://img.fengqigang.cn//img/20210411213537.png" alt="20210411213537">如何通过创建出父类成员变量赋值过的匿名内部类对象?</a></li>
+        <li><a href="#20210411214227httpsimgfengqigangcnimg20210411214227png-匿名内部类-new-类名-这个括号有什么用"><img src="https://img.fengqigang.cn//img/20210411214227.png" alt="20210411214227"> 匿名内部类 <strong>new 类名()</strong> 这个括号有什么用?</a></li>
+        <li><a href="#什么是-lambda-表达式">什么是 <strong>lambda</strong> 表达式?</a></li>
+        <li><a href="#lambda-有什么需要注意的地方"><strong>lambda</strong> 有什么需要注意的地方?</a></li>
+        <li><a href="#如何判断一个接口是否是功能接口">如何判断一个接口是否是功能接口?</a></li>
+        <li><a href="#lambda-表达式与-功能接口-有什么关系"><strong>lambda</strong> 表达式与 <strong>功能接口</strong> 有什么关系?</a></li>
+        <li><a href="#lamba-语法是什么"><strong>lamba</strong> 语法是什么?</a></li>
+        <li><a href="#为什么要求功能接口中有且仅有一个抽象方法">为什么要求功能接口中有且仅有一个抽象方法?</a></li>
+        <li><a href="#20210411215815httpsimgfengqigangcnimg20210411215815png-如何采取直接告诉该对象的类型直接用接口引用指向它"><img src="https://img.fengqigang.cn//img/20210411215815.png" alt="20210411215815"> 如何采取直接告诉该对象的类型，直接用接口引用指向它?</a></li>
+        <li><a href="#20210411215815httpsimgfengqigangcnimg20210411215815png-如何采取直接告诉该对象的类型不接收它并调用-test-方法"><img src="https://img.fengqigang.cn//img/20210411215815.png" alt="20210411215815"> 如何采取直接告诉该对象的类型，不接收它，并调用 <strong>test</strong> 方法?</a></li>
+        <li><a href="#20210411220734httpsimgfengqigangcnimg20210411220734png-这里的数据类型可以省略吗-为什么"><img src="https://img.fengqigang.cn//img/20210411220734.png" alt="20210411220734"> 这里的数据类型可以省略吗? 为什么?</a></li>
+        <li><a href="#20210411221146httpsimgfengqigangcnimg20210411221146png-这里的括号可以省略吗-为什么"><img src="https://img.fengqigang.cn//img/20210411221146.png" alt="20210411221146"> 这里的括号可以省略吗? 为什么?</a></li>
+        <li><a href="#20210411221550httpsimgfengqigangcnimg20210411221550png-可以这样写吗"><img src="https://img.fengqigang.cn//img/20210411221550.png" alt="20210411221550"> 可以这样写吗?</a></li>
+        <li><a href="#20210411221954httpsimgfengqigangcnimg20210411221954png-可以这样写吗-为什么"><img src="https://img.fengqigang.cn//img/20210411221954.png" alt="20210411221954"> 可以这样写吗? 为什么?</a></li>
+        <li><a href="#20210411222454httpsimgfengqigangcnimg20210411222454png-可以这样写吗-为什么"><img src="https://img.fengqigang.cn//img/20210411222454.png" alt="20210411222454"> 可以这样写吗? 为什么?</a></li>
+        <li><a href="#如何判断-已存在的方法-和-功能接口中的抽象方法-是一样的">如何判断 <strong>已存在的方法</strong> 和 <strong>功能接口中的抽象方法</strong> 是一样的?</a></li>
+        <li><a href="#20210411222855httpsimgfengqigangcnimg20210411222855png可以这样写吗为什么"><img src="https://img.fengqigang.cn//img/20210411222855.png" alt="20210411222855">可以这样写吗?为什么?</a></li>
+        <li><a href="#如何判断一个方法的归属者">如何判断一个方法的归属者?</a></li>
       </ul>
     </li>
   </ul>
@@ -298,6 +319,624 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210410202339.png"
         title="20210410202339" /></p>
+<h3 id="20210411205439httpsimgfengqigangcnimg20210411205439png-如何实现-朴素做法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411205439.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411205439.png, https://img.fengqigang.cn//img/20210411205439.png 1.5x, https://img.fengqigang.cn//img/20210411205439.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411205439.png"
+        title="20210411205439" /> 如何实现? (朴素做法)</h3>
+<ol>
+<li>
+<p><strong>Outer</strong> 是一个 <strong>class</strong>, 类名点调用方法，代表这个方法是静态成员方法</p>
+</li>
+<li>
+<p>链式调用后面又调用了一个 <strong>show</strong> 方法，这意味着 <strong>Outter.method()</strong> 方法的返回值是对象</p>
+</li>
+<li>
+<p><strong>show</strong> 方法是接口 <strong>Inter</strong> 的抽象方法，所以 <strong>method</strong> 方法的返回值就是接口的实现类对象</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Outer</span><span class="o">.</span><span class="na">method</span><span class="o">().</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Inter</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">show</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">InterImpl</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">InterImpl</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">InterImpl</span> <span class="kd">implements</span> <span class="n">Inter</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello world!&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411210541.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411210541.png, https://img.fengqigang.cn//img/20210411210541.png 1.5x, https://img.fengqigang.cn//img/20210411210541.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411210541.png"
+        title="20210411210541" /></p>
+<h3 id="20210411205439httpsimgfengqigangcnimg20210411205439png-如何实现-高端做法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411205439.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411205439.png, https://img.fengqigang.cn//img/20210411205439.png 1.5x, https://img.fengqigang.cn//img/20210411205439.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411205439.png"
+        title="20210411205439" /> 如何实现? (高端做法)</h3>
+<ol>
+<li>
+<p><strong>Outer</strong> 是一个 <strong>class</strong>, 类名点调用方法，代表这个方法是静态成员方法</p>
+</li>
+<li>
+<p>链式调用后面又调用了一个 <strong>show</strong> 方法，这意味着 <strong>Outter.method()</strong> 方法的返回值是对象</p>
+</li>
+<li>
+<p>直接返回这个接口对象，重写 <strong>show()</strong> 方法</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Outer</span><span class="o">.</span><span class="na">method</span><span class="o">().</span><span class="na">show</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Inter</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">show</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Outer</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Inter</span> <span class="nf">method</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">Inter</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello, world!&#34;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411211308.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411211308.png, https://img.fengqigang.cn//img/20210411211308.png 1.5x, https://img.fengqigang.cn//img/20210411211308.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411211308.png"
+        title="20210411211308" /></p>
+<h3 id="20210411211838httpsimgfengqigangcnimg20210411211838png-如何实现将匿名内部类作为-test-方法的参数重写-eat-方法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411211838.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411211838.png, https://img.fengqigang.cn//img/20210411211838.png 1.5x, https://img.fengqigang.cn//img/20210411211838.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411211838.png"
+        title="20210411211838" /> 如何实现将匿名内部类作为 <strong>test()</strong> 方法的参数，重写 <strong>eat()</strong> 方法?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test</span><span class="o">(</span><span class="k">new</span> <span class="n">AbstractPerson</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;我是人，我要吃饭&#34;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="n">AbstractPerson</span> <span class="n">as</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">as</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractPerson</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411212056.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411212056.png, https://img.fengqigang.cn//img/20210411212056.png 1.5x, https://img.fengqigang.cn//img/20210411212056.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411212056.png"
+        title="20210411212056" /></p>
+<h3 id="20210411213537httpsimgfengqigangcnimg20210411213537png如何通过创建出父类成员变量赋值过的匿名内部类对象"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411213537.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411213537.png, https://img.fengqigang.cn//img/20210411213537.png 1.5x, https://img.fengqigang.cn//img/20210411213537.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411213537.png"
+        title="20210411213537" />如何通过创建出父类成员变量赋值过的匿名内部类对象?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="n">AbstractPerson</span><span class="o">(</span><span class="n">18</span><span class="o">,</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">+</span> <span class="s">&#34;\t&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="n">AbstractPerson</span> <span class="n">as</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">as</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractPerson</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">AbstractPerson</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">AbstractPerson</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411213811.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411213811.png, https://img.fengqigang.cn//img/20210411213811.png 1.5x, https://img.fengqigang.cn//img/20210411213811.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411213811.png"
+        title="20210411213811" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">test</span><span class="o">(</span><span class="k">new</span> <span class="n">AbstractPerson</span><span class="o">(</span><span class="n">18</span><span class="o">,</span> <span class="s">&#34;zhangsan&#34;</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">+</span> <span class="s">&#34;\t&#34;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(</span><span class="n">AbstractPerson</span> <span class="n">as</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">as</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbstractPerson</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">AbstractPerson</span><span class="o">(){}</span>
+
+    <span class="kd">public</span> <span class="nf">AbstractPerson</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">};</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411213934.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411213934.png, https://img.fengqigang.cn//img/20210411213934.png 1.5x, https://img.fengqigang.cn//img/20210411213934.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411213934.png"
+        title="20210411213934" /></p>
+<h3 id="20210411214227httpsimgfengqigangcnimg20210411214227png-匿名内部类-new-类名-这个括号有什么用"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411214227.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411214227.png, https://img.fengqigang.cn//img/20210411214227.png 1.5x, https://img.fengqigang.cn//img/20210411214227.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411214227.png"
+        title="20210411214227" /> 匿名内部类 <strong>new 类名()</strong> 这个括号有什么用?</h3>
+<p>这个括号可以传参数，给父类成员赋值</p>
+<h3 id="什么是-lambda-表达式">什么是 <strong>lambda</strong> 表达式?</h3>
+<p><strong>lambda</strong> 是 <strong>JDK8</strong> 的一个新特性</p>
+<p><strong>lambda</strong> 就是匿名内部类更进一步，语法上更简洁了，代码更优雅了</p>
+<h3 id="lambda-有什么需要注意的地方"><strong>lambda</strong> 有什么需要注意的地方?</h3>
+<ol>
+<li>
+<p>它是用来取代 <strong>接口的匿名内部类</strong>, <strong>不能取代普通类和抽象类的匿名内部类</strong></p>
+</li>
+<li>
+<p>对接口有严格的要求:</p>
+</li>
+</ol>
+<p><strong>有且仅有一个抽象方法需要子类实现</strong>, 这种接口被称这为 <strong>功能接口</strong> (function interface)</p>
+<h3 id="如何判断一个接口是否是功能接口">如何判断一个接口是否是功能接口?</h3>
+<p>用注解去检测</p>
+<p>@FunctionInterface</p>
+<p>有且仅有一个抽象方法需要子类实现, 称之为 <strong>功能接口</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411215027.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411215027.png, https://img.fengqigang.cn//img/20210411215027.png 1.5x, https://img.fengqigang.cn//img/20210411215027.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411215027.png"
+        title="20210411215027" /></p>
+<h3 id="lambda-表达式与-功能接口-有什么关系"><strong>lambda</strong> 表达式与 <strong>功能接口</strong> 有什么关系?</h3>
+<p><strong>lambda</strong> 表达式是在方法内部创建功能接口的 <strong>实现类对象</strong></p>
+<h3 id="lamba-语法是什么"><strong>lamba</strong> 语法是什么?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>()</strong> 是形参列表，无需传入实际参数, 功能接口中那个唯一的抽象方法的形参列表</p>
+<p><strong>-&gt;</strong> 是 <strong>lambda</strong> 运算符, 可以读作 **goes to **</p>
+<p><strong>{}</strong> 中放的是抽象方法重写的方法体</p>
+<h3 id="为什么要求功能接口中有且仅有一个抽象方法">为什么要求功能接口中有且仅有一个抽象方法?</h3>
+<p>因为 <strong>lambda</strong> 方法中型参表只有一个</p>
+<p>方法体也只有一个， 没办法重写两个方法，只能重写一个</p>
+<h3 id="20210411215815httpsimgfengqigangcnimg20210411215815png-如何采取直接告诉该对象的类型直接用接口引用指向它"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411215815.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411215815.png, https://img.fengqigang.cn//img/20210411215815.png 1.5x, https://img.fengqigang.cn//img/20210411215815.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411215815.png"
+        title="20210411215815" /> 如何采取直接告诉该对象的类型，直接用接口引用指向它?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">IA</span> <span class="n">ia</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello world!&#34;</span><span class="o">);</span>
+        <span class="o">};</span>
+        <span class="n">ia</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@FunctionalInterface</span>
+<span class="kd">interface</span> <span class="nc">IA</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">test</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411220028.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411220028.png, https://img.fengqigang.cn//img/20210411220028.png 1.5x, https://img.fengqigang.cn//img/20210411220028.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411220028.png"
+        title="20210411220028" /></p>
+<h3 id="20210411215815httpsimgfengqigangcnimg20210411215815png-如何采取直接告诉该对象的类型不接收它并调用-test-方法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411215815.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411215815.png, https://img.fengqigang.cn//img/20210411215815.png 1.5x, https://img.fengqigang.cn//img/20210411215815.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411215815.png"
+        title="20210411215815" /> 如何采取直接告诉该对象的类型，不接收它，并调用 <strong>test</strong> 方法?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">((</span><span class="n">IA</span><span class="o">)</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hello world!&#34;</span><span class="o">);</span>
+        <span class="o">}).</span><span class="na">test</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@FunctionalInterface</span>
+<span class="kd">interface</span> <span class="nc">IA</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">test</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411220259.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411220259.png, https://img.fengqigang.cn//img/20210411220259.png 1.5x, https://img.fengqigang.cn//img/20210411220259.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411220259.png"
+        title="20210411220259" /></p>
+<h3 id="20210411220734httpsimgfengqigangcnimg20210411220734png-这里的数据类型可以省略吗-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411220734.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411220734.png, https://img.fengqigang.cn//img/20210411220734.png 1.5x, https://img.fengqigang.cn//img/20210411220734.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411220734.png"
+        title="20210411220734" /> 这里的数据类型可以省略吗? 为什么?</h3>
+<p>可以，<strong>lambda</strong> 表达式已经明确知道用哪个接口，哪个抽象方法，所以形参列表中的数据类型是多余的， 可以省略的</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411221034.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411221034.png, https://img.fengqigang.cn//img/20210411221034.png 1.5x, https://img.fengqigang.cn//img/20210411221034.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411221034.png"
+        title="20210411221034" /></p>
+<h3 id="20210411221146httpsimgfengqigangcnimg20210411221146png-这里的括号可以省略吗-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411221146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411221146.png, https://img.fengqigang.cn//img/20210411221146.png 1.5x, https://img.fengqigang.cn//img/20210411221146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411221146.png"
+        title="20210411221146" /> 这里的括号可以省略吗? 为什么?</h3>
+<p>可以, 如果这个参数 <strong>只有一个</strong> ，那么这个小括号是 <strong>多余的</strong></p>
+<p>如果 <strong>没有参数</strong> 和 <strong>多个参数</strong> , 不可省略小括号</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411221358.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411221358.png, https://img.fengqigang.cn//img/20210411221358.png 1.5x, https://img.fengqigang.cn//img/20210411221358.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411221358.png"
+        title="20210411221358" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411221506.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411221506.png, https://img.fengqigang.cn//img/20210411221506.png 1.5x, https://img.fengqigang.cn//img/20210411221506.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411221506.png"
+        title="20210411221506" /></p>
+<h3 id="20210411221550httpsimgfengqigangcnimg20210411221550png-可以这样写吗"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411221550.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411221550.png, https://img.fengqigang.cn//img/20210411221550.png 1.5x, https://img.fengqigang.cn//img/20210411221550.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411221550.png"
+        title="20210411221550" /> 可以这样写吗?</h3>
+<p><strong>可以</strong>, 在 <strong>lambda</strong> 表达式重写方法体中 <strong>只有一条语句</strong> ，<strong>可以省略大括号</strong></p>
+<h3 id="20210411221954httpsimgfengqigangcnimg20210411221954png-可以这样写吗-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411221954.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411221954.png, https://img.fengqigang.cn//img/20210411221954.png 1.5x, https://img.fengqigang.cn//img/20210411221954.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411221954.png"
+        title="20210411221954" /> 可以这样写吗? 为什么?</h3>
+<p>如果这个抽象方法是有返回值的，并且它的返回值语句只有一行，那么 <strong>return</strong> 就不需要了</p>
+<h3 id="20210411222454httpsimgfengqigangcnimg20210411222454png-可以这样写吗-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411222454.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411222454.png, https://img.fengqigang.cn//img/20210411222454.png 1.5x, https://img.fengqigang.cn//img/20210411222454.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411222454.png"
+        title="20210411222454" /> 可以这样写吗? 为什么?</h3>
+<p>可以，把方法的实现，指向一个已经存在的方法中是可以的</p>
+<h3 id="如何判断-已存在的方法-和-功能接口中的抽象方法-是一样的">如何判断 <strong>已存在的方法</strong> 和 <strong>功能接口中的抽象方法</strong> 是一样的?</h3>
+<p>只用看 <strong>返回值类型</strong> 和 <strong>形参列表</strong></p>
+<h3 id="20210411222855httpsimgfengqigangcnimg20210411222855png可以这样写吗为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411222855.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411222855.png, https://img.fengqigang.cn//img/20210411222855.png 1.5x, https://img.fengqigang.cn//img/20210411222855.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411222855.png"
+        title="20210411222855" />可以这样写吗?为什么?</h3>
+<p>在调用其他方法时，可以用 <strong>方法归属者::方法名</strong></p>
+<h3 id="如何判断一个方法的归属者">如何判断一个方法的归属者?</h3>
+<ol>
+<li>成员方法</li>
+</ol>
+<p>属于对象， 所以需要先创建对象， 再指向</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411223440.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411223440.png, https://img.fengqigang.cn//img/20210411223440.png 1.5x, https://img.fengqigang.cn//img/20210411223440.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411223440.png"
+        title="20210411223440" /></p>
+<ol start="2">
+<li>静态成员方法，属于类，直接类名放上去</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210411223142.png"
+        data-srcset="https://img.fengqigang.cn//img/20210411223142.png, https://img.fengqigang.cn//img/20210411223142.png 1.5x, https://img.fengqigang.cn//img/20210411223142.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210411223142.png"
+        title="20210411223142" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
