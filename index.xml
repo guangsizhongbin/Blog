@@ -4,9 +4,29 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 10 Apr 2021 22:36:59 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 12 Apr 2021 23:48:15 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day12</title>
+    <link>http://fengqigang.cn/posts/day12/</link>
+    <pubDate>Mon, 12 Apr 2021 23:48:15 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day12/</guid>
+    <description><![CDATA[什么是 API ? Application Programming Interface(API)
+应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
+作用
+开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
+Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
+  在自定义类时，并不需要特别标注 extends Object
+  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
+  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
+  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
+  隐式初始化，默认调用父类的无参构造
+  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
+  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
+方法声明中 public final Class&lt;?&gt; getClass() 分另代表什么意思?   public 访问权限，调用时不必考虑权限问题
+  final 该方法可以被继承但是不能被重写]]></description>
+</item><item>
     <title>Day11</title>
     <link>http://fengqigang.cn/posts/day11/</link>
     <pubDate>Sat, 10 Apr 2021 22:36:59 &#43;0800</pubDate>
@@ -206,32 +226,5 @@ type -a ls
 没有默认初始化值， 必须手动初始化
 成员变量
 有默认初始值]]></description>
-</item><item>
-    <title>Day4</title>
-    <link>http://fengqigang.cn/posts/day4/</link>
-    <pubDate>Fri, 02 Apr 2021 23:08:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day4/</guid>
-    <description><![CDATA[二维数组如何声明？ 数据类型[][] 二维数组名;
-int[] m, n[] 其是想表达什么? int[] m;
-int[] n[];
-int[][] arr4 = new int[2][3]; 其堆空间是什么样的? 如何调用一个方法访问二维数组中的某个一维数组? (Arrays.toString(arr[1])) System.out.println(Arrays.toString(arr[1]));
-如何调用一个方法去访问维数组? System.out.println(Arrays.deepToString(arr))
-stackOverflowError 其本质的栈内存是什么样的? 如何用一个方法捕获栈溢出这个错误？ catch (StackOverflowError error)
-什么是成员变量？ 定义在类中，除了方法体之外的区域
-语法:
-[各种修饰符] 数据类型 成员变量名
-什么是成员方法 指的是在成员位置, 不带 static 的方法
-语法:
-[访问权限修饰符] 返回值类型 方法名() {}
-什么是类的全限定类名？ 就是 类名 全称， 带包路径的用点隔开
-如:
-java.lang.String
-全限定名 = 包名 + 类型
-这里获取的地址是什么样的？ 类的全限定类名 + 地址值
-类和数据类型是否存在关联? 数据类型:
-一个数据集合 和 基于这个数据集合的 一组操作
-类的定义:
-类中包括： 成员变量 和 成员方法]]></description>
 </item></channel>
 </rss>
