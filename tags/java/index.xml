@@ -4,7 +4,16 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 13 Apr 2021 21:42:49 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Day14</title>
+    <link>http://fengqigang.cn/posts/day14/</link>
+    <pubDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day14/</guid>
+    <description><![CDATA[什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
+在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
+try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行]]></description>
+</item><item>
     <title>Day13</title>
     <link>http://fengqigang.cn/posts/day13/</link>
     <pubDate>Tue, 13 Apr 2021 21:42:49 &#43;0800</pubDate>
@@ -212,32 +221,5 @@ new 类名();
 没有默认初始化值， 必须手动初始化
 成员变量
 有默认初始值]]></description>
-</item><item>
-    <title>Day4</title>
-    <link>http://fengqigang.cn/posts/day4/</link>
-    <pubDate>Fri, 02 Apr 2021 23:08:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day4/</guid>
-    <description><![CDATA[二维数组如何声明？ 数据类型[][] 二维数组名;
-int[] m, n[] 其是想表达什么? int[] m;
-int[] n[];
-int[][] arr4 = new int[2][3]; 其堆空间是什么样的? 如何调用一个方法访问二维数组中的某个一维数组? (Arrays.toString(arr[1])) System.out.println(Arrays.toString(arr[1]));
-如何调用一个方法去访问维数组? System.out.println(Arrays.deepToString(arr))
-stackOverflowError 其本质的栈内存是什么样的? 如何用一个方法捕获栈溢出这个错误？ catch (StackOverflowError error)
-什么是成员变量？ 定义在类中，除了方法体之外的区域
-语法:
-[各种修饰符] 数据类型 成员变量名
-什么是成员方法 指的是在成员位置, 不带 static 的方法
-语法:
-[访问权限修饰符] 返回值类型 方法名() {}
-什么是类的全限定类名？ 就是 类名 全称， 带包路径的用点隔开
-如:
-java.lang.String
-全限定名 = 包名 + 类型
-这里获取的地址是什么样的？ 类的全限定类名 + 地址值
-类和数据类型是否存在关联? 数据类型:
-一个数据集合 和 基于这个数据集合的 一组操作
-类的定义:
-类中包括： 成员变量 和 成员方法]]></description>
 </item></channel>
 </rss>

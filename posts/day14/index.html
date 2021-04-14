@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day14 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day14" />
+<meta property="og:description" content="什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
+在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
+try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day14/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-14T23:01:03&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-14T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day14"/>
+<meta name="twitter:description" content="什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
+在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
+try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day14/" /><link rel="prev" href="http://fengqigang.cn/posts/day13/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day14",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day14\/"
+        },"genre": "posts","keywords": "java","wordcount":  380 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day14\/","datePublished": "2021-04-14T23:01:03+08:00","dateModified": "2021-04-14T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day14</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-14">2021-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;380 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是单分支的-trycatch-其语法是什么">什么是单分支的 <strong>try&hellip;catch</strong>, 其语法是什么?</a></li>
+        <li><a href="#在-trycatch-中-的-catch-如何写">在 <strong>try&hellip;catch</strong> 中 的 <strong>catch</strong> 如何写?</a></li>
+        <li><a href="#trycatch-中代码是如何执行的"><strong>try..catch</strong> 中代码是如何执行的?</a></li>
+        <li><a href="#在-try--catch-当中可能产生几个异常">在 <strong>try &hellip; catch</strong> 当中可能产生几个异常?</a></li>
+        <li><a href="#如果在-try--catch-异常没有被捕获会发生什么">如果在 <strong>try &hellip; catch</strong> 异常没有被捕获会发生什么?</a></li>
+        <li><a href="#如何采取单分支-trycatch-同时处理多个异常而不依赖于父类">如何采取单分支 <strong>try&hellip;catch</strong> 同时处理多个异常，而不依赖于父类?</a></li>
+        <li><a href="#printstacktrace-方法是做什么的"><strong>printStackTrace()</strong> 方法是做什么的?</a></li>
+        <li><a href="#如何实现多分支异常">如何实现多分支异常?</a></li>
+        <li><a href="#如何实现-接盘侠-">如何实现 <strong>接盘侠</strong> ?</a></li>
+        <li><a href="#20210414221821httpsimgfengqigangcnimg20210414221821png-若要实现处理除0异常但是空指针和下标越界异常一起处理-该如何做"><img src="https://img.fengqigang.cn//img/20210414221821.png" alt="20210414221821"> 若要实现处理除0异常，但是空指针和下标越界异常一起处理, 该如何做?</a></li>
+        <li><a href="#thorws-方法有什么用"><strong>thorws</strong> 方法有什么用?</a></li>
+        <li><a href="#父子类方法重写-throws-异常列表的关系的总体原则是什么">父子类方法重写 <strong>throws</strong> 异常列表的关系的总体原则是什么?</a></li>
+        <li><a href="#方法抛出更多的运行时异常叫不叫抛出更多的异常-为什么">方法抛出更多的运行时异常，叫不叫抛出更多的异常? 为什么?</a></li>
+        <li><a href="#throw-关键字是干什么的"><strong>throw</strong> 关键字是干什么的?</a></li>
+        <li><a href="#如何获取一个异常对象">如何获取一个异常对象?</a></li>
+        <li><a href="#throw--运行时异常一般是怎么用的"><strong>throw</strong> + 运行时异常一般是怎么用的?</a></li>
+        <li><a href="#如何一个方法不知道该返回什么返回值时应该如何处理">如何一个方法不知道该返回什么返回值时，应该如何处理?</a></li>
+        <li><a href="#异常类有什么特点">异常类有什么特点?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是单分支的-trycatch-其语法是什么">什么是单分支的 <strong>try&hellip;catch</strong>, 其语法是什么?</h3>
+<p>try {
+//可能出现异常的，正常的代码逻辑
+} catch (要捕捉的异常对象){
+//在catch分支中处理具体类型的代码异常
+}</p>
+<h3 id="在-trycatch-中-的-catch-如何写">在 <strong>try&hellip;catch</strong> 中 的 <strong>catch</strong> 如何写?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sort</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;1111&#34;</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">10</span><span class="o">/</span><span class="n">0</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;2222&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArithmeticException</span> <span class="n">ae</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了算数除0异常&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;3333&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414215300.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414215300.png, https://img.fengqigang.cn//img/20210414215300.png 1.5x, https://img.fengqigang.cn//img/20210414215300.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414215300.png"
+        title="20210414215300" /></p>
+<p><strong>catch</strong> 中必须是一个抛出异常类的对象声明</p>
+<h3 id="trycatch-中代码是如何执行的"><strong>try..catch</strong> 中代码是如何执行的?</h3>
+<ol>
+<li>如果 <strong>try</strong> 当中没有异常</li>
+</ol>
+<p>那么 <strong>try</strong> 中的代码会正常执行完毕， <strong>catch</strong> 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 <strong>try&hellip;catch</strong> 后的代码正常执行</p>
+<ol start="2">
+<li>如果 <strong>try</strong> 当中有异常</li>
+</ol>
+<p>恰好能够被 <strong>catch</strong> 捕获， <strong>try</strong> 当中发生异常之前的代码， 正常执行</p>
+<p>异常那行代码会抛出异常，被 <strong>catch</strong> 捕获， 然后执行 <strong>catch</strong> 中的代码</p>
+<p>因为异常被捕获和处理了， 不会再抛给 <strong>jvm</strong> 了，程序不会终止执行</p>
+<h3 id="在-try--catch-当中可能产生几个异常">在 <strong>try &hellip; catch</strong> 当中可能产生几个异常?</h3>
+<p>最多产生一个异常，可能不产生异常， 因为一旦产生异常 <strong>try</strong> 代码后的不执行了</p>
+<h3 id="如果在-try--catch-异常没有被捕获会发生什么">如果在 <strong>try &hellip; catch</strong> 异常没有被捕获会发生什么?</h3>
+<p>try 当中异常之前的代码仍然会正常执行，后面的不执行</p>
+<p>但是这个异常没有被捕获，仍然抛给了 <strong>jvm</strong> ,终止程序打印异常信息，这个时候相当于没有 <strong>try&hellip;catch</strong> 异常处理</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414220044.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414220044.png, https://img.fengqigang.cn//img/20210414220044.png 1.5x, https://img.fengqigang.cn//img/20210414220044.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414220044.png"
+        title="20210414220044" /></p>
+<h3 id="如何采取单分支-trycatch-同时处理多个异常而不依赖于父类">如何采取单分支 <strong>try&hellip;catch</strong> 同时处理多个异常，而不依赖于父类?</h3>
+<p>语法:</p>
+<p>catch(要捕捉的异常类型1 | 要捕捉的异常类型2 | 要捕捉的异常对象对象名&hellip; )</p>
+<p><strong>try 当中最多有一个异常，对象名只有一个</strong></p>
+<p><strong>|</strong> 不是逻辑运算符中的或， 更不能用短路的， 它表示的是可以同时匹配</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414220620.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414220620.png, https://img.fengqigang.cn//img/20210414220620.png 1.5x, https://img.fengqigang.cn//img/20210414220620.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414220620.png"
+        title="20210414220620" /></p>
+<h3 id="printstacktrace-方法是做什么的"><strong>printStackTrace()</strong> 方法是做什么的?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sort</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">10</span><span class="o">/</span><span class="n">0</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>打印出异常</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414220847.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414220847.png, https://img.fengqigang.cn//img/20210414220847.png 1.5x, https://img.fengqigang.cn//img/20210414220847.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414220847.png"
+        title="20210414220847" /></p>
+<h3 id="如何实现多分支异常">如何实现多分支异常?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sort</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">10</span> <span class="o">/</span> <span class="n">0</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">4</span><span class="o">]);</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了除0异常&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了数组越界异常&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NullPointerException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了空指针异常&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现-接盘侠-">如何实现 <strong>接盘侠</strong> ?</h3>
+<p>用其父类来接盘</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sort</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">10</span> <span class="o">/</span> <span class="n">0</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">[</span><span class="n">4</span><span class="o">]);</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">arr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了除0异常&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了数组越界异常&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NullPointerException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;发生了空指针异常&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;我是接盘侠父类 Exception&#34;</span><span class="o">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414221403.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414221403.png, https://img.fengqigang.cn//img/20210414221403.png 1.5x, https://img.fengqigang.cn//img/20210414221403.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414221403.png"
+        title="20210414221403" /></p>
+<h3 id="20210414221821httpsimgfengqigangcnimg20210414221821png-若要实现处理除0异常但是空指针和下标越界异常一起处理-该如何做"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414221821.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414221821.png, https://img.fengqigang.cn//img/20210414221821.png 1.5x, https://img.fengqigang.cn//img/20210414221821.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414221821.png"
+        title="20210414221821" /> 若要实现处理除0异常，但是空指针和下标越界异常一起处理, 该如何做?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414222010.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414222010.png, https://img.fengqigang.cn//img/20210414222010.png 1.5x, https://img.fengqigang.cn//img/20210414222010.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414222010.png"
+        title="20210414222010" /></p>
+<h3 id="thorws-方法有什么用"><strong>thorws</strong> 方法有什么用?</h3>
+<p>在方法声明时使用，声明该方法可能抛出的异常类型</p>
+<p><strong>语法</strong>:</p>
+<p>方法名(形参列表) throws 异常列表{</p>
+<p>}</p>
+<ol>
+<li>
+<p><strong>thorws</strong> 加了一个s, 表示一个复数，它可以抛出的异常列表可以是多个异常</p>
+</li>
+<li>
+<p>这个异常列表只表示可能性，表示可能会抛出这些异常，并不是真的一定抛出</p>
+</li>
+</ol>
+<p>所以 <strong>throws</strong> 关键字后面写异常的类名即可，不需要是一个对象</p>
+<h3 id="父子类方法重写-throws-异常列表的关系的总体原则是什么">父子类方法重写 <strong>throws</strong> 异常列表的关系的总体原则是什么?</h3>
+<p>子类重写的方法不能抛出更多的异常</p>
+<p>多态， 编译看左边， 父类方法没有异常不需要处理</p>
+<p>结果运行起来子类的方法有抛出异常需要处理</p>
+<p>这显然是矛盾了</p>
+<h3 id="方法抛出更多的运行时异常叫不叫抛出更多的异常-为什么">方法抛出更多的运行时异常，叫不叫抛出更多的异常? 为什么?</h3>
+<p>不叫</p>
+<p>意味着子类比父类抛出更多的运行时异常是没有问题的</p>
+<h3 id="throw-关键字是干什么的"><strong>throw</strong> 关键字是干什么的?</h3>
+<p><strong>throw</strong> 是一个单数， 所以它表示确定的抛出一个异常</p>
+<p>throw + 异常对象</p>
+<h3 id="如何获取一个异常对象">如何获取一个异常对象?</h3>
+<p>通过查看一个异常的构造方法</p>
+<p>自定义的编译时异常: 继承Exception</p>
+<p>自定义的运行时异常: 继承RuntimeException</p>
+<h3 id="throw--运行时异常一般是怎么用的"><strong>throw</strong> + 运行时异常一般是怎么用的?</h3>
+<p>表示在方法中抛出运行时异常对象</p>
+<p>这里抛出异常后，方法要在这里终止执行了，后面的代码都不会执行了，这种效果很类似于 <strong>return</strong></p>
+<p>throw + 运行时异常对象， 用来替代 return 作为方法的返回值</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414224758.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414224758.png, https://img.fengqigang.cn//img/20210414224758.png 1.5x, https://img.fengqigang.cn//img/20210414224758.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414224758.png"
+        title="20210414224758" /></p>
+<h3 id="如何一个方法不知道该返回什么返回值时应该如何处理">如何一个方法不知道该返回什么返回值时，应该如何处理?</h3>
+<p>用 <strong>throw + 运行时异常</strong> 来 替代 <strong>return</strong> 作为方法的返回值</p>
+<h3 id="异常类有什么特点">异常类有什么特点?</h3>
+<ol>
+<li>
+<p>对象只是封装了异常的信息，然后对这些信息的处理</p>
+</li>
+<li>
+<p>异常对象管不到什么时候抛出异常，方法在管，只有在方法内部显式的使用 <strong>throw</strong> 关键字抛出异常</p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-14</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day13/" class="prev" rel="prev" title="Day13"><i class="fas fa-angle-left fa-fw"></i>Day13</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
