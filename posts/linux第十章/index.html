@@ -55,7 +55,7 @@ type -a ls
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  533 ,
+        },"genre": "posts","keywords": "linux","wordcount":  730 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E7%AB%A0\/","datePublished": "2021-04-04T11:22:35+08:00","dateModified": "2021-04-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -132,8 +132,8 @@ type -a ls
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第十章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;533 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;730 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -199,6 +199,20 @@ type -a ls
         <li><a href="#如何执行上一个指令">如何执行上一个指令?</a></li>
         <li><a href="#如何执行第66行指令">如何执行第66行指令?</a></li>
         <li><a href="#若同时开好几个-bash-接口这些-bash-的身份都是-root-这样会有bash_history-的写入问题吗">若同时开好几个 <strong>bash</strong> 接口，这些 <strong>bash</strong> 的身份都是 <strong>root</strong>, 这样会有**~/.bash_history** 的写入问题吗?</a></li>
+        <li><a href="#如何将-ehco-命令别名成-echo--n-再观察-ehco-的执行顺序">如何将 <strong>ehco</strong> 命令别名成 <strong>echo -n</strong>? 再观察 <strong>ehco</strong> 的执行顺序?</a></li>
+        <li><a href="#如何查看-bash-进站时的画面与欢迎信息">如何查看 <strong>bash</strong> 进站时的画面与欢迎信息?</a></li>
+        <li><a href="#如何查看-etcissue-文件中各种参数">如何查看 <strong>/etc/issue</strong> 文件中各种参数?</a></li>
+        <li><a href="#如何想要让使用者登陆后取得一些讯息例如想要让大家都知道的讯息那么可以将讯息加入-etcmotd-里面去">如何想要让使用者登陆后取得一些讯息，例如想要让大家都知道的讯息，那么可以将讯息加入 <strong>/etc/motd</strong> 里面去</a></li>
+        <li><a href="#什么是-login-shell-和-non-login-shell-如何区分它们">什么是 <strong>login shell</strong> 和 <strong>non-login shell</strong>, 如何区分它们?</a></li>
+        <li><a href="#login-shell--与-non-login-shell-有什么不同"><strong>login shell</strong>  与 <strong>non-login shell</strong> 有什么不同?</a></li>
+        <li><a href="#有哪些例子是用-non-login-shell-的">有哪些例子是用 <strong>non-login shell</strong> 的?</a></li>
+        <li><a href="#若不小心将-bashrc-删除了如何恢复">若不小心将 <strong>~/.bashrc</strong> 删除了，如何恢复?</a></li>
+        <li><a href="#bash_logout-文件是用来干什么的"><strong>~/.bash_logout</strong> 文件是用来干什么的?</a></li>
+        <li><a href="#bash_history-文件是用来干什么的"><strong>~/.bash_history</strong> 文件是用来干什么的?</a></li>
+        <li><a href="#如何列出所有的按键与按键内容">如何列出所有的按键与按键内容?</a></li>
+        <li><a href="#在-window-下面很多软件默认的储存快捷按钮是-ctrl--s-在-linux-下面使用-vim-时-按下-ctrl--s-就不动了该如何做">在 <strong>window</strong> 下面，很多软件默认的储存快捷按钮是 <strong>[Ctrl] + s</strong>, 在 <strong>linux</strong> 下面使用 <strong>vim</strong> 时， 按下 <strong>[Ctrl] + s</strong> 就不动了，该如何做?</a></li>
+        <li><a href="#如何显示目前所有的-set-设置值">如何显示目前所有的 <strong>set</strong> 设置值?</a></li>
+        <li><a href="#如何找出-etc-下面文件名-刚好是一个字母-的文件名">如何找出 <strong>/etc/</strong> 下面文件名 <strong>刚好是一个字母</strong> 的文件名?</a></li>
       </ul>
     </li>
   </ul>
@@ -1019,6 +1033,142 @@ var<span class="o">[</span>3<span class="o">]=</span><span class="s2">&#34;nice 
 <h3 id="若同时开好几个-bash-接口这些-bash-的身份都是-root-这样会有bash_history-的写入问题吗">若同时开好几个 <strong>bash</strong> 接口，这些 <strong>bash</strong> 的身份都是 <strong>root</strong>, 这样会有**~/.bash_history** 的写入问题吗?</h3>
 <p>有, 因为这些 <strong>bash</strong> 在同时以 <strong>root</strong> 的身份登陆，因此所有的 <strong>bash</strong> 都有自己的 1000 笔记录在内存中</p>
 <p>等到登出时才会更新记录文件，所以，最后登出的那个 <strong>bash</strong> 才会是最后写入的数据</p>
+<h3 id="如何将-ehco-命令别名成-echo--n-再观察-ehco-的执行顺序">如何将 <strong>ehco</strong> 命令别名成 <strong>echo -n</strong>? 再观察 <strong>ehco</strong> 的执行顺序?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">alias</span> <span class="nv">echo</span><span class="o">=</span><span class="s1">&#39;echo -n&#39;</span>
+
+<span class="nb">type</span> -a <span class="nb">echo</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414142147.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414142147.png, https://img.fengqigang.cn//img/20210414142147.png 1.5x, https://img.fengqigang.cn//img/20210414142147.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414142147.png"
+        title="20210414142147" /></p>
+<h3 id="如何查看-bash-进站时的画面与欢迎信息">如何查看 <strong>bash</strong> 进站时的画面与欢迎信息?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/issue
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414143031.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414143031.png, https://img.fengqigang.cn//img/20210414143031.png 1.5x, https://img.fengqigang.cn//img/20210414143031.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414143031.png"
+        title="20210414143031" /></p>
+<h3 id="如何查看-etcissue-文件中各种参数">如何查看 <strong>/etc/issue</strong> 文件中各种参数?</h3>
+<p><strong>man issue</strong> 与 <strong>man agetty</strong></p>
+<h3 id="如何想要让使用者登陆后取得一些讯息例如想要让大家都知道的讯息那么可以将讯息加入-etcmotd-里面去">如何想要让使用者登陆后取得一些讯息，例如想要让大家都知道的讯息，那么可以将讯息加入 <strong>/etc/motd</strong> 里面去</h3>
+<p>vim /etc/motd</p>
+<p>motd - message of the day</p>
+<p>The contents of <strong>/etc/motd</strong> are displayed by login after a successful login but just before it executes the login shell.</p>
+<h3 id="什么是-login-shell-和-non-login-shell-如何区分它们">什么是 <strong>login shell</strong> 和 <strong>non-login shell</strong>, 如何区分它们?</h3>
+<p><strong>login shell</strong> 与 <strong>non-login shell</strong> 区别在于有没有登录</p>
+<p><strong>login shell</strong></p>
+<p>取得 <strong>bash</strong> 时需要完整的登录流程</p>
+<p><strong>non-login shell</strong></p>
+<p>取得 <strong>bash</strong> 接口的方法不需要登陆的举动</p>
+<h3 id="login-shell--与-non-login-shell-有什么不同"><strong>login shell</strong>  与 <strong>non-login shell</strong> 有什么不同?</h3>
+<p><strong>login shell</strong> 只会读取两个配置文件</p>
+<ol>
+<li><strong>/etc/profile</strong></li>
+</ol>
+<p>系统整体的设置</p>
+<ol start="2">
+<li><strong>~/.bash_profile</strong> 或 <strong>~/.bash_login</strong> 或 <strong>~/.profile</strong></li>
+</ol>
+<p>属于个人设置</p>
+<p><strong>non-login shell</strong> 仅会读一个文件</p>
+<ol>
+<li><strong>~/.bashrc</strong></li>
+</ol>
+<h3 id="有哪些例子是用-non-login-shell-的">有哪些例子是用 <strong>non-login shell</strong> 的?</h3>
+<ol>
+<li>
+<p>以 <strong>X window</strong> 登陆 <strong>Linux</strong> 后，再以 <strong>X</strong> 的图形化接口启动终端机，此时那个终端接口并没有需要再次的输入账号与密码，那个 <strong>bash</strong> 环境被称为 <strong>non-login shell</strong> 了</p>
+</li>
+<li>
+<p>在原本的 <strong>bash</strong> 环境再次下达 <strong>bash</strong> 这个指令，同样的也没有输入账号密码，那第二个 <strong>bash</strong> (子程序) 也是 <strong>non-login shell</strong></p>
+</li>
+</ol>
+<h3 id="若不小心将-bashrc-删除了如何恢复">若不小心将 <strong>~/.bashrc</strong> 删除了，如何恢复?</h3>
+<p>复制 <strong>/etc/skel/.bashrc</strong> 到主文件夹中, 并使用 <strong>source</strong> 去调用</p>
+<h3 id="bash_logout-文件是用来干什么的"><strong>~/.bash_logout</strong> 文件是用来干什么的?</h3>
+<p>默认的情况下，登出时，<strong>bash</strong> 只是帮我们清楚屏幕信息而已</p>
+<p>可以将一些备份或者是其他重要的工作写在这个文件中</p>
+<h3 id="bash_history-文件是用来干什么的"><strong>~/.bash_history</strong> 文件是用来干什么的?</h3>
+<p>默认的情况下，历史命令就记录在这里</p>
+<p>而这个文件能够记录几笔数据，与 <strong>HISTFILESIZE</strong> 这个变量有关</p>
+<h3 id="如何列出所有的按键与按键内容">如何列出所有的按键与按键内容?</h3>
+<p><strong>stty -a</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414152328.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414152328.png, https://img.fengqigang.cn//img/20210414152328.png 1.5x, https://img.fengqigang.cn//img/20210414152328.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414152328.png"
+        title="20210414152328" /></p>
+<h3 id="在-window-下面很多软件默认的储存快捷按钮是-ctrl--s-在-linux-下面使用-vim-时-按下-ctrl--s-就不动了该如何做">在 <strong>window</strong> 下面，很多软件默认的储存快捷按钮是 <strong>[Ctrl] + s</strong>, 在 <strong>linux</strong> 下面使用 <strong>vim</strong> 时， 按下 <strong>[Ctrl] + s</strong> 就不动了，该如何做?</h3>
+<p><strong>[Ctrl] + s</strong> 是 <strong>stop</strong></p>
+<p><strong>[Ctrl] + q</strong> 是 <strong>start</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414152628.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414152628.png, https://img.fengqigang.cn//img/20210414152628.png 1.5x, https://img.fengqigang.cn//img/20210414152628.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414152628.png"
+        title="20210414152628" /></p>
+<h3 id="如何显示目前所有的-set-设置值">如何显示目前所有的 <strong>set</strong> 设置值?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="nv">$-</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414153031.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414153031.png, https://img.fengqigang.cn//img/20210414153031.png 1.5x, https://img.fengqigang.cn//img/20210414153031.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414153031.png"
+        title="20210414153031" /></p>
+<h3 id="如何找出-etc-下面文件名-刚好是一个字母-的文件名">如何找出 <strong>/etc/</strong> 下面文件名 <strong>刚好是一个字母</strong> 的文件名?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">ll -d /etc/?????
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210414153256.png"
+        data-srcset="https://img.fengqigang.cn//img/20210414153256.png, https://img.fengqigang.cn//img/20210414153256.png 1.5x, https://img.fengqigang.cn//img/20210414153256.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210414153256.png"
+        title="20210414153256" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
