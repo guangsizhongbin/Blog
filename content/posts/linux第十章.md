@@ -483,7 +483,114 @@ unalias vim
 等到登出时才会更新记录文件，所以，最后登出的那个 **bash** 才会是最后写入的数据
 
 
+### 如何将 **ehco** 命令别名成 **echo -n**? 再观察 **ehco** 的执行顺序?
+
+```bash
+alias echo='echo -n'
+
+type -a echo
+```
+
+![20210414142147](https://img.fengqigang.cn//img/20210414142147.png)
+
+### 如何查看 **bash** 进站时的画面与欢迎信息?
+
+```bash
+cat /etc/issue
+```
+
+![20210414143031](https://img.fengqigang.cn//img/20210414143031.png)
+
+### 如何查看 **/etc/issue** 文件中各种参数?
+
+**man issue** 与 **man agetty**
+
+### 如何想要让使用者登陆后取得一些讯息，例如想要让大家都知道的讯息，那么可以将讯息加入 **/etc/motd** 里面去
+
+vim /etc/motd
+
+motd - message of the day
+
+The contents of **/etc/motd** are displayed by login after a successful login but just before it executes the login shell.
+
+### 什么是 **login shell** 和 **non-login shell**, 如何区分它们?
+
+**login shell** 与 **non-login shell** 区别在于有没有登录
+
+**login shell**
+
+取得 **bash** 时需要完整的登录流程
+
+**non-login shell** 
+
+取得 **bash** 接口的方法不需要登陆的举动
+
+### **login shell**  与 **non-login shell** 有什么不同?
+
+**login shell** 只会读取两个配置文件
+
+1. **/etc/profile**
+
+系统整体的设置
+
+2. **~/.bash_profile** 或 **~/.bash_login** 或 **~/.profile**
+
+属于个人设置
+
+**non-login shell** 仅会读一个文件
+
+1. **~/.bashrc**
+
+### 有哪些例子是用 **non-login shell** 的?
+
+1. 以 **X window** 登陆 **Linux** 后，再以 **X** 的图形化接口启动终端机，此时那个终端接口并没有需要再次的输入账号与密码，那个 **bash** 环境被称为 **non-login shell** 了
+
+2. 在原本的 **bash** 环境再次下达 **bash** 这个指令，同样的也没有输入账号密码，那第二个 **bash** (子程序) 也是 **non-login shell**
+
+### 若不小心将 **~/.bashrc** 删除了，如何恢复?
+
+复制 **/etc/skel/.bashrc** 到主文件夹中, 并使用 **source** 去调用
+
+### **~/.bash_logout** 文件是用来干什么的?
+
+默认的情况下，登出时，**bash** 只是帮我们清楚屏幕信息而已
+
+可以将一些备份或者是其他重要的工作写在这个文件中
+
+### **~/.bash_history** 文件是用来干什么的?
+
+默认的情况下，历史命令就记录在这里
+
+而这个文件能够记录几笔数据，与 **HISTFILESIZE** 这个变量有关
+
+### 如何列出所有的按键与按键内容?
+
+**stty -a**
+
+![20210414152328](https://img.fengqigang.cn//img/20210414152328.png)
+
+### 在 **window** 下面，很多软件默认的储存快捷按钮是 **[Ctrl] + s**, 在 **linux** 下面使用 **vim** 时， 按下 **[Ctrl] + s** 就不动了，该如何做?
+
+**[Ctrl] + s** 是 **stop**
+
+**[Ctrl] + q** 是 **start**
 
 
+![20210414152628](https://img.fengqigang.cn//img/20210414152628.png)
 
+### 如何显示目前所有的 **set** 设置值?
+
+```bash
+echo $-
+```
+
+![20210414153031](https://img.fengqigang.cn//img/20210414153031.png)
+
+### 如何找出 **/etc/** 下面文件名 **刚好是一个字母** 的文件名?
+
+```bash
+ll -d /etc/?????
+```
+
+![20210414153256](https://img.fengqigang.cn//img/20210414153256.png)
 
