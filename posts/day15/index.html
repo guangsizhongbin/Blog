@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day15\/"
-        },"genre": "posts","keywords": "java","wordcount":  1408 ,
+        },"genre": "posts","keywords": "java","wordcount":  1627 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day15\/","datePublished": "2021-04-15T21:58:11+08:00","dateModified": "2021-04-15T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -104,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day15</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-15">2021-04-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1408 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-15">2021-04-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1627 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -151,6 +151,7 @@
         <li><a href="#如何使用-lambda-表达式实现只看-文件夹中的文件">如何使用 <strong>lambda</strong> 表达式实现只看 文件夹中的文件?</a></li>
         <li><a href="#deprecated-是什么意思"><strong>@Deprecated</strong> 是什么意思?</a></li>
         <li><a href="#如何计算现在到1970年多少年了-并返回当时的时间">如何计算现在到1970年多少年了? 并返回当时的时间?</a></li>
+        <li><a href="#如何实现递归删除目录">如何实现递归删除目录?</a></li>
       </ul>
     </li>
   </ul>
@@ -449,6 +450,110 @@
         title="20210415191840" /></p>
 <h3 id="怎么写自定义异常类的构造方法">怎么写自定义异常类的构造方法?</h3>
 <p>直接去调用父类构造器就可以 <strong>super</strong> 参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">try</span><span class="o">{</span>
+          <span class="n">testThrowRuntimeException</span><span class="o">();</span>
+       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ARuntimeException</span> <span class="n">e</span><span class="o">){</span>
+          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;模拟处理&#34;</span><span class="o">);</span>
+       <span class="o">}</span>
+
+       <span class="k">try</span><span class="o">{</span>
+           <span class="n">testThrowException</span><span class="o">();</span>
+       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">AException</span> <span class="n">e</span><span class="o">){</span>
+          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;模拟处理&#34;</span><span class="o">);</span>
+       <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testThrowRuntimeException</span><span class="o">()</span> <span class="o">{</span><span class="k">throw</span> <span class="k">new</span> <span class="n">ARuntimeException</span><span class="o">(</span><span class="s">&#34;自定义的运行时异常&#34;</span><span class="o">);}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testThrowException</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AException</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">AException</span><span class="o">(</span><span class="s">&#34;自定义的编译时异常&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ARuntimeException</span> <span class="kd">extends</span> <span class="n">RuntimeException</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ARuntimeException</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">ARuntimeException</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">AException</span> <span class="kd">extends</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AException</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">AException</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415225808.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415225808.png, https://img.fengqigang.cn//img/20210415225808.png 1.5x, https://img.fengqigang.cn//img/20210415225808.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415225808.png"
+        title="20210415225808" /></p>
 <h3 id="自定义异常有什么用">自定义异常有什么用?</h3>
 <p>如果直接使用 <strong>jdk</strong> 已有的异常， 比如 <strong>IllegalArgumentException</strong> 这个异常，看起来是可以实现效果的</p>
 <p>但是如果 <strong>try</strong> 当中的代码， 本身也会产生这个异常 <strong>IllegalArgumentException</strong> ， 那么就不能区分对待，不能分别处理了</p>
@@ -1044,7 +1149,14 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><a href="https://img.fengqigang.cn//img/20210415214242.png" target="_blank" rel="noopener noreffer">20210415214242</a></p>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415214242.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415214242.png, https://img.fengqigang.cn//img/20210415214242.png 1.5x, https://img.fengqigang.cn//img/20210415214242.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415214242.png"
+        title="20210415214242" /></p>
 <h3 id="如何使用-lambda-表达式实现只看-文件夹中的文件">如何使用 <strong>lambda</strong> 表达式实现只看 文件夹中的文件?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1113,7 +1225,66 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210415215456.png"
         title="20210415215456" /></p>
-</div><div class="post-footer" id="post-footer">
+<h3 id="如何实现递归删除目录">如何实现递归删除目录?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Work3</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;E:\\1&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;是否已经删完?&#34;</span> <span class="o">+</span> <span class="n">deleteDirectory</span><span class="o">(</span><span class="n">file</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">deleteDirectory</span><span class="o">(</span><span class="n">File</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">File</span><span class="o">[]</span> <span class="n">files</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="na">listFiles</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">files</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">files</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+				<span class="c1">// files == null 为文件， files.length 为空目录
+</span><span class="c1"></span>            <span class="k">return</span> <span class="n">target</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="n">File</span> <span class="n">file</span> <span class="o">:</span> <span class="n">files</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">isDirectory</span><span class="o">())</span> <span class="o">{</span>
+						<span class="c1">//如果是文件夹，删除里面的文件
+</span><span class="c1"></span>                <span class="n">deleteDirectory</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">file</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">target</span><span class="o">.</span><span class="na">delete</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
