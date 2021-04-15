@@ -100,6 +100,11 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day15/">Day15</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-15">2021-04-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.</div><div class="post-footer">
+        <a href="/posts/day15/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day14/">Day14</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-14">2021-04-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
 在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
@@ -178,26 +183,6 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 有些程序员，喜欢在接口名的第一个单词之前加一个&quot;I&quot; 用来区分这是一个接口
 1 2 3 4 5  interface ISpecialSkills{ public void walkUpright(){ } }   如何在接口中定义方法?</div><div class="post-footer">
         <a href="/posts/day10/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day9/">Day9</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-08">2021-04-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
-对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
-什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
-如果是就返回 true, 否则就返回 false
-怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
-否则会报 ClassCastException 类型转换异常的错误
-null instalceof 任何类其结果是什么? false
-对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
-###对于段程序其执行 会出现什么?
-方法 编译时看左边，运行时看右边
-为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
-  Animal 类只用来被继承，不用来创建对象
-  Animal 类中 shout 方法，不应该有方法体
-  抽象方法如何声明? 语法:
-[访问权限修饰符] abstract 返回值类型 方法名();
-Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;</div><div class="post-footer">
-        <a href="/posts/day9/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

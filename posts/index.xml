@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 15 Apr 2021 21:58:11 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day15</title>
+    <link>http://fengqigang.cn/posts/day15/</link>
+    <pubDate>Thu, 15 Apr 2021 21:58:11 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day15/</guid>
+    <description><![CDATA[如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.]]></description>
+</item><item>
     <title>Day14</title>
     <link>http://fengqigang.cn/posts/day14/</link>
     <pubDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</pubDate>
@@ -180,26 +187,5 @@ import + 全限定类名
     <description><![CDATA[Breakpoints Notation  If a file with breakpoints was modified externally, for example, update through a VCS or changed in an external editor, and the line numbers have changed, the breakpoints will be moved accordingly.  Types of breakpoints(Add breakpoints) Setting Line breakpoint keymap
  Line breakpoints  Click the gutter at the executable line of code or press keymap
  Method breakpoints  Click the gutter at the line where the method is declared, or press keymap]]></description>
-</item><item>
-    <title>Day6</title>
-    <link>http://fengqigang.cn/posts/day6/</link>
-    <pubDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day6/</guid>
-    <description><![CDATA[如何在一个构造函数中调用另一个构造函数 用 this
-1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
-不可以重名
-什么是匿名对象? 如何创建匿名对象? 匿名对象:
-没有名字的对象，没有引用指向它的对象
-创建匿名对象:
-new 类名();
-什么时候用匿名对象?  用 匿名对象调用方法  好处
-方便简洁， 如果只想调用一次该对象的成员方法
-没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率
-坏处
-如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底
- 如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
-  如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
-  什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块]]></description>
 </item></channel>
 </rss>

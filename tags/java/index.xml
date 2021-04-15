@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 15 Apr 2021 21:58:11 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Day15</title>
+    <link>http://fengqigang.cn/posts/day15/</link>
+    <pubDate>Thu, 15 Apr 2021 21:58:11 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day15/</guid>
+    <description><![CDATA[如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.]]></description>
+</item><item>
     <title>Day14</title>
     <link>http://fengqigang.cn/posts/day14/</link>
     <pubDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</pubDate>
@@ -192,34 +199,5 @@ new 类名();
  如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
   如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
   什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块]]></description>
-</item><item>
-    <title>Day5</title>
-    <link>http://fengqigang.cn/posts/day5/</link>
-    <pubDate>Sat, 03 Apr 2021 23:12:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day5/</guid>
-    <description><![CDATA[什么是显式赋值? 直接赋值的方式
-1  String brand = &#34;华为&#34;;   其输出结果会是什么样? i 与 i8 会是一样的
-在相同的类中，整个程序的执行期间，类加载会执行多少次？ 只加载一次
-类加类是什么时候被触发(类加载的时机)?   new 对象的时候
-  启动一个类的 main() 方法时
-  像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
-类加载都是懒加载，不是必用时，它不会加载
-局部变量 与 成员变量 有什么区别？  在类中定义的位置  局部变量:
-局部位置(包含方法，大括号之间往往都是局部位置)
-成员变量:
-成员位置(类中方法外)
- 在内存中的位置  局部变量
-栈帧中
-成员变量
-堆上的对象
- 生命周期不同  局部变量
-和方法的栈帧同生共死，方法调用，局部变量生效，方法执行完毕出栈，局部变量销毁
-成员变量
-和对象同生共死，是不确定的，但是只要是对象的引用被销毁了，这些对象中的成员变量也没有意义了
- 初始化值不同  局部变量
-没有默认初始化值， 必须手动初始化
-成员变量
-有默认初始值]]></description>
 </item></channel>
 </rss>
