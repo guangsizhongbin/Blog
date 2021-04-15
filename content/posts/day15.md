@@ -202,6 +202,56 @@ public class demo {
 
 直接去调用父类构造器就可以 **super** 参数
 
+```java
+public class Demo {
+    public static void main(String[] args) {
+       try{
+          testThrowRuntimeException();
+       } catch (ARuntimeException e){
+          e.printStackTrace();
+           System.out.println("模拟处理");
+       }
+
+       try{
+           testThrowException();
+       } catch (AException e){
+          e.printStackTrace();
+           System.out.println("模拟处理");
+       }
+
+    }
+
+    public static void testThrowRuntimeException() {throw new ARuntimeException("自定义的运行时异常");}
+
+    public static void testThrowException() throws AException {
+        throw new AException("自定义的编译时异常");
+    }
+}
+
+class ARuntimeException extends RuntimeException {
+    public ARuntimeException() {
+        super();
+    }
+
+    public ARuntimeException(String message){
+        super();
+    }
+}
+
+class AException extends Exception {
+    public AException(){
+        super();
+    }
+
+    public AException(String message){
+        super(message);
+    }
+
+}
+```
+
+![20210415225808](https://img.fengqigang.cn//img/20210415225808.png)
+
 ### 自定义异常有什么用?
 
 如果直接使用 **jdk** 已有的异常， 比如 **IllegalArgumentException** 这个异常，看起来是可以实现效果的
@@ -592,7 +642,7 @@ class MyFileFilter implements FileFilter {
 }
 ```
 
-[20210415214242](https://img.fengqigang.cn//img/20210415214242.png)
+![20210415214242](https://img.fengqigang.cn//img/20210415214242.png)
 
 ### 如何使用 **lambda** 表达式实现只看 文件夹中的文件?
 
@@ -634,10 +684,34 @@ public class Demo {
 ![20210415215456](https://img.fengqigang.cn//img/20210415215456.png)
 
 
+### 如何实现递归删除目录?
 
+```java
+public class Work3 {
+    public static void main(String[] args) {
+        File file = new File("E:\\1");
+        System.out.println("是否已经删完?" + deleteDirectory(file));
+    }
 
+    public static boolean deleteDirectory(File target) {
+        File[] files = target.listFiles();
 
+        if (files == null || files.length == 0) {
+				// files == null 为文件， files.length 为空目录
+            return target.delete();
+        }
 
+        for (File file : files) {
+            if (file.isDirectory()) {
+						//如果是文件夹，删除里面的文件
+                deleteDirectory(file);
+            } else {
+                file.delete();
+            }
+        }
 
-
+        return target.delete();
+    }
+}
+```
 
