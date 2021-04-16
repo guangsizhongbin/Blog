@@ -4,7 +4,22 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 15 Apr 2021 21:58:11 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 16 Apr 2021 21:49:13 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Day16</title>
+    <link>http://fengqigang.cn/posts/day16/</link>
+    <pubDate>Fri, 16 Apr 2021 21:49:13 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day16/</guid>
+    <description><![CDATA[字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
+  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
+  字符流是怎么分类的？   字符输出流
+  字符输入流
+  什么是IO? i: input 输入
+o: output 输出
+为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
+内存有限，需要把数据读取到内存才行，需要io交互
+java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?]]></description>
+</item><item>
     <title>Day15</title>
     <link>http://fengqigang.cn/posts/day15/</link>
     <pubDate>Thu, 15 Apr 2021 21:58:11 &#43;0800</pubDate>
@@ -178,26 +193,5 @@ import + 全限定类名
 面向过程程序是一条线下来的，对程序员要求很高，需要程序员详细了解每个功能的细节，这就意味着，不利于合作开发，不利于处理复杂的大型项目
 应用场景:
 需要高效率的场景，比如说操作系统内核OS, 嵌入式开发，算法]]></description>
-</item><item>
-    <title>Day6</title>
-    <link>http://fengqigang.cn/posts/day6/</link>
-    <pubDate>Sun, 04 Apr 2021 15:16:47 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day6/</guid>
-    <description><![CDATA[如何在一个构造函数中调用另一个构造函数 用 this
-1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
-不可以重名
-什么是匿名对象? 如何创建匿名对象? 匿名对象:
-没有名字的对象，没有引用指向它的对象
-创建匿名对象:
-new 类名();
-什么时候用匿名对象?  用 匿名对象调用方法  好处
-方便简洁， 如果只想调用一次该对象的成员方法
-没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率
-坏处
-如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底
- 如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
-  如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
-  什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块]]></description>
 </item></channel>
 </rss>

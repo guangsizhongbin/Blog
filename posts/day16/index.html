@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day16 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day16" />
+<meta property="og:description" content="字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
+  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
+  字符流是怎么分类的？   字符输出流
+  字符输入流
+  什么是IO? i: input 输入
+o: output 输出
+为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
+内存有限，需要把数据读取到内存才行，需要io交互
+java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day16/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-16T21:49:13&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-16T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day16"/>
+<meta name="twitter:description" content="字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
+  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
+  字符流是怎么分类的？   字符输出流
+  字符输入流
+  什么是IO? i: input 输入
+o: output 输出
+为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
+内存有限，需要把数据读取到内存才行，需要io交互
+java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day16/" /><link rel="prev" href="http://fengqigang.cn/posts/day15/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day16",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day16\/"
+        },"genre": "posts","keywords": "java","wordcount":  1374 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day16\/","datePublished": "2021-04-16T21:49:13+08:00","dateModified": "2021-04-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day16</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-16">2021-04-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1374 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#字节流是怎么分类的">字节流是怎么分类的?</a></li>
+        <li><a href="#字符流是怎么分类的">字符流是怎么分类的？</a></li>
+        <li><a href="#什么是io">什么是IO?</a></li>
+        <li><a href="#为什么会有-io">为什么会有 IO?</a></li>
+        <li><a href="#java-流模型是什么样的"><strong>java</strong> 流模型是什么样的?</a></li>
+        <li><a href="#java-中的流是怎么分类的"><strong>java</strong> 中的流是怎么分类的?</a></li>
+        <li><a href="#java-io抽象基类有哪些"><strong>java</strong> IO抽象基类有哪些?</a></li>
+        <li><a href="#outpustream-的继承关系"><strong>OutpuStream</strong> 的继承关系?</a></li>
+        <li><a href="#outputstream-的-write-的实现原理是什么样的"><strong>outputStream</strong> 的 <strong>write</strong> 的实现原理是什么样的?</a></li>
+        <li><a href="#fileoutputstreamfile-file-如何实现"><strong>FileOutputStream(File file)</strong>, 如何实现?</a></li>
+        <li><a href="#为什么用-io-一定要关闭资源">为什么用 IO 一定要关闭资源?</a></li>
+        <li><a href="#如何用-fileoutputstream-用-write-方法">如何用 <strong>FileOutputStream</strong> 用 <strong>write</strong> 方法?</a></li>
+        <li><a href="#如何用-fileoutputstream-用-writebyte-b">如何用 <strong>FileOutputStream</strong> 用 <strong>write(byte[] b)</strong></a></li>
+        <li><a href="#如何用-writebyte-b--int-off-int-len">如何用 <strong>write(byte[] b , int off, int len)</strong>?</a></li>
+        <li><a href="#创建字节输出流对象发生了什么事情">创建字节输出流对象发生了什么事情?</a></li>
+        <li><a href="#fileoutputstream-如何实现数据追加"><strong>FileOutputStream</strong> 如何实现数据追加?</a></li>
+        <li><a href="#fileoutputstream-如何实现换行"><strong>FileOutputStream</strong> 如何实现换行?</a></li>
+        <li><a href="#try-catch-with-resource-的语法是什么-如何实现"><strong>try-catch-with-resource</strong> 的语法是什么? 如何实现?</a></li>
+        <li><a href="#inputstream-基类是什么样的"><strong>InputStream</strong> 基类是什么样的?</a></li>
+        <li><a href="#fileinputstrem-构造方法是什么的"><strong>FileInputStrem</strong> 构造方法是什么的?</a></li>
+        <li><a href="#fileinputstream-的-read-方法使用"><strong>FileInputStream</strong> 的 read 方法使用?</a></li>
+        <li><a href="#20210416201037httpsimgfengqigangcnimg20210416201037png-a-中是-abcdef-会输出什么"><img src="https://img.fengqigang.cn//img/20210416201037.png" alt="20210416201037"> a 中是 abcdef 会输出什么?</a></li>
+        <li><a href="#实现文件复制有什么思路">实现文件复制有什么思路?</a></li>
+        <li><a href="#如何实现实现循环读取文件单char">如何实现实现循环读取文件(单char)?</a></li>
+        <li><a href="#如何实现实现循环读取文件用字节数组">如何实现实现循环读取文件(用字节数组)?</a></li>
+        <li><a href="#如何实现单字节复制文本文件atxt---btxt">如何实现单字节复制文本文件(a.txt -&gt; b.txt)</a></li>
+        <li><a href="#如何实现统计复制文件的耗时单字节的方式">如何实现统计复制文件的耗时(单字节的方式)?</a></li>
+        <li><a href="#如何实现统计复制文件的耗时字节数组string">如何实现统计复制文件的耗时(字节数组String)?</a></li>
+        <li><a href="#如何复制的时候什么时候选择字节流什么时候选择字符流">如何复制的时候，什么时候选择字节流，什么时候选择字符流?</a></li>
+        <li><a href="#什么是装饰器模式">什么是装饰器模式?</a></li>
+        <li><a href="#如何创建一个-bufferoutstream-">如何创建一个 <strong>bufferOutStream</strong> ?</a></li>
+        <li><a href="#当流中有包装流应该如何关闭流">当流中有包装流，应该如何关闭流?</a></li>
+        <li><a href="#如何创建一个-bufferinputstream-">如何创建一个 <strong>bufferInputStream</strong> ?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="字节流是怎么分类的">字节流是怎么分类的?</h3>
+<ul>
+<li>
+<p>字节输出流
+- 抽象基类
+- OutputStream
+- 具体子类
+- FileOutputStream
+- BufferedOutputStream</p>
+</li>
+<li>
+<p>字节输入流
+- 抽象基类
+- InputStream
+- 具体子类
+- FielInputStream
+- BufferedInputStream</p>
+</li>
+</ul>
+<h3 id="字符流是怎么分类的">字符流是怎么分类的？</h3>
+<ul>
+<li>
+<p>字符输出流</p>
+</li>
+<li>
+<p>字符输入流</p>
+</li>
+</ul>
+<h3 id="什么是io">什么是IO?</h3>
+<p>i: input 输入</p>
+<p>o: output 输出</p>
+<h3 id="为什么会有-io">为什么会有 IO?</h3>
+<p>需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中</p>
+<p>内存有限，需要把数据读取到内存才行，需要io交互</p>
+<h3 id="java-流模型是什么样的"><strong>java</strong> 流模型是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416153623.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416153623.png, https://img.fengqigang.cn//img/20210416153623.png 1.5x, https://img.fengqigang.cn//img/20210416153623.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416153623.png"
+        title="https://img.fengqigang.cn//img/20210416153623.png" /></p>
+<h3 id="java-中的流是怎么分类的"><strong>java</strong> 中的流是怎么分类的?</h3>
+<ul>
+<li>按照流向分(以内存为参照)
+<ul>
+<li>输入流 input</li>
+<li>输出流 output</li>
+</ul>
+</li>
+<li>按照数据类型分类
+<ul>
+<li>字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000</li>
+<li>字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;</li>
+</ul>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="resources/9473bff75028444a99ed508d4e9fe50e.png"
+        data-srcset="resources/9473bff75028444a99ed508d4e9fe50e.png, resources/9473bff75028444a99ed508d4e9fe50e.png 1.5x, resources/9473bff75028444a99ed508d4e9fe50e.png 2x"
+        data-sizes="auto"
+        alt="resources/9473bff75028444a99ed508d4e9fe50e.png"
+        title="44c41d79b98cc5e372f31ad892fe9916.png" /></p>
+<h3 id="java-io抽象基类有哪些"><strong>java</strong> IO抽象基类有哪些?</h3>
+<ul>
+<li>字节输出流 OutputStream</li>
+<li>字节输入流 InputStream</li>
+<li>字节输出流 Writer</li>
+<li>字符输入流 Reader</li>
+</ul>
+<p><strong>由这4个基类派生出的子类,其子类名都是以父类名作为后缀</strong></p>
+<h3 id="outpustream-的继承关系"><strong>OutpuStream</strong> 的继承关系?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416154738.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416154738.png, https://img.fengqigang.cn//img/20210416154738.png 1.5x, https://img.fengqigang.cn//img/20210416154738.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416154738.png"
+        title="https://img.fengqigang.cn//img/20210416154738.png" /></p>
+<h3 id="outputstream-的-write-的实现原理是什么样的"><strong>outputStream</strong> 的 <strong>write</strong> 的实现原理是什么样的?</h3>
+<p><strong>public abstract void write(int b) throws IOException</strong></p>
+<p>将指定的字节写入此输出流， <strong>write</strong> 的常规协定是: <strong>向输出流写入一个字节，要写入的字节是参数b的八个低位，b的24个高位将被忽略</strong></p>
+<h3 id="fileoutputstreamfile-file-如何实现"><strong>FileOutputStream(File file)</strong>, 如何实现?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416155431.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416155431.png, https://img.fengqigang.cn//img/20210416155431.png 1.5x, https://img.fengqigang.cn//img/20210416155431.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416155431.png"
+        title="https://img.fengqigang.cn//img/20210416155431.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416155526.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416155526.png, https://img.fengqigang.cn//img/20210416155526.png 1.5x, https://img.fengqigang.cn//img/20210416155526.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416155526.png"
+        title="https://img.fengqigang.cn//img/20210416155526.png" /></p>
+<h3 id="为什么用-io-一定要关闭资源">为什么用 IO 一定要关闭资源?</h3>
+<p>它属于操作系统，与 <strong>java</strong> 无关，只能显式的释放资源(如 wps资源) 软件占用.</p>
+<h3 id="如何用-fileoutputstream-用-write-方法">如何用 <strong>FileOutputStream</strong> 用 <strong>write</strong> 方法?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">97</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何用-fileoutputstream-用-writebyte-b">如何用 <strong>FileOutputStream</strong> 用 <strong>write(byte[] b)</strong></h3>
+<p><strong>byte[] getBytes(String charsetName)</strong></p>
+<p>Encodes this String into a sequence of bytes using the name charset, storing the result into a new byte array.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;abc&#34;</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何用-writebyte-b--int-off-int-len">如何用 <strong>write(byte[] b , int off, int len)</strong>?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">));</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;abc&#34;</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="创建字节输出流对象发生了什么事情">创建字节输出流对象发生了什么事情?</h3>
+<ol>
+<li>创建之前 <strong>jvm</strong> 会去操作系统中找该文件是否存在</li>
+<li>如果不存在，帮我们创建</li>
+<li>如果存在，会清空重写</li>
+<li>创建之后就建立起内存与外设的数据通道</li>
+</ol>
+<h3 id="fileoutputstream-如何实现数据追加"><strong>FileOutputStream</strong> 如何实现数据追加?</h3>
+<p><strong>public FileOutputStream(File file, boolean append) throw FIleNotFoundException</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span> <span class="s">&#34;b.txt&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;def&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fileoutputstream-如何实现换行"><strong>FileOutputStream</strong> 如何实现换行?</h3>
+<p><strong>\n</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">outputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;def&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>System.lineSeparator()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">outputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">lineSeparator</span><span class="o">().</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;def&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>\r</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">outputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;\r&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;def&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="n">outputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="try-catch-with-resource-的语法是什么-如何实现"><strong>try-catch-with-resource</strong> 的语法是什么? 如何实现?</h3>
+<p><strong>try&hellip;catch&hellip;source 会执行close</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span><span class="o">(</span><span class="n">资源</span><span class="o">,</span> <span class="n">实现了Autocloseable接口</span><span class="o">){</span>
+<span class="c1">// 代码
+</span><span class="c1"></span><span class="o">}</span> <span class="k">catch</span><span class="o">()</span> <span class="o">{</span>
+
+<span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">(</span><span class="n">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">a</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span> <span class="kd">implements</span> <span class="n">AutoCloseable</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;close 方法执行了!!&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;test 执行了&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416195301.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416195301.png, https://img.fengqigang.cn//img/20210416195301.png 1.5x, https://img.fengqigang.cn//img/20210416195301.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416195301.png"
+        title="20210416195301" /></p>
+<h3 id="inputstream-基类是什么样的"><strong>InputStream</strong> 基类是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416195852.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416195852.png, https://img.fengqigang.cn//img/20210416195852.png 1.5x, https://img.fengqigang.cn//img/20210416195852.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416195852.png"
+        title="20210416195852" /></p>
+<h3 id="fileinputstrem-构造方法是什么的"><strong>FileInputStrem</strong> 构造方法是什么的?</h3>
+<p><strong>FileInputStream (File file)</strong></p>
+<p>Creates a FileInputStream by opening a connection to an actual file, the file named by the File object in the file system.</p>
+<p><strong>FIleInputStream (String name)</strong></p>
+<p>Creates a FileInputStream by opening a connection to an actual file, the file named by the path name in the file system.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileInputStream</span> <span class="n">f1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
+        <span class="n">FileInputStream</span> <span class="n">f2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fileinputstream-的-read-方法使用"><strong>FileInputStream</strong> 的 read 方法使用?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">readData</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(((</span><span class="kt">char</span><span class="o">)</span> <span class="n">readData</span><span class="o">));</span>
+        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="20210416201037httpsimgfengqigangcnimg20210416201037png-a-中是-abcdef-会输出什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416201037.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416201037.png, https://img.fengqigang.cn//img/20210416201037.png 1.5x, https://img.fengqigang.cn//img/20210416201037.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416201037.png"
+        title="20210416201037" /> a 中是 abcdef 会输出什么?</h3>
+<p>abcd</p>
+<p>efcd</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416201117.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416201117.png, https://img.fengqigang.cn//img/20210416201117.png 1.5x, https://img.fengqigang.cn//img/20210416201117.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416201117.png"
+        title="20210416201117" /></p>
+<h3 id="实现文件复制有什么思路">实现文件复制有什么思路?</h3>
+<p><strong>单字节复制 int 类型</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416201352.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416201352.png, https://img.fengqigang.cn//img/20210416201352.png 1.5x, https://img.fengqigang.cn//img/20210416201352.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416201352.png"
+        title="20210416201352" /></p>
+<p><strong>多字节 byte[] b</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416201444.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416201444.png, https://img.fengqigang.cn//img/20210416201444.png 1.5x, https://img.fengqigang.cn//img/20210416201444.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416201444.png"
+        title="20210416201444" /></p>
+<h3 id="如何实现实现循环读取文件单char">如何实现实现循环读取文件(单char)?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">readDate</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">readDate</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(((</span><span class="kt">char</span><span class="o">)</span> <span class="n">readDate</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416202040.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416202040.png, https://img.fengqigang.cn//img/20210416202040.png 1.5x, https://img.fengqigang.cn//img/20210416202040.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416202040.png"
+        title="20210416202040" /></p>
+<h3 id="如何实现实现循环读取文件用字节数组">如何实现实现循环读取文件(用字节数组)?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">readDate</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">readDate</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readDate</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://img.fengqigang.cn//img/20210416202248.png" target="_blank" rel="noopener noreffer">20210416202248</a></p>
+<h3 id="如何实现单字节复制文本文件atxt---btxt">如何实现单字节复制文本文件(a.txt -&gt; b.txt)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">readData</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">((</span><span class="n">readData</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())!=-</span><span class="n">1</span><span class="o">){</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">readData</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现统计复制文件的耗时单字节的方式">如何实现统计复制文件的耗时(单字节的方式)?</h3>
+<p><strong>long start = System.currentTimeMillis();</strong></p>
+<p><strong>long end = System.currenTimeMillis();</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 创建字节输入流对象
+</span><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+        <span class="c1">// 创建字节输出流对象
+</span><span class="c1"></span>        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;c.txt&#34;</span><span class="o">);</span>
+
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+
+        <span class="kt">int</span> <span class="n">readData</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">readData</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">readData</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;耗时:&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">&#34;ms&#34;</span><span class="o">);</span>
+
+        <span class="c1">// close
+</span><span class="c1"></span>        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现统计复制文件的耗时字节数组string">如何实现统计复制文件的耗时(字节数组String)?</h3>
+<p><strong>long start = System.currentTimeMillis()</strong></p>
+<p><strong>long end = System.currentTimeMillis()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 创建字节输入流对象
+</span><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+        <span class="c1">// 创建字节输出流对象
+</span><span class="c1"></span>        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;c.txt&#34;</span><span class="o">);</span>
+
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">readCount</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+
+        <span class="k">while</span> <span class="o">((</span><span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;耗时:&#34;</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">&#34;ms&#34;</span><span class="o">);</span>
+
+        <span class="c1">// close
+</span><span class="c1"></span>        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何复制的时候什么时候选择字节流什么时候选择字符流">如何复制的时候，什么时候选择字节流，什么时候选择字符流?</h3>
+<ul>
+<li>
+<p>不知道用啥的时候就用字节流， 字节流是万能的</p>
+</li>
+<li>
+<p>对于文本文件， 我们选择用字符流</p>
+</li>
+</ul>
+<h3 id="什么是装饰器模式">什么是装饰器模式?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416203647.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416203647.png, https://img.fengqigang.cn//img/20210416203647.png 1.5x, https://img.fengqigang.cn//img/20210416203647.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416203647.png"
+        title="20210416203647" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">MilkTea</span> <span class="n">milkTea</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MilkTea</span><span class="o">();</span>
+        <span class="n">milkTea</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;-------&#34;</span><span class="o">);</span>
+        <span class="n">DecoratorA</span> <span class="n">decoratorA</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DecoratorA</span><span class="o">();</span>
+        <span class="n">decoratorA</span><span class="o">.</span><span class="na">setBeverage</span><span class="o">(</span><span class="n">milkTea</span><span class="o">);</span>
+        <span class="n">decoratorA</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;-------&#34;</span><span class="o">);</span>
+        <span class="n">DecoratorB</span> <span class="n">decoratorB</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DecoratorB</span><span class="o">();</span>
+        <span class="n">decoratorB</span><span class="o">.</span><span class="na">setBeverage</span><span class="o">(</span><span class="n">decoratorA</span><span class="o">);</span>
+        <span class="n">decoratorB</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;-------&#34;</span><span class="o">);</span>
+        <span class="n">DecoratorC</span> <span class="n">decoratorC</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DecoratorC</span><span class="o">();</span>
+        <span class="n">decoratorC</span><span class="o">.</span><span class="na">setBeverage</span><span class="o">(</span><span class="n">decoratorB</span><span class="o">);</span>
+        <span class="n">decoratorC</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;-------&#34;</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 饮料 蕨基类
+</span><span class="c1"></span><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Beverage</span> <span class="o">{</span>
+    <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="c1">// 奶茶类
+</span><span class="c1"></span><span class="kd">class</span> <span class="nc">MilkTea</span> <span class="kd">extends</span> <span class="n">Beverage</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;老板，来杯奶茶, 加冰&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="c1">// 装饰器类
+</span><span class="c1"></span><span class="kd">class</span> <span class="nc">Decorator</span> <span class="kd">extends</span> <span class="n">Beverage</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Beverage</span> <span class="n">beverage</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBeverage</span><span class="o">(</span><span class="n">Beverage</span> <span class="n">beverage</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">beverage</span> <span class="o">=</span> <span class="n">beverage</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">beverage</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">DecoratorA</span> <span class="kd">extends</span> <span class="n">Decorator</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">addZz</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addZz</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;再加点珍珠&#34;</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">DecoratorB</span> <span class="kd">extends</span> <span class="n">Decorator</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">addYg</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addYg</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;再加点野果&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">DecoratorC</span> <span class="kd">extends</span> <span class="n">Decorator</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">add</span><span class="o">();</span>
+        <span class="n">addHd</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addHd</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;再加点红豆&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416214851.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416214851.png, https://img.fengqigang.cn//img/20210416214851.png 1.5x, https://img.fengqigang.cn//img/20210416214851.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416214851.png"
+        title="20210416214851" /></p>
+<h3 id="如何创建一个-bufferoutstream-">如何创建一个 <strong>bufferOutStream</strong> ?</h3>
+<table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BufferedOutputStream \ (OutputStream out)</td>
+<td>Creates a new buffered output stream to write data to the specified underlying output stream</td>
+</tr>
+<tr>
+<td>BufferedOutputStream \ (OutputStream out, int size)</td>
+<td>Creates a new buffered output stream to write data to the specified underlying output stream with the specified buffer size.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+        <span class="n">BufferedOutputStream</span> <span class="n">bo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="n">out</span><span class="o">);</span>
+
+        <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">)));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416203918.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416203918.png, https://img.fengqigang.cn//img/20210416203918.png 1.5x, https://img.fengqigang.cn//img/20210416203918.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416203918.png"
+        title="20210416203918" /></p>
+<h3 id="当流中有包装流应该如何关闭流">当流中有包装流，应该如何关闭流?</h3>
+<p>我们只需要关闭最外层的流即可</p>
+<p><strong>close</strong> 方法会执行 <strong>flush</strong> 方法</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210416204558.png"
+        data-srcset="https://img.fengqigang.cn//img/20210416204558.png, https://img.fengqigang.cn//img/20210416204558.png 1.5x, https://img.fengqigang.cn//img/20210416204558.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210416204558.png"
+        title="20210416204558" /></p>
+<h3 id="如何创建一个-bufferinputstream-">如何创建一个 <strong>bufferInputStream</strong> ?</h3>
+<table>
+<thead>
+<tr>
+<th>Constructors</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BufferedInputStream \ (InputStream in)</td>
+<td>Creates a BufferedInputStream and save its arguemnt, the input stream in, for later use.</td>
+</tr>
+<tr>
+<td>BufferedInputStream \ (InputStream in, int size)</td>
+<td>Creates a BufferInputStream with the specified buffer siez, and saves its arguemt, the input stream in, for later use.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">BufferedInputStream</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedInputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
+
+        <span class="c1">//读数据
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">readData</span> <span class="o">=</span> <span class="n">br</span><span class="o">.</span><span class="na">read</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(((</span><span class="kt">char</span><span class="o">)</span> <span class="n">readData</span><span class="o">));</span>
+        <span class="n">br</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day15/" class="prev" rel="prev" title="Day15"><i class="fas fa-angle-left fa-fw"></i>Day15</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
