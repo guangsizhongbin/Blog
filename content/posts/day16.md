@@ -60,7 +60,7 @@ o: output 输出
 	- 字符流: 一连串的字符的字符序列，把它当做一种文化符号 "abc", "你"
 
 
-![44c41d79b98cc5e372f31ad892fe9916.png](resources/9473bff75028444a99ed508d4e9fe50e.png)
+![](resources/9473bff75028444a99ed508d4e9fe50e.png)
 
 ### **java** IO抽象基类有哪些?
 
@@ -560,7 +560,6 @@ public class Demo {
     }
 }
 ```
-
 
 
 
