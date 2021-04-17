@@ -594,3 +594,393 @@ ll -d /etc/?????
 
 ![20210414153256](https://img.fengqigang.cn//img/20210414153256.png)
 
+### 如何找出 **/etc** 下面文件含有数字的文件名?
+
+```bash
+ll -d /etc/*[0-9]*
+```
+
+### 如何找出 **/etc/** 下面文件名开头为非小写字母的文件?
+
+```bash
+ll -d /etc/[^a-z]*
+```
+
+### **find /home -name .bashrc > list_right 2> list_error** 这句是什么意思?
+
+**>** 标准输出 (stdout)
+
+**2>** 标准错误输出 (stderr)
+
+将找到的到至 **list_right** 中
+
+错误放到 **list_error** 中
+
+### **find /home -name *bashrc 2> /dev/null** 这句会什么意思?
+
+**2>** 标准错误输出 (stderr)
+
+**/dev/null** 可以吃掉任何导向这个设备的信息
+
+直接会把错误的信息丢弃
+
+### 如何将 **find /home -name .bashrc** 这语的正确和错误信息全输出到 list?
+
+**2>&1** 和 **&>** 都可以
+
+```bash
+find /home -name .bashrc > list 2>&1
+```
+
+```bash
+find /home -name .bashrc &> list
+```
+
+### 如何我想用 **cat**  直接将输入的讯息输出到 **catfile** 中， 且当由键盘输入 **eof** 时, 这次输入就结束了, 可以怎么做?
+
+```bash
+cat > catfile << "eof"
+```
+
+<< 表示 **结束的输入字符** 的意思
+
+![20210417141949](https://img.fengqigang.cn//img/20210417141949.png)
+
+### **cat > catfile < ~/.bashrc** 是什么意思?
+
+会将 **~/.bashrc** 作为输入流， 输入到 **catfile** 中
+
+### **ls /tmp/abc && touch /tmp/abc/hehe** 是什么意思?
+
+查阅 **/tmp/abc** 是否存在，若存在则用 **touch** 创建 **/tmp/abc/hehe**
+
+![20210417142551](https://img.fengqigang.cn//img/20210417142551.png)
+
+### **ls /tmp/abc || mkdir /tmp/abc** 是什么意思?
+
+判断 **/tmp/abc** 是否存在， 如何不存在则创建，若存在就不作任何事情
+
+### 如果我不清楚 **/tmp/abc** 是否存在, 但就是要创建 **/tmp/abc/hehe** 文件? 为什么?
+
+```bash
+ls /tmp/abc || mkdir /tmp/abc && touch /tmp/abc/hehe
+```
+
+1. 
+
+若 **/tmp/abc** 不存在所以加传 $?!=0, 
+
+由因为 || 遇到非 0 的 $? 故 mkdir /tmp/abc, 
+
+由于 mkdir /tmp/abc 会成功进行, 所以回传 $?=0, 
+
+因为 && 遇到 $?=0 故会执行 touch /tmp/abc/hehe, 最终 hehe 就被创建了
+
+2. 
+
+若 **/tmp/abc** 存在故回传 $?=0
+ 
+由因为 || 遇到 0 的 $? 不会继续向后传
+
+因为遇到 $?=0 就开始创建 **/tmp/abc/hehe** 了
+
+![20210417144047](https://img.fengqigang.cn//img/20210417144047.png)
+
+### 以 ls 测试 /tmp/vbirding 是否存在， 若存在则显示 "exist", 若不存在， 则显示 "not exist"
+
+```bash
+ls /tmp/vbirding && echo "exist" || echo "not exist"
+```
+
+![20210417144340](https://img.fengqigang.cn//img/20210417144340.png)
+
+### **ls /tmp/vbirding || echo "not exitst" && echo "exist"** 的执行会出现什么问题?
+
+1. 若 **ls /tmp/vbirding** 不存在， 因此回传一个非为0的数值
+
+2. 经过 **||** 的判断，发现前一个指令回传非为0的值，因此，程序开始执行 echo "not exist" , 而 echo "not exist" 程序肯定执行成功，因此会回传一个0值后面的指令
+
+3. 经过 && 的判断， 是0, 所以就开始执行 echo "exist"
+
+![20210417144840](https://img.fengqigang.cn//img/20210417144840.png)
+
+
+### 当假设判断式有三个时候，一般如何去排布?
+
+command 1 && command 2 || command 3
+
+### 管道命令 **|** 有什么特点?
+
+仅能处理经由前面一个指令传来的正确信息，也就是 **standard output**
+
+对于 **stdandard error** 并没有直接处理的能力
+
+![20210417145205](https://img.fengqigang.cn//img/20210417145205.png)
+
+### **echo ${PATH} | cut -d ':' -f 5** 是什么意思?
+
+cut:
+
+remove sections from each line of files
+
+**-d, --delimiter=DELIM**
+
+use DELIM instead of TAB for field delimiter
+
+**-f, --fields=LIST**
+
+select only these fields; also print any line that contains no delimiter character, unless the -s option is specified.
+
+![20210417145628](https://img.fengqigang.cn//img/20210417145628.png)
+
+###  如何只想看到 export 中第12个字符以后的字符应该如何处理?
+
+```bash
+export | cut -c 12-
+```
+
+cut:
+
+remove sections from each line of files
+
+**-c, --characters=LIST**
+
+select only these characters
+
+![20210417150110](https://img.fengqigang.cn//img/20210417150110.png)
+
+### 如何用 **last** 显示登录者的信息中, 仅留下使用者的大名?![20210417155137](https://img.fengqigang.cn//img/20210417155137.png)
+
+**last | cut -d ' ' -f 1**
+
+
+
+![20210417190812](https://img.fengqigang.cn//img/20210417190812.png)
+
+### 如何使用 **last** 找出没有 **root** 的行?
+
+last | grep -v 'root'
+
+-v, --invert-match
+
+Invert the sense of matching, to select non-matching lines.
+
+![20210417190956](https://img.fengqigang.cn//img/20210417190956.png)
+
+### 如何使用 **last** 找出没有 **root** 的行, 并且只取第一栏?
+
+last | grep -v 'root' | cut -d ' ' -f1
+
+![20210417191320](https://img.fengqigang.cn//img/20210417191320.png)
+
+### 如何取 **/etc/man_db.conf** 内含 **MANPATH** 的那行? 并实现自动语法高亮?
+
+grep --color=auto 'MANPATH' /etc/man_db.conf
+
+![20210417191807](https://img.fengqigang.cn//img/20210417191807.png)
+
+### 如何对 **/etc/passwd** 的文件内容进行排序?
+
+cat /etc/passwd | sort
+
+![20210417191747](https://img.fengqigang.cn//img/20210417191747.png)
+
+### 如何对 **/etc/passwd** (以 : 分隔), 如何以第三栏来排序?
+
+cat /etc/passwd | sort -t ':' -k 3
+
+-t, --field-separator=SEP
+
+use SEP instead of non-blank to blank transition
+
+-k, --key=KEYDEF
+
+sort via a key; KEYDEF gives location and type
+
+![20210417192101](https://img.fengqigang.cn//img/20210417192101.png)
+
+### 如何利用 last , 将输出的数据仅取账号，并加以排序?
+
+last | cut -d  ' ' -f1 | sort
+
+-d, --delimiter=DELIM
+
+use DELIM instead of TAB for field delimiter
+
+![20210417192419](https://img.fengqigang.cn//img/20210417192419.png)
+
+### 如何利用 last , 将输出的数据仅取账号，并加以排序, 排序后仅取出一位?
+
+last | cut -d ' ' -f1 | sort | uniq
+
+uniq
+
+report or omit repeated lines
+
+![20210417192626](https://img.fengqigang.cn//img/20210417192626.png)
+
+### 如何利用 last , 将输出的数据仅取账号，并加以排序, 排序后仅取出一位, 并统计出现的个数?
+
+last | cut -d ' ' -f1 | sort | uniq -c
+
+uniq
+
+report or oomit repeated lines
+
+-c, --count
+
+prefix lines by the number of occurrences
+
+![20210417192924](https://img.fengqigang.cn//img/20210417192924.png)
+
+###  如何统计 /etc/man_db.conf 里面有多少相关字、行、字符数?
+
+cat /etc/man_db.conf | wc
+
+wc
+
+print newline, word, and byte counts for each file
+
+![20210417193210](https://img.fengqigang.cn//img/20210417193210.png)
+
+### last 可以输出登录者，但是 last 最后两行并非账号内容，如何以一行指令串取得登录系统的总人次?
+
+last | grep [a-zA-Z] | grep -v 'wtmp' | grep -v 'reboot' | grep -v 'unknown' | wc -l
+
+![20210417193647](https://img.fengqigang.cn//img/20210417193647.png)
+
+### **tee** 命令是什么样的?
+
+tee - read from standard input and write to standard output and files
+
+![20210417194850](https://img.fengqigang.cn//img/20210417194850.png)
+
+### 如何将 **last** 命令输出的内容, 存一份到 **last.list** 中， 并输出第一行的内容?
+
+tee - read from standard input and write to standard output and files
+
+last | tee last.list | cut -d " " -f1
+
+![20210417194915](https://img.fengqigang.cn//img/20210417194915.png)
+
+### 如何将 **last** 输出的讯息中，所有的小写变成大写字符?
+
+tr - translate or delete characters
+
+last | tr '[a-z]' '[A-Z]'
+
+![20210417195043](https://img.fengqigang.cn//img/20210417195043.png)
+
+### 如何将 **/etc/passwd** 输出的讯息中， 将冒号 (:) 删除?
+
+tr - translate or delete characters
+
+cat /etc/passwd | tr -d ':'
+
+![20210417195228](https://img.fengqigang.cn//img/20210417195228.png)
+
+### 如何将 **/etc/man_db.conf**  中的 [tab] 转成空白?![20210417200357](https://img.fengqigang.cn//img/20210417200357.png) 
+
+col - filter reverse line feeds from input
+
+-x, --spaces
+
+Output multiple space instead of tabs.
+
+![20210417200539](https://img.fengqigang.cn//img/20210417200539.png)
+
+### 如何将 /etc/passwd/ 与 /etc/shadow 相关数据整合成一栏?
+
+join -t ':' /etc/passwd /etc/shadow | head -n 3
+
+![20210417200750](https://img.fengqigang.cn//img/20210417200750.png)
+
+### 可以将/home/feng/Desktop/Win10_1909_Chinese(Simplified)_x64.iso 文件分成多份，1份为1个G吗?
+
+split -b 1G /home/feng/Desktop/Win10_1909_Chinese(Simplified)_x64.iso win10
+
+split
+
+split a file into pieces
+
+-b, --bytes=SIZE
+
+put SIZE bytes per output file
+
+Output pieces of FILE to PREFIXaa, PREFIXab, ...; default size is 1000 lines and, default PREFIX is 'x'
+
+![20210417212613](https://img.fengqigang.cn//img/20210417212613.png)
+
+### 如何将 win10aa ~ win10af, 合成 win10.iso?
+
+数据流重导向即可
+
+cat win10** >> win10.iso
+
+### 如何使用 ls -al / 输出的信息中，每十行记录成一个文件?
+
+ls -al / | split -l 10 - lsroot
+
+With no FILE, or when FILE is -, read standard input.
+
+![20210417213252](https://img.fengqigang.cn//img/20210417213253.png)
+
+### **xargs** 是做什么的?
+
+x 是加减乘除的乘号， args 是 arguments 参数的意思
+
+它是产生某个指令的参数的意思
+
+xargs 可以读入 stdin 数据， 并且以空白字符或断行字符作为分辨， 将 stdin 的数据分隔成为 arguments
+
+### 如何将 /etc/passwd 内的第一栏取出，仅取三行，使用 id 这个指令将第个账号内容秀出来?
+
+cut -d ':' -f 1 /etc/passwd | head -n 3 | xargs -n 1 id
+
+-n max-args, --max-args=max-argumets per command line.
+
+![20210417215442](https://img.fengqigang.cn//img/20210417215442.png)
+
+### 如何将 /etc/passwd 内的第一栏取出，仅取三行，使用 id 这个指令将第个账号内容秀出来， 每次执行 id 时，都要询问使用者是否动作?
+
+cut -d ':' -f 1 /etc/passwd | head -n 3 | xargs -p -n 1 id
+
+-p 
+
+xargs never terminates its commands; when asked to decres it merely waits for more than one existing command to terminate before starting another.
+
+![20210417215506](https://img.fengqigang.cn//img/20210417215506.png)
+
+### 将所有的 /etc/passwd 内的账号都以 id 查阅， 但查到 sync 就结束指令串?
+
+cut -d ':' -f 1 /etc/passwd | xargs -e'sync' -n 1 id
+
+-e eof-str
+
+Set the end of file string to eof-str
+
+
+![20210417215705](https://img.fengqigang.cn//img/20210417215705.png)
+
+**连在一起的**
+
+### 如何找出  /usr/sbin 下面具有特殊权限的文件名(/700)，并使用 ls -l 列出详细属性?
+
+find /usr/sbin -perm /7000 | xargs ls -l
+
+![20210417215248](https://img.fengqigang.cn//img/20210417215248.png)
+
+
+### - 的什么用?
+
+1. 用前一个命令的 stdout 作为这次的 stdin
+
+**tar -cvf - /home | tar -xvf - -C /tmp/homeback**
+
+
+
+
+
+
+
+
