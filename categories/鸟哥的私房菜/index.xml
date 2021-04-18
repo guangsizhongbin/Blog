@@ -4,7 +4,16 @@
         <link>http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/</link>
         <description>鸟哥的私房菜 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 18 Apr 2021 18:51:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/" rel="self" type="application/rss+xml" /><item>
+    <title>第十一章</title>
+    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/</link>
+    <pubDate>Sun, 18 Apr 2021 18:51:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/</guid>
+    <description><![CDATA[正则表达式与万用字符有什么区别? 万用字符 (wildcard) 代表的是 bash 操作接口的一个功能
+正则表达式则是一种字串处理的表示方式
+如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示, 同时在关键字所在行的前两行与后三行也一起捉出来显示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何捉出 regular_express.txt 中有 the 的行, 并提供行号? 1  grep -n &#39;the&#39; regular_express.txt   如何捉出 regular_express 中没有 the 的行，并提供等行号? 1  grep -vn &#39;the&#39; regular_express.txt   如何捉出 regular_express.]]></description>
+</item><item>
     <title>Linux第十章</title>
     <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/</link>
     <pubDate>Sun, 04 Apr 2021 11:22:35 &#43;0800</pubDate>
@@ -160,33 +169,5 @@ MIT: MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任
 LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通过类库引用方式使用LGPL类库而不需要开源商业软件的代码
   开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL的区别 &#x21a9;&#xfe0e;
    ]]></description>
-</item><item>
-    <title>Linux_2</title>
-    <link>http://fengqigang.cn/posts/linux_2/</link>
-    <pubDate>Tue, 16 Feb 2021 22:07:36 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux_2/</guid>
-    <description><![CDATA[个人电脑架构与相关设备元件 Intel芯片架构 Intel芯片架构-什么是南北桥?它们是干什么的？1 北桥: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)
-  CPU
-  内存
-  显卡接口等
-  南桥: 负责链接速度较慢的元件
-  硬盘
-  USB
-  网卡
-  Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？ 首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。
-Intel芯片架构-什么是CPU的频率？2 即CPU每秒钟可以进行的工作次数
-速度单位使用的是十进制
-即$3.5 \times 10 ^ 9$MHz
-Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？ 外频: CPU与外部元件进行数据传输时的速度
-倍频: CPU内部用来加速工作性能的一个倍数
-首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在 CPU内部进行加速。
-Intel芯片架构-如何查看计算机的外频与倍频？ 即总线速度为外频
-核心速度 = 倍频 x 总线速度
-Intel芯片架构-超频指的是超什么频？ 首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。
-Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side Bus)
-CPU中的所有数据都是由内存提供的
-查看内存信息
-1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?]]></description>
 </item></channel>
 </rss>
