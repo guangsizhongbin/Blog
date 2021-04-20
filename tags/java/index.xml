@@ -4,7 +4,22 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 19 Apr 2021 21:57:49 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Day19</title>
+    <link>http://fengqigang.cn/posts/day19/</link>
+    <pubDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day19/</guid>
+    <description><![CDATA[如何实现程序睡眠3秒? TimeUnit.SECONDS.sleep(3)；
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestSleep { static boolean flag = true; public static void main(String[] args) throws InterruptedException { sayHelloRecycling(); } private static void sayHelloRecycling() throws InterruptedException { while(flag){ System.out.println(&#34;你好&#34;); TimeUnit.SECONDS.sleep(3); } } }   什么是进程? 操作系统进行 资源分配与调度 的基本单位.
+一个正在运行的程序，软件都可以称为进程
+进程之间是互不干扰的
+什么是线程? CPU 进行 资源分配与调试 的基本单位，从执行路径的角度来看在，每一条执行路径都是1个线程
+进程和线程的关系？ 线程依赖于进程而存在
+线程之间是共享进程资源的
+一个进程可以有 最少一个线程
+什么是串行, 并行，并发? 串行:]]></description>
+</item><item>
     <title>Day18</title>
     <link>http://fengqigang.cn/posts/day18/</link>
     <pubDate>Mon, 19 Apr 2021 21:57:49 &#43;0800</pubDate>
@@ -132,27 +147,5 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 接口的命名规范是什么? 采取 大驼峰式 的
 有些程序员，喜欢在接口名的第一个单词之前加一个&quot;I&quot; 用来区分这是一个接口
 1 2 3 4 5  interface ISpecialSkills{ public void walkUpright(){ } }   如何在接口中定义方法?]]></description>
-</item><item>
-    <title>Day9</title>
-    <link>http://fengqigang.cn/posts/day9/</link>
-    <pubDate>Thu, 08 Apr 2021 16:50:57 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day9/</guid>
-    <description><![CDATA[其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
-对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
-什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
-如果是就返回 true, 否则就返回 false
-怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
-否则会报 ClassCastException 类型转换异常的错误
-null instalceof 任何类其结果是什么? false
-对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
-###对于段程序其执行 会出现什么?
-方法 编译时看左边，运行时看右边
-为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
-  Animal 类只用来被继承，不用来创建对象
-  Animal 类中 shout 方法，不应该有方法体
-  抽象方法如何声明? 语法:
-[访问权限修饰符] abstract 返回值类型 方法名();
-Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;]]></description>
 </item></channel>
 </rss>

@@ -4,9 +4,24 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 19 Apr 2021 21:57:49 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day19</title>
+    <link>http://fengqigang.cn/posts/day19/</link>
+    <pubDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day19/</guid>
+    <description><![CDATA[如何实现程序睡眠3秒? TimeUnit.SECONDS.sleep(3)；
+1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestSleep { static boolean flag = true; public static void main(String[] args) throws InterruptedException { sayHelloRecycling(); } private static void sayHelloRecycling() throws InterruptedException { while(flag){ System.out.println(&#34;你好&#34;); TimeUnit.SECONDS.sleep(3); } } }   什么是进程? 操作系统进行 资源分配与调度 的基本单位.
+一个正在运行的程序，软件都可以称为进程
+进程之间是互不干扰的
+什么是线程? CPU 进行 资源分配与调试 的基本单位，从执行路径的角度来看在，每一条执行路径都是1个线程
+进程和线程的关系？ 线程依赖于进程而存在
+线程之间是共享进程资源的
+一个进程可以有 最少一个线程
+什么是串行, 并行，并发? 串行:]]></description>
+</item><item>
     <title>Day18</title>
     <link>http://fengqigang.cn/posts/day18/</link>
     <pubDate>Mon, 19 Apr 2021 21:57:49 &#43;0800</pubDate>
@@ -126,22 +141,5 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 这就是 语法糖
 匿名内部类 和 lambda 的局部变量有什么特殊的地方? 匿名内部类 和 lambda 本质的是 局部内部类
 它们的局部变量仍然是 final 修饰的]]></description>
-</item><item>
-    <title>Day10</title>
-    <link>http://fengqigang.cn/posts/day10/</link>
-    <pubDate>Fri, 09 Apr 2021 23:09:08 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day10/</guid>
-    <description><![CDATA[子类对象初始化成员变量赋值的顺序是什么样的?   默认初始化, 默认值
-  去找创建子类对象会调用的构造方法，看第一行有没有 this(), super(), 如果有就去执行，如果没有，默认有 super() 仍然去执行
-  肯定要跳到 父类构造器 ，然后从 上到下 执行父类中的 显示赋值 和 构造代码块 ，最后执行父类的构造器
-  如果子类构造器中有 this, 回到子类 this 构造器. 如果没有 this, 直接就回去，从上到下执行子类中的显示赋值和构造代码块，然后执行 this 构造器，然后跳到最开始的构造器
-  直接执行该构造器，而不会显式赋值和构造代码块
-  如何定义接口? 语法:
-与 class 定义一样，接口是和 class 同等级别的数据类型
-[访问权限修饰符] interface 接口名{}
-接口的命名规范是什么? 采取 大驼峰式 的
-有些程序员，喜欢在接口名的第一个单词之前加一个&quot;I&quot; 用来区分这是一个接口
-1 2 3 4 5  interface ISpecialSkills{ public void walkUpright(){ } }   如何在接口中定义方法?]]></description>
 </item></channel>
 </rss>
