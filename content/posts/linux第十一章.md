@@ -239,7 +239,119 @@ ls -l /etc | grep '^l'
 
 ![20210418185037](https://img.fengqigang.cn//img/20210418185037.png)
 
+### 如何将 **/etc/passwd** 的内容列出并且打印出行号，同时，将第2~5行删除?
+
+```bash
+nl /etc/passwd | sed '2,5d'
+```
+
+![20210421144435](https://img.fengqigang.cn//img/20210421144435.png)
+
+### 如何将 **/etc/passwd** 的内容列出并且打印出行号，同时删除第2行?
+
+```bash
+nl /etc/passwd | sed '2d'
+```
+![20210421144740](https://img.fengqigang.cn//img/20210421144740.png)
+
+### 如何将 **/etc/passwd** 的内容列出并且打印出行号，同时删除第3行到最后一行?
+
+```bash
+nl /etc/passwd | sed '3,$d'
+```
+
+![20210421145028](https://img.fengqigang.cn//img/20210421145028.png)
+
+### 如何将 **/etc/passwd** 的内容列出并且打印出行号，并在第二行后加上 drink tea 字样?
+
+```bash
+nl /etc/passwd | sed '2a drink tea'
+```
+a \ 
+
+text Append text, which has each embedded newline preceded by a backslash.
+
+![20210421145219](https://img.fengqigang.cn//img/20210421145219.png)
+
+### 如何将 **/etc/passwd** 的内容列出并且打印出行号，并在第二行前加上 drink tea 字样?
+
+```bash
+nl /etc/passwd | sed '2i drink tea'
+```
+
+i \ 
+
+text Insert text, which has each embedded newline preceded by a blackslash
+
+![20210421145344](https://img.fengqigang.cn//img/20210421145344.png)
+
+### 如何将 **/etc/passwd** 的内容列出并且打印出行号，并在第二行后加上 Drink tea or ... 换行 drink beer? ?
+
+```bash
+nl /etc/passwd | sed '2a Drink tea or ... \
+> drink beer?'
+```
+a \ 
+
+text Append text, which has each embedded newline preceded by a backslash.
 
 
+![20210421145756](https://img.fengqigang.cn//img/20210421145756.png)
 
+### 如何将 2-5 行的内容取代为 "No 2-5 number"?
+
+```bash
+nl /etc/passwd | sed '2,5c No 2-5 number'
+```
+c \ 
+
+text Replace the selected lines with text, which has each embedded newline preceded by a backslash.
+
+### 如何用 sed 仅列出 5,7 行的内容?
+
+```bash
+nl /etc/passwd | sed -n '5,7p'
+```
+
+n N 
+
+Read/append the next line of input into the pattern space.
+
+### 输出 **/etc/man_db.conf**， 抓取有 MAN 的行， 去掉有 # 的行， 空白行?
+
+1. 查找有 MAN 的行
+
+```bash
+cat /etc/man_db.conf | grep 'MAN'
+```
+
+2. 去掉有 # 的行
+
+```bash
+cat /etc/man_db.conf | grep 'MAN' | sed 's/#.*$//g'
+```
+![20210421151806](https://img.fengqigang.cn//img/20210421151806.png)
+
+3. 删除空白行
+
+```bash
+cat /etc/man_db.conf | grep 'MAN' | sed 's/#.*$//g' | sed '/^$/d'
+```
+![20210421152028](https://img.fengqigang.cn//img/20210421152028.png)
+
+### 如何用 sed 将 **regular_express.txt** 内第一行结尾若为 . 则换成 **!** ?
+
+```bash
+sed -i 's/\.$/\!g' regular_express.txt
+```
+
+![20210421152336](https://img.fengqigang.cn//img/20210421152336.png)
+
+### 如何用 sed 直接在 **regular_express.txt** 最后一行 "# This is a test"?
+
+```bash
+sed -i '$a # This is a test' regular_express.txt
+```
+
+![20210421152625](https://img.fengqigang.cn//img/20210421152625.png)
 
