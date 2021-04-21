@@ -4,7 +4,29 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day20</title>
+    <link>http://fengqigang.cn/posts/day20/</link>
+    <pubDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day20/</guid>
+    <description><![CDATA[线程有哪5种状态? 新建:
+刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源
+就绪
+刚执行了 start 方法， 但是还没有获得CPU的执行权
+执行
+抢到了 CPU的执行权
+阻塞
+没有 CPU 的执行权，还缺少必要的条件（sleep 结束）
+死亡
+run 方法执行完之后
+线程5个状态之间是如何转换? 用Runnable实现多线程?   实现 Runnable 接口
+  重写 run 方法
+  创建 Runnable 子类对象
+  创建 Thread 对象， 并且把 Runnable 子类对象作为参数传递
+  start 方法
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class RunnableDemo { public static void main(String[] args) { MyRunnable myRunnable = new MyRunnable(); Thread thread = new Thread(myRunnable); thread.]]></description>
+</item><item>
     <title>Day19</title>
     <link>http://fengqigang.cn/posts/day19/</link>
     <pubDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</pubDate>
@@ -130,22 +152,5 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 这就是 语法糖
 匿名内部类 和 lambda 的局部变量有什么特殊的地方? 匿名内部类 和 lambda 本质的是 局部内部类
 它们的局部变量仍然是 final 修饰的]]></description>
-</item><item>
-    <title>Day10</title>
-    <link>http://fengqigang.cn/posts/day10/</link>
-    <pubDate>Fri, 09 Apr 2021 23:09:08 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day10/</guid>
-    <description><![CDATA[子类对象初始化成员变量赋值的顺序是什么样的?   默认初始化, 默认值
-  去找创建子类对象会调用的构造方法，看第一行有没有 this(), super(), 如果有就去执行，如果没有，默认有 super() 仍然去执行
-  肯定要跳到 父类构造器 ，然后从 上到下 执行父类中的 显示赋值 和 构造代码块 ，最后执行父类的构造器
-  如果子类构造器中有 this, 回到子类 this 构造器. 如果没有 this, 直接就回去，从上到下执行子类中的显示赋值和构造代码块，然后执行 this 构造器，然后跳到最开始的构造器
-  直接执行该构造器，而不会显式赋值和构造代码块
-  如何定义接口? 语法:
-与 class 定义一样，接口是和 class 同等级别的数据类型
-[访问权限修饰符] interface 接口名{}
-接口的命名规范是什么? 采取 大驼峰式 的
-有些程序员，喜欢在接口名的第一个单词之前加一个&quot;I&quot; 用来区分这是一个接口
-1 2 3 4 5  interface ISpecialSkills{ public void walkUpright(){ } }   如何在接口中定义方法?]]></description>
 </item></channel>
 </rss>

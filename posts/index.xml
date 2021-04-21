@@ -4,7 +4,29 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day20</title>
+    <link>http://fengqigang.cn/posts/day20/</link>
+    <pubDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day20/</guid>
+    <description><![CDATA[线程有哪5种状态? 新建:
+刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源
+就绪
+刚执行了 start 方法， 但是还没有获得CPU的执行权
+执行
+抢到了 CPU的执行权
+阻塞
+没有 CPU 的执行权，还缺少必要的条件（sleep 结束）
+死亡
+run 方法执行完之后
+线程5个状态之间是如何转换? 用Runnable实现多线程?   实现 Runnable 接口
+  重写 run 方法
+  创建 Runnable 子类对象
+  创建 Thread 对象， 并且把 Runnable 子类对象作为参数传递
+  start 方法
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class RunnableDemo { public static void main(String[] args) { MyRunnable myRunnable = new MyRunnable(); Thread thread = new Thread(myRunnable); thread.]]></description>
+</item><item>
     <title>Day19</title>
     <link>http://fengqigang.cn/posts/day19/</link>
     <pubDate>Tue, 20 Apr 2021 20:03:24 &#43;0800</pubDate>
@@ -113,31 +135,5 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
   为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
 方法声明中 public final Class&lt;?&gt; getClass() 分另代表什么意思?   public 访问权限，调用时不必考虑权限问题
   final 该方法可以被继承但是不能被重写]]></description>
-</item><item>
-    <title>Day11</title>
-    <link>http://fengqigang.cn/posts/day11/</link>
-    <pubDate>Sat, 10 Apr 2021 22:36:59 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day11/</guid>
-    <description><![CDATA[new 类名().new 类名() 与 new 类名.new 这两种方式有什么区别? new 类名().new 类名()
-创建成员内部类
-new 外围类类名.new 静态内部类类名()
-创建静态内部类
-局部内部类有什么优缺点? 优点
-绝对的封装性，并且可以少创建一个 class, 相对来说简单一点
-缺点
-局部内部类作用域仅限于方法，如果别的类， 别的方法也想用这个类 做不到
-可以进行吗?为什么? 可以，任何时候都有父类，哪怕是实现了一个接口
-, 为什么 a++ 无法执行?  生命周期的问题  方法的局部变量的生命周期和方法同生共死, 方法出栈就销毁
-但是 局部内部类的方法会创建对象
-于是出现方法出栈后，局部变量销毁了，但是对象仍然需要使用该局部变量的情况
-为了解决这种生命周期的冲突，jvm 会在创建局部内部类对象时，把方法的局部变量作为对象的成员变量加了进去
-这个成员变量和局部变量值同步的问题  如果在局部内部类当中， 把这个局部变量给修改了，那就必须同步这个修改，否则程序就有问题
-但是这样显然太复杂了，java 的开发都觉得不想做了，于是直接把这个局部变量声明为 final 做为一个常量，直接不修改，就不需要考虑同步问题
-Java8 之前，如果想用局部内部类访问方法的局部变量， 该局部变量必须声明为 final
-Java8 之后， 这个限制被解除了，改为在底层直接加上 final, 不需要程序再加了
-这就是 语法糖
-匿名内部类 和 lambda 的局部变量有什么特殊的地方? 匿名内部类 和 lambda 本质的是 局部内部类
-它们的局部变量仍然是 final 修饰的]]></description>
 </item></channel>
 </rss>
