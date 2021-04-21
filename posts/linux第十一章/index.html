@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  318 ,
+        },"genre": "posts","keywords": "linux","wordcount":  575 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0\/","datePublished": "2021-04-18T18:51:33+08:00","dateModified": "2021-04-18T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -108,8 +108,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">第十一章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-18">2021-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;318 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-18">2021-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;575 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -145,6 +145,17 @@
         <li><a href="#如何实现捉出在-regular_expresstxt-有-oog-ood的行-但不能是-oot-行">如何实现捉出在 regular_express.txt 有 oog, ood的行, 但不能是 oot 行?</a></li>
         <li><a href="#如何实现捉出在-regular_expresstxt-中-go-中-的o-会出现2-3-的行">如何实现捉出在 regular_express.txt 中 go 中, 的o 会出现2-3 的行?</a></li>
         <li><a href="#如何以-ls--l-配合-grep-找出--etc-下面文件类型为链接文件属性的文件名">如何以 ls -l 配合 grep 找出  /etc/ 下面文件类型为链接文件属性的文件名?</a></li>
+        <li><a href="#如何将-etcpasswd-的内容列出并且打印出行号同时将第25行删除">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，同时，将第2~5行删除?</a></li>
+        <li><a href="#如何将-etcpasswd-的内容列出并且打印出行号同时删除第2行">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，同时删除第2行?</a></li>
+        <li><a href="#如何将-etcpasswd-的内容列出并且打印出行号同时删除第3行到最后一行">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，同时删除第3行到最后一行?</a></li>
+        <li><a href="#如何将-etcpasswd-的内容列出并且打印出行号并在第二行后加上-drink-tea-字样">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，并在第二行后加上 drink tea 字样?</a></li>
+        <li><a href="#如何将-etcpasswd-的内容列出并且打印出行号并在第二行前加上-drink-tea-字样">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，并在第二行前加上 drink tea 字样?</a></li>
+        <li><a href="#如何将-etcpasswd-的内容列出并且打印出行号并在第二行后加上-drink-tea-or--换行-drink-beer-">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，并在第二行后加上 Drink tea or &hellip; 换行 drink beer? ?</a></li>
+        <li><a href="#如何将-2-5-行的内容取代为-no-2-5-number">如何将 2-5 行的内容取代为 &ldquo;No 2-5 number&rdquo;?</a></li>
+        <li><a href="#如何用-sed-仅列出-57-行的内容">如何用 sed 仅列出 5,7 行的内容?</a></li>
+        <li><a href="#输出-etcman_dbconf-抓取有-man-的行-去掉有--的行-空白行">输出 <strong>/etc/man_db.conf</strong>， 抓取有 MAN 的行， 去掉有 # 的行， 空白行?</a></li>
+        <li><a href="#如何用-sed-将-regular_expresstxt-内第一行结尾若为--则换成--">如何用 sed 将 <strong>regular_express.txt</strong> 内第一行结尾若为 . 则换成 <strong>!</strong> ?</a></li>
+        <li><a href="#如何用-sed-直接在-regular_expresstxt-最后一行--this-is-a-test">如何用 sed 直接在 <strong>regular_express.txt</strong> 最后一行 &ldquo;# This is a test&rdquo;?</a></li>
       </ul>
     </li>
   </ul>
@@ -571,6 +582,222 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210418185037.png"
         title="20210418185037" /></p>
+<h3 id="如何将-etcpasswd-的内容列出并且打印出行号同时将第25行删除">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，同时，将第2~5行删除?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;2,5d&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421144435.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421144435.png, https://img.fengqigang.cn//img/20210421144435.png 1.5x, https://img.fengqigang.cn//img/20210421144435.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421144435.png"
+        title="20210421144435" /></p>
+<h3 id="如何将-etcpasswd-的内容列出并且打印出行号同时删除第2行">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，同时删除第2行?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;2d&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421144740.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421144740.png, https://img.fengqigang.cn//img/20210421144740.png 1.5x, https://img.fengqigang.cn//img/20210421144740.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421144740.png"
+        title="20210421144740" /></p>
+<h3 id="如何将-etcpasswd-的内容列出并且打印出行号同时删除第3行到最后一行">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，同时删除第3行到最后一行?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;3,$d&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421145028.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421145028.png, https://img.fengqigang.cn//img/20210421145028.png 1.5x, https://img.fengqigang.cn//img/20210421145028.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421145028.png"
+        title="20210421145028" /></p>
+<h3 id="如何将-etcpasswd-的内容列出并且打印出行号并在第二行后加上-drink-tea-字样">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，并在第二行后加上 drink tea 字样?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;2a drink tea&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>a \</p>
+<p>text Append text, which has each embedded newline preceded by a backslash.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421145219.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421145219.png, https://img.fengqigang.cn//img/20210421145219.png 1.5x, https://img.fengqigang.cn//img/20210421145219.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421145219.png"
+        title="20210421145219" /></p>
+<h3 id="如何将-etcpasswd-的内容列出并且打印出行号并在第二行前加上-drink-tea-字样">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，并在第二行前加上 drink tea 字样?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;2i drink tea&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>i \</p>
+<p>text Insert text, which has each embedded newline preceded by a blackslash</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421145344.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421145344.png, https://img.fengqigang.cn//img/20210421145344.png 1.5x, https://img.fengqigang.cn//img/20210421145344.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421145344.png"
+        title="20210421145344" /></p>
+<h3 id="如何将-etcpasswd-的内容列出并且打印出行号并在第二行后加上-drink-tea-or--换行-drink-beer-">如何将 <strong>/etc/passwd</strong> 的内容列出并且打印出行号，并在第二行后加上 Drink tea or &hellip; 换行 drink beer? ?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;2a Drink tea or ... \
+</span><span class="s1">&gt; drink beer?&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>a \</p>
+<p>text Append text, which has each embedded newline preceded by a backslash.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421145756.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421145756.png, https://img.fengqigang.cn//img/20210421145756.png 1.5x, https://img.fengqigang.cn//img/20210421145756.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421145756.png"
+        title="20210421145756" /></p>
+<h3 id="如何将-2-5-行的内容取代为-no-2-5-number">如何将 2-5 行的内容取代为 &ldquo;No 2-5 number&rdquo;?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed <span class="s1">&#39;2,5c No 2-5 number&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>c \</p>
+<p>text Replace the selected lines with text, which has each embedded newline preceded by a backslash.</p>
+<h3 id="如何用-sed-仅列出-57-行的内容">如何用 sed 仅列出 5,7 行的内容?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">nl /etc/passwd <span class="p">|</span> sed -n <span class="s1">&#39;5,7p&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>n N</p>
+<p>Read/append the next line of input into the pattern space.</p>
+<h3 id="输出-etcman_dbconf-抓取有-man-的行-去掉有--的行-空白行">输出 <strong>/etc/man_db.conf</strong>， 抓取有 MAN 的行， 去掉有 # 的行， 空白行?</h3>
+<ol>
+<li>查找有 MAN 的行</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/man_db.conf <span class="p">|</span> grep <span class="s1">&#39;MAN&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>去掉有 # 的行</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/man_db.conf <span class="p">|</span> grep <span class="s1">&#39;MAN&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/#.*$//g&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421151806.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421151806.png, https://img.fengqigang.cn//img/20210421151806.png 1.5x, https://img.fengqigang.cn//img/20210421151806.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421151806.png"
+        title="20210421151806" /></p>
+<ol start="3">
+<li>删除空白行</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/man_db.conf <span class="p">|</span> grep <span class="s1">&#39;MAN&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/#.*$//g&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;/^$/d&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421152028.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421152028.png, https://img.fengqigang.cn//img/20210421152028.png 1.5x, https://img.fengqigang.cn//img/20210421152028.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421152028.png"
+        title="20210421152028" /></p>
+<h3 id="如何用-sed-将-regular_expresstxt-内第一行结尾若为--则换成--">如何用 sed 将 <strong>regular_express.txt</strong> 内第一行结尾若为 . 则换成 <strong>!</strong> ?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;s/\.$/\!g&#39;</span> regular_express.txt
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421152336.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421152336.png, https://img.fengqigang.cn//img/20210421152336.png 1.5x, https://img.fengqigang.cn//img/20210421152336.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421152336.png"
+        title="20210421152336" /></p>
+<h3 id="如何用-sed-直接在-regular_expresstxt-最后一行--this-is-a-test">如何用 sed 直接在 <strong>regular_express.txt</strong> 最后一行 &ldquo;# This is a test&rdquo;?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sed -i <span class="s1">&#39;$a # This is a test&#39;</span> regular_express.txt
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421152625.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421152625.png, https://img.fengqigang.cn//img/20210421152625.png 1.5x, https://img.fengqigang.cn//img/20210421152625.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421152625.png"
+        title="20210421152625" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -599,7 +826,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>
