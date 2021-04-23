@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day22 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day22" />
+<meta property="og:description" content="什么是计算机网络   物理互联
+  软件支持
+  目的: 资源共享 &#43; 信息传递
+  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
+OSI参考模型有几层? 分别是什么? 7 层
+物理层
+数据链路层
+网络层
+传输层
+会话层
+表示层
+应用层
+物联网淑惠试用
+物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
+其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
+物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
+  一个 bit 持续多少纳秒
+  传输是否可以在两个方向同时进行
+  初始连接如何建立，传输结束后之后如何撤销连接
+  规定一个特殊的电信号将普通的数据信号分开来
+数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
+检查数据是否发生差错
+数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 &#43; 超时重传)
+  流量控制" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day22/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-23T23:14:11&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-23T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day22"/>
+<meta name="twitter:description" content="什么是计算机网络   物理互联
+  软件支持
+  目的: 资源共享 &#43; 信息传递
+  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
+OSI参考模型有几层? 分别是什么? 7 层
+物理层
+数据链路层
+网络层
+传输层
+会话层
+表示层
+应用层
+物联网淑惠试用
+物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
+其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
+物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
+  一个 bit 持续多少纳秒
+  传输是否可以在两个方向同时进行
+  初始连接如何建立，传输结束后之后如何撤销连接
+  规定一个特殊的电信号将普通的数据信号分开来
+数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
+检查数据是否发生差错
+数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 &#43; 超时重传)
+  流量控制"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day22/" /><link rel="prev" href="http://fengqigang.cn/posts/day21/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day22",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day22\/"
+        },"genre": "posts","keywords": "java","wordcount":  1383 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day22\/","datePublished": "2021-04-23T23:14:11+08:00","dateModified": "2021-04-23T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day22</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-23">2021-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1383 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是计算机网络">  什么是计算机网络</a></li>
+        <li><a href="#什么是网络编程">什么是网络编程?</a></li>
+        <li><a href="#osi参考模型有几层-分别是什么">OSI参考模型有几层? 分别是什么?</a></li>
+        <li><a href="#物理层主要关注什么">物理层主要关注什么?</a></li>
+        <li><a href="#物理层的所涉及到的典型问题是什么">物理层的所涉及到的典型问题是什么?</a></li>
+        <li><a href="#数据链路层主要关注什么">数据链路层主要关注什么?</a></li>
+        <li><a href="#数据链路层的主要功能是什么">数据链路层的主要功能是什么?</a></li>
+        <li><a href="#网络层需要解决的核心功能是什么">网络层需要解决的核心功能是什么?</a></li>
+        <li><a href="#什么是端到端的通信">什么是端到端的通信?</a></li>
+        <li><a href="#什么是端口">什么是端口?</a></li>
+        <li><a href="#传输层主要考虑的是什么">传输层主要考虑的是什么?</a></li>
+        <li><a href="#传输层有哪些功能">传输层有哪些功能?</a></li>
+        <li><a href="#什么-tcp-协议">什么 <strong>TCP</strong> 协议?</a></li>
+        <li><a href="#什么-udp-协议">什么 <strong>UDP</strong> 协议?</a></li>
+        <li><a href="#若要使用-udp-协议进行传输有哪几步">若要使用 <strong>UDP</strong> 协议进行传输，有哪几步?</a></li>
+        <li><a href="#若要使用-tcp-协议进行传输有哪几步">若要使用 TCP 协议进行传输，有哪几步?</a></li>
+        <li><a href="#如何实现客户端tcp-socket">如何实现客户端(tcp) socket?</a></li>
+        <li><a href="#如何实现接受端tcp-socket">如何实现接受端(Tcp) socket?</a></li>
+        <li><a href="#如何实现tcp-客户端发送数据服务端给予反馈">如何实现TCP, 客户端发送数据，服务端给予反馈?</a></li>
+        <li><a href="#如何把客户端文件上传到服务器">如何把客户端文件上传到服务器?</a></li>
+        <li><a href="#如何实现-datagramsocketudp-发送端">如何实现 DatagramSocket(udp) 发送端?</a></li>
+        <li><a href="#如何实现-datagramsocketudp-接受端">如何实现 DatagramSocket(udp) 接受端?</a></li>
+        <li><a href="#接受端与发送端的工具类实现">接受端与发送端的工具类实现?</a></li>
+        <li><a href="#接受端与发送端都可发送和接受数据">接受端与发送端都可发送和接受数据?</a></li>
+        <li><a href="#会话层主要功能是什么">会话层主要功能是什么?</a></li>
+        <li><a href="#表示层主要功能是什么">表示层主要功能是什么?</a></li>
+        <li><a href="#应用层主要功能是什么">应用层主要功能是什么?</a></li>
+        <li><a href="#ip地址是怎么组成的">IP地址是怎么组成的?</a></li>
+        <li><a href="#a类-b类-c类-d类-e类ip地址是如何分类的">A类， B类， C类, D类, E类,IP地址是如何分类的?</a></li>
+        <li><a href="#什么是网络地址广播地址">什么是网络地址，广播地址?</a></li>
+        <li><a href="#哪个是回环地址">哪个是回环地址?</a></li>
+        <li><a href="#两个主机之间通信的原理图是什么样的">两个主机之间通信的原理图是什么样的?</a></li>
+        <li><a href="#configproperties-key-value一般用于存储哪些东西"><strong>config.properties</strong> (key-value)一般用于存储哪些东西?</a></li>
+        <li><a href="#如何读取-configproperties">如何读取 <strong>config.properties</strong>?</a></li>
+        <li><a href="#如何读取-configproperties实现编码一致">如何读取 <strong>config.properties</strong>(实现编码一致)?</a></li>
+        <li><a href="#实现自动回复的机器人">实现自动回复的机器人?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是计算机网络">  什么是计算机网络</h3>
+<ol>
+<li>
+<p>物理互联</p>
+</li>
+<li>
+<p>软件支持</p>
+</li>
+<li>
+<p>目的: 资源共享 + 信息传递</p>
+</li>
+</ol>
+<h3 id="什么是网络编程">什么是网络编程?</h3>
+<p>处于 <strong>互联网络</strong> 上不同计算机 <strong>程序间</strong> 的数据交换</p>
+<h3 id="osi参考模型有几层-分别是什么">OSI参考模型有几层? 分别是什么?</h3>
+<p><strong>7 层</strong></p>
+<p>物理层</p>
+<p>数据链路层</p>
+<p>网络层</p>
+<p>传输层</p>
+<p>会话层</p>
+<p>表示层</p>
+<p>应用层</p>
+<p><strong>物联网淑惠试用</strong></p>
+<h3 id="物理层主要关注什么">物理层主要关注什么?</h3>
+<p>关注一条通信信道上传输原始比特(01)</p>
+<p>其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0</p>
+<h3 id="物理层的所涉及到的典型问题是什么">物理层的所涉及到的典型问题是什么?</h3>
+<ol>
+<li>
+<p>用什么样的电信号表示0和1</p>
+</li>
+<li>
+<p>一个 bit 持续多少纳秒</p>
+</li>
+<li>
+<p>传输是否可以在两个方向同时进行</p>
+</li>
+<li>
+<p>初始连接如何建立，传输结束后之后如何撤销连接</p>
+</li>
+</ol>
+<p><strong>规定一个特殊的电信号将普通的数据信号分开来</strong></p>
+<h3 id="数据链路层主要关注什么">数据链路层主要关注什么?</h3>
+<p>将一个原始的传输设施转变成一条 <strong>没有漏检传输错误</strong> 的传输线路</p>
+<p><strong>检查数据是否发生差错</strong></p>
+<h3 id="数据链路层的主要功能是什么">数据链路层的主要功能是什么?</h3>
+<ol>
+<li>成帧</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421210322.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421210322.png, https://img.fengqigang.cn//img/20210421210322.png 1.5x, https://img.fengqigang.cn//img/20210421210322.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421210322.png"
+        title="20210421210322" /></p>
+<ol start="2">
+<li>
+<p>差错控制(帧校验，确认 + 超时重传)</p>
+</li>
+<li>
+<p>流量控制</p>
+</li>
+<li>
+<p>广播式网络的数据链路层, 还有介质访问控制问题</p>
+</li>
+</ol>
+<p><strong>介质访问控制</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421211910.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421211910.png, https://img.fengqigang.cn//img/20210421211910.png 1.5x, https://img.fengqigang.cn//img/20210421211910.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421211910.png"
+        title="20210421211910" /></p>
+<p>保证只有一台计算机在发送数据</p>
+<h3 id="网络层需要解决的核心功能是什么">网络层需要解决的核心功能是什么?</h3>
+<p>如何将数据包从源端路由到接收端</p>
+<h3 id="什么是端到端的通信">什么是端到端的通信?</h3>
+<p>应用程序所对应的 <strong>进程间</strong> 的通信</p>
+<h3 id="什么是端口">什么是端口?</h3>
+<p>整数值</p>
+<p>在一台主机中代表一个唯一的进程标志</p>
+<h3 id="传输层主要考虑的是什么">传输层主要考虑的是什么?</h3>
+<p>向上层提供端到端的通信服务，屏蔽底层的通信细节</p>
+<h3 id="传输层有哪些功能">传输层有哪些功能?</h3>
+<ol>
+<li>
+<p>提供应用进程之间的逻辑通信</p>
+</li>
+<li>
+<p>复用和分用</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421213305.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421213305.png, https://img.fengqigang.cn//img/20210421213305.png 1.5x, https://img.fengqigang.cn//img/20210421213305.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421213305.png"
+        title="20210421213305" /></p>
+<ol start="3">
+<li>向上层提供不同类型的通信服务</li>
+</ol>
+<p><strong>TCP</strong> , <strong>UDP</strong></p>
+<h3 id="什么-tcp-协议">什么 <strong>TCP</strong> 协议?</h3>
+<p>面向连接的可靠的通信服务（如: 打电话）</p>
+<p><strong>Transmission Control Protocol</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423111320.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423111320.png, https://img.fengqigang.cn//img/20210423111320.png 1.5x, https://img.fengqigang.cn//img/20210423111320.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423111320.png"
+        title="https://img.fengqigang.cn//img/20210423111320.png" /></p>
+<h3 id="什么-udp-协议">什么 <strong>UDP</strong> 协议?</h3>
+<p>无连接的不可靠的通信服务(如: 写信)</p>
+<p><strong>User Datagram Protocol</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423111125.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423111125.png, https://img.fengqigang.cn//img/20210423111125.png 1.5x, https://img.fengqigang.cn//img/20210423111125.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423111125.png"
+        title="https://img.fengqigang.cn//img/20210423111125.png" /></p>
+<h3 id="若要使用-udp-协议进行传输有哪几步">若要使用 <strong>UDP</strong> 协议进行传输，有哪几步?</h3>
+<p><strong>发送端</strong></p>
+<ol>
+<li>
+<p>建立 udp 的 socket 对象</p>
+</li>
+<li>
+<p>将要发送的数据封装成数据包</p>
+</li>
+<li>
+<p>通过 udp 的 socket 对象， 将数据包发送出</p>
+</li>
+<li>
+<p>释放资源</p>
+</li>
+</ol>
+<p><strong>接收端</strong></p>
+<ol>
+<li>建立 udp 的 socket 对象</li>
+<li>创建用于接收数据的数据报包，通过 socket 对象的 receive 方法接收数据</li>
+<li>通过数据包对象的功能来完成对接受到数据进行解析</li>
+<li>可以对资源进行释放</li>
+</ol>
+<h3 id="若要使用-tcp-协议进行传输有哪几步">若要使用 TCP 协议进行传输，有哪几步?</h3>
+<p><strong>客户端</strong></p>
+<ol>
+<li>建立客户端的 Socket 服务， 并明确要连接的服务器</li>
+<li>如果对象建立成功，就表明已经建立了数据传输的通道，就可以在该通道通过IO进行数据的读取和写入</li>
+<li>根据需要从socket对象中获取输入, 或输出流</li>
+<li>向流中读取或写入数据， 释放资源</li>
+</ol>
+<p><strong>(接受端)服务端</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423172004.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423172004.png, https://img.fengqigang.cn//img/20210423172004.png 1.5x, https://img.fengqigang.cn//img/20210423172004.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423172004.png"
+        title="https://img.fengqigang.cn//img/20210423172004.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423171954.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423171954.png, https://img.fengqigang.cn//img/20210423171954.png 1.5x, https://img.fengqigang.cn//img/20210423171954.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423171954.png"
+        title="https://img.fengqigang.cn//img/20210423171954.png" /></p>
+<h3 id="如何实现客户端tcp-socket">如何实现客户端(tcp) socket?</h3>
+<p>public class Socket
+extends Object
+implements Closeable</p>
+<p>This class implements client sockets (also called just &ldquo;sockets&rdquo;). A socket is an endpoint for communication between two machines.</p>
+<p><strong>Constructor</strong></p>
+<p>Socket(String host, int port)
+Creates a stream socket and connects it to the specified port number on the named host.</p>
+<p><strong>Method</strong></p>
+<p>InputStream getInputStream()
+Returns an input stream for this socket.</p>
+<p>OutputStream getOutputStream()
+Returns an output stream for this socket.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 建立客户端的 Socket 服务， 并明确要连接服务器
+</span><span class="c1"></span>        <span class="c1">// Socket(String host, int port)
+</span><span class="c1"></span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Socket</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span> <span class="n">8888</span><span class="o">);</span>
+        <span class="c1">// 如果对象建立成功，就表明已经建立了数据传输的通道
+</span><span class="c1"></span>        <span class="c1">// 就可以在该通道通过IO进行数据的读取和写入
+</span><span class="c1"></span>        <span class="c1">// 想服务端发送数据
+</span><span class="c1"></span>        <span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;Hello tcp&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+        <span class="c1">// 释放资源
+</span><span class="c1"></span>        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现接受端tcp-socket">如何实现接受端(Tcp) socket?</h3>
+<p>public class ServerSocket
+extends Object
+implements Closeable</p>
+<p>This class implements server sockets. A server socket waits for requests to come in over the network. It performs some operation based on that request, and then possibly returns a result to the requester.</p>
+<p><strong>Construct</strong></p>
+<p>ServerSocket(int port)
+Creates a server socket, bound to the specified port.</p>
+<p><strong>method</strong></p>
+<p>Socket accept()
+Listens for a connection to be made to this socket and accepts it.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Server</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+       <span class="c1">// 创建 ServerSocket 对象， 在指定端口，监听客户端连接请求
+</span><span class="c1"></span>        <span class="n">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">(</span><span class="n">8888</span><span class="o">);</span>
+        <span class="c1">// 收到客户端连接请求后，建立socket连接
+</span><span class="c1"></span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+        <span class="c1">// 从 socket 中根据需要获取输入，或输出流
+</span><span class="c1"></span>        <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+        <span class="c1">// 解析数据
+</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+        
+        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">serverSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>先运行服务端</strong></p>
+<h3 id="如何实现tcp-客户端发送数据服务端给予反馈">如何实现TCP, 客户端发送数据，服务端给予反馈?</h3>
+<p><strong>Client</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 建立客户端 Socket 服务， 并明确要连接的服务器
+</span><span class="c1"></span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Socket</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span> <span class="n">8888</span><span class="o">);</span>
+        <span class="c1">// 如果对象建立成功，就表明已经建立了数据传输的通道
+</span><span class="c1"></span>        <span class="c1">// 向服务端发送数据
+</span><span class="c1"></span>        <span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;hello tcp&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+
+        <span class="c1">// 接受来自客户端的反馈
+</span><span class="c1"></span>        <span class="c1">// 获取输入流
+</span><span class="c1"></span>        <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+
+        <span class="c1">// 释放资源
+</span><span class="c1"></span>        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Server</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Server</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 创建 Serversocket 对象， 在指定端口，监听客户端连接请求
+</span><span class="c1"></span>        <span class="n">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">(</span><span class="n">8888</span><span class="o">);</span>
+        <span class="c1">// 收到客户端连接请求后， 建立 socket 连接
+</span><span class="c1"></span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+        <span class="c1">// 从 socket 中根据需要获取输入，或输出流
+</span><span class="c1"></span>        <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+
+        <span class="c1">// 解析数据
+</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+
+        <span class="c1">// 给客户端一个反馈信息
+</span><span class="c1"></span>        <span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&#34;好你妹&#34;</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+
+        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">serverSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210423192929605.png"
+        data-srcset="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210423192929605.png, C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210423192929605.png 1.5x, C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210423192929605.png 2x"
+        data-sizes="auto"
+        alt="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210423192929605.png"
+        title="image-20210423192929605" /></p>
+<h3 id="如何把客户端文件上传到服务器">如何把客户端文件上传到服务器?</h3>
+<p><strong>Client</strong></p>
+<ol>
+<li>创建 Socket 对象</li>
+<li>读取本地文件</li>
+<li>获取输出流</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 创建 Socket 对象
+</span><span class="c1"></span>        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Socket</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">,</span> <span class="n">11111</span><span class="o">);</span>
+
+        <span class="c1">// 读取本地文件
+</span><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 获取输出流
+</span><span class="c1"></span>        <span class="n">OutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">readCount</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Server</strong></p>
+<ol>
+<li>创建输出流对象， 写入服务器</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Server</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">ServerSocket</span> <span class="n">serverSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="o">(</span><span class="n">11111</span><span class="o">);</span>
+        <span class="n">Socket</span> <span class="n">socket</span> <span class="o">=</span> <span class="n">serverSocket</span><span class="o">.</span><span class="na">accept</span><span class="o">();</span>
+
+        <span class="c1">// 创建输出流对象
+</span><span class="c1"></span>        <span class="n">FileOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;b.txt&#34;</span><span class="o">);</span>
+        <span class="n">InputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+
+        <span class="c1">// 写入服务器
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">readCount</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="k">while</span> <span class="o">((</span><span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 关闭流
+</span><span class="c1"></span>        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">socket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">serverSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现-datagramsocketudp-发送端">如何实现 DatagramSocket(udp) 发送端?</h3>
+<p>public class <strong>DatagramSocket</strong>
+extends Object
+implements Closeable
+This class represents a socket for sending and receiving datagram packets.</p>
+<p>public final class <strong>DatagramPacket</strong>
+extends Object
+This class represents a datagram packet.</p>
+<p><strong>constructor</strong> ：</p>
+<p>DatagramSocket(int port)
+Constructs a datagram socket and binds it to the specified port on the local host machine.</p>
+<p><strong>method</strong></p>
+<p>void send(DatagramPacket p)
+Sends a datagram packet from this socket.</p>
+<p>DatagramPacket(byte[] buf, int offset, int length, InetAddress address, int port)
+Constructs a datagram packet for sending packets of length length with offset ioffsetto the specified port number on the specified host.</p>
+<p><strong>发送端</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sender</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 1. 将立 udp 的 socket 对象
+</span><span class="c1"></span>        <span class="n">DatagramSocket</span> <span class="n">datagramSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatagramSocket</span><span class="o">(</span><span class="n">8888</span><span class="o">);</span>
+
+        <span class="c1">// 2. 将要发送的数据封装成数据包
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;hello udp&#34;</span><span class="o">;</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="n">InetAddress</span> <span class="n">targetIP</span> <span class="o">=</span> <span class="n">InetAddress</span><span class="o">.</span><span class="na">getByName</span><span class="o">(</span><span class="s">&#34;127.0.0.1&#34;</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">9999</span><span class="o">;</span>
+        <span class="n">DatagramPacket</span> <span class="n">packet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatagramPacket</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="n">targetIP</span><span class="o">,</span> <span class="n">port</span><span class="o">);</span>
+
+        <span class="c1">// 3. 将数据包发送出
+</span><span class="c1"></span>        <span class="n">datagramSocket</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">packet</span><span class="o">);</span>
+
+        <span class="c1">// 4. 释放资源
+</span><span class="c1"></span>        <span class="n">datagramSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现-datagramsocketudp-接受端">如何实现 DatagramSocket(udp) 接受端?</h3>
+<p>public class <strong>DatagramSocket</strong>
+extends Object
+implements Closeable
+This class represents a socket for sending and receiving datagram packets.</p>
+<p>public final class <strong>DatagramPacket</strong>
+extends Object
+This class represents a datagram packet.</p>
+<p><strong>method</strong></p>
+<p>DatagramPacket(byte[] buf, int offset, int length)
+Constructs a DatagramPacket for receiving packets of length length, specifying an offset into the buffer.</p>
+<p>void receive(DatagramPacket p)
+Receives a datagram packet from this socket.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Receiver</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="c1">// 1. 建立 udp 的 socket 对象
+</span><span class="c1"></span>        <span class="n">DatagramSocket</span> <span class="n">datagramSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatagramSocket</span><span class="o">(</span><span class="n">9999</span><span class="o">);</span>
+
+        <span class="c1">// 2. 创建用于接收数据的数据报包，通过 socket 对象的 receive 方法接收数据
+</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="n">DatagramPacket</span> <span class="n">packet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatagramPacket</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="n">datagramSocket</span><span class="o">.</span><span class="na">receive</span><span class="o">(</span><span class="n">packet</span><span class="o">);</span>
+
+        <span class="c1">// 3. 通过数据包对象的功能来完成对接受到数据进行解析 
+</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="na">getOffset</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="na">getLength</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">offset</span><span class="o">,</span> <span class="n">length</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
+
+        <span class="c1">// 4. 对资源进行释放
+</span><span class="c1"></span>        <span class="n">datagramSocket</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="接受端与发送端的工具类实现">接受端与发送端的工具类实现?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NetworkUtils</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">DatagramPacket</span> <span class="nf">getSenderPacket</span><span class="o">(</span><span class="n">String</span> <span class="n">targetIp</span><span class="o">,</span> <span class="kt">int</span> <span class="n">port</span><span class="o">,</span> <span class="n">String</span> <span class="n">message</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">UnknownHostException</span> <span class="o">{</span>
+        <span class="c1">// 创建用于发送的数据报包
+</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
+        <span class="n">InetAddress</span> <span class="n">ip</span> <span class="o">=</span> <span class="n">InetAddress</span><span class="o">.</span><span class="na">getByName</span><span class="o">(</span><span class="n">targetIp</span><span class="o">);</span>
+        <span class="n">DatagramPacket</span> <span class="n">packet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatagramPacket</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">,</span> <span class="n">ip</span><span class="o">,</span> <span class="n">port</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">packet</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 创建用于接受的数据报包
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">DatagramPacket</span> <span class="nf">getReceiverPacket</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
+        <span class="n">DatagramPacket</span> <span class="n">packet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DatagramPacket</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">packet</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 解析数据
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">parsePacket</span><span class="o">(</span><span class="n">DatagramPacket</span> <span class="n">packet</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="na">getData</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="na">getOffset</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">packet</span><span class="o">.</span><span class="na">getLength</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">data</span><span class="o">,</span> <span class="n">offset</span><span class="o">,</span> <span class="n">length</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423144905.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423144905.png, https://img.fengqigang.cn//img/20210423144905.png 1.5x, https://img.fengqigang.cn//img/20210423144905.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423144905.png"
+        title="https://img.fengqigang.cn//img/20210423144905.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423144958.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423144958.png, https://img.fengqigang.cn//img/20210423144958.png 1.5x, https://img.fengqigang.cn//img/20210423144958.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423144958.png"
+        title="https://img.fengqigang.cn//img/20210423144958.png" /></p>
+<h3 id="接受端与发送端都可发送和接受数据">接受端与发送端都可发送和接受数据?</h3>
+<ul>
+<li>发送端</li>
+</ul>
+<p><strong>发送</strong> 和 <strong>接收</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423145721.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423145721.png, https://img.fengqigang.cn//img/20210423145721.png 1.5x, https://img.fengqigang.cn//img/20210423145721.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423145721.png"
+        title="https://img.fengqigang.cn//img/20210423145721.png" /></p>
+<p><strong>退出条件</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423145807.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423145807.png, https://img.fengqigang.cn//img/20210423145807.png 1.5x, https://img.fengqigang.cn//img/20210423145807.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423145807.png"
+        title="https://img.fengqigang.cn//img/20210423145807.png" /></p>
+<ul>
+<li>接受端</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423150244.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423150244.png, https://img.fengqigang.cn//img/20210423150244.png 1.5x, https://img.fengqigang.cn//img/20210423150244.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423150244.png"
+        title="https://img.fengqigang.cn//img/20210423150244.png" /></p>
+<h3 id="会话层主要功能是什么">会话层主要功能是什么?</h3>
+<p>记录谁发了消息，记录检查点</p>
+<h3 id="表示层主要功能是什么">表示层主要功能是什么?</h3>
+<p>处理两个通信系统中交换信息的表示方式</p>
+<p>编码和表示方法</p>
+<p>数据是否压缩，数据的加密和解密使用何种加密算法</p>
+<h3 id="应用层主要功能是什么">应用层主要功能是什么?</h3>
+<p>包含了用户通常所需要的各种协议</p>
+<p>Http协议</p>
+<h3 id="ip地址是怎么组成的">IP地址是怎么组成的?</h3>
+<p>网络号码 + 主机地址(唯一的)</p>
+<h3 id="a类-b类-c类-d类-e类ip地址是如何分类的">A类， B类， C类, D类, E类,IP地址是如何分类的?</h3>
+<p>A类:</p>
+<p>第一段号码为网络号码， 剩下的三段号码为本地计算机的号码</p>
+<p>B类:</p>
+<p>前二段号码为网络号码， 剩下的二段号码为本地计算机的号码</p>
+<p>C类:</p>
+<p>前三段号码为网络号码， 剩下的一段号码为本地计算机的号码</p>
+<p>D类:</p>
+<p>(组播的目的地址)</p>
+<p>E类:</p>
+<p>(保留地址)</p>
+<h3 id="什么是网络地址广播地址">什么是网络地址，广播地址?</h3>
+<p>对于A, B, C 不同类型的网络地址，都包含两个特殊的ip地址</p>
+<p>网络地址:</p>
+<p>表示该类网络本身</p>
+<p>xxx.xxx.xxx.0</p>
+<p>广播地址:</p>
+<p>代表的是当前这个网络中，所有的主机</p>
+<p>xxx.xxx.xxx.255</p>
+<h3 id="哪个是回环地址">哪个是回环地址?</h3>
+<p>127.0.0.1</p>
+<p>用于测试本机的网络是否有问题</p>
+<h3 id="两个主机之间通信的原理图是什么样的">两个主机之间通信的原理图是什么样的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423110750.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423110750.png, https://img.fengqigang.cn//img/20210423110750.png 1.5x, https://img.fengqigang.cn//img/20210423110750.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423110750.png"
+        title="https://img.fengqigang.cn//img/20210423110750.png" /></p>
+<h3 id="configproperties-key-value一般用于存储哪些东西"><strong>config.properties</strong> (key-value)一般用于存储哪些东西?</h3>
+<ul>
+<li>数据库配置
+<ul>
+<li>开发数据库</li>
+<li>测试数据库</li>
+<li>线上数据库(生产环境)</li>
+</ul>
+</li>
+<li>第三方配置信息
+<ul>
+<li>APP Key</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何读取-configproperties">如何读取 <strong>config.properties</strong>?</h3>
+<p>public class Properties
+extends Hashtable&lt;Object,Object&gt;
+The Properties class represents a persistent set of properties. The Properties can be saved to a stream or loaded from a stream. Each key and its corresponding value in the property list is a string.</p>
+<p><strong>Constructors</strong></p>
+<p>Properties()
+Creates an empty property list with no default values.</p>
+<p><strong>Method</strong></p>
+<p>void load(InputStream inStream)
+Reads a property list (key and element pairs) from the input byte stream.</p>
+<p>void load(Reader reader)
+Reads a property list (key and element pairs) from the input character stream in a simple line-oriented format.</p>
+<p>String getProperty(String key)
+Searches for the property with the specified key in this property list.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423160401.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423160401.png, https://img.fengqigang.cn//img/20210423160401.png 1.5x, https://img.fengqigang.cn//img/20210423160401.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423160401.png"
+        title="https://img.fengqigang.cn//img/20210423160401.png" /></p>
+<h3 id="如何读取-configproperties实现编码一致">如何读取 <strong>config.properties</strong>(实现编码一致)?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423161035.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423161035.png, https://img.fengqigang.cn//img/20210423161035.png 1.5x, https://img.fengqigang.cn//img/20210423161035.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423161035.png"
+        title="https://img.fengqigang.cn//img/20210423161035.png" /></p>
+<h3 id="实现自动回复的机器人">实现自动回复的机器人?</h3>
+<ol>
+<li>
+<p>Sender</p>
+</li>
+<li>
+<p>Receiver</p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-23</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day21/" class="prev" rel="prev" title="Day21"><i class="fas fa-angle-left fa-fw"></i>Day21</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

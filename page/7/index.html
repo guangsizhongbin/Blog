@@ -100,6 +100,21 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux_5/">Linux_5</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-25">2021-02-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">主机规划与磁盘分区 Linux与硬件的搭配 各硬件设备在Linux中的文件名 虚拟机中的磁盘名称是什么? 在虚拟机的环境下，为了加速会使用/dev/vd[a-p]这种设备文件名。
+SATA接口的磁盘名称是什么? 由于SATA/USB/SAS等硬盘接口都是SCSI模块来驱动，因此这些接口的磁盘设备文件都是/dev/sd[a-p]的格式。
+磁盘分区 MSDOS(MBR)与GTP磁盘分区表 MSDOS的结构是什么样的？ MBR (Master Boot Record, 主要开机记录区)
+这个区在磁盘的第一个扇区，其放转置着开机管理程序记录区与分区表
+通常为512 Bytes
+ 主要开机记录区(Master Boot Record, MBR): 可以安装开机管理程序的地方。 446 Bytes 分区表(partition table): 记录整颗硬盘分区的状态 64 Bytes  为什么要分区？  数据安全  重装系统时，各个分区之间不会相互影响
+性能考虑   P1: /dev/sda1 P2: /dev/sda2 P3: /dev/sda3 P4: /dev/sda4  分区表只记录四组数据，则分出多于四个分区是如何实现的？ P1 为主要分区(Primary)
+p2 为延伸分区(Extended)
+p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)
+设备文件名分别为:
+ P1: /dev/sda1 P2: /dev/sda2 L1: /dev/sda5 L2: /dev/sda6 L3: /dev/sda7 L4: /dev/sda8 L5: /dev/sda9  /dev/sda3与/dev/sda4是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始</div><div class="post-footer">
+        <a href="/posts/linux_5/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux_4/">Linux_4</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-22">2021-02-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？ 虚拟机使用的是/dev/vd[a-p]来命名的
 所以其名为/dev/vda
@@ -167,17 +182,6 @@ CPU-什么是精简指令集(RISC)？ RISC 即 Reduced Instruction Set Computer.
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-01">2021-02-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/hugo/"><i class="far fa-folder fa-fw"></i>hugo</a></span></div><div class="content"><p>Hugo is one of the most popular open-source static site generators.</p></div><div class="post-footer">
         <a href="/posts/hugo/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hugo/">hugo</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/">UltiSnip中的正则</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-30">2021-01-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nvim/"><i class="far fa-folder fa-fw"></i>nvim</a></span></div><div class="content">1 1 2 3  snippet &#34;(\w+).par&#34; &#34;Parenthesis (postfix)&#34; r (`!p snip.rv = match.group(1)`$1)$0 endsnippet   Tip    \w+ 匹配一个或多个字母、数字、下划线
-  () 分组
-  $0 结束位置
-  $1 结果时光标位置
-     2 1 2 3  snippet &#34;([^\s].*)\.return&#34; &#34;Return (postfix)&#34; r return `!p snip.rv = match.group(1)`$0 endsnippet   Note    \s 匹配所有空白符，包括换行
-  [^\s] 除去所有空白符，包括换行
-     3 1 2 3  snippet t &lt;tag&gt;${VISUAL:inside text/should/is/g}&lt;/tag&gt; endsnippet   Note   ${VISUAL} The syntax is:  ${VISUAL:default/search/replace/option}   4 1 2 3 4 5 6  snippet &#34;be(gin)?</div><div class="post-footer">
-        <a href="/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ultisnips/">ultisnips</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

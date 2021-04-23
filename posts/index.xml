@@ -4,7 +4,37 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day22</title>
+    <link>http://fengqigang.cn/posts/day22/</link>
+    <pubDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day22/</guid>
+    <description><![CDATA[什么是计算机网络   物理互联
+  软件支持
+  目的: 资源共享 + 信息传递
+  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
+OSI参考模型有几层? 分别是什么? 7 层
+物理层
+数据链路层
+网络层
+传输层
+会话层
+表示层
+应用层
+物联网淑惠试用
+物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
+其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
+物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
+  一个 bit 持续多少纳秒
+  传输是否可以在两个方向同时进行
+  初始连接如何建立，传输结束后之后如何撤销连接
+  规定一个特殊的电信号将普通的数据信号分开来
+数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
+检查数据是否发生差错
+数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
+  流量控制]]></description>
+</item><item>
     <title>Day21</title>
     <link>http://fengqigang.cn/posts/day21/</link>
     <pubDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</pubDate>
@@ -120,23 +150,5 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
     <description><![CDATA[什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
 在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
 try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行]]></description>
-</item><item>
-    <title>Day13</title>
-    <link>http://fengqigang.cn/posts/day13/</link>
-    <pubDate>Tue, 13 Apr 2021 21:42:49 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day13/</guid>
-    <description><![CDATA[在进行深拷贝时，如何实现一个空接口？ Cloneable 并不是自己实现的
-如何将byte数组转成 String, 并输出它 在 JDK 源码当中， 涉及区间的方法，一般都是怎么规定区间的? 左闭右开
-这种做法是为了适配数组从0开始的下标
-会输出什么? 会直接输出整个 String
-String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 是干什么的? 在用字面值常量给 String 对象赋值时，在编译时期就加入了 常量池
-当常量池中已存在某位字符串对象时，当需要使用时，就不需要在堆上重新创建对象了，而是直接去指向这个常量池中的字符串对象
-它们的值是什么? s.equals(s2) 是根据值来判断的
-它们会输出什么? s3 == (s1 + s2) 肯定不能编译确定取值，必须运行期确定，那么它的对象就一定不在常量池，而在堆上
-判断一个字符串是否为空可以采取什么样的方法? equals
-1 2 3 4 5 6  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; System.out.println(&#34;&#34;.equals(s)); } }   如果s是null, 会导致报错
-如何比较这两个字符串，并忽略大小写? a.equalsIgnoreCase(b)
-1 2 3 4 5 6 7  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; String s1 = &#34;ABC&#34;; System.]]></description>
 </item></channel>
 </rss>
