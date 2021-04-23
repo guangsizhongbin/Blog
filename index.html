@@ -100,6 +100,27 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day21/">Day21</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-23">2021-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">同步方法中的锁对象是什么? 同步代码块中
+任意java对象
+任意方法中
+this
+静态方法中
+字节码文件对象（.clsss） 补充代码
+为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
+当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
+jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
+如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
+美[ˌriˈɛntrənt]
+public ReentrantLock()
+Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
+获取锁  lock.lock();
+void lock()
+Acquires the lock.
+释放锁  lock.</div><div class="post-footer">
+        <a href="/posts/day21/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day20/">Day20</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-21">2021-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">线程有哪5种状态? 新建:
 刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源
@@ -151,19 +172,6 @@ reader 的继承关系是什么样的? InputStreamReader 的构造方法是什�
 如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示, 同时在关键字所在行的前两行与后三行也一起捉出来显示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何捉出 regular_express.txt 中有 the 的行, 并提供行号? 1  grep -n &#39;the&#39; regular_express.txt   如何捉出 regular_express 中没有 the 的行，并提供等行号? 1  grep -vn &#39;the&#39; regular_express.txt   如何捉出 regular_express.</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day16/">Day16</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-16">2021-04-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
-  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
-  字符流是怎么分类的？   字符输出流
-  字符输入流
-  什么是IO? i: input 输入
-o: output 输出
-为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
-内存有限，需要把数据读取到内存才行，需要io交互
-java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?</div><div class="post-footer">
-        <a href="/posts/day16/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

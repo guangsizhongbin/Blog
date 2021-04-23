@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day21 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day21" />
+<meta property="og:description" content="同步方法中的锁对象是什么? 同步代码块中
+任意java对象
+任意方法中
+this
+静态方法中
+字节码文件对象（.clsss） 补充代码
+为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
+当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
+jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
+如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
+美[ˌriˈɛntrənt]
+public ReentrantLock()
+Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
+获取锁  lock.lock();
+void lock()
+Acquires the lock.
+释放锁  lock." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day21/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-23T09:17:16&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-23T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day21"/>
+<meta name="twitter:description" content="同步方法中的锁对象是什么? 同步代码块中
+任意java对象
+任意方法中
+this
+静态方法中
+字节码文件对象（.clsss） 补充代码
+为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
+当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
+jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
+如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
+美[ˌriˈɛntrənt]
+public ReentrantLock()
+Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
+获取锁  lock.lock();
+void lock()
+Acquires the lock.
+释放锁  lock."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day21/" /><link rel="prev" href="http://fengqigang.cn/posts/day20/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day21",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day21\/"
+        },"genre": "posts","keywords": "java","wordcount":  306 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day21\/","datePublished": "2021-04-23T09:17:16+08:00","dateModified": "2021-04-23T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day21</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-23">2021-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;306 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#同步方法中的锁对象是什么">同步方法中的锁对象是什么?</a></li>
+        <li><a href="#为什么在同步代码块中可以放一个任意的对象">为什么在同步代码块中可以放一个任意的对象?</a></li>
+        <li><a href="#当某个线程执行到同步代码块时遇到加锁或无锁时会怎么处理">当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?</a></li>
+        <li><a href="#加锁线程何时释放锁">加锁线程何时释放锁?</a></li>
+        <li><a href="#如何使用-lock-锁住对象">如何使用 Lock 锁住对象?</a></li>
+        <li><a href="#lock-和-synchronized-的区别">Lock 和 synchronized 的区别?</a></li>
+        <li><a href="#什么是同步与异步">什么是同步与异步?</a></li>
+        <li><a href="#什么是死锁">什么是死锁?</a></li>
+        <li><a href="#在-java-中怎样的代码容易产生死锁">在 <strong>java</strong> 中怎样的代码容易产生死锁?</a></li>
+        <li><a href="#解决死锁的方法有哪些">解决死锁的方法有哪些?</a></li>
+        <li><a href="#什么是生产者消费者模型">什么是生产者消费者模型?</a></li>
+        <li><a href="#线程间通信有哪些api">线程间通信有哪些API?</a></li>
+        <li><a href="#线程间通信的-wait-api-是干什么的">线程间通信的 wait() api 是干什么的?</a></li>
+        <li><a href="#thread-的-sleep-方法-执行时会丢失监视器的所属权吗">Thread 的 <strong>sleep</strong> 方法， 执行时会丢失监视器的所属权吗?</a></li>
+        <li><a href="#object-的-wait-方法-执行时会丢失监视器的所属权吗">Object 的 <strong>wait</strong> 方法， 执行时会丢失监视器的所属权吗?</a></li>
+        <li><a href="#threadsleep-vs-objectwait">Thread.sleep VS Object.wait()?</a></li>
+        <li><a href="#notify-api-是干什么的">notify() api 是干什么的?</a></li>
+        <li><a href="#产包子实战">产包子实战？</a></li>
+        <li><a href="#如何产生随机数">如何产生随机数?</a></li>
+        <li><a href="#只执行一次">只执行一次?</a></li>
+        <li><a href="#同步方法">同步方法</a></li>
+        <li><a href="#为什么多个生产者消费者的时候会出现卡顿">为什么多个生产者，消费者的时候，会出现卡顿？</a></li>
+        <li><a href="#什么是-虚假唤醒">什么是 <strong>虚假唤醒</strong>?</a></li>
+        <li><a href="#为什么-waitnotify-为啥不定义在-thread-当中">为什么 <strong>wait</strong>,<strong>notify</strong>, 为啥不定义在 Thread 当中?</a></li>
+        <li><a href="#完整的线程转换图是什么">完整的线程转换图是什么?</a></li>
+        <li><a href="#为什么会有线程池">为什么会有线程池?</a></li>
+        <li><a href="#三种线程池">三种线程池?</a></li>
+        <li><a href="#如何实现-newfixedthreadpod">如何实现 newFixedThreadPod?</a></li>
+        <li><a href="#httpsimgfengqigangcnimg20210422173033png-有什么区别"><img src="https://img.fengqigang.cn//img/20210422173033.png" alt="">? 有什么区别?</a></li>
+        <li><a href="#如何实现-callable">如何实现 <strong>Callable</strong>?</a></li>
+        <li><a href="#future-是干什么的"><strong>Future</strong> 是干什么的?</a></li>
+        <li><a href="#runnable-vs-callable">Runnable VS Callable</a></li>
+        <li><a href="#futuretask-如何使用">FutureTask 如何使用?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="同步方法中的锁对象是什么">同步方法中的锁对象是什么?</h3>
+<p><strong>同步代码块中</strong></p>
+<p>任意java对象</p>
+<p><strong>任意方法中</strong></p>
+<p>this</p>
+<p><strong>静态方法中</strong></p>
+<p>字节码文件对象（.clsss）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422095504.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422095504.png, https://img.fengqigang.cn//img/20210422095504.png 1.5x, https://img.fengqigang.cn//img/20210422095504.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422095504.png"
+        title="https://img.fengqigang.cn//img/20210422095504.png" /></p>
+<p><strong>补充代码</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422095648.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422095648.png, https://img.fengqigang.cn//img/20210422095648.png 1.5x, https://img.fengqigang.cn//img/20210422095648.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422095648.png"
+        title="https://img.fengqigang.cn//img/20210422095648.png" /></p>
+<h3 id="为什么在同步代码块中可以放一个任意的对象">为什么在同步代码块中可以放一个任意的对象?</h3>
+<ol>
+<li>因为 <strong>java</strong> 当中所有对象， 内部都存在一个 <strong>标志位</strong>，表示加锁和解锁的状态</li>
+<li>其实锁对象，就是充当锁的角色</li>
+</ol>
+<p>所谓的加锁解锁，其实就是 <strong>设置锁对象的标志位</strong>，来表示加锁解锁的<strong>状态</strong></p>
+<h3 id="当某个线程执行到同步代码块时遇到加锁或无锁时会怎么处理">当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?</h3>
+<ol>
+<li>当锁对象处于<strong>未加锁</strong>状态， <strong>jvm</strong> 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。</li>
+<li>如果锁对象 <strong>已经被加锁</strong>, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。</li>
+</ol>
+<h3 id="加锁线程何时释放锁">加锁线程何时释放锁?</h3>
+<p>当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，<strong>在退出同步代码块之前</strong>,</p>
+<p><strong>jvm</strong> 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)</p>
+<h3 id="如何使用-lock-锁住对象">如何使用 Lock 锁住对象?</h3>
+<ol>
+<li>定义一把锁</li>
+</ol>
+<p>Lock lock = new ReentrantLock();</p>
+<p>美[ˌriˈɛntrənt]</p>
+<p>public ReentrantLock()</p>
+<p>Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).</p>
+<ol start="2">
+<li>获取锁</li>
+</ol>
+<p>lock.lock();</p>
+<p>void lock()</p>
+<p>Acquires the lock.</p>
+<ol start="3">
+<li>释放锁</li>
+</ol>
+<p>lock.unlock;</p>
+<p>void unlock()</p>
+<p>Releases the lock.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422101202.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422101202.png, https://img.fengqigang.cn//img/20210422101202.png 1.5x, https://img.fengqigang.cn//img/20210422101202.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422101202.png"
+        title="https://img.fengqigang.cn//img/20210422101202.png" /></p>
+<h3 id="lock-和-synchronized-的区别">Lock 和 synchronized 的区别?</h3>
+<p>synchronized 会同步阻塞</p>
+<p><strong>synchronized</strong></p>
+<p>只提供了用来 <strong>模拟锁状态的标志位</strong> (加锁和释放锁)</p>
+<p>加锁和释放锁的行为，都是由 <strong>jvm</strong> 隐式完成(<strong>和 synchronized 锁对象没有关系</strong>)</p>
+<p>所以 synchronized 锁对象 <strong>不是一把完整的锁</strong></p>
+<p><strong>Lock</strong></p>
+<p>它代表的是完整的锁</p>
+<p>Lock对象， 它如果要实现加锁和释放锁，不需要 synchronized 关键字配合，<strong>它自己就可以完成</strong></p>
+<p>Lock(接口):</p>
+<p>lock() 加锁 unlock 释放锁</p>
+<h3 id="什么是同步与异步">什么是同步与异步?</h3>
+<p>同步与异步描述的是被调用者的</p>
+<p>如 A 调用 B:</p>
+<p>如果是 <strong>同步</strong> ，B 在接到 A 调用后，会立即执行要做的事。 A 的本次调用可以得到结果.</p>
+<p>如果是 <strong>异步</strong> ，B 在接到 A 调用后，不保证会立即执行要做的事，但是保证会去做， B 在做好了之后会通知 A。 A的本次调用得不到结果， 但是 B 执行完之后会通知 A .</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422102202.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422102202.png, https://img.fengqigang.cn//img/20210422102202.png 1.5x, https://img.fengqigang.cn//img/20210422102202.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422102202.png"
+        title="https://img.fengqigang.cn//img/20210422102202.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422110800.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422110800.png, https://img.fengqigang.cn//img/20210422110800.png 1.5x, https://img.fengqigang.cn//img/20210422110800.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422110800.png"
+        title="https://img.fengqigang.cn//img/20210422110800.png" /></p>
+<h3 id="什么是死锁">什么是死锁?</h3>
+<p>2 个或以上的线程争抢资源，造成互相等待的现象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422111209.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422111209.png, https://img.fengqigang.cn//img/20210422111209.png 1.5x, https://img.fengqigang.cn//img/20210422111209.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422111209.png"
+        title="https://img.fengqigang.cn//img/20210422111209.png" /></p>
+<h3 id="在-java-中怎样的代码容易产生死锁">在 <strong>java</strong> 中怎样的代码容易产生死锁?</h3>
+<p>一般出现在 <strong>同步代码块嵌套</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422111342.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422111342.png, https://img.fengqigang.cn//img/20210422111342.png 1.5x, https://img.fengqigang.cn//img/20210422111342.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422111342.png"
+        title="https://img.fengqigang.cn//img/20210422111342.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422112110.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422112110.png, https://img.fengqigang.cn//img/20210422112110.png 1.5x, https://img.fengqigang.cn//img/20210422112110.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422112110.png"
+        title="https://img.fengqigang.cn//img/20210422112110.png" /></p>
+<h3 id="解决死锁的方法有哪些">解决死锁的方法有哪些?</h3>
+<p><strong>方式一</strong> 更改加锁顺序</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422112613.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422112613.png, https://img.fengqigang.cn//img/20210422112613.png 1.5x, https://img.fengqigang.cn//img/20210422112613.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422112613.png"
+        title="https://img.fengqigang.cn//img/20210422112613.png" /></p>
+<p><strong>方式二</strong>: 将该步骤变成原子操作</p>
+<p>最外层再加一层操作</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422113238.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422113238.png, https://img.fengqigang.cn//img/20210422113238.png 1.5x, https://img.fengqigang.cn//img/20210422113238.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422113238.png"
+        title="https://img.fengqigang.cn//img/20210422113238.png" /></p>
+<h3 id="什么是生产者消费者模型">什么是生产者消费者模型?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422113915.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422113915.png, https://img.fengqigang.cn//img/20210422113915.png 1.5x, https://img.fengqigang.cn//img/20210422113915.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422113915.png"
+        title="https://img.fengqigang.cn//img/20210422113915.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422144721.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422144721.png, https://img.fengqigang.cn//img/20210422144721.png 1.5x, https://img.fengqigang.cn//img/20210422144721.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422144721.png"
+        title="https://img.fengqigang.cn//img/20210422144721.png" /></p>
+<h3 id="线程间通信有哪些api">线程间通信有哪些API?</h3>
+<ol>
+<li>
+<p>wait() 阻止自己</p>
+</li>
+<li>
+<p>notify() 通知别人</p>
+</li>
+<li>
+<p>notifyAll() 通知所有的人</p>
+</li>
+</ol>
+<h3 id="线程间通信的-wait-api-是干什么的">线程间通信的 wait() api 是干什么的?</h3>
+<p>public final void wait</p>
+<p>throws InterruptedException</p>
+<ol>
+<li>阻塞功能:</li>
+</ol>
+<p>当在某线程中，对象上 <strong>.wait()</strong>, 在哪个线程中调用 <strong>wait()</strong>, 导致哪个线程处于阻塞状态</p>
+<p>当某线程，因为调用执行某对象的 <strong>wait()</strong>, 而处于阻塞状态，我们说，该线程在该对象上阻塞</p>
+<ol start="2">
+<li>唤醒条件</li>
+</ol>
+<p>当某线程，因为某对象A的 <strong>wait()</strong>, 而处于阻塞状态时，如果要唤醒该线程，只能在其他线程中，再同一个对象 (即对象A) 上调用其 <strong>notify()</strong> 或 <strong>notifyAll()</strong></p>
+<p>即在线程的阻塞对象上，调用 <strong>notify</strong> 或 <strong>notifyAll</strong> 方法，才能唤醒，在该对象上阻塞的线程</p>
+<ol start="3">
+<li>运行条件</li>
+</ol>
+<p>当前线程必须拥有此对象 <strong>监视器</strong></p>
+<p>监视器: 指 <strong>synchronized</strong> 代码块中的锁对象</p>
+<p>如果不在同步代码块中调用就会就会出现 <strong>IllegalMonitorStateException</strong></p>
+<ol start="4">
+<li>执行特征</li>
+</ol>
+<p>该线程释放对监视器的所有权</p>
+<p>等待(阻塞)</p>
+<h3 id="thread-的-sleep-方法-执行时会丢失监视器的所属权吗">Thread 的 <strong>sleep</strong> 方法， 执行时会丢失监视器的所属权吗?</h3>
+<p>不会</p>
+<h3 id="object-的-wait-方法-执行时会丢失监视器的所属权吗">Object 的 <strong>wait</strong> 方法， 执行时会丢失监视器的所属权吗?</h3>
+<p>会</p>
+<h3 id="threadsleep-vs-objectwait">Thread.sleep VS Object.wait()?</h3>
+<ol>
+<li>
+<p>所属不同:</p>
+<p><strong>sleep</strong></p>
+<p>定义在<strong>Thread</strong>类，静态方法</p>
+<p><strong>wait</strong></p>
+<p>定义在<strong>Object</strong>类中，非静态方法</p>
+</li>
+<li>
+<p>唤醒条件不同</p>
+<p><strong>sleep</strong></p>
+<p>休眠时间到</p>
+<p><strong>wait</strong></p>
+<p>在其他线程中，在同一个锁对象上，调用了 <strong>notify</strong> 或 <strong>notifyAll</strong> 方法</p>
+</li>
+<li>
+<p>使用条件不同</p>
+<p><strong>sleep</strong></p>
+<p>没有任何前提条件</p>
+<p><strong>wait</strong></p>
+<p>必须是当前线程，持有锁对象，锁对象上调用 <strong>wait()</strong></p>
+</li>
+<li>
+<p>休眠时，对锁对象的持有，不同:</p>
+<p><strong>sleep</strong></p>
+<p>处于阻塞状态的时候，在阻塞的时候不会放弃对锁的持有</p>
+<p><strong>wait</strong></p>
+<p>处于阻塞的时候，会放弃对象持有3</p>
+</li>
+</ol>
+<h3 id="notify-api-是干什么的">notify() api 是干什么的?</h3>
+<p>public final void notify()</p>
+<p>唤醒在此对象监视器上等待的单个线程</p>
+<p>如果所有线程都在此对象上等待</p>
+<p>则 <strong>会选择唤醒其中一个线程， 选择是任意性的</strong></p>
+<h3 id="产包子实战">产包子实战？</h3>
+<ol>
+<li><strong>生产者</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422150944.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422150944.png, https://img.fengqigang.cn//img/20210422150944.png 1.5x, https://img.fengqigang.cn//img/20210422150944.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422150944.png"
+        title="https://img.fengqigang.cn//img/20210422150944.png" /></p>
+<ol start="2">
+<li><strong>消费者</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422151228.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422151228.png, https://img.fengqigang.cn//img/20210422151228.png 1.5x, https://img.fengqigang.cn//img/20210422151228.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422151228.png"
+        title="https://img.fengqigang.cn//img/20210422151228.png" /></p>
+<ol start="3">
+<li><strong>蒸笼</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422151830.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422151830.png, https://img.fengqigang.cn//img/20210422151830.png 1.5x, https://img.fengqigang.cn//img/20210422151830.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422151830.png"
+        title="https://img.fengqigang.cn//img/20210422151830.png" /></p>
+<ol start="3">
+<li><strong>demo</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422151638.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422151638.png, https://img.fengqigang.cn//img/20210422151638.png 1.5x, https://img.fengqigang.cn//img/20210422151638.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422151638.png"
+        title="https://img.fengqigang.cn//img/20210422151638.png" /></li>
+</ol>
+<h3 id="如何产生随机数">如何产生随机数?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="o">();</span>
+<span class="c1">// nextInt(int bound)  [0, bound]
+</span><span class="c1"></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="n">foods</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="只执行一次">只执行一次?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422150505.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422150505.png, https://img.fengqigang.cn//img/20210422150505.png 1.5x, https://img.fengqigang.cn//img/20210422150505.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422150505.png"
+        title="https://img.fengqigang.cn//img/20210422150505.png" /></p>
+<h3 id="同步方法">同步方法</h3>
+<ol>
+<li>Box</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png"
+        data-srcset="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png, C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png 1.5x, C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png 2x"
+        data-sizes="auto"
+        alt="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png"
+        title="image-20210422161723697" /></p>
+<ol start="2">
+<li>Box
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422161748.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422161748.png, https://img.fengqigang.cn//img/20210422161748.png 1.5x, https://img.fengqigang.cn//img/20210422161748.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422161748.png"
+        title="https://img.fengqigang.cn//img/20210422161748.png" /></li>
+</ol>
+<h3 id="为什么多个生产者消费者的时候会出现卡顿">为什么多个生产者，消费者的时候，会出现卡顿？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422163134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422163134.png, https://img.fengqigang.cn//img/20210422163134.png 1.5x, https://img.fengqigang.cn//img/20210422163134.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422163134.png"
+        title="https://img.fengqigang.cn//img/20210422163134.png" /></p>
+<h3 id="什么是-虚假唤醒">什么是 <strong>虚假唤醒</strong>?</h3>
+<p>唤醒了不应该被唤醒的线程</p>
+<h3 id="为什么-waitnotify-为啥不定义在-thread-当中">为什么 <strong>wait</strong>,<strong>notify</strong>, 为啥不定义在 Thread 当中?</h3>
+<p>因为锁对象可以是任意java对象</p>
+<h3 id="完整的线程转换图是什么">完整的线程转换图是什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422164308.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422164308.png, https://img.fengqigang.cn//img/20210422164308.png 1.5x, https://img.fengqigang.cn//img/20210422164308.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422164308.png"
+        title="https://img.fengqigang.cn//img/20210422164308.png" /></p>
+<h3 id="为什么会有线程池">为什么会有线程池?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422171154.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422171154.png, https://img.fengqigang.cn//img/20210422171154.png 1.5x, https://img.fengqigang.cn//img/20210422171154.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422171154.png"
+        title="https://img.fengqigang.cn//img/20210422171154.png" /></p>
+<h3 id="三种线程池">三种线程池?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422171305.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422171305.png, https://img.fengqigang.cn//img/20210422171305.png 1.5x, https://img.fengqigang.cn//img/20210422171305.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422171305.png"
+        title="https://img.fengqigang.cn//img/20210422171305.png" /></p>
+<p><strong>带缓存的线程池</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422171734.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422171734.png, https://img.fengqigang.cn//img/20210422171734.png 1.5x, https://img.fengqigang.cn//img/20210422171734.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422171734.png"
+        title="https://img.fengqigang.cn//img/20210422171734.png" /></p>
+<p><strong>newFixedThreadPod</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422172146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422172146.png, https://img.fengqigang.cn//img/20210422172146.png 1.5x, https://img.fengqigang.cn//img/20210422172146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422172146.png"
+        title="https://img.fengqigang.cn//img/20210422172146.png" /></p>
+<h3 id="如何实现-newfixedthreadpod">如何实现 newFixedThreadPod?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173017.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173017.png, https://img.fengqigang.cn//img/20210422173017.png 1.5x, https://img.fengqigang.cn//img/20210422173017.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173017.png"
+        title="https://img.fengqigang.cn//img/20210422173017.png" /></p>
+<h3 id="httpsimgfengqigangcnimg20210422173033png-有什么区别"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173033.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173033.png, https://img.fengqigang.cn//img/20210422173033.png 1.5x, https://img.fengqigang.cn//img/20210422173033.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173033.png"
+        title="https://img.fengqigang.cn//img/20210422173033.png" />? 有什么区别?</h3>
+<p>shutdownNow 队列中也执行</p>
+<p>shutdownNow 队列中的不执行</p>
+<h3 id="如何实现-callable">如何实现 <strong>Callable</strong>?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173906.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173906.png, https://img.fengqigang.cn//img/20210422173906.png 1.5x, https://img.fengqigang.cn//img/20210422173906.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173906.png"
+        title="https://img.fengqigang.cn//img/20210422173906.png" /></p>
+<h3 id="future-是干什么的"><strong>Future</strong> 是干什么的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173946.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173946.png, https://img.fengqigang.cn//img/20210422173946.png 1.5x, https://img.fengqigang.cn//img/20210422173946.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173946.png"
+        title="https://img.fengqigang.cn//img/20210422173946.png" /></p>
+<h3 id="runnable-vs-callable">Runnable VS Callable</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422174325.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422174325.png, https://img.fengqigang.cn//img/20210422174325.png 1.5x, https://img.fengqigang.cn//img/20210422174325.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422174325.png"
+        title="https://img.fengqigang.cn//img/20210422174325.png" /></p>
+<h3 id="futuretask-如何使用">FutureTask 如何使用?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422174806.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422174806.png, https://img.fengqigang.cn//img/20210422174806.png 1.5x, https://img.fengqigang.cn//img/20210422174806.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422174806.png"
+        title="https://img.fengqigang.cn//img/20210422174806.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422174931.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422174931.png, https://img.fengqigang.cn//img/20210422174931.png 1.5x, https://img.fengqigang.cn//img/20210422174931.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422174931.png"
+        title="https://img.fengqigang.cn//img/20210422174931.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-23</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day20/" class="prev" rel="prev" title="Day20"><i class="fas fa-angle-left fa-fw"></i>Day20</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

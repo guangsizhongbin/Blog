@@ -4,7 +4,30 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day21</title>
+    <link>http://fengqigang.cn/posts/day21/</link>
+    <pubDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day21/</guid>
+    <description><![CDATA[同步方法中的锁对象是什么? 同步代码块中
+任意java对象
+任意方法中
+this
+静态方法中
+字节码文件对象（.clsss） 补充代码
+为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
+当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
+jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
+如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
+美[ˌriˈɛntrənt]
+public ReentrantLock()
+Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
+获取锁  lock.lock();
+void lock()
+Acquires the lock.
+释放锁  lock.]]></description>
+</item><item>
     <title>Day20</title>
     <link>http://fengqigang.cn/posts/day20/</link>
     <pubDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</pubDate>
@@ -126,31 +149,5 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
   为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
 方法声明中 public final Class&lt;?&gt; getClass() 分另代表什么意思?   public 访问权限，调用时不必考虑权限问题
   final 该方法可以被继承但是不能被重写]]></description>
-</item><item>
-    <title>Day11</title>
-    <link>http://fengqigang.cn/posts/day11/</link>
-    <pubDate>Sat, 10 Apr 2021 22:36:59 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day11/</guid>
-    <description><![CDATA[new 类名().new 类名() 与 new 类名.new 这两种方式有什么区别? new 类名().new 类名()
-创建成员内部类
-new 外围类类名.new 静态内部类类名()
-创建静态内部类
-局部内部类有什么优缺点? 优点
-绝对的封装性，并且可以少创建一个 class, 相对来说简单一点
-缺点
-局部内部类作用域仅限于方法，如果别的类， 别的方法也想用这个类 做不到
-可以进行吗?为什么? 可以，任何时候都有父类，哪怕是实现了一个接口
-, 为什么 a++ 无法执行?  生命周期的问题  方法的局部变量的生命周期和方法同生共死, 方法出栈就销毁
-但是 局部内部类的方法会创建对象
-于是出现方法出栈后，局部变量销毁了，但是对象仍然需要使用该局部变量的情况
-为了解决这种生命周期的冲突，jvm 会在创建局部内部类对象时，把方法的局部变量作为对象的成员变量加了进去
-这个成员变量和局部变量值同步的问题  如果在局部内部类当中， 把这个局部变量给修改了，那就必须同步这个修改，否则程序就有问题
-但是这样显然太复杂了，java 的开发都觉得不想做了，于是直接把这个局部变量声明为 final 做为一个常量，直接不修改，就不需要考虑同步问题
-Java8 之前，如果想用局部内部类访问方法的局部变量， 该局部变量必须声明为 final
-Java8 之后， 这个限制被解除了，改为在底层直接加上 final, 不需要程序再加了
-这就是 语法糖
-匿名内部类 和 lambda 的局部变量有什么特殊的地方? 匿名内部类 和 lambda 本质的是 局部内部类
-它们的局部变量仍然是 final 修饰的]]></description>
 </item></channel>
 </rss>

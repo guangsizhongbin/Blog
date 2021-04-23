@@ -4,7 +4,30 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day21</title>
+    <link>http://fengqigang.cn/posts/day21/</link>
+    <pubDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day21/</guid>
+    <description><![CDATA[同步方法中的锁对象是什么? 同步代码块中
+任意java对象
+任意方法中
+this
+静态方法中
+字节码文件对象（.clsss） 补充代码
+为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
+当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
+jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
+如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
+美[ˌriˈɛntrənt]
+public ReentrantLock()
+Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
+获取锁  lock.lock();
+void lock()
+Acquires the lock.
+释放锁  lock.]]></description>
+</item><item>
     <title>Day20</title>
     <link>http://fengqigang.cn/posts/day20/</link>
     <pubDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</pubDate>
@@ -115,25 +138,5 @@ String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 
 1 2 3 4 5 6  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; System.out.println(&#34;&#34;.equals(s)); } }   如果s是null, 会导致报错
 如何比较这两个字符串，并忽略大小写? a.equalsIgnoreCase(b)
 1 2 3 4 5 6 7  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; String s1 = &#34;ABC&#34;; System.]]></description>
-</item><item>
-    <title>Day12</title>
-    <link>http://fengqigang.cn/posts/day12/</link>
-    <pubDate>Mon, 12 Apr 2021 23:48:15 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day12/</guid>
-    <description><![CDATA[什么是 API ? Application Programming Interface(API)
-应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
-作用
-开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
-Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
-  在自定义类时，并不需要特别标注 extends Object
-  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
-  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
-  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
-  隐式初始化，默认调用父类的无参构造
-  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
-  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
-方法声明中 public final Class&lt;?&gt; getClass() 分另代表什么意思?   public 访问权限，调用时不必考虑权限问题
-  final 该方法可以被继承但是不能被重写]]></description>
 </item></channel>
 </rss>
