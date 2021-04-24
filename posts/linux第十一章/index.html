@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  575 ,
+        },"genre": "posts","keywords": "linux","wordcount":  720 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0\/","datePublished": "2021-04-18T18:51:33+08:00","dateModified": "2021-04-18T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -108,8 +108,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">第十一章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-18">2021-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;575 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-18">2021-04-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;720 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -156,6 +156,15 @@
         <li><a href="#输出-etcman_dbconf-抓取有-man-的行-去掉有--的行-空白行">输出 <strong>/etc/man_db.conf</strong>， 抓取有 MAN 的行， 去掉有 # 的行， 空白行?</a></li>
         <li><a href="#如何用-sed-将-regular_expresstxt-内第一行结尾若为--则换成--">如何用 sed 将 <strong>regular_express.txt</strong> 内第一行结尾若为 . 则换成 <strong>!</strong> ?</a></li>
         <li><a href="#如何用-sed-直接在-regular_expresstxt-最后一行--this-is-a-test">如何用 sed 直接在 <strong>regular_express.txt</strong> 最后一行 &ldquo;# This is a test&rdquo;?</a></li>
+        <li><a href="#如何用-last-登录者的数据取出来-并取出前5行列出第1列和第3列的数据中间以tab格开">如何用 <strong>last</strong> 登录者的数据取出来, 并取出前5行，列出第1列和第3列的数据，中间以tab格开?</a></li>
+        <li><a href="#如何用-last-显示出登录者的前5行抽取取用户名显示当前处理行数-该行有多少字段">如何用 <strong>last</strong> 显示出登录者的前5行，抽取取用户名，显示当前处理行数, 该行有多少字段?</a></li>
+        <li><a href="#如何从etcpasswd以冒号来作为字段的分隔-文件中第一字段为账号-第三字段则是-uid-找出第三栏小于10以下的数据并且仅列出账号与第三栏">如何从/etc/passwd(以冒号来作为字段的分隔), 文件中第一字段为账号, 第三字段则是 UID, 找出第三栏小于10以下的数据，并且仅列出账号与第三栏?</a></li>
+        <li><a href="#20210422224722httpsimgfengqigangcnimg20210422224722png"><img src="https://img.fengqigang.cn//img/20210422224722.png" alt="20210422224722"></a></li>
+        <li><a href="#20210422224722httpsimgfengqigangcnimg20210422224722png-1"><img src="https://img.fengqigang.cn//img/20210422224722.png" alt="20210422224722"></a></li>
+        <li><a href="#20210424113513httpsimgfengqigangcnimg20210424113513png-这两个代表什么意思"><img src="https://img.fengqigang.cn//img/20210424113513.png" alt="20210424113513"> 这两个代表什么意思?</a></li>
+        <li><a href="#如何对比-githubblog-与-githubmomo-两个目录之间的差异">如何对比 <strong>github/Blog</strong> 与 <strong>github/Momo</strong> 两个目录之间的差异?</a></li>
+        <li><a href="#diff-与-cmp-有什么区别">diff 与 cmp 有什么区别?</a></li>
+        <li><a href="#如何在字节上对比-passwdold-passwdnew">如何在字节上对比， <strong>passwd.old</strong>, <strong>passwd.new</strong>?</a></li>
       </ul>
     </li>
   </ul>
@@ -798,6 +807,154 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210421152625.png"
         title="20210421152625" /></p>
+<h3 id="如何用-last-登录者的数据取出来-并取出前5行列出第1列和第3列的数据中间以tab格开">如何用 <strong>last</strong> 登录者的数据取出来, 并取出前5行，列出第1列和第3列的数据，中间以tab格开?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">last -n <span class="m">5</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1 &#34;\t&#34; $3}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422222134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422222134.png, https://img.fengqigang.cn//img/20210422222134.png 1.5x, https://img.fengqigang.cn//img/20210422222134.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422222134.png"
+        title="20210422222134" /></p>
+<h3 id="如何用-last-显示出登录者的前5行抽取取用户名显示当前处理行数-该行有多少字段">如何用 <strong>last</strong> 显示出登录者的前5行，抽取取用户名，显示当前处理行数, 该行有多少字段?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">last -n <span class="m">5</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1 &#34;\t lines &#34; NR &#34; \t columns: &#34; NF}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>NF</strong></p>
+<p>The number of fields in the current record</p>
+<p><strong>NR</strong></p>
+<p>The ordinal number of the current record from the start of input.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422223540.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422223540.png, https://img.fengqigang.cn//img/20210422223540.png 1.5x, https://img.fengqigang.cn//img/20210422223540.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422223540.png"
+        title="20210422223540" /></p>
+<h3 id="如何从etcpasswd以冒号来作为字段的分隔-文件中第一字段为账号-第三字段则是-uid-找出第三栏小于10以下的数据并且仅列出账号与第三栏">如何从/etc/passwd(以冒号来作为字段的分隔), 文件中第一字段为账号, 第三字段则是 UID, 找出第三栏小于10以下的数据，并且仅列出账号与第三栏?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/passwd <span class="p">|</span> awk <span class="s1">&#39;{FS=&#34;:&#34;} $3 &lt; 10 {print $1 &#34; \t &#34; $3}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422224722.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422224722.png, https://img.fengqigang.cn//img/20210422224722.png 1.5x, https://img.fengqigang.cn//img/20210422224722.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422224722.png"
+        title="20210422224722" /></p>
+<h3 id="20210422224722httpsimgfengqigangcnimg20210422224722png"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422224722.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422224722.png, https://img.fengqigang.cn//img/20210422224722.png 1.5x, https://img.fengqigang.cn//img/20210422224722.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422224722.png"
+        title="20210422224722" /></h3>
+<p>为什么仅能在第二行才开始生效?</p>
+<p>因为在读入第一行的时候，那些变量 $1, $2, 默认还是以空白键为分隔的，所以虽然定义了 FS=&quot;:&quot;. 仅能在第二行后才开始生效</p>
+<h3 id="20210422224722httpsimgfengqigangcnimg20210422224722png-1"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422224722.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422224722.png, https://img.fengqigang.cn//img/20210422224722.png 1.5x, https://img.fengqigang.cn//img/20210422224722.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422224722.png"
+        title="20210422224722" /></h3>
+<p>如何在第一行也可以生效?</p>
+<p>预先设置 awk 的变量， 利用 BEGIN 这个关键字</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat /etc/passwd <span class="p">|</span> awk <span class="s1">&#39;BEGIN {FS=&#39;</span>:<span class="s1">&#39;} $3 &lt; 10 {print $1 &#34; \t &#34; $3}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422225229.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422225229.png, https://img.fengqigang.cn//img/20210422225229.png 1.5x, https://img.fengqigang.cn//img/20210422225229.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422225229.png"
+        title="20210422225229" /></p>
+<h3 id="20210424113513httpsimgfengqigangcnimg20210424113513png-这两个代表什么意思"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210424113513.png"
+        data-srcset="https://img.fengqigang.cn//img/20210424113513.png, https://img.fengqigang.cn//img/20210424113513.png 1.5x, https://img.fengqigang.cn//img/20210424113513.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210424113513.png"
+        title="20210424113513" /> 这两个代表什么意思?</h3>
+<p>4d3</p>
+<p>左边第4行被删除 (d) 掉了, 基准是右边的第三行</p>
+<p>6c5</p>
+<p>左边文件的第六行被取代 (c) 成右边文件的第五行</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210424115224.png"
+        data-srcset="https://img.fengqigang.cn//img/20210424115224.png, https://img.fengqigang.cn//img/20210424115224.png 1.5x, https://img.fengqigang.cn//img/20210424115224.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210424115224.png"
+        title="20210424115224" /></p>
+<h3 id="如何对比-githubblog-与-githubmomo-两个目录之间的差异">如何对比 <strong>github/Blog</strong> 与 <strong>github/Momo</strong> 两个目录之间的差异?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">diff github/Blog github/Momo
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210424115422.png"
+        data-srcset="https://img.fengqigang.cn//img/20210424115422.png, https://img.fengqigang.cn//img/20210424115422.png 1.5x, https://img.fengqigang.cn//img/20210424115422.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210424115422.png"
+        title="20210424115422" /></p>
+<h3 id="diff-与-cmp-有什么区别">diff 与 cmp 有什么区别?</h3>
+<p>diff 主要是以 &ldquo;行&rdquo; 为单位比对</p>
+<p>cmp 则是以 &ldquo;字节&rdquo; 为单位比对</p>
+<h3 id="如何在字节上对比-passwdold-passwdnew">如何在字节上对比， <strong>passwd.old</strong>, <strong>passwd.new</strong>?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cmp passwd.old passwd.new
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210424115722.png"
+        data-srcset="https://img.fengqigang.cn//img/20210424115722.png, https://img.fengqigang.cn//img/20210424115722.png 1.5x, https://img.fengqigang.cn//img/20210424115722.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210424115722.png"
+        title="20210424115722" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

@@ -4,9 +4,22 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 24 Apr 2021 15:05:24 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Linux第十二章</title>
+    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/</link>
+    <pubDate>Sat, 24 Apr 2021 15:05:24 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/</guid>
+    <description><![CDATA[写 Shell Script 的规则是什么?   第一行写 #!/bin/bash 来宣告这个文件内的语法使用的是 bash 语法
+  程序内容的说明:
+   内容与功能 版本信息 作者与联络方式 创建日期 历史记录   主要环境变量的宣告 PATH 与 LANG
+  执行成果告知
+  1  exit 0   当下达
+1  echo $?   则可得到0的值
+echo -e 会发生什么?  e  enable interpretation of backslash escapes]]></description>
+</item><item>
     <title>Day22</title>
     <link>http://fengqigang.cn/posts/day22/</link>
     <pubDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</pubDate>
@@ -143,14 +156,5 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/day15/</guid>
     <description><![CDATA[如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.]]></description>
-</item><item>
-    <title>Day14</title>
-    <link>http://fengqigang.cn/posts/day14/</link>
-    <pubDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day14/</guid>
-    <description><![CDATA[什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
-在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
-try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行]]></description>
 </item></channel>
 </rss>
