@@ -355,3 +355,86 @@ sed -i '$a # This is a test' regular_express.txt
 
 ![20210421152625](https://img.fengqigang.cn//img/20210421152625.png)
 
+### 如何用 **last** 登录者的数据取出来, 并取出前5行，列出第1列和第3列的数据，中间以tab格开?
+
+```bash
+last -n 5 | awk '{print $1 "\t" $3}'
+```
+![20210422222134](https://img.fengqigang.cn//img/20210422222134.png)
+
+### 如何用 **last** 显示出登录者的前5行，抽取取用户名，显示当前处理行数, 该行有多少字段?
+
+```bash
+last -n 5 | awk '{print $1 "\t lines " NR " \t columns: " NF}'
+```
+
+**NF**
+
+The number of fields in the current record
+
+**NR**
+
+The ordinal number of the current record from the start of input.
+
+![20210422223540](https://img.fengqigang.cn//img/20210422223540.png)
+
+### 如何从/etc/passwd(以冒号来作为字段的分隔), 文件中第一字段为账号, 第三字段则是 UID, 找出第三栏小于10以下的数据，并且仅列出账号与第三栏?
+
+```bash
+cat /etc/passwd | awk '{FS=":"} $3 < 10 {print $1 " \t " $3}'
+```
+
+![20210422224722](https://img.fengqigang.cn//img/20210422224722.png)
+
+
+### ![20210422224722](https://img.fengqigang.cn//img/20210422224722.png)
+为什么仅能在第二行才开始生效?
+
+因为在读入第一行的时候，那些变量 $1, $2, 默认还是以空白键为分隔的，所以虽然定义了 FS=":". 仅能在第二行后才开始生效
+
+### ![20210422224722](https://img.fengqigang.cn//img/20210422224722.png)
+如何在第一行也可以生效?
+
+预先设置 awk 的变量， 利用 BEGIN 这个关键字
+
+```bash
+cat /etc/passwd | awk 'BEGIN {FS=':'} $3 < 10 {print $1 " \t " $3}'
+```
+
+![20210422225229](https://img.fengqigang.cn//img/20210422225229.png)
+
+### ![20210424113513](https://img.fengqigang.cn//img/20210424113513.png) 这两个代表什么意思?
+
+4d3
+
+左边第4行被删除 (d) 掉了, 基准是右边的第三行
+
+6c5
+
+左边文件的第六行被取代 (c) 成右边文件的第五行
+
+![20210424115224](https://img.fengqigang.cn//img/20210424115224.png)
+
+### 如何对比 **github/Blog** 与 **github/Momo** 两个目录之间的差异?
+
+```bash
+diff github/Blog github/Momo
+```
+
+![20210424115422](https://img.fengqigang.cn//img/20210424115422.png)
+
+### diff 与 cmp 有什么区别?
+
+diff 主要是以 "行" 为单位比对
+
+cmp 则是以 "字节" 为单位比对
+
+### 如何在字节上对比， **passwd.old**, **passwd.new**?
+
+```bash
+cmp passwd.old passwd.new
+```
+
+![20210424115722](https://img.fengqigang.cn//img/20210424115722.png)
+
+
