@@ -73,7 +73,7 @@ OSI参考模型有几层? 分别是什么? 7 层
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day22\/"
-        },"genre": "posts","keywords": "java","wordcount":  1383 ,
+        },"genre": "posts","keywords": "java","wordcount":  1500 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day22\/","datePublished": "2021-04-23T23:14:11+08:00","dateModified": "2021-04-23T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -150,8 +150,8 @@ OSI参考模型有几层? 分别是什么? 7 层
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day22</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-23">2021-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1383 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-23">2021-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1500 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -364,14 +364,12 @@ OSI参考模型有几层? 分别是什么? 7 层
 <li>向流中读取或写入数据， 释放资源</li>
 </ol>
 <p><strong>(接受端)服务端</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210423172004.png"
-        data-srcset="https://img.fengqigang.cn//img/20210423172004.png, https://img.fengqigang.cn//img/20210423172004.png 1.5x, https://img.fengqigang.cn//img/20210423172004.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210423172004.png"
-        title="https://img.fengqigang.cn//img/20210423172004.png" /></p>
+<ol>
+<li>创建 Serversocket 对象， 在指定端口，监听客户端连接请求</li>
+<li>收到客户端连接请求后，建立Socket连接</li>
+<li>如果连接建立成功，就表明已经 了数据传输的通道，就可以在该通道通过IO进行数据的读取和写入</li>
+<li>从 socket 中根据需要获取输入，或输出流，根据需要向流中写入数据或从流中读数据，释放资源</li>
+</ol>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -1009,15 +1007,36 @@ Searches for the property with the specified key in this property list.</p>
         alt="https://img.fengqigang.cn//img/20210423160401.png"
         title="https://img.fengqigang.cn//img/20210423160401.png" /></p>
 <h3 id="如何读取-configproperties实现编码一致">如何读取 <strong>config.properties</strong>(实现编码一致)?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210423161035.png"
-        data-srcset="https://img.fengqigang.cn//img/20210423161035.png, https://img.fengqigang.cn//img/20210423161035.png 1.5x, https://img.fengqigang.cn//img/20210423161035.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210423161035.png"
-        title="https://img.fengqigang.cn//img/20210423161035.png" /></p>
-<h3 id="实现自动回复的机器人">实现自动回复的机器人?</h3>
+<p>public class Properties
+extends Hashtable&lt;Object,Object&gt;</p>
+<p>The Properties class represents a persistent set of properties. The Properties can be saved to a stream or loaded from a stream. Each key and its corresponding value in the property list is a string.</p>
+<p>void	load(InputStream inStream)
+Reads a property list (key and element pairs) from the input byte stream.</p>
+<p>String	getProperty(String key)
+Searches for the property with the specified key in this property list.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">Properties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+        <span class="n">properties</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="k">new</span> <span class="n">InputStreamReader</span><span class="o">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;config.properties&#34;</span><span class="o">),</span> <span class="s">&#34;GBK&#34;</span><span class="o">));</span>
+        <span class="n">String</span> <span class="n">user</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&#34;user&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="实现自动回复的机器人">实现自动回复的机器人?</h3>
 <ol>
 <li>
 <p>Sender</p>
