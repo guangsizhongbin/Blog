@@ -165,7 +165,12 @@ categories: [王道]
 
 **(接受端)服务端**
 
-![](https://img.fengqigang.cn//img/20210423172004.png)
+1. 创建 Serversocket 对象， 在指定端口，监听客户端连接请求
+2. 收到客户端连接请求后，建立Socket连接
+3. 如果连接建立成功，就表明已经 了数据传输的通道，就可以在该通道通过IO进行数据的读取和写入
+4. 从 socket 中根据需要获取输入，或输出流，根据需要向流中写入数据或从流中读数据，释放资源
+
+
 
 ![](https://img.fengqigang.cn//img/20210423171954.png)
 
@@ -613,12 +618,39 @@ Searches for the property with the specified key in this property list.
 
 ### 如何读取 **config.properties**(实现编码一致)?
 
-![](https://img.fengqigang.cn//img/20210423161035.png)
+public class Properties
+extends Hashtable<Object,Object>
+
+The Properties class represents a persistent set of properties. The Properties can be saved to a stream or loaded from a stream. Each key and its corresponding value in the property list is a string.
+
+
+
+void	load(InputStream inStream)
+Reads a property list (key and element pairs) from the input byte stream.
+
+
+
+String	getProperty(String key)
+Searches for the property with the specified key in this property list.
+
+```java
+public class Demo2 {
+    public static void main(String[] args) throws IOException {
+        Properties properties = new Properties();
+        properties.load(new InputStreamReader(new FileInputStream("config.properties"), "GBK"));
+        String user = properties.getProperty("user");
+        System.out.println(user);
+    }
+}
+```
+
+
+
+
 
 ### 实现自动回复的机器人?
 
 1.  Sender
     
 2.  Receiver
-
 
