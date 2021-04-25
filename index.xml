@@ -18,7 +18,8 @@
   执行成果告知
   1  exit 0   当下达
 1  echo $?   则可得到0的值
-echo -e 会发生什么?  e  enable interpretation of backslash escapes]]></description>
+echo -e 会发生什么?  e  enable interpretation of backslash escapes
+以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?]]></description>
 </item><item>
     <title>Day22</title>
     <link>http://fengqigang.cn/posts/day22/</link>

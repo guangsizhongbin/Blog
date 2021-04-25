@@ -12,7 +12,8 @@
   执行成果告知
   1  exit 0   当下达
 1  echo $?   则可得到0的值
-echo -e 会发生什么?  e  enable interpretation of backslash escapes" />
+echo -e 会发生什么?  e  enable interpretation of backslash escapes
+以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-24T15:05:24&#43;08:00" />
@@ -26,7 +27,8 @@ echo -e 会发生什么?  e  enable interpretation of backslash escapes" />
   执行成果告知
   1  exit 0   当下达
 1  echo $?   则可得到0的值
-echo -e 会发生什么?  e  enable interpretation of backslash escapes"/>
+echo -e 会发生什么?  e  enable interpretation of backslash escapes
+以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -39,7 +41,7 @@ echo -e 会发生什么?  e  enable interpretation of backslash escapes"/>
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0\/"
-        },"genre": "posts","keywords": "linux","wordcount":  37 ,
+        },"genre": "posts","keywords": "linux","wordcount":  258 ,
         "url": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0\/","datePublished": "2021-04-24T15:05:24+08:00","dateModified": "2021-04-24T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -116,8 +118,8 @@ echo -e 会发生什么?  e  enable interpretation of backslash escapes"/>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux第十二章</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-24">2021-04-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;37 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-24">2021-04-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;258 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -129,6 +131,8 @@ echo -e 会发生什么?  e  enable interpretation of backslash escapes"/>
       <ul>
         <li><a href="#写-shell-script-的规则是什么">写 Shell Script 的规则是什么?</a></li>
         <li><a href="#echo--e-会发生什么">echo -e 会发生什么?</a></li>
+        <li><a href="#以-read-指令的用途撰写一个-script-他可以让使用者输入-1-first-name-与-2-last-name-最后并且在屏幕上显示-your-full-name-is-的内容">以 <strong>read</strong> 指令的用途，撰写一个 <strong>script</strong>, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?</a></li>
+        <li><a href="#如何创建三个空文件文件名最开头由使用者输入决定假设使用者输入-filename-好了-我想以前天昨天今天的日期来创建这些文件">如何创建三个空文件，文件名最开头由使用者输入决定，假设使用者输入 filename 好了, 我想以前天，昨天，今天的日期来创建这些文件?</a></li>
       </ul>
     </li>
   </ul>
@@ -188,7 +192,101 @@ echo -e 会发生什么?  e  enable interpretation of backslash escapes"/>
 <li>e</li>
 </ul>
 <p>enable interpretation of backslash escapes</p>
-</div><div class="post-footer" id="post-footer">
+<h3 id="以-read-指令的用途撰写一个-script-他可以让使用者输入-1-first-name-与-2-last-name-最后并且在屏幕上显示-your-full-name-is-的内容">以 <strong>read</strong> 指令的用途，撰写一个 <strong>script</strong>, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="c1"># Program:</span>
+<span class="c1"># User input his first name adn last name. Program shows his full name.</span>
+<span class="c1"># Histroy:</span>
+<span class="c1"># 2015/07/16		feng		First relase</span>
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+<span class="nb">export</span> PATH
+
+<span class="nb">read</span> -p <span class="s2">&#34;Please input your first name: &#34;</span> firstname <span class="c1"># 提示使用者输入</span>
+<span class="nb">read</span> -p <span class="s2">&#34;Please input your last name: &#34;</span> lastname <span class="c1"># 提示使用者输入</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;\nYour full name is: </span><span class="si">${</span><span class="nv">firstname</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">lastname</span><span class="si">}</span><span class="s2">&#34;</span> <span class="c1"># 结果由屏幕输出</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>-p prompt</p>
+<p>print the prompt text before requesting the input from the standard input stream without a <newline> character.</p>
+<h3 id="如何创建三个空文件文件名最开头由使用者输入决定假设使用者输入-filename-好了-我想以前天昨天今天的日期来创建这些文件">如何创建三个空文件，文件名最开头由使用者输入决定，假设使用者输入 filename 好了, 我想以前天，昨天，今天的日期来创建这些文件?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="c1"># Program:</span>
+<span class="c1">#		Program creates three files, which named by user&#39;s input and date command.</span>
+<span class="c1"># History:</span>
+<span class="c1"># 2015/07/16	feng	First release</span>
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+<span class="nb">export</span> PATH
+
+<span class="c1"># 1. 让使用者输入文件名称，并取得 fileuser 这个变量</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;I will use &#39;touch&#39; command to create 3 files&#34;</span> 
+<span class="nb">read</span> -p <span class="s2">&#34;Please intput your filename: &#34;</span> fileuser
+
+<span class="c1"># 2. 利用变量功能，避免使用者随意按 Enter</span>
+<span class="nv">filename</span><span class="o">=</span><span class="si">${</span><span class="nv">fileuser</span><span class="k">:-</span><span class="s2">&#34;filename&#34;</span><span class="si">}</span>
+
+<span class="c1"># 3. 开始利用 data 指令来取得所需要的文件名</span>
+<span class="nv">date1</span><span class="o">=</span><span class="k">$(</span>date --date<span class="o">=</span><span class="s1">&#39;2 days ago&#39;</span> +%Y%m%d<span class="k">)</span>
+<span class="nv">date2</span><span class="o">=</span><span class="k">$(</span>date --date<span class="o">=</span><span class="s1">&#39;1 days ago&#39;</span> +%Y%m%d<span class="k">)</span>
+<span class="nv">date3</span><span class="o">=</span><span class="k">$(</span>date +%Y%m%d<span class="k">)</span>
+<span class="nv">file1</span><span class="o">=</span><span class="si">${</span><span class="nv">filename</span><span class="si">}${</span><span class="nv">date1</span><span class="si">}</span>
+<span class="nv">file2</span><span class="o">=</span><span class="si">${</span><span class="nv">filename</span><span class="si">}${</span><span class="nv">date2</span><span class="si">}</span>
+<span class="nv">file3</span><span class="o">=</span><span class="si">${</span><span class="nv">filename</span><span class="si">}${</span><span class="nv">date3</span><span class="si">}</span>
+
+<span class="c1"># 4. 将文件名创建</span>
+touch <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file1</span><span class="si">}</span><span class="s2">&#34;</span>
+touch <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file2</span><span class="si">}</span><span class="s2">&#34;</span>
+touch <span class="s2">&#34;</span><span class="si">${</span><span class="nv">file3</span><span class="si">}</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
