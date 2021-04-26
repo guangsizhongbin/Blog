@@ -100,6 +100,13 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day18/">Day18</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-19">2021-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">为什么要将 FileOutputStream out = null; 放在外面，可以放在 try 语句里面? 不可以
+放在 out 中， 其作用的域只能在 try 中， finally 中的 try 无法使用
+reader 的继承关系是什么样的? InputStreamReader 的构造方法是什么样的? 1 2 3 4 5 6 7 8 9  public class CountNum { public static void main(String[] args) throws IOException { // 第一种构造方法  InputStreamReader in = new InputStreamReader(new FileInputStream(&#34;a.txt&#34;)); // 第二种构造方法  InputStreamReader input = new InputStreamReader(new FileInputStream(&#34;a.txt&#34;), &#34;GBK&#34;); } }   如何使用 InputStreamReader 实现单个 char 的构造方法?</div><div class="post-footer">
+        <a href="/posts/day18/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day17/">Day17</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-18">2021-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何实现对 FilterInput 实现装饰器模式, 对接收到的字母转换成小写? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55  public class Demo { public static void main(String[] args) throws IOException { // 方法一:  BufferedInputStream br = new BufferedInputStream(new FileInputStream(&#34;a.</div><div class="post-footer">
         <a href="/posts/day17/">Read More</a><div class="post-tags">
@@ -136,22 +143,6 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行</div><div class="post-footer">
         <a href="/posts/day14/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day13/">Day13</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">在进行深拷贝时，如何实现一个空接口？ Cloneable 并不是自己实现的
-如何将byte数组转成 String, 并输出它 在 JDK 源码当中， 涉及区间的方法，一般都是怎么规定区间的? 左闭右开
-这种做法是为了适配数组从0开始的下标
-会输出什么? 会直接输出整个 String
-String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 是干什么的? 在用字面值常量给 String 对象赋值时，在编译时期就加入了 常量池
-当常量池中已存在某位字符串对象时，当需要使用时，就不需要在堆上重新创建对象了，而是直接去指向这个常量池中的字符串对象
-它们的值是什么? s.equals(s2) 是根据值来判断的
-它们会输出什么? s3 == (s1 + s2) 肯定不能编译确定取值，必须运行期确定，那么它的对象就一定不在常量池，而在堆上
-判断一个字符串是否为空可以采取什么样的方法? equals
-1 2 3 4 5 6  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; System.out.println(&#34;&#34;.equals(s)); } }   如果s是null, 会导致报错
-如何比较这两个字符串，并忽略大小写? a.equalsIgnoreCase(b)
-1 2 3 4 5 6 7  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; String s1 = &#34;ABC&#34;; System.</div><div class="post-footer">
-        <a href="/posts/day13/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -172,7 +163,7 @@ String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/12/">12</a>
+                        <a href="/page/13/">13</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

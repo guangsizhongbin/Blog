@@ -4,7 +4,38 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 26 Apr 2021 23:39:19 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day23</title>
+    <link>http://fengqigang.cn/posts/day23/</link>
+    <pubDate>Mon, 26 Apr 2021 23:39:19 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day23/</guid>
+    <description><![CDATA[类加载的细分? 类加载通过 加载, 连接， 初始化 三步来实现
+类加载中的加载是如何执行的？ 通过类加载器获得二进制字节流
+在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口
+类加载中的连接是如何执行的? 验证：确保被加载类的正确性正确性的校验
+cafe babe:magic number起校验作用的
+准备：负责为类的静态成员分配内存并设置默认初始化值
+解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)
+类加载中的初始化是如何执行的？ 给静态成员变量赋初值，执行静态代码块内容
+类加载时机有哪些? 创建类的实例 (首次创建该类)
+对象访问类的静态变量（首次)
+调用类的静态方法（首次)
+使用反射方式来强制创建某个类或接口对应的 java.lang.Class 对象
+加载某个类的子类，会先触发父类的加载
+直接使用 java. exe 命令来运行某个主类，也就是执行了某个类的main方法
+类加载中有哪些加载器? Bootstrap ClassLoader
+根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar
+Extension ClassLoader
+扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录
+Sysetm ClassLoader
+系统类加载器/应用加载器负责加载自己定义的Java类
+java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(通过类加载器 ClassLoader 加载) 运行时阶段  什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
+  类名.class
+  对象.getClass（）
+  如何用 Class.]]></description>
+</item><item>
     <title>Day22</title>
     <link>http://fengqigang.cn/posts/day22/</link>
     <pubDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</pubDate>
@@ -141,23 +172,5 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
     <description><![CDATA[什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
 在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
 try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行]]></description>
-</item><item>
-    <title>Day13</title>
-    <link>http://fengqigang.cn/posts/day13/</link>
-    <pubDate>Tue, 13 Apr 2021 21:42:49 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day13/</guid>
-    <description><![CDATA[在进行深拷贝时，如何实现一个空接口？ Cloneable 并不是自己实现的
-如何将byte数组转成 String, 并输出它 在 JDK 源码当中， 涉及区间的方法，一般都是怎么规定区间的? 左闭右开
-这种做法是为了适配数组从0开始的下标
-会输出什么? 会直接输出整个 String
-String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 是干什么的? 在用字面值常量给 String 对象赋值时，在编译时期就加入了 常量池
-当常量池中已存在某位字符串对象时，当需要使用时，就不需要在堆上重新创建对象了，而是直接去指向这个常量池中的字符串对象
-它们的值是什么? s.equals(s2) 是根据值来判断的
-它们会输出什么? s3 == (s1 + s2) 肯定不能编译确定取值，必须运行期确定，那么它的对象就一定不在常量池，而在堆上
-判断一个字符串是否为空可以采取什么样的方法? equals
-1 2 3 4 5 6  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; System.out.println(&#34;&#34;.equals(s)); } }   如果s是null, 会导致报错
-如何比较这两个字符串，并忽略大小写? a.equalsIgnoreCase(b)
-1 2 3 4 5 6 7  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; String s1 = &#34;ABC&#34;; System.]]></description>
 </item></channel>
 </rss>
