@@ -4,7 +4,45 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 26 Apr 2021 23:39:19 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 27 Apr 2021 21:44:31 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day24</title>
+    <link>http://fengqigang.cn/posts/day24/</link>
+    <pubDate>Tue, 27 Apr 2021 21:44:31 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day24/</guid>
+    <description><![CDATA[数据结构和 Java 有什么关系? 数据结构本身和JAVA没有任何关系
+只不过AVA中有多种集合、数组、等集合性质的多对象存储结构,
+有时候我们希望更便捷, 更具有逻辑性的操作这些集合或者数组数据
+所以我们根据数据结构的组织方式，构建了一些特殊的JAVA集合类
+用于描述了一些JAVA对象的底层数据的组成关系
+JAVA的集合类底层组织数据的方式，是参照某些数据结构（逻辑、思想）来进行的
+数据结构的种类和JAVA中的集合类别有哪些？ 数据结构：抽象概念/逻辑概念
+集合：一堆数据
+线性表：有序的序列（操作受限的线性表：栈：先进后出队列：先进先出）
+Y= ax + b
+树：一对多的数据关系，国家，族谱
+图：多对多的关系：理论层级
+为什么需要集合类？ 很多情况下，我们需要对一组对象进行操作。而且很可能事先并不知道到底有多少个对象。为了解决这个问题，Java就提供了集合类供我们使用。
+（存储更多类型问题，扩容问题, 内存空间浪费问题,数据查找问题，数据删除问题等等
+数组的主要特点是什么? 数组是连续存储 -&gt; 随机访问的
+为什么数组的索引一般都是从0开始的呢? 第一个层面:
+历史遗留问题, 在计算资源缺乏的过去，o标号的写法可以节省编译时间
+第二个层面:
+方便计算
+计算公式 = (下标 - 1) * 单个元素空间 + 基础位置
+为什么数组的效率比链表高? 链表:
+链表是非连续存储的
+数组:
+是连续存储的
+Java 中的一维， 多维数组的内存空间是连续的吗？ 在 java 中只有一维数组的内存空间是连续的，多维数组的内存空间不一定连续.
+数组的基本操作(添加, 删除)的(最好情况，最坏情况，平均情况)时间复杂度? 添加(保证元素的顺序)
+最好情况: O(1)
+最坏情况: 移动n个元素
+平均情况: 移动 n/2 个元素
+删除(保证元素的顺序)
+最好情况： O(1)
+最坏情况: 移动 n-1 个元素, O(n)]]></description>
+</item><item>
     <title>Day23</title>
     <link>http://fengqigang.cn/posts/day23/</link>
     <pubDate>Mon, 26 Apr 2021 23:39:19 &#43;0800</pubDate>
@@ -163,14 +201,5 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/day15/</guid>
     <description><![CDATA[如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.]]></description>
-</item><item>
-    <title>Day14</title>
-    <link>http://fengqigang.cn/posts/day14/</link>
-    <pubDate>Wed, 14 Apr 2021 23:01:03 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day14/</guid>
-    <description><![CDATA[什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
-在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
-try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行]]></description>
 </item></channel>
 </rss>

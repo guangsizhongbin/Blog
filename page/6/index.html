@@ -100,6 +100,21 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Java第三章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-25">2021-03-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">什么是类? 什么是对象? 类:
+表示一个客观世界中某类群体的一些基本特征抽象
+如:
+汽车， 轮船，书
+对象:
+一个个具体的事物
+如:
+张三同学， 李四账户， 王五的汽车
+总结:
+类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
+如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.</div><div class="post-footer">
+        <a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/">Linux第九章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-21">2021-03-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
 在 vim 中, n +  代表什么操作? 表示光标会向 右 移动 n 个字符
@@ -174,22 +189,6 @@ block: 实际记录文件的内容，若文件太大时，会占用多个block
 1个间接: 256 x 1KB = 256KB
 每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/">Linux第六章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-02">2021-03-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">如何回到之前的目录？ cd -
- 如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
- 如何创建一次创建 test1/test2/test3/test4 这样的目录，/test1~4均未创建? mkdir -p test1/test2/test3/test4
--p &ndash;parents:
-no error if existing, make parent directories as needed.
- 如何创建一个权限为rwx&ndash;x&ndash;x的目录test2? mkdir -m 711 test2
--m &ndash;mode=MODE:
-set file mode (as in chomd), not a=rwx - umask
- 如何在任何目录均可执行 /root 下面的命令? PATH = &ldquo;${PATH}:/root&rdquo;
- 如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
--a, &ndash;archive
- 如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/.</div><div class="post-footer">
-        <a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
