@@ -4,9 +4,16 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 27 Apr 2021 21:44:31 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 28 Apr 2021 23:09:33 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day25</title>
+    <link>http://fengqigang.cn/posts/day25/</link>
+    <pubDate>Wed, 28 Apr 2021 23:09:33 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day25/</guid>
+    <description><![CDATA[如何利用双指针法输出输出中的中间元素(快指针与慢指针)? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48  public class Ex3 { public static void main(String[] args) { Node zs = new Node(&#34;zs&#34;, null); Node ls = new Node(&#34;ls&#34;, null); Node wu = new Node(&#34;wu&#34;, null); Node sq = new Node(&#34;sq&#34;, null); Node qg = new Node(&#34;qg&#34;, null); zs.]]></description>
+</item><item>
     <title>Day24</title>
     <link>http://fengqigang.cn/posts/day24/</link>
     <pubDate>Tue, 27 Apr 2021 21:44:31 &#43;0800</pubDate>
@@ -195,14 +202,5 @@ reader 的继承关系是什么样的? InputStreamReader 的构造方法是什�
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/day17/</guid>
     <description><![CDATA[如何实现对 FilterInput 实现装饰器模式, 对接收到的字母转换成小写? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55  public class Demo { public static void main(String[] args) throws IOException { // 方法一:  BufferedInputStream br = new BufferedInputStream(new FileInputStream(&#34;a.]]></description>
-</item><item>
-    <title>第十一章</title>
-    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/</link>
-    <pubDate>Sun, 18 Apr 2021 18:51:33 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/</guid>
-    <description><![CDATA[正则表达式与万用字符有什么区别? 万用字符 (wildcard) 代表的是 bash 操作接口的一个功能
-正则表达式则是一种字串处理的表示方式
-如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示, 同时在关键字所在行的前两行与后三行也一起捉出来显示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何捉出 regular_express.txt 中有 the 的行, 并提供行号? 1  grep -n &#39;the&#39; regular_express.txt   如何捉出 regular_express 中没有 the 的行，并提供等行号? 1  grep -vn &#39;the&#39; regular_express.txt   如何捉出 regular_express.]]></description>
 </item></channel>
 </rss>
