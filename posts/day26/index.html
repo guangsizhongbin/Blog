@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day26 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day26" />
+<meta property="og:description" content="如何定义一个双链表? 定义结点
+一般有:
+pre , value , next
+结点
+1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this.value = value; this.next = next; this.pre = pre; } }   链表
+1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day26/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-29T23:33:10&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-29T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day26"/>
+<meta name="twitter:description" content="如何定义一个双链表? 定义结点
+一般有:
+pre , value , next
+结点
+1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this.value = value; this.next = next; this.pre = pre; } }   链表
+1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day26/" /><link rel="prev" href="http://fengqigang.cn/posts/day25/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day26",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day26\/"
+        },"genre": "posts","keywords": "java","wordcount":  1643 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day26\/","datePublished": "2021-04-29T23:33:10+08:00","dateModified": "2021-04-29T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day26</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-29">2021-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1643 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#如何定义一个双链表">如何定义一个双链表?</a></li>
+        <li><a href="#双链表如何根据内容增加">双链表如何根据内容增加?</a></li>
+        <li><a href="#双链表中如何根据内容删除">双链表中如何根据内容删除?</a></li>
+        <li><a href="#如何使双链表根据内容查找">如何使双链表根据内容查找?</a></li>
+        <li><a href="#双链表如何实现根据内容替换">双链表如何实现根据内容替换?</a></li>
+        <li><a href="#双链表如何根据下标做添加">双链表如何根据下标做添加？</a></li>
+        <li><a href="#双链表根据下标做删除">双链表根据下标做删除?</a></li>
+        <li><a href="#什么是泛型">什么是泛型?</a></li>
+        <li><a href="#泛型一般用于什么样的情况">泛型一般用于什么样的情况?</a></li>
+        <li><a href="#使用泛型有什么好处">使用泛型有什么好处?</a></li>
+        <li><a href="#泛型的有哪几种">泛型的有哪几种?</a></li>
+        <li><a href="#什么是泛型类">什么是泛型类?</a></li>
+        <li><a href="#泛型的一般定义习惯"><strong>泛型的一般定义习惯</strong></a></li>
+        <li><a href="#如果我们定义一个泛型类接口方法-都可以定义多个泛型在语法上是完全允许的但是一般来说不要把泛型定义过多不要超过两个">如果我们定义一个泛型类/接口/方法， 都可以定义多个泛型，在语法上是完全允许的，但是，一般来说不要把泛型定义过多，（不要超过两个）</a></li>
+        <li><a href="#如何我们定义一个泛型但是在使用的时候并没有指定泛型类型那么这个泛型类型会指定为什么">如何我们定义一个泛型，但是在使用的时候并没有指定泛型类型，那么这个泛型类型会指定为什么?</a></li>
+        <li><a href="#java-在什么时候有泛型">java 在什么时候有泛型?</a></li>
+        <li><a href="#泛型-继承">泛型 继承?</a></li>
+        <li><a href="#泛型接口">泛型接口?</a></li>
+        <li><a href="#泛型方法">泛型方法？</a></li>
+        <li><a href="#什么是泛型擦除">什么是泛型擦除?</a></li>
+        <li><a href="#泛型可以用int吗">泛型可以用int吗?</a></li>
+        <li><a href="#自动拆箱装箱">自动拆箱装箱?</a></li>
+        <li><a href="#jvm的协变">jvm的协变?</a></li>
+        <li><a href="#泛型不允许协变">泛型不允许协变</a></li>
+        <li><a href="#泛型不允许协变但不想用类似数组的功能">泛型不允许协变，但不想用类似数组的功能?</a></li>
+        <li><a href="#什么是-bean-类">什么是 Bean 类?</a></li>
+        <li><a href="#什么是功能类">什么是功能类?</a></li>
+        <li><a href="#foreach">foreach?</a></li>
+        <li><a href="#可变长参数">可变长参数?</a></li>
+        <li><a href="#java-集合类">java 集合类?</a></li>
+        <li><a href="#线性表的分类">线性表的分类?</a></li>
+        <li><a href="#什么是顺序映像-什么是非顺序映像">什么是顺序映像？ 什么是非顺序映像?</a></li>
+        <li><a href="#栈的概念">栈的概念?</a></li>
+        <li><a href="#如何实现栈数组">如何实现栈(数组)?</a></li>
+        <li><a href="#不能是泛型数组">不能是泛型数组</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="如何定义一个双链表">如何定义一个双链表?</h3>
+<p><strong>定义结点</strong></p>
+<p>一般有:</p>
+<p><strong>pre</strong> , <strong>value</strong> , <strong>next</strong></p>
+<p><strong>结点</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">value</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">pre</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="n">Node</span> <span class="n">pre</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">Node</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">pre</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>链表</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">value</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">pre</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="n">Node</span> <span class="n">pre</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">,</span> <span class="n">Node</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">pre</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="双链表如何根据内容增加">双链表如何根据内容增加?</h3>
+<ul>
+<li>链表为空</li>
+<li>链表非空</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 判断链表是否为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">++;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 链表不为空
+</span><span class="c1"></span>            <span class="n">end</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">end</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">++;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="双链表中如何根据内容删除">双链表中如何根据内容删除?</h3>
+<ul>
+<li>判断链表是否为空, 为空抛出异常</li>
+<li>非空
+<ul>
+<li>判断是否是第一个位置</li>
+<li>判断删除的是否是最后一个位置</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">remove</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 判断链表为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;Link is empty&#34;</span><span class="o">);</span>
+        <span class="c1">// 判断要删除的元素是否为null
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">str</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 头结点就是null
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">==</span> <span class="n">head</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 只有一个元素
+</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// 头结点和尾结点均指向空
+</span><span class="c1"></span>                    <span class="n">head</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="n">end</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="n">size</span><span class="o">--;</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="c1">// 不只有一个元素
+</span><span class="c1"></span>                    <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                    <span class="n">size</span><span class="o">--;</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="c1">// null 不是头结点
+</span><span class="c1"></span>            <span class="c1">// 指向 头结点后的元素
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">//  1. mid == null, 没找到
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="c1">//  2. mid.value == null 找到了
+</span><span class="c1"></span>            <span class="c1">//  2. 判断删除的元素是否是最后一个元素
+</span><span class="c1"></span>            <span class="c1">//  2.1 删除的元素是最后一个元素(mid 就是要删除的元素)
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span> <span class="c1">// end 往前移
+</span><span class="c1"></span>                <span class="n">end</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// end 后变成null
+</span><span class="c1"></span>                <span class="n">size</span><span class="o">--;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">//  2.2 删除的元素不是最后一个元素(mid 就是要删除的元素)
+</span><span class="c1"></span>            <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 链表不为空
+</span><span class="c1"></span>            <span class="c1">// 1. 删除的是第一个位置
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="n">head</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">--;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 2. 删除的是不是第一个位置
+</span><span class="c1"></span>                <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">str</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="c1">// 1. mid == null;
+</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+                <span class="c1">// 2. mid.value.equals(str)
+</span><span class="c1"></span>                <span class="c1">// 2.1 删除的不是最后一个元素
+</span><span class="c1"></span>                <span class="c1">// 2.2 删除的是最后一个元素
+</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="n">end</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">end</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                    <span class="n">end</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                    <span class="n">size</span><span class="o">--;</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                    <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                    <span class="n">size</span><span class="o">--;</span>
+                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何使双链表根据内容查找">如何使双链表根据内容查找?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">contains</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 链表是否为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;linked is empty&#34;</span><span class="o">);</span>
+        <span class="c1">// 2. 链表不为空
+</span><span class="c1"></span>        <span class="c1">// 2.1 判断是null
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">str</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 2.1.1 mid == null 没找到
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="c1">// 2.1.2 mid.value == null 找到了, mid就是
+</span><span class="c1"></span>            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 2.2 判断的不是null
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">str</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 2.2.1 mid == null 没找到
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="c1">// 2.2.2 mid.value == str ， 找到了, mid 就是
+</span><span class="c1"></span>            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="双链表如何实现根据内容替换">双链表如何实现根据内容替换?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">set</span><span class="o">(</span><span class="n">String</span> <span class="n">oldValue</span><span class="o">,</span> <span class="n">String</span> <span class="n">newValue</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 链表为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;Link is Empty&#34;</span><span class="o">);</span>
+        <span class="c1">// 2. oldValue 为null
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">oldValue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// mid 为目标结点
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 2.1 mid == null
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="c1">// 2.2 mid.value == null
+</span><span class="c1"></span>            <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">newValue</span><span class="o">;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 3. oldValue 非null
+</span><span class="c1"></span>            <span class="c1">// mid 为目标结点
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">!=</span> <span class="n">oldValue</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 3.1 mid == null
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="c1">// 3.2 mid.value == null
+</span><span class="c1"></span>            <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">newValue</span><span class="o">;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="双链表如何根据下标做添加">双链表如何根据下标做添加？</h3>
+<ul>
+<li>添加的为头位置
+<ul>
+<li>链表为空</li>
+<li>链表非空</li>
+</ul>
+</li>
+<li>添加的不是头结点
+<ul>
+<li>判断添加的位置()</li>
+<li>从后往前，还是从前往后
+<ul>
+<li>最后一个结点的判断</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 判断下标是否越界 (头, 尾+1)
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;</span> <span class="n">size</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;size &#34;</span> <span class="o">+</span> <span class="n">size</span><span class="o">);</span>
+        <span class="c1">// 2.1 添加的位置在头部
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                <span class="c1">// 链表为空
+</span><span class="c1"></span>                <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="n">head</span><span class="o">);</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 链表非空
+</span><span class="c1"></span>                <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="n">head</span><span class="o">);</span>
+                <span class="n">head</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 2.2 添加的位置不在头部
+</span><span class="c1"></span>            <span class="c1">// 2.2.1 添加的位置在尾部
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">end</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="c1">// 2.2.2 添加的位置不在尾部
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="o">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">2</span><span class="o">))</span> <span class="o">{</span>
+                <span class="c1">// 2.2.2.1 判断它是在前半部分
+</span><span class="c1"></span>                <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+                <span class="k">while</span> <span class="o">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                    <span class="n">num</span><span class="o">++;</span>
+                <span class="o">}</span>
+                <span class="c1">// num == index;
+</span><span class="c1"></span>                <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">mid</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">);</span>
+                <span class="n">node</span><span class="o">.</span><span class="na">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+                <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 2.2.2.1 判断它是在前半部分
+</span><span class="c1"></span>                <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+                <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">size</span><span class="o">;</span>
+                <span class="k">while</span> <span class="o">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                    <span class="n">num</span><span class="o">--;</span>
+                <span class="o">}</span>
+                <span class="c1">// num == index;
+</span><span class="c1"></span>                <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">mid</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">);</span>
+                <span class="n">node</span><span class="o">.</span><span class="na">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+                <span class="n">node</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">node</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="双链表根据下标做删除">双链表根据下标做删除?</h3>
+<ul>
+<li>index 判断</li>
+<li>链表为空判断</li>
+<li>删除的是头结点
+<ul>
+<li>size 为 1</li>
+<li>非1</li>
+</ul>
+</li>
+<li>删除的不是头结点
+<ul>
+<li>查找元素
+<ul>
+<li>判断是否为尾结点</li>
+<li>不是尾结点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">remove</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 判断index是否合法
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;size :&#34;</span> <span class="o">+</span> <span class="n">size</span><span class="o">);</span>
+        <span class="c1">// 判断链表是否为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;linked is empty&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 要返回的oldValue
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+
+        <span class="c1">// 判断删除的元素是否是第1个
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 判断其后还有没有元素
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">oldValue</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">--;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 其后还有元素
+</span><span class="c1"></span>                <span class="n">oldValue</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="n">head</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">--;</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 删除的元素不是第1个元素
+</span><span class="c1"></span>            <span class="c1">// 判断是否为最后一个元素
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">==</span> <span class="n">size</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 是最后一个元素
+</span><span class="c1"></span>                <span class="n">oldValue</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                <span class="n">end</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                <span class="n">size</span><span class="o">--;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 判断其是前一半还是后一半
+</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="o">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">2</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+                    <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                    <span class="k">while</span> <span class="o">(</span><span class="n">flag</span> <span class="o">&lt;</span> <span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                        <span class="n">flag</span><span class="o">++;</span>
+                    <span class="o">}</span>
+                    <span class="n">oldValue</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+                    <span class="n">mid</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                    <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                    <span class="n">size</span><span class="o">--;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">2</span><span class="o">;</span>
+                    <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+                    <span class="k">while</span> <span class="o">(</span><span class="n">flag</span> <span class="o">&gt;</span> <span class="n">index</span> <span class="o">-</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                        <span class="n">flag</span><span class="o">--;</span>
+                    <span class="o">}</span>
+                    <span class="n">oldValue</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+                    <span class="n">mid</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                    <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">pre</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                    <span class="n">size</span><span class="o">--;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>###　双链表如何根据下标查找?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">get</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;size = &#34;</span> <span class="o">+</span> <span class="n">size</span><span class="o">);</span>
+
+        <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&gt;</span> <span class="o">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">2</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">// 靠后
+</span><span class="c1"></span>            <span class="n">mid</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">tag</span> <span class="o">!=</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                <span class="n">tag</span><span class="o">--;</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 靠前 
+</span><span class="c1"></span>            <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">tag</span> <span class="o">!=</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="n">tag</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>###　双链表如何根据下标修改?</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">set</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">,</span> <span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="o">||</span> <span class="n">index</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;size&#34;</span> <span class="o">+</span> <span class="n">size</span><span class="o">);</span>
+
+        <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span> <span class="o">&gt;</span> <span class="o">(</span><span class="n">size</span> <span class="o">/</span> <span class="n">2</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">// 靠后
+</span><span class="c1"></span>            <span class="n">mid</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">tag</span> <span class="o">!=</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">pre</span><span class="o">;</span>
+                <span class="n">tag</span><span class="o">--;</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 靠前
+</span><span class="c1"></span>            <span class="n">mid</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">tag</span> <span class="o">!=</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+                <span class="n">tag</span><span class="o">++;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">String</span> <span class="n">oldStr</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+        <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">str</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">oldStr</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>###　数组与链表的时间复杂度?</p>
+<p><strong>数组</strong> 和 <strong>链表</strong> 操作的时间复杂度正好相反</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>添加/ 删除</th>
+<th>查找</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数组</td>
+<td>O(n)</td>
+<td>O(1) 根据下标</td>
+</tr>
+<tr>
+<td>链表</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>数组使用的是连续的内存空间，可以利用 <strong>CPU</strong> 的高速缓存磁盘预读数据，链表的内存空间不连续的，不能有效预读数据。 如果数组过大，系统没有足够的连续内存空间，会抛出Out of Memory.</li>
+<li>数组的缺点是大小固定，没法动态的调整大小，如果要存储一些对象，如果数组太大，浪费内存空间; 如果数组太小，我们需要重新重新申请一个更大数组，并将数据拷贝过去，耗时.</li>
+<li>如果业务对内存的使用非常苛刻，数组更适合，因为结点有指针域，更消耗内存，而且对链表的频繁插入和删除，会导致结点对象的频繁创建和销毁，有可能会导致频繁的GC活动.</li>
+</ol>
+<h3 id="什么是泛型">什么是泛型?</h3>
+<p>泛型, 即&quot; <strong>参数化类型</strong> &ldquo;，就是将类型由原来的 <strong>具体类型&quot;参数化&rdquo;</strong> , 此时 <strong>类型也定义成参数形式</strong> ，然后在 <strong>使用/ 调用时传入具体的类型</strong></p>
+<p><strong>DemoUser.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoUser</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">User</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="o">&lt;&gt;();</span>
+        <span class="n">user1</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="s">&#34;1&#34;</span><span class="o">;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">user1</span><span class="o">.</span><span class="na">age</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>User.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="n">T</span> <span class="n">age</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="泛型一般用于什么样的情况">泛型一般用于什么样的情况?</h3>
+<p>泛型一般常用于 <strong>java</strong> 的集合类中</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429221940.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429221940.png, https://img.fengqigang.cn//img/20210429221940.png 1.5x, https://img.fengqigang.cn//img/20210429221940.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429221940.png"
+        title="https://img.fengqigang.cn//img/20210429221940.png" /></p>
+<h3 id="使用泛型有什么好处">使用泛型有什么好处?</h3>
+<ol>
+<li>提高了程序的 <strong>安全性</strong></li>
+<li>将运行期遇到的 <strong>问题转移到了编译期</strong> : 编译时问题会提示我们有些错误，可以立刻修改</li>
+<li>省去了类型强转的麻烦</li>
+</ol>
+<h3 id="泛型的有哪几种">泛型的有哪几种?</h3>
+<ol>
+<li>泛型类</li>
+<li>泛型方法</li>
+<li>泛型接口</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429151705.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429151705.png, https://img.fengqigang.cn//img/20210429151705.png 1.5x, https://img.fengqigang.cn//img/20210429151705.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429151705.png"
+        title="https://img.fengqigang.cn//img/20210429151705.png" /></p>
+<h3 id="什么是泛型类">什么是泛型类?</h3>
+<p>把泛型定义在类上</p>
+<p>格式: public class 类名 &lt;泛型类型1,&hellip;&gt;</p>
+<p>参数化类型必须是引用类型</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429143842.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429143842.png, https://img.fengqigang.cn//img/20210429143842.png 1.5x, https://img.fengqigang.cn//img/20210429143842.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429143842.png"
+        title="https://img.fengqigang.cn//img/20210429143842.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429143852.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429143852.png, https://img.fengqigang.cn//img/20210429143852.png 1.5x, https://img.fengqigang.cn//img/20210429143852.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429143852.png"
+        title="https://img.fengqigang.cn//img/20210429143852.png" /></p>
+<h3 id="泛型的一般定义习惯"><strong>泛型的一般定义习惯</strong></h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429144036.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429144036.png, https://img.fengqigang.cn//img/20210429144036.png 1.5x, https://img.fengqigang.cn//img/20210429144036.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429144036.png"
+        title="https://img.fengqigang.cn//img/20210429144036.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429144248.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429144248.png, https://img.fengqigang.cn//img/20210429144248.png 1.5x, https://img.fengqigang.cn//img/20210429144248.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429144248.png"
+        title="https://img.fengqigang.cn//img/20210429144248.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429144552.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429144552.png, https://img.fengqigang.cn//img/20210429144552.png 1.5x, https://img.fengqigang.cn//img/20210429144552.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429144552.png"
+        title="https://img.fengqigang.cn//img/20210429144552.png" /></p>
+<h3 id="如果我们定义一个泛型类接口方法-都可以定义多个泛型在语法上是完全允许的但是一般来说不要把泛型定义过多不要超过两个">如果我们定义一个泛型类/接口/方法， 都可以定义多个泛型，在语法上是完全允许的，但是，一般来说不要把泛型定义过多，（不要超过两个）</h3>
+<h3 id="如何我们定义一个泛型但是在使用的时候并没有指定泛型类型那么这个泛型类型会指定为什么">如何我们定义一个泛型，但是在使用的时候并没有指定泛型类型，那么这个泛型类型会指定为什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429145108.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429145108.png, https://img.fengqigang.cn//img/20210429145108.png 1.5x, https://img.fengqigang.cn//img/20210429145108.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429145108.png"
+        title="https://img.fengqigang.cn//img/20210429145108.png" /></p>
+<p>Object 类型</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429145145.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429145145.png, https://img.fengqigang.cn//img/20210429145145.png 1.5x, https://img.fengqigang.cn//img/20210429145145.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429145145.png"
+        title="https://img.fengqigang.cn//img/20210429145145.png" /></p>
+<h3 id="java-在什么时候有泛型">java 在什么时候有泛型?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429145803.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429145803.png, https://img.fengqigang.cn//img/20210429145803.png 1.5x, https://img.fengqigang.cn//img/20210429145803.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429145803.png"
+        title="https://img.fengqigang.cn//img/20210429145803.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429145822.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429145822.png, https://img.fengqigang.cn//img/20210429145822.png 1.5x, https://img.fengqigang.cn//img/20210429145822.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429145822.png"
+        title="https://img.fengqigang.cn//img/20210429145822.png" /></p>
+<h3 id="泛型-继承">泛型 继承?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429150056.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429150056.png, https://img.fengqigang.cn//img/20210429150056.png 1.5x, https://img.fengqigang.cn//img/20210429150056.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429150056.png"
+        title="https://img.fengqigang.cn//img/20210429150056.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429150546.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429150546.png, https://img.fengqigang.cn//img/20210429150546.png 1.5x, https://img.fengqigang.cn//img/20210429150546.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429150546.png"
+        title="https://img.fengqigang.cn//img/20210429150546.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429150748.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429150748.png, https://img.fengqigang.cn//img/20210429150748.png 1.5x, https://img.fengqigang.cn//img/20210429150748.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429150748.png"
+        title="https://img.fengqigang.cn//img/20210429150748.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429151012.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429151012.png, https://img.fengqigang.cn//img/20210429151012.png 1.5x, https://img.fengqigang.cn//img/20210429151012.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429151012.png"
+        title="https://img.fengqigang.cn//img/20210429151012.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429151342.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429151342.png, https://img.fengqigang.cn//img/20210429151342.png 1.5x, https://img.fengqigang.cn//img/20210429151342.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429151342.png"
+        title="https://img.fengqigang.cn//img/20210429151342.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429151626.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429151626.png, https://img.fengqigang.cn//img/20210429151626.png 1.5x, https://img.fengqigang.cn//img/20210429151626.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429151626.png"
+        title="https://img.fengqigang.cn//img/20210429151626.png" /></p>
+<h3 id="泛型接口">泛型接口?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429152145.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429152145.png, https://img.fengqigang.cn//img/20210429152145.png 1.5x, https://img.fengqigang.cn//img/20210429152145.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429152145.png"
+        title="https://img.fengqigang.cn//img/20210429152145.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429152050.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429152050.png, https://img.fengqigang.cn//img/20210429152050.png 1.5x, https://img.fengqigang.cn//img/20210429152050.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429152050.png"
+        title="https://img.fengqigang.cn//img/20210429152050.png" /></p>
+<h3 id="泛型方法">泛型方法？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429152219.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429152219.png, https://img.fengqigang.cn//img/20210429152219.png 1.5x, https://img.fengqigang.cn//img/20210429152219.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429152219.png"
+        title="https://img.fengqigang.cn//img/20210429152219.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429152306.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429152306.png, https://img.fengqigang.cn//img/20210429152306.png 1.5x, https://img.fengqigang.cn//img/20210429152306.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429152306.png"
+        title="https://img.fengqigang.cn//img/20210429152306.png" /></p>
+<p><strong>定义泛型</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429152405.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429152405.png, https://img.fengqigang.cn//img/20210429152405.png 1.5x, https://img.fengqigang.cn//img/20210429152405.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429152405.png"
+        title="https://img.fengqigang.cn//img/20210429152405.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429152543.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429152543.png, https://img.fengqigang.cn//img/20210429152543.png 1.5x, https://img.fengqigang.cn//img/20210429152543.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429152543.png"
+        title="https://img.fengqigang.cn//img/20210429152543.png" /></p>
+<h3 id="什么是泛型擦除">什么是泛型擦除?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429155629.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429155629.png, https://img.fengqigang.cn//img/20210429155629.png 1.5x, https://img.fengqigang.cn//img/20210429155629.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429155629.png"
+        title="https://img.fengqigang.cn//img/20210429155629.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429155043.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429155043.png, https://img.fengqigang.cn//img/20210429155043.png 1.5x, https://img.fengqigang.cn//img/20210429155043.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429155043.png"
+        title="https://img.fengqigang.cn//img/20210429155043.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429155444.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429155444.png, https://img.fengqigang.cn//img/20210429155444.png 1.5x, https://img.fengqigang.cn//img/20210429155444.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429155444.png"
+        title="https://img.fengqigang.cn//img/20210429155444.png" /></p>
+<h3 id="泛型可以用int吗">泛型可以用int吗?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429155744.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429155744.png, https://img.fengqigang.cn//img/20210429155744.png 1.5x, https://img.fengqigang.cn//img/20210429155744.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429155744.png"
+        title="https://img.fengqigang.cn//img/20210429155744.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429155826.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429155826.png, https://img.fengqigang.cn//img/20210429155826.png 1.5x, https://img.fengqigang.cn//img/20210429155826.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429155826.png"
+        title="https://img.fengqigang.cn//img/20210429155826.png" /></p>
+<h3 id="自动拆箱装箱">自动拆箱装箱?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429155951.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429155951.png, https://img.fengqigang.cn//img/20210429155951.png 1.5x, https://img.fengqigang.cn//img/20210429155951.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429155951.png"
+        title="https://img.fengqigang.cn//img/20210429155951.png" /></p>
+<h3 id="jvm的协变">jvm的协变?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429160341.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429160341.png, https://img.fengqigang.cn//img/20210429160341.png 1.5x, https://img.fengqigang.cn//img/20210429160341.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429160341.png"
+        title="https://img.fengqigang.cn//img/20210429160341.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429160901.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429160901.png, https://img.fengqigang.cn//img/20210429160901.png 1.5x, https://img.fengqigang.cn//img/20210429160901.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429160901.png"
+        title="https://img.fengqigang.cn//img/20210429160901.png" /></p>
+<h3 id="泛型不允许协变">泛型不允许协变</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429161156.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429161156.png, https://img.fengqigang.cn//img/20210429161156.png 1.5x, https://img.fengqigang.cn//img/20210429161156.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429161156.png"
+        title="https://img.fengqigang.cn//img/20210429161156.png" /></p>
+<h3 id="泛型不允许协变但不想用类似数组的功能">泛型不允许协变，但不想用类似数组的功能?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429161436.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429161436.png, https://img.fengqigang.cn//img/20210429161436.png 1.5x, https://img.fengqigang.cn//img/20210429161436.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429161436.png"
+        title="https://img.fengqigang.cn//img/20210429161436.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429161603.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429161603.png, https://img.fengqigang.cn//img/20210429161603.png 1.5x, https://img.fengqigang.cn//img/20210429161603.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429161603.png"
+        title="https://img.fengqigang.cn//img/20210429161603.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429161705.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429161705.png, https://img.fengqigang.cn//img/20210429161705.png 1.5x, https://img.fengqigang.cn//img/20210429161705.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429161705.png"
+        title="https://img.fengqigang.cn//img/20210429161705.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429162126.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429162126.png, https://img.fengqigang.cn//img/20210429162126.png 1.5x, https://img.fengqigang.cn//img/20210429162126.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429162126.png"
+        title="https://img.fengqigang.cn//img/20210429162126.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429162407.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429162407.png, https://img.fengqigang.cn//img/20210429162407.png 1.5x, https://img.fengqigang.cn//img/20210429162407.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429162407.png"
+        title="https://img.fengqigang.cn//img/20210429162407.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429163933.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429163933.png, https://img.fengqigang.cn//img/20210429163933.png 1.5x, https://img.fengqigang.cn//img/20210429163933.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429163933.png"
+        title="https://img.fengqigang.cn//img/20210429163933.png" /></p>
+<h3 id="什么是-bean-类">什么是 Bean 类?</h3>
+<p>非功能类, 模拟实际中存在的事物</p>
+<h3 id="什么是功能类">什么是功能类?</h3>
+<h3 id="foreach">foreach?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429171119.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429171119.png, https://img.fengqigang.cn//img/20210429171119.png 1.5x, https://img.fengqigang.cn//img/20210429171119.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429171119.png"
+        title="https://img.fengqigang.cn//img/20210429171119.png" /></p>
+<h3 id="可变长参数">可变长参数?</h3>
+<h3 id="java-集合类">java 集合类?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429171648.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429171648.png, https://img.fengqigang.cn//img/20210429171648.png 1.5x, https://img.fengqigang.cn//img/20210429171648.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429171648.png"
+        title="https://img.fengqigang.cn//img/20210429171648.png" /></p>
+<h3 id="线性表的分类">线性表的分类?</h3>
+<p>操作受限</p>
+<h3 id="什么是顺序映像-什么是非顺序映像">什么是顺序映像？ 什么是非顺序映像?</h3>
+<h3 id="栈的概念">栈的概念?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429172823.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429172823.png, https://img.fengqigang.cn//img/20210429172823.png 1.5x, https://img.fengqigang.cn//img/20210429172823.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429172823.png"
+        title="https://img.fengqigang.cn//img/20210429172823.png" /></p>
+<h3 id="如何实现栈数组">如何实现栈(数组)?</h3>
+<ol>
+<li>添加: push</li>
+<li>删除: pop</li>
+<li>查看栈顶元素: peek</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429173755.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429173755.png, https://img.fengqigang.cn//img/20210429173755.png 1.5x, https://img.fengqigang.cn//img/20210429173755.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429173755.png"
+        title="https://img.fengqigang.cn//img/20210429173755.png" /></p>
+<p><strong>构造方法</strong></p>
+<ul>
+<li>无参</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429173841.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429173841.png, https://img.fengqigang.cn//img/20210429173841.png 1.5x, https://img.fengqigang.cn//img/20210429173841.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429173841.png"
+        title="https://img.fengqigang.cn//img/20210429173841.png" /></p>
+<ul>
+<li>有参</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429174111.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429174111.png, https://img.fengqigang.cn//img/20210429174111.png 1.5x, https://img.fengqigang.cn//img/20210429174111.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429174111.png"
+        title="https://img.fengqigang.cn//img/20210429174111.png" /></p>
+<p><strong>push</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429175150.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429175150.png, https://img.fengqigang.cn//img/20210429175150.png 1.5x, https://img.fengqigang.cn//img/20210429175150.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429175150.png"
+        title="https://img.fengqigang.cn//img/20210429175150.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429175204.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429175204.png, https://img.fengqigang.cn//img/20210429175204.png 1.5x, https://img.fengqigang.cn//img/20210429175204.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429175204.png"
+        title="https://img.fengqigang.cn//img/20210429175204.png" /></p>
+<p><strong>pop</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429175602.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429175602.png, https://img.fengqigang.cn//img/20210429175602.png 1.5x, https://img.fengqigang.cn//img/20210429175602.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429175602.png"
+        title="https://img.fengqigang.cn//img/20210429175602.png" /></p>
+<p><strong>peek</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210429175705.png"
+        data-srcset="https://img.fengqigang.cn//img/20210429175705.png, https://img.fengqigang.cn//img/20210429175705.png 1.5x, https://img.fengqigang.cn//img/20210429175705.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210429175705.png"
+        title="https://img.fengqigang.cn//img/20210429175705.png" /></p>
+<h3 id="不能是泛型数组">不能是泛型数组</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day25/" class="prev" rel="prev" title="Day25"><i class="fas fa-angle-left fa-fw"></i>Day25</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.82.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
