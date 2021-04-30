@@ -100,6 +100,34 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day22/">Day22</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-23">2021-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是计算机网络   物理互联
+  软件支持
+  目的: 资源共享 + 信息传递
+  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
+OSI参考模型有几层? 分别是什么? 7 层
+物理层
+数据链路层
+网络层
+传输层
+会话层
+表示层
+应用层
+物联网淑惠试用
+物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
+其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
+物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
+  一个 bit 持续多少纳秒
+  传输是否可以在两个方向同时进行
+  初始连接如何建立，传输结束后之后如何撤销连接
+  规定一个特殊的电信号将普通的数据信号分开来
+数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
+检查数据是否发生差错
+数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
+  流量控制</div><div class="post-footer">
+        <a href="/posts/day22/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day21/">Day21</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-23">2021-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">同步方法中的锁对象是什么? 同步代码块中
 任意java对象
@@ -165,13 +193,6 @@ reader 的继承关系是什么样的? InputStreamReader 的构造方法是什�
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-18">2021-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何实现对 FilterInput 实现装饰器模式, 对接收到的字母转换成小写? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55  public class Demo { public static void main(String[] args) throws IOException { // 方法一:  BufferedInputStream br = new BufferedInputStream(new FileInputStream(&#34;a.</div><div class="post-footer">
         <a href="/posts/day17/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/">第十一章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-18">2021-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">正则表达式与万用字符有什么区别? 万用字符 (wildcard) 代表的是 bash 操作接口的一个功能
-正则表达式则是一种字串处理的表示方式
-如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示, 同时在关键字所在行的前两行与后三行也一起捉出来显示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何捉出 regular_express.txt 中有 the 的行, 并提供行号? 1  grep -n &#39;the&#39; regular_express.txt   如何捉出 regular_express 中没有 the 的行，并提供等行号? 1  grep -vn &#39;the&#39; regular_express.txt   如何捉出 regular_express.</div><div class="post-footer">
-        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

@@ -4,7 +4,22 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 29 Apr 2021 23:33:10 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 30 Apr 2021 22:52:59 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day27</title>
+    <link>http://fengqigang.cn/posts/day27/</link>
+    <pubDate>Fri, 30 Apr 2021 22:52:59 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day27/</guid>
+    <description><![CDATA[MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 编译器实现表达式求值? 中缀表达式 前缀表达式 后缀表达式
+0
+后缀表达式是如何来的求值的? 中缀转后缀？ 前缀表达式是如何来求值的? 队列的概念? 实现一个队列的集合类? 用链表实现队列? 队列的定义
+添加 offer
+删除 poll
+查看队头元素 peek
+如何以循环数组实现队列? 队列的应用? 生产者消费者模式? 什么是中间件? 什么是分布式? 什么是树? 什么是图? 树的术语? 深度 高度  树的度
+图的度
+树的实现? 什么是二叉树?   稀疏树 ###　先序遍历 中序遍历 后序遍历 层级遍历? 遍历? 二叉树的建树? 前序中序建树? 中序后序建树? 前序与中序建树 建树实战? BST? ]]></description>
+</item><item>
     <title>Day26</title>
     <link>http://fengqigang.cn/posts/day26/</link>
     <pubDate>Thu, 29 Apr 2021 23:33:10 &#43;0800</pubDate>
@@ -196,14 +211,5 @@ run 方法执行完之后
 线程之间是共享进程资源的
 一个进程可以有 最少一个线程
 什么是串行, 并行，并发? 串行:]]></description>
-</item><item>
-    <title>Day18</title>
-    <link>http://fengqigang.cn/posts/day18/</link>
-    <pubDate>Mon, 19 Apr 2021 21:57:49 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day18/</guid>
-    <description><![CDATA[为什么要将 FileOutputStream out = null; 放在外面，可以放在 try 语句里面? 不可以
-放在 out 中， 其作用的域只能在 try 中， finally 中的 try 无法使用
-reader 的继承关系是什么样的? InputStreamReader 的构造方法是什么样的? 1 2 3 4 5 6 7 8 9  public class CountNum { public static void main(String[] args) throws IOException { // 第一种构造方法  InputStreamReader in = new InputStreamReader(new FileInputStream(&#34;a.txt&#34;)); // 第二种构造方法  InputStreamReader input = new InputStreamReader(new FileInputStream(&#34;a.txt&#34;), &#34;GBK&#34;); } }   如何使用 InputStreamReader 实现单个 char 的构造方法?]]></description>
 </item></channel>
 </rss>
