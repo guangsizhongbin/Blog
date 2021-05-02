@@ -295,7 +295,7 @@ how many columns of whitespace a <code>tab</code> keypress or a <code>backspace<
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p><a href="https://arisweedler.medium.com/tab-settings-in-vim-1ea0863c5990#:~:text=tabstop%20is%20effectively%20how%20many,a%20backspace%20keypress%20is%20worth." target="_blank" rel="noopener noreffer">Tab settings in Vim</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p><a href="https://arisweedler.medium.com/tab-settings-in-vim-1ea0863c5990#:~:text=tabstop%20is%20effectively%20how%20many,a%20backspace%20keypress%20is%20worth." target="_blank" rel="noopener noreffer">Tab settings in Vim</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>

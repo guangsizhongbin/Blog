@@ -15,9 +15,9 @@
 WebDAV 名称: 坚果云账号邮箱
 WebDAV 密码: 在坚果云中生成的第三方应用密码2
 3. 点击检查&quot;同步配置&quot; BUG 1. Too many requests are received recently 可以将同步的并发连接数调低(调成1后，等一会, 即可)3
-  如何使用WebDAV关联坚果云与Joplin? &#x21a9;&#xfe0e;
- 坚果云第三方应用授权WebDAV开启方法 &#x21a9;&#xfe0e;
- joplin使用坚果云webdav同步时出现以下问题如何解决？ &#x21a9;&#xfe0e;
+  如何使用WebDAV关联坚果云与Joplin?&#160;&#x21a9;&#xfe0e;
+ 坚果云第三方应用授权WebDAV开启方法&#160;&#x21a9;&#xfe0e;
+ joplin使用坚果云webdav同步时出现以下问题如何解决？&#160;&#x21a9;&#xfe0e;
    ]]></description>
 </item></channel>
 </rss>
