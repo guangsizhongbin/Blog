@@ -6,15 +6,17 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Day27 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day27" />
-<meta property="og:description" content="MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 编译器实现表达式求值? 中缀表达式 前缀表达式 后缀表达式
-0
-后缀表达式是如何来的求值的? 中缀转后缀？ 前缀表达式是如何来求值的? 队列的概念? 实现一个队列的集合类? 用链表实现队列? 队列的定义
-添加 offer
-删除 poll
-查看队头元素 peek
-如何以循环数组实现队列? 队列的应用? 生产者消费者模式? 什么是中间件? 什么是分布式? 什么是树? 什么是图? 树的术语? 深度 高度  树的度
-图的度
-树的实现? 什么是二叉树?   稀疏树 ###　先序遍历 中序遍历 后序遍历 层级遍历? 遍历? 二叉树的建树? 前序中序建树? 中序后序建树? 前序与中序建树 建树实战? BST? " />
+<meta property="og:description" content="MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 什么是中缀表达式, 前缀表达式, 后缀表达式? 运算符放到
+中间: 中缀表达式
+之前: 前缀表达式
+后面: 后缀表达式
+(2 * ( 9 &#43; 6 / 3 -5 ) &#43; 4) 转成后缀表达式的过程是什么样的? 从左到右 遍历中缀表达式的每个数字和符号
+若是数字就输出，即成为后缀表达式的一部分
+若是符号，则判断其与栈顶符号的优先级，是右括号或者优先级低于栈顶符号(乘除优先加减)
+则栈顶元素依次出栈并输出，并将当前符号进栈，一直到最终输出后缀表达式为止
+2 - 1 &#43; 3 * 2 -5 转成后缀表达式的结果是什么? 中缀转后缀是 从左往右 扫描
+2 1 - 3 2 * &#43; 5 -
+(1 &#43; (3 * 4) / 6) -5 转成前缀表达式的过程是什么?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/day27/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-30T22:52:59&#43;08:00" />
@@ -22,15 +24,17 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Day27"/>
-<meta name="twitter:description" content="MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 编译器实现表达式求值? 中缀表达式 前缀表达式 后缀表达式
-0
-后缀表达式是如何来的求值的? 中缀转后缀？ 前缀表达式是如何来求值的? 队列的概念? 实现一个队列的集合类? 用链表实现队列? 队列的定义
-添加 offer
-删除 poll
-查看队头元素 peek
-如何以循环数组实现队列? 队列的应用? 生产者消费者模式? 什么是中间件? 什么是分布式? 什么是树? 什么是图? 树的术语? 深度 高度  树的度
-图的度
-树的实现? 什么是二叉树?   稀疏树 ###　先序遍历 中序遍历 后序遍历 层级遍历? 遍历? 二叉树的建树? 前序中序建树? 中序后序建树? 前序与中序建树 建树实战? BST? "/>
+<meta name="twitter:description" content="MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 什么是中缀表达式, 前缀表达式, 后缀表达式? 运算符放到
+中间: 中缀表达式
+之前: 前缀表达式
+后面: 后缀表达式
+(2 * ( 9 &#43; 6 / 3 -5 ) &#43; 4) 转成后缀表达式的过程是什么样的? 从左到右 遍历中缀表达式的每个数字和符号
+若是数字就输出，即成为后缀表达式的一部分
+若是符号，则判断其与栈顶符号的优先级，是右括号或者优先级低于栈顶符号(乘除优先加减)
+则栈顶元素依次出栈并输出，并将当前符号进栈，一直到最终输出后缀表达式为止
+2 - 1 &#43; 3 * 2 -5 转成后缀表达式的结果是什么? 中缀转后缀是 从左往右 扫描
+2 1 - 3 2 * &#43; 5 -
+(1 &#43; (3 * 4) / 6) -5 转成前缀表达式的过程是什么?"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -43,7 +47,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day27\/"
-        },"genre": "posts","keywords": "java","wordcount":  57 ,
+        },"genre": "posts","keywords": "java","wordcount":  898 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day27\/","datePublished": "2021-04-30T22:52:59+08:00","dateModified": "2021-04-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -120,8 +124,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day27</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-30">2021-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;57 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-30">2021-04-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;898 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -135,40 +139,38 @@
         <li><a href="#栈列有什么应用">栈列有什么应用?</a></li>
         <li><a href="#实现renumber方法">实现renumber方法?</a></li>
         <li><a href="#实现括号匹配judgebracket方法">实现括号匹配(judgeBracket)方法?</a></li>
-        <li><a href="#编译器实现表达式求值">编译器实现表达式求值?</a></li>
-        <li><a href="#后缀表达式是如何来的求值的">后缀表达式是如何来的求值的?</a></li>
-        <li><a href="#中缀转后缀">中缀转后缀？</a></li>
-        <li><a href="#前缀表达式是如何来求值的">前缀表达式是如何来求值的?</a></li>
-        <li><a href="#队列的概念">队列的概念?</a></li>
-        <li><a href="#实现一个队列的集合类">实现一个队列的集合类?</a></li>
-        <li><a href="#用链表实现队列">用链表实现队列?</a></li>
-        <li><a href="#如何以循环数组实现队列">如何以循环数组实现队列?</a></li>
-        <li><a href="#队列的应用">队列的应用?</a></li>
-        <li><a href="#生产者消费者模式">生产者消费者模式?</a></li>
-        <li><a href="#什么是中间件">什么是中间件?</a></li>
-        <li><a href="#什么是分布式">什么是分布式?</a></li>
-        <li><a href="#什么是树">什么是树?</a></li>
-        <li><a href="#什么是图">什么是图?</a></li>
-        <li><a href="#树的术语">树的术语?</a></li>
-        <li><a href="#深度">深度</a></li>
-        <li><a href="#高度">高度</a></li>
-        <li><a href="#httpsimgfengqigangcnimg20210430152730png"><img src="https://img.fengqigang.cn//img/20210430152730.png" alt=""></a></li>
-        <li><a href="#树的实现">树的实现?</a></li>
+        <li><a href="#什么是中缀表达式-前缀表达式-后缀表达式">什么是中缀表达式, 前缀表达式, 后缀表达式?</a></li>
+        <li><a href="#2---9--6--3--5---4-转成后缀表达式的过程是什么样的">(2 * ( 9 + 6 / 3 -5 ) + 4) 转成后缀表达式的过程是什么样的?</a></li>
+        <li><a href="#2---1--3--2--5-转成后缀表达式的结果是什么">2 - 1 + 3 * 2 -5 转成后缀表达式的结果是什么?</a></li>
+        <li><a href="#1--3--4--6--5-转成前缀表达式的过程是什么">(1 + (3 * 4) / 6) -5 转成前缀表达式的过程是什么?</a></li>
+        <li><a href="#1--3--4--6----5-转成前缀表达式后的结果是什么">(1 + (3 * 4) / 6 ) - 5 转成前缀表达式后的结果是什么?</a></li>
+        <li><a href="#什么是队列">什么是队列?</a></li>
+        <li><a href="#在用链表实现队列时如何定义一个队列">在用链表实现队列时，如何定义一个队列?</a></li>
+        <li><a href="#如何实现向链表队列中添加结点">如何实现向链表队列中添加结点?</a></li>
+        <li><a href="#如何实现向链表队列中删除结点">如何实现向链表队列中删除结点?</a></li>
+        <li><a href="#如何实现向链表队列中查看队头元素">如何实现向链表队列中查看队头元素?</a></li>
+        <li><a href="#如何用数组定义一个队列">如何用数组定义一个队列?</a></li>
+        <li><a href="#用数组定义的队列如何实现增加结点">用数组定义的队列，如何实现增加结点?</a></li>
+        <li><a href="#用数组定义的队列如何实现弹出结点">用数组定义的队列，如何实现弹出结点?</a></li>
+        <li><a href="#用数组定义的队列如何实现查看队头元素">用数组定义的队列，如何实现查看队头元素?</a></li>
+        <li><a href="#队列有什么应用">队列有什么应用?</a></li>
+        <li><a href="#什么是ni的深度-根的深度为多少">什么是ni的深度? 根的深度为多少?</a></li>
+        <li><a href="#什么是ni的高度-所有的树叶高是多少">什么是ni的高度? 所有的树叶高是多少?</a></li>
+        <li><a href="#为什么一颗树有-n-个结点-那么它有-n-1-条边">为什么一颗树有 n 个结点， 那么它有 n-1 条边?</a></li>
         <li><a href="#什么是二叉树">什么是二叉树?</a></li>
-        <li><a href="#httpsimgfengqigangcnimg20210430160516png"><img src="https://img.fengqigang.cn//img/20210430160516.png" alt=""></a></li>
-        <li><a href="#httpsimgfengqigangcnimg20210430161017png"><img src="https://img.fengqigang.cn//img/20210430161017.png" alt=""></a></li>
-        <li><a href="#稀疏树">稀疏树</a></li>
-        <li><a href="#先序遍历">先序遍历</a></li>
-        <li><a href="#中序遍历">中序遍历</a></li>
-        <li><a href="#后序遍历">后序遍历</a></li>
-        <li><a href="#层级遍历">层级遍历?</a></li>
-        <li><a href="#遍历">遍历?</a></li>
-        <li><a href="#二叉树的建树">二叉树的建树?</a></li>
-        <li><a href="#前序中序建树">前序中序建树?</a></li>
-        <li><a href="#中序后序建树">中序后序建树?</a></li>
-        <li><a href="#前序与中序建树">前序与中序建树</a></li>
-        <li><a href="#建树实战">建树实战?</a></li>
-        <li><a href="#bst">BST?</a></li>
+        <li><a href="#完美二叉树既是完全二叉树又是满二叉树吗20210503204422httpsimgfengqigangcnimg20210503204422png">完美二叉树既是完全二叉树又是满二叉树吗?<img src="https://img.fengqigang.cn//img/20210503204422.png" alt="20210503204422"></a></li>
+        <li><a href="#如果一颗树既是完全二叉树又是满二叉树那么它是完美二叉树吗20210503204422httpsimgfengqigangcnimg20210503204422png">如果一颗树既是完全二叉树又是满二叉树，那么它是完美二叉树吗?<img src="https://img.fengqigang.cn//img/20210503204422.png" alt="20210503204422"></a></li>
+        <li><a href="#二叉树在第-i-层至多有多少个节点">二叉树在第 i 层至多有多少个节点?</a></li>
+        <li><a href="#层次为k的二叉树至多有多少个节点">层次为k的二叉树至多有多少个节点?</a></li>
+        <li><a href="#对于任何一颗二叉树-t-如果其叶子节点数为-n0-度为2-的节点数为-n2-则n0与n2存在什么样的关系">对于任何一颗二叉树 T, 如果其叶子节点数为 n0, 度为2 的节点数为 n2, 则n0与n2存在什么样的关系?</a></li>
+        <li><a href="#具有n个节点的完全二叉树树的高度为多少">具有n个节点的完全二叉树，树的高度为多少?</a></li>
+        <li><a href="#以根-左-右这三种方式遍历树有多少种情况">以根, 左, 右这三种方式遍历树，有多少种情况?</a></li>
+        <li><a href="#什么是先序遍历-中序遍历后序遍历">什么是先序遍历, 中序遍历，后序遍历?</a></li>
+        <li><a href="#20210503210638httpsimgfengqigangcnimg20210503210638png-其先序遍历中序遍历-后序遍历的结果是什么"><img src="https://img.fengqigang.cn//img/20210503210638.png" alt="20210503210638"> 其先序遍历，中序遍历， 后序遍历的结果是什么?</a></li>
+        <li><a href="#前序遍历后序遍历中序遍历分别能确定什么">前序遍历，后序遍历，中序遍历分别能确定什么?</a></li>
+        <li><a href="#任意去两个遍历序列-都可以建树吗">任意去两个遍历序列, 都可以建树吗?</a></li>
+        <li><a href="#二叉树的先序遍历-abdecfg-中序遍历-dbeafgc-试求它的后序遍历">二叉树的先序遍历 ABDECFG, 中序遍历 DBEAFGC, 试求它的后序遍历?</a></li>
+        <li><a href="#什么是二叉搜索树">什么是二叉搜索树?</a></li>
       </ul>
     </li>
   </ul>
@@ -201,28 +203,27 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210430101704.png"
         title="https://img.fengqigang.cn//img/20210430101704.png" /></p>
-<h3 id="编译器实现表达式求值">编译器实现表达式求值?</h3>
-<p>中缀表达式
-前缀表达式
-后缀表达式</p>
+<h3 id="什么是中缀表达式-前缀表达式-后缀表达式">什么是中缀表达式, 前缀表达式, 后缀表达式?</h3>
+<p>运算符放到</p>
+<p><strong>中间</strong>: 中缀表达式</p>
+<p><strong>之前</strong>: 前缀表达式</p>
+<p><strong>后面</strong>: 后缀表达式</p>
+<h3 id="2---9--6--3--5---4-转成后缀表达式的过程是什么样的">(2 * ( 9 + 6 / 3 -5 ) + 4) 转成后缀表达式的过程是什么样的?</h3>
+<p><strong>从左到右</strong> 遍历中缀表达式的每个数字和符号</p>
+<p>若是数字就输出，即成为后缀表达式的一部分</p>
+<p>若是符号，则判断其与栈顶符号的优先级，是右括号或者优先级低于栈顶符号(乘除优先加减)</p>
+<p>则栈顶元素依次出栈并输出，并将当前符号进栈，一直到最终输出后缀表达式为止</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430102345.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430102345.png, https://img.fengqigang.cn//img/20210430102345.png 1.5x, https://img.fengqigang.cn//img/20210430102345.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503183651.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503183651.png, https://img.fengqigang.cn//img/20210503183651.png 1.5x, https://img.fengqigang.cn//img/20210503183651.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430102345.png"
-        title="https://img.fengqigang.cn//img/20210430102345.png" />0</p>
-<h3 id="后缀表达式是如何来的求值的">后缀表达式是如何来的求值的?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430102700.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430102700.png, https://img.fengqigang.cn//img/20210430102700.png 1.5x, https://img.fengqigang.cn//img/20210430102700.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430102700.png"
-        title="https://img.fengqigang.cn//img/20210430102700.png" /></p>
-<h3 id="中缀转后缀">中缀转后缀？</h3>
+        alt="https://img.fengqigang.cn//img/20210503183651.png"
+        title="20210503183651" /></p>
+<h3 id="2---1--3--2--5-转成后缀表达式的结果是什么">2 - 1 + 3 * 2 -5 转成后缀表达式的结果是什么?</h3>
+<p>中缀转后缀是 <strong>从左往右</strong> 扫描</p>
+<p>2 1  - 3 2 * + 5 -</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -231,88 +232,382 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210430102809.png"
         title="https://img.fengqigang.cn//img/20210430102809.png" /></p>
-<h3 id="前缀表达式是如何来求值的">前缀表达式是如何来求值的?</h3>
+<h3 id="1--3--4--6--5-转成前缀表达式的过程是什么">(1 + (3 * 4) / 6) -5 转成前缀表达式的过程是什么?</h3>
+<ol>
+<li>
+<p>初始化两个栈: 运算符栈 <code>S1</code>, 操作数栈 <code>S2</code></p>
+</li>
+<li>
+<p>从右至左扫描中缀表达式</p>
+</li>
+<li>
+<p>遇到 <code>操作数</code> 时, 将其压入 <code>S2</code></p>
+</li>
+<li>
+<p>遇到 <code>运算数</code> 时, 比较其与 <code>S1</code> 栈顶运算符的优先级</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>如果 <code>S1</code> 为空, 或栈顶运算符为右括号 <code>)</code>, 或其优先及比栈顶运算符的优先级较高或相等，则直接将 <code>此运算符</code> 入栈</p>
+</li>
+<li>
+<p>否则， 将 <code>S1</code> 栈顶的运算符弹出并压入到 <code>S2</code> 中， 再次进行与 <code>S1</code> 栈顶运算符的优先级比较</p>
+</li>
+</ul>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430103007.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430103007.png, https://img.fengqigang.cn//img/20210430103007.png 1.5x, https://img.fengqigang.cn//img/20210430103007.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503190950.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503190950.png, https://img.fengqigang.cn//img/20210503190950.png 1.5x, https://img.fengqigang.cn//img/20210503190950.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430103007.png"
-        title="https://img.fengqigang.cn//img/20210430103007.png" /></p>
-<h3 id="队列的概念">队列的概念?</h3>
+        alt="https://img.fengqigang.cn//img/20210503190950.png"
+        title="20210503190950" /></p>
+<p>然后将其弹出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">- + 1 / * 3 4 6 5
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="1--3--4--6----5-转成前缀表达式后的结果是什么">(1 + (3 * 4) / 6 ) - 5 转成前缀表达式后的结果是什么?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">- + 1 / * 3 4 6 5
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="什么是队列">什么是队列?</h3>
+<p>是一种 &ldquo;操作受限&rdquo; 的线性表</p>
+<p>体现在一端插入数据在另一端删除数据</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430104954.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430104954.png, https://img.fengqigang.cn//img/20210430104954.png 1.5x, https://img.fengqigang.cn//img/20210430104954.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503191715.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503191715.png, https://img.fengqigang.cn//img/20210503191715.png 1.5x, https://img.fengqigang.cn//img/20210503191715.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430104954.png"
-        title="https://img.fengqigang.cn//img/20210430104954.png" /></p>
-<h3 id="实现一个队列的集合类">实现一个队列的集合类?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430105156.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430105156.png, https://img.fengqigang.cn//img/20210430105156.png 1.5x, https://img.fengqigang.cn//img/20210430105156.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430105156.png"
-        title="https://img.fengqigang.cn//img/20210430105156.png" /></p>
-<h3 id="用链表实现队列">用链表实现队列?</h3>
-<p><strong>队列的定义</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430105500.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430105500.png, https://img.fengqigang.cn//img/20210430105500.png 1.5x, https://img.fengqigang.cn//img/20210430105500.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430105500.png"
-        title="https://img.fengqigang.cn//img/20210430105500.png" /></p>
-<p><strong>添加 offer</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430110004.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430110004.png, https://img.fengqigang.cn//img/20210430110004.png 1.5x, https://img.fengqigang.cn//img/20210430110004.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430110004.png"
-        title="https://img.fengqigang.cn//img/20210430110004.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210503191715.png"
+        title="20210503191715" /></p>
+<h3 id="在用链表实现队列时如何定义一个队列">在用链表实现队列时，如何定义一个队列?</h3>
+<p><strong>队头</strong></p>
+<p><strong>队尾</strong></p>
+<p><strong>队长度</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyLinkedQueue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="n">Node</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// 队头
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Node</span> <span class="n">end</span><span class="o">;</span> <span class="c1">// 队尾
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+
+    <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+        <span class="n">T</span> <span class="n">value</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">,</span> <span class="n">Node</span> <span class="n">next</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">next</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现向链表队列中添加结点">如何实现向链表队列中添加结点?</h3>
+<p>添加结点为 <strong>offer</strong></p>
+<ol>
+<li>判断链表是否空</li>
+</ol>
+<ul>
+<li>
+<p>为空， 添加至队头, head = end</p>
+</li>
+<li>
+<p>不为空，添加至end, end后移</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">offer</span><span class="o">(</span><span class="n">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 如果原队列为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">t</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">++;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 如果原出队列不为空
+</span><span class="c1"></span>        <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">t</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// end 后移
+</span><span class="c1"></span>        <span class="n">size</span><span class="o">++;</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现向链表队列中删除结点">如何实现向链表队列中删除结点?</h3>
 <p><strong>删除 poll</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430110307.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430110307.png, https://img.fengqigang.cn//img/20210430110307.png 1.5x, https://img.fengqigang.cn//img/20210430110307.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430110307.png"
-        title="https://img.fengqigang.cn//img/20210430110307.png" /></p>
+<ol>
+<li>判断链表是否空</li>
+</ol>
+<ul>
+<li>
+<p>为空抛出异常</p>
+</li>
+<li>
+<p>只有一个结点</p>
+</li>
+<li>
+<p>不只有一个结点</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">T</span> <span class="nf">poll</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 链表为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;queue is empty&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 链表中只有一个元素
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">T</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 链表中不止一个元素
+</span><span class="c1"></span>            <span class="n">T</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="n">end</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现向链表队列中查看队头元素">如何实现向链表队列中查看队头元素?</h3>
 <p><strong>查看队头元素 peek</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430110320.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430110320.png, https://img.fengqigang.cn//img/20210430110320.png 1.5x, https://img.fengqigang.cn//img/20210430110320.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430110320.png"
-        title="https://img.fengqigang.cn//img/20210430110320.png" /></p>
-<h3 id="如何以循环数组实现队列">如何以循环数组实现队列?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430110929.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430110929.png, https://img.fengqigang.cn//img/20210430110929.png 1.5x, https://img.fengqigang.cn//img/20210430110929.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430110929.png"
-        title="https://img.fengqigang.cn//img/20210430110929.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430111322.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430111322.png, https://img.fengqigang.cn//img/20210430111322.png 1.5x, https://img.fengqigang.cn//img/20210430111322.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430111322.png"
-        title="https://img.fengqigang.cn//img/20210430111322.png" /></p>
-<p><img
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">T</span> <span class="nf">peek</span><span class="o">(){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;queue is Empty&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">head</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何用数组定义一个队列">如何用数组定义一个队列?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyArrayQueue</span> <span class="o">{</span>
+    <span class="n">Object</span> <span class="n">objs</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">INIT_CAPACITY</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+    <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX_CAPACITY</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">-</span> <span class="n">8</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MyArrayQueue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">objs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">INIT_CAPACITY</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">MyArrayQueue</span><span class="o">(</span><span class="kt">int</span> <span class="n">initCapacity</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">initCapacity</span> <span class="o">&lt;=</span> <span class="n">0</span> <span class="o">||</span> <span class="n">initCapacity</span> <span class="o">&gt;</span> <span class="n">MAX_CAPACITY</span><span class="o">)</span>
+            <span class="n">objs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">initCapacity</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="用数组定义的队列如何实现增加结点">用数组定义的队列，如何实现增加结点?</h3>
+<p><strong>offer</strong></p>
+<ol>
+<li>判断数组是否满?
+<ul>
+<li>已满
+<ul>
+<li>获取新的才度
+- 判断长度是否溢出</li>
+<li>新建一个数组</li>
+</ul>
+</li>
+<li>未满
+- 原队列是否为空</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">offer</span><span class="o">(</span><span class="n">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 判断数组是否满?
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">newLen</span> <span class="o">=</span> <span class="n">getLen</span><span class="o">();</span>
+            <span class="n">grow</span><span class="o">(</span><span class="n">newLen</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">// 如果原队列为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">objs</span><span class="o">[</span><span class="n">head</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">++;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="o">(</span><span class="n">end</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+            <span class="n">objs</span><span class="o">[</span><span class="n">end</span><span class="o">]</span> <span class="o">=</span> <span class="n">t</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">++;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">grow</span><span class="o">(</span><span class="kt">int</span> <span class="n">newLen</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">newArr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">newLen</span><span class="o">];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">head</span> <span class="o">+</span> <span class="n">i</span><span class="o">)</span> <span class="o">%</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+            <span class="n">newArr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">objs</span><span class="o">[</span><span class="n">index</span><span class="o">];</span>
+        <span class="o">}</span>
+        <span class="n">objs</span> <span class="o">=</span> <span class="n">newArr</span><span class="o">;</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">getLen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">oldLen</span> <span class="o">=</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">newLen</span> <span class="o">=</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span> <span class="o">&lt;&lt;</span> <span class="n">1</span><span class="o">;</span>
+
+        <span class="c1">// 判断数据是否溢出
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">newLen</span> <span class="o">&gt;=</span> <span class="n">MAX_CAPACITY</span> <span class="o">||</span> <span class="n">newLen</span> <span class="o">&lt;=</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">newLen</span> <span class="o">=</span> <span class="n">MAX_CAPACITY</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 如果新长度和旧长度一样
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">oldLen</span> <span class="o">==</span> <span class="n">newLen</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;stack can not add&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">newLen</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://img.fengqigang.cn//img/20210430112105.png"
@@ -320,332 +615,147 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210430112105.png"
         title="https://img.fengqigang.cn//img/20210430112105.png" /></p>
+<h3 id="用数组定义的队列如何实现弹出结点">用数组定义的队列，如何实现弹出结点?</h3>
+<p><strong>poll</strong></p>
+<ul>
+<li>队列是否为空
+- 是否只有一个元素</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">T</span> <span class="nf">poll</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;queue is Empty&#34;</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 原队列只有一个元素 
+</span><span class="c1"></span>            <span class="n">T</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span> <span class="n">objs</span><span class="o">[</span><span class="n">head</span><span class="o">];</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 队列中超过一个元素 
+</span><span class="c1"></span>            <span class="n">T</span> <span class="n">oldValue</span> <span class="o">=</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span> <span class="n">objs</span><span class="o">[</span><span class="n">head</span><span class="o">];</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="o">(</span><span class="n">head</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">%</span> <span class="n">objs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="n">oldValue</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="用数组定义的队列如何实现查看队头元素">用数组定义的队列，如何实现查看队头元素?</h3>
+<p><strong>peek</strong></p>
+<ul>
+<li>队列是否为空</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">T</span> <span class="nf">peek</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;queue is Empty&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">T</span><span class="o">)</span> <span class="n">objs</span><span class="o">[</span><span class="n">head</span><span class="o">];</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="队列有什么应用">队列有什么应用?</h3>
+<p>普通的队列的应用场景是很有限的， 一般在工程中用到的是 <strong>阻塞队列</strong></p>
+<p><strong>阻塞队列</strong>: 常用于生产者 - 消费者模型中</p>
+<p>当队列满的时候, 入队列就阻塞</p>
+<p>当队列空的时候，出队列就阻塞</p>
+<h3 id="什么是ni的深度-根的深度为多少">什么是ni的深度? 根的深度为多少?</h3>
+<p>对于任意结点 ni, ni 的深度为从根到 ni 的唯一路径的长</p>
+<p>根的深度为0</p>
+<h3 id="什么是ni的高度-所有的树叶高是多少">什么是ni的高度? 所有的树叶高是多少?</h3>
+<p>ni 的高是从ni 到一片树叶的最长路径的长</p>
+<p>所有树叶的高都为0</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430112209.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430112209.png, https://img.fengqigang.cn//img/20210430112209.png 1.5x, https://img.fengqigang.cn//img/20210430112209.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503203802.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503203802.png, https://img.fengqigang.cn//img/20210503203802.png 1.5x, https://img.fengqigang.cn//img/20210503203802.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430112209.png"
-        title="https://img.fengqigang.cn//img/20210430112209.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430112952.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430112952.png, https://img.fengqigang.cn//img/20210430112952.png 1.5x, https://img.fengqigang.cn//img/20210430112952.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430112952.png"
-        title="https://img.fengqigang.cn//img/20210430112952.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430113227.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430113227.png, https://img.fengqigang.cn//img/20210430113227.png 1.5x, https://img.fengqigang.cn//img/20210430113227.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430113227.png"
-        title="https://img.fengqigang.cn//img/20210430113227.png" /></p>
-<h3 id="队列的应用">队列的应用?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430114308.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430114308.png, https://img.fengqigang.cn//img/20210430114308.png 1.5x, https://img.fengqigang.cn//img/20210430114308.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430114308.png"
-        title="https://img.fengqigang.cn//img/20210430114308.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430113501.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430113501.png, https://img.fengqigang.cn//img/20210430113501.png 1.5x, https://img.fengqigang.cn//img/20210430113501.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430113501.png"
-        title="https://img.fengqigang.cn//img/20210430113501.png" /></p>
-<h3 id="生产者消费者模式">生产者消费者模式?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430113806.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430113806.png, https://img.fengqigang.cn//img/20210430113806.png 1.5x, https://img.fengqigang.cn//img/20210430113806.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430113806.png"
-        title="https://img.fengqigang.cn//img/20210430113806.png" /></p>
-<h3 id="什么是中间件">什么是中间件?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430115131.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430115131.png, https://img.fengqigang.cn//img/20210430115131.png 1.5x, https://img.fengqigang.cn//img/20210430115131.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430115131.png"
-        title="https://img.fengqigang.cn//img/20210430115131.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430143446.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430143446.png, https://img.fengqigang.cn//img/20210430143446.png 1.5x, https://img.fengqigang.cn//img/20210430143446.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430143446.png"
-        title="https://img.fengqigang.cn//img/20210430143446.png" /></p>
-<h3 id="什么是分布式">什么是分布式?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430144828.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430144828.png, https://img.fengqigang.cn//img/20210430144828.png 1.5x, https://img.fengqigang.cn//img/20210430144828.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430144828.png"
-        title="https://img.fengqigang.cn//img/20210430144828.png" /></p>
-<h3 id="什么是树">什么是树?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430145131.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430145131.png, https://img.fengqigang.cn//img/20210430145131.png 1.5x, https://img.fengqigang.cn//img/20210430145131.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430145131.png"
-        title="https://img.fengqigang.cn//img/20210430145131.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430151044.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430151044.png, https://img.fengqigang.cn//img/20210430151044.png 1.5x, https://img.fengqigang.cn//img/20210430151044.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430151044.png"
-        title="https://img.fengqigang.cn//img/20210430151044.png" /></p>
-<h3 id="什么是图">什么是图?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430151343.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430151343.png, https://img.fengqigang.cn//img/20210430151343.png 1.5x, https://img.fengqigang.cn//img/20210430151343.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430151343.png"
-        title="https://img.fengqigang.cn//img/20210430151343.png" /></p>
-<h3 id="树的术语">树的术语?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430151935.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430151935.png, https://img.fengqigang.cn//img/20210430151935.png 1.5x, https://img.fengqigang.cn//img/20210430151935.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430151935.png"
-        title="https://img.fengqigang.cn//img/20210430151935.png" /></p>
-<h3 id="深度">深度</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430151925.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430151925.png, https://img.fengqigang.cn//img/20210430151925.png 1.5x, https://img.fengqigang.cn//img/20210430151925.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430151925.png"
-        title="https://img.fengqigang.cn//img/20210430151925.png" /></p>
-<h3 id="高度">高度</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430152228.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430152228.png, https://img.fengqigang.cn//img/20210430152228.png 1.5x, https://img.fengqigang.cn//img/20210430152228.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430152228.png"
-        title="https://img.fengqigang.cn//img/20210430152228.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430152450.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430152450.png, https://img.fengqigang.cn//img/20210430152450.png 1.5x, https://img.fengqigang.cn//img/20210430152450.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430152450.png"
-        title="https://img.fengqigang.cn//img/20210430152450.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430152544.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430152544.png, https://img.fengqigang.cn//img/20210430152544.png 1.5x, https://img.fengqigang.cn//img/20210430152544.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430152544.png"
-        title="https://img.fengqigang.cn//img/20210430152544.png" /></p>
-<h3 id="httpsimgfengqigangcnimg20210430152730png"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430152730.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430152730.png, https://img.fengqigang.cn//img/20210430152730.png 1.5x, https://img.fengqigang.cn//img/20210430152730.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430152730.png"
-        title="https://img.fengqigang.cn//img/20210430152730.png" /></h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430152913.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430152913.png, https://img.fengqigang.cn//img/20210430152913.png 1.5x, https://img.fengqigang.cn//img/20210430152913.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430152913.png"
-        title="https://img.fengqigang.cn//img/20210430152913.png" /></p>
-<p>树的度</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430153118.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430153118.png, https://img.fengqigang.cn//img/20210430153118.png 1.5x, https://img.fengqigang.cn//img/20210430153118.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430153118.png"
-        title="https://img.fengqigang.cn//img/20210430153118.png" /></p>
-<p>图的度</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430153118.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430153118.png, https://img.fengqigang.cn//img/20210430153118.png 1.5x, https://img.fengqigang.cn//img/20210430153118.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430153118.png"
-        title="https://img.fengqigang.cn//img/20210430153118.png" /></p>
-<h3 id="树的实现">树的实现?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430155524.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430155524.png, https://img.fengqigang.cn//img/20210430155524.png 1.5x, https://img.fengqigang.cn//img/20210430155524.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430155524.png"
-        title="https://img.fengqigang.cn//img/20210430155524.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430155902.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430155902.png, https://img.fengqigang.cn//img/20210430155902.png 1.5x, https://img.fengqigang.cn//img/20210430155902.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430155902.png"
-        title="https://img.fengqigang.cn//img/20210430155902.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430160339.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430160339.png, https://img.fengqigang.cn//img/20210430160339.png 1.5x, https://img.fengqigang.cn//img/20210430160339.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430160339.png"
-        title="https://img.fengqigang.cn//img/20210430160339.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210503203802.png"
+        title="20210503203802" /></p>
+<h3 id="为什么一颗树有-n-个结点-那么它有-n-1-条边">为什么一颗树有 n 个结点， 那么它有 n-1 条边?</h3>
+<p>每一结点都有一个边指向它</p>
+<p>每一条边都指向一个结点</p>
 <h3 id="什么是二叉树">什么是二叉树?</h3>
+<p>一个树，一个结点最多有两个孩子，孩子有严格的左右之分</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430155943.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430155943.png, https://img.fengqigang.cn//img/20210430155943.png 1.5x, https://img.fengqigang.cn//img/20210430155943.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503204422.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503204422.png, https://img.fengqigang.cn//img/20210503204422.png 1.5x, https://img.fengqigang.cn//img/20210503204422.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430155943.png"
-        title="https://img.fengqigang.cn//img/20210430155943.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210503204422.png"
+        title="20210503204422" /></p>
+<h3 id="完美二叉树既是完全二叉树又是满二叉树吗20210503204422httpsimgfengqigangcnimg20210503204422png">完美二叉树既是完全二叉树又是满二叉树吗?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503204422.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503204422.png, https://img.fengqigang.cn//img/20210503204422.png 1.5x, https://img.fengqigang.cn//img/20210503204422.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503204422.png"
+        title="20210503204422" /></h3>
+<p>是</p>
+<h3 id="如果一颗树既是完全二叉树又是满二叉树那么它是完美二叉树吗20210503204422httpsimgfengqigangcnimg20210503204422png">如果一颗树既是完全二叉树又是满二叉树，那么它是完美二叉树吗?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503204422.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503204422.png, https://img.fengqigang.cn//img/20210503204422.png 1.5x, https://img.fengqigang.cn//img/20210503204422.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503204422.png"
+        title="20210503204422" /></h3>
+<p>不是</p>
+<h3 id="二叉树在第-i-层至多有多少个节点">二叉树在第 i 层至多有多少个节点?</h3>
+<p>至多有 2的(i-1) 方个节点</p>
+<h3 id="层次为k的二叉树至多有多少个节点">层次为k的二叉树至多有多少个节点?</h3>
+<p>1 + 2 + 4 + &hellip; + 2的(i - 1)次方 = 2的i次方 - 1</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430160211.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430160211.png, https://img.fengqigang.cn//img/20210430160211.png 1.5x, https://img.fengqigang.cn//img/20210430160211.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503205134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503205134.png, https://img.fengqigang.cn//img/20210503205134.png 1.5x, https://img.fengqigang.cn//img/20210503205134.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430160211.png"
-        title="https://img.fengqigang.cn//img/20210430160211.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430160409.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430160409.png, https://img.fengqigang.cn//img/20210430160409.png 1.5x, https://img.fengqigang.cn//img/20210430160409.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430160409.png"
-        title="https://img.fengqigang.cn//img/20210430160409.png" /></p>
-<h3 id="httpsimgfengqigangcnimg20210430160516png"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430160516.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430160516.png, https://img.fengqigang.cn//img/20210430160516.png 1.5x, https://img.fengqigang.cn//img/20210430160516.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430160516.png"
-        title="https://img.fengqigang.cn//img/20210430160516.png" /></h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430161002.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430161002.png, https://img.fengqigang.cn//img/20210430161002.png 1.5x, https://img.fengqigang.cn//img/20210430161002.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430161002.png"
-        title="https://img.fengqigang.cn//img/20210430161002.png" /></p>
-<h3 id="httpsimgfengqigangcnimg20210430161017png"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430161017.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430161017.png, https://img.fengqigang.cn//img/20210430161017.png 1.5x, https://img.fengqigang.cn//img/20210430161017.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430161017.png"
-        title="https://img.fengqigang.cn//img/20210430161017.png" /></h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430161149.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430161149.png, https://img.fengqigang.cn//img/20210430161149.png 1.5x, https://img.fengqigang.cn//img/20210430161149.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430161149.png"
-        title="https://img.fengqigang.cn//img/20210430161149.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430161309.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430161309.png, https://img.fengqigang.cn//img/20210430161309.png 1.5x, https://img.fengqigang.cn//img/20210430161309.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430161309.png"
-        title="https://img.fengqigang.cn//img/20210430161309.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430161459.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430161459.png, https://img.fengqigang.cn//img/20210430161459.png 1.5x, https://img.fengqigang.cn//img/20210430161459.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430161459.png"
-        title="https://img.fengqigang.cn//img/20210430161459.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430161519.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430161519.png, https://img.fengqigang.cn//img/20210430161519.png 1.5x, https://img.fengqigang.cn//img/20210430161519.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430161519.png"
-        title="https://img.fengqigang.cn//img/20210430161519.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430162136.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430162136.png, https://img.fengqigang.cn//img/20210430162136.png 1.5x, https://img.fengqigang.cn//img/20210430162136.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430162136.png"
-        title="https://img.fengqigang.cn//img/20210430162136.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430163114.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430163114.png, https://img.fengqigang.cn//img/20210430163114.png 1.5x, https://img.fengqigang.cn//img/20210430163114.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430163114.png"
-        title="https://img.fengqigang.cn//img/20210430163114.png" /></p>
-<h3 id="稀疏树">稀疏树</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430162124.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430162124.png, https://img.fengqigang.cn//img/20210430162124.png 1.5x, https://img.fengqigang.cn//img/20210430162124.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430162124.png"
-        title="https://img.fengqigang.cn//img/20210430162124.png" /></p>
-<p>###　<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430163236.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430163236.png, https://img.fengqigang.cn//img/20210430163236.png 1.5x, https://img.fengqigang.cn//img/20210430163236.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430163236.png"
-        title="https://img.fengqigang.cn//img/20210430163236.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430163258.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430163258.png, https://img.fengqigang.cn//img/20210430163258.png 1.5x, https://img.fengqigang.cn//img/20210430163258.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430163258.png"
-        title="https://img.fengqigang.cn//img/20210430163258.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210503205134.png"
+        title="20210503205134" /></p>
+<h3 id="对于任何一颗二叉树-t-如果其叶子节点数为-n0-度为2-的节点数为-n2-则n0与n2存在什么样的关系">对于任何一颗二叉树 T, 如果其叶子节点数为 n0, 度为2 的节点数为 n2, 则n0与n2存在什么样的关系?</h3>
+<p><strong>边数 = 节点数 - 1</strong></p>
+<p>边数(从上向下) = n1 + 2n2</p>
+<p>边数(从下往上) = n0 + n1 + n2 -1(去掉根)</p>
+<p><strong>叶子结点的个数比度为2的结点的个数多1个</strong></p>
+<p><strong>n0 = n2 + 1</strong></p>
+<h3 id="具有n个节点的完全二叉树树的高度为多少">具有n个节点的完全二叉树，树的高度为多少?</h3>
+<p>log2n 向下取整</p>
+<p>1 + 2 + 4 + &hellip; + 2的(i - 1)次方 = 2的i次方 - 1</p>
+<h3 id="以根-左-右这三种方式遍历树有多少种情况">以根, 左, 右这三种方式遍历树，有多少种情况?</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -654,161 +764,45 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210430163810.png"
         title="https://img.fengqigang.cn//img/20210430163810.png" /></p>
-<h3 id="先序遍历">先序遍历</h3>
+<h3 id="什么是先序遍历-中序遍历后序遍历">什么是先序遍历, 中序遍历，后序遍历?</h3>
+<p><strong>先序遍历</strong>: 先遍历根结点， 再遍历左子树, 再遍历右子树</p>
+<p><strong>中序遍历</strong>: 先遍历左子树， 再遍历根结点, 再遍历右子树</p>
+<p><strong>后序遍历</strong>: 先遍历左子树， 再遍历右子树, 再遍历根结点</p>
+<h3 id="20210503210638httpsimgfengqigangcnimg20210503210638png-其先序遍历中序遍历-后序遍历的结果是什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503210638.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503210638.png, https://img.fengqigang.cn//img/20210503210638.png 1.5x, https://img.fengqigang.cn//img/20210503210638.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503210638.png"
+        title="20210503210638" /> 其先序遍历，中序遍历， 后序遍历的结果是什么?</h3>
+<p>先序遍历:</p>
+<p>A B D C E F</p>
+<p>中序遍历:</p>
+<p>B D A E F C</p>
+<p>后序遍历:</p>
+<p>D B F E C A</p>
+<h3 id="前序遍历后序遍历中序遍历分别能确定什么">前序遍历，后序遍历，中序遍历分别能确定什么?</h3>
+<p>前序: 第一个元素是根</p>
+<p>后序: 最后一个元素是根</p>
+<p>中序: 如果知道根，根的左边序列是左子树结点， 右边序列是右子树结点</p>
+<h3 id="任意去两个遍历序列-都可以建树吗">任意去两个遍历序列, 都可以建树吗?</h3>
+<p>前序 + 中序, 可以，<strong>前序可以确定根节点， 中序可以根据根节点划分左右子树</strong></p>
+<p>后序 + 中序, 可以，<strong>后序可以确定根节点， 中序可以根据根节点划分左右子树</strong></p>
+<p>前序 + 后序, 不可以，<strong>都只能确定根节点</strong></p>
+<h3 id="二叉树的先序遍历-abdecfg-中序遍历-dbeafgc-试求它的后序遍历">二叉树的先序遍历 ABDECFG, 中序遍历 DBEAFGC, 试求它的后序遍历?</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430164455.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430164455.png, https://img.fengqigang.cn//img/20210430164455.png 1.5x, https://img.fengqigang.cn//img/20210430164455.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210503211805.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503211805.png, https://img.fengqigang.cn//img/20210503211805.png 1.5x, https://img.fengqigang.cn//img/20210503211805.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430164455.png"
-        title="https://img.fengqigang.cn//img/20210430164455.png" /></p>
-<h3 id="中序遍历">中序遍历</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430164509.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430164509.png, https://img.fengqigang.cn//img/20210430164509.png 1.5x, https://img.fengqigang.cn//img/20210430164509.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430164509.png"
-        title="https://img.fengqigang.cn//img/20210430164509.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430171800.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430171800.png, https://img.fengqigang.cn//img/20210430171800.png 1.5x, https://img.fengqigang.cn//img/20210430171800.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430171800.png"
-        title="https://img.fengqigang.cn//img/20210430171800.png" /></p>
-<h3 id="后序遍历">后序遍历</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430164518.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430164518.png, https://img.fengqigang.cn//img/20210430164518.png 1.5x, https://img.fengqigang.cn//img/20210430164518.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430164518.png"
-        title="https://img.fengqigang.cn//img/20210430164518.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430172112.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430172112.png, https://img.fengqigang.cn//img/20210430172112.png 1.5x, https://img.fengqigang.cn//img/20210430172112.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430172112.png"
-        title="https://img.fengqigang.cn//img/20210430172112.png" /></p>
-<h3 id="层级遍历">层级遍历?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430172301.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430172301.png, https://img.fengqigang.cn//img/20210430172301.png 1.5x, https://img.fengqigang.cn//img/20210430172301.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430172301.png"
-        title="https://img.fengqigang.cn//img/20210430172301.png" /></p>
-<h3 id="遍历">遍历?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430172533.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430172533.png, https://img.fengqigang.cn//img/20210430172533.png 1.5x, https://img.fengqigang.cn//img/20210430172533.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430172533.png"
-        title="https://img.fengqigang.cn//img/20210430172533.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430172729.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430172729.png, https://img.fengqigang.cn//img/20210430172729.png 1.5x, https://img.fengqigang.cn//img/20210430172729.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430172729.png"
-        title="https://img.fengqigang.cn//img/20210430172729.png" /></p>
-<h3 id="二叉树的建树">二叉树的建树?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430172942.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430172942.png, https://img.fengqigang.cn//img/20210430172942.png 1.5x, https://img.fengqigang.cn//img/20210430172942.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430172942.png"
-        title="https://img.fengqigang.cn//img/20210430172942.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430173151.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430173151.png, https://img.fengqigang.cn//img/20210430173151.png 1.5x, https://img.fengqigang.cn//img/20210430173151.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430173151.png"
-        title="https://img.fengqigang.cn//img/20210430173151.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430173315.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430173315.png, https://img.fengqigang.cn//img/20210430173315.png 1.5x, https://img.fengqigang.cn//img/20210430173315.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430173315.png"
-        title="https://img.fengqigang.cn//img/20210430173315.png" /></p>
-<h3 id="前序中序建树">前序中序建树?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430173853.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430173853.png, https://img.fengqigang.cn//img/20210430173853.png 1.5x, https://img.fengqigang.cn//img/20210430173853.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430173853.png"
-        title="https://img.fengqigang.cn//img/20210430173853.png" /></p>
-<h3 id="中序后序建树">中序后序建树?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430174104.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430174104.png, https://img.fengqigang.cn//img/20210430174104.png 1.5x, https://img.fengqigang.cn//img/20210430174104.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430174104.png"
-        title="https://img.fengqigang.cn//img/20210430174104.png" /></p>
-<h3 id="前序与中序建树">前序与中序建树</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430174319.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430174319.png, https://img.fengqigang.cn//img/20210430174319.png 1.5x, https://img.fengqigang.cn//img/20210430174319.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430174319.png"
-        title="https://img.fengqigang.cn//img/20210430174319.png" /></p>
-<h3 id="建树实战">建树实战?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430174851.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430174851.png, https://img.fengqigang.cn//img/20210430174851.png 1.5x, https://img.fengqigang.cn//img/20210430174851.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430174851.png"
-        title="https://img.fengqigang.cn//img/20210430174851.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430174910.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430174910.png, https://img.fengqigang.cn//img/20210430174910.png 1.5x, https://img.fengqigang.cn//img/20210430174910.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430174910.png"
-        title="https://img.fengqigang.cn//img/20210430174910.png" /></p>
-<h3 id="bst">BST?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430175152.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430175152.png, https://img.fengqigang.cn//img/20210430175152.png 1.5x, https://img.fengqigang.cn//img/20210430175152.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430175152.png"
-        title="https://img.fengqigang.cn//img/20210430175152.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210430175312.png"
-        data-srcset="https://img.fengqigang.cn//img/20210430175312.png, https://img.fengqigang.cn//img/20210430175312.png 1.5x, https://img.fengqigang.cn//img/20210430175312.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210430175312.png"
-        title="https://img.fengqigang.cn//img/20210430175312.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210503211805.png"
+        title="20210503211805" /></p>
+<h3 id="什么是二叉搜索树">什么是二叉搜索树?</h3>
+<p>又叫二叉排序树</p>
+<p>左子树中所有结点的key比根结点的key小，并且左子树也是二叉搜索树</p>
+<p>左子树中所有结点的key比根结点的key大，并且左子树也是二叉搜索树</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -837,7 +831,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>
