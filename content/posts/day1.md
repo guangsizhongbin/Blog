@@ -16,7 +16,7 @@ categories: [王道]
 
 Java 运行时环境
 
-**JDK(Java Development Kit)**
+\*\*JDK(Java Development Kit)  \*\*
 
 Java 开发者工具包
 
@@ -28,9 +28,10 @@ Java 开发者工具包
 
 ### 给一个 **project**起名的规范是什么?
 
-1. 全部英文小写， 不要用中文
-
-2. 单词之间用下划线或横杠连接
+1.  全部英文小写， 不要用中文
+    
+2.  单词之间用下划线或横杠连接
+    
 
 如:
 
@@ -77,7 +78,7 @@ Java 开发者工具包
 - 第一个单词首字母 **小写**
 - 第二个单词开始，首字母都要大写
 
-**myName**,  **myFirstJavaProgram**
+**myName**, **myFirstJavaProgram**
 
 ### 什么是大驼峰式命名法(**upper camel case**)?
 
@@ -96,19 +97,85 @@ Java 开发者工具包
 
 需要在其后缀上加f 或F, **推荐F**
 
+### 若想表示一个 十六进制的数(Hexadecimal number), 应该如何做?
+
+Hexadecimal number have a prefix 0x or 0X
+
+for example
+
+`0xCAFE`
+
+```java
+public class TestInt {
+    public static void main(String[] args) {
+        System.out.println(0xF);
+    }
+}
+```
+
+![20210503234107](https://img.fengqigang.cn//img/20210503234107.png)
+
+### 若想表示一个8进制的数(Octual number)，应该如何做?
+
+Octual numbers have a prefix 0
+
+**naturally, this can be confusing, so we recommend against the use of octal constants**
+
+for example
+
+`010`
+
+```java
+public class TestInt {
+    public static void main(String[] args) {
+        System.out.println(010);
+    }
+}
+```
+
+![20210503234305](https://img.fengqigang.cn//img/20210503234305.png)
+
+### 若想表示一个二进制(binary)，应该如何做?
+
+write number in binary, with a prefix `0b` or `0B`
+
+for example, 0b1001
+
+```java
+public class TestInt {
+    public static void main(String[] args) {
+        System.out.println(0b1001);
+    }
+}
+```
+
+![20210503234556](https://img.fengqigang.cn//img/20210503234556.png)
+
+Also starting with Java 7, can add underscores to number literals, such as `0b1111_0100_0010_0100_0000`
+
+```java
+public class TestInt {
+    public static void main(String[] args) {
+        System.out.println(0b1_1000);
+    }
+}
+```
+
+![20210503234919](https://img.fengqigang.cn//img/20210503234919.png)
+
 ### **byte**, **short**, **int**, **long**, **float**, **double**, **char**, **boolean** 分别占用几个字节的空间?
 
-**byte**	1个字节
-**short**	 2个字节
-**int**		 4个字节
-**long**	 8个字节
+**byte** 1个字节
+**short** 2个字节
+**int** 4个字节
+**long** 8个字节
 
-**float**	   4个字节
-**double**     8个字节
+**float** 4个字节
+**double** 8个字节
 
-**char**	2个字节
+**char** 2个字节
 
-**boolean**  
+**boolean**
 
 JVM规范, 在内存中 **boolean** 当作 **int** 处理， 占4个字节
 
@@ -171,40 +238,40 @@ JVM规范, 在内存中 **boolean** 当作 **int** 处理， 占4个字节
 
 ![](https://img.fengqigang.cn//img/20210330220321.png) 这些问题会出现什么结果?
 
-1. a
-2. 98
-3. helloa1
-4. 98hello 
-5. 5+555
-6. 10=5+5
-7. 10.0
-8. 555.0
+1.  a
+2.  98
+3.  helloa1
+4.  98hello
+5.  5+555
+6.  10=5+5
+7.  10.0
+8.  555.0
 
-总结: 
+总结:
 
 遇到 **'a'**, 直接输出
 
-**'a'** + 1, 这种先考虑数值相加
+**'a'** \+ 1, 这种先考虑数值相加
 
-**'a'** + 1 + "hello", 先考虑数值相加，然后遇到 **""** 时，合并字符串
+**'a'** \+ 1 + "hello", 先考虑数值相加，然后遇到 **""** 时，合并字符串
 
 ![](https://img.fengqigang.cn//img/20210330224400.png)
 
 ### 如何实现 **Scanner** 键盘录入?
 
-1. 导包
+1.  导包
 
 ```java
 import java.util.Scanner;
 ```
 
-2. 创建对象
+2.  创建对象
 
 ```java
 Scanner sc = new Scanner(System.in);
 ```
 
-3. 接收从键盘录入的数据
+3.  接收从键盘录入的数据
 
 ```java
 int x = sc.nextInt();
@@ -228,14 +295,23 @@ int x = sc.nextInt();
 
 只会因车(换行)而结束扫描
 
-### **\u0000** 与  ** ** 有什么区别?
+### **\\u0000** 与 \*\* \*\* 有什么区别?
 
-**\u0000** 对应的是什么都没有
+**\\u0000** 对应的是什么都没有
 
 ![](https://img.fengqigang.cn//img/20210330225632.png)
 
-** ** 对应的是一个空格
+\*\* \*\* 对应的是一个空格
 
 ![](https://img.fengqigang.cn//img/20210330225709.png)
 
+### What is the different between Strongly typed languages and weakly typed languages?
+
+**Weakly-typed** languages make conversions between unrelated types implicitly
+
+![20210503232749](https://img.fengqigang.cn//img/20210503232749.png)
+
+**Strongly-typed** languages don't allow implicit conversions between types.
+
+![20210503232728](https://img.fengqigang.cn//img/20210503232728.png)
 
