@@ -8,7 +8,7 @@
         <title>Day1 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day1" />
 <meta property="og:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
 Java 运行时环境
-JDK(Java Development Kit)
+**JDK(Java Development Kit) **
 Java 开发者工具包
 除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
 Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
@@ -39,7 +39,7 @@ PI
 <meta name="twitter:title" content="Day1"/>
 <meta name="twitter:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
 Java 运行时环境
-JDK(Java Development Kit)
+**JDK(Java Development Kit) **
 Java 开发者工具包
 除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
 Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
@@ -73,7 +73,7 @@ PI
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day1\/"
-        },"genre": "posts","keywords": "java","wordcount":  287 ,
+        },"genre": "posts","keywords": "java","wordcount":  456 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day1\/","datePublished": "2021-03-30T23:02:50+08:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -150,8 +150,8 @@ PI
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day1</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;287 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;456 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -172,6 +172,9 @@ PI
         <li><a href="#什么是大驼峰式命名法upper-camel-case">什么是大驼峰式命名法(<strong>upper camel case</strong>)?</a></li>
         <li><a href="#如果想要一个整数的字面值常量数据类型为-long-应该如何做">如果想要一个整数的字面值常量数据类型为 <strong>long</strong>, 应该如何做?</a></li>
         <li><a href="#如何想要一个浮点数字面值-常量数据类型为-float-应该如何做">如何想要一个浮点数字面值 常量数据类型为 <strong>float</strong>, 应该如何做?</a></li>
+        <li><a href="#若想表示一个-十六进制的数hexadecimal-number-应该如何做">若想表示一个 十六进制的数(Hexadecimal number), 应该如何做?</a></li>
+        <li><a href="#若想表示一个8进制的数octual-number应该如何做">若想表示一个8进制的数(Octual number)，应该如何做?</a></li>
+        <li><a href="#若想表示一个二进制binary应该如何做">若想表示一个二进制(binary)，应该如何做?</a></li>
         <li><a href="#byte-short-int-long-float-double-char-boolean-分别占用几个字节的空间"><strong>byte</strong>, <strong>short</strong>, <strong>int</strong>, <strong>long</strong>, <strong>float</strong>, <strong>double</strong>, <strong>char</strong>, <strong>boolean</strong> 分别占用几个字节的空间?</a></li>
         <li><a href="#float-只有-4字节-会比-8-字节的-long-小吗"><strong>float</strong> 只有 4字节, 会比 8 字节的 <strong>long</strong> 小吗?</a></li>
         <li><a href="#float-的有效位数是多少"><strong>float</strong> 的有效位数是多少?</a></li>
@@ -183,7 +186,8 @@ PI
         <li><a href="#int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</a></li>
         <li><a href="#如何实现-scanner-键盘录入">如何实现 <strong>Scanner</strong> 键盘录入?</a></li>
         <li><a href="#next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</a></li>
-        <li><a href="#u0000-与----有什么区别"><strong>\u0000</strong> 与  ** ** 有什么区别?</a></li>
+        <li><a href="#u0000-与---有什么区别"><strong>\u0000</strong> 与 ** ** 有什么区别?</a></li>
+        <li><a href="#what-is-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What is the different between Strongly typed languages and weakly typed languages?</a></li>
       </ul>
     </li>
   </ul>
@@ -191,7 +195,7 @@ PI
             </div><div class="content" id="content"><h3 id="jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</h3>
 <p><strong>JRE (Java Runtime Envirment)</strong></p>
 <p>Java 运行时环境</p>
-<p><strong>JDK(Java Development Kit)</strong></p>
+<p>**JDK(Java Development Kit)  **</p>
 <p>Java 开发者工具包</p>
 <p><strong>除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)</strong></p>
 <h3 id="java-程序的运行原理是什么样的"><strong>Java</strong> 程序的运行原理是什么样的?</h3>
@@ -237,7 +241,7 @@ PI
 <li>第一个单词首字母 <strong>小写</strong></li>
 <li>第二个单词开始，首字母都要大写</li>
 </ul>
-<p><strong>myName</strong>,  <strong>myFirstJavaProgram</strong></p>
+<p><strong>myName</strong>, <strong>myFirstJavaProgram</strong></p>
 <h3 id="什么是大驼峰式命名法upper-camel-case">什么是大驼峰式命名法(<strong>upper camel case</strong>)?</h3>
 <p>多个单词组合成一个字符串</p>
 <ul>
@@ -249,14 +253,123 @@ PI
 <p>需要在后缀上加l或L, <strong>推荐L</strong></p>
 <h3 id="如何想要一个浮点数字面值-常量数据类型为-float-应该如何做">如何想要一个浮点数字面值 常量数据类型为 <strong>float</strong>, 应该如何做?</h3>
 <p>需要在其后缀上加f 或F, <strong>推荐F</strong></p>
+<h3 id="若想表示一个-十六进制的数hexadecimal-number-应该如何做">若想表示一个 十六进制的数(Hexadecimal number), 应该如何做?</h3>
+<p>Hexadecimal number have a prefix 0x or 0X</p>
+<p>for example</p>
+<p><code>0xCAFE</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">0xF</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503234107.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503234107.png, https://img.fengqigang.cn//img/20210503234107.png 1.5x, https://img.fengqigang.cn//img/20210503234107.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503234107.png"
+        title="20210503234107" /></p>
+<h3 id="若想表示一个8进制的数octual-number应该如何做">若想表示一个8进制的数(Octual number)，应该如何做?</h3>
+<p>Octual numbers have a prefix 0</p>
+<p><strong>naturally, this can be confusing, so we recommend against the use of octal constants</strong></p>
+<p>for example</p>
+<p><code>010</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">010</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503234305.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503234305.png, https://img.fengqigang.cn//img/20210503234305.png 1.5x, https://img.fengqigang.cn//img/20210503234305.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503234305.png"
+        title="20210503234305" /></p>
+<h3 id="若想表示一个二进制binary应该如何做">若想表示一个二进制(binary)，应该如何做?</h3>
+<p>write number in binary, with a prefix <code>0b</code> or <code>0B</code></p>
+<p>for example, 0b1001</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">0b1001</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503234556.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503234556.png, https://img.fengqigang.cn//img/20210503234556.png 1.5x, https://img.fengqigang.cn//img/20210503234556.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503234556.png"
+        title="20210503234556" /></p>
+<p>Also starting with Java 7, can add underscores to number literals, such as <code>0b1111_0100_0010_0100_0000</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestInt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">0b1_1000</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503234919.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503234919.png, https://img.fengqigang.cn//img/20210503234919.png 1.5x, https://img.fengqigang.cn//img/20210503234919.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503234919.png"
+        title="20210503234919" /></p>
 <h3 id="byte-short-int-long-float-double-char-boolean-分别占用几个字节的空间"><strong>byte</strong>, <strong>short</strong>, <strong>int</strong>, <strong>long</strong>, <strong>float</strong>, <strong>double</strong>, <strong>char</strong>, <strong>boolean</strong> 分别占用几个字节的空间?</h3>
-<p><strong>byte</strong>	1个字节
-<strong>short</strong>	 2个字节
-<strong>int</strong>		 4个字节
-<strong>long</strong>	 8个字节</p>
-<p><strong>float</strong>	   4个字节
-<strong>double</strong>     8个字节</p>
-<p><strong>char</strong>	2个字节</p>
+<p><strong>byte</strong> 1个字节
+<strong>short</strong> 2个字节
+<strong>int</strong> 4个字节
+<strong>long</strong> 8个字节</p>
+<p><strong>float</strong> 4个字节
+<strong>double</strong> 8个字节</p>
+<p><strong>char</strong> 2个字节</p>
 <p><strong>boolean</strong></p>
 <p>JVM规范, 在内存中 <strong>boolean</strong> 当作 <strong>int</strong> 处理， 占4个字节</p>
 <p><strong>boolean</strong> 数组当成 <strong>byte</strong> 数组处理， 一个 <strong>boolean</strong> 元素占1个字节</p>
@@ -389,7 +502,7 @@ PI
 <p>获取一行的内容作为一个字符串被接收</p>
 <p>该方法不会因为空格或制表符号而结束扫描</p>
 <p>只会因车(换行)而结束扫描</p>
-<h3 id="u0000-与----有什么区别"><strong>\u0000</strong> 与  ** ** 有什么区别?</h3>
+<h3 id="u0000-与---有什么区别"><strong>\u0000</strong> 与 ** ** 有什么区别?</h3>
 <p><strong>\u0000</strong> 对应的是什么都没有</p>
 <p><img
         class="lazyload"
@@ -408,6 +521,25 @@ PI
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210330225709.png"
         title="https://img.fengqigang.cn//img/20210330225709.png" /></p>
+<h3 id="what-is-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What is the different between Strongly typed languages and weakly typed languages?</h3>
+<p><strong>Weakly-typed</strong> languages make conversions between unrelated types implicitly</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503232749.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503232749.png, https://img.fengqigang.cn//img/20210503232749.png 1.5x, https://img.fengqigang.cn//img/20210503232749.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503232749.png"
+        title="20210503232749" /></p>
+<p><strong>Strongly-typed</strong> languages don&rsquo;t allow implicit conversions between types.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210503232728.png"
+        data-srcset="https://img.fengqigang.cn//img/20210503232728.png, https://img.fengqigang.cn//img/20210503232728.png 1.5x, https://img.fengqigang.cn//img/20210503232728.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210503232728.png"
+        title="20210503232728" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
