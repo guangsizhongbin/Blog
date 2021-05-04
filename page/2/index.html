@@ -100,6 +100,35 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day23/">Day23</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-26">2021-04-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">类加载的细分? 类加载通过 加载, 连接， 初始化 三步来实现
+类加载中的加载是如何执行的？ 通过类加载器获得二进制字节流
+在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口
+类加载中的连接是如何执行的? 验证：确保被加载类的正确性正确性的校验
+cafe babe:magic number起校验作用的
+准备：负责为类的静态成员分配内存并设置默认初始化值
+解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)
+类加载中的初始化是如何执行的？ 给静态成员变量赋初值，执行静态代码块内容
+类加载时机有哪些? 创建类的实例 (首次创建该类)
+对象访问类的静态变量（首次)
+调用类的静态方法（首次)
+使用反射方式来强制创建某个类或接口对应的 java.lang.Class 对象
+加载某个类的子类，会先触发父类的加载
+直接使用 java. exe 命令来运行某个主类，也就是执行了某个类的main方法
+类加载中有哪些加载器? Bootstrap ClassLoader
+根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar
+Extension ClassLoader
+扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录
+Sysetm ClassLoader
+系统类加载器/应用加载器负责加载自己定义的Java类
+java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(通过类加载器 ClassLoader 加载) 运行时阶段  什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
+  类名.class
+  对象.getClass（）
+  如何用 Class.</div><div class="post-footer">
+        <a href="/posts/day23/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/">Linux第十二章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-24">2021-04-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">写 Shell Script 的规则是什么?   第一行写 #!/bin/bash 来宣告这个文件内的语法使用的是 bash 语法
   程序内容的说明:
@@ -193,13 +222,6 @@ run 方法执行完之后
 什么是串行, 并行，并发? 串行:</div><div class="post-footer">
         <a href="/posts/day19/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day18/">Day18</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-19">2021-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">为什么要将 FileOutputStream out = null; 放在外面，可以放在 try 语句里面? 不可以
-放在 out 中， 其作用的域只能在 try 中， finally 中的 try 无法使用
-reader 的继承关系是什么样的? InputStreamReader 的构造方法是什么样的? 1 2 3 4 5 6 7 8 9  public class CountNum { public static void main(String[] args) throws IOException { // 第一种构造方法  InputStreamReader in = new InputStreamReader(new FileInputStream(&#34;a.txt&#34;)); // 第二种构造方法  InputStreamReader input = new InputStreamReader(new FileInputStream(&#34;a.txt&#34;), &#34;GBK&#34;); } }   如何使用 InputStreamReader 实现单个 char 的构造方法?</div><div class="post-footer">
-        <a href="/posts/day18/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -220,7 +242,7 @@ reader 的继承关系是什么样的? InputStreamReader 的构造方法是什�
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/13/">13</a>
+                        <a href="/page/14/">14</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

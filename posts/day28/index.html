@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day28 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day28" />
+<meta property="og:description" content="1 10 -5 2 7 100 30 -10 -50 -25 -20 25 转换成二叉搜索树是什么样的? 左子树的所有节点的值均 小于 它的根节点
+右子树的所有节点的值均 大于 它的根节点
+The meaning of &lt;T extends Comparable &gt;? This means that the type parameter must support comparison with other instances of its own type , via the Comparable interface.
+What is different between ? If you try to pass an array of unknow types of Comparable objects
+one method will give you an error at compile time that this won&rsquo;t work," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day28/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-04T23:45:09&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-04T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day28"/>
+<meta name="twitter:description" content="1 10 -5 2 7 100 30 -10 -50 -25 -20 25 转换成二叉搜索树是什么样的? 左子树的所有节点的值均 小于 它的根节点
+右子树的所有节点的值均 大于 它的根节点
+The meaning of &lt;T extends Comparable &gt;? This means that the type parameter must support comparison with other instances of its own type , via the Comparable interface.
+What is different between ? If you try to pass an array of unknow types of Comparable objects
+one method will give you an error at compile time that this won&rsquo;t work,"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day28/" /><link rel="prev" href="http://fengqigang.cn/posts/%E7%BA%A2%E9%BB%91%E6%A0%91/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day28",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day28\/"
+        },"genre": "posts","keywords": "java","wordcount":  1702 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day28\/","datePublished": "2021-05-04T23:45:09+08:00","dateModified": "2021-05-04T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day28</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-04">2021-05-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1702 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-10--5-2-7-100-30--10--50--25--20-25-转换成二叉搜索树是什么样的">1 10 -5 2 7 100 30 -10 -50 -25 -20 25 转换成二叉搜索树是什么样的?</a></li>
+        <li><a href="#the-meaning-of-t-extends-comparable-t">The meaning of &lt;T extends Comparable <T>&gt;?</a></li>
+        <li><a href="#what-is-different-between-20210504171720httpsimgfengqigangcnimg20210504171720png">What is different between <img src="https://img.fengqigang.cn//img/20210504171720.png" alt="20210504171720">?</a></li>
+        <li><a href="#若以链表来实现一个二叉搜索树-如何定义一个bstree">若以链表来实现一个二叉搜索树, 如何定义一个BSTree?</a></li>
+        <li><a href="#若以链表来实现一个二叉搜索树-如何定义一个bstree的结点">若以链表来实现一个二叉搜索树, 如何定义一个BSTree的结点?</a></li>
+        <li><a href="#若以链表来实现一个二叉搜索树-如何实现加入一个新结点add的功能">若以链表来实现一个二叉搜索树, 如何实现加入一个新结点(add)的功能?</a></li>
+        <li><a href="#若以链表来实现一个二叉搜索树-如何实现删除一个结点remove的功能不用递归">若以链表来实现一个二叉搜索树, 如何实现删除一个结点(remove)的功能?(不用递归)</a></li>
+        <li><a href="#若以链表来实现一个二叉搜索树-如何实现查找树中是否包含某一结点">若以链表来实现一个二叉搜索树, 如何实现查找树中是否包含某一结点?</a></li>
+        <li><a href="#如何实现后序遍历">如何实现后序遍历?</a></li>
+        <li><a href="#如何实现前序遍历">如何实现前序遍历?</a></li>
+        <li><a href="#如何实现中序遍历">如何实现中序遍历?</a></li>
+        <li><a href="#如何实现层级遍历广度优先搜索">如何实现层级遍历(广度优先搜索)?</a></li>
+        <li><a href="#如何实现深度优先遍历">如何实现深度优先遍历?</a></li>
+        <li><a href="#如何实现中序与后序号建立树">如何实现中序与后序号建立树?</a></li>
+        <li><a href="#如何实现中序与前序号建立树">如何实现中序与前序号建立树?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="1-10--5-2-7-100-30--10--50--25--20-25-转换成二叉搜索树是什么样的">1 10 -5 2 7 100 30 -10 -50 -25 -20 25 转换成二叉搜索树是什么样的?</h3>
+<p>左子树的所有节点的值均 <strong>小于</strong> 它的根节点</p>
+<p>右子树的所有节点的值均 <strong>大于</strong> 它的根节点</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210504094627.png"
+        data-srcset="https://img.fengqigang.cn//img/20210504094627.png, https://img.fengqigang.cn//img/20210504094627.png 1.5x, https://img.fengqigang.cn//img/20210504094627.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210504094627.png"
+        title="https://img.fengqigang.cn//img/20210504094627.png" /></p>
+<h3 id="the-meaning-of-t-extends-comparable-t">The meaning of &lt;T extends Comparable <T>&gt;?</h3>
+<p>This means that the type parameter <strong>must support comparison with other instances of its own type</strong> , via the Comparable interface.</p>
+<h3 id="what-is-different-between-20210504171720httpsimgfengqigangcnimg20210504171720png">What is different between <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210504171720.png"
+        data-srcset="https://img.fengqigang.cn//img/20210504171720.png, https://img.fengqigang.cn//img/20210504171720.png 1.5x, https://img.fengqigang.cn//img/20210504171720.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210504171720.png"
+        title="20210504171720" />?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210504171833.png"
+        data-srcset="https://img.fengqigang.cn//img/20210504171833.png, https://img.fengqigang.cn//img/20210504171833.png 1.5x, https://img.fengqigang.cn//img/20210504171833.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210504171833.png"
+        title="20210504171833" /></p>
+<p>If you try to pass an array of unknow types of Comparable objects</p>
+<p>one method will give you an error at compile time that this won&rsquo;t work,</p>
+<p>and the other will compile just fine, but you&rsquo;ll receive an error when you try to run it.</p>
+<p>Ideally, you&rsquo;will want to know about type safety issues as soon as possible, so the method that gives you a compile-time error is preferable.</p>
+<h3 id="若以链表来实现一个二叉搜索树-如何定义一个bstree">若以链表来实现一个二叉搜索树, 如何定义一个BSTree?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBSTree</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Node</span> <span class="n">root</span><span class="o">;</span> <span class="c1">// 定义根结点
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span> <span class="c1">// 定义树的结点个数
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>需要节点与节点之间进行比较</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBSTree</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Node</span> <span class="n">root</span><span class="o">;</span> <span class="c1">// 定义根结点
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span> <span class="c1">// 定义树的结点个数
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="若以链表来实现一个二叉搜索树-如何定义一个bstree的结点">若以链表来实现一个二叉搜索树, 如何定义一个BSTree的结点?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBSTree</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Node</span> <span class="n">root</span><span class="o">;</span> <span class="c1">// 定义根结点
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span> <span class="c1">// 定义树的结点个数
+</span><span class="c1"></span>
+    <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+        <span class="n">T</span> <span class="n">value</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">left</span><span class="o">;</span>
+        <span class="n">Node</span> <span class="n">right</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">,</span> <span class="n">Node</span> <span class="n">left</span><span class="o">,</span> <span class="n">Node</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>	
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="若以链表来实现一个二叉搜索树-如何实现加入一个新结点add的功能">若以链表来实现一个二叉搜索树, 如何实现加入一个新结点(add)的功能?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">add</span><span class="o">(</span><span class="n">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 1. 不能加null结点
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;null is not allow to add&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 2.1 添加的不是null, 当前树为空
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">t</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="n">size</span><span class="o">++;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 2.2 添加的不是null, 当前的树不为空
+</span><span class="c1"></span>            <span class="c1">// 找到要添加的位置(查找过程)
+</span><span class="c1"></span>
+            <span class="c1">// 从root向下找
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+            <span class="n">Node</span> <span class="n">midF</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">com</span><span class="o">;</span>
+
+            <span class="c1">// 一直向下找, 在null处结束
+</span><span class="c1"></span>            <span class="c1">//  同时记录其父结点
+</span><span class="c1"></span>            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 判断左右 compareTo
+</span><span class="c1"></span>                <span class="n">com</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+
+                <span class="c1">// t &gt; mid, 向右走
+</span><span class="c1"></span>                <span class="k">if</span> <span class="o">(</span><span class="n">com</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">midF</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+                    <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">com</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="c1">// t &lt; mid, 向左走
+</span><span class="c1"></span>                    <span class="n">midF</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+                    <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="c1">// t == mid, 不添加
+</span><span class="c1"></span>                    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="c1">// mid == null, 已经找到了要添加结点的位置
+</span><span class="c1"></span>            <span class="c1">// 通过 com 的大小， 判断要添加的左右位置(与其midF比较)
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">midF</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 大于0, 在右边
+</span><span class="c1"></span>                <span class="n">midF</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">t</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">//  小于0, 在左边
+</span><span class="c1"></span>                <span class="n">midF</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">t</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+                <span class="n">size</span><span class="o">++;</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="若以链表来实现一个二叉搜索树-如何实现删除一个结点remove的功能不用递归">若以链表来实现一个二叉搜索树, 如何实现删除一个结点(remove)的功能?(不用递归)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">remove</span><span class="o">(</span><span class="n">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 确定删除的内容不能是null
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;param is not null&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 从根结点出发
+</span><span class="c1"></span>        <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">com</span><span class="o">;</span>
+        <span class="c1">// 用midF 来删除
+</span><span class="c1"></span>        <span class="n">Node</span> <span class="n">midF</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">com</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+            <span class="c1">// 当前位置
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">com</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 找到了, 跳出来
+</span><span class="c1"></span>                <span class="k">break</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">com</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 向右
+</span><span class="c1"></span>                <span class="n">midF</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 向左
+</span><span class="c1"></span>                <span class="n">midF</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 跳出
+</span><span class="c1"></span>        <span class="c1">// 1. mid == null
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 2. com == 0
+</span><span class="c1"></span>        <span class="c1">// 2.1 单分支
+</span><span class="c1"></span>        <span class="c1">// 2.2 叶子结点
+</span><span class="c1"></span>        <span class="c1">// 2.3 双分支
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">mid</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 找到右子树中最小的节点, 一直往左找
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">min</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+            <span class="n">Node</span> <span class="n">minF</span> <span class="o">=</span> <span class="n">mid</span><span class="o">;</span>
+
+            <span class="k">while</span> <span class="o">(</span><span class="n">min</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">minF</span> <span class="o">=</span> <span class="n">min</span><span class="o">;</span>
+                <span class="n">min</span> <span class="o">=</span> <span class="n">min</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 将 最小的节点与 mid 交换
+</span><span class="c1"></span>            <span class="n">mid</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">min</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
+
+            <span class="c1">// 将双分支节点变成叶子结点
+</span><span class="c1"></span>            <span class="n">mid</span> <span class="o">=</span> <span class="n">min</span><span class="o">;</span>
+            <span class="c1">// 切换父结点
+</span><span class="c1"></span>            <span class="n">midF</span> <span class="o">=</span> <span class="n">minF</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// 只剩下叶子结点与单分支结点
+</span><span class="c1"></span>        <span class="c1">// 找到不是null的分支
+</span><span class="c1"></span>        <span class="c1">// ch 是要保留的分支
+</span><span class="c1"></span>        <span class="n">Node</span> <span class="n">ch</span> <span class="o">=</span> <span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">left</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">mid</span><span class="o">.</span><span class="na">right</span> <span class="o">:</span> <span class="n">mid</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+
+        <span class="c1">// 删除的根结点，并且根节点是单分支的结点
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">midF</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">ch</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+
+
+        <span class="c1">// 上移
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">mid</span> <span class="o">==</span> <span class="n">midF</span><span class="o">.</span><span class="na">left</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// 左边相同
+</span><span class="c1"></span>            <span class="n">midF</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">ch</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// 右边相同, 或为null
+</span><span class="c1"></span>            <span class="n">midF</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">ch</span><span class="o">;</span>
+            <span class="n">size</span><span class="o">--;</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="若以链表来实现一个二叉搜索树-如何实现查找树中是否包含某一结点">若以链表来实现一个二叉搜索树, 如何实现查找树中是否包含某一结点?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">contains</span><span class="o">(</span><span class="n">T</span> <span class="n">t</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 不能与null比较
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">t</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;param is not equal null&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 从 root 开始找
+</span><span class="c1"></span>        <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">&gt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 向右
+</span><span class="c1"></span>                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">t</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">mid</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 向左
+</span><span class="c1"></span>                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="c1">// 相等
+</span><span class="c1"></span>                <span class="c1">// 找到了 0
+</span><span class="c1"></span>                <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="c1">// 没找到
+</span><span class="c1"></span>        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现后序遍历">如何实现后序遍历?</h3>
+<p><code>左 右 根</code></p>
+<p>要有一个stack， 和一个list</p>
+<p>根要最后输出</p>
+<p>list 采用头插法方式， 弹出头结点后, 应该先插入左边还是右边?</p>
+<p>因为 <code>左 右 根</code></p>
+<p>要先弹出右子树的元素, 所以先压入 left 子树， 再压入 right 子树</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">postOrder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 保存遍历的结果
+</span><span class="c1"></span>        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// 根节点
+</span><span class="c1"></span>        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+        <span class="c1">// 判断条件是栈不为空
+</span><span class="c1"></span>        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// 弹出栈顶元素
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+            <span class="c1">// 先压左子树, 不为null时
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 后压右子树, 不为null时
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 将弹出的元素放入list中(头插法)
+</span><span class="c1"></span>            <span class="n">ts</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">pop</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">return</span> <span class="n">ts</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现前序遍历">如何实现前序遍历?</h3>
+<p>根 左 右</p>
+<p>需要一个stack， 一个list</p>
+<p>root 先压入栈中， 弹出</p>
+<p>因为是 <code>根 左 右</code>, 先输出左，后右</p>
+<p>先压入右子树， 后压入左子树</p>
+<p>判断条件是栈不为空</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">preOrder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 创建一个list保存数据
+</span><span class="c1"></span>        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// 创建一个stack
+</span><span class="c1"></span>        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// 压入根节点
+</span><span class="c1"></span>        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// 栈顶元素弹出
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+            <span class="c1">// 先压入右子树, 非null
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 后压入左子树, 非null
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="c1">// 尾插法
+</span><span class="c1"></span>            <span class="n">ts</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ts</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现中序遍历">如何实现中序遍历?</h3>
+<p>需要一个stack  和一个 list</p>
+<p>左 根 右</p>
+<p>因为根是放在中间， 所以先将根标记起来</p>
+<p>向左遍历, 全部压入栈中(标记结点也要记录)，直到遇到null</p>
+<p>弹出栈顶元素，标记向右移动</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">inOrder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 保存要输出的list
+</span><span class="c1"></span>        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// 创建一个链表
+</span><span class="c1"></span>        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="n">Node</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">root</span><span class="o">;</span>
+
+        <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">||</span> <span class="o">!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">mid</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// 向左走，压入stack中
+</span><span class="c1"></span>                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">mid</span><span class="o">);</span>
+                <span class="n">mid</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// mid ==null
+</span><span class="c1"></span>            <span class="c1">// 栈顶,出栈
+</span><span class="c1"></span>            <span class="c1">// mid 向右移
+</span><span class="c1"></span>            <span class="n">Node</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="n">ts</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">ts</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现层级遍历广度优先搜索">如何实现层级遍历(广度优先搜索)?</h3>
+<p><strong>队列</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">levOrder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 用队列来输出
+</span><span class="c1"></span>        <span class="n">ArrayDeque</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">deque</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// list
+</span><span class="c1"></span>        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// root 入队
+</span><span class="c1"></span>       <span class="n">deque</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+
+       <span class="k">while</span><span class="o">(!</span><span class="n">deque</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()){</span>
+          <span class="c1">// 队头元素出队
+</span><span class="c1"></span>           <span class="n">Node</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">deque</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+           <span class="c1">// 左子树入队, 非null
+</span><span class="c1"></span>           <span class="k">if</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+              <span class="n">deque</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+           <span class="o">}</span>
+           <span class="c1">// 右子树入队, 非null
+</span><span class="c1"></span>           <span class="k">if</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+              <span class="n">deque</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+           <span class="o">}</span>
+
+           <span class="c1">// 出队元素入list
+</span><span class="c1"></span>           <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+       <span class="o">}</span>
+       <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现深度优先遍历">如何实现深度优先遍历?</h3>
+<p>需要一个 <strong>stack</strong>  和 一个 <strong>list</strong></p>
+<p>将 <strong>root</strong> 压入栈中, 不断的压入其左边的元素, 直到左边的元素为null</p>
+<p>压入其右边的元素, 再压入其左边的元素，直到左右边的元素都为null时弹出，当前的元素</p>
+<p>加入到list中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">depOrder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// 返回的list
+</span><span class="c1"></span>        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// 创建一个stack
+</span><span class="c1"></span>        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="c1">// root 入栈
+</span><span class="c1"></span>        <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stack</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Node</span> <span class="n">pop</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pop</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现中序与后序号建立树">如何实现中序与后序号建立树?</h3>
+<p>先获取根节点在中序的位置</p>
+<p>根据后序来获取</p>
+<p>T value = postOrder.get(postOrder.size() - 1);</p>
+<p>int index = inOrder.indexOf(value);</p>
+<p><strong>左子树</strong> 的中序(切割): 0 ~ index - 1</p>
+<p><strong>左子树</strong> 的后序(切割): 0 ~ index - 1</p>
+<p><strong>右子树</strong> 的中序(切割): index + 1 ~ size - 1</p>
+<p><strong>右子树</strong> 的后序(切割): index ~ size - 2</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210504224652.png"
+        data-srcset="https://img.fengqigang.cn//img/20210504224652.png, https://img.fengqigang.cn//img/20210504224652.png 1.5x, https://img.fengqigang.cn//img/20210504224652.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210504224652.png"
+        title="20210504224652" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210504224758.png"
+        data-srcset="https://img.fengqigang.cn//img/20210504224758.png, https://img.fengqigang.cn//img/20210504224758.png 1.5x, https://img.fengqigang.cn//img/20210504224758.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210504224758.png"
+        title="20210504224758" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildTreeByInAndPostOrder</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">inOrder</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">postOrder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 调用私有方法建立树
+</span><span class="c1"></span>        <span class="n">root</span> <span class="o">=</span> <span class="n">buildTreeByInAndPostOrder2</span><span class="o">(</span><span class="n">inOrder</span><span class="o">,</span> <span class="n">postOrder</span><span class="o">);</span>
+        <span class="c1">// 定义树的长度
+</span><span class="c1"></span>        <span class="n">size</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Node</span> <span class="nf">buildTreeByInAndPostOrder2</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">inOrder</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">postOrder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 退出位置
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">inOrder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">),</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+        <span class="c1">// 找到根结点的值(后序中的最后一个)
+</span><span class="c1"></span>        <span class="c1">// get (int index)
+</span><span class="c1"></span>        <span class="n">T</span> <span class="n">value</span> <span class="o">=</span> <span class="n">postOrder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">postOrder</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+        <span class="c1">// 获取根结点的位置(在中序中获得)
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+
+        <span class="c1">// 划分左子树
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">leftInOrder</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span><span class="c1">// 左闭右开
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">leftPostOrder</span> <span class="o">=</span> <span class="n">postOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
+
+        <span class="c1">// 划分右子树
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rightInOrder</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rightPostOrder</span> <span class="o">=</span> <span class="n">postOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">index</span><span class="o">,</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="n">1</span><span class="o">);</span>
+
+        <span class="c1">// 构建根结点
+</span><span class="c1"></span>        <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+        <span class="c1">// 获得左子树
+</span><span class="c1"></span>        <span class="n">node</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">buildTreeByInAndPostOrder2</span><span class="o">(</span><span class="n">leftInOrder</span><span class="o">,</span> <span class="n">leftPostOrder</span><span class="o">);</span>
+        <span class="c1">// 获得右子树
+</span><span class="c1"></span>        <span class="n">node</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">buildTreeByInAndPostOrder2</span><span class="o">(</span><span class="n">rightInOrder</span><span class="o">,</span> <span class="n">rightPostOrder</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">node</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何实现中序与前序号建立树">如何实现中序与前序号建立树?</h3>
+<p>先获取根节点在中序的位置</p>
+<p>根据后序来获取</p>
+<p>T value = postOrder.get(postOrder.size() - 1);</p>
+<p>int index = inOrder.indexOf(value);</p>
+<p><strong>左子树</strong> 的中序(切割): 0 ~ index - 1</p>
+<p><strong>左子树</strong> 的前序(切割): 1 ~ index - 1</p>
+<p><strong>右子树</strong> 的中序(切割): index + 1 ~ size - 1</p>
+<p><strong>右子树</strong> 的前序(切割): index + 1 ~ size - 1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">buildTreeByInAndPreOrder</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">inOrder</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">preOrder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 调用私有方法建树
+</span><span class="c1"></span>        <span class="n">root</span> <span class="o">=</span> <span class="n">buildTreeByInAndPreOrder2</span><span class="o">(</span><span class="n">inOrder</span><span class="o">,</span> <span class="n">preOrder</span><span class="o">);</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Node</span> <span class="nf">buildTreeByInAndPreOrder2</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">inOrder</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">preOrder</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// 退出位置
+</span><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">1</span><span class="o">)</span> <span class="k">return</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">inOrder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">),</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+        <span class="c1">// 找到根结点的值(先序中的第一个元素)
+</span><span class="c1"></span>        <span class="n">T</span> <span class="n">value</span> <span class="o">=</span> <span class="n">preOrder</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="c1">// 获取根结点在 inOrder的位置
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+
+        <span class="c1">// 划分左子树
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">leftInOrder</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">index</span><span class="o">);</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">leftPreOrder</span> <span class="o">=</span> <span class="n">preOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">index</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
+
+        <span class="c1">// 划分右子树
+</span><span class="c1"></span>        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rightInorder</span> <span class="o">=</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rightPreorder</span> <span class="o">=</span> <span class="n">preOrder</span><span class="o">.</span><span class="na">subList</span><span class="o">(</span><span class="n">index</span> <span class="o">+</span> <span class="n">1</span><span class="o">,</span> <span class="n">inOrder</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+
+        <span class="c1">// 构建递归根节点
+</span><span class="c1"></span>        <span class="kd">final</span> <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">value</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+
+        <span class="c1">// 获得左子树
+</span><span class="c1"></span>        <span class="n">node</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">buildTreeByInAndPostOrder2</span><span class="o">(</span><span class="n">leftInOrder</span><span class="o">,</span> <span class="n">leftPreOrder</span><span class="o">);</span>
+
+        <span class="c1">// 获得右子树
+</span><span class="c1"></span>        <span class="n">node</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">buildTreeByInAndPostOrder2</span><span class="o">(</span><span class="n">rightInorder</span><span class="o">,</span> <span class="n">rightPreorder</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">node</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-04</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E7%BA%A2%E9%BB%91%E6%A0%91/" class="prev" rel="prev" title="红黑树"><i class="fas fa-angle-left fa-fw"></i>红黑树</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

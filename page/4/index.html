@@ -100,6 +100,22 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day13/">Day13</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">在进行深拷贝时，如何实现一个空接口？ Cloneable 并不是自己实现的
+如何将byte数组转成 String, 并输出它 在 JDK 源码当中， 涉及区间的方法，一般都是怎么规定区间的? 左闭右开
+这种做法是为了适配数组从0开始的下标
+会输出什么? 会直接输出整个 String
+String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 是干什么的? 在用字面值常量给 String 对象赋值时，在编译时期就加入了 常量池
+当常量池中已存在某位字符串对象时，当需要使用时，就不需要在堆上重新创建对象了，而是直接去指向这个常量池中的字符串对象
+它们的值是什么? s.equals(s2) 是根据值来判断的
+它们会输出什么? s3 == (s1 + s2) 肯定不能编译确定取值，必须运行期确定，那么它的对象就一定不在常量池，而在堆上
+判断一个字符串是否为空可以采取什么样的方法? equals
+1 2 3 4 5 6  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; System.out.println(&#34;&#34;.equals(s)); } }   如果s是null, 会导致报错
+如何比较这两个字符串，并忽略大小写? a.equalsIgnoreCase(b)
+1 2 3 4 5 6 7  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; String s1 = &#34;ABC&#34;; System.</div><div class="post-footer">
+        <a href="/posts/day13/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day12/">Day12</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-12">2021-04-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 API ? Application Programming Interface(API)
 应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
@@ -194,39 +210,6 @@ Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstrac
 为了防止 studs 出现空指针异常， 可以习惯性怎么做?</div><div class="post-footer">
         <a href="/posts/day8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day7/">Day7</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-06">2021-04-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 package 关键字? 作用:
-用来声明当前类(当前的java文件中的所有类) 属于哪个包, package 后面跟上当前的包名
-  包名的书写，用逗号隔开
-  语法上，该声明语句一定位于一个 Java 源文件的有效代码的第一行, 否则会报错
-  什么是 import 关键字? 作用:
-就量用来导包的
-当一个别的类中的成员(方法和变量)时，编译器会优先从当前包中检索，如果找得到就去调用，如果找不到，它就会报错
-语法:
-import + 全限定类名
-位置:
-最好写在 package 下面，不可用写在有效代码下面
-如何实现智能导包? import + 包名 + *
-什么叫有需求导包? 如果不导包就报错，那么它就会自动导包
-如果同包下已经有同名的类，那么它就不会去导包了
-什么是默认导包, 隐式导包? java.lang 包下的所有类，是 java 的核心类，它会自动隐式导入，不需要再写导包语句
-如果同包下和不同包下同名类都想使用，怎么办? 真的存在这种需求，建议改名一个
-用全限定类名去使用
-什么是面向过程与面向对象? 面向过程 procedureal oriented programming
-面向对象 oop
-面向过程的编程思想
-即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成
-面向对象的编程思想
-即程序是由一系列的对象+对象之间交互(消息)组成
-面向过程有什么优缺点? 优点:
-代码执行效率高
-缺点:
-面向过程程序是一条线下来的，对程序员要求很高，需要程序员详细了解每个功能的细节，这就意味着，不利于合作开发，不利于处理复杂的大型项目
-应用场景:
-需要高效率的场景，比如说操作系统内核OS, 嵌入式开发，算法</div><div class="post-footer">
-        <a href="/posts/day7/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -255,7 +238,7 @@ import + 全限定类名
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/13/">13</a>
+                        <a href="/page/14/">14</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

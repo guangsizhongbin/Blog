@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 02 May 2021 23:35:24 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 04 May 2021 23:45:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day28</title>
+    <link>http://fengqigang.cn/posts/day28/</link>
+    <pubDate>Tue, 04 May 2021 23:45:09 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day28/</guid>
+    <description><![CDATA[1 10 -5 2 7 100 30 -10 -50 -25 -20 25 转换成二叉搜索树是什么样的? 左子树的所有节点的值均 小于 它的根节点
+右子树的所有节点的值均 大于 它的根节点
+The meaning of &lt;T extends Comparable &gt;? This means that the type parameter must support comparison with other instances of its own type , via the Comparable interface.
+What is different between ? If you try to pass an array of unknow types of Comparable objects
+one method will give you an error at compile time that this won&rsquo;t work,]]></description>
+</item><item>
     <title>红黑树</title>
     <link>http://fengqigang.cn/posts/%E7%BA%A2%E9%BB%91%E6%A0%91/</link>
     <pubDate>Sun, 02 May 2021 23:35:24 &#43;0800</pubDate>
@@ -195,27 +206,5 @@ Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(
 void lock()
 Acquires the lock.
 释放锁  lock.]]></description>
-</item><item>
-    <title>Day20</title>
-    <link>http://fengqigang.cn/posts/day20/</link>
-    <pubDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day20/</guid>
-    <description><![CDATA[线程有哪5种状态? 新建:
-刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源
-就绪
-刚执行了 start 方法， 但是还没有获得CPU的执行权
-执行
-抢到了 CPU的执行权
-阻塞
-没有 CPU 的执行权，还缺少必要的条件（sleep 结束）
-死亡
-run 方法执行完之后
-线程5个状态之间是如何转换? 用Runnable实现多线程?   实现 Runnable 接口
-  重写 run 方法
-  创建 Runnable 子类对象
-  创建 Thread 对象， 并且把 Runnable 子类对象作为参数传递
-  start 方法
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class RunnableDemo { public static void main(String[] args) { MyRunnable myRunnable = new MyRunnable(); Thread thread = new Thread(myRunnable); thread.]]></description>
 </item></channel>
 </rss>
