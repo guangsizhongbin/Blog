@@ -4,7 +4,19 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 04 May 2021 23:45:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 05 May 2021 23:31:59 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day29</title>
+    <link>http://fengqigang.cn/posts/day29/</link>
+    <pubDate>Wed, 05 May 2021 23:31:59 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day29/</guid>
+    <description><![CDATA[集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
+  这个集合类表示是的是一种什么数据结构
+  这个集合类他的底层结构是什么(数组，链表，数组+链表)
+  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
+  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
+  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)]]></description>
+</item><item>
     <title>Day28</title>
     <link>http://fengqigang.cn/posts/day28/</link>
     <pubDate>Tue, 04 May 2021 23:45:09 &#43;0800</pubDate>
@@ -192,27 +204,5 @@ Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(
 void lock()
 Acquires the lock.
 释放锁  lock.]]></description>
-</item><item>
-    <title>Day20</title>
-    <link>http://fengqigang.cn/posts/day20/</link>
-    <pubDate>Wed, 21 Apr 2021 17:00:51 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day20/</guid>
-    <description><![CDATA[线程有哪5种状态? 新建:
-刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源
-就绪
-刚执行了 start 方法， 但是还没有获得CPU的执行权
-执行
-抢到了 CPU的执行权
-阻塞
-没有 CPU 的执行权，还缺少必要的条件（sleep 结束）
-死亡
-run 方法执行完之后
-线程5个状态之间是如何转换? 用Runnable实现多线程?   实现 Runnable 接口
-  重写 run 方法
-  创建 Runnable 子类对象
-  创建 Thread 对象， 并且把 Runnable 子类对象作为参数传递
-  start 方法
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class RunnableDemo { public static void main(String[] args) { MyRunnable myRunnable = new MyRunnable(); Thread thread = new Thread(myRunnable); thread.]]></description>
 </item></channel>
 </rss>

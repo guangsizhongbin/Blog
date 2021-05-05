@@ -4,9 +4,21 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 04 May 2021 23:45:09 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 05 May 2021 23:31:59 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day29</title>
+    <link>http://fengqigang.cn/posts/day29/</link>
+    <pubDate>Wed, 05 May 2021 23:31:59 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day29/</guid>
+    <description><![CDATA[集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
+  这个集合类表示是的是一种什么数据结构
+  这个集合类他的底层结构是什么(数组，链表，数组+链表)
+  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
+  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
+  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)]]></description>
+</item><item>
     <title>Day28</title>
     <link>http://fengqigang.cn/posts/day28/</link>
     <pubDate>Tue, 04 May 2021 23:45:09 &#43;0800</pubDate>
@@ -185,28 +197,5 @@ OSI参考模型有几层? 分别是什么? 7 层
 检查数据是否发生差错
 数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
   流量控制]]></description>
-</item><item>
-    <title>Day21</title>
-    <link>http://fengqigang.cn/posts/day21/</link>
-    <pubDate>Fri, 23 Apr 2021 09:17:16 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day21/</guid>
-    <description><![CDATA[同步方法中的锁对象是什么? 同步代码块中
-任意java对象
-任意方法中
-this
-静态方法中
-字节码文件对象（.clsss） 补充代码
-为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
-当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
-jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
-如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
-美[ˌriˈɛntrənt]
-public ReentrantLock()
-Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
-获取锁  lock.lock();
-void lock()
-Acquires the lock.
-释放锁  lock.]]></description>
 </item></channel>
 </rss>
