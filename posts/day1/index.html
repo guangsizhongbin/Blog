@@ -8,7 +8,7 @@
         <title>Day1 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day1" />
 <meta property="og:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
 Java 运行时环境
-**JDK(Java Development Kit) **
+JDK(Java Development Kit)
 Java 开发者工具包
 除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
 Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
@@ -39,7 +39,7 @@ PI
 <meta name="twitter:title" content="Day1"/>
 <meta name="twitter:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
 Java 运行时环境
-**JDK(Java Development Kit) **
+JDK(Java Development Kit)
 Java 开发者工具包
 除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
 Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
@@ -73,7 +73,7 @@ PI
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/day1\/"
-        },"genre": "posts","keywords": "java","wordcount":  456 ,
+        },"genre": "posts","keywords": "java","wordcount":  694 ,
         "url": "http:\/\/fengqigang.cn\/posts\/day1\/","datePublished": "2021-03-30T23:02:50+08:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -150,8 +150,8 @@ PI
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Day1</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;456 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;694 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -179,15 +179,20 @@ PI
         <li><a href="#float-只有-4字节-会比-8-字节的-long-小吗"><strong>float</strong> 只有 4字节, 会比 8 字节的 <strong>long</strong> 小吗?</a></li>
         <li><a href="#float-的有效位数是多少"><strong>float</strong> 的有效位数是多少?</a></li>
         <li><a href="#double-的有效位数是多少"><strong>double</strong> 的有效位数是多少?</a></li>
-        <li><a href="#int-转成-float-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</a></li>
-        <li><a href="#long-转成-double-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</a></li>
-        <li><a href="#int-转成-double-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</a></li>
-        <li><a href="#long-转成-float-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</a></li>
+        <li><a href="#20210505223517httpsimgfengqigangcnimg20210505223517png-这几个数据类型相互转换哪些会出现精度丢失问题"><img src="https://img.fengqigang.cn//img/20210505223517.png" alt="20210505223517"> 这几个数据类型相互转换哪些会出现精度丢失问题?</a></li>
         <li><a href="#int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</a></li>
         <li><a href="#如何实现-scanner-键盘录入">如何实现 <strong>Scanner</strong> 键盘录入?</a></li>
         <li><a href="#next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</a></li>
-        <li><a href="#u0000-与---有什么区别"><strong>\u0000</strong> 与 ** ** 有什么区别?</a></li>
+        <li><a href="#u0000-与---有什么区别"><strong>\u0000</strong> 与   有什么区别?</a></li>
         <li><a href="#what-is-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What is the different between Strongly typed languages and weakly typed languages?</a></li>
+        <li><a href="#whats-the-mean-of-systemoutprintln0x10p-3">What&rsquo;s the mean of System.out.println(0x1.0p-3)?</a></li>
+        <li><a href="#could-i-use--to-declare-java-variable">Could I use $ to declare Java variable?</a></li>
+        <li><a href="#if-i-curious-as-to-what-unicode-characters-are-letters-as-for-as-java-is-concerned-what-can-i-do">If I curious as to what Unicode characters are &ldquo;letters&rdquo; as for as Java is concerned, what can I do?</a></li>
+        <li><a href="#what-is-mean-int-i-j">what is mean <code>int i, j;</code>?</a></li>
+        <li><a href="#in-java--how-can-i-declare-declare-a-constant">In Java , how can I declare declare a constant?</a></li>
+        <li><a href="#how-can-i-use-logical-and-operator-or-logical-or-operator-to-avoid-errors">How can I use logical &ldquo;and&rdquo; operator or logical &ldquo;or&rdquo; operator to avoid errors?</a></li>
+        <li><a href="#20210505231215httpsimgfengqigangcnimg20210505231215png其输出的结果是什么-为什么"><img src="https://img.fengqigang.cn//img/20210505231215.png" alt="20210505231215">其输出的结果是什么? 为什么?</a></li>
+        <li><a href="#-符号是干什么的"><code>&gt;&gt;&gt;</code> 符号是干什么的?</a></li>
       </ul>
     </li>
   </ul>
@@ -195,7 +200,7 @@ PI
             </div><div class="content" id="content"><h3 id="jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</h3>
 <p><strong>JRE (Java Runtime Envirment)</strong></p>
 <p>Java 运行时环境</p>
-<p>**JDK(Java Development Kit)  **</p>
+<p><strong>JDK(Java Development Kit)</strong></p>
 <p>Java 开发者工具包</p>
 <p><strong>除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)</strong></p>
 <h3 id="java-程序的运行原理是什么样的"><strong>Java</strong> 程序的运行原理是什么样的?</h3>
@@ -379,54 +384,23 @@ PI
 <p>7 ~ 8 位</p>
 <h3 id="double-的有效位数是多少"><strong>double</strong> 的有效位数是多少?</h3>
 <p>16 ~ 17 位</p>
-<h3 id="int-转成-float-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</h3>
-<p>会</p>
-<p><strong>int</strong> 的范围为 21亿出头</p>
-<p><strong>float</strong> 的有效位只有7 ~ 8位， 会出现精度丢失</p>
+<h3 id="20210505223517httpsimgfengqigangcnimg20210505223517png-这几个数据类型相互转换哪些会出现精度丢失问题"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210505223517.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505223517.png, https://img.fengqigang.cn//img/20210505223517.png 1.5x, https://img.fengqigang.cn//img/20210505223517.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210505223517.png"
+        title="20210505223517" /> 这几个数据类型相互转换哪些会出现精度丢失问题?</h3>
+<p>在<strong>int</strong> 和 <strong>long</strong> 转成 <strong>float</strong> 和 <strong>double</strong> 的时候， 只有 <strong>int</strong> 转向 <strong>double</strong> 不会出现精度丢失，其它都会出现精度丢失</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210330215433.png"
-        data-srcset="https://img.fengqigang.cn//img/20210330215433.png, https://img.fengqigang.cn//img/20210330215433.png 1.5x, https://img.fengqigang.cn//img/20210330215433.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210505223928.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505223928.png, https://img.fengqigang.cn//img/20210505223928.png 1.5x, https://img.fengqigang.cn//img/20210505223928.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210330215433.png"
-        title="https://img.fengqigang.cn//img/20210330215433.png" /></p>
-<h3 id="long-转成-double-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</h3>
-<p>会</p>
-<p><strong>long</strong> 的范围为 922 亿亿</p>
-<p><strong>double</strong> 的范围为 16 ~ 17 位</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210330215634.png"
-        data-srcset="https://img.fengqigang.cn//img/20210330215634.png, https://img.fengqigang.cn//img/20210330215634.png 1.5x, https://img.fengqigang.cn//img/20210330215634.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210330215634.png"
-        title="https://img.fengqigang.cn//img/20210330215634.png" /></p>
-<h3 id="int-转成-double-类型会出现精度丢失吗"><strong>int</strong> 转成 <strong>double</strong> 类型会出现精度丢失吗?</h3>
-<p>不会</p>
-<p><strong>int</strong> 的范围为 21亿出头</p>
-<p><strong>double</strong> 的范围为16 ~ 17 位，可以包括 <strong>int</strong> 的范围</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210330215634.png"
-        data-srcset="https://img.fengqigang.cn//img/20210330215634.png, https://img.fengqigang.cn//img/20210330215634.png 1.5x, https://img.fengqigang.cn//img/20210330215634.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210330215634.png"
-        title="https://img.fengqigang.cn//img/20210330215634.png" /></p>
-<h3 id="long-转成-float-类型会出现精度丢失吗"><strong>long</strong> 转成 <strong>float</strong> 类型会出现精度丢失吗?</h3>
-<p>会</p>
-<p><strong>long</strong> 的范围为 922 亿亿</p>
-<p><strong>float</strong> 的有效位数只有7~8位
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210330215634.png"
-        data-srcset="https://img.fengqigang.cn//img/20210330215634.png, https://img.fengqigang.cn//img/20210330215634.png 1.5x, https://img.fengqigang.cn//img/20210330215634.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210330215634.png"
-        title="https://img.fengqigang.cn//img/20210330215634.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210505223928.png"
+        title="20210505223928" /></p>
 <h3 id="int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</h3>
 <p><strong>float</strong> 大， <strong>float</strong> 中有指数</p>
 <p><img
@@ -502,7 +476,7 @@ PI
 <p>获取一行的内容作为一个字符串被接收</p>
 <p>该方法不会因为空格或制表符号而结束扫描</p>
 <p>只会因车(换行)而结束扫描</p>
-<h3 id="u0000-与---有什么区别"><strong>\u0000</strong> 与 ** ** 有什么区别?</h3>
+<h3 id="u0000-与---有什么区别"><strong>\u0000</strong> 与   有什么区别?</h3>
 <p><strong>\u0000</strong> 对应的是什么都没有</p>
 <p><img
         class="lazyload"
@@ -512,7 +486,7 @@ PI
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210330225632.png"
         title="https://img.fengqigang.cn//img/20210330225632.png" /></p>
-<p>** ** 对应的是一个空格</p>
+<p>对应的是一个空格</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -540,6 +514,90 @@ PI
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210503232728.png"
         title="20210503232728" /></p>
+<h3 id="whats-the-mean-of-systemoutprintln0x10p-3">What&rsquo;s the mean of System.out.println(0x1.0p-3)?</h3>
+<p>0.125 = $2^{-3}$ can be writeen as 0x1.0p-3</p>
+<p>In hexadecimal notation, use a <code>p</code>, not an <code>e</code>, to denote the exponent</p>
+<p>The base of the exponent is 2, not 10.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210505092123.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505092123.png, https://img.fengqigang.cn//img/20210505092123.png 1.5x, https://img.fengqigang.cn//img/20210505092123.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210505092123.png"
+        title="20210505092123" /></p>
+<h3 id="could-i-use--to-declare-java-variable">Could I use $ to declare Java variable?</h3>
+<p>Even though <code>$</code> is a valid Java letter, you should not use it in your own code.</p>
+<p>It is intended for names that are generated by the Java compiler and other tools.</p>
+<h3 id="if-i-curious-as-to-what-unicode-characters-are-letters-as-for-as-java-is-concerned-what-can-i-do">If I curious as to what Unicode characters are &ldquo;letters&rdquo; as for as Java is concerned, what can I do?</h3>
+<p>Use <strong>isJavaIdentifierStart</strong> and <strong>isJavaIndentifierPart</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Character</span><span class="o">.</span><span class="na">isJavaIdentifierPart</span><span class="o">(</span><span class="sc">&#39;c&#39;</span><span class="o">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210505215200.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505215200.png, https://img.fengqigang.cn//img/20210505215200.png 1.5x, https://img.fengqigang.cn//img/20210505215200.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210505215200.png"
+        title="20210505215200" /></p>
+<h3 id="what-is-mean-int-i-j">what is mean <code>int i, j;</code>?</h3>
+<p>Declare multiple variables on a single line</p>
+<p>i, j both are integers</p>
+<p>Don&rsquo;t recommend this style, If you declare each variable separately, your programs are easier to read.</p>
+<h3 id="in-java--how-can-i-declare-declare-a-constant">In Java , how can I declare declare a constant?</h3>
+<p>Use the keyword <code>final</code> to denote a constant.</p>
+<p>It is customary to name constants in all uppercase</p>
+<p>For example</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">final</span> <span class="kt">double</span> <span class="n">CM_PER_INCH</span> <span class="o">=</span> <span class="n">2</span><span class="o">.</span><span class="na">54</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>const</code> is a reserved Java keyword, but it is not currently used for anything. You must use <code>final</code> for a constant.</p>
+<h3 id="how-can-i-use-logical-and-operator-or-logical-or-operator-to-avoid-errors">How can I use logical &ldquo;and&rdquo; operator or logical &ldquo;or&rdquo; operator to avoid errors?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">0</span> <span class="o">&amp;&amp;</span> <span class="n">1</span> <span class="o">/</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>The second part is never evaluated if x equals zero.</p>
+<p>Thus, 1 / x is not computed if x is zero, and no divide-by-zero error can occur.</p>
+<h3 id="20210505231215httpsimgfengqigangcnimg20210505231215png其输出的结果是什么-为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210505231215.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505231215.png, https://img.fengqigang.cn//img/20210505231215.png 1.5x, https://img.fengqigang.cn//img/20210505231215.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210505231215.png"
+        title="20210505231215" />其输出的结果是什么? 为什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210505231256.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505231256.png, https://img.fengqigang.cn//img/20210505231256.png 1.5x, https://img.fengqigang.cn//img/20210505231256.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210505231256.png"
+        title="20210505231256" /></p>
+<p>int 类型在 java 中 4字节</p>
+<p>向左， 向左移动是对 32求余后的结果</p>
+<p>所以向左移动32位相当于没有移动</p>
+<h3 id="-符号是干什么的"><code>&gt;&gt;&gt;</code> 符号是干什么的?</h3>
+<p>无符号右移</p>
+<p>a <code>&gt;&gt;&gt;</code> operator fills the top bits with zero, unlike <code>&gt;&gt;</code> which extends the sign bit into the top bits.</p>
+<p><strong>There is no &laquo;&lt; operator</strong></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
