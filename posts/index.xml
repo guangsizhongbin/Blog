@@ -4,7 +4,19 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 05 May 2021 23:31:59 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 06 May 2021 23:31:19 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day30</title>
+    <link>http://fengqigang.cn/posts/day30/</link>
+    <pubDate>Thu, 06 May 2021 23:31:19 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day30/</guid>
+    <description><![CDATA[集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
+  这个集合类表示是的是一种什么数据结构
+  这个集合类他的底层结构是什么(数组，链表，数组+链表)
+  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
+  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
+  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)]]></description>
+</item><item>
     <title>Day29</title>
     <link>http://fengqigang.cn/posts/day29/</link>
     <pubDate>Wed, 05 May 2021 23:31:59 &#43;0800</pubDate>
@@ -165,35 +177,5 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
 1  echo $?   则可得到0的值
 echo -e 会发生什么?  e  enable interpretation of backslash escapes
 以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?]]></description>
-</item><item>
-    <title>Day22</title>
-    <link>http://fengqigang.cn/posts/day22/</link>
-    <pubDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day22/</guid>
-    <description><![CDATA[什么是计算机网络   物理互联
-  软件支持
-  目的: 资源共享 + 信息传递
-  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
-OSI参考模型有几层? 分别是什么? 7 层
-物理层
-数据链路层
-网络层
-传输层
-会话层
-表示层
-应用层
-物联网淑惠试用
-物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
-其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
-物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
-  一个 bit 持续多少纳秒
-  传输是否可以在两个方向同时进行
-  初始连接如何建立，传输结束后之后如何撤销连接
-  规定一个特殊的电信号将普通的数据信号分开来
-数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
-检查数据是否发生差错
-数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
-  流量控制]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day30 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day30" />
+<meta property="og:description" content="集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
+  这个集合类表示是的是一种什么数据结构
+  这个集合类他的底层结构是什么(数组，链表，数组&#43;链表)
+  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
+  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
+  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day30/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-06T23:31:19&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-06T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day30"/>
+<meta name="twitter:description" content="集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
+  这个集合类表示是的是一种什么数据结构
+  这个集合类他的底层结构是什么(数组，链表，数组&#43;链表)
+  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
+  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
+  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day30/" /><link rel="prev" href="http://fengqigang.cn/posts/day29/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day30",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day30\/"
+        },"genre": "posts","keywords": "java","wordcount":  821 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day30\/","datePublished": "2021-05-06T23:31:19+08:00","dateModified": "2021-05-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day30</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-06">2021-05-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;821 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#集合类的分类">集合类的分类?</a></li>
+        <li><a href="#如何解释一个集合类hashmap的特点-要解释那些东西">如何解释一个集合类（HashMap）的特点, 要解释那些东西?</a></li>
+        <li><a href="#为什么需要集合类">为什么需要集合类？</a></li>
+        <li><a href="#集合类有什么特点">集合类有什么特点?</a></li>
+        <li><a href="#数组和集合类都是容器它们有什么不同">数组和集合类都是容器，它们有什么不同?</a></li>
+        <li><a href="#什么是逻辑结构和物理结构">什么是逻辑结构和物理结构?</a></li>
+        <li><a href="#collection-有什么特点"><strong>Collection</strong> 有什么特点?</a></li>
+        <li><a href="#collection-中有哪些api"><strong>Collection</strong> 中有哪些API?</a></li>
+        <li><a href="#iterator">Iterator</a></li>
+        <li><a href="#foreach-循环">Foreach 循环</a></li>
+        <li><a href="#concurrentmodificationexception">ConcurrentModificationException</a></li>
+        <li><a href="#接口存在有什么意义">接口存在有什么意义?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="集合类的分类">集合类的分类?</h3>
+<ul>
+<li>Collection
+<ul>
+<li>List (线性表子接口)
+<ul>
+<li><strong>ArrayList</strong>: 1</li>
+<li>LinkedList: 2</li>
+<li>Vector -&gt; Stack</li>
+</ul>
+</li>
+<li>Queue (队列子接口)
+<ul>
+<li>Deque</li>
+<li>BlockingQueue</li>
+</ul>
+</li>
+<li>Set (集合子接口)
+<ul>
+<li>HashSet: 2</li>
+<li>LinkedHashSet: 3</li>
+<li>TreeSet:　3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map (Key-value)
+<ul>
+<li><strong>HashMap</strong>: 1</li>
+<li>LinkedHashMap： 3</li>
+<li>TreeMap： 3</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何解释一个集合类hashmap的特点-要解释那些东西">如何解释一个集合类（HashMap）的特点, 要解释那些东西?</h3>
+<ol>
+<li>
+<p>这个集合类是谁的子类/接口</p>
+</li>
+<li>
+<p>这个集合类表示是的是一种什么数据结构</p>
+</li>
+<li>
+<p>这个集合类他的底层结构是什么(数组，链表，数组+链表)</p>
+</li>
+<li>
+<p>如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制</p>
+</li>
+<li>
+<p>这个集合类是否有序(位序)
+有序: <strong>添加的位置是不是可以预期的</strong></p>
+</li>
+<li>
+<p>这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)</p>
+</li>
+<li>
+<p>这个集合类是否允许存储null</p>
+</li>
+<li>
+<p>这个集合类是否线程安全</p>
+</li>
+</ol>
+<h3 id="为什么需要集合类">为什么需要集合类？</h3>
+<p>很多情况下，我们需要对一组对象进行操作</p>
+<p>很可能事先并不知道到底有多少对象</p>
+<p>为了解决这个问题，<strong>java</strong> 就提供了集合类供我们使用</p>
+<h3 id="集合类有什么特点">集合类有什么特点?</h3>
+<p>a. 只能存储引用数据类型: (集合类是个数据容器, 用了泛型，泛型只能是引用类型)</p>
+<p>b. 可以自动地调整自己的大小: (实现了扩容机制)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210505173337.png"
+        data-srcset="https://img.fengqigang.cn//img/20210505173337.png, https://img.fengqigang.cn//img/20210505173337.png 1.5x, https://img.fengqigang.cn//img/20210505173337.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210505173337.png"
+        title="https://img.fengqigang.cn//img/20210505173337.png" /></p>
+<h3 id="数组和集合类都是容器它们有什么不同">数组和集合类都是容器，它们有什么不同?</h3>
+<p>a. 数组可以存储基本数据类型，集合不可以</p>
+<p>b. 数组的长度是固定的，集合可以自动调整自己的大小</p>
+<p>c. 数组的效率高，相对来说集合效率比较低</p>
+<p>d. 数组没有API, 集合有丰富的API</p>
+<h3 id="什么是逻辑结构和物理结构">什么是逻辑结构和物理结构?</h3>
+<p><strong>逻辑结构</strong> : 描述数据元素间的逻辑关系</p>
+<p><strong>物理结构</strong>: 存储结构或者映像</p>
+<ul>
+<li>顺序映像:</li>
+</ul>
+<p>借助的是存储器中的相对位置来表示数据元素之间的逻辑关系</p>
+<ul>
+<li>非顺序映像:</li>
+</ul>
+<p>借助元素存储地址的&quot;指针&quot;， 来表示数据元素的逻辑关系</p>
+<h3 id="collection-有什么特点"><strong>Collection</strong> 有什么特点?</h3>
+<ol>
+<li>
+<p>Collection 是 Collection 集合体系的顶级接口</p>
+</li>
+<li>
+<p>一些 <strong>collection</strong> 的子实现是有序的，而另一些 <strong>collection</strong> 的子实现则是无序的</p>
+</li>
+<li>
+<p>一些 <strong>collection</strong> 的子实现是允许存储重复元素的，而另一些 <strong>collection</strong> 的子实现则是不允许存储重复元素的(==, 地址，compareble 自然排序)</p>
+</li>
+<li>
+<p>一些 <strong>Collection</strong> 的子实现是允许存储 null, 而另一些 <strong>Collection</strong> 的子实现是不允许存储null</p>
+</li>
+</ol>
+<h3 id="collection-中有哪些api"><strong>Collection</strong> 中有哪些API?</h3>
+<p><strong>add</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506104153.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506104153.png, https://img.fengqigang.cn//img/20210506104153.png 1.5x, https://img.fengqigang.cn//img/20210506104153.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506104153.png"
+        title="https://img.fengqigang.cn//img/20210506104153.png" /></p>
+<p><strong>size</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">size</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506104235.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506104235.png, https://img.fengqigang.cn//img/20210506104235.png 1.5x, https://img.fengqigang.cn//img/20210506104235.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506104235.png"
+        title="https://img.fengqigang.cn//img/20210506104235.png" /></p>
+<p><strong>addAll</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ww&#34;</span><span class="o">);</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506104502.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506104502.png, https://img.fengqigang.cn//img/20210506104502.png 1.5x, https://img.fengqigang.cn//img/20210506104502.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506104502.png"
+        title="https://img.fengqigang.cn//img/20210506104502.png" /></p>
+<p><strong>clear</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506104611.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506104611.png, https://img.fengqigang.cn//img/20210506104611.png 1.5x, https://img.fengqigang.cn//img/20210506104611.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506104611.png"
+        title="https://img.fengqigang.cn//img/20210506104611.png" /></p>
+<p><strong>contains</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506104708.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506104708.png, https://img.fengqigang.cn//img/20210506104708.png 1.5x, https://img.fengqigang.cn//img/20210506104708.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506104708.png"
+        title="https://img.fengqigang.cn//img/20210506104708.png" /></p>
+<p><strong>containsAll</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">.</span><span class="na">containsAll</span><span class="o">(</span><span class="n">collection1</span><span class="o">));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506193810.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506193810.png, https://img.fengqigang.cn//img/20210506193810.png 1.5x, https://img.fengqigang.cn//img/20210506193810.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506193810.png"
+        title="https://img.fengqigang.cn//img/20210506193810.png" /></p>
+<p><strong>remove</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection1</span><span class="o">);</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506193957.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506193957.png, https://img.fengqigang.cn//img/20210506193957.png 1.5x, https://img.fengqigang.cn//img/20210506193957.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506193957.png"
+        title="https://img.fengqigang.cn//img/20210506193957.png" /></p>
+<p><strong>removeAll</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+
+        <span class="n">collection</span><span class="o">.</span><span class="na">removeAll</span><span class="o">(</span><span class="n">collection1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506194145.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506194145.png, https://img.fengqigang.cn//img/20210506194145.png 1.5x, https://img.fengqigang.cn//img/20210506194145.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506194145.png"
+        title="https://img.fengqigang.cn//img/20210506194145.png" /></p>
+<p><strong>retainAll</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection1</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+
+        <span class="n">collection</span><span class="o">.</span><span class="na">retainAll</span><span class="o">(</span><span class="n">collection1</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506194508.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506194508.png, https://img.fengqigang.cn//img/20210506194508.png 1.5x, https://img.fengqigang.cn//img/20210506194508.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506194508.png"
+        title="https://img.fengqigang.cn//img/20210506194508.png" /></p>
+<p><strong>toArray</strong> 不常用</p>
+<p>返回一个数组： 包含所有Collection集合类的元素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">objects</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="na">toArray</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">objects</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">objects</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506194744.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506194744.png, https://img.fengqigang.cn//img/20210506194744.png 1.5x, https://img.fengqigang.cn//img/20210506194744.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506194744.png"
+        title="https://img.fengqigang.cn//img/20210506194744.png" /></p>
+<p><strong>T[] toArray(T[] a)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">strs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">[</span><span class="n">10</span><span class="o">];</span>
+
+        <span class="n">strs</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">3</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">4</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">5</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">6</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">7</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">8</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+        <span class="n">strs</span><span class="o">[</span><span class="n">9</span><span class="o">]</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toArray前:&#34;</span><span class="o">);</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">strs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strs</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;toArray后:&#34;</span><span class="o">);</span>
+
+        <span class="n">Object</span><span class="o">[]</span> <span class="n">strings</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="n">strs</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">strings</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strings</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>它的最后一个元素会被置换转 <strong>null</strong></p>
+<h3 id="iterator">Iterator</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCollection</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">collection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">);</span>
+        <span class="n">collection</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">);</span>
+
+        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;后面是否还有元素可以遍历? &#34;</span> <span class="o">+</span> <span class="n">iterator</span><span class="o">.</span><span class="na">hasNext</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;输出遍历的结果&#34;</span> <span class="o">+</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;输出遍历的结果&#34;</span> <span class="o">+</span> <span class="n">iterator</span><span class="o">.</span><span class="na">next</span><span class="o">());</span>
+        <span class="n">iterator</span><span class="o">.</span><span class="na">remove</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">collection</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506200521.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506200521.png, https://img.fengqigang.cn//img/20210506200521.png 1.5x, https://img.fengqigang.cn//img/20210506200521.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506200521.png"
+        title="https://img.fengqigang.cn//img/20210506200521.png" /></p>
+<ol>
+<li>谈理论的时候，我们认为的遍历的位置指向，是在两个元素之间</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506200614.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506200614.png, https://img.fengqigang.cn//img/20210506200614.png 1.5x, https://img.fengqigang.cn//img/20210506200614.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506200614.png"
+        title="https://img.fengqigang.cn//img/20210506200614.png" /></p>
+<ol start="2">
+<li>遍历的起始位置是在第一个元素之前</li>
+<li>在遍历之前是不可以删除的，因为remove删除的是刚刚遍历过的元素(<strong>删除不能连续进行，刚刚遍历的元素只有一个</strong>)</li>
+<li>为什么Iterator是个接口? </li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Iterator&lt;String&gt; iterator = collection.iterator();
+返回的对象， 是 Iterator 的子实现，并且是具体collection 子类的内部类(内部类比较适合访问 collection 子类 的数据)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="foreach-循环">Foreach 循环</h3>
+<p>增强 for 循环， 加强的 for 循环</p>
+<p>对于 Collection 集合类，虽然它提供了 Iterator 方法用来遍历，性能优于 toArray 的</p>
+<p>但是在实际工作中没有人使用iterator 迭代，通常都是使用 Foreach循环</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506112739.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506112739.png, https://img.fengqigang.cn//img/20210506112739.png 1.5x, https://img.fengqigang.cn//img/20210506112739.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506112739.png"
+        title="https://img.fengqigang.cn//img/20210506112739.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506113029.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506113029.png, https://img.fengqigang.cn//img/20210506113029.png 1.5x, https://img.fengqigang.cn//img/20210506113029.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506113029.png"
+        title="https://img.fengqigang.cn//img/20210506113029.png" /></p>
+<h3 id="concurrentmodificationexception">ConcurrentModificationException</h3>
+<p>并发修改异常</p>
+<p>颗粒度比较细</p>
+<p>Iterator 迭代就是依赖于源数据进行的，我们希望在我们迭代的过程中别人不要来修改这个源集合数据，如果非要修改的，让我自己来修改</p>
+<ol>
+<li>
+<p>在多线程的情况下，一个线程在用 iterator 遍历， 另一个在修改，由于原集合类或标记 modCount 这个参数(修改次数) 会增加，会导致在 iterator 迭代的时候如下不相等
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506114934.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506114934.png, https://img.fengqigang.cn//img/20210506114934.png 1.5x, https://img.fengqigang.cn//img/20210506114934.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506114934.png"
+        title="https://img.fengqigang.cn//img/20210506114934.png" /></p>
+</li>
+<li>
+<p>在单线程情况下，如果 interator 对象已经产生：意味着如下参数已经同步</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506115019.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506115019.png, https://img.fengqigang.cn//img/20210506115019.png 1.5x, https://img.fengqigang.cn//img/20210506115019.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506115019.png"
+        title="https://img.fengqigang.cn//img/20210506115019.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">public class TestCollection {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; collection = new ArrayList&lt;&gt;();
+        collection.add(&#34;zs&#34;);
+        collection.add(&#34;ls&#34;);
+        collection.add(&#34;wu&#34;);
+        collection.add(&#34;zl&#34;);
+
+        for(String s : collection){
+           collection.add(&#34;lb&#34;);
+        }
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506202039.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506202039.png, https://img.fengqigang.cn//img/20210506202039.png 1.5x, https://img.fengqigang.cn//img/20210506202039.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506202039.png"
+        title="https://img.fengqigang.cn//img/20210506202039.png" /></p>
+<p>意味着增强的 for 循环在便利的过程中，也不能调用原集合类的方法修改</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506141808.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506141808.png, https://img.fengqigang.cn//img/20210506141808.png 1.5x, https://img.fengqigang.cn//img/20210506141808.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506141808.png"
+        title="https://img.fengqigang.cn//img/20210506141808.png" /></p>
+<p>对于数组（数组在 java 中是一个非常特殊的存在，）也可以使用 Foreach 循环， 但是它和iterator 迭代没有任何关系，数组的增强的for循环会编译成普通的fori循环</p>
+<h3 id="接口存在有什么意义">接口存在有什么意义?</h3>
+<ol>
+<li>
+<p>实现多继承</p>
+</li>
+<li>
+<p>提供 规范 和 约束</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506112147.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506112147.png, https://img.fengqigang.cn//img/20210506112147.png 1.5x, https://img.fengqigang.cn//img/20210506112147.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506112147.png"
+        title="https://img.fengqigang.cn//img/20210506112147.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day29/" class="prev" rel="prev" title="Day29"><i class="fas fa-angle-left fa-fw"></i>Day29</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
