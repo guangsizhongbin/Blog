@@ -4,7 +4,21 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 06 May 2021 23:31:19 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 07 May 2021 23:31:41 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day31</title>
+    <link>http://fengqigang.cn/posts/day31/</link>
+    <pubDate>Fri, 07 May 2021 23:31:41 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day31/</guid>
+    <description><![CDATA[List的特点   List 的是 Collection 的子接口
+  List 是 Collection 的一个 线性表 子接口 -&gt; (有序, 有下标操作)
+  有序
+  允许重复元素存在
+  允许 null
+  API? add
+1 2 3 4 5 6 7 8 9 10 11  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zl&#34;); System.out.println(list); } }   addAll
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.]]></description>
+</item><item>
     <title>Day30</title>
     <link>http://fengqigang.cn/posts/day30/</link>
     <pubDate>Thu, 06 May 2021 23:31:19 &#43;0800</pubDate>
@@ -163,35 +177,5 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
   类名.class
   对象.getClass（）
   如何用 Class.]]></description>
-</item><item>
-    <title>Day22</title>
-    <link>http://fengqigang.cn/posts/day22/</link>
-    <pubDate>Fri, 23 Apr 2021 23:14:11 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day22/</guid>
-    <description><![CDATA[什么是计算机网络   物理互联
-  软件支持
-  目的: 资源共享 + 信息传递
-  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
-OSI参考模型有几层? 分别是什么? 7 层
-物理层
-数据链路层
-网络层
-传输层
-会话层
-表示层
-应用层
-物联网淑惠试用
-物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
-其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
-物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
-  一个 bit 持续多少纳秒
-  传输是否可以在两个方向同时进行
-  初始连接如何建立，传输结束后之后如何撤销连接
-  规定一个特殊的电信号将普通的数据信号分开来
-数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
-检查数据是否发生差错
-数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
-  流量控制]]></description>
 </item></channel>
 </rss>

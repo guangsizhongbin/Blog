@@ -4,9 +4,23 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 06 May 2021 23:31:19 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 07 May 2021 23:31:41 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day31</title>
+    <link>http://fengqigang.cn/posts/day31/</link>
+    <pubDate>Fri, 07 May 2021 23:31:41 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day31/</guid>
+    <description><![CDATA[List的特点   List 的是 Collection 的子接口
+  List 是 Collection 的一个 线性表 子接口 -&gt; (有序, 有下标操作)
+  有序
+  允许重复元素存在
+  允许 null
+  API? add
+1 2 3 4 5 6 7 8 9 10 11  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zl&#34;); System.out.println(list); } }   addAll
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.]]></description>
+</item><item>
     <title>Day30</title>
     <link>http://fengqigang.cn/posts/day30/</link>
     <pubDate>Thu, 06 May 2021 23:31:19 &#43;0800</pubDate>
@@ -165,19 +179,5 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
   类名.class
   对象.getClass（）
   如何用 Class.]]></description>
-</item><item>
-    <title>Linux第十二章</title>
-    <link>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/</link>
-    <pubDate>Sat, 24 Apr 2021 15:05:24 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/</guid>
-    <description><![CDATA[写 Shell Script 的规则是什么?   第一行写 #!/bin/bash 来宣告这个文件内的语法使用的是 bash 语法
-  程序内容的说明:
-   内容与功能 版本信息 作者与联络方式 创建日期 历史记录   主要环境变量的宣告 PATH 与 LANG
-  执行成果告知
-  1  exit 0   当下达
-1  echo $?   则可得到0的值
-echo -e 会发生什么?  e  enable interpretation of backslash escapes
-以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?]]></description>
 </item></channel>
 </rss>
