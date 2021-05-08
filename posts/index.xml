@@ -4,7 +4,23 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 07 May 2021 23:31:41 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 08 May 2021 09:20:43 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Day32</title>
+    <link>http://fengqigang.cn/posts/day32/</link>
+    <pubDate>Sat, 08 May 2021 09:20:43 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day32/</guid>
+    <description><![CDATA[ArrayList的特点?   ArrayList 是 List 接口的一个具体实现(线性表)
+  底层是一个数组
+  数组的默认长度(10)， 数组的扩容机制(1.5倍)
+  有序
+  允许重复元素
+  允许null
+  线程不安全
+  在默认的创建 ArrayList 对象的时候，如果不添加，那么构造方法并没有真正创建一个长度为10的数组，而是构建空数组
+但是面试的时候，首先你要说的就是默认长度为10
+ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zs&#34;); list.add(null); System.out.println(list); } }   构造方法  指定集合  API add]]></description>
+</item><item>
     <title>Day31</title>
     <link>http://fengqigang.cn/posts/day31/</link>
     <pubDate>Fri, 07 May 2021 23:31:41 &#43;0800</pubDate>
@@ -146,36 +162,5 @@ Java 中的一维， 多维数组的内存空间是连续的吗？ 在 java 中�
 删除(保证元素的顺序)
 最好情况： O(1)
 最坏情况: 移动 n-1 个元素, O(n)]]></description>
-</item><item>
-    <title>Day23</title>
-    <link>http://fengqigang.cn/posts/day23/</link>
-    <pubDate>Mon, 26 Apr 2021 23:39:19 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day23/</guid>
-    <description><![CDATA[类加载的细分? 类加载通过 加载, 连接， 初始化 三步来实现
-类加载中的加载是如何执行的？ 通过类加载器获得二进制字节流
-在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口
-类加载中的连接是如何执行的? 验证：确保被加载类的正确性正确性的校验
-cafe babe:magic number起校验作用的
-准备：负责为类的静态成员分配内存并设置默认初始化值
-解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)
-类加载中的初始化是如何执行的？ 给静态成员变量赋初值，执行静态代码块内容
-类加载时机有哪些? 创建类的实例 (首次创建该类)
-对象访问类的静态变量（首次)
-调用类的静态方法（首次)
-使用反射方式来强制创建某个类或接口对应的 java.lang.Class 对象
-加载某个类的子类，会先触发父类的加载
-直接使用 java. exe 命令来运行某个主类，也就是执行了某个类的main方法
-类加载中有哪些加载器? Bootstrap ClassLoader
-根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar
-Extension ClassLoader
-扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录
-Sysetm ClassLoader
-系统类加载器/应用加载器负责加载自己定义的Java类
-java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(通过类加载器 ClassLoader 加载) 运行时阶段  什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
-获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
-  类名.class
-  对象.getClass（）
-  如何用 Class.]]></description>
 </item></channel>
 </rss>
