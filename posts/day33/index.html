@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day33 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day33" />
+<meta property="og:description" content="Queue接口的特点  Queue 接口是 Collection 接口的一个子接口中 Queue 代表/ 描述的是队列(什么是队列: 一个操作受到限制的线性表, 在添加的时候只能在一端添加，删除是在另一端删除 -&gt; 先进先出，后进后出) 有序 能存储重复元素 不能存储null  (poll 方法， 如果没有元素可以删除null返回， 如果允许null存储，poll方法就没办法分辨返回的null传下到底有没有元素可删除的标记，还是原本存储的null, 所以不让存null)
+API Deque 接口  Deque 接口是Queue接口的一个子接口 Deque 在Queue接口上进行了扩展: 不仅仅可以作为普通队列，还定义了双端队列，栈 有序 允许重复 不能存储 null(LinkedList) 除外  ArrayDeque 特点  ArrayDeque 是 Deque(双端队列)的一个子实现 可以作为 普通队列/ 双端队列/ 栈 底层数组(循环数组) 默认的初始容量16， 扩容机制(扩充2倍)  如果不大于8， 直接创建一个为8的数组
+有序 允许重复 不允许存储null 线程不安全 我们可以在构造方法里指定底层数组长度，但是给定的数组长度并不真的是我们给定的值 ，而是一个大于我们给定值 的最小2的幂值 -&gt; 底层数组的长度永远是2的幂值  取模运算
+构造方法
+BlockingQueue" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day33/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-08T23:40:30&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-08T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day33"/>
+<meta name="twitter:description" content="Queue接口的特点  Queue 接口是 Collection 接口的一个子接口中 Queue 代表/ 描述的是队列(什么是队列: 一个操作受到限制的线性表, 在添加的时候只能在一端添加，删除是在另一端删除 -&gt; 先进先出，后进后出) 有序 能存储重复元素 不能存储null  (poll 方法， 如果没有元素可以删除null返回， 如果允许null存储，poll方法就没办法分辨返回的null传下到底有没有元素可删除的标记，还是原本存储的null, 所以不让存null)
+API Deque 接口  Deque 接口是Queue接口的一个子接口 Deque 在Queue接口上进行了扩展: 不仅仅可以作为普通队列，还定义了双端队列，栈 有序 允许重复 不能存储 null(LinkedList) 除外  ArrayDeque 特点  ArrayDeque 是 Deque(双端队列)的一个子实现 可以作为 普通队列/ 双端队列/ 栈 底层数组(循环数组) 默认的初始容量16， 扩容机制(扩充2倍)  如果不大于8， 直接创建一个为8的数组
+有序 允许重复 不允许存储null 线程不安全 我们可以在构造方法里指定底层数组长度，但是给定的数组长度并不真的是我们给定的值 ，而是一个大于我们给定值 的最小2的幂值 -&gt; 底层数组的长度永远是2的幂值  取模运算
+构造方法
+BlockingQueue"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day33/" /><link rel="prev" href="http://fengqigang.cn/posts/day32/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day33",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day33\/"
+        },"genre": "posts","keywords": "java","wordcount":  59 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day33\/","datePublished": "2021-05-08T23:40:30+08:00","dateModified": "2021-05-08T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day33</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-08">2021-05-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;59 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#queue接口的特点">Queue接口的特点</a></li>
+        <li><a href="#api">API</a></li>
+        <li><a href="#deque-接口">Deque 接口</a></li>
+        <li><a href="#arraydeque-特点">ArrayDeque 特点</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="queue接口的特点">Queue接口的特点</h3>
+<ol>
+<li>Queue 接口是 Collection 接口的一个子接口中</li>
+<li>Queue 代表/ 描述的是队列(什么是队列: 一个操作受到限制的线性表, 在添加的时候只能在一端添加，删除是在另一端删除 -&gt; 先进先出，后进后出)</li>
+<li>有序</li>
+<li>能存储重复元素</li>
+<li>不能存储null</li>
+</ol>
+<p>(poll 方法， 如果没有元素可以删除null返回， 如果允许null存储，poll方法就没办法分辨返回的null传下到底有没有元素可删除的标记，还是原本存储的null, 所以不让存null)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508105934.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508105934.png, https://img.fengqigang.cn//img/20210508105934.png 1.5x, https://img.fengqigang.cn//img/20210508105934.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508105934.png"
+        title="https://img.fengqigang.cn//img/20210508105934.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508110024.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508110024.png, https://img.fengqigang.cn//img/20210508110024.png 1.5x, https://img.fengqigang.cn//img/20210508110024.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508110024.png"
+        title="https://img.fengqigang.cn//img/20210508110024.png" /></p>
+<h3 id="api">API</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508110328.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508110328.png, https://img.fengqigang.cn//img/20210508110328.png 1.5x, https://img.fengqigang.cn//img/20210508110328.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508110328.png"
+        title="https://img.fengqigang.cn//img/20210508110328.png" /></p>
+<h3 id="deque-接口">Deque 接口</h3>
+<ol>
+<li>Deque 接口是Queue接口的一个子接口</li>
+<li>Deque 在Queue接口上进行了扩展: 不仅仅可以作为普通队列，还定义了双端队列，栈</li>
+<li>有序</li>
+<li>允许重复</li>
+<li>不能存储 null(LinkedList) 除外</li>
+</ol>
+<h3 id="arraydeque-特点">ArrayDeque 特点</h3>
+<ol>
+<li>ArrayDeque 是 Deque(双端队列)的一个子实现</li>
+<li>可以作为 普通队列/ 双端队列/ 栈</li>
+<li>底层数组(循环数组)</li>
+<li>默认的初始容量16， 扩容机制(扩充2倍)</li>
+</ol>
+<p>如果不大于8， 直接创建一个为8的数组</p>
+<ol start="5">
+<li>有序</li>
+<li>允许重复</li>
+<li>不允许存储null</li>
+<li>线程不安全</li>
+<li>我们可以在构造方法里指定底层数组长度，但是给定的数组长度并不真的是我们给定的值 ，而是一个大于我们给定值 的最小2的幂值  -&gt; 底层数组的长度永远是2的幂值</li>
+</ol>
+<p><strong>取模运算</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508112009.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508112009.png, https://img.fengqigang.cn//img/20210508112009.png 1.5x, https://img.fengqigang.cn//img/20210508112009.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508112009.png"
+        title="https://img.fengqigang.cn//img/20210508112009.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508114420.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508114420.png, https://img.fengqigang.cn//img/20210508114420.png 1.5x, https://img.fengqigang.cn//img/20210508114420.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508114420.png"
+        title="https://img.fengqigang.cn//img/20210508114420.png" /></p>
+<p><strong>构造方法</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508112027.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508112027.png, https://img.fengqigang.cn//img/20210508112027.png 1.5x, https://img.fengqigang.cn//img/20210508112027.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508112027.png"
+        title="https://img.fengqigang.cn//img/20210508112027.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508112131.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508112131.png, https://img.fengqigang.cn//img/20210508112131.png 1.5x, https://img.fengqigang.cn//img/20210508112131.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508112131.png"
+        title="https://img.fengqigang.cn//img/20210508112131.png" /></p>
+<p><strong>BlockingQueue</strong></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day32/" class="prev" rel="prev" title="Day32"><i class="fas fa-angle-left fa-fw"></i>Day32</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
