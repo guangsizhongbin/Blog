@@ -1,5 +1,5 @@
 ---
-title: "Day2"
+title: "02_method"
 date: 2021-03-31T08:37:17+08:00
 lastmod: 2021-03-31
 author: "xiaonan"
@@ -58,10 +58,10 @@ Java 的开发者, 在 《Java虚拟机规范》中指出:
    - 引用数据类型在栈帧中存储引用，引用存储的只是该引用类型在堆上对象的内存地址
 
 2. 打印变量名内容:
-	
-	- 基本数据类型，打印变量名就是该变量具体的数值
-	
-	- 引用数据类型，打印变量名显示该引用变量堆上的内存地址
+
+   - 基本数据类型，打印变量名就是该变量具体的数值
+
+   - 引用数据类型，打印变量名显示该引用变量堆上的内存地址
 
 ### 堆上对象和栈中变量有什么区别?
 
@@ -74,16 +74,16 @@ Java 的开发者, 在 《Java虚拟机规范》中指出:
 2. 从默认值来看:
 
 - 堆上的变量具有默认值
-	
-	- 整型 **(byte, short, int, long)** 默认值为 0
 
-	- 浮点类型 **(float, double)** 默认值为 0.0
+  - 整型 **(byte, short, int, long)** 默认值为 0
 
-	- 字符类型 **char** 默认值为 '\u0000' 空字符
+  - 浮点类型 **(float, double)** 默认值为 0.0
 
-	- 布尔类型 **(boolean)** 默认值是 false
+  - 字符类型 **char** 默认值为 '\u0000' 空字符
 
-	- 引用数据类型默认值是 **null**
+  - 布尔类型 **(boolean)** 默认值是 false
+
+  - 引用数据类型默认值是 **null**
 
 - **栈上变量没有默认值**，声明必须显式的初始化，否则无法使用
 
@@ -93,8 +93,22 @@ Java 的开发者, 在 《Java虚拟机规范》中指出:
 
 - 栈上的局部变量的生命周期和栈帧保持一致
 
-### 数组遍历可以调用什么方法?
+### What is Overloading?
 
-**Arrays.toString()**
+Overloading occurs if several methods have the same name but different parameters.
+
+For example, the `String` class has four public methods called `indexOf`. They have signatures.
+
+```java
+indexOf(int)
+indexOf(int, int)
+indexOf(String)
+indexOf(String, int)
+```
+
+The return type is not part of the method signature.
+
+**That is, you cannot have two methods with same names and parameter types but different return types.**
+
 
 
