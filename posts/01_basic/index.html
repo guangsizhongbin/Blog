@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Day1 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day1" />
-<meta property="og:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
+        <title>01_basic - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="01_basic" />
+<meta property="og:description" content="[toc]
+JDK 与 JRE 有什么样的关系? JRE (Java Runtime Enviroment)
 Java 运行时环境
 JDK(Java Development Kit)
 Java 开发者工具包
@@ -15,29 +16,19 @@ Java 程序的运行原理是什么样的? 给一个 project起名的规范是�
   单词之间用下划线或横杠连接
   如:
 student-manage
-如何给一个包命名? 以反转公司域名为规范
-包名应该 全部小写
-多级包名以点(.)分隔
-包名 com.baidu
-如何给类、接口命名? 采用大驼峰命名法
-public class TestDemo{}
-public class PersonDemo{}
-如何给变量和方法命名? 采用小驼峰命名法
-int num;
-String name;
-如何给常量命名? 全部用大写
-多个单词之间用下划线(_)隔开
-PI
-什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
- 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram" />
+How to absolutely guarantee a unique package name? Use an Internet domain name written in reverse.
+For example, consider the domain horstmann.com
+When written in reverse order, it turns into the package name com.horstmann
+You can then append a project name, such as com." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/day1/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/01_basic/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-03-30T23:02:50&#43;08:00" />
 <meta property="article:modified_time" content="2021-03-30T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Day1"/>
-<meta name="twitter:description" content="JDK 与 JRE 有什么样的关系? JRE (Java Runtime Envirment)
+<meta name="twitter:title" content="01_basic"/>
+<meta name="twitter:description" content="[toc]
+JDK 与 JRE 有什么样的关系? JRE (Java Runtime Enviroment)
 Java 运行时环境
 JDK(Java Development Kit)
 Java 开发者工具包
@@ -46,35 +37,24 @@ Java 程序的运行原理是什么样的? 给一个 project起名的规范是�
   单词之间用下划线或横杠连接
   如:
 student-manage
-如何给一个包命名? 以反转公司域名为规范
-包名应该 全部小写
-多级包名以点(.)分隔
-包名 com.baidu
-如何给类、接口命名? 采用大驼峰命名法
-public class TestDemo{}
-public class PersonDemo{}
-如何给变量和方法命名? 采用小驼峰命名法
-int num;
-String name;
-如何给常量命名? 全部用大写
-多个单词之间用下划线(_)隔开
-PI
-什么是小鸵峰式命名法( lower camel case )? 多个单词组全成一个字符串
- 第一个单词首字母 小写 第二个单词开始，首字母都要大写  myName, myFirstJavaProgram"/>
+How to absolutely guarantee a unique package name? Use an Internet domain name written in reverse.
+For example, consider the domain horstmann.com
+When written in reverse order, it turns into the package name com.horstmann
+You can then append a project name, such as com."/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day1/" /><link rel="prev" href="http://fengqigang.cn/posts/removeelement/" /><link rel="next" href="http://fengqigang.cn/posts/day2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/01_basic/" /><link rel="prev" href="http://fengqigang.cn/posts/removeelement/" /><link rel="next" href="http://fengqigang.cn/posts/02_method/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Day1",
+        "headline": "01_basic",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/day1\/"
-        },"genre": "posts","keywords": "java","wordcount":  694 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/day1\/","datePublished": "2021-03-30T23:02:50+08:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/01_basic\/"
+        },"genre": "posts","keywords": "java","wordcount":  997 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/01_basic\/","datePublished": "2021-03-30T23:02:50+08:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -148,10 +128,10 @@ PI
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Day1</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">01_basic</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;694 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;997 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -164,6 +144,7 @@ PI
         <li><a href="#jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</a></li>
         <li><a href="#java-程序的运行原理是什么样的"><strong>Java</strong> 程序的运行原理是什么样的?</a></li>
         <li><a href="#给一个-project起名的规范是什么">给一个 <strong>project</strong>起名的规范是什么?</a></li>
+        <li><a href="#how-to-absolutely-guarantee-a-unique-package-name">How to absolutely guarantee a unique <strong>package name</strong>?</a></li>
         <li><a href="#如何给一个包命名">如何给一个包命名?</a></li>
         <li><a href="#如何给类接口命名">如何给类、接口命名?</a></li>
         <li><a href="#如何给变量和方法命名">如何给变量和方法命名?</a></li>
@@ -181,24 +162,26 @@ PI
         <li><a href="#double-的有效位数是多少"><strong>double</strong> 的有效位数是多少?</a></li>
         <li><a href="#20210505223517httpsimgfengqigangcnimg20210505223517png-这几个数据类型相互转换哪些会出现精度丢失问题"><img src="https://img.fengqigang.cn//img/20210505223517.png" alt="20210505223517"> 这几个数据类型相互转换哪些会出现精度丢失问题?</a></li>
         <li><a href="#int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</a></li>
-        <li><a href="#如何实现-scanner-键盘录入">如何实现 <strong>Scanner</strong> 键盘录入?</a></li>
         <li><a href="#next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</a></li>
-        <li><a href="#u0000-与-有什么区别"><strong>\u0000</strong> 与 有什么区别?</a></li>
-        <li><a href="#what-is-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What is the different between Strongly typed languages and weakly typed languages?</a></li>
+        <li><a href="#u0000-与-空格-有什么区别"><strong>\u0000</strong> 与 (空格) 有什么区别?</a></li>
+        <li><a href="#whats-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What&rsquo;s the different between Strongly typed languages and weakly typed languages?</a></li>
         <li><a href="#whats-the-mean-of-systemoutprintln0x10p-3">What&rsquo;s the mean of System.out.println(0x1.0p-3)?</a></li>
         <li><a href="#could-i-use--to-declare-java-variable">Could I use $ to declare Java variable?</a></li>
         <li><a href="#if-i-curious-as-to-what-unicode-characters-are-letters-as-for-as-java-is-concerned-what-can-i-do">If I curious as to what Unicode characters are &ldquo;letters&rdquo; as for as Java is concerned, what can I do?</a></li>
-        <li><a href="#what-is-mean-int-i-j">what is mean <code>int i, j;</code>?</a></li>
+        <li><a href="#whats-mean-int-i-j">What&rsquo;s mean <code>int i, j;</code>?</a></li>
         <li><a href="#in-java--how-can-i-declare-declare-a-constant">In Java , how can I declare declare a constant?</a></li>
         <li><a href="#how-can-i-use-logical-and-operator-or-logical-or-operator-to-avoid-errors">How can I use logical &ldquo;and&rdquo; operator or logical &ldquo;or&rdquo; operator to avoid errors?</a></li>
         <li><a href="#20210505231215httpsimgfengqigangcnimg20210505231215png其输出的结果是什么-为什么"><img src="https://img.fengqigang.cn//img/20210505231215.png" alt="20210505231215">其输出的结果是什么? 为什么?</a></li>
         <li><a href="#-符号是干什么的"><code>&gt;&gt;&gt;</code> 符号是干什么的?</a></li>
+        <li><a href="#float-205-是如何存储的">float 20.5 是如何存储的?</a></li>
+        <li><a href="#are-there-any-class-have-a-main-method">Are there any class have a <code>main</code> method?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</h3>
-<p><strong>JRE (Java Runtime Envirment)</strong></p>
+            </div><div class="content" id="content"><p>[toc]</p>
+<h3 id="jdk-与-jre-有什么样的关系"><strong>JDK</strong> 与 <strong>JRE</strong> 有什么样的关系?</h3>
+<p><strong>JRE (Java Runtime Enviroment)</strong></p>
 <p>Java 运行时环境</p>
 <p><strong>JDK(Java Development Kit)</strong></p>
 <p>Java 开发者工具包</p>
@@ -223,6 +206,12 @@ PI
 </ol>
 <p>如:</p>
 <p><strong>student-manage</strong></p>
+<h3 id="how-to-absolutely-guarantee-a-unique-package-name">How to absolutely guarantee a unique <strong>package name</strong>?</h3>
+<p>Use an Internet domain name written in reverse.</p>
+<p>For example, consider the domain <strong>horstmann.com</strong></p>
+<p>When written in reverse order, it turns into the package name <strong>com.horstmann</strong></p>
+<p>You can then append a project name, such as <strong>com.horstmann.corejava</strong></p>
+<p>If you then place the <strong>Employee</strong> class into the package, the &ldquo;fully qualified&rdquo; name becomes <strong>com.horstmann.corejava.Employee</strong></p>
 <h3 id="如何给一个包命名">如何给一个包命名?</h3>
 <p>以反转公司域名为规范</p>
 <p>包名应该 <strong>全部小写</strong></p>
@@ -376,7 +365,9 @@ PI
 <strong>double</strong> 8个字节</p>
 <p><strong>char</strong> 2个字节</p>
 <p><strong>boolean</strong></p>
-<p>JVM规范, 在内存中 <strong>boolean</strong> 当作 <strong>int</strong> 处理， 占4个字节</p>
+<p>JVM规范, 在内存中</p>
+<p>若:</p>
+<p><strong>boolean</strong> 当作 <strong>int</strong> 处理， 占4个字节</p>
 <p><strong>boolean</strong> 数组当成 <strong>byte</strong> 数组处理， 一个 <strong>boolean</strong> 元素占1个字节</p>
 <h3 id="float-只有-4字节-会比-8-字节的-long-小吗"><strong>float</strong> 只有 4字节, 会比 8 字节的 <strong>long</strong> 小吗?</h3>
 <p>不会， <strong>float</strong> 与 <strong>double</strong> 类型中都有 E, 会使得它比 <strong>int</strong> 和 <strong>long</strong> 要大</p>
@@ -433,50 +424,16 @@ PI
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210330224400.png"
         title="https://img.fengqigang.cn//img/20210330224400.png" /></p>
-<h3 id="如何实现-scanner-键盘录入">如何实现 <strong>Scanner</strong> 键盘录入?</h3>
-<ol>
-<li>导包</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li>创建对象</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><ol start="3">
-<li>接收从键盘录入的数据</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</h3>
+<h3 id="next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</h3>
 <p><strong>next(), nextInt() 等一系列方法</strong></p>
 <p>遇见 <strong>第一个有效字符</strong> 时，开始扫描</p>
 <p>当遇见<strong>第一个分隔符或结束符</strong>时，结束扫描，获取扫描到的内容</p>
 <p>即获取第一个扫描到的不含空格、换行符的单个字符串</p>
 <p><strong>nextLine()方法</strong></p>
 <p>获取一行的内容作为一个字符串被接收</p>
-<p>该方法不会因为空格或制表符号而结束扫描</p>
-<p>只会因车(换行)而结束扫描</p>
-<h3 id="u0000-与-有什么区别"><strong>\u0000</strong> 与 有什么区别?</h3>
+<p>该方法不会因为 <strong>空格或制表符号</strong> 而结束扫描</p>
+<p>只会因 <strong>回车(换行)</strong> 而结束扫描</p>
+<h3 id="u0000-与-空格-有什么区别"><strong>\u0000</strong> 与 (空格) 有什么区别?</h3>
 <p><strong>\u0000</strong> 对应的是什么都没有</p>
 <p><img
         class="lazyload"
@@ -495,7 +452,7 @@ PI
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210330225709.png"
         title="https://img.fengqigang.cn//img/20210330225709.png" /></p>
-<h3 id="what-is-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What is the different between Strongly typed languages and weakly typed languages?</h3>
+<h3 id="whats-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What&rsquo;s the different between Strongly typed languages and weakly typed languages?</h3>
 <p><strong>Weakly-typed</strong> languages make conversions between unrelated types implicitly</p>
 <p><img
         class="lazyload"
@@ -547,10 +504,10 @@ PI
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210505215200.png"
         title="20210505215200" /></p>
-<h3 id="what-is-mean-int-i-j">what is mean <code>int i, j;</code>?</h3>
+<h3 id="whats-mean-int-i-j">What&rsquo;s mean <code>int i, j;</code>?</h3>
 <p>Declare multiple variables on a single line</p>
 <p>i, j both are integers</p>
-<p>Don&rsquo;t recommend this style, If you declare each variable separately, your programs are easier to read.</p>
+<p><strong>Don&rsquo;t recommend this style, If you declare each variable separately, your programs are easier to read.</strong></p>
 <h3 id="in-java--how-can-i-declare-declare-a-constant">In Java , how can I declare declare a constant?</h3>
 <p>Use the keyword <code>final</code> to denote a constant.</p>
 <p>It is customary to name constants in all uppercase</p>
@@ -598,6 +555,186 @@ PI
 <p>无符号右移</p>
 <p>a <code>&gt;&gt;&gt;</code> operator fills the top bits with zero, unlike <code>&gt;&gt;</code> which extends the sign bit into the top bits.</p>
 <p><strong>There is no</strong> <code>&lt;&lt;&lt;</code> <strong>operator</strong></p>
+<h3 id="float-205-是如何存储的">float 20.5 是如何存储的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210506172226.png"
+        data-srcset="https://img.fengqigang.cn//img/20210506172226.png, https://img.fengqigang.cn//img/20210506172226.png 1.5x, https://img.fengqigang.cn//img/20210506172226.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210506172226.png"
+        title="20210506172226" /></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>过程</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>首先符号位为0</strong></td>
+<td>正数的符号位为0<br>负数的符号位为1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>其转化为二进制为<br>10100.1</td>
+<td>正数除以2取余数<br>负数乘以2取整</td>
+</tr>
+<tr>
+<td>3</td>
+<td>将二进制数转化成科学计数法<br>1.01001 x 2^4</td>
+<td>4为指数部分<br>1.01001 为尾数部分</td>
+</tr>
+<tr>
+<td>4</td>
+<td>将指数部分加上127, 转换成二进制, 作exponent<br>0111 1111 + 0000 0100</td>
+<td>结果为<br>1000 0011</td>
+</tr>
+<tr>
+<td>5</td>
+<td>尾数部分，隐藏高位1, 低位补0<br>101001</td>
+<td>结果为0100 100000000&hellip;(23)位</td>
+</tr>
+</tbody>
+</table>
+<p>0 1000 0011 0100 1000 0000 0000 000</p>
+<h3 id="are-there-any-class-have-a-main-method">Are there any class have a <code>main</code> method?</h3>
+<p>yeah</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticTest</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+
+		<span class="n">var</span> <span class="n">staff</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
+
+		<span class="n">staff</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">40000</span><span class="o">);</span>
+		<span class="n">staff</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">60000</span><span class="o">);</span>
+		<span class="n">staff</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">65000</span><span class="o">);</span>
+
+		<span class="k">for</span> <span class="o">(</span><span class="n">Employee</span> <span class="n">e</span> <span class="o">:</span> <span class="n">staff</span><span class="o">){</span>
+			<span class="n">e</span><span class="o">.</span><span class="na">setId</span><span class="o">();</span>
+			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;name=&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;, id=&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
+		<span class="o">}</span>
+
+		<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="na">getNextId</span><span class="o">();</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Next available id=&#34;</span> <span class="o">+</span> <span class="n">n</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Employee</span><span class="o">{</span>
+	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">nextId</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">double</span> <span class="n">salary</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="nf">Employee</span> <span class="o">(</span><span class="n">String</span> <span class="n">n</span><span class="o">,</span> <span class="kt">double</span> <span class="n">s</span><span class="o">){</span>
+		<span class="n">name</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+		<span class="n">salary</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span>
+		<span class="n">id</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">double</span> <span class="nf">getSalary</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">salary</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(){</span>
+		<span class="n">id</span> <span class="o">=</span> <span class="n">nextId</span><span class="o">;</span>
+		<span class="n">nextId</span><span class="o">++;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getNextId</span><span class="o">(){</span>
+		<span class="k">return</span> <span class="n">nextId</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+		<span class="n">var</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Harry&#34;</span><span class="o">,</span> <span class="n">50000</span><span class="o">);</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210508234006.png"
+        data-srcset="https://img.fengqigang.cn//img/20210508234006.png, https://img.fengqigang.cn//img/20210508234006.png 1.5x, https://img.fengqigang.cn//img/20210508234006.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210508234006.png"
+        title="20210508234006" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -622,7 +759,7 @@ PI
     </div>
 
     <div class="post-nav"><a href="/posts/removeelement/" class="prev" rel="prev" title="RemoveElement"><i class="fas fa-angle-left fa-fw"></i>RemoveElement</a>
-            <a href="/posts/day2/" class="next" rel="next" title="Day2">Day2<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/02_method/" class="next" rel="next" title="02_method">02_method<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
