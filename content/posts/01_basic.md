@@ -1,5 +1,5 @@
 ---
-title: "Day1"
+title: "01_basic"
 date: 2021-03-30T23:02:50+08:00
 lastmod: 2021-03-30
 author: "xiaonan"
@@ -10,9 +10,11 @@ tags: [java]
 categories: [王道]
 ---
 
+[toc]
+
 ### **JDK** 与 **JRE** 有什么样的关系?
 
-**JRE (Java Runtime Envirment)**
+**JRE (Java Runtime Enviroment)**
 
 Java 运行时环境
 
@@ -36,6 +38,18 @@ Java 开发者工具包
 如:
 
 **student-manage**
+
+### How to absolutely guarantee a unique **package name**?
+
+Use an Internet domain name written in reverse.
+
+For example, consider the domain **horstmann.com**
+
+When written in reverse order, it turns into the package name **com.horstmann**
+
+You can then append a project name, such as **com.horstmann.corejava**
+
+If you then place the **Employee** class into the package, the "fully qualified" name becomes **com.horstmann.corejava.Employee**
 
 ### 如何给一个包命名?
 
@@ -177,7 +191,11 @@ public class TestInt {
 
 **boolean**
 
-JVM规范, 在内存中 **boolean** 当作 **int** 处理， 占4个字节
+JVM规范, 在内存中 
+
+若:
+
+**boolean** 当作 **int** 处理， 占4个字节
 
 **boolean** 数组当成 **byte** 数组处理， 一个 **boolean** 元素占1个字节
 
@@ -224,25 +242,6 @@ JVM规范, 在内存中 **boolean** 当作 **int** 处理， 占4个字节
 
 ![](https://img.fengqigang.cn//img/20210330224400.png)
 
-### 如何实现 **Scanner** 键盘录入?
-
-1.  导包
-
-```java
-import java.util.Scanner;
-```
-
-2.  创建对象
-
-```java
-Scanner sc = new Scanner(System.in);
-```
-
-3.  接收从键盘录入的数据
-
-```java
-int x = sc.nextInt();
-```
 
 ### **next()** ， **nextInt()** 等一系列方法和 **nextLine()** 有什么区别?
 
@@ -258,11 +257,11 @@ int x = sc.nextInt();
 
 获取一行的内容作为一个字符串被接收
 
-该方法不会因为空格或制表符号而结束扫描
+该方法不会因为 **空格或制表符号** 而结束扫描
 
-只会因车(换行)而结束扫描
+只会因 **回车(换行)** 而结束扫描
 
-### **\\u0000** 与 有什么区别?
+### **\\u0000** 与 (空格) 有什么区别?
 
 **\\u0000** 对应的是什么都没有
 
@@ -272,7 +271,7 @@ int x = sc.nextInt();
 
 ![](https://img.fengqigang.cn//img/20210330225709.png)
 
-### What is the different between Strongly typed languages and weakly typed languages?
+### What's the different between Strongly typed languages and weakly typed languages?
 
 **Weakly-typed** languages make conversions between unrelated types implicitly
 
@@ -308,13 +307,13 @@ System.out.println(Character.isJavaIdentifierPart('c'));
 
 ![20210505215200](https://img.fengqigang.cn//img/20210505215200.png)
 
-### what is mean `int i, j;`?
+### What's mean `int i, j;`?
 
 Declare multiple variables on a single line
 
 i, j both are integers
 
-Don't recommend this style, If you declare each variable separately, your programs are easier to read.
+**Don't recommend this style, If you declare each variable separately, your programs are easier to read.**
 
 ### In Java , how can I declare declare a constant?
 
@@ -357,4 +356,86 @@ int 类型在 java 中 4字节
 a `>>>` operator fills the top bits with zero, unlike `>>` which extends the sign bit into the top bits.
 
 **There is no** `<<<` **operator**
+
+### float 20.5 是如何存储的?
+
+![20210506172226](https://img.fengqigang.cn//img/20210506172226.png)
+
+| 序号  | 过程  | 解释  |
+| --- | --- | --- |
+| 1   | **首先符号位为0** | 正数的符号位为0<br>负数的符号位为1 |
+| 2   | 其转化为二进制为<br>10100.1 | 正数除以2取余数<br>负数乘以2取整 |
+| 3   | 将二进制数转化成科学计数法<br>1.01001 x 2^4 | 4为指数部分<br>1.01001 为尾数部分 |
+| 4   | 将指数部分加上127, 转换成二进制, 作exponent<br>0111 1111 + 0000 0100 | 结果为<br>1000 0011 |
+| 5   | 尾数部分，隐藏高位1, 低位补0<br>101001 | 结果为0100 100000000...(23)位 |
+
+0 1000 0011 0100 1000 0000 0000 000
+
+### Are there any class have a `main` method?
+
+yeah
+
+```java
+public class StaticTest{
+	public static void main(String[] args){
+
+		var staff = new Employee[3];
+
+		staff[0] = new Employee("Tom", 40000);
+		staff[1] = new Employee("Tom", 60000);
+		staff[2] = new Employee("Tom", 65000);
+
+		for (Employee e : staff){
+			e.setId();
+			System.out.println("name=" + e.getName() + ", id=" + e.getId() + e.getSalary());
+		}
+
+		int n = Employee.getNextId();
+		System.out.println("Next available id=" + n);
+	}
+}
+
+class Employee{
+	private static int nextId = 1;
+
+	private String name;
+	private double salary;
+	private int id;
+
+	public Employee (String n, double s){
+		name = n;
+		salary = s;
+		id = 0;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public double getSalary(){
+		return salary;
+	}
+
+	public int getId(){
+		return id;
+	}
+
+	public void setId(){
+		id = nextId;
+		nextId++;
+	}
+
+	public static int getNextId(){
+		return nextId;
+	}
+
+	public static void main(String[] args){
+		var e = new Employee("Harry", 50000);
+		System.out.println(e.getName() + " " + e.getSalary());
+	}
+
+}
+```
+
+![20210508234006](https://img.fengqigang.cn//img/20210508234006.png)
 
