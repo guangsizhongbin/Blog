@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day34 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day34" />
+<meta property="og:description" content="套壳 Java 集合体系是什么样的? 两个
+Collection 集合体系
+Map 集合体系
+都是 Object 的子类
+Map 特点  Map 接口是Map 集合体系的顶级接口 和 Collection 接口以及 Collection 下面子实现不同的是, Map 所存储的数据不再是单个数据的，而是 Key-value 的数据(键值对) Map 的子实现有些是有序的，有些是无序的 Map 的子实现不允许存储重复key(重复元素的定义不同) Map 有些子实现可以存储 null, 有些子实现不允许存储 null (指key值)  Map 的 Api? put
+1 2 3 4 5 6 7 8 9 10 11 12 13  public class TestMap { public static void main(String[] args) { HashMap map = new HashMap&lt;String, Integer&gt;(2); // put  map." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day34/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-10T23:36:10&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-10T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day34"/>
+<meta name="twitter:description" content="套壳 Java 集合体系是什么样的? 两个
+Collection 集合体系
+Map 集合体系
+都是 Object 的子类
+Map 特点  Map 接口是Map 集合体系的顶级接口 和 Collection 接口以及 Collection 下面子实现不同的是, Map 所存储的数据不再是单个数据的，而是 Key-value 的数据(键值对) Map 的子实现有些是有序的，有些是无序的 Map 的子实现不允许存储重复key(重复元素的定义不同) Map 有些子实现可以存储 null, 有些子实现不允许存储 null (指key值)  Map 的 Api? put
+1 2 3 4 5 6 7 8 9 10 11 12 13  public class TestMap { public static void main(String[] args) { HashMap map = new HashMap&lt;String, Integer&gt;(2); // put  map."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day34/" /><link rel="prev" href="http://fengqigang.cn/posts/day33/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day34",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day34\/"
+        },"genre": "posts","keywords": "java","wordcount":  574 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day34\/","datePublished": "2021-05-10T23:36:10+08:00","dateModified": "2021-05-10T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day34</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-10">2021-05-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;574 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#套壳">套壳</a></li>
+        <li><a href="#java-集合体系是什么样的">Java 集合体系是什么样的?</a></li>
+        <li><a href="#map-特点">Map 特点</a></li>
+        <li><a href="#map-的-api">Map 的 Api?</a></li>
+        <li><a href="#hashmap">HashMap</a></li>
+        <li><a href="#红黑树变成链表">红黑树变成链表?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="套壳">套壳</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510101446.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510101446.png, https://img.fengqigang.cn//img/20210510101446.png 1.5x, https://img.fengqigang.cn//img/20210510101446.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510101446.png"
+        title="https://img.fengqigang.cn//img/20210510101446.png" /></p>
+<h3 id="java-集合体系是什么样的">Java 集合体系是什么样的?</h3>
+<p>两个</p>
+<p>Collection 集合体系</p>
+<p>Map 集合体系</p>
+<p>都是 Object 的子类</p>
+<h3 id="map-特点">Map 特点</h3>
+<ol>
+<li>Map 接口是Map 集合体系的顶级接口</li>
+<li>和 Collection 接口以及 Collection 下面子实现不同的是, Map 所存储的数据不再是单个数据的，而是 Key-value 的数据(键值对)</li>
+<li>Map 的子实现有些是有序的，有些是无序的</li>
+<li>Map 的子实现不允许存储重复key(重复元素的定义不同)</li>
+<li>Map 有些子实现可以存储 null, 有些子实现不允许存储 null (指key值)</li>
+</ol>
+<h3 id="map-的-api">Map 的 Api?</h3>
+<p><strong>put</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">// put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">,</span> <span class="n">22</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510135753.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510135753.png, https://img.fengqigang.cn//img/20210510135753.png 1.5x, https://img.fengqigang.cn//img/20210510135753.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510135753.png"
+        title="https://img.fengqigang.cn//img/20210510135753.png" /></p>
+<p><strong>clear</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">// put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">,</span> <span class="n">22</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+        <span class="c1">// clear
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510135846.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510135846.png, https://img.fengqigang.cn//img/20210510135846.png 1.5x, https://img.fengqigang.cn//img/20210510135846.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510135846.png"
+        title="https://img.fengqigang.cn//img/20210510135846.png" /></p>
+<p><strong>containsKey</strong> 是否包含指定的key值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">// put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">,</span> <span class="n">22</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510135953.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510135953.png, https://img.fengqigang.cn//img/20210510135953.png 1.5x, https://img.fengqigang.cn//img/20210510135953.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510135953.png"
+        title="https://img.fengqigang.cn//img/20210510135953.png" /></p>
+<p><strong>containsValue</strong> 是否包含指定的value</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">// put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;wu&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zl&#34;</span><span class="o">,</span> <span class="n">22</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsValue</span><span class="o">(</span><span class="n">23</span><span class="o">));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510140036.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510140036.png, https://img.fengqigang.cn//img/20210510140036.png 1.5x, https://img.fengqigang.cn//img/20210510140036.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510140036.png"
+        title="https://img.fengqigang.cn//img/20210510140036.png" /></p>
+<p><strong>equals</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+        <span class="n">HashMap</span> <span class="n">map1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">// put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">map1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map1</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map1</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">map1</span><span class="o">));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510140201.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510140201.png, https://img.fengqigang.cn//img/20210510140201.png 1.5x, https://img.fengqigang.cn//img/20210510140201.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510140201.png"
+        title="https://img.fengqigang.cn//img/20210510140201.png" /></p>
+<p><strong>get(object key)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">// put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510140307.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510140307.png, https://img.fengqigang.cn//img/20210510140307.png 1.5x, https://img.fengqigang.cn//img/20210510140307.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510140307.png"
+        title="https://img.fengqigang.cn//img/20210510140307.png" /></p>
+<p><strong>putAll</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+        <span class="n">HashMap</span> <span class="n">map1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">//put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+
+        <span class="c1">// putAll
+</span><span class="c1"></span>        <span class="n">map1</span><span class="o">.</span><span class="na">putAll</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510140438.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510140438.png, https://img.fengqigang.cn//img/20210510140438.png 1.5x, https://img.fengqigang.cn//img/20210510140438.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510140438.png"
+        title="https://img.fengqigang.cn//img/20210510140438.png" /></p>
+<p><strong>remove(Object key)</strong></p>
+<p>根据key键值，删除keyvalue数据</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestMap</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">HashMap</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;(</span><span class="n">2</span><span class="o">);</span>
+
+        <span class="c1">//put
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">,</span> <span class="n">18</span><span class="o">);</span>
+        <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;ls&#34;</span><span class="o">,</span> <span class="n">20</span><span class="o">);</span>
+
+        <span class="c1">//remove
+</span><span class="c1"></span>        <span class="n">map</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="s">&#34;zs&#34;</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">map</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510140543.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510140543.png, https://img.fengqigang.cn//img/20210510140543.png 1.5x, https://img.fengqigang.cn//img/20210510140543.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510140543.png"
+        title="https://img.fengqigang.cn//img/20210510140543.png" /></p>
+<p><strong>Collection<V> values()</strong> 返回这个map的值集</p>
+<p><strong>set<K> keySet()</strong> 返回这个map对象的键集</p>
+<p>** set&lt;Map.Entry&lt;K,V&raquo; entrySet ** 返回 这个 map 的键值对</p>
+<h3 id="hashmap">HashMap</h3>
+<ol>
+<li>
+<p>HashMap 是 Map 接口的子实现 (存储的是 key - value 数据)</p>
+</li>
+<li>
+<p>HashMap 表示一个 Hash 表</p>
+</li>
+<li>
+<p>HashMap 的底层结构， 数组+ 链表+红黑树(jdk1.8 之前就是存粹的数组+链表)</p>
+</li>
+</ol>
+<p>4.HashMap 的效率非常高: 存储/查找</p>
+<p>5.数组的默认初始容量 16, 数组的扩容机制 2 倍</p>
+<ol start="6">
+<li>HashMap 存储的Key-value 数据 ，经过散列之后 是无序的</li>
+<li>HashMap 不允许存储重复元素key：（重复的定义）</li>
+<li>允许存储 null 值 (key-value 都允许为null)</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510172918.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510172918.png, https://img.fengqigang.cn//img/20210510172918.png 1.5x, https://img.fengqigang.cn//img/20210510172918.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510172918.png"
+        title="https://img.fengqigang.cn//img/20210510172918.png" /></p>
+<ol start="6">
+<li>线程不安全</li>
+<li>HashMap 加载因子默认是0.75, 尽量加载因子在0.5 ~ 1之间</li>
+</ol>
+<p>一个 HashMap 底层数组的扩容阈值 = 数组长度 * 加载因子</p>
+<ol start="11">
+<li>hash 值的计算 (h = key.hashCode()) ^(h &raquo;&gt; 16)</li>
+</ol>
+<p>由于我们 HashMap 在做根据 hash 值 取</p>
+<ol start="12">
+<li>
+<p>HashMap 的底层数组，是一个Node类型的数组，这个Node类型包含四个参数，分别是hash值 ，key, value, next</p>
+</li>
+<li>
+<p>我们最终存储到 HashMap 中的是一个结点类型, 这个结点类型包含四个</p>
+</li>
+<li>
+<p>HashMap 的重复的定义， 首先 hash 值是否一样， hash 一样的情况下，两个key是否直接相等</p>
+</li>
+<li>
+<p>如果存储的数据key已经存在(key)重复了，那么会用新的value值覆盖旧value值</p>
+</li>
+<li>
+<p>如果我们把一份数据 key-value (已经存储到 HashMap中) 中的 Key通过引用修改，也就意味着一份key-value数据， 一旦存储到 hashmap 中就不要通过引用修改 key 了.</p>
+</li>
+<li>
+<p>当链表长度超过8， 达到9的时候(算上新添加的元素)， 会由链表转化为红黑树</p>
+</li>
+<li>
+<p>当链表长度超过8，达到9的时候(算上新添加的元素)， 如果同时数组长度小于64的时候，会有限选择扩容，而非转化为红黑树(注意: 如果扩容的时候，原本存在于x位置的元素，可能依旧存储在x, 还有可能存储到旧长度 + x的位置)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510172114.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510172114.png, https://img.fengqigang.cn//img/20210510172114.png 1.5x, https://img.fengqigang.cn//img/20210510172114.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510172114.png"
+        title="https://img.fengqigang.cn//img/20210510172114.png" /></p>
+</li>
+</ol>
+<p>如果链表转化为红黑树，红黑树是一个特殊的二叉搜索树，需要比较大小， 在Hashmap中红黑树比较大小的方式是 hash如何计算.</p>
+<p>19.删除有可能导致红黑色树转化为链表</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510173914.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510173914.png, https://img.fengqigang.cn//img/20210510173914.png 1.5x, https://img.fengqigang.cn//img/20210510173914.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510173914.png"
+        title="https://img.fengqigang.cn//img/20210510173914.png" /></p>
+<ol start="20">
+<li>扩容也可能导致红黑树转化为, 扩容有可能导致红黑树拆成两部分</li>
+</ol>
+<p>扩容有可能导致红黑树拆成两部分，在这两部分中，任意部分，如果元素数量小于等于6的话，会由红黑树转化成链表</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510174648.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510174648.png, https://img.fengqigang.cn//img/20210510174648.png 1.5x, https://img.fengqigang.cn//img/20210510174648.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510174648.png"
+        title="https://img.fengqigang.cn//img/20210510174648.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510174756.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510174756.png, https://img.fengqigang.cn//img/20210510174756.png 1.5x, https://img.fengqigang.cn//img/20210510174756.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510174756.png"
+        title="https://img.fengqigang.cn//img/20210510174756.png" /></p>
+<ul>
+<li>HashMap 的存储思想?</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510163610.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510163610.png, https://img.fengqigang.cn//img/20210510163610.png 1.5x, https://img.fengqigang.cn//img/20210510163610.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510163610.png"
+        title="https://img.fengqigang.cn//img/20210510163610.png" /></p>
+<ul>
+<li>什么时候链表会转化成红黑树?</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510155627.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510155627.png, https://img.fengqigang.cn//img/20210510155627.png 1.5x, https://img.fengqigang.cn//img/20210510155627.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510155627.png"
+        title="https://img.fengqigang.cn//img/20210510155627.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510164830.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510164830.png, https://img.fengqigang.cn//img/20210510164830.png 1.5x, https://img.fengqigang.cn//img/20210510164830.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510164830.png"
+        title="https://img.fengqigang.cn//img/20210510164830.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510165242.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510165242.png, https://img.fengqigang.cn//img/20210510165242.png 1.5x, https://img.fengqigang.cn//img/20210510165242.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510165242.png"
+        title="https://img.fengqigang.cn//img/20210510165242.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510165254.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510165254.png, https://img.fengqigang.cn//img/20210510165254.png 1.5x, https://img.fengqigang.cn//img/20210510165254.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510165254.png"
+        title="https://img.fengqigang.cn//img/20210510165254.png" /></p>
+<p>当链表超过8,达到9的时候(算上新添加的上的元素), 会由链表转化为红黑树</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510165714.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510165714.png, https://img.fengqigang.cn//img/20210510165714.png 1.5x, https://img.fengqigang.cn//img/20210510165714.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510165714.png"
+        title="https://img.fengqigang.cn//img/20210510165714.png" /></p>
+<h3 id="红黑树变成链表">红黑树变成链表?</h3>
+<ul>
+<li>存储相同的值</li>
+</ul>
+<p><strong>两次存储的&quot;zs&quot; 值 一样， 因为他们两个hashCode值 都一样</strong></p>
+<p>如果有两个元素hash值 一样，并不能完全保证他们两个一样</p>
+<p>两个zs没法存</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510160015.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510160015.png, https://img.fengqigang.cn//img/20210510160015.png 1.5x, https://img.fengqigang.cn//img/20210510160015.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510160015.png"
+        title="https://img.fengqigang.cn//img/20210510160015.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510160409.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510160409.png, https://img.fengqigang.cn//img/20210510160409.png 1.5x, https://img.fengqigang.cn//img/20210510160409.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510160409.png"
+        title="https://img.fengqigang.cn//img/20210510160409.png" /></p>
+<ol>
+<li>首先判断: 已经存储到table 数组中里的i位置的元素p, 他key的hash值和新存储</li>
+<li>两份key-value数据的key是否相等， 或者相equals</li>
+</ol>
+<ul>
+<li>重写 <strong>hashCode</strong></li>
+</ul>
+<p><strong>删除已经改变的位置</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510162412.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510162412.png, https://img.fengqigang.cn//img/20210510162412.png 1.5x, https://img.fengqigang.cn//img/20210510162412.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510162412.png"
+        title="https://img.fengqigang.cn//img/20210510162412.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510162902.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510162902.png, https://img.fengqigang.cn//img/20210510162902.png 1.5x, https://img.fengqigang.cn//img/20210510162902.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510162902.png"
+        title="https://img.fengqigang.cn//img/20210510162902.png" /></p>
+<p>红黑树不是自平衡的二叉树</p>
+<p>数据结构， 底层结构, 实现</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510102243.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510102243.png, https://img.fengqigang.cn//img/20210510102243.png 1.5x, https://img.fengqigang.cn//img/20210510102243.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510102243.png"
+        title="https://img.fengqigang.cn//img/20210510102243.png" /></p>
+<p><strong>Key-value</strong> 数据常见:</p>
+<p>key-value 数据非常常见</p>
+<p><strong>Key-value 数据具有自我描述性, 完全可以描述对象</strong></p>
+<ul>
+<li>json</li>
+</ul>
+<p>key-value</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210510105619.png"
+        data-srcset="https://img.fengqigang.cn//img/20210510105619.png, https://img.fengqigang.cn//img/20210510105619.png 1.5x, https://img.fengqigang.cn//img/20210510105619.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210510105619.png"
+        title="https://img.fengqigang.cn//img/20210510105619.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-10</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day33/" class="prev" rel="prev" title="Day33"><i class="fas fa-angle-left fa-fw"></i>Day33</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
