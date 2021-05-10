@@ -14,7 +14,7 @@ categories: [王道]
 
 ### **JDK** 与 **JRE** 有什么样的关系?
 
-**JRE (Java Runtime Enviroment)**
+**JRE (Java Runtime Environment)**
 
 Java 运行时环境
 
