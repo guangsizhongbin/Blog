@@ -100,6 +100,18 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day15/">Day15</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-15">2021-04-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.</div><div class="post-footer">
+        <a href="/posts/day15/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day14/">Day14</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-14">2021-04-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
+在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
+try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行</div><div class="post-footer">
+        <a href="/posts/day14/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day13/">Day13</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">在进行深拷贝时，如何实现一个空接口？ Cloneable 并不是自己实现的
 如何将byte数组转成 String, 并输出它 在 JDK 源码当中， 涉及区间的方法，一般都是怎么规定区间的? 左闭右开
@@ -171,44 +183,6 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 有些程序员，喜欢在接口名的第一个单词之前加一个&quot;I&quot; 用来区分这是一个接口
 1 2 3 4 5  interface ISpecialSkills{ public void walkUpright(){ } }   如何在接口中定义方法?</div><div class="post-footer">
         <a href="/posts/day10/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day9/">Day9</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-08">2021-04-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
-对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
-什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
-如果是就返回 true, 否则就返回 false
-怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
-否则会报 ClassCastException 类型转换异常的错误
-null instalceof 任何类其结果是什么? false
-对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
-###对于段程序其执行 会出现什么?
-方法 编译时看左边，运行时看右边
-为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
-  Animal 类只用来被继承，不用来创建对象
-  Animal 类中 shout 方法，不应该有方法体
-  抽象方法如何声明? 语法:
-[访问权限修饰符] abstract 返回值类型 方法名();
-Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;</div><div class="post-footer">
-        <a href="/posts/day9/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day8/">Day8</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-07">2021-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">Day 8
-若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
-  需要计数器指示外部创建对象的个数
-   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
-  需要计数器指示外部创建对象的个数
-   解决方法:
-  私有化构造方法
-  提供一个方法来创建对象, 访问权限是 public
-  这个方法必须是 静态方法
-  控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
-  在 set, get方法怎样赋值比较好( 如width )? 用 this 好
-如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
-在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做?</div><div class="post-footer">
-        <a href="/posts/day8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

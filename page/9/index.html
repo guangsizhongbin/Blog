@@ -100,6 +100,43 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Linux第七章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-06">2021-03-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">为什么硬盘在分区后需要进行格式化呢? 因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。
+在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
+inode: 记录文件的属性，一个文件占用一个inode, 同时记录此文件的数据所在的block号码。
+block: 实际记录文件的内容，若文件太大时，会占用多个block
+为什么在window系统下常听到需要磁盘整理？ 如U盘，其文件格式是FAT, 这种文件格式没有inode存在，因此FAT没法将这个文件的所有block在一开始就读取出来
+其采取的方法是这样的
+当数据过于离散的时候，读取一个文件有可能要转好几圈。
+若Ext2文件系统使用4K block, 而该文件系统中有10000个小文件，每个文件大小均为50Bytes, 请问此时磁盘会浪费多少容量? 在Ext2文件系统中一个block仅能容纳一个文件，
+则一个文件将浪费4096 - 50 = 4046 Bytes.
+4046 * 10000 / 1024 / 1024 = 38. 58MB
+如何找出目前系统有被格式化的设备? blkid
+**** locate/print block device attributes ****
+每个inode大小均固定为128bytes, 而inode记录一个block号码要花掉4byte, 假设一个文件有400MB, 且每个block为4KB，那么至少也要10万条block号码的记录，inode哪有这么多的可以记录的信息？它采用了什么样的方法解决这个问题? 系统将indoe 记录的block号码的区域定义为12个直接，一个间接，一个双间接，与一个三间接记录区
+则若一个block为1KB,
+12个直接: 12 x 1KB = 12KB
+1个间接: 256 x 1KB = 256KB
+每条block号码的记录会花去 4bytes, 因此1KB 的大小能记录256条记录</div><div class="post-footer">
+        <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/">Linux第六章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-02">2021-03-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">如何回到之前的目录？ cd -
+ 如何显示其正确的完整路径，而不是其链接的数据显示? pwd -P
+ 如何创建一次创建 test1/test2/test3/test4 这样的目录，/test1~4均未创建? mkdir -p test1/test2/test3/test4
+-p &ndash;parents:
+no error if existing, make parent directories as needed.
+ 如何创建一个权限为rwx&ndash;x&ndash;x的目录test2? mkdir -m 711 test2
+-m &ndash;mode=MODE:
+set file mode (as in chomd), not a=rwx - umask
+ 如何在任何目录均可执行 /root 下面的命令? PATH = &ldquo;${PATH}:/root&rdquo;
+ 如何复制 /var/log/wtmp文件到 ~/wtmp_2, 并且它的文件权限一模一样? cp -a
+-a, &ndash;archive
+ 如何创建bashrc的实体链接(hard link)和符号链接(symbolic link)?  如何当 ~/.bashrc 比 /tmp/bashrc 新时则复制? cp -u ~/.</div><div class="post-footer">
+        <a href="/posts/linux%E7%AC%AC%E5%85%AD%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/">Linux第五章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-02">2021-03-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">箭头和方框所指的是什么意思？   第一个箭头是指连接到此文件的数量
   第二个箭头指的是文件的容量
@@ -153,45 +190,6 @@ SATA5: /dev/sdb
 USB磁盘(开机完成后才被系统捉到): /dev/sdc
 什么是MSDOS（MBR）分区 </div><div class="post-footer">
         <a href="/posts/linux_4/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux_3/">Linux_3</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-20">2021-02-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">Linux是什么? 关于GNU计划、自由软件与开源代码 什么是Free Software? Free Software 即自由软件
-自由软件关乎的是自由而非价格
-它允许任何人使用、复制和/或再分发
-开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL都有什么区别？1 GPL: - 只要在一个软件中使用GPL协议的产品，则该软件产品必须也采用GPL协议，即开源和免费
-BSD: - &ldquo;为所欲为&quot;的BSD协议需要满足三个条件
-MIT: MIT和BSD一样宽范的许可协议，作者只想保留版权，而无任何其他限制，必须在发行版里包含原许可协议的声明。
-LGPL: 主要是为类库使用设计的开源协议。LGPL允许商业软件通过类库引用方式使用LGPL类库而不需要开源商业软件的代码
-  开源许可证GPL、BSD、MIT、Mozilla、Apache和LGPL的区别&#160;&#x21a9;&#xfe0e;
-   </div><div class="post-footer">
-        <a href="/posts/linux_3/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux_2/">Linux_2</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-16">2021-02-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">个人电脑架构与相关设备元件 Intel芯片架构 Intel芯片架构-什么是南北桥?它们是干什么的？1 北桥: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)
-  CPU
-  内存
-  显卡接口等
-  南桥: 负责链接速度较慢的元件
-  硬盘
-  USB
-  网卡
-  Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？ 首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。
-Intel芯片架构-什么是CPU的频率？2 即CPU每秒钟可以进行的工作次数
-速度单位使用的是十进制
-即$3.5 \times 10 ^ 9$MHz
-Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？ 外频: CPU与外部元件进行数据传输时的速度
-倍频: CPU内部用来加速工作性能的一个倍数
-首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在 CPU内部进行加速。
-Intel芯片架构-如何查看计算机的外频与倍频？ 即总线速度为外频
-核心速度 = 倍频 x 总线速度
-Intel芯片架构-超频指的是超什么频？ 首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。
-Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side Bus)
-CPU中的所有数据都是由内存提供的
-查看内存信息
-1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?</div><div class="post-footer">
-        <a href="/posts/linux_2/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

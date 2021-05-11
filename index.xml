@@ -4,9 +4,31 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 10 May 2021 23:36:10 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 11 May 2021 23:26:09 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Day36</title>
+    <link>http://fengqigang.cn/posts/day36/</link>
+    <pubDate>Tue, 11 May 2021 23:26:09 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day36/</guid>
+    <description><![CDATA[set 特点  Set 接口是 Collection 的子接口 描述的是集合这种数据结构 它的一些自实现是有序的(LinkedHashSet, TreeSet) 有些子实现是无序的(HashSet) 有些子实现允许存储null(LinkedHashSet, HashSet), 有些子实现不允许存储 null(TreeSet) 都是不允许重复元素  set Api  初始化  collection 是 add 方法, map 是 poll 方法
+ addAll   clear   containsAll      iterator()  map 不能使用增强for循环, 可以用interset,
+set 可以使用增强for循环
+HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.]]></description>
+</item><item>
+    <title>Day35</title>
+    <link>http://fengqigang.cn/posts/day35/</link>
+    <pubDate>Tue, 11 May 2021 23:25:23 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day35/</guid>
+    <description><![CDATA[day35_linkedHashMap
+LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
+  LinkedHashMap 基本上完全复用了 HashMap 的底层结构， 参数，方法
+  LinkedHashMap的特点基本遵从于 HashMap
+  LinkedHashMap 底层在 HashMap 的基础上(数组 + 链表 + 红黑树) 额外维护了一个双向链表: 这个双向链表用来记录存储
+  LinkedHashMap 如何额外维护一个双向链表? 构造方法?  默认的构造方法  accessOrder(如果我们给accessOrder 设置为真，那么我们如果访问了这个LinkedHashMap中的某一个Key-value数据，那么这份Key-value数据就会在双向链表中的位置移到最后， 它在红黑树上的位置不变)   API TreeMap 有什么特点?  TreeMap 是 Map 一个子实现 描述数据结构是树/二叉搜索树/红黑树 底层是链表 TreeMap 大小有序(中序遍历是有序的) 不允许重复的 key 不允许null键 线程不安全 Treemap 的重复的定义: 大小比较结果是0, 自然顺序/比较器 如果我们希望在TreeMap中存储数据 ，key-value, 我们可以有两个选择：   让key本身可以比较(继承Comparabe接口实现 compareTo 方法)（但会让代码看一起来不清爽） 不想让 key 本身实现 Comparable 接口实现, 手动用比较器实现  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  public class DemoTreeMap { public static void main(String[] args) { TreeMap&lt;User3, Integer&gt; map = new TreeMap&lt;&gt;(); map.]]></description>
+</item><item>
     <title>Day34</title>
     <link>http://fengqigang.cn/posts/day34/</link>
     <pubDate>Mon, 10 May 2021 23:36:10 &#43;0800</pubDate>
@@ -115,34 +137,5 @@ one method will give you an error at compile time that this won&rsquo;t work,]]>
 自上向底分裂 (遇到四节点(3个Key)先向上分裂，再向下添加)
 2-3-4 树的实现? 将3结点转化成二叉树? 将4结点转化成二叉树? 把2-3-4树转化成红黑树? 把 2-3-4 树的3, 4节点分裂，把下移的结点或上移的结点的中间的边变为红色
 2-3-4树转化成红黑树只能有一种情况吗? 什么是左倾红黑树? 就是在 2-3-4 树的3 节点分裂的时候，左元素下移，右元素上移]]></description>
-</item><item>
-    <title>Day27</title>
-    <link>http://fengqigang.cn/posts/day27/</link>
-    <pubDate>Fri, 30 Apr 2021 22:52:59 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day27/</guid>
-    <description><![CDATA[MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 什么是中缀表达式, 前缀表达式, 后缀表达式? 运算符放到
-中间: 中缀表达式
-之前: 前缀表达式
-后面: 后缀表达式
-(2 * ( 9 + 6 / 3 -5 ) + 4) 转成后缀表达式的过程是什么样的? 从左到右 遍历中缀表达式的每个数字和符号
-若是数字就输出，即成为后缀表达式的一部分
-若是符号，则判断其与栈顶符号的优先级，是右括号或者优先级低于栈顶符号(乘除优先加减)
-则栈顶元素依次出栈并输出，并将当前符号进栈，一直到最终输出后缀表达式为止
-2 - 1 + 3 * 2 -5 转成后缀表达式的结果是什么? 中缀转后缀是 从左往右 扫描
-2 1 - 3 2 * + 5 -
-(1 + (3 * 4) / 6) -5 转成前缀表达式的过程是什么?]]></description>
-</item><item>
-    <title>Day26</title>
-    <link>http://fengqigang.cn/posts/day26/</link>
-    <pubDate>Thu, 29 Apr 2021 23:33:10 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day26/</guid>
-    <description><![CDATA[如何定义一个双链表? 定义结点
-一般有:
-pre , value , next
-结点
-1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this.value = value; this.next = next; this.pre = pre; } }   链表
-1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this.]]></description>
 </item></channel>
 </rss>
