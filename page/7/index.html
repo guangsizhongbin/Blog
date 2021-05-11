@@ -152,13 +152,11 @@ java.lang.String
         <a href="/posts/day4/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day3/">Day3</a>
+        <a href="/posts/03_array/">03_method</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">可变参数的实质是什么? 是用数组作为参数
-1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i++) { sumValue += arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   在使用可参数列表的时候，需要注意什么?   尽量不要使用带有两个可变参数的方法，构成方法重载时要慎重，因为很容易会导致两个方法都不可用
-  可变参数一定要在参数列表的最后一个
-  否则有可能运行不了
-什么是增强型 for 遍历数组? 1 2 3  for (int i : arr) { System.</div><div class="post-footer">
-        <a href="/posts/day3/">Read More</a><div class="post-tags">
+1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i++) { sumValue += arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   How to write a function that computes the maximum of a variable double number of values? function
+1 2 3 4 5  private static double max(double.</div><div class="post-footer">
+        <a href="/posts/03_array/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/02_method/">02_method</a>
