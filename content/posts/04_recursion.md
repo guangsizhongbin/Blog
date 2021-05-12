@@ -1,5 +1,5 @@
 ---
-title: "day4_recursion"
+title: "04_recursion"
 date: 2021-04-02T23:08:09+08:00
 lastmod: 2021-04-02
 author: "xiaonan"
@@ -91,7 +91,6 @@ categories: [王道]
 
 **成员方法的指令合集**
 
-![](https://img.fengqigang.cn//img/20210402225823.png)
 
 ![](https://img.fengqigang.cn//img/20210402225855.png)
 
