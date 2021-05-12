@@ -1,5 +1,5 @@
 ---
-title: "Day4"
+title: "day4_recursion"
 date: 2021-04-02T23:08:09+08:00
 lastmod: 2021-04-02
 author: "xiaonan"
@@ -9,34 +9,6 @@ math:
 tags: [java]
 categories: [王道]
 ---
-
-### 二维数组如何声明？
-
-数据类型[][] 二维数组名;
-
-### int[] m, n[] 其是想表达什么? 
-
-int[] m;
-
-int[] n[];
-
-### int[][] arr4 = new int[2][3]; 其堆空间是什么样的?
-
-![](https://img.fengqigang.cn//img/20210402222758.png)
-
-### 如何调用一个方法访问二维数组中的某个一维数组? (Arrays.toString(arr[1]))
-
-System.out.println(Arrays.toString(arr[1]));
-
-### 如何调用一个方法去访问维数组?
-
-System.out.println(Arrays.deepToString(arr))
-
-![](https://img.fengqigang.cn//img/20210402223141.png)
-
-### **stackOverflowError** 其本质的栈内存是什么样的?
-
-![](https://img.fengqigang.cn//img/20210402223243.png)
 
 ### 如何用一个方法捕获栈溢出这个错误？
 
@@ -150,8 +122,6 @@ int[][] arr = new int [][]{};
 ```java
 System.out.println(arr);
 ```
-
-
 
 
 

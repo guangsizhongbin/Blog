@@ -1,5 +1,5 @@
 ---
-title: "03_method"
+title: "03_array"
 date: 2021-03-31T22:56:56+08:00
 lastmod: 2021-03-31
 author: "xiaonan"
