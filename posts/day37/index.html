@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day37 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day37" />
+<meta property="og:description" content="Shiro 权限验证框架
+什么是符号表(Map) 就是 Key-value数据
+互联网三要素: url
+怎么找到某个资源，资源位置在哪里?
+http
+描述资源在网络上的传输方式
+html
+描述论文
+怎么在互联网上唯一表示一台计算机 ip &#43; 地址
+url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不是加密算法 加密意味着解密
+主流的 hash 算法: sha1（谷歌的两个程序员）, md5(王小云), 已经被证明不具有强抗碰撞性(先简单认为不安全)
+碰撞性:
+主流的 hash 函数 加盐： 盐值
+账号: Admin
+密码: 123
+理论上的 hash 冲突如何解决? 线性探测法
+平方探测法
+再散列法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day37/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-12T23:29:10&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-12T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day37"/>
+<meta name="twitter:description" content="Shiro 权限验证框架
+什么是符号表(Map) 就是 Key-value数据
+互联网三要素: url
+怎么找到某个资源，资源位置在哪里?
+http
+描述资源在网络上的传输方式
+html
+描述论文
+怎么在互联网上唯一表示一台计算机 ip &#43; 地址
+url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不是加密算法 加密意味着解密
+主流的 hash 算法: sha1（谷歌的两个程序员）, md5(王小云), 已经被证明不具有强抗碰撞性(先简单认为不安全)
+碰撞性:
+主流的 hash 函数 加盐： 盐值
+账号: Admin
+密码: 123
+理论上的 hash 冲突如何解决? 线性探测法
+平方探测法
+再散列法"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day37/" /><link rel="prev" href="http://fengqigang.cn/posts/day36/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day37",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day37\/"
+        },"genre": "posts","keywords": "java","wordcount":  44 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day37\/","datePublished": "2021-05-12T23:29:10+08:00","dateModified": "2021-05-12T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day37</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-12">2021-05-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;44 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是符号表map">什么是符号表(Map)</a></li>
+        <li><a href="#互联网三要素">互联网三要素:</a></li>
+        <li><a href="#怎么在互联网上唯一表示一台计算机">怎么在互联网上唯一表示一台计算机</a></li>
+        <li><a href="#url-分类三大部分">url 分类三大部分</a></li>
+        <li><a href="#什么哈希表">什么哈希表?</a></li>
+        <li><a href="#hash函数具有的特点">Hash函数具有的特点</a></li>
+        <li><a href="#hash算法不是加密算法">Hash算法不是加密算法</a></li>
+        <li><a href="#主流的-hash-函数">主流的 hash 函数</a></li>
+        <li><a href="#理论上的-hash-冲突如何解决">理论上的 hash 冲突如何解决?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><strong>Shiro</strong> 权限验证框架</p>
+<h3 id="什么是符号表map">什么是符号表(Map)</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512100829.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512100829.png, https://img.fengqigang.cn//img/20210512100829.png 1.5x, https://img.fengqigang.cn//img/20210512100829.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512100829.png"
+        title="https://img.fengqigang.cn//img/20210512100829.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512100959.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512100959.png, https://img.fengqigang.cn//img/20210512100959.png 1.5x, https://img.fengqigang.cn//img/20210512100959.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512100959.png"
+        title="https://img.fengqigang.cn//img/20210512100959.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512101239.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512101239.png, https://img.fengqigang.cn//img/20210512101239.png 1.5x, https://img.fengqigang.cn//img/20210512101239.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512101239.png"
+        title="https://img.fengqigang.cn//img/20210512101239.png" /></p>
+<p>就是 Key-value数据</p>
+<h3 id="互联网三要素">互联网三要素:</h3>
+<p><strong>url</strong></p>
+<p>怎么找到某个资源，资源位置在哪里?</p>
+<p><strong>http</strong></p>
+<p>描述资源在网络上的传输方式</p>
+<p><strong>html</strong></p>
+<p>描述论文</p>
+<h3 id="怎么在互联网上唯一表示一台计算机">怎么在互联网上唯一表示一台计算机</h3>
+<p>ip + 地址</p>
+<h3 id="url-分类三大部分">url 分类三大部分</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512110038.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512110038.png, https://img.fengqigang.cn//img/20210512110038.png 1.5x, https://img.fengqigang.cn//img/20210512110038.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512110038.png"
+        title="https://img.fengqigang.cn//img/20210512110038.png" /></p>
+<h3 id="什么哈希表">什么哈希表?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512111124.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512111124.png, https://img.fengqigang.cn//img/20210512111124.png 1.5x, https://img.fengqigang.cn//img/20210512111124.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512111124.png"
+        title="https://img.fengqigang.cn//img/20210512111124.png" /></p>
+<h3 id="hash函数具有的特点">Hash函数具有的特点</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512113248.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512113248.png, https://img.fengqigang.cn//img/20210512113248.png 1.5x, https://img.fengqigang.cn//img/20210512113248.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512113248.png"
+        title="https://img.fengqigang.cn//img/20210512113248.png" /></p>
+<h3 id="hash算法不是加密算法">Hash算法不是加密算法</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512111716.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512111716.png, https://img.fengqigang.cn//img/20210512111716.png 1.5x, https://img.fengqigang.cn//img/20210512111716.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512111716.png"
+        title="https://img.fengqigang.cn//img/20210512111716.png" /></p>
+<p>加密意味着解密</p>
+<p>主流的 hash 算法: sha1（谷歌的两个程序员）,  md5(王小云), 已经被证明不具有强抗碰撞性(先简单认为不安全)</p>
+<p>碰撞性:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512113040.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512113040.png, https://img.fengqigang.cn//img/20210512113040.png 1.5x, https://img.fengqigang.cn//img/20210512113040.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512113040.png"
+        title="https://img.fengqigang.cn//img/20210512113040.png" /></p>
+<h3 id="主流的-hash-函数">主流的 hash 函数</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512113352.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512113352.png, https://img.fengqigang.cn//img/20210512113352.png 1.5x, https://img.fengqigang.cn//img/20210512113352.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512113352.png"
+        title="https://img.fengqigang.cn//img/20210512113352.png" /></p>
+<p>加盐： 盐值</p>
+<p>账号: Admin</p>
+<p>密码: 123</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512113758.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512113758.png, https://img.fengqigang.cn//img/20210512113758.png 1.5x, https://img.fengqigang.cn//img/20210512113758.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512113758.png"
+        title="https://img.fengqigang.cn//img/20210512113758.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512114713.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512114713.png, https://img.fengqigang.cn//img/20210512114713.png 1.5x, https://img.fengqigang.cn//img/20210512114713.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512114713.png"
+        title="https://img.fengqigang.cn//img/20210512114713.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512114744.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512114744.png, https://img.fengqigang.cn//img/20210512114744.png 1.5x, https://img.fengqigang.cn//img/20210512114744.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512114744.png"
+        title="https://img.fengqigang.cn//img/20210512114744.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512114850.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512114850.png, https://img.fengqigang.cn//img/20210512114850.png 1.5x, https://img.fengqigang.cn//img/20210512114850.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512114850.png"
+        title="https://img.fengqigang.cn//img/20210512114850.png" /></p>
+<h3 id="理论上的-hash-冲突如何解决">理论上的 hash 冲突如何解决?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210512115119.png"
+        data-srcset="https://img.fengqigang.cn//img/20210512115119.png, https://img.fengqigang.cn//img/20210512115119.png 1.5x, https://img.fengqigang.cn//img/20210512115119.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210512115119.png"
+        title="https://img.fengqigang.cn//img/20210512115119.png" /></p>
+<p>线性探测法</p>
+<p>平方探测法</p>
+<p>再散列法</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-12</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day36/" class="prev" rel="prev" title="Day36"><i class="fas fa-angle-left fa-fw"></i>Day36</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
