@@ -77,14 +77,6 @@ If you then place the **Employee** class into the package, the "fully qualified"
 
 **String name**;
 
-### 如何给常量命名?
-
-全部用大写
-
-多个单词之间用下划线(_)隔开
-
-**PI**
-
 ### 什么是小鸵峰式命名法( **lower camel case** )?
 
 多个单词组全成一个字符串
