@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Day38 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day38" />
+<meta property="og:description" content="前端 JAVAEE服务器开发 html 的历史? 为什么出现? -&gt; 传论文
+是谁的? &ndash;&gt; 没有文档
+为什么是走形? html, css, js -&gt; W3C -&gt;草案(个家浏览器没有完全遵循W3C的标准)
+为什么错误代码可以运行? -&gt; 在各大浏览器大战中，各家的浏览器为了获得更多的市场，会包容错误代码
+前端的基础? 前端: 写页面
+网页 &ndash;&gt; 人
+Html: 骨架
+Css: 皮肤和血肉
+Js(JavaScript): 思想逻辑
+Html 的概念 是一种语言
+文本语言： 超文本
+是一个以 .html 为后缀的文本
+&lsquo;超文本&rsquo; 包括文本字体, 图片, 链接， 甚至音乐，程序等元素代码的文本
+是一个文本， 也是一个网页，该文本用浏览器打开， 文本里代码会进行解释执行
+html 的标准结构? html 重要的body标签   块级标签
+  行级标签
+  行内块标签
+  hr hr 中的属性没用, 都可以用css来写
+&lt;br&gt; 可以自定义标签吗？ hn div a 它的属性没法被替代" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/day38/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-13T23:34:52&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-13T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Day38"/>
+<meta name="twitter:description" content="前端 JAVAEE服务器开发 html 的历史? 为什么出现? -&gt; 传论文
+是谁的? &ndash;&gt; 没有文档
+为什么是走形? html, css, js -&gt; W3C -&gt;草案(个家浏览器没有完全遵循W3C的标准)
+为什么错误代码可以运行? -&gt; 在各大浏览器大战中，各家的浏览器为了获得更多的市场，会包容错误代码
+前端的基础? 前端: 写页面
+网页 &ndash;&gt; 人
+Html: 骨架
+Css: 皮肤和血肉
+Js(JavaScript): 思想逻辑
+Html 的概念 是一种语言
+文本语言： 超文本
+是一个以 .html 为后缀的文本
+&lsquo;超文本&rsquo; 包括文本字体, 图片, 链接， 甚至音乐，程序等元素代码的文本
+是一个文本， 也是一个网页，该文本用浏览器打开， 文本里代码会进行解释执行
+html 的标准结构? html 重要的body标签   块级标签
+  行级标签
+  行内块标签
+  hr hr 中的属性没用, 都可以用css来写
+&lt;br&gt; 可以自定义标签吗？ hn div a 它的属性没法被替代"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day38/" /><link rel="prev" href="http://fengqigang.cn/posts/day37/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Day38",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/day38\/"
+        },"genre": "posts","keywords": "java","wordcount":  82 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/day38\/","datePublished": "2021-05-13T23:34:52+08:00","dateModified": "2021-05-13T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Day38</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-13">2021-05-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;82 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#前端">前端</a></li>
+        <li><a href="#javaee服务器开发">JAVAEE服务器开发</a></li>
+        <li><a href="#html-的历史">html 的历史?</a></li>
+        <li><a href="#前端的基础">前端的基础?</a></li>
+        <li><a href="#html-的概念">Html 的概念</a></li>
+        <li><a href="#html-的标准结构">html 的标准结构?</a></li>
+        <li><a href="#html-重要的body标签">html 重要的body标签</a></li>
+        <li><a href="#hr">hr</a></li>
+        <li><a href="#br"><strong>&lt;br&gt;</strong></a></li>
+        <li><a href="#可以自定义标签吗">可以自定义标签吗？</a></li>
+        <li><a href="#hn">hn</a></li>
+        <li><a href="#div">div</a></li>
+        <li><a href="#a">a</a></li>
+        <li><a href="#p">p</a></li>
+        <li><a href="#img">img</a></li>
+        <li><a href="#input">Input</a></li>
+        <li><a href="#物理像素与虚拟像素">物理像素与虚拟像素？</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="前端">前端</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513101230.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513101230.png, https://img.fengqigang.cn//img/20210513101230.png 1.5x, https://img.fengqigang.cn//img/20210513101230.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513101230.png"
+        title="https://img.fengqigang.cn//img/20210513101230.png" /></p>
+<h3 id="javaee服务器开发">JAVAEE服务器开发</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513101029.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513101029.png, https://img.fengqigang.cn//img/20210513101029.png 1.5x, https://img.fengqigang.cn//img/20210513101029.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513101029.png"
+        title="https://img.fengqigang.cn//img/20210513101029.png" /></p>
+<h3 id="html-的历史">html 的历史?</h3>
+<p>为什么出现? -&gt; 传论文</p>
+<p>是谁的?  &ndash;&gt; 没有文档</p>
+<p>为什么是走形?  html, css, js -&gt; W3C -&gt;草案(个家浏览器没有完全遵循W3C的标准)</p>
+<p>为什么错误代码可以运行?  -&gt; 在各大浏览器大战中，各家的浏览器为了获得更多的市场，会包容错误代码</p>
+<h3 id="前端的基础">前端的基础?</h3>
+<p>前端: 写页面</p>
+<p>网页 &ndash;&gt; 人</p>
+<p>Html: 骨架</p>
+<p>Css: 皮肤和血肉</p>
+<p>Js(JavaScript): 思想逻辑</p>
+<h3 id="html-的概念">Html 的概念</h3>
+<p>是一种语言</p>
+<p>文本语言： 超文本</p>
+<p>是一个以 <code>.html</code> 为后缀的文本</p>
+<p>&lsquo;超文本&rsquo; 包括文本字体, 图片, 链接， 甚至音乐，程序等元素代码的文本</p>
+<p>是一个文本， 也是一个网页，该文本用浏览器打开， 文本里代码会进行解释执行</p>
+<h3 id="html-的标准结构">html 的标准结构?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513110830.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513110830.png, https://img.fengqigang.cn//img/20210513110830.png 1.5x, https://img.fengqigang.cn//img/20210513110830.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513110830.png"
+        title="https://img.fengqigang.cn//img/20210513110830.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513110907.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513110907.png, https://img.fengqigang.cn//img/20210513110907.png 1.5x, https://img.fengqigang.cn//img/20210513110907.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513110907.png"
+        title="https://img.fengqigang.cn//img/20210513110907.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513111036.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513111036.png, https://img.fengqigang.cn//img/20210513111036.png 1.5x, https://img.fengqigang.cn//img/20210513111036.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513111036.png"
+        title="https://img.fengqigang.cn//img/20210513111036.png" /></p>
+<h3 id="html-重要的body标签">html 重要的body标签</h3>
+<ol>
+<li>
+<p>块级标签</p>
+</li>
+<li>
+<p>行级标签</p>
+</li>
+<li>
+<p>行内块标签</p>
+</li>
+</ol>
+<h3 id="hr">hr</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513114102.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513114102.png, https://img.fengqigang.cn//img/20210513114102.png 1.5x, https://img.fengqigang.cn//img/20210513114102.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513114102.png"
+        title="https://img.fengqigang.cn//img/20210513114102.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513114253.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513114253.png, https://img.fengqigang.cn//img/20210513114253.png 1.5x, https://img.fengqigang.cn//img/20210513114253.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513114253.png"
+        title="https://img.fengqigang.cn//img/20210513114253.png" /></p>
+<p><strong>hr 中的属性没用, 都可以用css来写</strong></p>
+<h3 id="br"><strong>&lt;br&gt;</strong></h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513144017.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513144017.png, https://img.fengqigang.cn//img/20210513144017.png 1.5x, https://img.fengqigang.cn//img/20210513144017.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513144017.png"
+        title="https://img.fengqigang.cn//img/20210513144017.png" /></p>
+<h3 id="可以自定义标签吗">可以自定义标签吗？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513144448.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513144448.png, https://img.fengqigang.cn//img/20210513144448.png 1.5x, https://img.fengqigang.cn//img/20210513144448.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513144448.png"
+        title="https://img.fengqigang.cn//img/20210513144448.png" /></p>
+<h3 id="hn">hn</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513154759.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513154759.png, https://img.fengqigang.cn//img/20210513154759.png 1.5x, https://img.fengqigang.cn//img/20210513154759.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513154759.png"
+        title="https://img.fengqigang.cn//img/20210513154759.png" /></p>
+<h3 id="div">div</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513160129.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513160129.png, https://img.fengqigang.cn//img/20210513160129.png 1.5x, https://img.fengqigang.cn//img/20210513160129.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513160129.png"
+        title="https://img.fengqigang.cn//img/20210513160129.png" /></p>
+<h3 id="a">a</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513160557.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513160557.png, https://img.fengqigang.cn//img/20210513160557.png 1.5x, https://img.fengqigang.cn//img/20210513160557.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513160557.png"
+        title="https://img.fengqigang.cn//img/20210513160557.png" /></p>
+<p><strong>它的属性没法被替代</strong></p>
+<p>href = &ldquo;xxxxx&rdquo;,</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513161944.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513161944.png, https://img.fengqigang.cn//img/20210513161944.png 1.5x, https://img.fengqigang.cn//img/20210513161944.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513161944.png"
+        title="https://img.fengqigang.cn//img/20210513161944.png" /></p>
+<h3 id="p">p</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513163137.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513163137.png, https://img.fengqigang.cn//img/20210513163137.png 1.5x, https://img.fengqigang.cn//img/20210513163137.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513163137.png"
+        title="https://img.fengqigang.cn//img/20210513163137.png" /></p>
+<h3 id="img">img</h3>
+<p><strong>not alllow to load local source</strong></p>
+<p>非网络请求</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513172705.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513172705.png, https://img.fengqigang.cn//img/20210513172705.png 1.5x, https://img.fengqigang.cn//img/20210513172705.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513172705.png"
+        title="https://img.fengqigang.cn//img/20210513172705.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513173013.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513173013.png, https://img.fengqigang.cn//img/20210513173013.png 1.5x, https://img.fengqigang.cn//img/20210513173013.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513173013.png"
+        title="https://img.fengqigang.cn//img/20210513173013.png" /></p>
+<p>EE:</p>
+<p>动态资源</p>
+<p>静态资源</p>
+<h3 id="input">Input</h3>
+<h3 id="物理像素与虚拟像素">物理像素与虚拟像素？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210513143503.png"
+        data-srcset="https://img.fengqigang.cn//img/20210513143503.png, https://img.fengqigang.cn//img/20210513143503.png 1.5x, https://img.fengqigang.cn//img/20210513143503.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210513143503.png"
+        title="https://img.fengqigang.cn//img/20210513143503.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-13</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/day37/" class="prev" rel="prev" title="Day37"><i class="fas fa-angle-left fa-fw"></i>Day37</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

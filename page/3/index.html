@@ -100,6 +100,21 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day27/">Day27</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-30">2021-04-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">MyLIstStack 栈列有什么应用?  函数调用栈 反序字符串 括号匹配 编译器利用栈实现表达式求值 浏览器的前进后退功能 利用栈实现 DFS: depth-first-search  实现renumber方法? 实现括号匹配(judgeBracket)方法? 什么是中缀表达式, 前缀表达式, 后缀表达式? 运算符放到
+中间: 中缀表达式
+之前: 前缀表达式
+后面: 后缀表达式
+(2 * ( 9 + 6 / 3 -5 ) + 4) 转成后缀表达式的过程是什么样的? 从左到右 遍历中缀表达式的每个数字和符号
+若是数字就输出，即成为后缀表达式的一部分
+若是符号，则判断其与栈顶符号的优先级，是右括号或者优先级低于栈顶符号(乘除优先加减)
+则栈顶元素依次出栈并输出，并将当前符号进栈，一直到最终输出后缀表达式为止
+2 - 1 + 3 * 2 -5 转成后缀表达式的结果是什么? 中缀转后缀是 从左往右 扫描
+2 1 - 3 2 * + 5 -
+(1 + (3 * 4) / 6) -5 转成前缀表达式的过程是什么?</div><div class="post-footer">
+        <a href="/posts/day27/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day26/">Day26</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-29">2021-04-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何定义一个双链表? 定义结点
 一般有:
@@ -191,34 +206,6 @@ echo -e 会发生什么?  e  enable interpretation of backslash escapes
 以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day22/">Day22</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-23">2021-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是计算机网络   物理互联
-  软件支持
-  目的: 资源共享 + 信息传递
-  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
-OSI参考模型有几层? 分别是什么? 7 层
-物理层
-数据链路层
-网络层
-传输层
-会话层
-表示层
-应用层
-物联网淑惠试用
-物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
-其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
-物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
-  一个 bit 持续多少纳秒
-  传输是否可以在两个方向同时进行
-  初始连接如何建立，传输结束后之后如何撤销连接
-  规定一个特殊的电信号将普通的数据信号分开来
-数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
-检查数据是否发生差错
-数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
-  流量控制</div><div class="post-footer">
-        <a href="/posts/day22/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

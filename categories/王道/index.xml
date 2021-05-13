@@ -4,7 +4,32 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 12 May 2021 23:29:10 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 13 May 2021 23:34:52 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day38</title>
+    <link>http://fengqigang.cn/posts/day38/</link>
+    <pubDate>Thu, 13 May 2021 23:34:52 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day38/</guid>
+    <description><![CDATA[前端 JAVAEE服务器开发 html 的历史? 为什么出现? -&gt; 传论文
+是谁的? &ndash;&gt; 没有文档
+为什么是走形? html, css, js -&gt; W3C -&gt;草案(个家浏览器没有完全遵循W3C的标准)
+为什么错误代码可以运行? -&gt; 在各大浏览器大战中，各家的浏览器为了获得更多的市场，会包容错误代码
+前端的基础? 前端: 写页面
+网页 &ndash;&gt; 人
+Html: 骨架
+Css: 皮肤和血肉
+Js(JavaScript): 思想逻辑
+Html 的概念 是一种语言
+文本语言： 超文本
+是一个以 .html 为后缀的文本
+&lsquo;超文本&rsquo; 包括文本字体, 图片, 链接， 甚至音乐，程序等元素代码的文本
+是一个文本， 也是一个网页，该文本用浏览器打开， 文本里代码会进行解释执行
+html 的标准结构? html 重要的body标签   块级标签
+  行级标签
+  行内块标签
+  hr hr 中的属性没用, 都可以用css来写
+&lt;br&gt; 可以自定义标签吗？ hn div a 它的属性没法被替代]]></description>
+</item><item>
     <title>Day37</title>
     <link>http://fengqigang.cn/posts/day37/</link>
     <pubDate>Wed, 12 May 2021 23:29:10 &#43;0800</pubDate>
@@ -129,16 +154,5 @@ ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { publi
   如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
   这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
   这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)]]></description>
-</item><item>
-    <title>Day28</title>
-    <link>http://fengqigang.cn/posts/day28/</link>
-    <pubDate>Tue, 04 May 2021 23:45:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day28/</guid>
-    <description><![CDATA[1 10 -5 2 7 100 30 -10 -50 -25 -20 25 转换成二叉搜索树是什么样的? 左子树的所有节点的值均 小于 它的根节点
-右子树的所有节点的值均 大于 它的根节点
-The meaning of &lt;T extends Comparable &gt;? This means that the type parameter must support comparison with other instances of its own type , via the Comparable interface.
-What is different between ? If you try to pass an array of unknow types of Comparable objects
-one method will give you an error at compile time that this won&rsquo;t work,]]></description>
 </item></channel>
 </rss>
