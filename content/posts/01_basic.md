@@ -183,7 +183,7 @@ public class TestInt {
 
 **boolean**
 
-JVM规范, 在内存中 
+JVM规范, 在内存中
 
 若:
 
@@ -234,24 +234,13 @@ JVM规范, 在内存中
 
 ![](https://img.fengqigang.cn//img/20210330224400.png)
 
+### What's the difference between `next()` and `nextLine()` methods from Scanner class?
 
-### **next()** ， **nextInt()** 等一系列方法和 **nextLine()** 有什么区别?
+`next()` can read the input only till the space.
 
-**next(), nextInt() 等一系列方法**
+`nextLine()` reads input includiung space between teh words (that is, it reads till the end of line `\n`
 
-遇见 **第一个有效字符** 时，开始扫描
-
-当遇见**第一个分隔符或结束符**时，结束扫描，获取扫描到的内容
-
-即获取第一个扫描到的不含空格、换行符的单个字符串
-
-**nextLine()方法**
-
-获取一行的内容作为一个字符串被接收
-
-该方法不会因为 **空格或制表符号** 而结束扫描
-
-只会因 **回车(换行)** 而结束扫描
+Once the input is read, `nextLine()` positions the cursor in the next line.
 
 ### **\\u0000** 与 (空格) 有什么区别?
 
@@ -369,62 +358,62 @@ yeah
 
 ```java
 public class StaticTest{
-	public static void main(String[] args){
+    public static void main(String[] args){
 
-		var staff = new Employee[3];
+        var staff = new Employee[3];
 
-		staff[0] = new Employee("Tom", 40000);
-		staff[1] = new Employee("Tom", 60000);
-		staff[2] = new Employee("Tom", 65000);
+        staff[0] = new Employee("Tom", 40000);
+        staff[1] = new Employee("Tom", 60000);
+        staff[2] = new Employee("Tom", 65000);
 
-		for (Employee e : staff){
-			e.setId();
-			System.out.println("name=" + e.getName() + ", id=" + e.getId() + e.getSalary());
-		}
+        for (Employee e : staff){
+            e.setId();
+            System.out.println("name=" + e.getName() + ", id=" + e.getId() + e.getSalary());
+        }
 
-		int n = Employee.getNextId();
-		System.out.println("Next available id=" + n);
-	}
+        int n = Employee.getNextId();
+        System.out.println("Next available id=" + n);
+    }
 }
 
 class Employee{
-	private static int nextId = 1;
+    private static int nextId = 1;
 
-	private String name;
-	private double salary;
-	private int id;
+    private String name;
+    private double salary;
+    private int id;
 
-	public Employee (String n, double s){
-		name = n;
-		salary = s;
-		id = 0;
-	}
+    public Employee (String n, double s){
+        name = n;
+        salary = s;
+        id = 0;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public String getName(){
+        return name;
+    }
 
-	public double getSalary(){
-		return salary;
-	}
+    public double getSalary(){
+        return salary;
+    }
 
-	public int getId(){
-		return id;
-	}
+    public int getId(){
+        return id;
+    }
 
-	public void setId(){
-		id = nextId;
-		nextId++;
-	}
+    public void setId(){
+        id = nextId;
+        nextId++;
+    }
 
-	public static int getNextId(){
-		return nextId;
-	}
+    public static int getNextId(){
+        return nextId;
+    }
 
-	public static void main(String[] args){
-		var e = new Employee("Harry", 50000);
-		System.out.println(e.getName() + " " + e.getSalary());
-	}
+    public static void main(String[] args){
+        var e = new Employee("Harry", 50000);
+        System.out.println(e.getName() + " " + e.getSalary());
+    }
 
 }
 ```
