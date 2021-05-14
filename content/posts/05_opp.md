@@ -1,5 +1,5 @@
 ---
-title: "Day5"
+title: "05_opp"
 date: 2021-04-03T23:12:33+08:00
 lastmod: 2021-04-03
 author: "xiaonan"
@@ -30,13 +30,6 @@ String brand = "华为";
 
 ![](https://img.fengqigang.cn//img/20210402135842.png)
 
-### 类加类是什么时候被触发(类加载的时机)?
-
-1. new 对象的时候
-
-2. 启动一个类的 **main()** 方法时
-
-![](https://img.fengqigang.cn//img/20210402140016.png)
 
 ### 像 **String, System** 这种显然也是类，但是在 **jdk** 当中也会加载吗？
 
@@ -98,7 +91,7 @@ String brand = "华为";
 
 隐含的传参 **this** 只针对于(普通)成员方法， 不加static的方法
 
-对于加了 **static** 的方法，没有陷含的传参 **this**
+对于加了 **static** 的方法，没有隐含的传参 **this**
 
 ### 默认提供无参构造，如果我手动写了有参构造，那么默认的无参还有吗?
 
@@ -130,78 +123,10 @@ String brand = "华为";
 
 ![](https://img.fengqigang.cn//img/20210402153135.png)
 
-###  ![](https://img.fengqigang.cn//img/20210402153254.png) 其堆空间是什么样的?
-
-1. 传递 **默认值** 
-
-![](https://img.fengqigang.cn//img/20210402153330.png)
-
-2. 传递 **类中设置的值**
-
-![](https://img.fengqigang.cn//img/20210402153405.png)
-
-3. 传递 **方法中设置的值**
-
-![](https://img.fengqigang.cn//img/20210402153618.png)
-
-### 如何完整的创建一个 **Zombie** 
-
-**属性** + **行为**
-
-![](https://img.fengqigang.cn//img/20210402164056.png)
-
-### **byte** 的对象类是什么? 如何获取其最大值?
-
-**Byte**
-
-```java
-System.out.println(Byte.MAX_VALUE);
-System.out.println(Byte.MAX_VALUE + 1);
-System.out.println((byte) (Byte.MAX_VALUE + 1));
-```
-
-![](https://img.fengqigang.cn//img/20210402164457.png)
-
-### **short** 的对象类是什么? 如何获取其最大值?
-
-**Short**
-
-```java
-System.out.println(Short.MAX_VALUE);
-System.out.println(Short.MAX_VALUE + 1);
-System.out.println((short) (Short.MAX_VALUE + 1));
-```
-
-![](https://img.fengqigang.cn//img/20210402164822.png)
-
-### **long** 的对象类是什么? 如何获取其最大值?
-
-**Long**
-
-```java
-System.out.println(Long.MAX_VALUE);
-System.out.println(Long.MAX_VALUE + 1);
-```
-
-![](https://img.fengqigang.cn//img/20210402164931.png)
-
-### **float** 的对象类是什么?
-
-**Float**
-
-### **double** 的对象类是什么?
-
-**Double**
-
 ### **char** 的对象类是什么，如何获取其最大值?
 
 **Character**
 
-### ![20210403192056](https://img.fengqigang.cn//img/20210403192056.png) 其结果是什么样的?
-
-全类名 + 地址
-
-![20210403192136](https://img.fengqigang.cn//img/20210403192136.png)
 
 ### 类中如果有两个相同数据类型的成员变量，能否用构造方法对它们分别赋值?
 
@@ -221,15 +146,6 @@ System.out.println(Long.MAX_VALUE + 1);
 
 这样做 **可以节省内存空间，符合设计思想**
 
-### 什么是静态成员变量和静态成员方法?
-
-普通的成员变量用 **static** 修饰的就是 **静态成员** 变量
-
-普通的成员方法用 **static** 修饰的就是 **静态成员** 方法 
-
-```java
-static String schoolName = "王道Java训练营";
-```
 
 ### 可以通过一个对象的引用去访问了一个静态的成员?
 
@@ -320,7 +236,6 @@ static String schoolName = "王道Java训练营";
 **Arrays.toString()**
 
 2. 当不需要对象， 只需要便捷的调方法时，使用 **static** , 广泛应用于工具类，方便访问调用
-
 
 
 
