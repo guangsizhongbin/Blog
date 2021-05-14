@@ -53,7 +53,7 @@ You can then append a project name, such as com."/>
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/01_basic\/"
-        },"genre": "posts","keywords": "java","wordcount":  993 ,
+        },"genre": "posts","keywords": "java","wordcount":  1022 ,
         "url": "http:\/\/fengqigang.cn\/posts\/01_basic\/","datePublished": "2021-03-30T23:02:50+08:00","dateModified": "2021-03-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -130,7 +130,7 @@ You can then append a project name, such as com."/>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">01_basic</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;993 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1022 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -161,7 +161,7 @@ You can then append a project name, such as com."/>
         <li><a href="#double-的有效位数是多少"><strong>double</strong> 的有效位数是多少?</a></li>
         <li><a href="#20210505223517httpsimgfengqigangcnimg20210505223517png-这几个数据类型相互转换哪些会出现精度丢失问题"><img src="https://img.fengqigang.cn//img/20210505223517.png" alt="20210505223517"> 这几个数据类型相互转换哪些会出现精度丢失问题?</a></li>
         <li><a href="#int-long-float-哪个大"><strong>int</strong>, <strong>long</strong>, <strong>float</strong> 哪个大？</a></li>
-        <li><a href="#next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</a></li>
+        <li><a href="#whats-the-difference-between-next-and-nextline-methods-from-scanner-class">What&rsquo;s the difference between <code>next()</code> and <code>nextLine()</code> methods from Scanner class?</a></li>
         <li><a href="#u0000-与-空格-有什么区别"><strong>\u0000</strong> 与 (空格) 有什么区别?</a></li>
         <li><a href="#whats-the-different-between-strongly-typed-languages-and-weakly-typed-languages">What&rsquo;s the different between Strongly typed languages and weakly typed languages?</a></li>
         <li><a href="#whats-the-mean-of-systemoutprintln0x10p-3">What&rsquo;s the mean of System.out.println(0x1.0p-3)?</a></li>
@@ -419,15 +419,10 @@ You can then append a project name, such as com."/>
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210330224400.png"
         title="https://img.fengqigang.cn//img/20210330224400.png" /></p>
-<h3 id="next--nextint-等一系列方法和-nextline-有什么区别"><strong>next()</strong> ， <strong>nextInt()</strong> 等一系列方法和 <strong>nextLine()</strong> 有什么区别?</h3>
-<p><strong>next(), nextInt() 等一系列方法</strong></p>
-<p>遇见 <strong>第一个有效字符</strong> 时，开始扫描</p>
-<p>当遇见<strong>第一个分隔符或结束符</strong>时，结束扫描，获取扫描到的内容</p>
-<p>即获取第一个扫描到的不含空格、换行符的单个字符串</p>
-<p><strong>nextLine()方法</strong></p>
-<p>获取一行的内容作为一个字符串被接收</p>
-<p>该方法不会因为 <strong>空格或制表符号</strong> 而结束扫描</p>
-<p>只会因 <strong>回车(换行)</strong> 而结束扫描</p>
+<h3 id="whats-the-difference-between-next-and-nextline-methods-from-scanner-class">What&rsquo;s the difference between <code>next()</code> and <code>nextLine()</code> methods from Scanner class?</h3>
+<p><code>next()</code> can read the input only till the space.</p>
+<p><code>nextLine()</code> reads input includiung space between teh words (that is, it reads till the end of line <code>\n</code></p>
+<p>Once the input is read, <code>nextLine()</code> positions the cursor in the next line.</p>
 <h3 id="u0000-与-空格-有什么区别"><strong>\u0000</strong> 与 (空格) 有什么区别?</h3>
 <p><strong>\u0000</strong> 对应的是什么都没有</p>
 <p><img
@@ -662,62 +657,62 @@ You can then append a project name, such as com."/>
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticTest</span><span class="o">{</span>
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
 
-		<span class="n">var</span> <span class="n">staff</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
+        <span class="n">var</span> <span class="n">staff</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">[</span><span class="n">3</span><span class="o">];</span>
 
-		<span class="n">staff</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">40000</span><span class="o">);</span>
-		<span class="n">staff</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">60000</span><span class="o">);</span>
-		<span class="n">staff</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">65000</span><span class="o">);</span>
+        <span class="n">staff</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">40000</span><span class="o">);</span>
+        <span class="n">staff</span><span class="o">[</span><span class="n">1</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">60000</span><span class="o">);</span>
+        <span class="n">staff</span><span class="o">[</span><span class="n">2</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Tom&#34;</span><span class="o">,</span> <span class="n">65000</span><span class="o">);</span>
 
-		<span class="k">for</span> <span class="o">(</span><span class="n">Employee</span> <span class="n">e</span> <span class="o">:</span> <span class="n">staff</span><span class="o">){</span>
-			<span class="n">e</span><span class="o">.</span><span class="na">setId</span><span class="o">();</span>
-			<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;name=&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;, id=&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
-		<span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Employee</span> <span class="n">e</span> <span class="o">:</span> <span class="n">staff</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">setId</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;name=&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;, id=&#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getId</span><span class="o">()</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
+        <span class="o">}</span>
 
-		<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="na">getNextId</span><span class="o">();</span>
-		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Next available id=&#34;</span> <span class="o">+</span> <span class="n">n</span><span class="o">);</span>
-	<span class="o">}</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="na">getNextId</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Next available id=&#34;</span> <span class="o">+</span> <span class="n">n</span><span class="o">);</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 
 <span class="kd">class</span> <span class="nc">Employee</span><span class="o">{</span>
-	<span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">nextId</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">nextId</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
 
-	<span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="kt">double</span> <span class="n">salary</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">salary</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nf">Employee</span> <span class="o">(</span><span class="n">String</span> <span class="n">n</span><span class="o">,</span> <span class="kt">double</span> <span class="n">s</span><span class="o">){</span>
-		<span class="n">name</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
-		<span class="n">salary</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span>
-		<span class="n">id</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">Employee</span> <span class="o">(</span><span class="n">String</span> <span class="n">n</span><span class="o">,</span> <span class="kt">double</span> <span class="n">s</span><span class="o">){</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="n">salary</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">(){</span>
-		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kt">double</span> <span class="nf">getSalary</span><span class="o">(){</span>
-		<span class="k">return</span> <span class="n">salary</span><span class="o">;</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getSalary</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">salary</span><span class="o">;</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">(){</span>
-		<span class="k">return</span> <span class="n">id</span><span class="o">;</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(){</span>
-		<span class="n">id</span> <span class="o">=</span> <span class="n">nextId</span><span class="o">;</span>
-		<span class="n">nextId</span><span class="o">++;</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(){</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="n">nextId</span><span class="o">;</span>
+        <span class="n">nextId</span><span class="o">++;</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getNextId</span><span class="o">(){</span>
-		<span class="k">return</span> <span class="n">nextId</span><span class="o">;</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getNextId</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">nextId</span><span class="o">;</span>
+    <span class="o">}</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
-		<span class="n">var</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Harry&#34;</span><span class="o">,</span> <span class="n">50000</span><span class="o">);</span>
-		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
-	<span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">var</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Employee</span><span class="o">(</span><span class="s">&#34;Harry&#34;</span><span class="o">,</span> <span class="n">50000</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getSalary</span><span class="o">());</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></td></tr></table>
