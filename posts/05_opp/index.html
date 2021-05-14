@@ -5,13 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Day5 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day5" />
+        <title>05_opp - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="05_opp" />
 <meta property="og:description" content="什么是显式赋值? 直接赋值的方式
 1  String brand = &#34;华为&#34;;   其输出结果会是什么样? i 与 i8 会是一样的
 在相同的类中，整个程序的执行期间，类加载会执行多少次？ 只加载一次
-类加类是什么时候被触发(类加载的时机)?   new 对象的时候
-  启动一个类的 main() 方法时
-  像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
+像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
 类加载都是懒加载，不是必用时，它不会加载
 局部变量 与 成员变量 有什么区别？  在类中定义的位置  局部变量:
 局部位置(包含方法，大括号之间往往都是局部位置)
@@ -28,20 +26,20 @@
  初始化值不同  局部变量
 没有默认初始化值， 必须手动初始化
 成员变量
-有默认初始值" />
+有默认初始值
+为什么它不能打印 age ? 加了 static 的方法不属于普通成员方法，它是无法访问成员变量的
+这里它输出的是 80 还是 100? 输出的是 80 , 它会选择离它最近的参数调用" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/day5/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/05_opp/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-03T23:12:33&#43;08:00" />
 <meta property="article:modified_time" content="2021-04-03T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Day5"/>
+<meta name="twitter:title" content="05_opp"/>
 <meta name="twitter:description" content="什么是显式赋值? 直接赋值的方式
 1  String brand = &#34;华为&#34;;   其输出结果会是什么样? i 与 i8 会是一样的
 在相同的类中，整个程序的执行期间，类加载会执行多少次？ 只加载一次
-类加类是什么时候被触发(类加载的时机)?   new 对象的时候
-  启动一个类的 main() 方法时
-  像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
+像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
 类加载都是懒加载，不是必用时，它不会加载
 局部变量 与 成员变量 有什么区别？  在类中定义的位置  局部变量:
 局部位置(包含方法，大括号之间往往都是局部位置)
@@ -58,21 +56,23 @@
  初始化值不同  局部变量
 没有默认初始化值， 必须手动初始化
 成员变量
-有默认初始值"/>
+有默认初始值
+为什么它不能打印 age ? 加了 static 的方法不属于普通成员方法，它是无法访问成员变量的
+这里它输出的是 80 还是 100? 输出的是 80 , 它会选择离它最近的参数调用"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day5/" /><link rel="prev" href="http://fengqigang.cn/posts/04_recursion/" /><link rel="next" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/05_opp/" /><link rel="prev" href="http://fengqigang.cn/posts/04_recursion/" /><link rel="next" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Day5",
+        "headline": "05_opp",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/day5\/"
-        },"genre": "posts","keywords": "java","wordcount":  271 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/day5\/","datePublished": "2021-04-03T23:12:33+08:00","dateModified": "2021-04-03T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/05_opp\/"
+        },"genre": "posts","keywords": "java","wordcount":  186 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/05_opp\/","datePublished": "2021-04-03T23:12:33+08:00","dateModified": "2021-04-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -146,10 +146,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Day5</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">05_opp</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-03">2021-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;271 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-03">2021-04-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;186 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -162,7 +162,6 @@
         <li><a href="#什么是显式赋值">什么是显式赋值?</a></li>
         <li><a href="#httpsimgfengqigangcnimg20210402135625png-其输出结果会是什么样"><img src="https://img.fengqigang.cn//img/20210402135625.png" alt=""> 其输出结果会是什么样?</a></li>
         <li><a href="#在相同的类中整个程序的执行期间类加载会执行多少次">在相同的类中，整个程序的执行期间，类加载会执行多少次？</a></li>
-        <li><a href="#类加类是什么时候被触发类加载的时机">类加类是什么时候被触发(类加载的时机)?</a></li>
         <li><a href="#像-string-system-这种显然也是类但是在-jdk-当中也会加载吗">像 <strong>String, System</strong> 这种显然也是类，但是在 <strong>jdk</strong> 当中也会加载吗？</a></li>
         <li><a href="#局部变量-与-成员变量-有什么区别"><strong>局部变量</strong> 与 <strong>成员变量</strong> 有什么区别？</a></li>
         <li><a href="#httpsimgfengqigangcnimg20210402141750png-为什么它不能打印-age-"><img src="https://img.fengqigang.cn//img/20210402141750.png" alt=""> 为什么它不能打印 <strong>age</strong> ?</a></li>
@@ -171,18 +170,9 @@
         <li><a href="#默认提供无参构造如果我手动写了有参构造那么默认的无参还有吗">默认提供无参构造，如果我手动写了有参构造，那么默认的无参还有吗?</a></li>
         <li><a href="#在一个构造器中可以调用其他的构造器吗">在一个构造器中可以调用其他的构造器吗?</a></li>
         <li><a href="#类中可以用小驼峰法命名吗">类中可以用小驼峰法命名吗?</a></li>
-        <li><a href="#httpsimgfengqigangcnimg20210402153254png-其堆空间是什么样的"><img src="https://img.fengqigang.cn//img/20210402153254.png" alt=""> 其堆空间是什么样的?</a></li>
-        <li><a href="#如何完整的创建一个-zombie">如何完整的创建一个 <strong>Zombie</strong></a></li>
-        <li><a href="#byte-的对象类是什么-如何获取其最大值"><strong>byte</strong> 的对象类是什么? 如何获取其最大值?</a></li>
-        <li><a href="#short-的对象类是什么-如何获取其最大值"><strong>short</strong> 的对象类是什么? 如何获取其最大值?</a></li>
-        <li><a href="#long-的对象类是什么-如何获取其最大值"><strong>long</strong> 的对象类是什么? 如何获取其最大值?</a></li>
-        <li><a href="#float-的对象类是什么"><strong>float</strong> 的对象类是什么?</a></li>
-        <li><a href="#double-的对象类是什么"><strong>double</strong> 的对象类是什么?</a></li>
         <li><a href="#char-的对象类是什么如何获取其最大值"><strong>char</strong> 的对象类是什么，如何获取其最大值?</a></li>
-        <li><a href="#20210403192056httpsimgfengqigangcnimg20210403192056png-其结果是什么样的"><img src="https://img.fengqigang.cn//img/20210403192056.png" alt="20210403192056"> 其结果是什么样的?</a></li>
         <li><a href="#类中如果有两个相同数据类型的成员变量能否用构造方法对它们分别赋值">类中如果有两个相同数据类型的成员变量，能否用构造方法对它们分别赋值?</a></li>
         <li><a href="#什么是静态区它是用来干什么的">什么是静态区，它是用来干什么的?</a></li>
-        <li><a href="#什么是静态成员变量和静态成员方法">什么是静态成员变量和静态成员方法?</a></li>
         <li><a href="#可以通过一个对象的引用去访问了一个静态的成员">可以通过一个对象的引用去访问了一个静态的成员?</a></li>
         <li><a href="#静态成员变量和普通成员变量有什么区别所属-内存中的位置-内存中出现的时间调用方式-">静态成员变量和普通成员变量有什么区别?(所属， 内存中的位置， 内存中出现的时间，调用方式 )</a></li>
         <li><a href="#静态成员-与-普通成员有什么不同-调用方式-有没有this传参能不能访问普通成员访问静态成员">静态成员 与 普通成员有什么不同? (调用方式， 有没有this传参，能不能访问普通成员，访问静态成员)</a></li>
@@ -229,23 +219,6 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210402135842.png"
         title="https://img.fengqigang.cn//img/20210402135842.png" /></p>
-<h3 id="类加类是什么时候被触发类加载的时机">类加类是什么时候被触发(类加载的时机)?</h3>
-<ol>
-<li>
-<p>new 对象的时候</p>
-</li>
-<li>
-<p>启动一个类的 <strong>main()</strong> 方法时</p>
-</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402140016.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402140016.png, https://img.fengqigang.cn//img/20210402140016.png 1.5x, https://img.fengqigang.cn//img/20210402140016.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402140016.png"
-        title="https://img.fengqigang.cn//img/20210402140016.png" /></p>
 <h3 id="像-string-system-这种显然也是类但是在-jdk-当中也会加载吗">像 <strong>String, System</strong> 这种显然也是类，但是在 <strong>jdk</strong> 当中也会加载吗？</h3>
 <p>它们仍然会被加载</p>
 <p>类加载都是懒加载，不是必用时，它不会加载</p>
@@ -305,7 +278,7 @@
         alt="https://img.fengqigang.cn//img/20210402142330.png"
         title="https://img.fengqigang.cn//img/20210402142330.png" /> 为什么没法用 <strong>this</strong>?</h3>
 <p>隐含的传参 <strong>this</strong> 只针对于(普通)成员方法， 不加static的方法</p>
-<p>对于加了 <strong>static</strong> 的方法，没有陷含的传参 <strong>this</strong></p>
+<p>对于加了 <strong>static</strong> 的方法，没有隐含的传参 <strong>this</strong></p>
 <h3 id="默认提供无参构造如果我手动写了有参构造那么默认的无参还有吗">默认提供无参构造，如果我手动写了有参构造，那么默认的无参还有吗?</h3>
 <p>当写了有参构造方法，默认的无参不再提供</p>
 <p><strong>为了优良的编码习惯，新建一个类，一定要把无参构造加上</strong></p>
@@ -348,144 +321,8 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210402153135.png"
         title="https://img.fengqigang.cn//img/20210402153135.png" /></p>
-<h3 id="httpsimgfengqigangcnimg20210402153254png-其堆空间是什么样的"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402153254.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402153254.png, https://img.fengqigang.cn//img/20210402153254.png 1.5x, https://img.fengqigang.cn//img/20210402153254.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402153254.png"
-        title="https://img.fengqigang.cn//img/20210402153254.png" /> 其堆空间是什么样的?</h3>
-<ol>
-<li>传递 <strong>默认值</strong></li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402153330.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402153330.png, https://img.fengqigang.cn//img/20210402153330.png 1.5x, https://img.fengqigang.cn//img/20210402153330.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402153330.png"
-        title="https://img.fengqigang.cn//img/20210402153330.png" /></p>
-<ol start="2">
-<li>传递 <strong>类中设置的值</strong></li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402153405.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402153405.png, https://img.fengqigang.cn//img/20210402153405.png 1.5x, https://img.fengqigang.cn//img/20210402153405.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402153405.png"
-        title="https://img.fengqigang.cn//img/20210402153405.png" /></p>
-<ol start="3">
-<li>传递 <strong>方法中设置的值</strong></li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402153618.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402153618.png, https://img.fengqigang.cn//img/20210402153618.png 1.5x, https://img.fengqigang.cn//img/20210402153618.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402153618.png"
-        title="https://img.fengqigang.cn//img/20210402153618.png" /></p>
-<h3 id="如何完整的创建一个-zombie">如何完整的创建一个 <strong>Zombie</strong></h3>
-<p><strong>属性</strong> + <strong>行为</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402164056.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402164056.png, https://img.fengqigang.cn//img/20210402164056.png 1.5x, https://img.fengqigang.cn//img/20210402164056.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402164056.png"
-        title="https://img.fengqigang.cn//img/20210402164056.png" /></p>
-<h3 id="byte-的对象类是什么-如何获取其最大值"><strong>byte</strong> 的对象类是什么? 如何获取其最大值?</h3>
-<p><strong>Byte</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Byte</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Byte</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">byte</span><span class="o">)</span> <span class="o">(</span><span class="n">Byte</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">+</span> <span class="n">1</span><span class="o">));</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402164457.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402164457.png, https://img.fengqigang.cn//img/20210402164457.png 1.5x, https://img.fengqigang.cn//img/20210402164457.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402164457.png"
-        title="https://img.fengqigang.cn//img/20210402164457.png" /></p>
-<h3 id="short-的对象类是什么-如何获取其最大值"><strong>short</strong> 的对象类是什么? 如何获取其最大值?</h3>
-<p><strong>Short</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Short</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Short</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">short</span><span class="o">)</span> <span class="o">(</span><span class="n">Short</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">+</span> <span class="n">1</span><span class="o">));</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402164822.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402164822.png, https://img.fengqigang.cn//img/20210402164822.png 1.5x, https://img.fengqigang.cn//img/20210402164822.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402164822.png"
-        title="https://img.fengqigang.cn//img/20210402164822.png" /></p>
-<h3 id="long-的对象类是什么-如何获取其最大值"><strong>long</strong> 的对象类是什么? 如何获取其最大值?</h3>
-<p><strong>Long</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">);</span>
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Long</span><span class="o">.</span><span class="na">MAX_VALUE</span> <span class="o">+</span> <span class="n">1</span><span class="o">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210402164931.png"
-        data-srcset="https://img.fengqigang.cn//img/20210402164931.png, https://img.fengqigang.cn//img/20210402164931.png 1.5x, https://img.fengqigang.cn//img/20210402164931.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210402164931.png"
-        title="https://img.fengqigang.cn//img/20210402164931.png" /></p>
-<h3 id="float-的对象类是什么"><strong>float</strong> 的对象类是什么?</h3>
-<p><strong>Float</strong></p>
-<h3 id="double-的对象类是什么"><strong>double</strong> 的对象类是什么?</h3>
-<p><strong>Double</strong></p>
 <h3 id="char-的对象类是什么如何获取其最大值"><strong>char</strong> 的对象类是什么，如何获取其最大值?</h3>
 <p><strong>Character</strong></p>
-<h3 id="20210403192056httpsimgfengqigangcnimg20210403192056png-其结果是什么样的"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210403192056.png"
-        data-srcset="https://img.fengqigang.cn//img/20210403192056.png, https://img.fengqigang.cn//img/20210403192056.png 1.5x, https://img.fengqigang.cn//img/20210403192056.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210403192056.png"
-        title="20210403192056" /> 其结果是什么样的?</h3>
-<p>全类名 + 地址</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210403192136.png"
-        data-srcset="https://img.fengqigang.cn//img/20210403192136.png, https://img.fengqigang.cn//img/20210403192136.png 1.5x, https://img.fengqigang.cn//img/20210403192136.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210403192136.png"
-        title="20210403192136" /></p>
 <h3 id="类中如果有两个相同数据类型的成员变量能否用构造方法对它们分别赋值">类中如果有两个相同数据类型的成员变量，能否用构造方法对它们分别赋值?</h3>
 <p>不能</p>
 <h3 id="什么是静态区它是用来干什么的">什么是静态区，它是用来干什么的?</h3>
@@ -495,18 +332,7 @@
 <p><strong>特点</strong>:</p>
 <p>这个属性不是某个对象所拥有，而是全体对象所共享</p>
 <p>这样做 <strong>可以节省内存空间，符合设计思想</strong></p>
-<h3 id="什么是静态成员变量和静态成员方法">什么是静态成员变量和静态成员方法?</h3>
-<p>普通的成员变量用 <strong>static</strong> 修饰的就是 <strong>静态成员</strong> 变量</p>
-<p>普通的成员方法用 <strong>static</strong> 修饰的就是 <strong>静态成员</strong> 方法</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">static</span> <span class="n">String</span> <span class="n">schoolName</span> <span class="o">=</span> <span class="s">&#34;王道Java训练营&#34;</span><span class="o">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="可以通过一个对象的引用去访问了一个静态的成员">可以通过一个对象的引用去访问了一个静态的成员?</h3>
+<h3 id="可以通过一个对象的引用去访问了一个静态的成员">可以通过一个对象的引用去访问了一个静态的成员?</h3>
 <p>可以，但不建议这样做，最好通过 <strong>类名.</strong> 方式的访问</p>
 <h3 id="静态成员变量和普通成员变量有什么区别所属-内存中的位置-内存中出现的时间调用方式-">静态成员变量和普通成员变量有什么区别?(所属， 内存中的位置， 内存中出现的时间，调用方式 )</h3>
 <p><strong>所属不同</strong></p>
