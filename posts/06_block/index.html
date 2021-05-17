@@ -5,58 +5,78 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Day6 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day6" />
-<meta property="og:description" content="如何在一个构造函数中调用另一个构造函数 用 this
-1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
-不可以重名
-什么是匿名对象? 如何创建匿名对象? 匿名对象:
+        <title>06_block - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="06_block" />
+<meta property="og:description" content="什么是匿名对象? 如何创建匿名对象? 匿名对象:
 没有名字的对象，没有引用指向它的对象
 创建匿名对象:
 new 类名();
-什么时候用匿名对象?  用 匿名对象调用方法  好处
-方便简洁， 如果只想调用一次该对象的成员方法
-没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率
-坏处
-如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底
- 如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
+什么时候用匿名对象?   用 匿名对象调用方法
+  如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
   如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
-  什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块" />
+  什么是代码块? 有哪些代码块? 在java中, 使用大括号 {} 括起来的代码被称为 代码块
+  局部代码块
+  构造代码块(成员位置)
+  静态代码块(构造代码块 &#43; static 修饰)
+  同步代码块(多线程)
+  什么是局部代码块? 有什么作用? 和局部变量位置相似， 处在 方法中局部位置 的代码块
+作用:
+限定局部变量的作用范围和生命周期，及早释放，提高内存利用率
+评价
+代码太难看了，可读性很差
+并没有多大用，不要在代码中使用局部代码块
+什么是构造代码块? 有什么用? 处于成员位置
+{}
+作用:
+构造代码块会随着构造器的执行而执行，可以用来给成员变量赋值
+给成员变量赋值的方式有哪些? 创建对象中:
+  默认初始化 默认值
+  显式赋值" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/day6/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/06_block/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-04T15:16:47&#43;08:00" />
 <meta property="article:modified_time" content="2021-04-04T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Day6"/>
-<meta name="twitter:description" content="如何在一个构造函数中调用另一个构造函数 用 this
-1 2 3 4 5  public Student(String name, int age, String gender, int stuId) { this(name, age, gender); this.stuId = stuId; }   在一个 java 文件下， 所有的 class 是什么关系? 同一个包 的关系
-不可以重名
-什么是匿名对象? 如何创建匿名对象? 匿名对象:
+<meta name="twitter:title" content="06_block"/>
+<meta name="twitter:description" content="什么是匿名对象? 如何创建匿名对象? 匿名对象:
 没有名字的对象，没有引用指向它的对象
 创建匿名对象:
 new 类名();
-什么时候用匿名对象?  用 匿名对象调用方法  好处
-方便简洁， 如果只想调用一次该对象的成员方法
-没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率
-坏处
-如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底
- 如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
+什么时候用匿名对象?   用 匿名对象调用方法
+  如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
   如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
-  什么是代码块? 可以分为多少种? 在java中, 使用大括号 {} 括起来的代码被称为 代码块"/>
+  什么是代码块? 有哪些代码块? 在java中, 使用大括号 {} 括起来的代码被称为 代码块
+  局部代码块
+  构造代码块(成员位置)
+  静态代码块(构造代码块 &#43; static 修饰)
+  同步代码块(多线程)
+  什么是局部代码块? 有什么作用? 和局部变量位置相似， 处在 方法中局部位置 的代码块
+作用:
+限定局部变量的作用范围和生命周期，及早释放，提高内存利用率
+评价
+代码太难看了，可读性很差
+并没有多大用，不要在代码中使用局部代码块
+什么是构造代码块? 有什么用? 处于成员位置
+{}
+作用:
+构造代码块会随着构造器的执行而执行，可以用来给成员变量赋值
+给成员变量赋值的方式有哪些? 创建对象中:
+  默认初始化 默认值
+  显式赋值"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day6/" /><link rel="prev" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/" /><link rel="next" href="http://fengqigang.cn/posts/intelldebug/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/06_block/" /><link rel="prev" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/" /><link rel="next" href="http://fengqigang.cn/posts/intelldebug/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Day6",
+        "headline": "06_block",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/day6\/"
-        },"genre": "posts","keywords": "java","wordcount":  218 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/day6\/","datePublished": "2021-04-04T15:16:47+08:00","dateModified": "2021-04-04T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/06_block\/"
+        },"genre": "posts","keywords": "java","wordcount":  176 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/06_block\/","datePublished": "2021-04-04T15:16:47+08:00","dateModified": "2021-04-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -130,10 +150,10 @@ new 类名();
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Day6</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">06_block</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;218 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-04">2021-04-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;176 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -143,14 +163,12 @@ new 类名();
   <ul>
     <li>
       <ul>
-        <li><a href="#如何在一个构造函数中调用另一个构造函数">如何在一个构造函数中调用另一个构造函数</a></li>
-        <li><a href="#在一个-java-文件下-所有的-class-是什么关系">在一个 <strong>java</strong> 文件下， 所有的 <strong>class</strong> 是什么关系?</a></li>
         <li><a href="#什么是匿名对象-如何创建匿名对象">什么是匿名对象? 如何创建匿名对象?</a></li>
         <li><a href="#什么时候用匿名对象">什么时候用匿名对象?</a></li>
-        <li><a href="#什么是代码块-可以分为多少种">什么是代码块? 可以分为多少种?</a></li>
+        <li><a href="#什么是代码块-有哪些代码块">什么是代码块? 有哪些代码块?</a></li>
         <li><a href="#什么是局部代码块-有什么作用">什么是局部代码块? 有什么作用?</a></li>
         <li><a href="#什么是构造代码块-有什么用">什么是构造代码块? 有什么用?</a></li>
-        <li><a href="#给成员变量赋值的方式有哪些o">给成员变量赋值的方式有哪些O</a></li>
+        <li><a href="#给成员变量赋值的方式有哪些">给成员变量赋值的方式有哪些?</a></li>
         <li><a href="#若要-new-一个对象其构造代码块的执行顺序是什么样的">若要 <strong>new</strong> 一个对象，其构造代码块的执行顺序是什么样的?</a></li>
         <li><a href="#在定义代码块中可以使用-this-关键字吗">在定义代码块中可以使用 <strong>this</strong> 关键字吗？</a></li>
         <li><a href="#构造代码块有什么用-如何用">构造代码块有什么用? 如何用?</a></li>
@@ -165,65 +183,22 @@ new 类名();
         <li><a href="#静态代码块与构造代码块哪一个先赋值">静态代码块与构造代码块哪一个先赋值?</a></li>
         <li><a href="#构造代码块-静态代码块可以给静态成员变量和普通变量赋值吗">构造代码块, 静态代码块可以给静态成员变量和普通变量赋值吗?</a></li>
         <li><a href="#构造代码块有哪些使用场景">构造代码块有哪些使用场景?</a></li>
-        <li><a href="#静态代码块有哪些使用场景">静态代码块有哪些使用场景?</a></li>
         <li><a href="#什么静态代码块可以用来测试一个类有没有被加载-如何使用">什么静态代码块可以用来测试一个类有没有被加载? 如何使用?</a></li>
         <li><a href="#20210404151009httpsimgfengqigangcnimg20210404151009png-a类被加载了吗-为什么"><img src="https://img.fengqigang.cn//img/20210404151009.png" alt="20210404151009"> A类被加载了吗? 为什么?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="如何在一个构造函数中调用另一个构造函数">如何在一个构造函数中调用另一个构造函数</h3>
-<p>用 <strong>this</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="n">String</span> <span class="n">gender</span><span class="o">,</span> <span class="kt">int</span> <span class="n">stuId</span><span class="o">)</span> <span class="o">{</span>
-
-	<span class="k">this</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">age</span><span class="o">,</span> <span class="n">gender</span><span class="o">);</span>
-	<span class="k">this</span><span class="o">.</span><span class="na">stuId</span> <span class="o">=</span> <span class="n">stuId</span><span class="o">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210403200854.png"
-        data-srcset="https://img.fengqigang.cn//img/20210403200854.png, https://img.fengqigang.cn//img/20210403200854.png 1.5x, https://img.fengqigang.cn//img/20210403200854.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210403200854.png"
-        title="20210403200854" /></p>
-<h3 id="在一个-java-文件下-所有的-class-是什么关系">在一个 <strong>java</strong> 文件下， 所有的 <strong>class</strong> 是什么关系?</h3>
-<p><strong>同一个包</strong> 的关系</p>
-<p>不可以重名</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210403201443.png"
-        data-srcset="https://img.fengqigang.cn//img/20210403201443.png, https://img.fengqigang.cn//img/20210403201443.png 1.5x, https://img.fengqigang.cn//img/20210403201443.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210403201443.png"
-        title="20210403201443" /></p>
-<h3 id="什么是匿名对象-如何创建匿名对象">什么是匿名对象? 如何创建匿名对象?</h3>
+            </div><div class="content" id="content"><h3 id="什么是匿名对象-如何创建匿名对象">什么是匿名对象? 如何创建匿名对象?</h3>
 <p><strong>匿名对象</strong>:</p>
 <p>没有名字的对象，没有引用指向它的对象</p>
 <p><strong>创建匿名对象</strong>:</p>
 <p>new 类名();</p>
 <h3 id="什么时候用匿名对象">什么时候用匿名对象?</h3>
 <ol>
-<li>用 <strong>匿名对象调用方法</strong></li>
-</ol>
-<p><strong>好处</strong></p>
-<p>方便简洁， 如果只想调用一次该对象的成员方法</p>
-<p>没有引用的对象是垃圾，会等待垃圾回收，理想情况下，可以提升内存利用率</p>
-<p><strong>坏处</strong></p>
-<p>如果想用对象多次访问成员，调用方法，那么匿名肯定不适用，创建多个匿名对象， 浪费空间，效率底</p>
-<ol start="2">
+<li>
+<p>用 <strong>匿名对象调用方法</strong></p>
+</li>
 <li>
 <p>如果方法的形式参数中需要一个对象，可以 <strong>传入一个匿名对象</strong></p>
 </li>
@@ -231,7 +206,7 @@ new 类名();
 <p>如果一个方法返回值类型是一个类，要返回一个对象，可以 <strong>返回一个匿名对象</strong></p>
 </li>
 </ol>
-<h3 id="什么是代码块-可以分为多少种">什么是代码块? 可以分为多少种?</h3>
+<h3 id="什么是代码块-有哪些代码块">什么是代码块? 有哪些代码块?</h3>
 <p>在java中, 使用大括号 <strong>{}</strong> 括起来的代码被称为 <strong>代码块</strong></p>
 <ol>
 <li>
@@ -251,6 +226,7 @@ new 类名();
 <p>和局部变量位置相似， 处在 <strong>方法中局部位置</strong> 的代码块</p>
 <p><strong>作用</strong>:</p>
 <p>限定局部变量的作用范围和生命周期，及早释放，提高内存利用率</p>
+<p><strong>评价</strong></p>
 <p>代码太难看了，可读性很差</p>
 <p><strong>并没有多大用，不要在代码中使用局部代码块</strong></p>
 <p><img
@@ -266,7 +242,7 @@ new 类名();
 <p>{}</p>
 <p><strong>作用</strong>:</p>
 <p>构造代码块会随着构造器的执行而执行，可以用来给成员变量赋值</p>
-<h3 id="给成员变量赋值的方式有哪些o">给成员变量赋值的方式有哪些O</h3>
+<h3 id="给成员变量赋值的方式有哪些">给成员变量赋值的方式有哪些?</h3>
 <p><strong>创建对象中</strong>:</p>
 <ol>
 <li>
@@ -324,14 +300,14 @@ new 类名();
 </ol>
 <p><strong>注意</strong>:</p>
 <p>永远将 <strong>构造代码块</strong> ，放在成员变量的定义语句下面</p>
-<ul>
+<ol>
 <li>
 <p>如果代码块初始化在上，成员变量声明在下,<strong>逻辑上会很奇怪</strong></p>
 </li>
 <li>
 <p>如果对象的创建依赖于代码块和成员变量的定义位置，<strong>很容易引发错误</strong></p>
 </li>
-</ul>
+</ol>
 <h3 id="20210404140206httpsimgfengqigangcnimg20210404140206png-这里可以吗"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -345,14 +321,6 @@ new 类名();
 <p>是在类加载的时候执行的</p>
 <p>在使用定义代码块的时候，已经有对象了, 早已经出现了 static int staticA = 10; 了</p>
 <p>所以可以对执行</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210404140444.png"
-        data-srcset="https://img.fengqigang.cn//img/20210404140444.png, https://img.fengqigang.cn//img/20210404140444.png 1.5x, https://img.fengqigang.cn//img/20210404140444.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210404140444.png"
-        title="20210404140444" /></p>
 <h3 id="什么是静态代码块">什么是静态代码块?</h3>
 <p><strong>位置</strong>:</p>
 <p>成员位置</p>
@@ -385,14 +353,6 @@ new 类名();
 <p>构造器</p>
 </li>
 </ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210404140936.png"
-        data-srcset="https://img.fengqigang.cn//img/20210404140936.png, https://img.fengqigang.cn//img/20210404140936.png 1.5x, https://img.fengqigang.cn//img/20210404140936.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210404140936.png"
-        title="20210404140936" /></p>
 <h3 id="静态代码块可不可以给普通成员变量赋值">静态代码块可不可以给普通成员变量赋值?</h3>
 <p>不可以</p>
 <p>类加载时没有对象</p>
@@ -421,13 +381,14 @@ new 类名();
 <p>静态代码块和静态成员变量的 <strong>定义顺序</strong> 会影响到静态成员变量的 <strong>最终取值</strong></p>
 </li>
 </ol>
+<p><strong>注意</strong></p>
 <p>永远将 <strong>静态代码块</strong> 放在 <strong>静态成员变量</strong> 的定义 <strong>下面</strong></p>
 <h3 id="静态代码块与构造代码块哪一个先赋值">静态代码块与构造代码块哪一个先赋值?</h3>
 <p><strong>静态代码块</strong> 总是优于 <strong>构造代码块</strong></p>
 <h3 id="构造代码块-静态代码块可以给静态成员变量和普通变量赋值吗">构造代码块, 静态代码块可以给静态成员变量和普通变量赋值吗?</h3>
 <p><strong>构造代码块可以给静态成员变量赋值，静态代码块不能给普通成员代码块赋值</strong></p>
 <h3 id="构造代码块有哪些使用场景">构造代码块有哪些使用场景?</h3>
-<p>不想让对象共享一个属性(static), 但是还需要对象的某位上属性具有相同初始值</p>
+<p>不想让对象共享一个属性(static), 但是还需要对象的某个属性具有相同初始值</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -436,15 +397,6 @@ new 类名();
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210404142535.png"
         title="20210404142535" /></p>
-<h3 id="静态代码块有哪些使用场景">静态代码块有哪些使用场景?</h3>
-<ul>
-<li>
-<p>复杂的静态变量初始化</p>
-</li>
-<li>
-<p>JBDC的驱动加载</p>
-</li>
-</ul>
 <h3 id="什么静态代码块可以用来测试一个类有没有被加载-如何使用">什么静态代码块可以用来测试一个类有没有被加载? 如何使用?</h3>
 <p><strong>静态代码块在类加载的时候就会执行</strong></p>
 <p><img
