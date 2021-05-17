@@ -100,6 +100,18 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">重复包含问题解决</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-12">2021-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/c/"><i class="far fa-folder fa-fw"></i>C</a></span></div><div class="content">重复包含问题的解决 1. 在main.cpp中只需要包含xxx.h即可，不需要包含xxx.cpp   原因分析：
+PS: 命令中没有提到&quot;speak.h&quot;文件(原因是:在&quot;speak.cpp&quot;中已经包含了&quot;speak.h&quot;)
+  2. 在xxx.h中，需要写上, 而xxx.cpp不需要写 1 2 3 4  #ifndef xxxxx #define xxxxx (...) #endif     原因分析：
+C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(防止同一个.o文件中包含多个相同的.h内容)
+  3. 使用xxx.h与xxx.cpp这种方式的时候，声明放在xxx.h中，定义放在xxx.cpp中   原因分析：
+C++是采用独立编译，就是每个cpp单独编译成对应的.o文件，最后链接器再将多个.o文件链接成可执行程序。(在将多个.o文件链接成可执行程序的时候，有可能会在不同的.o文件中含有相同的定义)
+  参考文章 注意头文件规则，避免链接错误：重复定义(multiple defination) 编译链接 C++
+Compiling Cpp</div><div class="post-footer">
+        <a href="/posts/%E9%87%8D%E5%A4%8D%E5%8C%85%E5%90%AB%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/c/">C</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%89%E8%A3%85pi_dashboard/">树莓派安装pi_Dashboard</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-11">2021-01-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">安装Nginx和PHP 1 2 3 4  sudo apt-get update sudo apt-get install nginx php7.3-fpm php7.3-cli php7.3-curl php-7.3-gd php7.3-cgi sudo service nginx start sudo service php7.3-fpm restart   使Nginx能处理PHP sudo nano /etc/nginx/sites-available/default
 1 2 3 4 5  location / { # First attempt to serve request as file, then # as directory, then fall back to displaying a 404. try_files $uri $uri/ =404; }   修改为
@@ -153,19 +165,6 @@ Tip    使用dd时，写SD卡的名称，不要写SD卡分区的名称   使用d
         alt="https://img.fengqigang.cn//img/insertionSort.gif"
         title="https://img.fengqigang.cn//img/insertionSort.gif" /></p></div><div class="post-footer">
         <a href="/posts/insertionsort/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">algorithm</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/selectionsort/">Selection_Sort</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-05">2021-01-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><i class="far fa-folder fa-fw"></i>数据结构</a></span></div><div class="content"><h2 id="选择排序">选择排序</h2>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/selectionSort.gif"
-        data-srcset="https://img.fengqigang.cn//img/selectionSort.gif, https://img.fengqigang.cn//img/selectionSort.gif 1.5x, https://img.fengqigang.cn//img/selectionSort.gif 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/selectionSort.gif"
-        title="https://img.fengqigang.cn//img/selectionSort.gif" /></p></div><div class="post-footer">
-        <a href="/posts/selectionsort/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/algorithm/">algorithm</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

@@ -4,7 +4,19 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 13 May 2021 23:34:52 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 17 May 2021 23:31:44 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Day39</title>
+    <link>http://fengqigang.cn/posts/day39/</link>
+    <pubDate>Mon, 17 May 2021 23:31:44 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/day39/</guid>
+    <description><![CDATA[引入css有哪几种方式?  在 div 后写 style  写在 head 标签内， 用 style 包裹  导入外部文件，用link标签(可使用相对路径，也可使用绝对路径)  有哪些方式可以挑选选择器?  标签选择器  类选择器(在一个 html 页面上， 每一个标签的 class 可以有多个)  ID选择器(在一个 html 页面上，每一个标签的 id 是唯一的)   层级复合选择器   属性选择器  选择器的优先级是什么样的? 如何强制升到最高的优先级? 行内 &gt; ID &gt; 伪类|类 属性选择 &gt; 标签 &gt; 统配符
+文件中 css 与导入的 css (优先级一样), 需要 满足就近原则
+强制升到最高的优先级
+当前位置所设置的属性为最高级
+什么是标准流(标准文档流, 文档流)?   在一个 HTML 页面中，页面会根据页面的(行和块)特性，会从上到下，从左到右按顺序排列
+  每一个 HTML 标签， 要在页面上占据空间]]></description>
+</item><item>
     <title>Day38</title>
     <link>http://fengqigang.cn/posts/day38/</link>
     <pubDate>Thu, 13 May 2021 23:34:52 &#43;0800</pubDate>
@@ -136,18 +148,6 @@ ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { publi
     <pubDate>Thu, 06 May 2021 23:31:19 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/day30/</guid>
-    <description><![CDATA[集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
-  这个集合类表示是的是一种什么数据结构
-  这个集合类他的底层结构是什么(数组，链表，数组+链表)
-  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
-  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
-  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)]]></description>
-</item><item>
-    <title>Day29</title>
-    <link>http://fengqigang.cn/posts/day29/</link>
-    <pubDate>Wed, 05 May 2021 23:31:59 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day29/</guid>
     <description><![CDATA[集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
   这个集合类表示是的是一种什么数据结构
   这个集合类他的底层结构是什么(数组，链表，数组+链表)
