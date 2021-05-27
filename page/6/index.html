@@ -177,22 +177,21 @@ Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstrac
         <a href="/posts/day9/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day8/">Day8</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-07">2021-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">Day 8
+        <a href="/posts/08_polymorphic/">08_polymorphic</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-07">2021-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">[toc]
 若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
   需要计数器指示外部创建对象的个数
-   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
-  需要计数器指示外部创建对象的个数
-   解决方法:
+  解决方法:
   私有化构造方法
   提供一个方法来创建对象, 访问权限是 public
   这个方法必须是 静态方法
   控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
   在 set, get方法怎样赋值比较好( 如width )? 用 this 好
 如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
-在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做?</div><div class="post-footer">
-        <a href="/posts/day8/">Read More</a><div class="post-tags">
+在增删改时，如果结果成功或失败了，可以选择在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }</div><div class="post-footer">
+        <a href="/posts/08_polymorphic/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/07_extends/">07_extends</a>

@@ -5,56 +5,54 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Day8 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day8" />
-<meta property="og:description" content="Day 8
+        <title>08_polymorphic - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="08_polymorphic" />
+<meta property="og:description" content="[toc]
 若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
   需要计数器指示外部创建对象的个数
-   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
-  需要计数器指示外部创建对象的个数
-   解决方法:
+  解决方法:
   私有化构造方法
   提供一个方法来创建对象, 访问权限是 public
   这个方法必须是 静态方法
   控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
   在 set, get方法怎样赋值比较好( 如width )? 用 this 好
 如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
-在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做?" />
+在增删改时，如果结果成功或失败了，可以选择在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/day8/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/08_polymorphic/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-07T23:12:51&#43;08:00" />
 <meta property="article:modified_time" content="2021-04-07T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Day8"/>
-<meta name="twitter:description" content="Day 8
+<meta name="twitter:title" content="08_polymorphic"/>
+<meta name="twitter:description" content="[toc]
 若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
   需要计数器指示外部创建对象的个数
-   若想限制创建 Student 类个数, 其思路是什么?   如果允许外部直接创建对象，显然 无法控制创建对象的个数
-  需要计数器指示外部创建对象的个数
-   解决方法:
+  解决方法:
   私有化构造方法
   提供一个方法来创建对象, 访问权限是 public
   这个方法必须是 静态方法
   控制创建对象的计数器，应该是 静态成员变量 ，被所有对象共享
   在 set, get方法怎样赋值比较好( 如width )? 用 this 好
 如何不希望外界创建数组 =null 的对象，应该如何做? 私有化无参构造
-在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
-为了防止 studs 出现空指针异常， 可以习惯性怎么做?"/>
+在增删改时，如果结果成功或失败了，可以选择在方法中输出成功或失败的消息吗? 不可以， 输出成功或失败 不应该 是在 增删改 方法里该做的事情
+为了防止 studs 出现空指针异常， 可以习惯性怎么做? 判null 和 判空
+if (studs == null || studs.length == 0){ return new Student[0] }"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day8/" /><link rel="prev" href="http://fengqigang.cn/posts/07_extends/" /><link rel="next" href="http://fengqigang.cn/posts/day9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/08_polymorphic/" /><link rel="prev" href="http://fengqigang.cn/posts/07_extends/" /><link rel="next" href="http://fengqigang.cn/posts/day9/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Day8",
+        "headline": "08_polymorphic",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/day8\/"
-        },"genre": "posts","keywords": "java","wordcount":  1137 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/day8\/","datePublished": "2021-04-07T23:12:51+08:00","dateModified": "2021-04-07T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/08_polymorphic\/"
+        },"genre": "posts","keywords": "java","wordcount":  1226 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/08_polymorphic\/","datePublished": "2021-04-07T23:12:51+08:00","dateModified": "2021-04-07T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -128,9 +126,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Day8</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">08_polymorphic</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-07">2021-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1137 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-07">2021-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1226 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -142,17 +140,15 @@
     <li>
       <ul>
         <li><a href="#若想限制创建-student-类个数-其思路是什么">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</a></li>
-        <li><a href="#若想限制创建-student-类个数-其思路是什么-1">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</a></li>
         <li><a href="#在-set-get方法怎样赋值比较好-如width-">在 <strong>set</strong>, <strong>get</strong>方法怎样赋值比较好( 如width )?</a></li>
-        <li><a href="#如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <strong>=null</strong> 的对象，应该如何做?</a></li>
-        <li><a href="#在增删改时如果结果成功或失败了可以在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗?</a></li>
+        <li><a href="#如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <code>=null</code> 的对象，应该如何做?</a></li>
+        <li><a href="#在增删改时如果结果成功或失败了可以选择在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以选择在方法中输出成功或失败的消息吗?</a></li>
         <li><a href="#为了防止-studs-出现空指针异常-可以习惯性怎么做">为了防止 <strong>studs</strong> 出现空指针异常， 可以习惯性怎么做?</a></li>
         <li><a href="#在-jvm-中如何区分-this-和-super-关键字">在 <strong>jvm</strong> 中，如何区分 <strong>this</strong> 和 <strong>super</strong> 关键字?</a></li>
         <li><a href="#构造代码块时父类的构造器执行了吗">构造代码块时，父类的构造器执行了吗?</a></li>
         <li><a href="#子类对象的初始化方式称为什么具体是什么样的">子类对象的初始化方式称为什么?具体是什么样的?</a></li>
         <li><a href="#创建子类对象会调用父类吗">创建子类对象会调用父类吗?</a></li>
         <li><a href="#this-与-super-调用构造器都需要在第一行它们可以共存吗"><strong>this()</strong> 与 <strong>super()</strong> 调用构造器都需要在第一行，它们可以共存吗?</a></li>
-        <li><a href="#所有的类都是直接或间接的继承了-object-object-有没有无参构造">所有的类都是直接或间接的继承了 <strong>Object</strong>, <strong>Object</strong> 有没有无参构造?</a></li>
         <li><a href="#super-和-this-有什么区别-有什么用途"><strong>super</strong> 和 <strong>this</strong> 有什么区别? 有什么用途?</a></li>
         <li><a href="#如何使用-this-和-super-调用父类和子类的值20210407201035httpsimgfengqigangcnimg20210407201035png">如何使用 <strong>this</strong> 和 <strong>super</strong> 调用父类和子类的值?<img src="https://img.fengqigang.cn//img/20210407201035.png" alt="20210407201035"></a></li>
         <li><a href="#父子类中可以出现同名的变量吗">父子类中可以出现同名的变量吗?</a></li>
@@ -171,6 +167,8 @@
         <li><a href="#静态方法可以继承和重写吗">静态方法可以继承和重写吗?</a></li>
         <li><a href="#什么是-final-关键字">什么是 <strong>final</strong> 关键字?</a></li>
         <li><a href="#什么时候用-final-来修饰类">什么时候用 <strong>final</strong> 来修饰类?</a></li>
+        <li><a href="#if-i-want-to-prevent-someone-from-forming-a-subclass-of-my-classes-what-can-i-do">If I want to prevent someone from forming a subclass of my classes, what can I do?</a></li>
+        <li><a href="#if-i-make-a-specific-method-in-a-class-final-what-will-happen">If I make a specific method in a class <strong>final</strong>, what will happen?</a></li>
         <li><a href="#用-final-来修饰的类可以继承和重写吗">用 <strong>final</strong> 来修饰的类可以继承和重写吗?</a></li>
         <li><a href="#final-修饰的变量-最终表示的是什么"><strong>final</strong> 修饰的变量， 最终表示的是什么?</a></li>
         <li><a href="#常量的分类是什么样的">常量的分类是什么样的?</a></li>
@@ -198,11 +196,12 @@
         <li><a href="#方法中有没有多态现象">方法中有没有多态现象?</a></li>
         <li><a href="#多态中的方法访问特征检索机制和访问机制是什么样的">多态中的方法访问特征(检索机制和访问机制)是什么样的?</a></li>
         <li><a href="#多态的优缺点是什么">多态的优缺点是什么?</a></li>
+        <li><a href="#what-are-the-this-and-super-keyword-meanings">What are the <strong>this</strong> and <strong>super</strong> keyword meanings?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>Day 8</p>
+            </div><div class="content" id="content"><p>[toc]</p>
 <h3 id="若想限制创建-student-类个数-其思路是什么">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</h3>
 <ol>
 <li>
@@ -212,17 +211,6 @@
 <p>需要计数器指示外部创建对象的个数</p>
 </li>
 </ol>
-<hr>
-<h3 id="若想限制创建-student-类个数-其思路是什么-1">若想限制创建 <strong>Student</strong> 类个数, 其思路是什么?</h3>
-<ol>
-<li>
-<p>如果允许外部直接创建对象，显然 <strong>无法控制创建对象的个数</strong></p>
-</li>
-<li>
-<p>需要计数器指示外部创建对象的个数</p>
-</li>
-</ol>
-<hr>
 <p><strong>解决方法</strong>:</p>
 <ol>
 <li>
@@ -248,7 +236,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210407192954.png"
         title="20210407192954" /></p>
-<h3 id="如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <strong>=null</strong> 的对象，应该如何做?</h3>
+<h3 id="如何不希望外界创建数组-null-的对象应该如何做">如何不希望外界创建数组 <code>=null</code> 的对象，应该如何做?</h3>
 <p>私有化无参构造</p>
 <p><img
         class="lazyload"
@@ -258,7 +246,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210407193104.png"
         title="20210407193104" /></p>
-<h3 id="在增删改时如果结果成功或失败了可以在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以在方法中输出成功或失败的消息吗?</h3>
+<h3 id="在增删改时如果结果成功或失败了可以选择在方法中输出成功或失败的消息吗">在增删改时，如果结果成功或失败了，可以选择在方法中输出成功或失败的消息吗?</h3>
 <p>不可以， 输出成功或失败 <strong>不应该</strong> 是在 <strong>增删改</strong> 方法里该做的事情</p>
 <h3 id="为了防止-studs-出现空指针异常-可以习惯性怎么做">为了防止 <strong>studs</strong> 出现空指针异常， 可以习惯性怎么做?</h3>
 <p><strong>判null</strong> 和 <strong>判空</strong></p>
@@ -287,16 +275,6 @@ return new Student[0]
 <h3 id="this-与-super-调用构造器都需要在第一行它们可以共存吗"><strong>this()</strong> 与 <strong>super()</strong> 调用构造器都需要在第一行，它们可以共存吗?</h3>
 <p>不行</p>
 <p>因为, 第一行隐含了 <strong>super()</strong> 如果允许不在第一行， 会导致重复给父类成员赋值，显然是错误的</p>
-<h3 id="所有的类都是直接或间接的继承了-object-object-有没有无参构造">所有的类都是直接或间接的继承了 <strong>Object</strong>, <strong>Object</strong> 有没有无参构造?</h3>
-<p>若 <strong>Object</strong> 中没有构造器， <strong>默认采用无参构造</strong></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210407195552.png"
-        data-srcset="https://img.fengqigang.cn//img/20210407195552.png, https://img.fengqigang.cn//img/20210407195552.png 1.5x, https://img.fengqigang.cn//img/20210407195552.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210407195552.png"
-        title="20210407195552" /></p>
 <h3 id="super-和-this-有什么区别-有什么用途"><strong>super</strong> 和 <strong>this</strong> 有什么区别? 有什么用途?</h3>
 <p><strong>区别</strong>:</p>
 <p><strong>this</strong> 表示自己的对象，它不受访问权限控制</p>
@@ -893,6 +871,12 @@ return new Student[0]
 <p>Math</p>
 </li>
 </ul>
+<h3 id="if-i-want-to-prevent-someone-from-forming-a-subclass-of-my-classes-what-can-i-do">If I want to prevent someone from forming a subclass of my classes, what can I do?</h3>
+<p><strong>Classes</strong> that cannot be extended are called final classes.</p>
+<p><strong>All methods in a final class are automatically final, not the fields</strong></p>
+<p>Use the <strong>final</strong> modifier in the definition of the class to indicate this.</p>
+<h3 id="if-i-make-a-specific-method-in-a-class-final-what-will-happen">If I make a specific method in a class <strong>final</strong>, what will happen?</h3>
+<p>no subclass can override that method.</p>
 <h3 id="用-final-来修饰的类可以继承和重写吗">用 <strong>final</strong> 来修饰的类可以继承和重写吗?</h3>
 <p><strong>final</strong> 应该放在访问权限修饰符的后面，返回值的前面</p>
 <p><strong>final</strong> 修饰的方法无法被重写，但是可以被继承</p>
@@ -1245,7 +1229,7 @@ return new Student[0]
 <p>编译时，<strong>看左边</strong>，左边是什么类型就意味着可以访问这个类型中有的成员变量</p>
 </li>
 <li>
-<p>运行时 <strong>看左边</strong> ，编译时期就已经确定它取谁的值了，取左边引用类中成员的值</p>
+<p>运行时, <strong>看左边</strong> ，编译时期就已经确定它取谁的值了，取左边引用类中成员的值</p>
 </li>
 </ol>
 <h3 id="方法中有没有多态现象">方法中有没有多态现象?</h3>
@@ -1271,7 +1255,26 @@ return new Student[0]
 </ol>
 <p><strong>缺点</strong></p>
 <ol>
-<li>父类的引用指向子类对象，就无法访问子类独有的行为，必须要做强制类型转换</li>
+<li>父类的引用指向子类对象，就无法访问子类独有的行为，必须要做强制类型转换7</li>
+</ol>
+<h3 id="what-are-the-this-and-super-keyword-meanings">What are the <strong>this</strong> and <strong>super</strong> keyword meanings?</h3>
+<p><strong>this</strong></p>
+<ol>
+<li>
+<p>to denote a refernce to the implicit parameter</p>
+</li>
+<li>
+<p>to call another constructor of the same class</p>
+</li>
+</ol>
+<p><strong>super</strong></p>
+<ol>
+<li>
+<p>to invoke a superclass method</p>
+</li>
+<li>
+<p>invoke a superclass constructor</p>
+</li>
 </ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
