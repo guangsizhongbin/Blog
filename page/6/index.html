@@ -157,24 +157,19 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
         <a href="/posts/day10/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day9/">Day9</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-08">2021-04-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">其jvm内存结构图是什么样的? 什么是隐式初始化? 隐式初始化，子类构造器中没有显式调用 super() 父类构造器
-对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
+        <a href="/posts/09_abstract/">09_abstract</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-08">2021-04-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">其jvm内存结构图是什么样的? 对于编译而言，怎么才能保证编译不报错? 两个引用之间是父子关系
 什么是 instanceof 关键字?如何使用? 引用 instanceof 类名，表示该引用指向的对象，是否是后面类的对象(或子类对象)
 如果是就返回 true, 否则就返回 false
 怎么才能保证运行时不报错? 该父类引用指向的子类对象，就是这个要强制的子类的对象
 否则会报 ClassCastException 类型转换异常的错误
-null instalceof 任何类其结果是什么? false
-对于这段程序其执行 会出现什么? 成员变量 编译时看左边，运行时看左边
-###对于段程序其执行 会出现什么?
-方法 编译时看左边，运行时看右边
-为什么要有抽象方法? 如在 Animal 中的 shout 方法是不会被调用的，这个方法只是用来被重写的
-  Animal 类只用来被继承，不用来创建对象
-  Animal 类中 shout 方法，不应该有方法体
-  抽象方法如何声明? 语法:
-[访问权限修饰符] abstract 返回值类型 方法名();
-Class &lsquo;Animal&rsquo; must either be declared abstract or implement abstract method &lsquo;shout()&rsquo; in &lsquo;Animal&rsquo;</div><div class="post-footer">
-        <a href="/posts/day9/">Read More</a><div class="post-tags">
+What will happen x instance of C, if x is null? It simply returns false.
+That makes sense: null refers to no object, so it certainly doesn&rsquo;t refer to an object of type c
+如何声明一个抽象类? 语法
+[访问权限修饰符] abstract class 类名{}
+Does abstract classes can be instantied? No
+If a class is declared as abstract, no objects of that class can be created.</div><div class="post-footer">
+        <a href="/posts/09_abstract/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/08_polymorphic/">08_polymorphic</a>
