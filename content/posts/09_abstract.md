@@ -1,5 +1,5 @@
 ---
-title: "Day9"
+title: "09_abstract"
 date: 2021-04-08T16:50:57+08:00
 lastmod: 2021-04-08
 author: "xiaonan"
@@ -14,9 +14,6 @@ categories: [王道]
 
 ![20210408143109](https://img.fengqigang.cn//img/20210408143109.png)
 
-### 什么是隐式初始化?
-
-**隐式初始化**，子类构造器中没有显式调用 **super()** 父类构造器
 
 ### 对于编译而言，怎么才能保证编译不报错?
 
@@ -34,58 +31,35 @@ categories: [王道]
 
 否则会报 **ClassCastException** 类型转换异常的错误
 
-### null instalceof 任何类其结果是什么?
+### What will happen **x instance of C**, if x is **null**?
 
-**false**
+It simply returns **false**.
+
+That makes sense: **null** refers to no object, so it certainly doesn't refer to an object of type c
 
 ![20210408144819](https://img.fengqigang.cn//img/20210408144819.png)
-
-### ![20210408145708](https://img.fengqigang.cn//img/20210408145708.png) 对于这段程序其执行 ![20210408145743](https://img.fengqigang.cn//img/20210408145743.png) 会出现什么?
-
-![20210408145913](https://img.fengqigang.cn//img/20210408145913.png)
-
-成员变量 **编译时看左边**，**运行时看左边**
-
-###![20210408150123](https://img.fengqigang.cn//img/20210408150123.png) 对于段程序其执行 ![20210408150407](https://img.fengqigang.cn//img/20210408150407.png) 会出现什么?
-
-![20210408150655](https://img.fengqigang.cn//img/20210408150655.png)
-
-方法 **编译时看左边**，**运行时看右边**
-
-### 为什么要有抽象方法?
-
-如在 **Animal** 中的 **shout** 方法是不会被调用的，这个方法只是用来被重写的
-
-1. **Animal** 类只用来被继承，不用来创建对象
-
-2. **Animal** 类中 **shout** 方法，不应该有方法体
-
-### 抽象方法如何声明?
-
-**语法**:
-
-[访问权限修饰符] abstract 返回值类型 方法名();
-
-![20210408160450](https://img.fengqigang.cn//img/20210408160450.png)
-
-**Class 'Animal' must either be declared abstract or implement abstract method 'shout()' in 'Animal'**
-
-一个类如果想要有抽象方法必须声明为抽象类，如果不想声明抽象类
- 就不应该有抽象方法
 
 ### 如何声明一个抽象类?
 
 **语法**
 
-[访问权限修饰符] abstrac class 类名{}
+\[访问权限修饰符\] abstract class 类名{}
 
 ![20210408160836](https://img.fengqigang.cn//img/20210408160836.png)
 
-### 声明完抽象类后，**Animal** 还能不能创建对象?
+### Does abstract classes can be instantied?
 
-不行
+No
 
-![20210408161017](https://img.fengqigang.cn//img/20210408161017.png)
+If a class is declared as abstract, no objects of that class can be created.
+
+But you can still create `object variables` of an abstract class, but such a variable must refer to an object of a nonabstract subclass.
+
+Here `p` is a variable of the abstract type `Person` that refers to an instance of the nonabstract subclass `Student`.
+
+```java
+Person p = new Student("Vince Vu", "Economics");
+```
 
 ### 抽象类一般如何命名?
 
@@ -107,7 +81,7 @@ categories: [王道]
 
 ![20210408161503](https://img.fengqigang.cn//img/20210408161503.png)
 
-### 可以继承复用静态方法?
+### 可以继承复用静态方法吗?
 
 **静态方法** 是不能被重写的，子类中同名的静态方法是独立的
 
@@ -131,15 +105,15 @@ categories: [王道]
 
 **都不可以**
 
-1. **private**
+1.  **private**
 
 私有的方法可以继承但是没有权限， 就无法重写，抽象方法没有方法体，如果不重写没有任何意义，所以抽象方法显然不能是 **private**
 
-2. **static**
+2.  **static**
 
 静态方法没有办法重写，所以也不能在抽象方法中
 
-3. **final**
+3.  **final**
 
 **final** 方法不能被重写， 所以也不能用在抽象方法中
 
@@ -155,9 +129,7 @@ categories: [王道]
 
 ### **Java** 中所有类都有构造方法吗?
 
-**类**
-
-普通类 + 抽象类
+**类** = 普通类 + 抽象类
 
 它们都有构造方法
 
@@ -187,7 +159,7 @@ categories: [王道]
 
 可以
 
-### **abstrac** 只能用来修饰什么?
+### **abstract** 只能用来修饰什么?
 
 只能用来修饰 **class** 和 方法
 
