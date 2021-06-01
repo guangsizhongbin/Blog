@@ -118,28 +118,23 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
         <a href="/posts/day12/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day11/">Day11</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-10">2021-04-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">new 类名().new 类名() 与 new 类名.new 这两种方式有什么区别? new 类名().new 类名()
-创建成员内部类
-new 外围类类名.new 静态内部类类名()
-创建静态内部类
-局部内部类有什么优缺点? 优点
-绝对的封装性，并且可以少创建一个 class, 相对来说简单一点
-缺点
-局部内部类作用域仅限于方法，如果别的类， 别的方法也想用这个类 做不到
-可以进行吗?为什么? 可以，任何时候都有父类，哪怕是实现了一个接口
-, 为什么 a++ 无法执行?  生命周期的问题  方法的局部变量的生命周期和方法同生共死, 方法出栈就销毁
-但是 局部内部类的方法会创建对象
-于是出现方法出栈后，局部变量销毁了，但是对象仍然需要使用该局部变量的情况
-为了解决这种生命周期的冲突，jvm 会在创建局部内部类对象时，把方法的局部变量作为对象的成员变量加了进去
-这个成员变量和局部变量值同步的问题  如果在局部内部类当中， 把这个局部变量给修改了，那就必须同步这个修改，否则程序就有问题
-但是这样显然太复杂了，java 的开发都觉得不想做了，于是直接把这个局部变量声明为 final 做为一个常量，直接不修改，就不需要考虑同步问题
-Java8 之前，如果想用局部内部类访问方法的局部变量， 该局部变量必须声明为 final
-Java8 之后， 这个限制被解除了，改为在底层直接加上 final, 不需要程序再加了
-这就是 语法糖
-匿名内部类 和 lambda 的局部变量有什么特殊的地方? 匿名内部类 和 lambda 本质的是 局部内部类
-它们的局部变量仍然是 final 修饰的</div><div class="post-footer">
-        <a href="/posts/day11/">Read More</a><div class="post-tags">
+        <a href="/posts/11_innerclass/">11_InnerClass</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-10">2021-04-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是内部类? 嵌套定义在 一个类的内部 的类
+内部类有什么用?  封装  私有化 CPU 这个类后，就不能在 Computer 外部访问这个类了
+内部类互相访问  两个独立的类之间受访问权限限制，而当一个类进入另一个类内部成为内部类就不再受访问权限限制了，可以互相访问私有成员
+内部类如何分类? (成员位置， 局部位置) 定义在成员位置
+  成员内部类
+  普通成员内部类
+  静态内部类
+  定义在局部内部类
+  匿名局部内部类
+  lambda
+  什么是成员内部类?其定义是什么? 成员内部类
+最普通的内部类， 它定义在另一个类的成员位置，可以看成该类的一个成员
+语法
+1 2 3 4  [访问权限修饰符] class EnclosedClazz{ [访问权限修饰符] class InnerClazz{ } }   普通的类有几种访问权限修饰符? 两种，没有 protected , private
+class 是用来被实例化的，所以只有 默认 和 public 访问权限修饰符</div><div class="post-footer">
+        <a href="/posts/11_innerclass/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/10_interface/">10_interface</a>
