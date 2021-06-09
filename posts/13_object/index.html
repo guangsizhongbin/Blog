@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>13_object - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="13_object" />
+<meta property="og:description" content="什么是 API ? Application Programming Interface(API)
+应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
+作用
+开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
+Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
+  在自定义类时，并不需要特别标注 extends Object
+  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
+  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
+  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
+  隐式初始化，默认调用父类的无参构造
+  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
+  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
+方法声明中 public final Class&lt;?&gt; getClass() 分别代表什么意思?   public 访问权限，调用时不必考虑权限问题
+  final 该方法可以被继承但是不能被重写" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/13_object/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-13T21:42:49&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-13T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="13_object"/>
+<meta name="twitter:description" content="什么是 API ? Application Programming Interface(API)
+应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
+作用
+开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
+Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
+  在自定义类时，并不需要特别标注 extends Object
+  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
+  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
+  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
+  隐式初始化，默认调用父类的无参构造
+  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
+  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
+方法声明中 public final Class&lt;?&gt; getClass() 分别代表什么意思?   public 访问权限，调用时不必考虑权限问题
+  final 该方法可以被继承但是不能被重写"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/13_object/" /><link rel="prev" href="http://fengqigang.cn/posts/12_lambda/" /><link rel="next" href="http://fengqigang.cn/posts/day14/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "13_object",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/13_object\/"
+        },"genre": "posts","keywords": "java","wordcount":  863 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/13_object\/","datePublished": "2021-04-13T21:42:49+08:00","dateModified": "2021-04-13T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">13_object</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-13">2021-04-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;863 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是-api-">什么是 <strong>API</strong> ?</a></li>
+        <li><a href="#object-类有什么特点"><strong>Object</strong> 类有什么特点?</a></li>
+        <li><a href="#为什么所有类都有一个默认无参">为什么所有类都有一个默认无参?</a></li>
+        <li><a href="#20210412140548httpsimgfengqigangcnimg20210412140548png为什么不能访问-clone-方法"><img src="https://img.fengqigang.cn//img/20210412140548.png" alt="20210412140548">为什么不能访问 <strong>clone</strong> 方法</a></li>
+        <li><a href="#方法声明中-public-final-classltgt-getclass-分别代表什么意思">方法声明中 <strong>public final Class&lt;?&gt; getClass()</strong> 分别代表什么意思?</a></li>
+        <li><a href="#class-对象是什么对象-class类是什么类"><strong>Class</strong> 对象是什么对象? Class类是什么类?</a></li>
+        <li><a href="#class-对象-与-该类的对象有区别吗"><strong>Class 对象</strong> 与 该类的对象有区别吗?</a></li>
+        <li><a href="#20210412142226httpsimgfengqigangcnimg20210412142226png-如何判断这两个类是否是相同的-class对象"><img src="https://img.fengqigang.cn//img/20210412142226.png" alt="20210412142226"> 如何判断这两个类是否是相同的 <strong>Class对象</strong>?</a></li>
+        <li><a href="#20210412142518httpsimgfengqigangcnimg20210412142518png-它们是相等的吗为什么"><img src="https://img.fengqigang.cn//img/20210412142518.png" alt="20210412142518"> 它们是相等的吗?为什么?</a></li>
+        <li><a href="#运行时对象-和-类的对象-有什么区别"><strong>运行时对象</strong> 和 <strong>类的对象</strong> 有什么区别?</a></li>
+        <li><a href="#getname-与-getsimplename-如何使用"><strong>getName()</strong> 与 <strong>getSimpleName()</strong> 如何使用?</a></li>
+        <li><a href="#public-string-tostring-是什么意思"><strong>public String toString()</strong> 是什么意思?</a></li>
+        <li><a href="#20210412202913httpsimgfengqigangcnimg20210412202913png-是什么意思"><img src="https://img.fengqigang.cn//img/20210412202913.png" alt="20210412202913"> 是什么意思?</a></li>
+        <li><a href="#20210412203656httpsimgfengqigangcnimg20210412203656png-会输出什么"><img src="https://img.fengqigang.cn//img/20210412203656.png" alt="20210412203656"> 会输出什么?</a></li>
+        <li><a href="#如何改写-tostring--在哪里">如何改写 <strong>toString()</strong> , 在哪里?</a></li>
+        <li><a href="#public-boolean-equalobject-obj-是什么意思"><strong>public boolean equal(Object obj)</strong> 是什么意思?</a></li>
+        <li><a href="#what-are-the-java-language-specification-requires-that-the-equals-method-have-properites">What are the Java Language Specification requires that the <code>equals</code> method have properites?</a></li>
+        <li><a href="#how-to-write-the-perfect-equals-method">How to write the perfect <code>equals</code> method?</a></li>
+        <li><a href="#如何判断对称性-yequalx-返回-true-时-xequaly-也应返回-true">如何判断对称性? <strong>y.equal(x)</strong> 返回 true 时， <strong>x.equal(y)</strong> 也应返回 <strong>true</strong></a></li>
+        <li><a href="#如何在重写-equals-中满足-自反性-">如何在重写 <strong>equals</strong> 中满足 <strong>自反性</strong> ?</a></li>
+        <li><a href="#什么是-bigdecimal-类">什么是 <strong>BigDecimal</strong> 类?</a></li>
+        <li><a href="#如何用-bigdecimal-实现-1---09-">如何用 <strong>BigDecimal</strong> 实现 <strong>1 - 0.9</strong> ?</a></li>
+        <li><a href="#若在-equals-方法中允许子类对象来比较是否相等-该如何实现排他性">若在 <strong>equals</strong> 方法中允许子类对象来比较是否相等, 该如何实现排他性?</a></li>
+        <li><a href="#public-int-hashcode-是什么意思"><strong>public int hashCode()</strong> 是什么意思?</a></li>
+        <li><a href="#what-is-a-native-method">What is a <code>native</code> method?</a></li>
+        <li><a href="#public-native-int-hashcode-中的-native-是什么意思"><strong>public native int hashCode()</strong> 中的 <strong>native</strong> 是什么意思?</a></li>
+        <li><a href="#如何用-hashcode-判断两个-teacher-对象是否相等">如何用 <strong>hashCode</strong> 判断两个 Teacher 对象是否相等?</a></li>
+        <li><a href="#equals-方法-与-hashcode-方法有什么应用"><strong>equals</strong> 方法 与 <strong>hashCode</strong> 方法有什么应用?</a></li>
+        <li><a href="#protected-void-finalize-throws-throwable--是什么意思"><strong>protected void finalize() throws Throwable {}</strong> 是什么意思?</a></li>
+        <li><a href="#protected-void-finalize-throws-throwable--中的---方法体是空的这个方法有什么意义"><strong>protected void finalize() throws Throwable {}</strong> 中的 <strong>{ }</strong> 方法体是空的，这个方法有什么意义?</a></li>
+        <li><a href="#空接口有什么用">空接口有什么用?</a></li>
+        <li><a href="#can-i-have-to-write-that-public-class-employee-extends-object">Can I have to write that <code>public class Employee extends Object</code>?</a></li>
+        <li><a href="#where-is-the-hash-code-come-from">Where is the <code>hash code</code> come from?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是-api-">什么是 <strong>API</strong> ?</h3>
+<p>Application Programming Interface(API)</p>
+<p>应用程序编程接口，在<strong>Java</strong> 当中指的是一些先定义好的类和方法</p>
+<p><strong>作用</strong></p>
+<p>开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求</p>
+<h3 id="object-类有什么特点"><strong>Object</strong> 类有什么特点?</h3>
+<ol>
+<li>
+<p><strong>Object</strong> 类所有类继承层次的祖先类, 所有类(包括数组)都 <strong>直接或间接的继承</strong> 自该类，都实现了该类的方法</p>
+</li>
+<li>
+<p>在自定义类时，并不需要特别标注 <strong>extends Object</strong></p>
+</li>
+<li>
+<p>如果一个类没有明确的的指出它的父类，<strong>Object</strong> 类就默认被认为是这个类的父类，<strong>extends Object</strong> 则被省略了</p>
+</li>
+</ol>
+<h3 id="为什么所有类都有一个默认无参">为什么所有类都有一个默认无参?</h3>
+<ol>
+<li>
+<p>当一个类没有定义构造方法的时候，就会自动添加默认构造方法</p>
+</li>
+<li>
+<p>一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化</p>
+</li>
+<li>
+<p>隐式初始化，默认调用父类的无参构造</p>
+</li>
+<li>
+<p>最终，一定能保证，调用到 <strong>Object</strong> 类的无参构造方法，先初始化 <strong>Object</strong> 这个父类</p>
+</li>
+</ol>
+<h3 id="20210412140548httpsimgfengqigangcnimg20210412140548png为什么不能访问-clone-方法"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412140548.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412140548.png, https://img.fengqigang.cn//img/20210412140548.png 1.5x, https://img.fengqigang.cn//img/20210412140548.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412140548.png"
+        title="20210412140548" />为什么不能访问 <strong>clone</strong> 方法</h3>
+<p><strong>clone</strong> 方法是 <strong>protect</strong> 修饰的， 只能在自己的子类中访问</p>
+<h3 id="方法声明中-public-final-classltgt-getclass-分别代表什么意思">方法声明中 <strong>public final Class&lt;?&gt; getClass()</strong> 分别代表什么意思?</h3>
+<ol>
+<li>
+<p><strong>public</strong> 访问权限，调用时不必考虑权限问题</p>
+</li>
+<li>
+<p><strong>final</strong> 该方法可以被继承但是不能被重写</p>
+</li>
+<li>
+<p><strong>Class</strong> 返回值类型， <strong>Class</strong> 是大写的 <strong>class</strong> , 它表示一个类，说明该方法的返回值是 <strong>Class 对象</strong> 表示泛型</p>
+</li>
+<li>
+<p><strong>getClass</strong> 是方法名 () 表示方法不需要参数</p>
+</li>
+</ol>
+<h3 id="class-对象是什么对象-class类是什么类"><strong>Class</strong> 对象是什么对象? Class类是什么类?</h3>
+<p><strong>Class 对象</strong> 是该类的运行时对象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412141242.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412141242.png, https://img.fengqigang.cn//img/20210412141242.png 1.5x, https://img.fengqigang.cn//img/20210412141242.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412141242.png"
+        title="20210412141242" /></p>
+<h3 id="class-对象-与-该类的对象有区别吗"><strong>Class 对象</strong> 与 该类的对象有区别吗?</h3>
+<p>有</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412141319.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412141319.png, https://img.fengqigang.cn//img/20210412141319.png 1.5x, https://img.fengqigang.cn//img/20210412141319.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412141319.png"
+        title="20210412141319" /></p>
+<h3 id="20210412142226httpsimgfengqigangcnimg20210412142226png-如何判断这两个类是否是相同的-class对象"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412142226.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412142226.png, https://img.fengqigang.cn//img/20210412142226.png 1.5x, https://img.fengqigang.cn//img/20210412142226.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412142226.png"
+        title="20210412142226" /> 如何判断这两个类是否是相同的 <strong>Class对象</strong>?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412142351.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412142351.png, https://img.fengqigang.cn//img/20210412142351.png 1.5x, https://img.fengqigang.cn//img/20210412142351.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412142351.png"
+        title="20210412142351" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412142359.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412142359.png, https://img.fengqigang.cn//img/20210412142359.png 1.5x, https://img.fengqigang.cn//img/20210412142359.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412142359.png"
+        title="20210412142359" /></p>
+<p><strong>不同的类，运行不同的Class对象</strong></p>
+<h3 id="20210412142518httpsimgfengqigangcnimg20210412142518png-它们是相等的吗为什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412142518.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412142518.png, https://img.fengqigang.cn//img/20210412142518.png 1.5x, https://img.fengqigang.cn//img/20210412142518.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412142518.png"
+        title="20210412142518" /> 它们是相等的吗?为什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412142547.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412142547.png, https://img.fengqigang.cn//img/20210412142547.png 1.5x, https://img.fengqigang.cn//img/20210412142547.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412142547.png"
+        title="20210412142547" /></p>
+<p>同一个类运行时的 <strong>class</strong> 对象是唯一的</p>
+<h3 id="运行时对象-和-类的对象-有什么区别"><strong>运行时对象</strong> 和 <strong>类的对象</strong> 有什么区别?</h3>
+<p><strong>运行时对象</strong></p>
+<p>也叫类对象，整个程序运行期间独一份，不可能有两个</p>
+<p><strong>类对象</strong></p>
+<p>想创建几个就有几个</p>
+<h3 id="getname-与-getsimplename-如何使用"><strong>getName()</strong> 与 <strong>getSimpleName()</strong> 如何使用?</h3>
+<p><strong>getSimpleName</strong></p>
+<p>Return the simple (unqualified) name of this element.</p>
+<p><strong>getName</strong></p>
+<p>Get the name of the category of which this attribute value is an instance</p>
+<p>这两个方法都是 <strong>Class</strong> 方法</p>
+<p>需要用 <strong>getClass()</strong> 先获取 <strong>Class</strong></p>
+<p>然后用 <strong>Class</strong> 获取 <strong>getName</strong>, <strong>getSimpleName</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Student</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+        <span class="n">Class</span> <span class="n">clClazz</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">clClazz</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">clClazz</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412202502.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412202502.png, https://img.fengqigang.cn//img/20210412202502.png 1.5x, https://img.fengqigang.cn//img/20210412202502.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412202502.png"
+        title="20210412202502" /></p>
+<h3 id="public-string-tostring-是什么意思"><strong>public String toString()</strong> 是什么意思?</h3>
+<p>访问权限不用考虑</p>
+<p>返回值是一个字符串</p>
+<p>不需要任何参数</p>
+<p><strong>It is recommended that all subclasses override this method</strong></p>
+<h3 id="20210412202913httpsimgfengqigangcnimg20210412202913png-是什么意思"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412202913.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412202913.png, https://img.fengqigang.cn//img/20210412202913.png 1.5x, https://img.fengqigang.cn//img/20210412202913.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412202913.png"
+        title="20210412202913" /> 是什么意思?</h3>
+<p>return getClass().getName() + &ldquo;@&rdquo; + Integer.toHexString(hashCode());</p>
+<p><strong>getClass().getName()</strong> 一个类的全限定类名 + &ldquo;@&rdquo;</p>
+<p><strong>Interger.toHexString(hashCode())</strong></p>
+<p>返回对象的十六进制的地址值</p>
+<h3 id="20210412203656httpsimgfengqigangcnimg20210412203656png-会输出什么"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412203656.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412203656.png, https://img.fengqigang.cn//img/20210412203656.png 1.5x, https://img.fengqigang.cn//img/20210412203656.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412203656.png"
+        title="20210412203656" /> 会输出什么?</h3>
+<p>return getClass().getName() + &ldquo;@&rdquo; + Integer.toHexString(hashCode());</p>
+<p>一个类的全限定类名 + @ + 对象的十六进制的地址值</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412203709.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412203709.png, https://img.fengqigang.cn//img/20210412203709.png 1.5x, https://img.fengqigang.cn//img/20210412203709.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412203709.png"
+        title="20210412203709" /></p>
+<h3 id="如何改写-tostring--在哪里">如何改写 <strong>toString()</strong> , 在哪里?</h3>
+<p>在对应的类中必写 <strong>toString()</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412204034.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412204034.png, https://img.fengqigang.cn//img/20210412204034.png 1.5x, https://img.fengqigang.cn//img/20210412204034.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412204034.png"
+        title="20210412204034" /></p>
+<h3 id="public-boolean-equalobject-obj-是什么意思"><strong>public boolean equal(Object obj)</strong> 是什么意思?</h3>
+<p>首先不用关心访问权限</p>
+<p>返回值的类型是 <strong>boolean</strong> , 要么是 <strong>true</strong> , 要么是 <strong>false</strong></p>
+<p>意味着所有的类的对象都可以传入</p>
+<h3 id="what-are-the-java-language-specification-requires-that-the-equals-method-have-properites">What are the Java Language Specification requires that the <code>equals</code> method have properites?</h3>
+<ol>
+<li>reflexive</li>
+</ol>
+<p>For any non-null reference <code>x</code>, <code>x.equals(x)</code> should return <code>true</code>.</p>
+<ol start="2">
+<li>symmetric</li>
+</ol>
+<p>For any references <code>x</code> and <code>y</code>, <code>x.equals(y)</code> should return <code>true</code> if and only if <code>y.equals(x)</code> return <code>true</code>.</p>
+<ol start="3">
+<li>transitive</li>
+</ol>
+<p>For any references <code>x</code>, <code>y</code> and <code>z</code> , if x.equals(y) return <code>true</code> and <code>y.equals(z)</code> return true, then <code>x.equals(z)</code> should return <code>true</code>.</p>
+<ol start="4">
+<li>consistent</li>
+</ol>
+<p>If the objects to which <code>x</code> and <code>y</code> refer haven&rsquo;t changed, then repeated calls to <code>x.equals(y)</code> return the same value.</p>
+<ol start="5">
+<li>non-null</li>
+</ol>
+<p>For any non-null reference <code>x</code>, <code>x.equals(null)</code> should return <code>false</code>.</p>
+<h3 id="how-to-write-the-perfect-equals-method">How to write the perfect <code>equals</code> method?</h3>
+<ol>
+<li>
+<p>Name the explicit parameter <code>otherObject</code></p>
+</li>
+<li>
+<p>Test whether <code>this</code> happens to be identical to <code>otherObject</code></p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">otherObject</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>Test whether <code>otherObject</code> is <code>null</code> and return <code>false</code> if it is.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">otherObject</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>Compare the classes of <code>this</code> and <code>otherObject</code></li>
+</ol>
+<ul>
+<li><strong>subclasses</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">otherObject</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>all subclasses</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(!(</span><span class="n">otherObject</span> <span class="k">instanceof</span> <span class="n">ClassName</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>Cast <code>otherObject</code> to a variable of class type</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ClassName</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">ClassName</span><span class="o">)</span> <span class="n">otherObject</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>Compare the fields, as required by notion of equality</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">return</span> <span class="n">field1</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="na">field1</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何判断对称性-yequalx-返回-true-时-xequaly-也应返回-true">如何判断对称性? <strong>y.equal(x)</strong> 返回 true 时， <strong>x.equal(y)</strong> 也应返回 <strong>true</strong></h3>
+<p>使用成员变量的取值来判断对象相等，这一条就会自动满足，因为成员变量的取值就是一个值，数学意义上肯定满足对称性</p>
+<h3 id="如何在重写-equals-中满足-自反性-">如何在重写 <strong>equals</strong> 中满足 <strong>自反性</strong> ?</h3>
+<p><strong>判断它是否是同一个对象</strong></p>
+<p><strong>x.equals(obj)</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">){</span>
+    <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">){</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="什么是-bigdecimal-类">什么是 <strong>BigDecimal</strong> 类?</h3>
+<p><strong>Immutable, arbitrary-precision signed decimal numbers</strong></p>
+<h3 id="如何用-bigdecimal-实现-1---09-">如何用 <strong>BigDecimal</strong> 实现 <strong>1 - 0.9</strong> ?</h3>
+<p>public BigDecimal substract (BigDecimal subtrahend)</p>
+<p>Returns a BigDecimal whose value is (this - subtrahend), and whose scale is max(this.scale(), subtrahend.scale())</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">1</span> <span class="o">-</span> <span class="n">0</span><span class="o">.</span><span class="na">9</span><span class="o">);</span>
+        <span class="n">BigDecimal</span> <span class="n">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">);</span>
+        <span class="n">BigDecimal</span> <span class="n">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;0.9&#34;</span><span class="o">);</span>
+        <span class="n">BigDecimal</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">b2</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">b3</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412213715.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412213715.png, https://img.fengqigang.cn//img/20210412213715.png 1.5x, https://img.fengqigang.cn//img/20210412213715.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412213715.png"
+        title="20210412213715" /></p>
+<h3 id="若在-equals-方法中允许子类对象来比较是否相等-该如何实现排他性">若在 <strong>equals</strong> 方法中允许子类对象来比较是否相等, 该如何实现排他性?</h3>
+<p>就不能用 <strong>getClass()</strong> 方法了，需要使用 <strong>instanceof</strong> 做类型判断</p>
+<p>因为 <strong>instanceof</strong> 允许传入子类对象，而不仅仅是它自身的对象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412214238.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412214238.png, https://img.fengqigang.cn//img/20210412214238.png 1.5x, https://img.fengqigang.cn//img/20210412214238.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412214238.png"
+        title="20210412214238" /></p>
+<h3 id="public-int-hashcode-是什么意思"><strong>public int hashCode()</strong> 是什么意思?</h3>
+<p>返回该对象的哈希码值，方法返回的 <strong>int</strong> 结果就是哈希码值</p>
+<h3 id="what-is-a-native-method">What is a <code>native</code> method?</h3>
+<p>If a method is a <code>native</code> method, not implementd in the Java programming language.</p>
+<p>Native methods can bypass the access control mechanisms of the Java language.</p>
+<h3 id="public-native-int-hashcode-中的-native-是什么意思"><strong>public native int hashCode()</strong> 中的 <strong>native</strong> 是什么意思?</h3>
+<p><strong>native</strong> 方法:</p>
+<p>特指那些 <strong>java</strong> 代码中去调用 <strong>C/C++</strong> 实现的方法，本地方法虽然不是抽象方法，但是, 不是<strong>java</strong>实现的方法</p>
+<h3 id="如何用-hashcode-判断两个-teacher-对象是否相等">如何用 <strong>hashCode</strong> 判断两个 Teacher 对象是否相等?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Teacher</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">(</span><span class="n">19</span><span class="o">,</span> <span class="s">&#34;张三&#34;</span><span class="o">,</span> <span class="n">1000</span><span class="o">);</span>
+        <span class="n">Teacher</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">(</span><span class="n">19</span><span class="o">,</span> <span class="s">&#34;张三&#34;</span><span class="o">,</span> <span class="n">1000</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">t1</span><span class="o">.</span><span class="na">hashCode</span><span class="o">()</span> <span class="o">==</span> <span class="n">t2</span><span class="o">.</span><span class="na">hashCode</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Teacher</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">salary</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Teacher</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Teacher</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">salary</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">salary</span> <span class="o">=</span> <span class="n">salary</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412215125.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412215125.png, https://img.fengqigang.cn//img/20210412215125.png 1.5x, https://img.fengqigang.cn//img/20210412215125.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412215125.png"
+        title="20210412215125" /></p>
+<h3 id="equals-方法-与-hashcode-方法有什么应用"><strong>equals</strong> 方法 与 <strong>hashCode</strong> 方法有什么应用?</h3>
+<p>集合当中会优先调用 <strong>equals</strong> 方法用来比较两对象是否相等，如何相等，它就不会输入集合</p>
+<p>但是如何 <strong>equals</strong> 方法认为对象相等， 但是 <strong>hashCode()</strong> 方法返回值却不同，就会导致一个认为不应该存，一个认为应该存的情况发生， 这显然是不合理的</p>
+<p><strong>equals</strong> 方法如果重写， 就必须重写 <strong>hashCode</strong> 方法</p>
+<h3 id="protected-void-finalize-throws-throwable--是什么意思"><strong>protected void finalize() throws Throwable {}</strong> 是什么意思?</h3>
+<p><strong>protected</strong> 不同包下必须在子类中创建子类自身对象才能够访问</p>
+<p><strong>void</strong> 方法没有返回值</p>
+<p><strong>throws Throwable</strong> 抛出异常</p>
+<h3 id="protected-void-finalize-throws-throwable--中的---方法体是空的这个方法有什么意义"><strong>protected void finalize() throws Throwable {}</strong> 中的 <strong>{ }</strong> 方法体是空的，这个方法有什么意义?</h3>
+<p>这种空的方法，然后又是 <strong>protected</strong> 权限， 是为了保证子类自由的重写该方法，并且保证该方法不会被子类外的其他类滥用</p>
+<h3 id="空接口有什么用">空接口有什么用?</h3>
+<p>一个类实现了某个接口，并不仅仅是简单的继承成员，更重要的它数据类型发生了变化，<strong>它成为了接口的实现子类</strong></p>
+<p>可以用 <strong>instanceof</strong> 关键字进行判断该引用指向的对象是否是接口的实现类对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="k">instanceof</span> <span class="n">IEmptyInterface</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;A实现了空接口，程序正常执行&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;报错，抛出异常&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span> <span class="kd">implements</span> <span class="n">IEmptyInterface</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">IEmptyInterface</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210412221737.png"
+        data-srcset="https://img.fengqigang.cn//img/20210412221737.png, https://img.fengqigang.cn//img/20210412221737.png 1.5x, https://img.fengqigang.cn//img/20210412221737.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210412221737.png"
+        title="20210412221737" /></p>
+<h3 id="can-i-have-to-write-that-public-class-employee-extends-object">Can I have to write that <code>public class Employee extends Object</code>?</h3>
+<p>NO</p>
+<p>The ultimate superclass <strong>Object</strong> is taken for granted if no superclass is explicitly mentioned.</p>
+<h3 id="where-is-the-hash-code-come-from">Where is the <code>hash code</code> come from?</h3>
+<p>A <code>hash code</code> is an integer that is derived from an object.</p>
+<p>The <code>hashCode</code> method is defined in the <code>Object</code> class.</p>
+<p>Therefore, every object has a default hash code.</p>
+<p>That hash code is derived from `the object&rsquo;s memory address.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-13</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/12_lambda/" class="prev" rel="prev" title="12_lambda"><i class="fas fa-angle-left fa-fw"></i>12_lambda</a>
+            <a href="/posts/day14/" class="next" rel="next" title="Day14">Day14<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

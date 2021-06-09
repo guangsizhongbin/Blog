@@ -137,20 +137,22 @@ try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 t
         <a href="/posts/day14/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day13/">Day13</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">在进行深拷贝时，如何实现一个空接口？ Cloneable 并不是自己实现的
-如何将byte数组转成 String, 并输出它 在 JDK 源码当中， 涉及区间的方法，一般都是怎么规定区间的? 左闭右开
-这种做法是为了适配数组从0开始的下标
-会输出什么? 会直接输出整个 String
-String 对象中的不可变性，JVM 内存图是什么样的? 静态常量池 是干什么的? 在用字面值常量给 String 对象赋值时，在编译时期就加入了 常量池
-当常量池中已存在某位字符串对象时，当需要使用时，就不需要在堆上重新创建对象了，而是直接去指向这个常量池中的字符串对象
-它们的值是什么? s.equals(s2) 是根据值来判断的
-它们会输出什么? s3 == (s1 + s2) 肯定不能编译确定取值，必须运行期确定，那么它的对象就一定不在常量池，而在堆上
-判断一个字符串是否为空可以采取什么样的方法? equals
-1 2 3 4 5 6  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; System.out.println(&#34;&#34;.equals(s)); } }   如果s是null, 会导致报错
-如何比较这两个字符串，并忽略大小写? a.equalsIgnoreCase(b)
-1 2 3 4 5 6 7  public class supertest { public static void main(String[] args) { String s = &#34;abc&#34;; String s1 = &#34;ABC&#34;; System.</div><div class="post-footer">
-        <a href="/posts/day13/">Read More</a><div class="post-tags">
+        <a href="/posts/13_object/">13_object</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 API ? Application Programming Interface(API)
+应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
+作用
+开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
+Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
+  在自定义类时，并不需要特别标注 extends Object
+  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
+  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
+  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
+  隐式初始化，默认调用父类的无参构造
+  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
+  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
+方法声明中 public final Class&lt;?&gt; getClass() 分别代表什么意思?   public 访问权限，调用时不必考虑权限问题
+  final 该方法可以被继承但是不能被重写</div><div class="post-footer">
+        <a href="/posts/13_object/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
