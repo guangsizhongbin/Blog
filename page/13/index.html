@@ -100,6 +100,15 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/">Samba服务器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-19">2021-01-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">安装samba 1 2  sudo apt-get update sudo apt-get intall samba samba-common-bin   配置smb.conf /etc/samba/smb.conf
+1 2 3 4 5 6  [share] path = /home/pi valid users = pi browseable = yes public = yes writable = yes   重新运行smaba服务 sudo /etc/init.d/samba restart
+添加pi用户为Samba用户 sudo smbpasswd -a pi
+参考 树莓派4设置Samba的最新版本
+树莓派3-搭建SAMBA服务器</div><div class="post-footer">
+        <a href="/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/samba/">samba</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/momo/">Momo</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-18">2021-01-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/python/"><i class="far fa-folder fa-fw"></i>python</a></span></div><div class="content">URL拼接 替换参数1 1 2  url = &#39;https://www.aliexpress.com/item/{}.html&#39;.format(123) print(url)    https://www.aliexpress.com/item/123.html
  termcolor2  colored(text, color=None, on_color=None, attrs=None)
@@ -165,17 +174,6 @@ typedef 归编译器管
  国外网站:</div><div class="post-footer">
         <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%97%81%E8%B7%AF%E7%94%B1/">旁路由</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/corn%E4%BD%BF%E7%94%A8/">Corn使用</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-12">2021-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">Install cron1 sudo pacman -S cronie
-Quick running config setting default Editor export EDITOR=/usr/bin/nvim
-systemctl systemctl enable cronie.service
-systemctl start cronie.service
-create cron job2   crontab -e
-    Crontab format1
-     Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example</div><div class="post-footer">
-        <a href="/posts/corn%E4%BD%BF%E7%94%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/corn/">corn</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -201,6 +199,10 @@ create cron job2   crontab -e
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/15/">15</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/16/">16</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

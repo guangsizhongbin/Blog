@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/tags/</link>
         <description>Tags - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 17 May 2021 23:31:44 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 09 Jun 2021 16:04:58 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>picgo</title>
+    <link>http://fengqigang.cn/tags/picgo/</link>
+    <pubDate>Wed, 09 Jun 2021 16:04:58 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/tags/picgo/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>java</title>
     <link>http://fengqigang.cn/tags/java/</link>
     <pubDate>Mon, 17 May 2021 23:31:44 &#43;0800</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Tue, 26 Jan 2021 22:20:50 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/tags/joplin/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>xinput</title>
-    <link>http://fengqigang.cn/tags/xinput/</link>
-    <pubDate>Mon, 25 Jan 2021 21:58:56 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/tags/xinput/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
