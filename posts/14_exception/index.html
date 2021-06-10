@@ -5,34 +5,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Day14 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day14" />
-<meta property="og:description" content="什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
-在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
-try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行" />
+        <title>14_exception - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="14_exception" />
+<meta property="og:description" content="什么是异常? 异常
+程序运行时期出现了问题，出现了不正常的情况，称之为 异常
+什么是编译出错? 编译出错
+在程序的编译时期不能通过编译器的语法检查，所以报错
+什么是异常类? java 当中一切皆对象， 当程序产生异常， JVM 会把这个异常信息封装成一个对象(类)
+类中封装着问题的名称, 产生的原因， 描述等多个属性信息存在
+以及对这些信息进行操作的一系列方法
+这些类通过继承层次构成了 java 的异常体系
+异常中有什么需要注意的?   异常的类和对象中只是存了异常的信息
+  包括异常的原因，异常的种类等等
+  何时抛出异常，怎么处理异常，不是由异常对象决定的
+  java 中对异常体系是如何划分的?   Throwable (祖先类)
+  Error
+  Exception
+  RuntimeException
+  非RuntimeException
+      Throwable 是 java 一切错误和异常的父类，是继承层次中的祖先类
+Error 是严重问题， 无法被解决
+- Error 描述了 java 运行时虚拟机内部错误和资源耗尽错误
+  对于 Error , 程序自己是无能为力的，仅靠程序本身是无法恢复和预防" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/day14/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/14_exception/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-14T23:01:03&#43;08:00" />
 <meta property="article:modified_time" content="2021-04-14T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Day14"/>
-<meta name="twitter:description" content="什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
-在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
-try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行"/>
+<meta name="twitter:title" content="14_exception"/>
+<meta name="twitter:description" content="什么是异常? 异常
+程序运行时期出现了问题，出现了不正常的情况，称之为 异常
+什么是编译出错? 编译出错
+在程序的编译时期不能通过编译器的语法检查，所以报错
+什么是异常类? java 当中一切皆对象， 当程序产生异常， JVM 会把这个异常信息封装成一个对象(类)
+类中封装着问题的名称, 产生的原因， 描述等多个属性信息存在
+以及对这些信息进行操作的一系列方法
+这些类通过继承层次构成了 java 的异常体系
+异常中有什么需要注意的?   异常的类和对象中只是存了异常的信息
+  包括异常的原因，异常的种类等等
+  何时抛出异常，怎么处理异常，不是由异常对象决定的
+  java 中对异常体系是如何划分的?   Throwable (祖先类)
+  Error
+  Exception
+  RuntimeException
+  非RuntimeException
+      Throwable 是 java 一切错误和异常的父类，是继承层次中的祖先类
+Error 是严重问题， 无法被解决
+- Error 描述了 java 运行时虚拟机内部错误和资源耗尽错误
+  对于 Error , 程序自己是无能为力的，仅靠程序本身是无法恢复和预防"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day14/" /><link rel="prev" href="http://fengqigang.cn/posts/13_object/" /><link rel="next" href="http://fengqigang.cn/posts/day15/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/14_exception/" /><link rel="prev" href="http://fengqigang.cn/posts/13_object/" /><link rel="next" href="http://fengqigang.cn/posts/day15/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Day14",
+        "headline": "14_exception",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/day14\/"
-        },"genre": "posts","keywords": "java","wordcount":  380 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/day14\/","datePublished": "2021-04-14T23:01:03+08:00","dateModified": "2021-04-14T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/14_exception\/"
+        },"genre": "posts","keywords": "java","wordcount":  463 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/14_exception\/","datePublished": "2021-04-14T23:01:03+08:00","dateModified": "2021-04-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -106,10 +140,10 @@ try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 t
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Day14</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">14_exception</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-14">2021-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;380 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-14">2021-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;463 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -119,6 +153,14 @@ try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 t
   <ul>
     <li>
       <ul>
+        <li><a href="#什么是异常">什么是异常?</a></li>
+        <li><a href="#什么是编译出错">什么是编译出错?</a></li>
+        <li><a href="#什么是异常类">什么是异常类?</a></li>
+        <li><a href="#异常中有什么需要注意的">异常中有什么需要注意的?</a></li>
+        <li><a href="#java中对异常体系是如何划分的">java 中对异常体系是如何划分的?</a></li>
+        <li><a href="#exception有什么分类">Exception 有什么分类?</a></li>
+        <li><a href="#如果错误产生在main方法中java是怎么处理的">如果错误产生在 main 方法中， java 是怎么处理的?</a></li>
+        <li><a href="#如果错误产生在main方法中的另一个方法中java是怎么处理的">如果错误产生在 main 方法中的另一个方法中，java 是怎么处理的?</a></li>
         <li><a href="#什么是单分支的-trycatch-其语法是什么">什么是单分支的 <strong>try&hellip;catch</strong>, 其语法是什么?</a></li>
         <li><a href="#在-trycatch-中-的-catch-如何写">在 <strong>try&hellip;catch</strong> 中 的 <strong>catch</strong> 如何写?</a></li>
         <li><a href="#trycatch-中代码是如何执行的"><strong>try..catch</strong> 中代码是如何执行的?</a></li>
@@ -136,18 +178,128 @@ try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 t
         <li><a href="#如何获取一个异常对象">如何获取一个异常对象?</a></li>
         <li><a href="#throw--运行时异常一般是怎么用的"><strong>throw</strong> + 运行时异常一般是怎么用的?</a></li>
         <li><a href="#如何一个方法不知道该返回什么返回值时应该如何处理">如何一个方法不知道该返回什么返回值时，应该如何处理?</a></li>
-        <li><a href="#异常类有什么特点">异常类有什么特点?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="什么是单分支的-trycatch-其语法是什么">什么是单分支的 <strong>try&hellip;catch</strong>, 其语法是什么?</h3>
-<p>try {
-//可能出现异常的，正常的代码逻辑
-} catch (要捕捉的异常对象){
-//在catch分支中处理具体类型的代码异常
-}</p>
-<h3 id="在-trycatch-中-的-catch-如何写">在 <strong>try&hellip;catch</strong> 中 的 <strong>catch</strong> 如何写?</h3>
+            </div><div class="content" id="content"><h3 id="什么是异常">什么是异常?</h3>
+<p>异常</p>
+<p>程序运行时期出现了问题，出现了不正常的情况，称之为 异常</p>
+<h3 id="什么是编译出错">什么是编译出错?</h3>
+<p>编译出错</p>
+<p>在程序的编译时期不能通过编译器的语法检查，所以报错</p>
+<h3 id="什么是异常类">什么是异常类?</h3>
+<p>java 当中一切皆对象， 当程序产生异常， JVM 会把这个异常信息封装成一个对象(类)</p>
+<p>类中封装着问题的名称, 产生的原因， 描述等多个属性信息存在</p>
+<p>以及对这些信息进行操作的一系列方法</p>
+<p>这些类通过继承层次构成了 java 的异常体系</p>
+<h3 id="异常中有什么需要注意的">异常中有什么需要注意的?</h3>
+<ol>
+<li>
+<p>异常的类和对象中只是存了异常的信息</p>
+</li>
+<li>
+<p>包括异常的原因，异常的种类等等</p>
+</li>
+<li>
+<p>何时抛出异常，怎么处理异常，不是由异常对象决定的</p>
+</li>
+</ol>
+<h3 id="java中对异常体系是如何划分的">java 中对异常体系是如何划分的?</h3>
+<ul>
+<li>
+<p>Throwable (祖先类)</p>
+<ul>
+<li>
+<p>Error</p>
+</li>
+<li>
+<p>Exception</p>
+<ul>
+<li>
+<p>RuntimeException</p>
+</li>
+<li>
+<p>非RuntimeException</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Throwable 是 java 一切错误和异常的父类，是继承层次中的祖先类</p>
+<p>Error 是严重问题， 无法被解决</p>
+<p>- Error 描述了 java 运行时虚拟机内部错误和资源耗尽错误</p>
+<ul>
+<li>
+<p>对于 Error , 程序自己是无能为力的，仅靠程序本身是无法恢复和预防</p>
+</li>
+<li>
+<p>于是程序只能尽量安全的保存数据，然后终止程序，并通知用户去解决</p>
+</li>
+</ul>
+<h3 id="exception有什么分类">Exception 有什么分类?</h3>
+<ul>
+<li>
+<p>RuntimeException 运行时异常</p>
+</li>
+<li>
+<p>非RuntimeException 编译时异常</p>
+</li>
+</ul>
+<h3 id="如果错误产生在main方法中java是怎么处理的">如果错误产生在 main 方法中， java 是怎么处理的?</h3>
+<ol>
+<li>
+<p>当我们的代码执行到错误行数之前，代码是正常执行的</p>
+</li>
+<li>
+<p>当我们的代码执行到错误行数时，JVM 会终止程序的执行，抛出一个该异常信息封装成的对象</p>
+</li>
+<li>
+<p>将该对象中异常信息，打印到控制台上，告诉程序员发生了什么问题</p>
+</li>
+</ol>
+<h3 id="如果错误产生在main方法中的另一个方法中java是怎么处理的">如果错误产生在 main 方法中的另一个方法中，java 是怎么处理的?</h3>
+<ol>
+<li>
+<p>当程序执行到该方法的错误行数时， JVM 会终止程序的执行</p>
+</li>
+<li>
+<p>向上给方法的调用者抛出一个该异常信息封装的对象</p>
+</li>
+<li>
+<p>一直向上抛出，直到抛给 main 方法， main 方法最终抛给 JVM</p>
+</li>
+<li>
+<p>发生异常之前的语句正常执行，但是之后的语句都不执行了</p>
+</li>
+</ol>
+<h3 id="什么是单分支的-trycatch-其语法是什么">什么是单分支的 <strong>try&hellip;catch</strong>, 其语法是什么?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">try</span> <span class="o">{</span>
+
+<span class="n">可能出现异常的</span><span class="err">，</span><span class="n">正常的代码逻辑</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">要捕捉的异常对象</span><span class="o">){</span>
+
+<span class="n">在catch分支中处理具体类型的代码异常</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="在-trycatch-中-的-catch-如何写">在 <strong>try&hellip;catch</strong> 中 的 <strong>catch</strong> 如何写?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -199,7 +351,7 @@ try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 t
 <p>异常那行代码会抛出异常，被 <strong>catch</strong> 捕获， 然后执行 <strong>catch</strong> 中的代码</p>
 <p>因为异常被捕获和处理了， 不会再抛给 <strong>jvm</strong> 了，程序不会终止执行</p>
 <h3 id="在-try--catch-当中可能产生几个异常">在 <strong>try &hellip; catch</strong> 当中可能产生几个异常?</h3>
-<p>最多产生一个异常，可能不产生异常， 因为一旦产生异常 <strong>try</strong> 代码后的不执行了</p>
+<p>最多产生一个异常，也可能不产生异常， 因为一旦产生异常 <strong>try</strong> 代码后的不执行了</p>
 <h3 id="如果在-try--catch-异常没有被捕获会发生什么">如果在 <strong>try &hellip; catch</strong> 异常没有被捕获会发生什么?</h3>
 <p>try 当中异常之前的代码仍然会正常执行，后面的不执行</p>
 <p>但是这个异常没有被捕获，仍然抛给了 <strong>jvm</strong> ,终止程序打印异常信息，这个时候相当于没有 <strong>try&hellip;catch</strong> 异常处理</p>
@@ -426,15 +578,6 @@ try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 t
         title="20210414224758" /></p>
 <h3 id="如何一个方法不知道该返回什么返回值时应该如何处理">如何一个方法不知道该返回什么返回值时，应该如何处理?</h3>
 <p>用 <strong>throw + 运行时异常</strong> 来 替代 <strong>return</strong> 作为方法的返回值</p>
-<h3 id="异常类有什么特点">异常类有什么特点?</h3>
-<ol>
-<li>
-<p>对象只是封装了异常的信息，然后对这些信息的处理</p>
-</li>
-<li>
-<p>异常对象管不到什么时候抛出异常，方法在管，只有在方法内部显式的使用 <strong>throw</strong> 关键字抛出异常</p>
-</li>
-</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">

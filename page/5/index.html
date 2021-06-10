@@ -137,11 +137,28 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
         <a href="/posts/day15/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day14/">Day14</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-14">2021-04-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是单分支的 try&hellip;catch, 其语法是什么? try { //可能出现异常的，正常的代码逻辑 } catch (要捕捉的异常对象){ //在catch分支中处理具体类型的代码异常 }
-在 try&hellip;catch 中 的 catch 如何写? 1 2 3 4 5 6 7 8 9 10 11 12  public class Sort { public static void main(String[] args) { try { System.out.println(&#34;1111&#34;); System.out.println(10/0); System.out.println(&#34;2222&#34;); } catch (ArithmeticException ae){ System.out.println(&#34;发生了算数除0异常&#34;); } System.out.println(&#34;3333&#34;); } }   catch 中必须是一个抛出异常类的对象声明
-try..catch 中代码是如何执行的?  如果 try 当中没有异常  那么 try 中的代码会正常执行完毕， catch 也叫异常处理器，如果没有异常，那么它不会工作，既然没有异常，整个 try&hellip;catch 后的代码正常执行</div><div class="post-footer">
-        <a href="/posts/day14/">Read More</a><div class="post-tags">
+        <a href="/posts/14_exception/">14_exception</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-14">2021-04-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是异常? 异常
+程序运行时期出现了问题，出现了不正常的情况，称之为 异常
+什么是编译出错? 编译出错
+在程序的编译时期不能通过编译器的语法检查，所以报错
+什么是异常类? java 当中一切皆对象， 当程序产生异常， JVM 会把这个异常信息封装成一个对象(类)
+类中封装着问题的名称, 产生的原因， 描述等多个属性信息存在
+以及对这些信息进行操作的一系列方法
+这些类通过继承层次构成了 java 的异常体系
+异常中有什么需要注意的?   异常的类和对象中只是存了异常的信息
+  包括异常的原因，异常的种类等等
+  何时抛出异常，怎么处理异常，不是由异常对象决定的
+  java 中对异常体系是如何划分的?   Throwable (祖先类)
+  Error
+  Exception
+  RuntimeException
+  非RuntimeException
+      Throwable 是 java 一切错误和异常的父类，是继承层次中的祖先类
+Error 是严重问题， 无法被解决
+- Error 描述了 java 运行时虚拟机内部错误和资源耗尽错误
+  对于 Error , 程序自己是无能为力的，仅靠程序本身是无法恢复和预防</div><div class="post-footer">
+        <a href="/posts/14_exception/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
