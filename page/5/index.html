@@ -119,22 +119,21 @@ reader 的继承关系是什么样的? InputStreamReader 的构造方法是什�
         <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day16/">Day16</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-16">2021-04-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
-  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
-  字符流是怎么分类的？   字符输出流
-  字符输入流
-  什么是IO? i: input 输入
-o: output 输出
-为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
-内存有限，需要把数据读取到内存才行，需要io交互
-java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?</div><div class="post-footer">
-        <a href="/posts/day16/">Read More</a><div class="post-tags">
+        <a href="/posts/16_string/">16_string</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-16">2021-04-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">How to convert a String to an integer? Integer.paraseInt(s);
+1 2 3 4 5 6 7  public class StringToInt { public static void main(String[] args) { String num = &#34;1234&#34;; int x = Integer.parseInt(num); System.out.println(x); } }   What boxing and unboxing is courtesy of ? Boxing and unboxing is a courtesy of the complier, not the virtual machine
+source file
+1 2 3 4 5 6 7  public class TestBoxing { public static void main(String[] args) { Integer n = 1; Float x = 2.</div><div class="post-footer">
+        <a href="/posts/16_string/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day15/">Day15</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-15">2021-04-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何 catch， 判断是否实现空接口?  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27  public class demo { public static void main(String[] args) { A a = new A(); try { checkCloneable(a); } catch (CloneNotSupportedException e) { e.printStackTrace(); System.out.println(&#34;请实现空接口!&#34;); } System.out.println(&#34;111&#34;); } private static void checkCloneable(A a) throws CloneNotSupportedException { if (a instanceof Cloneable) { System.</div><div class="post-footer">
-        <a href="/posts/day15/">Read More</a><div class="post-tags">
+        <a href="/posts/15_date/">15_date</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-15">2021-04-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">What&rsquo;s the different between Date class and LocalDate class? Date class:
+which represents a point in time
+LocalDate class:
+which expresses days in the familiar calendar notation
+1 2 3 4 5 6 7 8  public class InputTest { public static void main(String[] args) { System.out.println(LocalDate.now().plusDays(1)); System.out.println(LocalDate.of(1999, 12, 31)); System.out.println(new Date().toString()); } }   如何实现 Data 的匹配模式? SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner.</div><div class="post-footer">
+        <a href="/posts/15_date/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/14_exception/">14_exception</a>
