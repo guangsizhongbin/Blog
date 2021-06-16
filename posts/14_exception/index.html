@@ -65,7 +65,7 @@ Error 是严重问题， 无法被解决
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/14_exception\/"
-        },"genre": "posts","keywords": "java","wordcount":  463 ,
+        },"genre": "posts","keywords": "java","wordcount":  1001 ,
         "url": "http:\/\/fengqigang.cn\/posts\/14_exception\/","datePublished": "2021-04-14T23:01:03+08:00","dateModified": "2021-04-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -142,8 +142,8 @@ Error 是严重问题， 无法被解决
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">14_exception</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-14">2021-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;463 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-14">2021-04-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1001 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -178,6 +178,18 @@ Error 是严重问题， 无法被解决
         <li><a href="#如何获取一个异常对象">如何获取一个异常对象?</a></li>
         <li><a href="#throw--运行时异常一般是怎么用的"><strong>throw</strong> + 运行时异常一般是怎么用的?</a></li>
         <li><a href="#如何一个方法不知道该返回什么返回值时应该如何处理">如何一个方法不知道该返回什么返回值时，应该如何处理?</a></li>
+        <li><a href="#如何-catch-判断是否实现空接口--20210415171814httpsimgfengqigangcnimg20210415171814png">如何 <strong>catch</strong>， 判断是否实现空接口?  <img src="https://img.fengqigang.cn//img/20210415171814.png" alt="20210415171814"></a></li>
+        <li><a href="#在设置年龄时大于150抛出异常你活不了这么大-小于0抛出异常你还没出生吗-20210415173941httpsimgfengqigangcnimg20210415173941png">在设置年龄时大于150抛出异常&quot;你活不了这么大&quot;, 小于0抛出异常&quot;你还没出生吗? <img src="https://img.fengqigang.cn//img/20210415173941.png" alt="20210415173941"></a></li>
+        <li><a href="#编译期异常和运行期异常有什么区别">编译期异常和运行期异常有什么区别?</a></li>
+        <li><a href="#throws-和-throw-有什么区别"><strong>throws</strong> 和 <strong>throw</strong> 有什么区别?</a></li>
+        <li><a href="#finally-关键字有什么用"><strong>finally</strong> 关键字有什么用?</a></li>
+        <li><a href="#当-try-当中有-return-时会出现什么情况">当 <strong>try</strong> 当中有 <strong>return</strong> 时会出现什么情况?</a></li>
+        <li><a href="#20210415190444httpsimgfengqigangcnimg20210415190444png-如何不执行-finally-语句"><img src="https://img.fengqigang.cn//img/20210415190444.png" alt="20210415190444"> 如何不执行 <strong>finally</strong> 语句?</a></li>
+        <li><a href="#can-i-use-finalize-method-for-cleanup">Can I use <code>finalize</code> method for cleanup?</a></li>
+        <li><a href="#final-finalize-finally-有什么区别"><strong>final</strong>, <strong>finalize</strong>, <strong>finally</strong> 有什么区别?</a></li>
+        <li><a href="#自定义异常有哪几种">自定义异常有哪几种?</a></li>
+        <li><a href="#怎么写自定义异常类的构造方法">怎么写自定义异常类的构造方法?</a></li>
+        <li><a href="#自定义异常有什么用">自定义异常有什么用?</a></li>
       </ul>
     </li>
   </ul>
@@ -578,6 +590,412 @@ Error 是严重问题， 无法被解决
         title="20210414224758" /></p>
 <h3 id="如何一个方法不知道该返回什么返回值时应该如何处理">如何一个方法不知道该返回什么返回值时，应该如何处理?</h3>
 <p>用 <strong>throw + 运行时异常</strong> 来 替代 <strong>return</strong> 作为方法的返回值</p>
+<h3 id="如何-catch-判断是否实现空接口--20210415171814httpsimgfengqigangcnimg20210415171814png">如何 <strong>catch</strong>， 判断是否实现空接口?  <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415171814.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415171814.png, https://img.fengqigang.cn//img/20210415171814.png 1.5x, https://img.fengqigang.cn//img/20210415171814.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415171814.png"
+        title="20210415171814" /></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">checkCloneable</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">CloneNotSupportedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;请实现空接口!&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;111&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">checkCloneable</span><span class="o">(</span><span class="n">A</span> <span class="n">a</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">CloneNotSupportedException</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="k">instanceof</span> <span class="n">Cloneable</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;实现了Cloneable接口，允许进行克隆操作, 程序正常执行&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">CloneNotSupportedException</span><span class="o">(</span><span class="s">&#34;没有实现Cloneable接口&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">interface</span> <span class="nc">Cloneable</span> <span class="o">{</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415172058.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415172058.png, https://img.fengqigang.cn//img/20210415172058.png 1.5x, https://img.fengqigang.cn//img/20210415172058.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415172058.png"
+        title="20210415172058" /></p>
+<h3 id="在设置年龄时大于150抛出异常你活不了这么大-小于0抛出异常你还没出生吗-20210415173941httpsimgfengqigangcnimg20210415173941png">在设置年龄时大于150抛出异常&quot;你活不了这么大&quot;, 小于0抛出异常&quot;你还没出生吗? <img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415173941.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415173941.png, https://img.fengqigang.cn//img/20210415173941.png 1.5x, https://img.fengqigang.cn//img/20210415173941.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415173941.png"
+        title="20210415173941" /></h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Student</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
+        <span class="n">s</span><span class="o">.</span><span class="na">setAge</span><span class="o">(</span><span class="n">151</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">age</span> <span class="o">&gt;</span> <span class="n">150</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;你活不能这么大&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">age</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;你还没出生吗？&#34;</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415174031.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415174031.png, https://img.fengqigang.cn//img/20210415174031.png 1.5x, https://img.fengqigang.cn//img/20210415174031.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415174031.png"
+        title="20210415174031" /></p>
+<h3 id="编译期异常和运行期异常有什么区别">编译期异常和运行期异常有什么区别?</h3>
+<p><strong>编译期异常</strong></p>
+<p>必须要显式处理，否则编译不通过</p>
+<p><strong>运行期异常</strong></p>
+<p>可以不处理，也不以处理</p>
+<h3 id="throws-和-throw-有什么区别"><strong>throws</strong> 和 <strong>throw</strong> 有什么区别?</h3>
+<p><strong>throws</strong></p>
+<ol>
+<li>
+<p>用在方法声明后面，跟的是异常类名</p>
+</li>
+<li>
+<p>可以跟多个异常类名，用逗号隔开</p>
+</li>
+<li>
+<p>表示抛出异常，由该方法的调用者来处理</p>
+</li>
+<li>
+<p><strong>throws</strong> 表示出现异常的一种可能性，并不一定发生这些异常</p>
+</li>
+</ol>
+<p><strong>throw</strong></p>
+<ol>
+<li>
+<p>用在方法体内，跟的是异常对象名</p>
+</li>
+<li>
+<p>只能抛出一个异常对象</p>
+</li>
+<li>
+<p>表示抛出异常，可以由方法体内的语句处理</p>
+</li>
+<li>
+<p>表示抛出了异常，执行 <strong>throw</strong> 则一定抛出了某种异常</p>
+</li>
+</ol>
+<h3 id="finally-关键字有什么用"><strong>finally</strong> 关键字有什么用?</h3>
+<p>它一般跟着 <strong>try&hellip;catch</strong> 一起使用, 放在整个 <strong>try&hellip;catch</strong> 的后面</p>
+<p><strong>作用</strong></p>
+<ol>
+<li>
+<p><strong>try</strong> 中产生异常，并且正常捕获，<strong>finally</strong> 代码块正常执行，之后的代码也正常执行</p>
+</li>
+<li>
+<p><strong>try</strong> 中没有产生异常，<strong>catch</strong> 异常处理器不执行了，<strong>finally</strong> 代码块仍然正常执行，其后的代码也正常执行</p>
+</li>
+<li>
+<p><strong>try</strong> 中产生异常，但是没有正常捕获，<strong>jvm</strong> 会终止方法的执行， <strong>try&hellip;catch</strong> 之后的代码不执行了，但是 <strong>finally</strong> 仍然执行了</p>
+</li>
+</ol>
+<p><strong>无论try中什么情况，finally代码块都要执行</strong></p>
+<h3 id="当-try-当中有-return-时会出现什么情况">当 <strong>try</strong> 当中有 <strong>return</strong> 时会出现什么情况?</h3>
+<ol>
+<li>
+<p>如果这个 <strong>return</strong> 在产生异常的代码后面，其实是没啥用，如果在前面，不能这么写</p>
+</li>
+<li>
+<p>如果 <strong>catch</strong> 中有 <strong>return</strong>, 并且 <strong>catch</strong> 正常执行，那么仍然会执行 <strong>finally</strong> 后再回去 <strong>catch</strong> 中 <strong>return</strong></p>
+</li>
+<li>
+<p><strong>finally</strong> 当中如果有 <strong>return</strong> , <strong>finally</strong> 还会执行</p>
+</li>
+<li>
+<p>如果 <strong>finally</strong> 和 <strong>catch</strong> 中都有 <strong>return</strong>, 咋办?</p>
+</li>
+</ol>
+<h3 id="20210415190444httpsimgfengqigangcnimg20210415190444png-如何不执行-finally-语句"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415190444.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415190444.png, https://img.fengqigang.cn//img/20210415190444.png 1.5x, https://img.fengqigang.cn//img/20210415190444.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415190444.png"
+        title="20210415190444" /> 如何不执行 <strong>finally</strong> 语句?</h3>
+<p><strong>System.exit(0)</strong></p>
+<p>关掉虚拟机</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">ArithmeticException</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ArithmeticException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;finally代码块执行了&#34;</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="can-i-use-finalize-method-for-cleanup">Can I use <code>finalize</code> method for cleanup?</h3>
+<p>Do not use the <code>finalize</code> method for cleanup.</p>
+<p>That method was intended to be called before the garbage collector sweeps away an object.</p>
+<p><strong>However, you simply cannot know when this method will be called, and it is now deprecated.</strong></p>
+<h3 id="final-finalize-finally-有什么区别"><strong>final</strong>, <strong>finalize</strong>, <strong>finally</strong> 有什么区别?</h3>
+<p><strong>final</strong></p>
+<p>修饰符， 修饰 <strong>class</strong> , 方法， 变量</p>
+<p>类:</p>
+<p>不可继承类</p>
+<p>方法:</p>
+<p>不可重写方法</p>
+<p>变量:</p>
+<p>变量的值无法修改, 但是不会改变变量在内存中的位置</p>
+<p>数据类型:</p>
+<p>引用中的地址不变，但是引用的对象仍然可以修改</p>
+<p><strong>finalize</strong></p>
+<p>没用，类似析构函数</p>
+<p><strong>finally</strong></p>
+<p>和 <strong>try&hellip;catch</strong> 或者 <strong>try</strong> 一起使用，是一定会执行的代码块, 比起 <strong>fialize</strong> 释放资源，更安全更高效</p>
+<h3 id="自定义异常有哪几种">自定义异常有哪几种?</h3>
+<p><strong>编译时异常</strong>:</p>
+<p>定义一个类， 继承 <strong>Exception</strong>, 就是一个编译时异常</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415191831.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415191831.png, https://img.fengqigang.cn//img/20210415191831.png 1.5x, https://img.fengqigang.cn//img/20210415191831.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415191831.png"
+        title="20210415191831" /></p>
+<p><strong>运行时异常</strong>:</p>
+<p>定义一个类，继承 <strong>RuntimeException</strong>, 就是一个运行时异常</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415191840.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415191840.png, https://img.fengqigang.cn//img/20210415191840.png 1.5x, https://img.fengqigang.cn//img/20210415191840.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415191840.png"
+        title="20210415191840" /></p>
+<h3 id="怎么写自定义异常类的构造方法">怎么写自定义异常类的构造方法?</h3>
+<p>直接去调用父类构造器就可以 <strong>super</strong> 参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">try</span><span class="o">{</span>
+          <span class="n">testThrowRuntimeException</span><span class="o">();</span>
+       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ARuntimeException</span> <span class="n">e</span><span class="o">){</span>
+          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;模拟处理&#34;</span><span class="o">);</span>
+       <span class="o">}</span>
+
+       <span class="k">try</span><span class="o">{</span>
+           <span class="n">testThrowException</span><span class="o">();</span>
+       <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">AException</span> <span class="n">e</span><span class="o">){</span>
+          <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;模拟处理&#34;</span><span class="o">);</span>
+       <span class="o">}</span>
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testThrowRuntimeException</span><span class="o">()</span> <span class="o">{</span><span class="k">throw</span> <span class="k">new</span> <span class="n">ARuntimeException</span><span class="o">(</span><span class="s">&#34;自定义的运行时异常&#34;</span><span class="o">);}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testThrowException</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">AException</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">AException</span><span class="o">(</span><span class="s">&#34;自定义的编译时异常&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ARuntimeException</span> <span class="kd">extends</span> <span class="n">RuntimeException</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ARuntimeException</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">ARuntimeException</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">AException</span> <span class="kd">extends</span> <span class="n">Exception</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">AException</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">AException</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210415225808.png"
+        data-srcset="https://img.fengqigang.cn//img/20210415225808.png, https://img.fengqigang.cn//img/20210415225808.png 1.5x, https://img.fengqigang.cn//img/20210415225808.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210415225808.png"
+        title="20210415225808" /></p>
+<h3 id="自定义异常有什么用">自定义异常有什么用?</h3>
+<p>如果直接使用 <strong>jdk</strong> 已有的异常， 比如 <strong>IllegalArgumentException</strong> 这个异常，看起来是可以实现效果的</p>
+<p>但是如果 <strong>try</strong> 当中的代码， 本身也会产生这个异常 <strong>IllegalArgumentException</strong> ， 那么就不能区分对待，不能分别处理了</p>
+<p>所以自定义异常可以区分自己写的代码的错误，不使用源码中已有的异常，避免混淆</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
