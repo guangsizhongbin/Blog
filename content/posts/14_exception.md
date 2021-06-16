@@ -300,4 +300,261 @@ throw + 运行时异常对象， 用来替代 return 作为方法的返回值
 
 用 **throw + 运行时异常** 来 替代 **return** 作为方法的返回值
 
+### 如何 **catch**， 判断是否实现空接口?  ![20210415171814](https://img.fengqigang.cn//img/20210415171814.png)
+
+```java
+public class demo {
+    public static void main(String[] args) {
+        A a = new A();
+        try {
+            checkCloneable(a);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            System.out.println("请实现空接口!");
+        }
+        System.out.println("111");
+    }
+
+
+    private static void checkCloneable(A a) throws CloneNotSupportedException {
+        if (a instanceof Cloneable) {
+            System.out.println("实现了Cloneable接口，允许进行克隆操作, 程序正常执行");
+        } else {
+            throw new CloneNotSupportedException("没有实现Cloneable接口");
+        }
+    }
+}
+
+interface Cloneable {
+}
+
+class A {
+}
+```
+
+![20210415172058](https://img.fengqigang.cn//img/20210415172058.png)
+
+### 在设置年龄时大于150抛出异常"你活不了这么大", 小于0抛出异常"你还没出生吗? ![20210415173941](https://img.fengqigang.cn//img/20210415173941.png)
+
+```java
+public class demo {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.setAge(151);
+
+    }
+}
+
+class Student {
+    public int age;
+
+    public Student() {
+    }
+
+    public void setAge(int age) {
+        if (age > 150) {
+            throw new IllegalArgumentException("你活不能这么大");
+        } else if (age < 0) {
+            throw new IllegalArgumentException("你还没出生吗？");
+        } else {
+            this.age = age;
+        }
+    }
+}
+```
+
+![20210415174031](https://img.fengqigang.cn//img/20210415174031.png)
+
+### 编译期异常和运行期异常有什么区别?
+
+**编译期异常**
+
+必须要显式处理，否则编译不通过
+
+**运行期异常**
+
+可以不处理，也不以处理
+
+### **throws** 和 **throw** 有什么区别?
+
+**throws**
+
+1. 用在方法声明后面，跟的是异常类名
+
+2. 可以跟多个异常类名，用逗号隔开
+
+3. 表示抛出异常，由该方法的调用者来处理
+
+4. **throws** 表示出现异常的一种可能性，并不一定发生这些异常
+
+**throw**
+
+1. 用在方法体内，跟的是异常对象名
+
+2. 只能抛出一个异常对象
+
+3. 表示抛出异常，可以由方法体内的语句处理
+
+4. 表示抛出了异常，执行 **throw** 则一定抛出了某种异常
+
+### **finally** 关键字有什么用?
+
+它一般跟着 **try...catch** 一起使用, 放在整个 **try...catch** 的后面
+
+**作用**
+
+1. **try** 中产生异常，并且正常捕获，**finally** 代码块正常执行，之后的代码也正常执行
+
+2. **try** 中没有产生异常，**catch** 异常处理器不执行了，**finally** 代码块仍然正常执行，其后的代码也正常执行
+
+3. **try** 中产生异常，但是没有正常捕获，**jvm** 会终止方法的执行， **try...catch** 之后的代码不执行了，但是 **finally** 仍然执行了
+
+**无论try中什么情况，finally代码块都要执行**
+
+### 当 **try** 当中有 **return** 时会出现什么情况?
+
+1. 如果这个 **return** 在产生异常的代码后面，其实是没啥用，如果在前面，不能这么写
+
+2. 如果 **catch** 中有 **return**, 并且 **catch** 正常执行，那么仍然会执行 **finally** 后再回去 **catch** 中 **return**
+
+3.  **finally** 当中如果有 **return** , **finally** 还会执行
+
+4. 如果 **finally** 和 **catch** 中都有 **return**, 咋办?
+
+### ![20210415190444](https://img.fengqigang.cn//img/20210415190444.png) 如何不执行 **finally** 语句?
+
+**System.exit(0)**
+
+关掉虚拟机
+
+```java
+public class demo {
+    public static void main(String[] args) {
+        try {
+            int[] arr = null;
+            throw new ArithmeticException();
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("finally代码块执行了");
+            System.exit(0);
+            return;
+        }
+    }
+}
+```
+
+### Can I use `finalize` method for cleanup?
+
+Do not use the `finalize` method for cleanup.
+
+That method was intended to be called before the garbage collector sweeps away an object.
+
+**However, you simply cannot know when this method will be called, and it is now deprecated.**
+
+### **final**, **finalize**, **finally** 有什么区别?
+
+**final**
+
+修饰符， 修饰 **class** , 方法， 变量 
+
+类: 
+
+不可继承类
+
+方法:
+
+不可重写方法
+
+变量:
+
+变量的值无法修改, 但是不会改变变量在内存中的位置
+
+数据类型:
+
+引用中的地址不变，但是引用的对象仍然可以修改
+
+**finalize**
+
+没用，类似析构函数
+
+**finally**
+
+和 **try...catch** 或者 **try** 一起使用，是一定会执行的代码块, 比起 **fialize** 释放资源，更安全更高效
+
+### 自定义异常有哪几种?
+
+**编译时异常**:
+
+定义一个类， 继承 **Exception**, 就是一个编译时异常
+
+![20210415191831](https://img.fengqigang.cn//img/20210415191831.png)
+
+**运行时异常**:
+
+定义一个类，继承 **RuntimeException**, 就是一个运行时异常
+
+![20210415191840](https://img.fengqigang.cn//img/20210415191840.png)
+
+### 怎么写自定义异常类的构造方法?
+
+直接去调用父类构造器就可以 **super** 参数
+
+```java
+public class Demo {
+    public static void main(String[] args) {
+       try{
+          testThrowRuntimeException();
+       } catch (ARuntimeException e){
+          e.printStackTrace();
+           System.out.println("模拟处理");
+       }
+
+       try{
+           testThrowException();
+       } catch (AException e){
+          e.printStackTrace();
+           System.out.println("模拟处理");
+       }
+
+    }
+
+    public static void testThrowRuntimeException() {throw new ARuntimeException("自定义的运行时异常");}
+
+    public static void testThrowException() throws AException {
+        throw new AException("自定义的编译时异常");
+    }
+}
+
+class ARuntimeException extends RuntimeException {
+    public ARuntimeException() {
+        super();
+    }
+
+    public ARuntimeException(String message){
+        super();
+    }
+}
+
+class AException extends Exception {
+    public AException(){
+        super();
+    }
+
+    public AException(String message){
+        super(message);
+    }
+
+}
+```
+
+![20210415225808](https://img.fengqigang.cn//img/20210415225808.png)
+
+### 自定义异常有什么用?
+
+如果直接使用 **jdk** 已有的异常， 比如 **IllegalArgumentException** 这个异常，看起来是可以实现效果的
+
+但是如果 **try** 当中的代码， 本身也会产生这个异常 **IllegalArgumentException** ， 那么就不能区分对待，不能分别处理了
+
+所以自定义异常可以区分自己写的代码的错误，不使用源码中已有的异常，避免混淆
 
