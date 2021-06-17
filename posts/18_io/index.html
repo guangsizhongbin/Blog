@@ -6,13 +6,13 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>18_io - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="18_io" />
-<meta property="og:description" content="字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
-  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
-  什么是IO? i: input 输入
+<meta property="og:description" content="字节流是怎么分类的?   字节输出流
+ 抽象基类 OutputStream 具体子类 FileOutputStream BufferedOutputStream    字节输入流
+ 抽象基类 InputStream 具体子类 FielInputStream BufferedInputStream    什么是IO? i: input 输入
 o: output 输出
 为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
 内存有限，需要把数据读取到内存才行，需要io交互
-java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?" />
+java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?  字节输出流 OutputStream 字节输入流 InputStream 字节输出流 Writer 字符输入流 Reader  由这4个基类派生出的子类,其子类名都是以父类名作为后缀" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/18_io/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-19T21:57:49&#43;08:00" />
@@ -20,13 +20,13 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="18_io"/>
-<meta name="twitter:description" content="字节流是怎么分类的?   字节输出流 - 抽象基类 - OutputStream - 具体子类 - FileOutputStream - BufferedOutputStream
-  字节输入流 - 抽象基类 - InputStream - 具体子类 - FielInputStream - BufferedInputStream
-  什么是IO? i: input 输入
+<meta name="twitter:description" content="字节流是怎么分类的?   字节输出流
+ 抽象基类 OutputStream 具体子类 FileOutputStream BufferedOutputStream    字节输入流
+ 抽象基类 InputStream 具体子类 FielInputStream BufferedInputStream    什么是IO? i: input 输入
 o: output 输出
 为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
 内存有限，需要把数据读取到内存才行，需要io交互
-java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?"/>
+java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?  字节输出流 OutputStream 字节输入流 InputStream 字节输出流 Writer 字符输入流 Reader  由这4个基类派生出的子类,其子类名都是以父类名作为后缀"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -39,7 +39,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/18_io\/"
-        },"genre": "posts","keywords": "java","wordcount":  2704 ,
+        },"genre": "posts","keywords": "java","wordcount":  2690 ,
         "url": "http:\/\/fengqigang.cn\/posts\/18_io\/","datePublished": "2021-04-19T21:57:49+08:00","dateModified": "2021-04-19T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -116,7 +116,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">18_io</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-19">2021-04-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2704 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-19">2021-04-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2690 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -196,20 +196,24 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
             </div><div class="content" id="content"><h3 id="字节流是怎么分类的">字节流是怎么分类的?</h3>
 <ul>
 <li>
-<p>字节输出流
-- 抽象基类
-- OutputStream
-- 具体子类
-- FileOutputStream
-- BufferedOutputStream</p>
+<p>字节输出流</p>
+<ul>
+<li>抽象基类</li>
+<li>OutputStream</li>
+<li>具体子类</li>
+<li>FileOutputStream</li>
+<li>BufferedOutputStream</li>
+</ul>
 </li>
 <li>
-<p>字节输入流
-- 抽象基类
-- InputStream
-- 具体子类
-- FielInputStream
-- BufferedInputStream</p>
+<p>字节输入流</p>
+<ul>
+<li>抽象基类</li>
+<li>InputStream</li>
+<li>具体子类</li>
+<li>FielInputStream</li>
+<li>BufferedInputStream</li>
+</ul>
 </li>
 </ul>
 <h3 id="什么是io">什么是IO?</h3>
@@ -1040,11 +1044,11 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 </thead>
 <tbody>
 <tr>
-<td>BufferedOutputStream \ (OutputStream out)</td>
+<td>BufferedOutputStream <br> (OutputStream out)</td>
 <td>Creates a new buffered output stream to write data to the specified underlying output stream</td>
 </tr>
 <tr>
-<td>BufferedOutputStream \ (OutputStream out, int size)</td>
+<td>BufferedOutputStream <br> (OutputStream out, int size)</td>
 <td>Creates a new buffered output stream to write data to the specified underlying output stream with the specified buffer size.</td>
 </tr>
 </tbody>
@@ -1102,11 +1106,11 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 </thead>
 <tbody>
 <tr>
-<td>BufferedInputStream \ (InputStream in)</td>
+<td>BufferedInputStream <br> (InputStream in)</td>
 <td>Creates a BufferedInputStream and save its arguemnt, the input stream in, for later use.</td>
 </tr>
 <tr>
-<td>BufferedInputStream \ (InputStream in, int size)</td>
+<td>BufferedInputStream <br> (InputStream in, int size)</td>
 <td>Creates a BufferInputStream with the specified buffer siez, and saves its arguemt, the input stream in, for later use.</td>
 </tr>
 </tbody>
