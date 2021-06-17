@@ -39,7 +39,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/18_io\/"
-        },"genre": "posts","keywords": "java","wordcount":  2690 ,
+        },"genre": "posts","keywords": "java","wordcount":  2024 ,
         "url": "http:\/\/fengqigang.cn\/posts\/18_io\/","datePublished": "2021-04-19T21:57:49+08:00","dateModified": "2021-04-19T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -116,8 +116,8 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">18_io</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-19">2021-04-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2690 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;13 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-19">2021-04-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2024 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -133,7 +133,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
         <li><a href="#java-流模型是什么样的"><strong>java</strong> 流模型是什么样的?</a></li>
         <li><a href="#java-中的流是怎么分类的"><strong>java</strong> 中的流是怎么分类的?</a></li>
         <li><a href="#java-io抽象基类有哪些"><strong>java</strong> IO抽象基类有哪些?</a></li>
-        <li><a href="#outpustream-的继承关系"><strong>OutpuStream</strong> 的继承关系?</a></li>
+        <li><a href="#outputstream-的继承关系"><strong>OutputStream</strong> 的继承关系?</a></li>
         <li><a href="#outputstream-的-write-的实现原理是什么样的"><strong>outputStream</strong> 的 <strong>write</strong> 的实现原理是什么样的?</a></li>
         <li><a href="#fileoutputstreamfile-file-如何实现"><strong>FileOutputStream(File file)</strong>, 如何实现?</a></li>
         <li><a href="#为什么用-io-一定要关闭资源">为什么用 IO 一定要关闭资源?</a></li>
@@ -161,7 +161,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
         <li><a href="#如何创建一个-bufferinputstream-">如何创建一个 <strong>bufferInputStream</strong> ?</a></li>
         <li><a href="#如何实现对-filterinput-实现装饰器模式-对接收到的字母转换成小写">  如何实现对 <strong>FilterInput</strong> 实现装饰器模式, 对接收到的字母转换成小写?</a></li>
         <li><a href="#创建字节数组和单字节io模式是什么样的">创建字节数组和单字节IO模式是什么样的?</a></li>
-        <li><a href="#什么会有字符流">什么会有字符流?</a></li>
+        <li><a href="#为什么会有字符流">为什么会有字符流?</a></li>
         <li><a href="#一个字符在计算机当中是怎样存储的">一个字符在计算机当中是怎样存储的?</a></li>
         <li><a href="#什么是编码">什么是编码?</a></li>
         <li><a href="#什么是解码">什么是解码?</a></li>
@@ -174,21 +174,6 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
         <li><a href="#如何实现字符的编码与解码">如何实现字符的编码与解码?</a></li>
         <li><a href="#outputstreamwriter-充当的是什么的角色-如何使用">OutputStreamWriter 充当的是什么的角色? 如何使用?</a></li>
         <li><a href="#outputstreamwriter-如何实现写单个字符与字符数组">OutputStreamWriter 如何实现写单个字符与字符数组?</a></li>
-        <li><a href="#如何实现对-filterinput-实现装饰器模式-对接收到的字母转换成小写-1">  如何实现对 <strong>FilterInput</strong> 实现装饰器模式, 对接收到的字母转换成小写?</a></li>
-        <li><a href="#创建字节数组和单字节io模式是什么样的-1">创建字节数组和单字节IO模式是什么样的?</a></li>
-        <li><a href="#什么会有字符流-1">什么会有字符流?</a></li>
-        <li><a href="#一个字符在计算机当中是怎样存储的-1">一个字符在计算机当中是怎样存储的?</a></li>
-        <li><a href="#什么是编码-1">什么是编码?</a></li>
-        <li><a href="#什么是解码-1">什么是解码?</a></li>
-        <li><a href="#什么是-ascii-表-1">什么是 ASCII 表?</a></li>
-        <li><a href="#什么-iso8859-1-码表-1">什么 ISO8859-1 码表?</a></li>
-        <li><a href="#什么是-gb-码表-1">什么是 GB 码表?</a></li>
-        <li><a href="#utf-8-是什么样的-1">UTF-8 是什么样的?</a></li>
-        <li><a href="#如何获取-idea-默认的字符集-1">如何获取 idea 默认的字符集?</a></li>
-        <li><a href="#字符流的本质是什么-1">字符流的本质是什么?</a></li>
-        <li><a href="#如何实现字符的编码与解码-1">如何实现字符的编码与解码?</a></li>
-        <li><a href="#outputstreamwriter-充当的是什么的角色-如何使用-1">OutputStreamWriter 充当的是什么的角色? 如何使用?</a></li>
-        <li><a href="#outputstreamwriter-如何实现写单个字符与字符数组-1">OutputStreamWriter 如何实现写单个字符与字符数组?</a></li>
       </ul>
     </li>
   </ul>
@@ -262,7 +247,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 <li>字符输入流 Reader</li>
 </ul>
 <p><strong>由这4个基类派生出的子类,其子类名都是以父类名作为后缀</strong></p>
-<h3 id="outpustream-的继承关系"><strong>OutpuStream</strong> 的继承关系?</h3>
+<h3 id="outputstream-的继承关系"><strong>OutputStream</strong> 的继承关系?</h3>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -728,7 +713,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 </div>
 </div><h3 id="如何实现统计复制文件的耗时单字节的方式">如何实现统计复制文件的耗时(单字节的方式)?</h3>
 <p><strong>long start = System.currentTimeMillis();</strong></p>
-<p><strong>long end = System.currenTimeMillis();</strong></p>
+<p><strong>long end = System.currentTimeMillis();</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1323,7 +1308,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="什么会有字符流">什么会有字符流?</h3>
+</div><h3 id="为什么会有字符流">为什么会有字符流?</h3>
 <ol>
 <li>用字节流读取英文字符与数字</li>
 </ol>
@@ -1469,406 +1454,6 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="outputstreamwriter-如何实现写单个字符与字符数组">OutputStreamWriter 如何实现写单个字符与字符数组?</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="c1">// 定义字符串
-</span><span class="c1"></span>        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;我要为你写65页ppt&#34;</span><span class="o">;</span>
-
-        <span class="c1">// 创建转换输出流对象
-</span><span class="c1"></span>        <span class="n">OutputStreamWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
-
-        <span class="c1">// 写单个字符
-</span><span class="c1"></span>        <span class="n">writeSingle</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
-
-        <span class="c1">// 写字符数组
-</span><span class="c1"></span>        <span class="n">writeMulti</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">out</span><span class="o">);</span>
-
-        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">s</span><span class="o">);</span>
-
-        <span class="n">out</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">writeMulti</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">OutputStreamWriter</span> <span class="n">out</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="kt">char</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
-        <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">chars</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">writeSingle</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="n">OutputStreamWriter</span> <span class="n">out</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="kt">char</span><span class="o">[]</span> <span class="n">chars</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">chars</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">out</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">chars</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="如何实现对-filterinput-实现装饰器模式-对接收到的字母转换成小写-1">  如何实现对 <strong>FilterInput</strong> 实现装饰器模式, 对接收到的字母转换成小写?</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="c1">// 方法一:
-</span><span class="c1"></span>        <span class="n">BufferedInputStream</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedInputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
-        <span class="n">LowerCaseInputStream</span> <span class="n">lowerCaseInputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LowerCaseInputStream</span><span class="o">(</span><span class="n">br</span><span class="o">);</span>
-
-        <span class="c1">// 方法二:
-</span><span class="c1"></span>       <span class="k">new</span> <span class="n">LowerCaseInputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">BufferedInputStream</span><span class="o">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">)));</span>
-
-        <span class="c1">// 单字节
-</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">readData</span> <span class="o">=</span> <span class="n">lowerCaseInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">();</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span><span class="n">readData</span><span class="o">);</span>
-
-        <span class="c1">// 字节数组
-</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">1024</span><span class="o">];</span>
-        <span class="kt">int</span> <span class="n">readCount</span> <span class="o">=</span> <span class="n">lowerCaseInputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">bytes</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">));</span>
-        <span class="n">lowerCaseInputStream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-
-<span class="kd">class</span> <span class="nc">LowerCaseInputStream</span> <span class="kd">extends</span> <span class="n">FilterInputStream</span><span class="o">{</span>
-
-    <span class="cm">/**
-</span><span class="cm">     * Creates a &lt;code&gt;FilterInputStream&lt;/code&gt;
-</span><span class="cm">     * by assigning the  argument &lt;code&gt;in&lt;/code&gt;
-</span><span class="cm">     * to the field &lt;code&gt;this.in&lt;/code&gt; so as
-</span><span class="cm">     * to remember it for later use.
-</span><span class="cm">     *
-</span><span class="cm">     * @param in the underlying input stream, or &lt;code&gt;null&lt;/code&gt; if
-</span><span class="cm">     *           this instance is to be created without an underlying stream.
-</span><span class="cm">     */</span>
-    <span class="kd">protected</span> <span class="nf">LowerCaseInputStream</span><span class="o">(</span><span class="n">InputStream</span> <span class="n">in</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kd">super</span><span class="o">(</span><span class="n">in</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-       <span class="kt">int</span> <span class="n">read</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">read</span><span class="o">();</span>
-       <span class="kt">int</span> <span class="n">read1</span> <span class="o">=</span> <span class="o">(</span><span class="kt">char</span><span class="o">)</span> <span class="n">read</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Character</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">(</span><span class="n">read1</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">c</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">read</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">b</span><span class="o">,</span> <span class="kt">int</span> <span class="n">off</span><span class="o">,</span> <span class="kt">int</span> <span class="n">len</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">readCount</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">off</span><span class="o">,</span> <span class="n">len</span><span class="o">);</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">off</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">off</span> <span class="o">+</span> <span class="n">readCount</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">b</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="o">((</span><span class="kt">byte</span><span class="o">)</span> <span class="n">Character</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span> <span class="n">b</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
-        <span class="o">}</span>
-
-        <span class="k">return</span> <span class="n">readCount</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="创建字节数组和单字节io模式是什么样的-1">创建字节数组和单字节IO模式是什么样的?</h3>
-<p><strong>单字节</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="c1">// 创建输入流对象
-</span><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
-        <span class="c1">// 读数据
-</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">readData</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">((</span><span class="n">readData</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">())</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="kt">char</span><span class="o">)</span> <span class="n">readData</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>字节数组</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="c1">// 创建输入流对象
-</span><span class="c1"></span>        <span class="n">FileInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
-        <span class="c1">// 读数据
-</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">12</span><span class="o">];</span>
-        <span class="kt">int</span> <span class="n">readCount</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">((</span><span class="n">readCount</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">bytes</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="n">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">readCount</span><span class="o">));</span>
-        <span class="o">}</span>
-        <span class="n">in</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="什么会有字符流-1">什么会有字符流?</h3>
-<ol>
-<li>用字节流读取英文字符与数字</li>
-</ol>
-<p>没有问题 能够正常显示</p>
-<ol start="2">
-<li>用字节流读取中文字符</li>
-</ol>
-<p>可能会有问题</p>
-<h3 id="一个字符在计算机当中是怎样存储的-1">一个字符在计算机当中是怎样存储的?</h3>
-<p>基于某个编码表，有与这对应的整数值(编码值)存储在计算机当中的</p>
-<h3 id="什么是编码-1">什么是编码?</h3>
-<p>基于某个编码表，把字符数据转化成编码值的过程</p>
-<h3 id="什么是解码-1">什么是解码?</h3>
-<p>基于某个编码表，把编码值转化成字符数据的过程</p>
-<h3 id="什么是-ascii-表-1">什么是 ASCII 表?</h3>
-<p>美国标准信息交换码</p>
-<p>用一个字节的7位可表示，128</p>
-<h3 id="什么-iso8859-1-码表-1">什么 ISO8859-1 码表?</h3>
-<p>拉丁码表，欧洲码表</p>
-<p>用一个字节的8位表示</p>
-<p>0000 0000 - 1111 1111</p>
-<h3 id="什么是-gb-码表-1">什么是 GB 码表?</h3>
-<p>GB2312</p>
-<p>中国的中文编码表</p>
-<p>GBK</p>
-<p>中国的中文编码表升级， 融合了更多的中文文字符号</p>
-<p>GB18030</p>
-<p>GBK的取代版本</p>
-<p>BIG-5码</p>
-<p>通行于台湾，香港地区的一个繁体它编码方案，俗称 &ldquo;大五码&rdquo;</p>
-<h3 id="utf-8-是什么样的-1">UTF-8 是什么样的?</h3>
-<p>是用可变长度来表示一个字符</p>
-<p>UTF-8, 字定义一种 &ldquo;区间规则&rdquo;, 这种规则可以和 ASCII 编码保持最大程序的兼容</p>
-<p>1字节 0xxxxxxx</p>
-<p>2字节 110xxxxx 10xxxxxx</p>
-<p>3字节 1110xxxx 10xxxxxx 10xxxxxxx</p>
-<h3 id="如何获取-idea-默认的字符集-1">如何获取 idea 默认的字符集?</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="n">Charset</span> <span class="n">charset</span> <span class="o">=</span> <span class="n">Charset</span><span class="o">.</span><span class="na">defaultCharset</span><span class="o">();</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">charset</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210418210102.png"
-        data-srcset="https://img.fengqigang.cn//img/20210418210102.png, https://img.fengqigang.cn//img/20210418210102.png 1.5x, https://img.fengqigang.cn//img/20210418210102.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210418210102.png"
-        title="20210418210102" /></p>
-<h3 id="字符流的本质是什么-1">字符流的本质是什么?</h3>
-<p>字节流 + 编码表</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210418210538.png"
-        data-srcset="https://img.fengqigang.cn//img/20210418210538.png, https://img.fengqigang.cn//img/20210418210538.png 1.5x, https://img.fengqigang.cn//img/20210418210538.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210418210538.png"
-        title="20210418210538" /></p>
-<h3 id="如何实现字符的编码与解码-1">如何实现字符的编码与解码?</h3>
-<ol>
-<li>编码</li>
-</ol>
-<p>getBytes(String charsetName)</p>
-<ol start="2">
-<li>解码</li>
-</ol>
-<p>String(byte[] bytes, String charsetName)</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&#34;你好&#34;</span><span class="o">;</span>
-
-       <span class="c1">// 编码
-</span><span class="c1"></span>        <span class="kt">byte</span><span class="o">[]</span> <span class="n">utf8Encoding</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getBytes</span><span class="o">();</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">utf8Encoding</span><span class="o">));</span>
-
-        <span class="c1">// 解码
-</span><span class="c1"></span>        <span class="n">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">utf8Encoding</span><span class="o">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s2</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="outputstreamwriter-充当的是什么的角色-如何使用-1">OutputStreamWriter 充当的是什么的角色? 如何使用?</h3>
-<p>An OutputStreamWriter is a bridge from character streams to byte streams.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNum</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
-        <span class="c1">// 第一种构造方法
-</span><span class="c1"></span>        <span class="n">FileOutputStream</span> <span class="n">fileOutputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">);</span>
-        <span class="n">OutputStreamWriter</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="n">fileOutputStream</span><span class="o">);</span>
-
-        <span class="c1">// 第二种方法
-</span><span class="c1"></span>        <span class="n">OutputStreamWriter</span> <span class="n">outputStreamWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="o">(</span><span class="s">&#34;a.txt&#34;</span><span class="o">));</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="outputstreamwriter-如何实现写单个字符与字符数组-1">OutputStreamWriter 如何实现写单个字符与字符数组?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
