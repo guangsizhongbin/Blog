@@ -210,17 +210,32 @@ run 方法执行完之后
         <a href="/posts/day20/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day19/">Day19</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-20">2021-04-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何实现程序睡眠3秒? TimeUnit.SECONDS.sleep(3)；
-1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestSleep { static boolean flag = true; public static void main(String[] args) throws InterruptedException { sayHelloRecycling(); } private static void sayHelloRecycling() throws InterruptedException { while(flag){ System.out.println(&#34;你好&#34;); TimeUnit.SECONDS.sleep(3); } } }   什么是进程? 操作系统进行 资源分配与调度 的基本单位.
-一个正在运行的程序，软件都可以称为进程
-进程之间是互不干扰的
-什么是线程? CPU 进行 资源分配与调试 的基本单位，从执行路径的角度来看在，每一条执行路径都是1个线程
-进程和线程的关系？ 线程依赖于进程而存在
-线程之间是共享进程资源的
-一个进程可以有 最少一个线程
-什么是串行, 并行，并发? 串行:</div><div class="post-footer">
-        <a href="/posts/day19/">Read More</a><div class="post-tags">
+        <a href="/posts/19_network/">19_network</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-20">2021-04-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是计算机网络   物理互联
+  软件支持
+  目的: 资源共享 + 信息传递
+  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
+OSI参考模型有几层? 分别是什么? 7 层
+物理层
+数据链路层
+网络层
+传输层
+会话层
+表示层
+应用层
+物联网淑惠试用
+物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
+其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
+物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
+  一个 bit 持续多少纳秒
+  传输是否可以在两个方向同时进行
+  初始连接如何建立，传输结束后之后如何撤销连接
+  规定一个特殊的电信号将普通的数据信号分开来
+数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
+检查数据是否发生差错
+数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
+  流量控制</div><div class="post-footer">
+        <a href="/posts/19_network/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
