@@ -84,10 +84,10 @@ endsnippet
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;([A-Za-z])(\d)&#39; &#34;auto subscript&#34; wrA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
-</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">snippet</span><span class="w"> </span><span class="s1">&#39;([A-Za-z])(\d)&#39;</span><span class="w"> </span><span class="s2">&#34;auto subscript&#34;</span><span class="w"> </span><span class="n">wrA</span><span class="w">
+</span><span class="w"></span><span class="o">`!</span><span class="n">p</span><span class="w"> </span><span class="n">snip</span><span class="p">.</span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="k">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">`</span><span class="n">_</span><span class="o">`!</span><span class="n">p</span><span class="w"> </span><span class="n">snip</span><span class="p">.</span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="k">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">`</span><span class="w">
+</span><span class="w"></span><span class="n">endsnippet</span><span class="w">
+</span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
         <div class="details-summary admonition-title">

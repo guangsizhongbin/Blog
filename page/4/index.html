@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.83.1" />
+	<meta name="generator" content="Hugo 0.84.0" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -190,24 +190,13 @@ Acquires the lock.
         <a href="/posts/day21/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day20/">Day20</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-21">2021-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">线程有哪5种状态? 新建:
-刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源
-就绪
-刚执行了 start 方法， 但是还没有获得CPU的执行权
-执行
-抢到了 CPU的执行权
-阻塞
-没有 CPU 的执行权，还缺少必要的条件（sleep 结束）
-死亡
-run 方法执行完之后
-线程5个状态之间是如何转换? 用Runnable实现多线程?   实现 Runnable 接口
-  重写 run 方法
-  创建 Runnable 子类对象
-  创建 Thread 对象， 并且把 Runnable 子类对象作为参数传递
-  start 方法
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class RunnableDemo { public static void main(String[] args) { MyRunnable myRunnable = new MyRunnable(); Thread thread = new Thread(myRunnable); thread.</div><div class="post-footer">
-        <a href="/posts/day20/">Read More</a><div class="post-tags">
+        <a href="/posts/20_thread/">20_thread</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-21">2021-04-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">What&rsquo;s thread and multithreaded? Individual programs will appear to do multiple tasks at the same time.
+Each task is executed in a thread, which is short for thread of control.
+Programs that can run more than one thread at once are said to be multithreaded
+What&rsquo;s the difference between multiple processes and multiple threads? each process has a complete set of its own variable
+thread share the same data. Shared variables make communication between threads more efficient and easier to program than interprocess communication.</div><div class="post-footer">
+        <a href="/posts/20_thread/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/19_network/">19_network</a>
@@ -269,7 +258,7 @@ OSI参考模型有几层? 分别是什么? 7 层
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.83.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>

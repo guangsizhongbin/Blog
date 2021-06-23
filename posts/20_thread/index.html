@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>20_thread - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="20_thread" />
+<meta property="og:description" content="What&rsquo;s thread and multithreaded? Individual programs will appear to do multiple tasks at the same time.
+Each task is executed in a thread, which is short for thread of control.
+Programs that can run more than one thread at once are said to be multithreaded
+What&rsquo;s the difference between multiple processes and multiple threads? each process has a complete set of its own variable
+thread share the same data. Shared variables make communication between threads more efficient and easier to program than interprocess communication." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/20_thread/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-21T17:00:51&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-21T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="20_thread"/>
+<meta name="twitter:description" content="What&rsquo;s thread and multithreaded? Individual programs will appear to do multiple tasks at the same time.
+Each task is executed in a thread, which is short for thread of control.
+Programs that can run more than one thread at once are said to be multithreaded
+What&rsquo;s the difference between multiple processes and multiple threads? each process has a complete set of its own variable
+thread share the same data. Shared variables make communication between threads more efficient and easier to program than interprocess communication."/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/20_thread/" /><link rel="prev" href="http://fengqigang.cn/posts/19_network/" /><link rel="next" href="http://fengqigang.cn/posts/day21/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "20_thread",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/20_thread\/"
+        },"genre": "posts","keywords": "java","wordcount":  3116 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/20_thread\/","datePublished": "2021-04-21T17:00:51+08:00","dateModified": "2021-04-21T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">20_thread</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-21">2021-04-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3116 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;15 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#whats-thread-and-multithreaded">What&rsquo;s <code>thread</code> and <code>multithreaded</code>?</a></li>
+        <li><a href="#whats-the-difference-between-multiple-processes-and-multiple-threads">What&rsquo;s the difference between <code>multiple processes</code> and <code>multiple threads</code>?</a></li>
+        <li><a href="#如何实现程序睡眠3秒">如何实现程序睡眠3秒?</a></li>
+        <li><a href="#什么是进程">什么是进程?</a></li>
+        <li><a href="#什么是线程">什么是线程?</a></li>
+        <li><a href="#进程和线程的关系">进程和线程的关系？</a></li>
+        <li><a href="#什么是串行-并行并发">什么是串行, 并行，并发?</a></li>
+        <li><a href="#什么是单道批处理">什么是单道批处理?</a></li>
+        <li><a href="#什么是多道批处理">什么是多道批处理?</a></li>
+        <li><a href="#为什么有了进程还要有线程">为什么有了进程还要有线程?</a></li>
+        <li><a href="#java-程序运行程序的原理是什么"><strong>Java</strong> 程序运行程序的原理是什么？</a></li>
+        <li><a href="#如何验证-jvm-是单线程还是多线程的">如何验证 <strong>jvm</strong> 是单线程还是多线程的?</a></li>
+        <li><a href="#how-to-procedure-for-running-a-task-in-a-separate-thread-">How to procedure for running a task <code>in a separate thread</code> ?</a></li>
+        <li><a href="#when-i-procedure-for-running-a-task-in-a-separate-thread-why-not-call-the-run-to-start-thread-">When I procedure for running a task <code>in a separate thread</code>, why not call the <code>run</code> to start thread ?</a></li>
+        <li><a href="#how-to-define-a-thread-by-forming-a-subclass-of-the-thread-class">How to define a thread by forming a subclass of the <code>Thread</code> class?</a></li>
+        <li><a href="#为什么要重写-thread-类中的-run-方法">为什么要重写 <strong>Thread</strong> 类中的 <strong>run</strong> 方法?</a></li>
+        <li><a href="#同一个-thread-或-thread-子类可以被启动多次吗">同一个 <strong>Thread</strong> 或 <strong>Thread</strong> 子类可以被启动多次吗?</a></li>
+        <li><a href="#要想让代码在子线程中运行只能将代码在-run-方法体中吗">要想让代码在子线程中运行，只能将代码在 <strong>run</strong> 方法体中吗?</a></li>
+        <li><a href="#如何获取子线程名称">如何获取子线程名称?</a></li>
+        <li><a href="#如何获取主线程名称">如何获取主线程名称?</a></li>
+        <li><a href="#如何设置线程名称">如何设置线程名称?</a></li>
+        <li><a href="#如何设置主线程名称">如何设置主线程名称?</a></li>
+        <li><a href="#线程调度的方式">线程调度的方式?</a></li>
+        <li><a href="#什么是线程调度">什么是线程调度?</a></li>
+        <li><a href="#什么是协同式线程调度-它有什么好处">什么是协同式线程调度? 它有什么好处?</a></li>
+        <li><a href="#什么是抢占式线程调度">什么是抢占式线程调度?</a></li>
+        <li><a href="#java-用的是什么线程调度">java 用的是什么线程调度?</a></li>
+        <li><a href="#what-is-the-priority-of-a-thread-in-java">What is the priority of a Thread in Java?</a></li>
+        <li><a href="#如何获取优先级">如何获取优先级？</a></li>
+        <li><a href="#为什么设置两个不同的优先级看起来没有用">为什么设置两个不同的优先级看起来没有用?</a></li>
+        <li><a href="#如何休眠一个线程">如何休眠一个线程?</a></li>
+        <li><a href="#如何合并线程">如何合并线程?</a></li>
+        <li><a href="#线程中若使用-join-谁等待-等待谁">线程中若使用 join 谁等待? 等待谁?</a></li>
+        <li><a href="#线程是如何分类的">线程是如何分类的？</a></li>
+        <li><a href="#gc是什么线程">GC是什么线程?</a></li>
+        <li><a href="#how-to-turn-a-thread-into-a-daemon-thread">How to turn a thread into a daemon thread?</a></li>
+        <li><a href="#什么是礼让线程">什么是礼让线程?</a></li>
+        <li><a href="#为什么使用yield后没有起到抢占式的结果20210420194127httpsimgfengqigangcnimg20210420194127png">为什么使用yield后，没有起到抢占式的结果?<img src="https://img.fengqigang.cn//img/20210420194127.png" alt="20210420194127"></a></li>
+        <li><a href="#如何中断线程对象interrupt-会发生什么">如何中断线程对象(interrupt 会发生什么)?</a></li>
+        <li><a href="#如何中断线程对象stop-会发生什么">如何中断线程对象(stop 会发生什么)?</a></li>
+        <li><a href="#如何安全终止线程用-flag-标记-如果为-true-正常执行-如果为-false-终止线程执行-在终止之前去做一个日志保存将终止信息保存到-ogtxt-当中-利用-filewriter-2021-4-28-时分秒--某个线程终止了">如何安全终止线程？(用 <strong>flag</strong> 标记， 如果为 true, 正常执行， 如果为 false, 终止线程执行, 在终止之前，去做一个日志保存，将终止信息保存到 og.txt 当中, 利用 FileWriter, 2021-4-28 时分秒 : 某个线程终止了)</a></li>
+        <li><a href="#how-many-states-of-thread-in-java">How many states of thread in Java?</a></li>
+        <li><a href="#what-is-preemptive-scheduling-systems-and-cooperative-scheduling">what is Preemptive scheduling systems and cooperative scheduling?</a></li>
+        <li><a href="#线程有哪5种状态">线程有哪5种状态?</a></li>
+        <li><a href="#线程5个状态之间是如何转换">线程5个状态之间是如何转换?</a></li>
+        <li><a href="#用runnable实现多线程">用Runnable实现多线程?</a></li>
+        <li><a href="#为什么-runnable-接口子类的-run-方法代码-会执行在子线程当中">为什么 Runnable 接口子类的 run() 方法代码， 会执行在子线程当中？</a></li>
+        <li><a href="#runnable-对象代表线程吗">Runnable 对象代表线程吗?</a></li>
+        <li><a href="#继承-thread-与-实现-runnable-两种方式的比较">继承 Thread 与 实现 Runnable 两种方式的比较?</a></li>
+        <li><a href="#什么时候会产生数据安全问题">什么时候会产生数据安全问题?</a></li>
+        <li><a href="#什么是原子操作">什么是原子操作?</a></li>
+        <li><a href="#如何解决数据安全问题">如何解决数据安全问题?</a></li>
+        <li><a href="#什么是-synchronized-同步">什么是 <strong>synchronized</strong> 同步?</a></li>
+        <li><a href="#同步方法中的锁对象是什么">同步方法中的锁对象是什么?</a></li>
+        <li><a href="#为什么在同步代码块中可以放一个任意的对象">为什么在同步代码块中可以放一个任意的对象?</a></li>
+        <li><a href="#当某个线程执行到同步代码块时遇到加锁或无锁时会怎么处理">当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?</a></li>
+        <li><a href="#加锁线程何时释放锁">加锁线程何时释放锁?</a></li>
+        <li><a href="#如何使用-lock-锁住对象">如何使用 Lock 锁住对象?</a></li>
+        <li><a href="#lock-和-synchronized-的区别">Lock 和 synchronized 的区别?</a></li>
+        <li><a href="#什么是同步与异步">什么是同步与异步?</a></li>
+        <li><a href="#什么是死锁">什么是死锁?</a></li>
+        <li><a href="#在-java-中怎样的代码容易产生死锁">在 <strong>java</strong> 中怎样的代码容易产生死锁?</a></li>
+        <li><a href="#解决死锁的方法有哪些">解决死锁的方法有哪些?</a></li>
+        <li><a href="#什么是生产者消费者模型">什么是生产者消费者模型?</a></li>
+        <li><a href="#线程间通信有哪些api">线程间通信有哪些API?</a></li>
+        <li><a href="#线程间通信的-wait-api-是干什么的">线程间通信的 wait() api 是干什么的?</a></li>
+        <li><a href="#thread-的-sleep-方法-执行时会丢失监视器的所属权吗">Thread 的 <strong>sleep</strong> 方法， 执行时会丢失监视器的所属权吗?</a></li>
+        <li><a href="#object-的-wait-方法-执行时会丢失监视器的所属权吗">Object 的 <strong>wait</strong> 方法， 执行时会丢失监视器的所属权吗?</a></li>
+        <li><a href="#threadsleep-vs-objectwait">Thread.sleep VS Object.wait()?</a></li>
+        <li><a href="#notify-api-是干什么的">notify() api 是干什么的?</a></li>
+        <li><a href="#产包子实战">产包子实战？</a></li>
+        <li><a href="#只执行一次">只执行一次?</a></li>
+        <li><a href="#同步方法">同步方法</a></li>
+        <li><a href="#为什么多个生产者消费者的时候会出现卡顿">为什么多个生产者，消费者的时候，会出现卡顿？</a></li>
+        <li><a href="#什么是-虚假唤醒">什么是 <strong>虚假唤醒</strong>?</a></li>
+        <li><a href="#为什么-waitnotify-为啥不定义在-thread-当中">为什么 <strong>wait</strong>,<strong>notify</strong>, 为啥不定义在 Thread 当中?</a></li>
+        <li><a href="#完整的线程转换图是什么">完整的线程转换图是什么?</a></li>
+        <li><a href="#为什么会有线程池">为什么会有线程池?</a></li>
+        <li><a href="#三种线程池">三种线程池?</a></li>
+        <li><a href="#如何实现-newfixedthreadpod">如何实现 newFixedThreadPod?</a></li>
+        <li><a href="#httpsimgfengqigangcnimg20210422173033png-有什么区别"><img src="https://img.fengqigang.cn//img/20210422173033.png" alt="">? 有什么区别?</a></li>
+        <li><a href="#如何实现-callable">如何实现 <strong>Callable</strong>?</a></li>
+        <li><a href="#future-是干什么的"><strong>Future</strong> 是干什么的?</a></li>
+        <li><a href="#runnable-vs-callable">Runnable VS Callable</a></li>
+        <li><a href="#futuretask-如何使用">FutureTask 如何使用?</a></li>
+        <li><a href="#用-callable-方式启动2个线程-1个从1一直加到100-一个从1一直加到200最后打印结果">用 <strong>Callable</strong> 方式，启动2个线程， 1个从1一直加到100， 一个从1一直加到200，最后打印结果</a></li>
+        <li><a href="#timer-如何使用scheduletimertask-task-data-time">Timer 如何使用(schedule(TimerTask task, Data time))?</a></li>
+        <li><a href="#timer-如何使用scheduletimertask-task-long-delay-long-period">Timer 如何使用(schedule(TimerTask task, long delay, long period))?</a></li>
+        <li><a href="#timer-如何使用scheduletimertask-task-date-firsttime-long-period">Timer 如何使用(schedule(TimerTask task, Date firstTime, long period))?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="whats-thread-and-multithreaded">What&rsquo;s <code>thread</code> and <code>multithreaded</code>?</h3>
+<p>Individual programs will appear to do multiple tasks at the same time.</p>
+<p>Each task is executed in a <code>thread</code>, which is short for thread of control.</p>
+<p>Programs that can run more than one thread at once are said to be <code>multithreaded</code></p>
+<h3 id="whats-the-difference-between-multiple-processes-and-multiple-threads">What&rsquo;s the difference between <code>multiple processes</code> and <code>multiple threads</code>?</h3>
+<p><code>each process</code> has a complete set of its own variable</p>
+<p><code>thread</code> share the same data. Shared variables make communication between threads more efficient and easier to program than interprocess communication.</p>
+<p><strong>on some operating systems, threads are more &ldquo;lightweight&rdquo; than process - it takes less overhead to create and destroy individual threads than it does to launch new processes.</strong></p>
+<h3 id="如何实现程序睡眠3秒">如何实现程序睡眠3秒?</h3>
+<p><strong>TimeUnit.SECONDS.sleep(3)；</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestSleep</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">boolean</span> <span class="n">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">sayHelloRecycling</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">sayHelloRecycling</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">flag</span><span class="o">){</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;你好&#34;</span><span class="o">);</span>
+           <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420105542.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420105542.png, https://img.fengqigang.cn//img/20210420105542.png 1.5x, https://img.fengqigang.cn//img/20210420105542.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420105542.png"
+        title="https://img.fengqigang.cn//img/20210420105542.png" /></p>
+<h3 id="什么是进程">什么是进程?</h3>
+<p>操作系统进行 <strong>资源分配与调度</strong> 的基本单位.</p>
+<p>一个正在运行的程序，软件都可以称为进程</p>
+<p><strong>进程之间是互不干扰的</strong></p>
+<h3 id="什么是线程">什么是线程?</h3>
+<p>CPU 进行 <strong>资源分配与调试</strong> 的基本单位，从执行路径的角度来看在，<strong>每一条执行路径都是1个线程</strong></p>
+<h3 id="进程和线程的关系">进程和线程的关系？</h3>
+<p>线程依赖于进程而存在</p>
+<p><strong>线程之间是共享进程资源的</strong></p>
+<p>一个进程可以有 <strong>最少一个线程</strong></p>
+<h3 id="什么是串行-并行并发">什么是串行, 并行，并发?</h3>
+<p><strong>串行</strong>:</p>
+<p>一个任务接一个任务 <strong>按顺序执行</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420110810.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420110810.png, https://img.fengqigang.cn//img/20210420110810.png 1.5x, https://img.fengqigang.cn//img/20210420110810.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420110810.png"
+        title="https://img.fengqigang.cn//img/20210420110810.png" /></p>
+<p><strong>并行</strong>:</p>
+<p>在一个 <strong>时间点</strong> 上，多个任务同时执行</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420110921.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420110921.png, https://img.fengqigang.cn//img/20210420110921.png 1.5x, https://img.fengqigang.cn//img/20210420110921.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420110921.png"
+        title="https://img.fengqigang.cn//img/20210420110921.png" /></p>
+<p><strong>并发</strong>:</p>
+<p>在一个 <strong>时间段</strong> 上， 多个任务同时执行</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420111011.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420111011.png, https://img.fengqigang.cn//img/20210420111011.png 1.5x, https://img.fengqigang.cn//img/20210420111011.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420111011.png"
+        title="https://img.fengqigang.cn//img/20210420111011.png" /></p>
+<h3 id="什么是单道批处理">什么是单道批处理?</h3>
+<p><strong>单道</strong>:</p>
+<p>在整个操作系统中，同一时间，内存中只有一个程序</p>
+<p>只能是上一个程序运行完，下一个程序才能开始运行</p>
+<p><strong>批处理</strong>:</p>
+<p>在程序运行过程中，不会有任何响应，直到程序运行结束</p>
+<h3 id="什么是多道批处理">什么是多道批处理?</h3>
+<p><strong>多道</strong>：</p>
+<p>在操作系统中，同时内存中，可以有多个应用程序，在运行, 这样一来，一旦某个应用程序， 不需要使用cpu的计算功能.操作系统就会把cpu计算时间，分配给内存中的其他应用程序来计算，这样一来，cpu的资源利用率就大提高了</p>
+<p><strong>多道批处理</strong>:</p>
+<p>当应用程序，占用cpu执行时间，，这个应用才算真正的执行, 在多道批处理系统中，多个应用程序，交替执行，看起来好像多个应用程序在&quot;同时&quot;运行.</p>
+<h3 id="为什么有了进程还要有线程">为什么有了进程还要有线程?</h3>
+<p><strong>进程的上下文切换</strong>:</p>
+<ol>
+<li>保护现场 （值， 寄存器的状态保存到一个地址）</li>
+<li>恢复现场 （恢复寄存器的值， 寄存器的状态）</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420112632.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420112632.png, https://img.fengqigang.cn//img/20210420112632.png 1.5x, https://img.fengqigang.cn//img/20210420112632.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420112632.png"
+        title="https://img.fengqigang.cn//img/20210420112632.png" /></p>
+<p>为了提高切换的效率，引入了 <strong>线程(轻量进程)</strong></p>
+<p><strong>每一个线程负责一个子任务</strong></p>
+<p>线程上下文线程中切换的代价要小</p>
+<h3 id="java-程序运行程序的原理是什么"><strong>Java</strong> 程序运行程序的原理是什么？</h3>
+<ol>
+<li>
+<p>运行 <strong>Java</strong> 命令会创建 <strong>jvm</strong> 进程</p>
+</li>
+<li>
+<p><strong>jvm</strong> 进程会去创建一个 <strong>main</strong> 线程</p>
+</li>
+</ol>
+<p>3。 回到 <strong>main</strong> 线程中 执行 <strong>main()</strong> 方法</p>
+<h3 id="如何验证-jvm-是单线程还是多线程的">如何验证 <strong>jvm</strong> 是单线程还是多线程的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420113251.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420113251.png, https://img.fengqigang.cn//img/20210420113251.png 1.5x, https://img.fengqigang.cn//img/20210420113251.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420113251.png"
+        title="https://img.fengqigang.cn//img/20210420113251.png" /></p>
+<p>有GC线程回收</p>
+<p>所以 <strong>jvm</strong> 是多线程的, 至少还有一个垃圾回收线程</p>
+<h3 id="how-to-procedure-for-running-a-task-in-a-separate-thread-">How to procedure for running a task <code>in a separate thread</code> ?</h3>
+<ol>
+<li>Place the code for the task into the <code>run</code> method of a class that implements the <code>Runnable</code> interface</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210518225757.png"
+        data-srcset="https://img.fengqigang.cn//img/20210518225757.png, https://img.fengqigang.cn//img/20210518225757.png 1.5x, https://img.fengqigang.cn//img/20210518225757.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210518225757.png"
+        title="20210518225757" /></p>
+<p><strong>Since <code>Runnable</code> is a functional interface, could make an instance with lambda expression</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Runnable</span> <span class="n">r</span> <span class="o">=</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">task</span> <span class="n">code</span><span class="o">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Construct a <code>Thread</code> object from the <code>Runnable</code>:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">var</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">r</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>Start the thread</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">t</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210518230308.png"
+        data-srcset="https://img.fengqigang.cn//img/20210518230308.png, https://img.fengqigang.cn//img/20210518230308.png 1.5x, https://img.fengqigang.cn//img/20210518230308.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210518230308.png"
+        title="20210518230308" /></p>
+<h3 id="when-i-procedure-for-running-a-task-in-a-separate-thread-why-not-call-the-run-to-start-thread-">When I procedure for running a task <code>in a separate thread</code>, why not call the <code>run</code> to start thread ?</h3>
+<p>Calling the <code>run</code> method directly merely executes the task in the same thread &ndash; no new thread is started.</p>
+<h3 id="how-to-define-a-thread-by-forming-a-subclass-of-the-thread-class">How to define a thread by forming a subclass of the <code>Thread</code> class?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">(){</span>
+		<span class="n">task</span> <span class="n">code</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>This approach is no longer recommended.</strong></p>
+<p>You should decouple the task that is to be run in parallel from the mechanism of running it. If you have many tasks, it is too expensive to create a separate thread for each of them.</p>
+<p>Instead, you can use a thread pool.</p>
+<h3 id="为什么要重写-thread-类中的-run-方法">为什么要重写 <strong>Thread</strong> 类中的 <strong>run</strong> 方法?</h3>
+<p>只有 <strong>Thread run()</strong> 方法中的代码， 都会执行在 <strong>子线程</strong> 中</p>
+<h3 id="同一个-thread-或-thread-子类可以被启动多次吗">同一个 <strong>Thread</strong> 或 <strong>Thread</strong> 子类可以被启动多次吗?</h3>
+<p>不可以， 同一个 <strong>Thread</strong> 或 <strong>Thread</strong> 子类 只能启动一次</p>
+<p>可以创建多个线程对象，并启动这些线程对象</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main start&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 创建子类对象
+</span><span class="c1"></span>        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">call</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;call&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420184227.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420184227.png, https://img.fengqigang.cn//img/20210420184227.png 1.5x, https://img.fengqigang.cn//img/20210420184227.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420184227.png"
+        title="20210420184227" /></p>
+<h3 id="要想让代码在子线程中运行只能将代码在-run-方法体中吗">要想让代码在子线程中运行，只能将代码在 <strong>run</strong> 方法体中吗?</h3>
+<p>一个方法 ，被哪个线程中的代码调用，被调用的方法，就运行在，调用它的线程中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main start&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 创建子类对象
+</span><span class="c1"></span>        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">call</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;call&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420184342.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420184342.png, https://img.fengqigang.cn//img/20210420184342.png 1.5x, https://img.fengqigang.cn//img/20210420184342.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420184342.png"
+        title="20210420184342" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420144507.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420144507.png, https://img.fengqigang.cn//img/20210420144507.png 1.5x, https://img.fengqigang.cn//img/20210420144507.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420144507.png"
+        title="https://img.fengqigang.cn//img/20210420144507.png" /></p>
+<h3 id="如何获取子线程名称">如何获取子线程名称?</h3>
+<p>getName</p>
+<p>public final String getName()</p>
+<p>Returns this thread&rsquo;s name</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Thread1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何获取主线程名称">如何获取主线程名称?</h3>
+<p><strong>currentThread</strong></p>
+<p>public static Thread currentThread()</p>
+<p>Returens a reference to the currently executing thread object.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Thread1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;王冰冰&#34;</span><span class="o">);</span>
+
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#34;---------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何设置线程名称">如何设置线程名称?</h3>
+<p>setName</p>
+<p>public final void setName(String name)</p>
+<p>Changes the name of this thread to be equal to the argument name.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Thread1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;王冰冰&#34;</span><span class="o">);</span>
+
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#34;---------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="如何设置主线程名称">如何设置主线程名称?</h3>
+<p>方法一(通过 <strong>CurrentThread</strong>):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Thread1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;王冰冰&#34;</span><span class="o">);</span>
+
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;长风&#34;</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#34;---------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方法二(<strong>用构造方法</strong>):</p>
+<p>Thread(String name)</p>
+<p>Allocates a new Thread object</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Thread1</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">(</span><span class="s">&#34;王冰冰&#34;</span><span class="o">);</span>
+
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">();</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;长风&#34;</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">thread</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">&#34;---------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+
+
+    <span class="kd">public</span> <span class="nf">MyThread</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="线程调度的方式">线程调度的方式?</h3>
+<p>协同式线程调度</p>
+<p>抢占式线程调度</p>
+<h3 id="什么是线程调度">什么是线程调度?</h3>
+<p>线程调度是指系统为线程 <strong>分配处理器使用权</strong> 的过程</p>
+<h3 id="什么是协同式线程调度-它有什么好处">什么是协同式线程调度? 它有什么好处?</h3>
+<p>线程的执行时间， 由线程本身来控制</p>
+<p>线程把自己的工作执行完后，主动通知系统切换到另外一个线程上去</p>
+<p><strong>好处</strong></p>
+<p>实现简单</p>
+<p><strong>环处</strong></p>
+<p>执行时间不可控</p>
+<h3 id="什么是抢占式线程调度">什么是抢占式线程调度?</h3>
+<p>每个线程将由系统来分配执行时间，线程的切换不由线程本身来决定</p>
+<p><strong>好处</strong></p>
+<p>执行时间是可控的</p>
+<h3 id="java-用的是什么线程调度">java 用的是什么线程调度?</h3>
+<p>抢占式线程调度</p>
+<h3 id="what-is-the-priority-of-a-thread-in-java">What is the priority of a Thread in Java?</h3>
+<ul>
+<li>You can increase or decrease the priority of the thread with the <code>setPriority</code> method.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">myThread</span><span class="o">.</span><span class="na">setPriority</span><span class="o">(</span><span class="n">Number</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>You can set the priority to any value between <code>MIN_PRIORITY</code> and <code>MAX_PRIORITY</code>
+- MIN_PRIORITY <code>defined as 1</code>
+- NORM_PRIORITY <code>defined as 5</code>
+- MAX_PRIORITY <code>defined as 10</code></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210519085633.png"
+        data-srcset="https://img.fengqigang.cn//img/20210519085633.png, https://img.fengqigang.cn//img/20210519085633.png 1.5x, https://img.fengqigang.cn//img/20210519085633.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210519085633.png"
+        title="20210519085633" /></p>
+<ul>
+<li>
+<p>Whenever the thread scheduler has a chance to pick a new thread, it prefers threads with higher priority.</p>
+</li>
+<li>
+<p>However, thread priorities are <code>highly system-dependent</code></p>
+</li>
+<li>
+<p>When the virtual machine relies on the thread implementation of the host platform, the Java thread priorities are mapped to the priority level of the host platform, which may have more or fewer thread priority levels.</p>
+</li>
+<li>
+<p>For example, Windows have seven priority levels. Some of the Java priorities will map to the same operating system level. In the <code>Oracle JVM for Linux</code>, thread priorities are ignored altogether &ndash; all threads have the priority levels.</p>
+</li>
+</ul>
+<p><strong>Thread priorities may have been useful in early versions of Java that don&rsquo;t use operating Systems threads. You should not use them nowadays.</strong></p>
+<h3 id="如何获取优先级">如何获取优先级？</h3>
+<p>getPriority</p>
+<p>public int getPriority()</p>
+<p>Ruturns the thead priority of the thread associated with this ThreadInfo</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main start&#34;</span><span class="o">);</span>
+        <span class="c1">// 创建子类对象
+</span><span class="c1"></span>        <span class="n">MyThread</span> <span class="n">myThread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyThread</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">priority</span> <span class="o">=</span> <span class="n">myThread</span><span class="o">.</span><span class="na">getPriority</span><span class="o">();</span>
+        <span class="n">myThread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;main线程&#34;</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myThread</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;默认的priority是:&#34;</span> <span class="o">+</span> <span class="n">myThread</span><span class="o">.</span><span class="na">getPriority</span><span class="o">);</span>
+
+        <span class="n">myThread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">call</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">call</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;call&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420185807.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420185807.png, https://img.fengqigang.cn//img/20210420185807.png 1.5x, https://img.fengqigang.cn//img/20210420185807.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420185807.png"
+        title="20210420185807" /></p>
+<h3 id="为什么设置两个不同的优先级看起来没有用">为什么设置两个不同的优先级看起来没有用?</h3>
+<ol>
+<li>
+<p>操作系统的优先级是 <strong>动 + 静</strong></p>
+</li>
+<li>
+<p><strong>java</strong> 当中提高的是静态优先级</p>
+</li>
+<li>
+<p>它只是一个对操作系统的建议，操作系统不一定采纳</p>
+</li>
+</ol>
+<p><strong>java官方</strong>:</p>
+<p>线程优先级并非完全没有用，<strong>Thread</strong> 的优先级，它具有统计意义，总的来说，高优先级的线程占用的cpu执行时间多一点，低优先级线程，占用cpu执行时间，短一些</p>
+<h3 id="如何休眠一个线程">如何休眠一个线程?</h3>
+<p>static void sleep(long millis)</p>
+<p>Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ThreadSleep</span> <span class="n">threadSleep</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadSleep</span><span class="o">();</span>
+        <span class="n">threadSleep</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;UZi&#34;</span><span class="o">);</span>
+        <span class="n">threadSleep</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadSleep</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-----&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420191007.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420191007.png, https://img.fengqigang.cn//img/20210420191007.png 1.5x, https://img.fengqigang.cn//img/20210420191007.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420191007.png"
+        title="20210420191007" /></p>
+<h3 id="如何合并线程">如何合并线程?</h3>
+<p>public final void join()
+Waits for this thread to die.
+An invocation of this method behaves in exactly the same way as the invocation</p>
+<p><strong>未使用 join()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main start&#34;</span><span class="o">);</span>
+
+        <span class="n">ThreadJoin</span> <span class="n">threadJoin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadJoin</span><span class="o">();</span>
+        <span class="n">threadJoin</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;子线程&#34;</span><span class="o">);</span>
+        <span class="n">threadJoin</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main end&#34;</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadJoin</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-----&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420191900.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420191900.png, https://img.fengqigang.cn//img/20210420191900.png 1.5x, https://img.fengqigang.cn//img/20210420191900.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420191900.png"
+        title="20210420191900" /></p>
+<p><strong>加入 join()</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main start&#34;</span><span class="o">);</span>
+
+        <span class="n">ThreadJoin</span> <span class="n">threadJoin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadJoin</span><span class="o">();</span>
+        <span class="n">threadJoin</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;子线程&#34;</span><span class="o">);</span>
+        <span class="n">threadJoin</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">threadJoin</span><span class="o">.</span><span class="na">join</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;main end&#34;</span><span class="o">);</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadJoin</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-----&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420192019.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420192019.png, https://img.fengqigang.cn//img/20210420192019.png 1.5x, https://img.fengqigang.cn//img/20210420192019.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420192019.png"
+        title="20210420192019" /></p>
+<p><strong>start 要在 join 前</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420160536.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420160536.png, https://img.fengqigang.cn//img/20210420160536.png 1.5x, https://img.fengqigang.cn//img/20210420160536.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420160536.png"
+        title="https://img.fengqigang.cn//img/20210420160536.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420160751.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420160751.png, https://img.fengqigang.cn//img/20210420160751.png 1.5x, https://img.fengqigang.cn//img/20210420160751.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420160751.png"
+        title="https://img.fengqigang.cn//img/20210420160751.png" /></p>
+<h3 id="线程中若使用-join-谁等待-等待谁">线程中若使用 join 谁等待? 等待谁?</h3>
+<p><strong>谁等待</strong></p>
+<p>哪个线程调用了 <strong>join</strong> 代码，哪个线程就等待</p>
+<p><strong>等待谁</strong></p>
+<p>等待子线程， 等待的是调用了 <strong>join</strong> 这个线程</p>
+<h3 id="线程是如何分类的">线程是如何分类的？</h3>
+<p>守护线程</p>
+<p>用户线程</p>
+<p><strong>线程默认是用户线程</strong></p>
+<h3 id="gc是什么线程">GC是什么线程?</h3>
+<p>守护线程</p>
+<h3 id="how-to-turn-a-thread-into-a-daemon-thread">How to turn a thread into a daemon thread?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">t</span><span class="o">.</span><span class="na">setDaemon</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>When only daemon threads remain, the virtual machine exits.</p>
+<p>This method must be invoked before the thread is started.</p>
+<p>在 <strong>start</strong> 后执行会报错</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420193411.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420193411.png, https://img.fengqigang.cn//img/20210420193411.png 1.5x, https://img.fengqigang.cn//img/20210420193411.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420193411.png"
+        title="20210420193411" /></p>
+<p><strong>设置成守护线程后, main死亡时, 线程也会死亡</strong></p>
+<ol>
+<li>未使用时</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420193611.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420193611.png, https://img.fengqigang.cn//img/20210420193611.png 1.5x, https://img.fengqigang.cn//img/20210420193611.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420193611.png"
+        title="20210420193611" /></p>
+<ol start="2">
+<li>使用时</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420193637.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420193637.png, https://img.fengqigang.cn//img/20210420193637.png 1.5x, https://img.fengqigang.cn//img/20210420193637.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420193637.png"
+        title="20210420193637" /></p>
+<h3 id="什么是礼让线程">什么是礼让线程?</h3>
+<p>yield</p>
+<p>public static void yield()</p>
+<p>A hint to the scheduler that the current thread is willing to yield its current use of a processor. The scheduler is free to ignore this hin</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">ThreadYield</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadYield</span><span class="o">();</span>
+        <span class="n">ThreadYield</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadYield</span><span class="o">();</span>
+        <span class="n">t1</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;吴彦祖&#34;</span><span class="o">);</span>
+        <span class="n">t2</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;彭于晏&#34;</span><span class="o">);</span>
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadYield</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">yield</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420194127.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420194127.png, https://img.fengqigang.cn//img/20210420194127.png 1.5x, https://img.fengqigang.cn//img/20210420194127.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420194127.png"
+        title="20210420194127" /></p>
+<h3 id="为什么使用yield后没有起到抢占式的结果20210420194127httpsimgfengqigangcnimg20210420194127png">为什么使用yield后，没有起到抢占式的结果?<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420194127.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420194127.png, https://img.fengqigang.cn//img/20210420194127.png 1.5x, https://img.fengqigang.cn//img/20210420194127.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420194127.png"
+        title="20210420194127" /></h3>
+<p>吴彦祖虽然放弃了CPU的执行权</p>
+<p>但 <strong>Java</strong> 中采用的是抢占式的调试方式</p>
+<p>吴彦祖又抢到了</p>
+<h3 id="如何中断线程对象interrupt-会发生什么">如何中断线程对象(interrupt 会发生什么)?</h3>
+<p><strong>interrupt</strong></p>
+<p>public boolean isInterrupted()</p>
+<p>Tests whether this thread has been interrupted. The interrupted status of the thread is unaffected by this method.</p>
+<p>A thread interruption ignored because a thread was not alive at the time of the interrupt will be reflected by this method returning false.</p>
+<p>Returns:
+true if this thread has been interrupted; false otherwise.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">ThreadInterrupt</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadInterrupt</span><span class="o">();</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;送终鸡&#34;</span><span class="o">);</span>
+
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">){</span>
+           <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">interrupt</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadInterrupt</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-----&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420194937.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420194937.png, https://img.fengqigang.cn//img/20210420194937.png 1.5x, https://img.fengqigang.cn//img/20210420194937.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420194937.png"
+        title="20210420194937" /></p>
+<h3 id="如何中断线程对象stop-会发生什么">如何中断线程对象(stop 会发生什么)?</h3>
+<p>stop
+@Deprecated
+public final void stop()</p>
+<p>Deprecated. This method is inherently unsafe.</p>
+<p>会终止线程执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">ThreadStop</span> <span class="n">threadStop</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadStop</span><span class="o">();</span>
+        <span class="n">threadStop</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;短风&#34;</span><span class="o">);</span>
+        <span class="n">threadStop</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="n">threadStop</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadStop</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;ThreadStop start&#34;</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-----&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;ThreadStop end&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420195440.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420195440.png, https://img.fengqigang.cn//img/20210420195440.png 1.5x, https://img.fengqigang.cn//img/20210420195440.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420195440.png"
+        title="20210420195440" /></p>
+<h3 id="如何安全终止线程用-flag-标记-如果为-true-正常执行-如果为-false-终止线程执行-在终止之前去做一个日志保存将终止信息保存到-ogtxt-当中-利用-filewriter-2021-4-28-时分秒--某个线程终止了">如何安全终止线程？(用 <strong>flag</strong> 标记， 如果为 true, 正常执行， 如果为 false, 终止线程执行, 在终止之前，去做一个日志保存，将终止信息保存到 og.txt 当中, 利用 FileWriter, 2021-4-28 时分秒 : 某个线程终止了)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="cm">/**
+</span><span class="cm"> * @className: Demo
+</span><span class="cm"> * @Description
+</span><span class="cm"> * @author: fengxiaonan
+</span><span class="cm"> * @date: 4/20/21 6:38 PM
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">InterruptedException</span> <span class="o">{</span>
+        <span class="n">ThreadStop</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ThreadStop</span><span class="o">();</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;子线程&#34;</span><span class="o">);</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">3000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="n">thread</span><span class="o">.</span><span class="na">flag</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadStop</span> <span class="kd">extends</span> <span class="n">Thread</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">flag</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-----&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">1000</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="k">try</span> <span class="o">{</span>
+                    <span class="n">FileWriter</span> <span class="n">fileWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileWriter</span><span class="o">(</span><span class="s">&#34;log.txt&#34;</span><span class="o">);</span>
+                    <span class="n">SimpleDateFormat</span> <span class="n">simpleDateFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&#34;yyyy-MM-dd HH:mm::ss&#34;</span><span class="o">);</span>
+                    <span class="n">String</span> <span class="n">date</span> <span class="o">=</span> <span class="n">simpleDateFormat</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">());</span>
+                    <span class="n">fileWriter</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">date</span> <span class="o">+</span> <span class="s">&#34; &#34;</span> <span class="o">+</span> <span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;被终止了!&#34;</span><span class="o">);</span>
+                    <span class="n">fileWriter</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">lineSeparator</span><span class="o">());</span>
+                    <span class="n">fileWriter</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+                    <span class="n">fileWriter</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+                <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210420200244.png"
+        data-srcset="https://img.fengqigang.cn//img/20210420200244.png, https://img.fengqigang.cn//img/20210420200244.png 1.5x, https://img.fengqigang.cn//img/20210420200244.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210420200244.png"
+        title="20210420200244" /></p>
+<h3 id="how-many-states-of-thread-in-java">How many states of thread in Java?</h3>
+<p>Threads can be in one of six states:</p>
+<ul>
+<li>new</li>
+<li>Runnable
+<ul>
+<li>A runnable therad may or may not be running at any given time.(This is why the state is called &ldquo;runnable&rdquo; and not &ldquo;running&rdquo;)</li>
+</ul>
+</li>
+<li>Blocked</li>
+<li>Waiting</li>
+<li>Timed waiting</li>
+<li>Terminated</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210518233244.png"
+        data-srcset="https://img.fengqigang.cn//img/20210518233244.png, https://img.fengqigang.cn//img/20210518233244.png 1.5x, https://img.fengqigang.cn//img/20210518233244.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210518233244.png"
+        title="20210518233244" /></p>
+<h3 id="what-is-preemptive-scheduling-systems-and-cooperative-scheduling">what is Preemptive scheduling systems and cooperative scheduling?</h3>
+<ul>
+<li>Preemptive scheduling systems</li>
+</ul>
+<p>Preemptive scheduling systems give each runnable thread a slice of time to perform its task.</p>
+<p>When that slice of time is exhausted, the operating system preempts the thread and gives another thread an opportunity to work.</p>
+<p>When selecting the next thread, the operating system takes into account the thread priorities.</p>
+<p><strong>All modern desktop and server operating systems use preemptive scheduling.</strong></p>
+<ul>
+<li>Cooperative scheduling systems</li>
+</ul>
+<p>A thead loses control only when it calls the <code>yield</code> mehtod, or when it is blocked or waiting.</p>
+<p><strong>small devices such as cell phones may use cooperative scheduling.</strong></p>
+<h3 id="线程有哪5种状态">线程有哪5种状态?</h3>
+<p><strong>新建</strong>:</p>
+<p>刚创建的线程，没有执行 start() 方法， 没有资格去挣抢CPU资源</p>
+<p><strong>就绪</strong></p>
+<p>刚执行了 <strong>start</strong> 方法， 但是还没有获得CPU的执行权</p>
+<p><strong>执行</strong></p>
+<p>抢到了 CPU的执行权</p>
+<p><strong>阻塞</strong></p>
+<p>没有 CPU 的执行权，还缺少必要的条件（sleep 结束）</p>
+<p><strong>死亡</strong></p>
+<p>run 方法执行完之后</p>
+<h3 id="线程5个状态之间是如何转换">线程5个状态之间是如何转换?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421095335.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421095335.png, https://img.fengqigang.cn//img/20210421095335.png 1.5x, https://img.fengqigang.cn//img/20210421095335.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421095335.png"
+        title="https://img.fengqigang.cn//img/20210421095335.png" /></p>
+<h3 id="用runnable实现多线程">用Runnable实现多线程?</h3>
+<ol>
+<li>
+<p>实现 Runnable 接口</p>
+</li>
+<li>
+<p>重写 run 方法</p>
+</li>
+<li>
+<p>创建 Runnable 子类对象</p>
+</li>
+<li>
+<p>创建 Thread 对象， 并且把 Runnable 子类对象作为参数传递</p>
+</li>
+<li>
+<p>start 方法</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RunnableDemo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">MyRunnable</span> <span class="n">myRunnable</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyRunnable</span><span class="o">();</span>
+        <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="n">myRunnable</span><span class="o">);</span>
+
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;--------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyRunnable</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;-------&#34;</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="为什么-runnable-接口子类的-run-方法代码-会执行在子线程当中">为什么 Runnable 接口子类的 run() 方法代码， 会执行在子线程当中？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421101452.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421101452.png, https://img.fengqigang.cn//img/20210421101452.png 1.5x, https://img.fengqigang.cn//img/20210421101452.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421101452.png"
+        title="https://img.fengqigang.cn//img/20210421101452.png" /></p>
+<h3 id="runnable-对象代表线程吗">Runnable 对象代表线程吗?</h3>
+<p>不代表， thread 才代表</p>
+<p>Runnable 子类对象， 并不代表线程，它只代表，要在线程中执行的任务</p>
+<p>线程就是一条执行路径，至于在线程这条执行路径上，究竟执行的是什么样的具体代码，与线程没有关系的</p>
+<h3 id="继承-thread-与-实现-runnable-两种方式的比较">继承 Thread 与 实现 Runnable 两种方式的比较?</h3>
+<p><strong>Thread</strong></p>
+<p>Runnable 实现步骤少</p>
+<p>实现方式，存在单重继承的局限性</p>
+<p><strong>Runnable</strong></p>
+<p>将线程与任务解藕</p>
+<p>便于多线程数据的共享</p>
+<h3 id="什么时候会产生数据安全问题">什么时候会产生数据安全问题?</h3>
+<p>多线程运行环境</p>
+<p>多线程访问共享数据</p>
+<p>存在一个非原子操作</p>
+<h3 id="什么是原子操作">什么是原子操作?</h3>
+<p>一个操作要么一次执行完，一次都不执行</p>
+<h3 id="如何解决数据安全问题">如何解决数据安全问题?</h3>
+<p>逻辑上， 解决把 <strong>一组操作变成原子的操作</strong> 的这件事情</p>
+<p><strong>思路1:</strong></p>
+<p>只在一个线程上，对共享变量的一组操作的执行过程，能够阻止线程切换</p>
+<p><strong>无法实现</strong></p>
+<p>java 是采取抢占式线程调度，代码层面(线程中执行的代码), 无法控制线程调度</p>
+<p><strong>思路2:</strong></p>
+<p>把共享变量，加一把锁，利用锁来实现原子的操作，使用锁，可以给共享加锁，从面保证:</p>
+<p>a. 只有加锁的线程，能够访问到共享变量</p>
+<p>b. 在加锁线程中，没有完成对共享变量的一组操作之前，不会释放锁</p>
+<p>c. 只要不释放锁，其他线程，即使被调度执行，也无法访问共享变量</p>
+<h3 id="什么是-synchronized-同步">什么是 <strong>synchronized</strong> 同步?</h3>
+<ol>
+<li>
+<p>同步的代码块中的锁对象可以是任意的 java 对象</p>
+</li>
+<li>
+<p>一定要保证是同一个对象</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210421115103.png"
+        data-srcset="https://img.fengqigang.cn//img/20210421115103.png, https://img.fengqigang.cn//img/20210421115103.png 1.5x, https://img.fengqigang.cn//img/20210421115103.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210421115103.png"
+        title="https://img.fengqigang.cn//img/20210421115103.png" /></p>
+<h3 id="同步方法中的锁对象是什么">同步方法中的锁对象是什么?</h3>
+<p><strong>同步代码块中</strong></p>
+<p>任意java对象</p>
+<p><strong>任意方法中</strong></p>
+<p>this</p>
+<p><strong>静态方法中</strong></p>
+<p>字节码文件对象（.clsss）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422095504.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422095504.png, https://img.fengqigang.cn//img/20210422095504.png 1.5x, https://img.fengqigang.cn//img/20210422095504.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422095504.png"
+        title="https://img.fengqigang.cn//img/20210422095504.png" /></p>
+<p><strong>补充代码</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422095648.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422095648.png, https://img.fengqigang.cn//img/20210422095648.png 1.5x, https://img.fengqigang.cn//img/20210422095648.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422095648.png"
+        title="https://img.fengqigang.cn//img/20210422095648.png" /></p>
+<h3 id="为什么在同步代码块中可以放一个任意的对象">为什么在同步代码块中可以放一个任意的对象?</h3>
+<ol>
+<li>因为 <strong>java</strong> 当中所有对象， 内部都存在一个 <strong>标志位</strong>，表示加锁和解锁的状态</li>
+<li>其实锁对象，就是充当锁的角色</li>
+</ol>
+<p>所谓的加锁解锁，其实就是 <strong>设置锁对象的标志位</strong>，来表示加锁解锁的<strong>状态</strong></p>
+<h3 id="当某个线程执行到同步代码块时遇到加锁或无锁时会怎么处理">当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?</h3>
+<ol>
+<li>当锁对象处于<strong>未加锁</strong>状态， <strong>jvm</strong> 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。</li>
+<li>如果锁对象 <strong>已经被加锁</strong>, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。</li>
+</ol>
+<h3 id="加锁线程何时释放锁">加锁线程何时释放锁?</h3>
+<p>当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，<strong>在退出同步代码块之前</strong>,</p>
+<p><strong>jvm</strong> 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)</p>
+<h3 id="如何使用-lock-锁住对象">如何使用 Lock 锁住对象?</h3>
+<ol>
+<li>定义一把锁</li>
+</ol>
+<p>Lock lock = new ReentrantLock();</p>
+<p>美[ˌriˈɛntrənt]</p>
+<p>public ReentrantLock()</p>
+<p>Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).</p>
+<ol start="2">
+<li>获取锁</li>
+</ol>
+<p>lock.lock();</p>
+<p>void lock()</p>
+<p>Acquires the lock.</p>
+<ol start="3">
+<li>释放锁</li>
+</ol>
+<p>lock.unlock;</p>
+<p>void unlock()</p>
+<p>Releases the lock.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422101202.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422101202.png, https://img.fengqigang.cn//img/20210422101202.png 1.5x, https://img.fengqigang.cn//img/20210422101202.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422101202.png"
+        title="https://img.fengqigang.cn//img/20210422101202.png" /></p>
+<h3 id="lock-和-synchronized-的区别">Lock 和 synchronized 的区别?</h3>
+<p>synchronized 会同步阻塞</p>
+<p><strong>synchronized</strong></p>
+<p>只提供了用来 <strong>模拟锁状态的标志位</strong> (加锁和释放锁)</p>
+<p>加锁和释放锁的行为，都是由 <strong>jvm</strong> 隐式完成(<strong>和 synchronized 锁对象没有关系</strong>)</p>
+<p>所以 synchronized 锁对象 <strong>不是一把完整的锁</strong></p>
+<p><strong>Lock</strong></p>
+<p>它代表的是完整的锁</p>
+<p>Lock对象， 它如果要实现加锁和释放锁，不需要 synchronized 关键字配合，<strong>它自己就可以完成</strong></p>
+<p>Lock(接口):</p>
+<p>lock() 加锁 unlock 释放锁</p>
+<h3 id="什么是同步与异步">什么是同步与异步?</h3>
+<p>同步与异步描述的是被调用者的</p>
+<p>如 A 调用 B:</p>
+<p>如果是 <strong>同步</strong> ，B 在接到 A 调用后，会立即执行要做的事。 A 的本次调用可以得到结果.</p>
+<p>如果是 <strong>异步</strong> ，B 在接到 A 调用后，不保证会立即执行要做的事，但是保证会去做， B 在做好了之后会通知 A。 A的本次调用得不到结果， 但是 B 执行完之后会通知 A .</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422102202.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422102202.png, https://img.fengqigang.cn//img/20210422102202.png 1.5x, https://img.fengqigang.cn//img/20210422102202.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422102202.png"
+        title="https://img.fengqigang.cn//img/20210422102202.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422110800.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422110800.png, https://img.fengqigang.cn//img/20210422110800.png 1.5x, https://img.fengqigang.cn//img/20210422110800.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422110800.png"
+        title="https://img.fengqigang.cn//img/20210422110800.png" /></p>
+<h3 id="什么是死锁">什么是死锁?</h3>
+<p>2 个或以上的线程争抢资源，造成互相等待的现象</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422111209.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422111209.png, https://img.fengqigang.cn//img/20210422111209.png 1.5x, https://img.fengqigang.cn//img/20210422111209.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422111209.png"
+        title="https://img.fengqigang.cn//img/20210422111209.png" /></p>
+<h3 id="在-java-中怎样的代码容易产生死锁">在 <strong>java</strong> 中怎样的代码容易产生死锁?</h3>
+<p>一般出现在 <strong>同步代码块嵌套</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422111342.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422111342.png, https://img.fengqigang.cn//img/20210422111342.png 1.5x, https://img.fengqigang.cn//img/20210422111342.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422111342.png"
+        title="https://img.fengqigang.cn//img/20210422111342.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422112110.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422112110.png, https://img.fengqigang.cn//img/20210422112110.png 1.5x, https://img.fengqigang.cn//img/20210422112110.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422112110.png"
+        title="https://img.fengqigang.cn//img/20210422112110.png" /></p>
+<h3 id="解决死锁的方法有哪些">解决死锁的方法有哪些?</h3>
+<p><strong>方式一</strong> 更改加锁顺序</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422112613.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422112613.png, https://img.fengqigang.cn//img/20210422112613.png 1.5x, https://img.fengqigang.cn//img/20210422112613.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422112613.png"
+        title="https://img.fengqigang.cn//img/20210422112613.png" /></p>
+<p><strong>方式二</strong>: 将该步骤变成原子操作</p>
+<p>最外层再加一层操作</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422113238.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422113238.png, https://img.fengqigang.cn//img/20210422113238.png 1.5x, https://img.fengqigang.cn//img/20210422113238.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422113238.png"
+        title="https://img.fengqigang.cn//img/20210422113238.png" /></p>
+<h3 id="什么是生产者消费者模型">什么是生产者消费者模型?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422113915.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422113915.png, https://img.fengqigang.cn//img/20210422113915.png 1.5x, https://img.fengqigang.cn//img/20210422113915.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422113915.png"
+        title="https://img.fengqigang.cn//img/20210422113915.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422144721.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422144721.png, https://img.fengqigang.cn//img/20210422144721.png 1.5x, https://img.fengqigang.cn//img/20210422144721.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422144721.png"
+        title="https://img.fengqigang.cn//img/20210422144721.png" /></p>
+<h3 id="线程间通信有哪些api">线程间通信有哪些API?</h3>
+<ol>
+<li>
+<p>wait() 阻止自己</p>
+</li>
+<li>
+<p>notify() 通知别人</p>
+</li>
+<li>
+<p>notifyAll() 通知所有的人</p>
+</li>
+</ol>
+<h3 id="线程间通信的-wait-api-是干什么的">线程间通信的 wait() api 是干什么的?</h3>
+<p>public final void wait</p>
+<p>throws InterruptedException</p>
+<ol>
+<li>阻塞功能:</li>
+</ol>
+<p>当在某线程中，对象上 <strong>.wait()</strong>, 在哪个线程中调用 <strong>wait()</strong>, 导致哪个线程处于阻塞状态</p>
+<p>当某线程，因为调用执行某对象的 <strong>wait()</strong>, 而处于阻塞状态，我们说，该线程在该对象上阻塞</p>
+<ol start="2">
+<li>唤醒条件</li>
+</ol>
+<p>当某线程，因为某对象A的 <strong>wait()</strong>, 而处于阻塞状态时，如果要唤醒该线程，只能在其他线程中，再同一个对象 (即对象A) 上调用其 <strong>notify()</strong> 或 <strong>notifyAll()</strong></p>
+<p>即在线程的阻塞对象上，调用 <strong>notify</strong> 或 <strong>notifyAll</strong> 方法，才能唤醒，在该对象上阻塞的线程</p>
+<ol start="3">
+<li>运行条件</li>
+</ol>
+<p>当前线程必须拥有此对象 <strong>监视器</strong></p>
+<p>监视器: 指 <strong>synchronized</strong> 代码块中的锁对象</p>
+<p>如果不在同步代码块中调用就会就会出现 <strong>IllegalMonitorStateException</strong></p>
+<ol start="4">
+<li>执行特征</li>
+</ol>
+<p>该线程释放对监视器的所有权</p>
+<p>等待(阻塞)</p>
+<h3 id="thread-的-sleep-方法-执行时会丢失监视器的所属权吗">Thread 的 <strong>sleep</strong> 方法， 执行时会丢失监视器的所属权吗?</h3>
+<p>不会</p>
+<h3 id="object-的-wait-方法-执行时会丢失监视器的所属权吗">Object 的 <strong>wait</strong> 方法， 执行时会丢失监视器的所属权吗?</h3>
+<p>会</p>
+<h3 id="threadsleep-vs-objectwait">Thread.sleep VS Object.wait()?</h3>
+<ol>
+<li>
+<p>所属不同:</p>
+<p><strong>sleep</strong></p>
+<p>定义在<strong>Thread</strong>类，静态方法</p>
+<p><strong>wait</strong></p>
+<p>定义在<strong>Object</strong>类中，非静态方法</p>
+</li>
+<li>
+<p>唤醒条件不同</p>
+<p><strong>sleep</strong></p>
+<p>休眠时间到</p>
+<p><strong>wait</strong></p>
+<p>在其他线程中，在同一个锁对象上，调用了 <strong>notify</strong> 或 <strong>notifyAll</strong> 方法</p>
+</li>
+<li>
+<p>使用条件不同</p>
+<p><strong>sleep</strong></p>
+<p>没有任何前提条件</p>
+<p><strong>wait</strong></p>
+<p>必须是当前线程，持有锁对象，锁对象上调用 <strong>wait()</strong></p>
+</li>
+<li>
+<p>休眠时，对锁对象的持有，不同:</p>
+<p><strong>sleep</strong></p>
+<p>处于阻塞状态的时候，在阻塞的时候不会放弃对锁的持有</p>
+<p><strong>wait</strong></p>
+<p>处于阻塞的时候，会放弃对象持有3</p>
+</li>
+</ol>
+<h3 id="notify-api-是干什么的">notify() api 是干什么的?</h3>
+<p>public final void notify()</p>
+<p>唤醒在此对象监视器上等待的单个线程</p>
+<p>如果所有线程都在此对象上等待</p>
+<p>则 <strong>会选择唤醒其中一个线程， 选择是任意性的</strong></p>
+<h3 id="产包子实战">产包子实战？</h3>
+<ol>
+<li><strong>生产者</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422150944.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422150944.png, https://img.fengqigang.cn//img/20210422150944.png 1.5x, https://img.fengqigang.cn//img/20210422150944.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422150944.png"
+        title="https://img.fengqigang.cn//img/20210422150944.png" /></p>
+<ol start="2">
+<li><strong>消费者</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422151228.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422151228.png, https://img.fengqigang.cn//img/20210422151228.png 1.5x, https://img.fengqigang.cn//img/20210422151228.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422151228.png"
+        title="https://img.fengqigang.cn//img/20210422151228.png" /></p>
+<ol start="3">
+<li><strong>蒸笼</strong></li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422151830.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422151830.png, https://img.fengqigang.cn//img/20210422151830.png 1.5x, https://img.fengqigang.cn//img/20210422151830.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422151830.png"
+        title="https://img.fengqigang.cn//img/20210422151830.png" /></p>
+<ol start="3">
+<li><strong>demo</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422151638.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422151638.png, https://img.fengqigang.cn//img/20210422151638.png 1.5x, https://img.fengqigang.cn//img/20210422151638.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422151638.png"
+        title="https://img.fengqigang.cn//img/20210422151638.png" /></li>
+</ol>
+<h3 id="只执行一次">只执行一次?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422150505.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422150505.png, https://img.fengqigang.cn//img/20210422150505.png 1.5x, https://img.fengqigang.cn//img/20210422150505.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422150505.png"
+        title="https://img.fengqigang.cn//img/20210422150505.png" /></p>
+<h3 id="同步方法">同步方法</h3>
+<ol>
+<li>Box</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png"
+        data-srcset="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png, C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png 1.5x, C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png 2x"
+        data-sizes="auto"
+        alt="C:%5CUsers%5Cfeng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210422161723697.png"
+        title="image-20210422161723697" /></p>
+<ol start="2">
+<li>Box
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422161748.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422161748.png, https://img.fengqigang.cn//img/20210422161748.png 1.5x, https://img.fengqigang.cn//img/20210422161748.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422161748.png"
+        title="https://img.fengqigang.cn//img/20210422161748.png" /></li>
+</ol>
+<h3 id="为什么多个生产者消费者的时候会出现卡顿">为什么多个生产者，消费者的时候，会出现卡顿？</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422163134.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422163134.png, https://img.fengqigang.cn//img/20210422163134.png 1.5x, https://img.fengqigang.cn//img/20210422163134.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422163134.png"
+        title="https://img.fengqigang.cn//img/20210422163134.png" /></p>
+<h3 id="什么是-虚假唤醒">什么是 <strong>虚假唤醒</strong>?</h3>
+<p>唤醒了不应该被唤醒的线程</p>
+<h3 id="为什么-waitnotify-为啥不定义在-thread-当中">为什么 <strong>wait</strong>,<strong>notify</strong>, 为啥不定义在 Thread 当中?</h3>
+<p>因为锁对象可以是任意java对象</p>
+<h3 id="完整的线程转换图是什么">完整的线程转换图是什么?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422164308.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422164308.png, https://img.fengqigang.cn//img/20210422164308.png 1.5x, https://img.fengqigang.cn//img/20210422164308.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422164308.png"
+        title="https://img.fengqigang.cn//img/20210422164308.png" /></p>
+<h3 id="为什么会有线程池">为什么会有线程池?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422171154.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422171154.png, https://img.fengqigang.cn//img/20210422171154.png 1.5x, https://img.fengqigang.cn//img/20210422171154.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422171154.png"
+        title="https://img.fengqigang.cn//img/20210422171154.png" /></p>
+<h3 id="三种线程池">三种线程池?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422171305.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422171305.png, https://img.fengqigang.cn//img/20210422171305.png 1.5x, https://img.fengqigang.cn//img/20210422171305.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422171305.png"
+        title="https://img.fengqigang.cn//img/20210422171305.png" /></p>
+<p><strong>带缓存的线程池</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422171734.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422171734.png, https://img.fengqigang.cn//img/20210422171734.png 1.5x, https://img.fengqigang.cn//img/20210422171734.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422171734.png"
+        title="https://img.fengqigang.cn//img/20210422171734.png" /></p>
+<p><strong>newFixedThreadPod</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422172146.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422172146.png, https://img.fengqigang.cn//img/20210422172146.png 1.5x, https://img.fengqigang.cn//img/20210422172146.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422172146.png"
+        title="https://img.fengqigang.cn//img/20210422172146.png" /></p>
+<h3 id="如何实现-newfixedthreadpod">如何实现 newFixedThreadPod?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173017.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173017.png, https://img.fengqigang.cn//img/20210422173017.png 1.5x, https://img.fengqigang.cn//img/20210422173017.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173017.png"
+        title="https://img.fengqigang.cn//img/20210422173017.png" /></p>
+<h3 id="httpsimgfengqigangcnimg20210422173033png-有什么区别"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173033.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173033.png, https://img.fengqigang.cn//img/20210422173033.png 1.5x, https://img.fengqigang.cn//img/20210422173033.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173033.png"
+        title="https://img.fengqigang.cn//img/20210422173033.png" />? 有什么区别?</h3>
+<p>shutdownNow 队列中也执行</p>
+<p>shutdownNow 队列中的不执行</p>
+<h3 id="如何实现-callable">如何实现 <strong>Callable</strong>?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173906.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173906.png, https://img.fengqigang.cn//img/20210422173906.png 1.5x, https://img.fengqigang.cn//img/20210422173906.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173906.png"
+        title="https://img.fengqigang.cn//img/20210422173906.png" /></p>
+<h3 id="future-是干什么的"><strong>Future</strong> 是干什么的?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422173946.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422173946.png, https://img.fengqigang.cn//img/20210422173946.png 1.5x, https://img.fengqigang.cn//img/20210422173946.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422173946.png"
+        title="https://img.fengqigang.cn//img/20210422173946.png" /></p>
+<h3 id="runnable-vs-callable">Runnable VS Callable</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422174325.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422174325.png, https://img.fengqigang.cn//img/20210422174325.png 1.5x, https://img.fengqigang.cn//img/20210422174325.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422174325.png"
+        title="https://img.fengqigang.cn//img/20210422174325.png" /></p>
+<h3 id="futuretask-如何使用">FutureTask 如何使用?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422174806.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422174806.png, https://img.fengqigang.cn//img/20210422174806.png 1.5x, https://img.fengqigang.cn//img/20210422174806.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422174806.png"
+        title="https://img.fengqigang.cn//img/20210422174806.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210422174931.png"
+        data-srcset="https://img.fengqigang.cn//img/20210422174931.png, https://img.fengqigang.cn//img/20210422174931.png 1.5x, https://img.fengqigang.cn//img/20210422174931.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210422174931.png"
+        title="https://img.fengqigang.cn//img/20210422174931.png" /></p>
+<h3 id="用-callable-方式启动2个线程-1个从1一直加到100-一个从1一直加到200最后打印结果">用 <strong>Callable</strong> 方式，启动2个线程， 1个从1一直加到100， 一个从1一直加到200，最后打印结果</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423100625.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423100625.png, https://img.fengqigang.cn//img/20210423100625.png 1.5x, https://img.fengqigang.cn//img/20210423100625.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423100625.png"
+        title="https://img.fengqigang.cn//img/20210423100625.png" /></p>
+<h3 id="timer-如何使用scheduletimertask-task-data-time">Timer 如何使用(schedule(TimerTask task, Data time))?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423101903.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423101903.png, https://img.fengqigang.cn//img/20210423101903.png 1.5x, https://img.fengqigang.cn//img/20210423101903.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423101903.png"
+        title="https://img.fengqigang.cn//img/20210423101903.png" /></p>
+<h3 id="timer-如何使用scheduletimertask-task-long-delay-long-period">Timer 如何使用(schedule(TimerTask task, long delay, long period))?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423102101.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423102101.png, https://img.fengqigang.cn//img/20210423102101.png 1.5x, https://img.fengqigang.cn//img/20210423102101.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423102101.png"
+        title="https://img.fengqigang.cn//img/20210423102101.png" /></p>
+<h3 id="timer-如何使用scheduletimertask-task-date-firsttime-long-period">Timer 如何使用(schedule(TimerTask task, Date firstTime, long period))?</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210423102214.png"
+        data-srcset="https://img.fengqigang.cn//img/20210423102214.png, https://img.fengqigang.cn//img/20210423102214.png 1.5x, https://img.fengqigang.cn//img/20210423102214.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210423102214.png"
+        title="https://img.fengqigang.cn//img/20210423102214.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-04-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/19_network/" class="prev" rel="prev" title="19_network"><i class="fas fa-angle-left fa-fw"></i>19_network</a>
+            <a href="/posts/day21/" class="next" rel="next" title="Day21">Day21<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
