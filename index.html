@@ -100,6 +100,16 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/spring01/">Spring01</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-24">2021-06-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">01_Spring
+单例模式 构造方法后没有;
+public class 后没有()
+线程不安全的单例模式 高并发下并不安全
+1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的单例模式 将 synchronized 放在 public 与 static 之间
+1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public synchronized static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   什么是懒加载和立即加载?</div><div class="post-footer">
+        <a href="/posts/spring01/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/picgo/">Picgo</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-09">2021-06-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%88%86%E4%BA%AB/"><i class="far fa-folder fa-fw"></i>分享</a></span></div><div class="content">什么是PicGo?  github
 如何安装PicGo? win   exe 安装
@@ -169,16 +179,6 @@ url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不�
 set 可以使用增强for循环
 HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.</div><div class="post-footer">
         <a href="/posts/day36/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day35/">Day35</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-05-11">2021-05-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">day35_linkedHashMap
-LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
-  LinkedHashMap 基本上完全复用了 HashMap 的底层结构， 参数，方法
-  LinkedHashMap的特点基本遵从于 HashMap
-  LinkedHashMap 底层在 HashMap 的基础上(数组 + 链表 + 红黑树) 额外维护了一个双向链表: 这个双向链表用来记录存储
-  LinkedHashMap 如何额外维护一个双向链表? 构造方法?  默认的构造方法  accessOrder(如果我们给accessOrder 设置为真，那么我们如果访问了这个LinkedHashMap中的某一个Key-value数据，那么这份Key-value数据就会在双向链表中的位置移到最后， 它在红黑树上的位置不变)   API TreeMap 有什么特点?  TreeMap 是 Map 一个子实现 描述数据结构是树/二叉搜索树/红黑树 底层是链表 TreeMap 大小有序(中序遍历是有序的) 不允许重复的 key 不允许null键 线程不安全 Treemap 的重复的定义: 大小比较结果是0, 自然顺序/比较器 如果我们希望在TreeMap中存储数据 ，key-value, 我们可以有两个选择：   让key本身可以比较(继承Comparabe接口实现 compareTo 方法)（但会让代码看一起来不清爽） 不想让 key 本身实现 Comparable 接口实现, 手动用比较器实现  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  public class DemoTreeMap { public static void main(String[] args) { TreeMap&lt;User3, Integer&gt; map = new TreeMap&lt;&gt;(); map.</div><div class="post-footer">
-        <a href="/posts/day35/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

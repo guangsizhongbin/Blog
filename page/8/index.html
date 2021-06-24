@@ -100,6 +100,34 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/04_recursion/">04_recursion</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-02">2021-04-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何用一个方法捕获栈溢出这个错误？ catch (StackOverflowError error)
+什么是成员变量？ 定义在类中，除了方法体之外的区域
+语法:
+[各种修饰符] 数据类型 成员变量名
+什么是成员方法 指的是在成员位置, 不带 static 的方法
+语法:
+[访问权限修饰符] 返回值类型 方法名() {}
+什么是类的全限定类名？ 就是 类名 全称， 带包路径的用点隔开
+如:
+java.lang.String
+全限定名 = 包名 + 类型
+这里获取的地址是什么样的？ 类的全限定类名 + 地址值
+类和数据类型是否存在关联? 数据类型:
+一个数据集合 和 基于这个数据集合的 一组操作
+类的定义:
+类中包括： 成员变量 和 成员方法
+数据集合: 类中成员 变量的集合
+操作集合: 类中成员 方法的集合
+总结:
+一个类的定义，其实就是一种自定义的数据类型，这种数据类型，和基本数据类型不同，它是我们自定义的数据类型
+Student s = new Student(); 谁是引用？谁是创建引用类型对象的过程？ s 是对象名或者称之为引用
+new Student() 是创建引用类型对象的过程
+什么是类加载? 在创建对象之前，把该类的字节码读取(加载)到方法区中
+该类的信息就能够被 JVM 获取到，从而创建能够创建对象</div><div class="post-footer">
+        <a href="/posts/04_recursion/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/03_array/">03_array</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">可变参数的实质是什么? 是用数组作为参数
 1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i++) { sumValue += arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   How to write a function that computes the maximum of a variable double number of values? function
@@ -152,21 +180,6 @@ You can then append a project name, such as com.</div><div class="post-footer">
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-26">2021-03-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>algorithm</a></span></div><div class="content">Two Sum 001
 我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x ++){ for (int y = x + 1; y &lt; nums.length; y ++){ if (nums[x] + nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表</div><div class="post-footer">
         <a href="/posts/twosum/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Java第三章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-25">2021-03-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">什么是类? 什么是对象? 类:
-表示一个客观世界中某类群体的一些基本特征抽象
-如:
-汽车， 轮船，书
-对象:
-一个个具体的事物
-如:
-张三同学， 李四账户， 王五的汽车
-总结:
-类 实际上是对象操作的 模板 ，但是类不能够直接使用，必须通过 实例对象 来使用
-如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.</div><div class="post-footer">
-        <a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
