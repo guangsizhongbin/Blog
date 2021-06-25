@@ -10,9 +10,6 @@ tags: [spring]
 categories: [王道]
 ---
 
-01_Spring
-
-
 ### 单例模式
 
 
@@ -20,7 +17,7 @@ categories: [王道]
 
 **public class 后没有()**
 
-#### 线程不安全的单例模式
+#### 线程不安全的立即加载单例模式
 
 高并发下并不安全
 
@@ -38,7 +35,7 @@ public class TestSigteon {
 }
 ```
 
-#### 线程安全的单例模式
+#### 线程安全的立即加载单例模式
 
 将 `synchronized` 放在 `public` 与 `static` 之间
 
@@ -58,9 +55,9 @@ public class TestSigteon {
 
 #### 什么是懒加载和立即加载?
 
-懒加载: 在调用实例化方法之前获取实例对象(利用类加载方法)
+立即加载: 在调用实例化方法之前获取实例对象(利用类加载方法)
 
-立即加载: 在调用实例化方法之后获取实例对象
+懒加载: 在调用实例化方法之后获取实例对象
 
 #### 线程安全的立即加载单例?(不使用synchronized)
 
@@ -432,7 +429,6 @@ public class UserServiceImpl implements UserService {
 
 
 ![](https://img.fengqigang.cn//img/20210624225432.png)
-
 
 
 
