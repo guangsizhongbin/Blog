@@ -4,7 +4,19 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 24 Jun 2021 23:51:14 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Spring02</title>
+    <link>http://fengqigang.cn/posts/spring02/</link>
+    <pubDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/spring02/</guid>
+    <description><![CDATA[02_Spring
+builder 设计模式  注意
+ 如果setIq 和 sethair 方法中的 head, 如果没有初始化的话会出现空指针异常
+  处理方法:
+  HumanBuilder
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public class HumanBuilder { Human human = new Human(); public Head setIq(Integer iq) { Head head = human.getHead(); head.setIq(iq); return head; } public Head setHair(String hair) { Head head = human.getHead(); head.setHair(hair); return head; } }   Human]]></description>
+</item><item>
     <title>Spring01</title>
     <link>http://fengqigang.cn/posts/spring01/</link>
     <pubDate>Thu, 24 Jun 2021 23:51:14 &#43;0800</pubDate>
@@ -139,19 +151,5 @@ BlockingQueue
   在默认的创建 ArrayList 对象的时候，如果不添加，那么构造方法并没有真正创建一个长度为10的数组，而是构建空数组
 但是面试的时候，首先你要说的就是默认长度为10
 ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zs&#34;); list.add(null); System.out.println(list); } }   构造方法  指定集合  API add]]></description>
-</item><item>
-    <title>Day31</title>
-    <link>http://fengqigang.cn/posts/day31/</link>
-    <pubDate>Fri, 07 May 2021 23:31:41 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day31/</guid>
-    <description><![CDATA[List的特点   List 的是 Collection 的子接口
-  List 是 Collection 的一个 线性表 子接口 -&gt; (有序, 有下标操作)
-  有序
-  允许重复元素存在
-  允许 null
-  API? add
-1 2 3 4 5 6 7 8 9 10 11  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zl&#34;); System.out.println(list); } }   addAll
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.]]></description>
 </item></channel>
 </rss>

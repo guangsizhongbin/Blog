@@ -4,9 +4,21 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 24 Jun 2021 23:51:14 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Spring02</title>
+    <link>http://fengqigang.cn/posts/spring02/</link>
+    <pubDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/spring02/</guid>
+    <description><![CDATA[02_Spring
+builder 设计模式  注意
+ 如果setIq 和 sethair 方法中的 head, 如果没有初始化的话会出现空指针异常
+  处理方法:
+  HumanBuilder
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public class HumanBuilder { Human human = new Human(); public Head setIq(Integer iq) { Head head = human.getHead(); head.setIq(iq); return head; } public Head setHair(String hair) { Head head = human.getHead(); head.setHair(hair); return head; } }   Human]]></description>
+</item><item>
     <title>Spring01</title>
     <link>http://fengqigang.cn/posts/spring01/</link>
     <pubDate>Thu, 24 Jun 2021 23:51:14 &#43;0800</pubDate>
@@ -135,21 +147,5 @@ API Deque 接口  Deque 接口是Queue接口的一个子接口 Deque 在Queue接
 BlockingQueue
 是接口
 1 2 3 4 5 6 7 8 9 10  public class DemoBlockingQueue { public static void main(String[] args) { ArrayBlockingQueue&lt;String&gt; queue = new ArrayBlockingQueue&lt;String&gt;(2); queue.]]></description>
-</item><item>
-    <title>Day32</title>
-    <link>http://fengqigang.cn/posts/day32/</link>
-    <pubDate>Sat, 08 May 2021 09:20:43 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day32/</guid>
-    <description><![CDATA[ArrayList的特点?   ArrayList 是 List 接口的一个具体实现(线性表)
-  底层是一个数组
-  数组的默认长度(10)， 数组的扩容机制(1.5倍)
-  有序
-  允许重复元素
-  允许null
-  线程不安全
-  在默认的创建 ArrayList 对象的时候，如果不添加，那么构造方法并没有真正创建一个长度为10的数组，而是构建空数组
-但是面试的时候，首先你要说的就是默认长度为10
-ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zs&#34;); list.add(null); System.out.println(list); } }   构造方法  指定集合  API add]]></description>
 </item></channel>
 </rss>
