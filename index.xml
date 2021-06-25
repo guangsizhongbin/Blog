@@ -12,11 +12,10 @@
     <pubDate>Thu, 24 Jun 2021 23:51:14 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/spring01/</guid>
-    <description><![CDATA[01_Spring
-单例模式 构造方法后没有;
+    <description><![CDATA[单例模式 构造方法后没有;
 public class 后没有()
-线程不安全的单例模式 高并发下并不安全
-1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的单例模式 将 synchronized 放在 public 与 static 之间
+线程不安全的立即加载单例模式 高并发下并不安全
+1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的立即加载单例模式 将 synchronized 放在 public 与 static 之间
 1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public synchronized static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   什么是懒加载和立即加载?]]></description>
 </item><item>
     <title>Picgo</title>

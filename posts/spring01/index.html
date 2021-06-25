@@ -6,11 +6,10 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Spring01 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Spring01" />
-<meta property="og:description" content="01_Spring
-单例模式 构造方法后没有;
+<meta property="og:description" content="单例模式 构造方法后没有;
 public class 后没有()
-线程不安全的单例模式 高并发下并不安全
-1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的单例模式 将 synchronized 放在 public 与 static 之间
+线程不安全的立即加载单例模式 高并发下并不安全
+1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的立即加载单例模式 将 synchronized 放在 public 与 static 之间
 1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public synchronized static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   什么是懒加载和立即加载?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/spring01/" /><meta property="article:section" content="posts" />
@@ -19,11 +18,10 @@ public class 后没有()
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spring01"/>
-<meta name="twitter:description" content="01_Spring
-单例模式 构造方法后没有;
+<meta name="twitter:description" content="单例模式 构造方法后没有;
 public class 后没有()
-线程不安全的单例模式 高并发下并不安全
-1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的单例模式 将 synchronized 放在 public 与 static 之间
+线程不安全的立即加载单例模式 高并发下并不安全
+1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的立即加载单例模式 将 synchronized 放在 public 与 static 之间
 1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public synchronized static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   什么是懒加载和立即加载?"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
@@ -37,7 +35,7 @@ public class 后没有()
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/spring01\/"
-        },"genre": "posts","keywords": "spring","wordcount":  747 ,
+        },"genre": "posts","keywords": "spring","wordcount":  746 ,
         "url": "http:\/\/fengqigang.cn\/posts\/spring01\/","datePublished": "2021-06-24T23:51:14+08:00","dateModified": "2021-06-24T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -114,7 +112,7 @@ public class 后没有()
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Spring01</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-24">2021-06-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;747 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-24">2021-06-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;746 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -127,8 +125,8 @@ public class 后没有()
       <ul>
         <li><a href="#单例模式">单例模式</a>
           <ul>
-            <li><a href="#线程不安全的单例模式">线程不安全的单例模式</a></li>
-            <li><a href="#线程安全的单例模式">线程安全的单例模式</a></li>
+            <li><a href="#线程不安全的立即加载单例模式">线程不安全的立即加载单例模式</a></li>
+            <li><a href="#线程安全的立即加载单例模式">线程安全的立即加载单例模式</a></li>
             <li><a href="#什么是懒加载和立即加载">什么是懒加载和立即加载?</a></li>
             <li><a href="#线程安全的立即加载单例不使用synchronized">线程安全的立即加载单例?(不使用synchronized)</a></li>
             <li><a href="#静态内部类的特点">静态内部类的特点</a></li>
@@ -156,11 +154,10 @@ public class 后没有()
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>01_Spring</p>
-<h3 id="单例模式">单例模式</h3>
+            </div><div class="content" id="content"><h3 id="单例模式">单例模式</h3>
 <p><strong>构造方法后没有;</strong></p>
 <p><strong>public class 后没有()</strong></p>
-<h4 id="线程不安全的单例模式">线程不安全的单例模式</h4>
+<h4 id="线程不安全的立即加载单例模式">线程不安全的立即加载单例模式</h4>
 <p>高并发下并不安全</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -190,7 +187,7 @@ public class 后没有()
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="线程安全的单例模式">线程安全的单例模式</h4>
+</div><h4 id="线程安全的立即加载单例模式">线程安全的立即加载单例模式</h4>
 <p>将 <code>synchronized</code> 放在 <code>public</code> 与 <code>static</code> 之间</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -221,8 +218,8 @@ public class 后没有()
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="什么是懒加载和立即加载">什么是懒加载和立即加载?</h4>
-<p>懒加载: 在调用实例化方法之前获取实例对象(利用类加载方法)</p>
-<p>立即加载: 在调用实例化方法之后获取实例对象</p>
+<p>立即加载: 在调用实例化方法之前获取实例对象(利用类加载方法)</p>
+<p>懒加载: 在调用实例化方法之后获取实例对象</p>
 <h4 id="线程安全的立即加载单例不使用synchronized">线程安全的立即加载单例?(不使用synchronized)</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

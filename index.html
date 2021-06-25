@@ -101,11 +101,10 @@
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/spring01/">Spring01</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-24">2021-06-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">01_Spring
-单例模式 构造方法后没有;
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-24">2021-06-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">单例模式 构造方法后没有;
 public class 后没有()
-线程不安全的单例模式 高并发下并不安全
-1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的单例模式 将 synchronized 放在 public 与 static 之间
+线程不安全的立即加载单例模式 高并发下并不安全
+1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的立即加载单例模式 将 synchronized 放在 public 与 static 之间
 1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public synchronized static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   什么是懒加载和立即加载?</div><div class="post-footer">
         <a href="/posts/spring01/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
