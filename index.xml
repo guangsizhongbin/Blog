@@ -4,9 +4,30 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Aop</title>
+    <link>http://fengqigang.cn/posts/aop/</link>
+    <pubDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/aop/</guid>
+    <description><![CDATA[AOP编程实战   引入依赖
+  注册委托类组件
+  提供一个通知组件并注册(MethdoInterceptor 是来自于 org.aopalliance.intercept)
+  ASPECT 强化advisor - pointcut advisor 的时间属性   Before
+  After
+  Around
+  AfterReturning
+  AfterThrowing
+  joinPoint 的参数 ProceedingJoinPoint extends 于 JoinPint
+  getSignature() 方法信息
+  getName() 方法名
+  getArgs() 参数
+  getThis() proxy
+  getTarget() 委托类对象
+  CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.]]></description>
+</item><item>
     <title>Spring02</title>
     <link>http://fengqigang.cn/posts/spring02/</link>
     <pubDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</pubDate>
@@ -134,18 +155,5 @@ Map 集合体系
 都是 Object 的子类
 Map 特点  Map 接口是Map 集合体系的顶级接口 和 Collection 接口以及 Collection 下面子实现不同的是, Map 所存储的数据不再是单个数据的，而是 Key-value 的数据(键值对) Map 的子实现有些是有序的，有些是无序的 Map 的子实现不允许存储重复key(重复元素的定义不同) Map 有些子实现可以存储 null, 有些子实现不允许存储 null (指key值)  Map 的 Api? put
 1 2 3 4 5 6 7 8 9 10 11 12 13  public class TestMap { public static void main(String[] args) { HashMap map = new HashMap&lt;String, Integer&gt;(2); // put  map.]]></description>
-</item><item>
-    <title>Day33</title>
-    <link>http://fengqigang.cn/posts/day33/</link>
-    <pubDate>Sat, 08 May 2021 23:40:30 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day33/</guid>
-    <description><![CDATA[Queue接口的特点  Queue 接口是 Collection 接口的一个子接口中 Queue 代表/ 描述的是队列(什么是队列: 一个操作受到限制的线性表, 在添加的时候只能在一端添加，删除是在另一端删除 -&gt; 先进先出，后进后出) 有序 能存储重复元素 不能存储null  (poll) 方法， 如果没有元素可以删除,null返回， 如果允许null存储，poll方法就没办法分辨返回的null是没有元素可删除的标记，还是原本存储的null, 因些不让存null
-API Deque 接口  Deque 接口是Queue接口的一个子接口 Deque 在Queue接口上进行了扩展: 不仅仅可以作为普通队列，还定义了双端队列，栈 有序 允许重复 不能存储 null(LinkedList) 除外  ArrayDeque 特点  ArrayDeque 是 Deque(双端队列)的一个子实现 可以作为 普通队列/ 双端队列/ 栈 底层数组(循环数组) 默认的初始容量16， 扩容机制(扩充2倍) 方便取余运算  如果不大于8， 直接创建一个为8的数组
-有序 允许重复 不允许存储null 线程不安全 我们可以在构造方法里指定底层数组长度，但是给定的数组长度并不真的是我们给定的值 ，而是一个大于我们给定值 的最小2的幂值 -&gt; 底层数组的长度永远是2的幂值  取模运算
-构造方法
-BlockingQueue
-是接口
-1 2 3 4 5 6 7 8 9 10  public class DemoBlockingQueue { public static void main(String[] args) { ArrayBlockingQueue&lt;String&gt; queue = new ArrayBlockingQueue&lt;String&gt;(2); queue.]]></description>
 </item></channel>
 </rss>

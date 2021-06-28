@@ -4,7 +4,28 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Aop</title>
+    <link>http://fengqigang.cn/posts/aop/</link>
+    <pubDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/aop/</guid>
+    <description><![CDATA[AOP编程实战   引入依赖
+  注册委托类组件
+  提供一个通知组件并注册(MethdoInterceptor 是来自于 org.aopalliance.intercept)
+  ASPECT 强化advisor - pointcut advisor 的时间属性   Before
+  After
+  Around
+  AfterReturning
+  AfterThrowing
+  joinPoint 的参数 ProceedingJoinPoint extends 于 JoinPint
+  getSignature() 方法信息
+  getName() 方法名
+  getArgs() 参数
+  getThis() proxy
+  getTarget() 委托类对象
+  CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.]]></description>
+</item><item>
     <title>Spring02</title>
     <link>http://fengqigang.cn/posts/spring02/</link>
     <pubDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</pubDate>
@@ -135,21 +156,5 @@ API Deque 接口  Deque 接口是Queue接口的一个子接口 Deque 在Queue接
 BlockingQueue
 是接口
 1 2 3 4 5 6 7 8 9 10  public class DemoBlockingQueue { public static void main(String[] args) { ArrayBlockingQueue&lt;String&gt; queue = new ArrayBlockingQueue&lt;String&gt;(2); queue.]]></description>
-</item><item>
-    <title>Day32</title>
-    <link>http://fengqigang.cn/posts/day32/</link>
-    <pubDate>Sat, 08 May 2021 09:20:43 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day32/</guid>
-    <description><![CDATA[ArrayList的特点?   ArrayList 是 List 接口的一个具体实现(线性表)
-  底层是一个数组
-  数组的默认长度(10)， 数组的扩容机制(1.5倍)
-  有序
-  允许重复元素
-  允许null
-  线程不安全
-  在默认的创建 ArrayList 对象的时候，如果不添加，那么构造方法并没有真正创建一个长度为10的数组，而是构建空数组
-但是面试的时候，首先你要说的就是默认长度为10
-ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zs&#34;); list.add(null); System.out.println(list); } }   构造方法  指定集合  API add]]></description>
 </item></channel>
 </rss>

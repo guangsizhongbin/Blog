@@ -4,7 +4,28 @@
         <link>http://fengqigang.cn/tags/spring/</link>
         <description>spring - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/spring/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/spring/" rel="self" type="application/rss+xml" /><item>
+    <title>Aop</title>
+    <link>http://fengqigang.cn/posts/aop/</link>
+    <pubDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/aop/</guid>
+    <description><![CDATA[AOP编程实战   引入依赖
+  注册委托类组件
+  提供一个通知组件并注册(MethdoInterceptor 是来自于 org.aopalliance.intercept)
+  ASPECT 强化advisor - pointcut advisor 的时间属性   Before
+  After
+  Around
+  AfterReturning
+  AfterThrowing
+  joinPoint 的参数 ProceedingJoinPoint extends 于 JoinPint
+  getSignature() 方法信息
+  getName() 方法名
+  getArgs() 参数
+  getThis() proxy
+  getTarget() 委托类对象
+  CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.]]></description>
+</item><item>
     <title>Spring02</title>
     <link>http://fengqigang.cn/posts/spring02/</link>
     <pubDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</pubDate>
