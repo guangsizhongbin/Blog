@@ -4,7 +4,15 @@
         <link>http://fengqigang.cn/categories/java/</link>
         <description>java - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>Db01单表</title>
+    <link>http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/</link>
+    <pubDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/</guid>
+    <description><![CDATA[库的增删改查 建库语句是什么(31th_sql, utf8)? 1  createdatabase31th_sqlcharactersetutf8;  如何显示所有的库? 1  showdatabases;  如何显示 31th_sql 的建库语句? 1  showcreatedatabase31th_sql;  如何删除 31th_sql 数据库? 1  dropdatabase31th_sql;  如何选择使用 mymall 数据库? 1  usemymall;  表的增删改查 如何查看如何库中所有的表? 1  showtables;  如何查询 goods 表的建表语句? 1  showcreatetablegoods;  如何描述一个 goods 表? describe goods / desc goods
+1  descgoods;  如何将 goods 表中的字符集改为 utf8 , 校对规则改成 utf8_bin? 1  altertablegoodscharactersetutf8collateutf8_bin;  如何删除 goods 表中 price 字段?]]></description>
+</item><item>
     <title>Java第三章</title>
     <link>http://fengqigang.cn/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/</link>
     <pubDate>Thu, 25 Mar 2021 22:54:33 &#43;0800</pubDate>

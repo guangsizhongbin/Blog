@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.84.2" />
+	<meta name="generator" content="Hugo 0.84.3" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -100,6 +100,13 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/intelldebug/">IntellDebug</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>software</a></span></div><div class="content">Breakpoints Notation  If a file with breakpoints was modified externally, for example, update through a VCS or changed in an external editor, and the line numbers have changed, the breakpoints will be moved accordingly.  Types of breakpoints(Add breakpoints) Setting Line breakpoint keymap
+ Line breakpoints  Click the gutter at the executable line of code or press keymap
+ Method breakpoints  Click the gutter at the line where the method is declared, or press keymap</div><div class="post-footer">
+        <a href="/posts/intelldebug/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/idea/">idea</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/06_block/">06_block</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是匿名对象? 如何创建匿名对象? 匿名对象:
 没有名字的对象，没有引用指向它的对象
@@ -209,23 +216,6 @@ new Student() 是创建引用类型对象的过程
 1 2 3 4 5  private static double max(double.</div><div class="post-footer">
         <a href="/posts/03_array/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/02_method/">02_method</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何实现 Junit 单元测试? 1 2 3  @Test public void methodName() { }   public void 是固定格式，不可以修改，否则报错
-方法的形参列表，必须为空的，否则会报错
-单元测试的类中，不要写main方法
-JVM内存模型是什么样的? Java 的开发者, 在 《Java虚拟机规范》中指出:
- JVM (运行时数据区)内存分为  JVM栈 堆 方法区 程序计数器 本地方法栈    JVM内存模型中JVM栈(stack)中有什么样的特点? 只有栈中处于栈顶的栈帧才会生效，称这为当前栈桢，当前方法
-JVM内存模型中JVM堆(heap)中有什么样的特点? 所有new出来的东西（称之为对象）都在堆上
-基本数据类型与引用数据类型有什么区别?   存储位置(本质)
-  基本数据类型不存在&quot;引用&quot;的概念，数据都是直接存储在栈上的栈帧里
-  引用数据类型在栈帧中存储引用，引用存储的只是该引用类型在堆上对象的内存地址
-    打印变量名内容:
-  基本数据类型，打印变量名就是该变量具体的数值
-  引用数据类型，打印变量名显示该引用变量堆上的内存地址
-    堆上对象和栈中变量有什么区别?  从存储的类型来看:    堆上存储的是 new 出来的东西，是 引用数据类型 的对象</div><div class="post-footer">
-        <a href="/posts/02_method/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -260,7 +250,7 @@ JVM内存模型中JVM堆(heap)中有什么样的特点? 所有new出来的东西
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>

@@ -4,7 +4,15 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Db01单表</title>
+    <link>http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/</link>
+    <pubDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/</guid>
+    <description><![CDATA[库的增删改查 建库语句是什么(31th_sql, utf8)? 1  createdatabase31th_sqlcharactersetutf8;  如何显示所有的库? 1  showdatabases;  如何显示 31th_sql 的建库语句? 1  showcreatedatabase31th_sql;  如何删除 31th_sql 数据库? 1  dropdatabase31th_sql;  如何选择使用 mymall 数据库? 1  usemymall;  表的增删改查 如何查看如何库中所有的表? 1  showtables;  如何查询 goods 表的建表语句? 1  showcreatetablegoods;  如何描述一个 goods 表? describe goods / desc goods
+1  descgoods;  如何将 goods 表中的字符集改为 utf8 , 校对规则改成 utf8_bin? 1  altertablegoodscharactersetutf8collateutf8_bin;  如何删除 goods 表中 price 字段?]]></description>
+</item><item>
     <title>21_reflect</title>
     <link>http://fengqigang.cn/posts/21_reflect/</link>
     <pubDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</pubDate>
@@ -140,17 +148,5 @@ url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不�
  addAll   clear   containsAll      iterator()  map 不能使用增强for循环, 可以用interset,
 set 可以使用增强for循环
 HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.]]></description>
-</item><item>
-    <title>Day35</title>
-    <link>http://fengqigang.cn/posts/day35/</link>
-    <pubDate>Tue, 11 May 2021 23:25:23 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day35/</guid>
-    <description><![CDATA[day35_linkedHashMap
-LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
-  LinkedHashMap 基本上完全复用了 HashMap 的底层结构， 参数，方法
-  LinkedHashMap的特点基本遵从于 HashMap
-  LinkedHashMap 底层在 HashMap 的基础上(数组 + 链表 + 红黑树) 额外维护了一个双向链表: 这个双向链表用来记录存储
-  LinkedHashMap 如何额外维护一个双向链表? 构造方法?  默认的构造方法  accessOrder(如果我们给accessOrder 设置为真，那么我们如果访问了这个LinkedHashMap中的某一个Key-value数据，那么这份Key-value数据就会在双向链表中的位置移到最后， 它在红黑树上的位置不变)   API TreeMap 有什么特点?  TreeMap 是 Map 一个子实现 描述数据结构是树/二叉搜索树/红黑树 底层是链表 TreeMap 大小有序(中序遍历是有序的) 不允许重复的 key 不允许null键 线程不安全 Treemap 的重复的定义: 大小比较结果是0, 自然顺序/比较器 如果我们希望在TreeMap中存储数据 ，key-value, 我们可以有两个选择：   让key本身可以比较(继承Comparabe接口实现 compareTo 方法)（但会让代码看一起来不清爽） 不想让 key 本身实现 Comparable 接口实现, 手动用比较器实现  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  public class DemoTreeMap { public static void main(String[] args) { TreeMap&lt;User3, Integer&gt; map = new TreeMap&lt;&gt;(); map.]]></description>
 </item></channel>
 </rss>
