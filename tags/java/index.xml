@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/tags/java/</link>
         <description>java - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 17 May 2021 23:31:44 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/java/" rel="self" type="application/rss+xml" /><item>
+    <title>21_reflect</title>
+    <link>http://fengqigang.cn/posts/21_reflect/</link>
+    <pubDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/21_reflect/</guid>
+    <description><![CDATA[什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
+  类名.class
+  对象.getClass（）
+  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.]]></description>
+</item><item>
     <title>Day39</title>
     <link>http://fengqigang.cn/posts/day39/</link>
     <pubDate>Mon, 17 May 2021 23:31:44 &#43;0800</pubDate>
@@ -142,17 +153,5 @@ ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { publi
   API? add
 1 2 3 4 5 6 7 8 9 10 11  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add(&#34;zs&#34;); list.add(&#34;ls&#34;); list.add(&#34;wu&#34;); list.add(&#34;zl&#34;); System.out.println(list); } }   addAll
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.]]></description>
-</item><item>
-    <title>Day30</title>
-    <link>http://fengqigang.cn/posts/day30/</link>
-    <pubDate>Thu, 06 May 2021 23:31:19 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day30/</guid>
-    <description><![CDATA[集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
-  这个集合类表示是的是一种什么数据结构
-  这个集合类他的底层结构是什么(数组，链表，数组+链表)
-  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
-  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
-  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)]]></description>
 </item></channel>
 </rss>

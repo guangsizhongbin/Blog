@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.84.1" />
+	<meta name="generator" content="Hugo 0.84.2" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -100,6 +100,24 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/01_basic/">01_basic</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-30">2021-03-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">[toc]
+JDK 与 JRE 有什么样的关系? JRE (Java Runtime Environment)
+Java 运行时环境
+JDK(Java Development Kit)
+Java 开发者工具包
+除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
+Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
+  单词之间用下划线或横杠连接
+  如:
+student-manage
+How to absolutely guarantee a unique package name? Use an Internet domain name written in reverse.
+For example, consider the domain horstmann.com
+When written in reverse order, it turns into the package name com.horstmann
+You can then append a project name, such as com.</div><div class="post-footer">
+        <a href="/posts/01_basic/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/removeelement/">RemoveElement</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-27">2021-03-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/leetcode/"><i class="far fa-folder fa-fw"></i>leetcode</a></span></div><div class="content">27. Remove Element 双指针法  考虑 nums!= val 时, 加入到当前数组中  1 2 3 4 5 6 7 8 9 10 11 12  class Solution { public int removeElement(int[] nums, int val) { int i = 0; for (int x = 0; x &lt; nums.length; x++){ if (nums[x] != val){ nums[i] = nums[x]; i +=1; } } return i; } }    优化
    1 2  nums[i] = nums[x]; i += 1;   可以直接写成</div><div class="post-footer">
@@ -156,17 +174,6 @@ byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(
 short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$</div><div class="post-footer">
         <a href="/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/">Java第一章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-13">2021-03-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">如何查看当前 java 版本? 1  archlinux-jav status   如何编写 Hello.java? 1 2 3 4 5  public class Hello { public static void mian(String args[]){ System.out.println(&#34;Hello World!&#34;); } }   public 定义的的class有什么特点?   类名称必须与文件名称保持一致
-  在一个 *.java 中只能有一个public class
-  普通的class有什么特点?   类的名称可以和文件名不致， 但是生成的class定义的名称
-  一个*.java程序中可以同时存在多个class定义，编译后会分为不同的*.class文件
-  System.out.print 与 System.out.println 有什么区别?   System.out.print 输出后不换行
-  System.out.println 输出后换行
-  类的命名规范是什么样的? 每一个单词的开关首字母大写</div><div class="post-footer">
-        <a href="/posts/java%E7%AC%AC%E4%B8%80%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -201,7 +208,7 @@ short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ 
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>

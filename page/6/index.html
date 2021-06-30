@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-	<meta name="generator" content="Hugo 0.84.1" />
+	<meta name="generator" content="Hugo 0.84.2" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -100,6 +100,13 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/">第十一章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-18">2021-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">正则表达式与万用字符有什么区别? 万用字符 (wildcard) 代表的是 bash 操作接口的一个功能
+正则表达式则是一种字串处理的表示方式
+如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何使用 demesg 列出核心讯息，再以 grep 找出内含 cpu 那行，并将捉到的关键字显色表示，且加上行号来表示, 同时在关键字所在行的前两行与后三行也一起捉出来显示? 1  sudo dmesg | grep -n --color=auto &#39;cpu&#39;   如何捉出 regular_express.txt 中有 the 的行, 并提供行号? 1  grep -n &#39;the&#39; regular_express.txt   如何捉出 regular_express 中没有 the 的行，并提供等行号? 1  grep -vn &#39;the&#39; regular_express.txt   如何捉出 regular_express.</div><div class="post-footer">
+        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/16_string/">16_string</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-16">2021-04-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">How to convert a String to an integer? Integer.paraseInt(s);
 1 2 3 4 5 6 7  public class StringToInt { public static void main(String[] args) { String num = &#34;1234&#34;; int x = Integer.parseInt(num); System.out.println(x); } }   What boxing and unboxing is courtesy of ? Boxing and unboxing is a courtesy of the complier, not the virtual machine
@@ -182,25 +189,6 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 它们的局部变量仍然是 final 修饰的</div><div class="post-footer">
         <a href="/posts/12_lambda/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/11_innerclass/">11_InnerClass</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-10">2021-04-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是内部类? 嵌套定义在 一个类的内部 的类
-内部类有什么用?  封装  私有化 CPU 这个类后，就不能在 Computer 外部访问这个类了
-内部类互相访问  两个独立的类之间受访问权限限制，而当一个类进入另一个类内部成为内部类就不再受访问权限限制了，可以互相访问私有成员
-内部类如何分类? (成员位置， 局部位置) 定义在成员位置
-  成员内部类
-  普通成员内部类
-  静态内部类
-  定义在局部内部类
-  匿名局部内部类
-  lambda
-  什么是成员内部类?其定义是什么? 成员内部类
-最普通的内部类， 它定义在另一个类的成员位置，可以看成该类的一个成员
-语法
-1 2 3 4  [访问权限修饰符] class EnclosedClazz{ [访问权限修饰符] class InnerClazz{ } }   普通的类有几种访问权限修饰符? 两种，没有 protected , private
-class 是用来被实例化的，所以只有 默认 和 public 访问权限修饰符</div><div class="post-footer">
-        <a href="/posts/11_innerclass/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -235,7 +223,7 @@ class 是用来被实例化的，所以只有 默认 和 public 访问权限修�
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>

@@ -5,78 +5,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Day23 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Day23" />
-<meta property="og:description" content="类加载的细分? 类加载通过 加载, 连接， 初始化 三步来实现
-类加载中的加载是如何执行的？ 通过类加载器获得二进制字节流
-在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口
-类加载中的连接是如何执行的? 验证：确保被加载类的正确性正确性的校验
-cafe babe:magic number起校验作用的
-准备：负责为类的静态成员分配内存并设置默认初始化值
-解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)
-类加载中的初始化是如何执行的？ 给静态成员变量赋初值，执行静态代码块内容
-类加载时机有哪些? 创建类的实例 (首次创建该类)
-对象访问类的静态变量（首次)
-调用类的静态方法（首次)
-使用反射方式来强制创建某个类或接口对应的 java.lang.Class 对象
-加载某个类的子类，会先触发父类的加载
-直接使用 java. exe 命令来运行某个主类，也就是执行了某个类的main方法
-类加载中有哪些加载器? Bootstrap ClassLoader
-根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar
-Extension ClassLoader
-扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录
-Sysetm ClassLoader
-系统类加载器/应用加载器负责加载自己定义的Java类
-java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(通过类加载器 ClassLoader 加载) 运行时阶段  什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+        <title>21_reflect - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="21_reflect" />
+<meta property="og:description" content="什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
 获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
   类名.class
   对象.getClass（）
-  如何用 Class." />
+  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/day23/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-26T23:39:19&#43;08:00" />
-<meta property="article:modified_time" content="2021-04-26T00:00:00&#43;00:00" />
+<meta property="og:url" content="http://fengqigang.cn/posts/21_reflect/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-30T09:32:16&#43;08:00" />
+<meta property="article:modified_time" content="2021-06-30T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Day23"/>
-<meta name="twitter:description" content="类加载的细分? 类加载通过 加载, 连接， 初始化 三步来实现
-类加载中的加载是如何执行的？ 通过类加载器获得二进制字节流
-在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口
-类加载中的连接是如何执行的? 验证：确保被加载类的正确性正确性的校验
-cafe babe:magic number起校验作用的
-准备：负责为类的静态成员分配内存并设置默认初始化值
-解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)
-类加载中的初始化是如何执行的？ 给静态成员变量赋初值，执行静态代码块内容
-类加载时机有哪些? 创建类的实例 (首次创建该类)
-对象访问类的静态变量（首次)
-调用类的静态方法（首次)
-使用反射方式来强制创建某个类或接口对应的 java.lang.Class 对象
-加载某个类的子类，会先触发父类的加载
-直接使用 java. exe 命令来运行某个主类，也就是执行了某个类的main方法
-类加载中有哪些加载器? Bootstrap ClassLoader
-根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar
-Extension ClassLoader
-扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录
-Sysetm ClassLoader
-系统类加载器/应用加载器负责加载自己定义的Java类
-java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(通过类加载器 ClassLoader 加载) 运行时阶段  什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+<meta name="twitter:title" content="21_reflect"/>
+<meta name="twitter:description" content="什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
 获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
   类名.class
   对象.getClass（）
-  如何用 Class."/>
+  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class."/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/day23/" /><link rel="prev" href="http://fengqigang.cn/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/" /><link rel="next" href="http://fengqigang.cn/posts/day24/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/21_reflect/" /><link rel="prev" href="http://fengqigang.cn/posts/aop/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Day23",
+        "headline": "21_reflect",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/day23\/"
-        },"genre": "posts","keywords": "java","wordcount":  2288 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/day23\/","datePublished": "2021-04-26T23:39:19+08:00","dateModified": "2021-04-26T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/21_reflect\/"
+        },"genre": "posts","keywords": "java","wordcount":  2548 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/21_reflect\/","datePublished": "2021-06-30T09:32:16+08:00","dateModified": "2021-06-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -150,10 +110,10 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Day23</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">21_reflect</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-04-26">2021-04-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2288 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-30">2021-06-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2548 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -163,13 +123,6 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
   <ul>
     <li>
       <ul>
-        <li><a href="#类加载的细分">类加载的细分?</a></li>
-        <li><a href="#类加载中的加载是如何执行的">类加载中的加载是如何执行的？</a></li>
-        <li><a href="#类加载中的连接是如何执行的">类加载中的连接是如何执行的?</a></li>
-        <li><a href="#类加载中的初始化是如何执行的">类加载中的初始化是如何执行的？</a></li>
-        <li><a href="#类加载时机有哪些">类加载时机有哪些?</a></li>
-        <li><a href="#类加载中有哪些加载器">类加载中有哪些加载器?</a></li>
-        <li><a href="#java-在计算机中有哪几种阶段"><strong>java</strong> 在计算机中有哪几种阶段?</a></li>
         <li><a href="#什么是反射">什么是反射?</a></li>
         <li><a href="#获取字节码文件有哪些方式">获取字节码文件有哪些方式?</a></li>
         <li><a href="#如何用-classforname全限定类名-获取字节码文件">如何用 <strong>Class.forName(&ldquo;全限定类名&rdquo;)</strong> 获取字节码文件？</a></li>
@@ -194,83 +147,18 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
         <li><a href="#如何利用反射获取成员变量的权限修饰符">如何利用反射获取成员变量的权限修饰符?</a></li>
         <li><a href="#如何通过反射获取成员变量的类型">如何通过反射，获取成员变量的类型?</a></li>
         <li><a href="#如何通过反射获取成员方法的返回值类型">如何通过反射，获取成员方法的返回值类型?</a></li>
-        <li><a href="#获取成员方法参数">获取成员方法参数?</a></li>
-        <li><a href="#获取父类">获取父类?</a></li>
-        <li><a href="#获取接口">获取接口?</a></li>
+        <li><a href="#如何利用反射获取成员方法参数类型">如何利用反射，获取成员方法参数类型?</a></li>
+        <li><a href="#如何利用反射获取父类">如何利用反射，获取父类?</a></li>
+        <li><a href="#如何通过反射获取接口">如何通过反射，获取接口?</a></li>
         <li><a href="#如何反编译成员变量">如何反编译成员变量?</a></li>
         <li><a href="#如何反编译成员方法">如何反编译成员方法?</a></li>
         <li><a href="#反射一般有什么应用场景">反射一般有什么应用场景?</a></li>
         <li><a href="#通过反射调用默认无参的构造方法">通过反射调用默认无参的构造方法?</a></li>
-        <li><a href="#什么是注释">什么是注释?</a></li>
-        <li><a href="#什么是注解">什么是注解？</a></li>
-        <li><a href="#什么是注解体">什么是注解体?</a></li>
-        <li><a href="#如何使用注解">如何使用注解?</a></li>
-        <li><a href="#使用注解创建学生对象">使用注解创建学生对象?</a></li>
-        <li><a href="#什么是注解处理器">什么是注解处理器？</a></li>
-        <li><a href="#什么是元注解">什么是元注解?</a></li>
-        <li><a href="#什么是元数据">什么是元数据?</a></li>
-        <li><a href="#注解的3种保留级别">注解的3种保留级别?</a></li>
-        <li><a href="#连接数据库">连接数据库？</a></li>
-        <li><a href="#什么是显式的内存管理">什么是显式的内存管理?</a></li>
-        <li><a href="#隐式的内存管理">隐式的内存管理</a></li>
-        <li><a href="#谁是垃圾">谁是垃圾?</a></li>
-        <li><a href="#如何回收垃圾">如何回收垃圾?</a></li>
-        <li><a href="#何时回收垃圾">何时回收垃圾？</a></li>
-        <li><a href="#gc-相关概念">GC 相关概念?</a></li>
-        <li><a href="#内存泄露与内存溢出的关系-">内存泄露与内存溢出的关系 ?</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="类加载的细分">类加载的细分?</h3>
-<p>类加载通过 <strong>加载</strong>, <strong>连接</strong>， <strong>初始化</strong> 三步来实现</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426093507.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426093507.png, https://img.fengqigang.cn//img/20210426093507.png 1.5x, https://img.fengqigang.cn//img/20210426093507.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426093507.png"
-        title="https://img.fengqigang.cn//img/20210426093507.png" /></p>
-<h3 id="类加载中的加载是如何执行的">类加载中的加载是如何执行的？</h3>
-<p>通过类加载器获得二进制字节流</p>
-<p>在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口</p>
-<h3 id="类加载中的连接是如何执行的">类加载中的连接是如何执行的?</h3>
-<p>验证：确保被加载类的正确性正确性的校验</p>
-<p>cafe babe:magic number起校验作用的</p>
-<p>准备：负责为类的静态成员分配内存并设置默认初始化值</p>
-<p>解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)</p>
-<h3 id="类加载中的初始化是如何执行的">类加载中的初始化是如何执行的？</h3>
-<p>给静态成员变量赋初值，执行静态代码块内容</p>
-<h3 id="类加载时机有哪些">类加载时机有哪些?</h3>
-<p>创建类的实例 (首次创建该类)</p>
-<p>对象访问类的静态变量（首次)</p>
-<p>调用类的静态方法（首次)</p>
-<p>使用反射方式来强制创建某个类或接口对应的 <strong>java.lang.Class</strong> 对象</p>
-<p>加载某个类的子类，会先触发父类的加载</p>
-<p>直接使用 <strong>java. exe</strong> 命令来运行某个主类，也就是执行了某个类的main方法</p>
-<h3 id="类加载中有哪些加载器">类加载中有哪些加载器?</h3>
-<p><strong>Bootstrap ClassLoader</strong></p>
-<p>根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar</p>
-<p><strong>Extension ClassLoader</strong></p>
-<p>扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录</p>
-<p><strong>Sysetm ClassLoader</strong></p>
-<p>系统类加载器/应用加载器负责加载自己定义的Java类</p>
-<h3 id="java-在计算机中有哪几种阶段"><strong>java</strong> 在计算机中有哪几种阶段?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426094815.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426094815.png, https://img.fengqigang.cn//img/20210426094815.png 1.5x, https://img.fengqigang.cn//img/20210426094815.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426094815.png"
-        title="https://img.fengqigang.cn//img/20210426094815.png" /></p>
-<ol>
-<li>源文件阶段</li>
-<li>Class 类对象阶段(通过类加载器 ClassLoader 加载)</li>
-<li>运行时阶段</li>
-</ol>
-<h3 id="什么是反射">什么是反射?</h3>
+            </div><div class="content" id="content"><h3 id="什么是反射">什么是反射?</h3>
 <p>获取类运行时信息的一种技术，这种技术叫做反射技术</p>
 <h3 id="获取字节码文件有哪些方式">获取字节码文件有哪些方式?</h3>
 <ol>
@@ -1914,33 +1802,329 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210426233113.png"
         title="20210426233113" /></p>
-<h3 id="获取成员方法参数">获取成员方法参数?</h3>
-<p><img
+<h3 id="如何利用反射获取成员方法参数类型">如何利用反射，获取成员方法参数类型?</h3>
+<p><strong>getParameterTypes</strong></p>
+<p><strong>Demo2.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="n">Class</span> <span class="n">personCls</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;Demo.Person&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 获取方法的参数类型
+</span><span class="c1"></span>        <span class="n">Method</span><span class="o">[]</span> <span class="n">declaredMethods</span> <span class="o">=</span> <span class="n">personCls</span><span class="o">.</span><span class="na">getDeclaredMethods</span><span class="o">();</span>
+        <span class="n">Class</span><span class="o">[]</span> <span class="n">parameterTypes</span> <span class="o">=</span> <span class="n">declaredMethods</span><span class="o">[</span><span class="n">1</span><span class="o">].</span><span class="na">getParameterTypes</span><span class="o">();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">Class</span> <span class="n">param</span> <span class="o">:</span> <span class="n">parameterTypes</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">param</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Person.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">money</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">eat</span> <span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eat food&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eat&#34;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Person{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;money=&#34;</span> <span class="o">+</span> <span class="n">money</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="s">&#34;, name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426115355.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426115355.png, https://img.fengqigang.cn//img/20210426115355.png 1.5x, https://img.fengqigang.cn//img/20210426115355.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210427140654.png"
+        data-srcset="https://img.fengqigang.cn//img/20210427140654.png, https://img.fengqigang.cn//img/20210427140654.png 1.5x, https://img.fengqigang.cn//img/20210427140654.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426115355.png"
-        title="https://img.fengqigang.cn//img/20210426115355.png" /></p>
-<h3 id="获取父类">获取父类?</h3>
-<p><img
+        alt="https://img.fengqigang.cn//img/20210427140654.png"
+        title="20210427140654" /></p>
+<h3 id="如何利用反射获取父类">如何利用反射，获取父类?</h3>
+<p><strong>getSuperclass()</strong></p>
+<p><strong>Demo2.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="n">Class</span> <span class="n">personCls</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;Demo.Person&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 获取方法的父类
+</span><span class="c1"></span>        <span class="n">Class</span> <span class="n">superclass</span> <span class="o">=</span> <span class="n">personCls</span><span class="o">.</span><span class="na">getSuperclass</span><span class="o">();</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">superclass</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">money</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">eat</span> <span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eat food&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eat&#34;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Person{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;money=&#34;</span> <span class="o">+</span> <span class="n">money</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="s">&#34;, name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426115654.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426115654.png, https://img.fengqigang.cn//img/20210426115654.png 1.5x, https://img.fengqigang.cn//img/20210426115654.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210427140914.png"
+        data-srcset="https://img.fengqigang.cn//img/20210427140914.png, https://img.fengqigang.cn//img/20210427140914.png 1.5x, https://img.fengqigang.cn//img/20210427140914.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426115654.png"
-        title="https://img.fengqigang.cn//img/20210426115654.png" /></p>
-<h3 id="获取接口">获取接口?</h3>
-<p><img
+        alt="https://img.fengqigang.cn//img/20210427140914.png"
+        title="20210427140914" /></p>
+<h3 id="如何通过反射获取接口">如何通过反射，获取接口?</h3>
+<p><strong>getInterfaces</strong></p>
+<p><strong>Demo2.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo2</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClassNotFoundException</span> <span class="o">{</span>
+        <span class="n">Class</span> <span class="n">personCls</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;Demo.Person&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 获取接口
+</span><span class="c1"></span>        <span class="n">Class</span><span class="o">[]</span> <span class="n">interfaces</span> <span class="o">=</span> <span class="n">personCls</span><span class="o">.</span><span class="na">getInterfaces</span><span class="o">();</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">Class</span> <span class="n">i</span> <span class="o">:</span> <span class="n">interfaces</span><span class="o">){</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Person.java</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">money</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="o">(</span><span class="n">Object</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">eat</span> <span class="o">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eat food&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eat&#34;</span> <span class="o">+</span> <span class="n">s</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Person{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;money=&#34;</span> <span class="o">+</span> <span class="n">money</span> <span class="o">+</span>
+                <span class="s">&#34;, age=&#34;</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span>
+                <span class="s">&#34;, name=&#39;&#34;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426115721.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426115721.png, https://img.fengqigang.cn//img/20210426115721.png 1.5x, https://img.fengqigang.cn//img/20210426115721.png 2x"
+        data-src="https://img.fengqigang.cn//img/20210427141257.png"
+        data-srcset="https://img.fengqigang.cn//img/20210427141257.png, https://img.fengqigang.cn//img/20210427141257.png 1.5x, https://img.fengqigang.cn//img/20210427141257.png 2x"
         data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426115721.png"
-        title="https://img.fengqigang.cn//img/20210426115721.png" /></p>
+        alt="https://img.fengqigang.cn//img/20210427141257.png"
+        title="20210427141257" /></p>
 <h3 id="如何反编译成员变量">如何反编译成员变量?</h3>
 <p><img
         class="lazyload"
@@ -1980,400 +2164,11 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
         alt="https://img.fengqigang.cn//img/20210426145347.png"
         title="https://img.fengqigang.cn//img/20210426145347.png" /></p>
 <p>直接通过 NewInstalnce 可以要通过，默认的方法</p>
-<h3 id="什么是注释">什么是注释?</h3>
-<ol>
-<li>单行注释: //</li>
-<li>多行注释: /* */</li>
-<li>文档注释: /** */</li>
-</ol>
-<p><strong>注释是给程序员看的，不参与编译</strong></p>
-<h3 id="什么是注解">什么是注解？</h3>
-<p>与 <strong>接口</strong>，<strong>类</strong> 是同一级别的</p>
-<p>理解为一个标签</p>
-<p><strong>参与编译</strong></p>
-<p><strong>语法</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">权限修饰符</span> <span class="nd">@interface</span> <span class="n">注解名称</span> <span class="o">{</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="什么是注解体">什么是注解体?</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">权限修饰符</span> <span class="nd">@interface</span> <span class="n">注解名称</span> <span class="o">{</span>
-    <span class="c1">// 注解体
-</span><span class="c1"></span>    <span class="n">属性类型</span> <span class="nf">属性名称</span><span class="o">();</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426151654.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426151654.png, https://img.fengqigang.cn//img/20210426151654.png 1.5x, https://img.fengqigang.cn//img/20210426151654.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426151654.png"
-        title="https://img.fengqigang.cn//img/20210426151654.png" /></p>
-<p>注意(属性类型):</p>
-<ul>
-<li>基本数据类型</li>
-<li>String 类型</li>
-<li>Class 类型</li>
-<li>枚举类型(Enum)</li>
-<li>注解类型</li>
-<li>以及以上类型的数组</li>
-</ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426151934.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426151934.png, https://img.fengqigang.cn//img/20210426151934.png 1.5x, https://img.fengqigang.cn//img/20210426151934.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426151934.png"
-        title="https://img.fengqigang.cn//img/20210426151934.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426152003.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426152003.png, https://img.fengqigang.cn//img/20210426152003.png 1.5x, https://img.fengqigang.cn//img/20210426152003.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426152003.png"
-        title="https://img.fengqigang.cn//img/20210426152003.png" /></p>
-<h3 id="如何使用注解">如何使用注解?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426154322.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426154322.png, https://img.fengqigang.cn//img/20210426154322.png 1.5x, https://img.fengqigang.cn//img/20210426154322.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426154322.png"
-        title="https://img.fengqigang.cn//img/20210426154322.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426154523.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426154523.png, https://img.fengqigang.cn//img/20210426154523.png 1.5x, https://img.fengqigang.cn//img/20210426154523.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426154523.png"
-        title="https://img.fengqigang.cn//img/20210426154523.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426154747.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426154747.png, https://img.fengqigang.cn//img/20210426154747.png 1.5x, https://img.fengqigang.cn//img/20210426154747.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426154747.png"
-        title="https://img.fengqigang.cn//img/20210426154747.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426163737.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426163737.png, https://img.fengqigang.cn//img/20210426163737.png 1.5x, https://img.fengqigang.cn//img/20210426163737.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426163737.png"
-        title="https://img.fengqigang.cn//img/20210426163737.png" /></p>
-<h3 id="使用注解创建学生对象">使用注解创建学生对象?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426155245.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426155245.png, https://img.fengqigang.cn//img/20210426155245.png 1.5x, https://img.fengqigang.cn//img/20210426155245.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426155245.png"
-        title="https://img.fengqigang.cn//img/20210426155245.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426155345.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426155345.png, https://img.fengqigang.cn//img/20210426155345.png 1.5x, https://img.fengqigang.cn//img/20210426155345.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426155345.png"
-        title="https://img.fengqigang.cn//img/20210426155345.png" /></p>
-<h3 id="什么是注解处理器">什么是注解处理器？</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426160340.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426160340.png, https://img.fengqigang.cn//img/20210426160340.png 1.5x, https://img.fengqigang.cn//img/20210426160340.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426160340.png"
-        title="https://img.fengqigang.cn//img/20210426160340.png" /></p>
-<p><strong>用注解来判断</strong></p>
-<p>isAnnotationPresent()</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426161044.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426161044.png, https://img.fengqigang.cn//img/20210426161044.png 1.5x, https://img.fengqigang.cn//img/20210426161044.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426161044.png"
-        title="https://img.fengqigang.cn//img/20210426161044.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426161546.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426161546.png, https://img.fengqigang.cn//img/20210426161546.png 1.5x, https://img.fengqigang.cn//img/20210426161546.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426161546.png"
-        title="https://img.fengqigang.cn//img/20210426161546.png" /></p>
-<p><strong>忽略语法检查</strong></p>
-<p><strong>DeclaredField</strong></p>
-<h3 id="什么是元注解">什么是元注解?</h3>
-<p><strong>元注解</strong>:</p>
-<p>描述注解的注解</p>
-<p><strong>常用的元注解</strong></p>
-<ul>
-<li>@Retention 元注解
-<ul>
-<li>RetentionPolicy.RUNTIME</li>
-<li>RetentionPolicy.CLASS</li>
-<li>RetentionPolicy.SOURCE</li>
-</ul>
-</li>
-</ul>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426163257.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426163257.png, https://img.fengqigang.cn//img/20210426163257.png 1.5x, https://img.fengqigang.cn//img/20210426163257.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426163257.png"
-        title="https://img.fengqigang.cn//img/20210426163257.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426163308.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426163308.png, https://img.fengqigang.cn//img/20210426163308.png 1.5x, https://img.fengqigang.cn//img/20210426163308.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426163308.png"
-        title="https://img.fengqigang.cn//img/20210426163308.png" /></p>
-<h3 id="什么是元数据">什么是元数据?</h3>
-<p>修饰数据的数据</p>
-<h3 id="注解的3种保留级别">注解的3种保留级别?</h3>
-<p>和 <strong>java</strong> 程序一致，注解有3种保留级别:</p>
-<p><strong>SOURCE</strong>:</p>
-<p>注解将被编译器丢弃 (class 文件中没有)</p>
-<p><strong>CLASS</strong>:</p>
-<p>注解在 <strong>class</strong> 文件中可用，但会被 <strong>JVM</strong> 丢弃(内存没有)</p>
-<p><strong>RUNTIME</strong>:</p>
-<p><strong>JVM</strong>在运行时，也会保留注解信息</p>
-<h3 id="连接数据库">连接数据库？</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426164325.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426164325.png, https://img.fengqigang.cn//img/20210426164325.png 1.5x, https://img.fengqigang.cn//img/20210426164325.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426164325.png"
-        title="https://img.fengqigang.cn//img/20210426164325.png" /></p>
-<p>###　注解与配置文件的比较</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426164444.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426164444.png, https://img.fengqigang.cn//img/20210426164444.png 1.5x, https://img.fengqigang.cn//img/20210426164444.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426164444.png"
-        title="https://img.fengqigang.cn//img/20210426164444.png" /></p>
-<h3 id="什么是显式的内存管理">什么是显式的内存管理?</h3>
-<p>由程序员去管理内存</p>
-<p><strong>malloc()</strong></p>
-<p><strong>free()</strong></p>
-<p><strong>可能出现的问题</strong></p>
-<ul>
-<li>野指针</li>
-<li>内存泄漏</li>
-</ul>
-<h3 id="隐式的内存管理">隐式的内存管理</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426171741.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426171741.png, https://img.fengqigang.cn//img/20210426171741.png 1.5x, https://img.fengqigang.cn//img/20210426171741.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426171741.png"
-        title="https://img.fengqigang.cn//img/20210426171741.png" /></p>
-<h3 id="谁是垃圾">谁是垃圾?</h3>
-<ol>
-<li>引用计数算法</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426172117.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426172117.png, https://img.fengqigang.cn//img/20210426172117.png 1.5x, https://img.fengqigang.cn//img/20210426172117.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426172117.png"
-        title="https://img.fengqigang.cn//img/20210426172117.png" /></p>
-<ol start="2">
-<li>根搜索算法</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426172229.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426172229.png, https://img.fengqigang.cn//img/20210426172229.png 1.5x, https://img.fengqigang.cn//img/20210426172229.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426172229.png"
-        title="https://img.fengqigang.cn//img/20210426172229.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426172507.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426172507.png, https://img.fengqigang.cn//img/20210426172507.png 1.5x, https://img.fengqigang.cn//img/20210426172507.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426172507.png"
-        title="https://img.fengqigang.cn//img/20210426172507.png" /></p>
-<h3 id="如何回收垃圾">如何回收垃圾?</h3>
-<ol>
-<li>标记清除算法</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426172856.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426172856.png, https://img.fengqigang.cn//img/20210426172856.png 1.5x, https://img.fengqigang.cn//img/20210426172856.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426172856.png"
-        title="https://img.fengqigang.cn//img/20210426172856.png" /></p>
-<p>它会产生垃圾碎片，如果要创建一个数组，但是无法创建一个连续的存储空间</p>
-<ol start="2">
-<li>标记复制算法</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426173107.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426173107.png, https://img.fengqigang.cn//img/20210426173107.png 1.5x, https://img.fengqigang.cn//img/20210426173107.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426173107.png"
-        title="https://img.fengqigang.cn//img/20210426173107.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426173229.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426173229.png, https://img.fengqigang.cn//img/20210426173229.png 1.5x, https://img.fengqigang.cn//img/20210426173229.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426173229.png"
-        title="https://img.fengqigang.cn//img/20210426173229.png" /></p>
-<ol>
-<li>
-<p>一次性回收大片的连续空间</p>
-</li>
-<li>
-<p>不会产生内存碎片</p>
-</li>
-<li>
-<p>如果说有少量存活对象，复制起来很快，适用于少量对象存活的情况</p>
-</li>
-<li>
-<p>但是，内存利用率低</p>
-</li>
-<li>
-<p>如果有大量对象存活，就需要复制大量对象，效率就低了</p>
-</li>
-<li>
-<p>标记整理算法(Mark Compact)</p>
-</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426173626.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426173626.png, https://img.fengqigang.cn//img/20210426173626.png 1.5x, https://img.fengqigang.cn//img/20210426173626.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426173626.png"
-        title="https://img.fengqigang.cn//img/20210426173626.png" /></p>
-<ol start="4">
-<li>分带收集算法</li>
-</ol>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426173839.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426173839.png, https://img.fengqigang.cn//img/20210426173839.png 1.5x, https://img.fengqigang.cn//img/20210426173839.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426173839.png"
-        title="https://img.fengqigang.cn//img/20210426173839.png" /></p>
-<p><strong>死的快的用</strong> 标记复制算法</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426174252.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426174252.png, https://img.fengqigang.cn//img/20210426174252.png 1.5x, https://img.fengqigang.cn//img/20210426174252.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426174252.png"
-        title="https://img.fengqigang.cn//img/20210426174252.png" /></p>
-<h3 id="何时回收垃圾">何时回收垃圾？</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426174452.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426174452.png, https://img.fengqigang.cn//img/20210426174452.png 1.5x, https://img.fengqigang.cn//img/20210426174452.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426174452.png"
-        title="https://img.fengqigang.cn//img/20210426174452.png" /></p>
-<p>idle 休眠</p>
-<p>heap space 堆内存</p>
-<p><strong>System.gc()</strong></p>
-<h3 id="gc-相关概念">GC 相关概念?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426174617.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426174617.png, https://img.fengqigang.cn//img/20210426174617.png 1.5x, https://img.fengqigang.cn//img/20210426174617.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426174617.png"
-        title="https://img.fengqigang.cn//img/20210426174617.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426174924.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426174924.png, https://img.fengqigang.cn//img/20210426174924.png 1.5x, https://img.fengqigang.cn//img/20210426174924.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426174924.png"
-        title="https://img.fengqigang.cn//img/20210426174924.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426174950.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426174950.png, https://img.fengqigang.cn//img/20210426174950.png 1.5x, https://img.fengqigang.cn//img/20210426174950.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426174950.png"
-        title="https://img.fengqigang.cn//img/20210426174950.png" /></p>
-<h3 id="内存泄露与内存溢出的关系-">内存泄露与内存溢出的关系 ?</h3>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426175328.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426175328.png, https://img.fengqigang.cn//img/20210426175328.png 1.5x, https://img.fengqigang.cn//img/20210426175328.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426175328.png"
-        title="https://img.fengqigang.cn//img/20210426175328.png" /></p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://img.fengqigang.cn//img/20210426175256.png"
-        data-srcset="https://img.fengqigang.cn//img/20210426175256.png, https://img.fengqigang.cn//img/20210426175256.png 1.5x, https://img.fengqigang.cn//img/20210426175256.png 2x"
-        data-sizes="auto"
-        alt="https://img.fengqigang.cn//img/20210426175256.png"
-        title="https://img.fengqigang.cn//img/20210426175256.png" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-04-26</span>
+                <span>Updated on 2021-06-30</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -2392,8 +2187,7 @@ java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(�
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/" class="prev" rel="prev" title="Linux第十二章"><i class="fas fa-angle-left fa-fw"></i>Linux第十二章</a>
-            <a href="/posts/day24/" class="next" rel="next" title="Day24">Day24<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/aop/" class="prev" rel="prev" title="Aop"><i class="fas fa-angle-left fa-fw"></i>Aop</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

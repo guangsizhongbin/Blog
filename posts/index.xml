@@ -4,7 +4,18 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>21_reflect</title>
+    <link>http://fengqigang.cn/posts/21_reflect/</link>
+    <pubDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/21_reflect/</guid>
+    <description><![CDATA[什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
+  类名.class
+  对象.getClass（）
+  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.]]></description>
+</item><item>
     <title>Aop</title>
     <link>http://fengqigang.cn/posts/aop/</link>
     <pubDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</pubDate>
@@ -141,17 +152,5 @@ LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
   LinkedHashMap的特点基本遵从于 HashMap
   LinkedHashMap 底层在 HashMap 的基础上(数组 + 链表 + 红黑树) 额外维护了一个双向链表: 这个双向链表用来记录存储
   LinkedHashMap 如何额外维护一个双向链表? 构造方法?  默认的构造方法  accessOrder(如果我们给accessOrder 设置为真，那么我们如果访问了这个LinkedHashMap中的某一个Key-value数据，那么这份Key-value数据就会在双向链表中的位置移到最后， 它在红黑树上的位置不变)   API TreeMap 有什么特点?  TreeMap 是 Map 一个子实现 描述数据结构是树/二叉搜索树/红黑树 底层是链表 TreeMap 大小有序(中序遍历是有序的) 不允许重复的 key 不允许null键 线程不安全 Treemap 的重复的定义: 大小比较结果是0, 自然顺序/比较器 如果我们希望在TreeMap中存储数据 ，key-value, 我们可以有两个选择：   让key本身可以比较(继承Comparabe接口实现 compareTo 方法)（但会让代码看一起来不清爽） 不想让 key 本身实现 Comparable 接口实现, 手动用比较器实现  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  public class DemoTreeMap { public static void main(String[] args) { TreeMap&lt;User3, Integer&gt; map = new TreeMap&lt;&gt;(); map.]]></description>
-</item><item>
-    <title>Day34</title>
-    <link>http://fengqigang.cn/posts/day34/</link>
-    <pubDate>Mon, 10 May 2021 23:36:10 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day34/</guid>
-    <description><![CDATA[套壳 Java 集合体系是什么样的? 两个
-Collection 集合体系
-Map 集合体系
-都是 Object 的子类
-Map 特点  Map 接口是Map 集合体系的顶级接口 和 Collection 接口以及 Collection 下面子实现不同的是, Map 所存储的数据不再是单个数据的，而是 Key-value 的数据(键值对) Map 的子实现有些是有序的，有些是无序的 Map 的子实现不允许存储重复key(重复元素的定义不同) Map 有些子实现可以存储 null, 有些子实现不允许存储 null (指key值)  Map 的 Api? put
-1 2 3 4 5 6 7 8 9 10 11 12 13  public class TestMap { public static void main(String[] args) { HashMap map = new HashMap&lt;String, Integer&gt;(2); // put  map.]]></description>
 </item></channel>
 </rss>
