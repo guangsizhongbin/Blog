@@ -14,8 +14,8 @@ LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
   LinkedHashMap 如何额外维护一个双向链表? 构造方法?  默认的构造方法  accessOrder(如果我们给accessOrder 设置为真，那么我们如果访问了这个LinkedHashMap中的某一个Key-value数据，那么这份Key-value数据就会在双向链表中的位置移到最后， 它在红黑树上的位置不变)   API TreeMap 有什么特点?  TreeMap 是 Map 一个子实现 描述数据结构是树/二叉搜索树/红黑树 底层是链表 TreeMap 大小有序(中序遍历是有序的) 不允许重复的 key 不允许null键 线程不安全 Treemap 的重复的定义: 大小比较结果是0, 自然顺序/比较器 如果我们希望在TreeMap中存储数据 ，key-value, 我们可以有两个选择：   让key本身可以比较(继承Comparabe接口实现 compareTo 方法)（但会让代码看一起来不清爽） 不想让 key 本身实现 Comparable 接口实现, 手动用比较器实现  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  public class DemoTreeMap { public static void main(String[] args) { TreeMap&lt;User3, Integer&gt; map = new TreeMap&lt;&gt;(); map." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/day35/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-11T23:25:23&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-11T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2021-05-11T23:25:23+08:00" />
+<meta property="article:modified_time" content="2021-05-11T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Day35"/>
@@ -769,7 +769,7 @@ int index = (hash &amp; 0x7FFFFFFF) % tab.length;</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.3">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>
