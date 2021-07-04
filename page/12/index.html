@@ -100,6 +100,32 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux_2/">Linux_2</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-16">2021-02-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">个人电脑架构与相关设备元件 Intel芯片架构 Intel芯片架构-什么是南北桥?它们是干什么的？1 北桥: 负责链接速度较快的元件(在目前的主流架构中，大多将北桥内存控制器整合到CPU封装中了)
+  CPU
+  内存
+  显卡接口等
+  南桥: 负责链接速度较慢的元件
+  硬盘
+  USB
+  网卡
+  Intel芯片架构-为什么现在的主流架构中，要将北桥内存控制器整合到CPU中？ 首先, 北桥是负责链接速度较快的元件(内存), 然后，若CPU需要与内存交流，就需要经过北桥，这样就会瓜分掉北桥的总可用带宽，影响其他元件的沟通。最后，若将内存控制器整合到CPU后，CPU与内存之间的沟通是直接交流，速度较快，而且消耗更多的带宽。
+Intel芯片架构-什么是CPU的频率？2 即CPU每秒钟可以进行的工作次数
+速度单位使用的是十进制
+即$3.5 \times 10 ^ 9$MHz
+Intel芯片架构-什么是CPU的外频与倍频？什么会有外频和倍频出现？ 外频: CPU与外部元件进行数据传输时的速度
+倍频: CPU内部用来加速工作性能的一个倍数
+首先，所有的设备都得通过北桥来链接，因此每个设备的工作频率都应该相同。然后，CPU的运算速度应比其他设备要快，所以厂商会在 CPU内部进行加速。
+Intel芯片架构-如何查看计算机的外频与倍频？ 即总线速度为外频
+核心速度 = 倍频 x 总线速度
+Intel芯片架构-超频指的是超什么频？ 首先，超频是指超外频, 在以前所有的数据都需要通过北桥，但是北桥不可能比CPU快，成为系统性能的瓶颈。其次，在新的CPU设计中，将北桥的功能整合到CPU内，使得CPU直接与内存、显卡进行沟通，CPU的频率设计就不需要考虑外频了，只需要考虑整体的频率。最后，现在的CPU-z中，外频变成100MHZ而倍频可以到30以上。
+Intel芯片架构-前端总线速度是什么？ 前端总线速度(Front Side Bus)
+CPU中的所有数据都是由内存提供的
+查看内存信息
+1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?</div><div class="post-footer">
+        <a href="/posts/linux_2/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux_1/">Linux_1</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-15">2021-02-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">电脑: 辅助人脑的好工具 计算机硬件的五大单元 计算机硬件有哪五大单元？  输入单元 输出单元 控制单元 算数逻辑单元 存储单元  cpu中包含哪些单元？ 控制、算术逻辑单元
 CPU-什么是CPU的架构？ 首先，使用软件都需要经过CPU内部的微指令集来达成才行。其次，这些指令集的设计主要被分为两种设计理念，也就是两种主要的CPU架构: 分别为:精简指令集(RISC)与复杂指令集(CISC)系统。
@@ -330,19 +356,6 @@ endsnippet
 <td class="lntd"></div><div class="post-footer">
         <a href="/posts/nvim%E6%8F%92%E4%BB%B6/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nvim/">Nvim</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/">使用WebDAV关联坚果云与Joplin</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-26">2021-01-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">关联方法1 1. 在坚果云上创建一个英文名称的根目录的文件夹, 如&quot;note&quot; 2. 配置Joplin WebDAV URL: https//dav.jiangguoyun.com/dav/note
-(note为刚才创建的文件夹名称)
-WebDAV 名称: 坚果云账号邮箱
-WebDAV 密码: 在坚果云中生成的第三方应用密码2
-3. 点击检查&quot;同步配置&quot; BUG 1. Too many requests are received recently 可以将同步的并发连接数调低(调成1后，等一会, 即可)3
-  如何使用WebDAV关联坚果云与Joplin?&#160;&#x21a9;&#xfe0e;
- 坚果云第三方应用授权WebDAV开启方法&#160;&#x21a9;&#xfe0e;
- joplin使用坚果云webdav同步时出现以下问题如何解决？&#160;&#x21a9;&#xfe0e;
-   </div><div class="post-footer">
-        <a href="/posts/%E4%BD%BF%E7%94%A8webdav%E5%85%B3%E8%81%94%E5%9D%9A%E6%9E%9C%E4%BA%91%E4%B8%8Ejoplin/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/joplin/">joplin</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

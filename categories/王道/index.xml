@@ -21,7 +21,10 @@
   学生表
  id 姓名  课程表
  id 课程名称  学生选课表
- id 学生id 课程id  ]]></description>
+ id 学生id 课程id  数据库设计的三大范式是什么?  确保每列原子性:  每一列的原子性， 每一列不可以再分割
+确保每列都和主键相关:  每一个表都应该有一个主键
+一个表只讲一件事情，不表示多件事情，否则就会存在大量的数据冗余
+确保每列都和主键列直接相关，而不是间接相关  如何对其进行交叉连接?]]></description>
 </item><item>
     <title>21_reflect</title>
     <link>http://fengqigang.cn/posts/21_reflect/</link>
