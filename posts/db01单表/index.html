@@ -20,7 +20,7 @@
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/21_reflect/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/21_reflect/" /><link rel="next" href="http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/db01%E5%8D%95%E8%A1%A8\/"
-        },"genre": "posts","keywords": "数据库","wordcount":  203 ,
+        },"genre": "posts","keywords": "数据库","wordcount":  351 ,
         "url": "http:\/\/fengqigang.cn\/posts\/db01%E5%8D%95%E8%A1%A8\/","datePublished": "2021-06-30T20:19:58+08:00","dateModified": "2021-06-30T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Db01单表</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-30">2021-06-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;203 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-06-30">2021-06-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;351 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -160,6 +160,18 @@
         <li><a href="#20210702233121httpsimgfengqigangcnimg20210702233121png-如何查询出所有姓奉的人"><img src="https://img.fengqigang.cn//img/20210702233121.png" alt="20210702233121"> 如何查询出所有姓奉的人?</a></li>
         <li><a href="#20210702233121httpsimgfengqigangcnimg20210702233121png-如何查询出所有姓奉的人同时姓名只有两个字的人"><img src="https://img.fengqigang.cn//img/20210702233121.png" alt="20210702233121"> 如何查询出所有姓奉的人,同时姓名只有两个字的人?</a></li>
         <li><a href="#20210702233701httpsimgfengqigangcnimg20210702233701png-如何查询当前有中所有的age-排除掉相同的"><img src="https://img.fengqigang.cn//img/20210702233701.png" alt="20210702233701"> 如何查询当前有中所有的age, 排除掉相同的?</a></li>
+        <li><a href="#在数据库中浮点类型-floatm-d-中的-m-和-d-代表什么意思">在数据库中浮点类型 <code>Float(M, D)</code> 中的 <code>M</code> 和 <code>D</code> 代表什么意思?</a></li>
+        <li><a href="#20210704102008httpsimgfengqigangcnimg20210704102008png如何找出数据库中前两个数据"><img src="https://img.fengqigang.cn//img/20210704102008.png" alt="20210704102008">如何找出数据库中前两个数据?</a></li>
+        <li><a href="#在使用sql-中的limit-的时候需要注意什么">在使用sql 中的limit 的时候需要注意什么?</a></li>
+        <li><a href="#20210704102624httpsimgfengqigangcnimg20210704102624png-如何根据-id-从大到小排序"><img src="https://img.fengqigang.cn//img/20210704102624.png" alt="20210704102624"> 如何根据 <code>id</code> 从大到小排序?</a></li>
+        <li><a href="#20210704102624httpsimgfengqigangcnimg20210704102624png-如何根据-id-从小到大排序"><img src="https://img.fengqigang.cn//img/20210704102624.png" alt="20210704102624"> 如何根据 <code>id</code> 从小到大排序?</a></li>
+        <li><a href="#20210704102624httpsimgfengqigangcnimg20210704102624png-如何根据-age-从小到大排序-相同时按照-id-从小到大排序"><img src="https://img.fengqigang.cn//img/20210704102624.png" alt="20210704102624"> 如何根据 <code>age</code> 从小到大排序, 相同时按照 <code>id</code> 从小到大排序?</a></li>
+        <li><a href="#20210704104613httpsimgfengqigangcnimg20210704104613png如何计算总年龄-并作为-sumage"><img src="https://img.fengqigang.cn//img/20210704104613.png" alt="20210704104613">如何计算总年龄, 并作为 <code>sumAge</code>?</a></li>
+        <li><a href="#20210704104919httpsimgfengqigangcnimg20210704104919png如何根据年龄分组"><img src="https://img.fengqigang.cn//img/20210704104919.png" alt="20210704104919">如何根据年龄分组?</a></li>
+        <li><a href="#数据库完整性有哪些">数据库完整性有哪些?</a></li>
+        <li><a href="#unique-与-主键有什么区别"><code>unique</code> 与 主键有什么区别?</a></li>
+        <li><a href="#having-与-where-是在什么情况下使用"><code>having</code> 与 <code>where</code> 是在什么情况下使用?</a></li>
+        <li><a href="#sql-select语句的完整的执行顺序是什么">SQL Select语句的完整的执行顺序是什么?</a></li>
       </ul>
     </li>
   </ul>
@@ -789,6 +801,249 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210702233827.png"
         title="20210702233827" /></p>
+<h3 id="在数据库中浮点类型-floatm-d-中的-m-和-d-代表什么意思">在数据库中浮点类型 <code>Float(M, D)</code> 中的 <code>M</code> 和 <code>D</code> 代表什么意思?</h3>
+<p>M 称为精度， 总共位数</p>
+<p>D 称为标度，表示小数位数</p>
+<p>Here, (M, D) means than values can be stored with up to <code>M</code> digits in total, of which <code>D</code> digits may be after the decimal point.</p>
+<h3 id="20210704102008httpsimgfengqigangcnimg20210704102008png如何找出数据库中前两个数据"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102008.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102008.png, https://img.fengqigang.cn//img/20210704102008.png 1.5x, https://img.fengqigang.cn//img/20210704102008.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102008.png"
+        title="20210704102008" />如何找出数据库中前两个数据?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>Limit 5, 5</p>
+<p>0 is the first row.</p>
+<ol>
+<li>
+<p>The first number is where to start</p>
+</li>
+<li>
+<p>The seconds is the number of rows to retrieve</p>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102130.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102130.png, https://img.fengqigang.cn//img/20210704102130.png 1.5x, https://img.fengqigang.cn//img/20210704102130.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102130.png"
+        title="20210704102130" /></p>
+<h3 id="在使用sql-中的limit-的时候需要注意什么">在使用sql 中的limit 的时候需要注意什么?</h3>
+<p>row 0是第一行，row 1是第二行</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102408.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102408.png, https://img.fengqigang.cn//img/20210704102408.png 1.5x, https://img.fengqigang.cn//img/20210704102408.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102408.png"
+        title="20210704102408" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102349.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102349.png, https://img.fengqigang.cn//img/20210704102349.png 1.5x, https://img.fengqigang.cn//img/20210704102349.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102349.png"
+        title="20210704102349" /></p>
+<p>此时的1，1是获取的第二行</p>
+<h3 id="20210704102624httpsimgfengqigangcnimg20210704102624png-如何根据-id-从大到小排序"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102624.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102624.png, https://img.fengqigang.cn//img/20210704102624.png 1.5x, https://img.fengqigang.cn//img/20210704102624.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102624.png"
+        title="20210704102624" /> 如何根据 <code>id</code> 从大到小排序?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704103851.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704103851.png, https://img.fengqigang.cn//img/20210704103851.png 1.5x, https://img.fengqigang.cn//img/20210704103851.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704103851.png"
+        title="20210704103851" /></p>
+<h3 id="20210704102624httpsimgfengqigangcnimg20210704102624png-如何根据-id-从小到大排序"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102624.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102624.png, https://img.fengqigang.cn//img/20210704102624.png 1.5x, https://img.fengqigang.cn//img/20210704102624.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102624.png"
+        title="20210704102624" /> 如何根据 <code>id</code> 从小到大排序?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">asc</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704104030.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704104030.png, https://img.fengqigang.cn//img/20210704104030.png 1.5x, https://img.fengqigang.cn//img/20210704104030.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704104030.png"
+        title="20210704104030" /></p>
+<h3 id="20210704102624httpsimgfengqigangcnimg20210704102624png-如何根据-age-从小到大排序-相同时按照-id-从小到大排序"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704102624.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704102624.png, https://img.fengqigang.cn//img/20210704102624.png 1.5x, https://img.fengqigang.cn//img/20210704102624.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704102624.png"
+        title="20210704102624" /> 如何根据 <code>age</code> 从小到大排序, 相同时按照 <code>id</code> 从小到大排序?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">asc</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704104420.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704104420.png, https://img.fengqigang.cn//img/20210704104420.png 1.5x, https://img.fengqigang.cn//img/20210704104420.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704104420.png"
+        title="20210704104420" /></p>
+<h3 id="20210704104613httpsimgfengqigangcnimg20210704104613png如何计算总年龄-并作为-sumage"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704104613.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704104613.png, https://img.fengqigang.cn//img/20210704104613.png 1.5x, https://img.fengqigang.cn//img/20210704104613.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704104613.png"
+        title="20210704104613" />如何计算总年龄, 并作为 <code>sumAge</code>?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">sumAge</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704104646.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704104646.png, https://img.fengqigang.cn//img/20210704104646.png 1.5x, https://img.fengqigang.cn//img/20210704104646.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704104646.png"
+        title="20210704104646" /></p>
+<h3 id="20210704104919httpsimgfengqigangcnimg20210704104919png如何根据年龄分组"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704104919.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704104919.png, https://img.fengqigang.cn//img/20210704104919.png 1.5x, https://img.fengqigang.cn//img/20210704104919.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704104919.png"
+        title="20210704104919" />如何根据年龄分组?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">GROUP_CONCAT</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704104956.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704104956.png, https://img.fengqigang.cn//img/20210704104956.png 1.5x, https://img.fengqigang.cn//img/20210704104956.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704104956.png"
+        title="20210704104956" /></p>
+<h3 id="数据库完整性有哪些">数据库完整性有哪些?</h3>
+<ol>
+<li>数据完整性</li>
+</ol>
+<blockquote>
+<p>数据库中的数据不应该是重复的，主要是通过数据库的主键来保证的</p>
+</blockquote>
+<ol start="2">
+<li>域完整性</li>
+</ol>
+<blockquote>
+<p>每一个字段都应该是有约束的， 如每一个字段都应该有一个具体的数据类型，除了这个数据类型之外，我们还有一些别的约束，例如不为空，例如唯一。</p>
+</blockquote>
+<ol start="3">
+<li>参照完整性</li>
+</ol>
+<blockquote>
+<p>定义一个外键以保证我们在插入错误的数据的时候能够及时提示</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210704105646.png"
+        data-srcset="https://img.fengqigang.cn//img/20210704105646.png, https://img.fengqigang.cn//img/20210704105646.png 1.5x, https://img.fengqigang.cn//img/20210704105646.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210704105646.png"
+        title="20210704105646" /></p>
+<h3 id="unique-与-主键有什么区别"><code>unique</code> 与 主键有什么区别?</h3>
+<ol>
+<li>
+<p>主键不可以为空值， 但是 <code>unique</code> 可是空值</p>
+</li>
+<li>
+<p>它们的底层实现是不一样的</p>
+</li>
+</ol>
+<h3 id="having-与-where-是在什么情况下使用"><code>having</code> 与 <code>where</code> 是在什么情况下使用?</h3>
+<p>having -&gt; filter groups</p>
+<p>where -&gt; fileter rows</p>
+<h3 id="sql-select语句的完整的执行顺序是什么">SQL Select语句的完整的执行顺序是什么?</h3>
+<ol>
+<li>
+<p><code>from</code> 子句组装来自不同数据源的数据 (先join 再on)</p>
+</li>
+<li>
+<p><code>where</code> 子句基于指定的条件对记录行进行筛选</p>
+</li>
+<li>
+<p><code>group by</code> 子句将数据划分为多个分组</p>
+</li>
+<li>
+<p>使用聚合函数进行计算</p>
+</li>
+<li>
+<p>使用 <code>having</code> 子句筛选分组</p>
+</li>
+<li>
+<p>计算所有的表达式</p>
+</li>
+<li>
+<p><code>select</code>字段</p>
+</li>
+<li>
+<p>使用 <code>order by</code> 对结果集进行排序</p>
+</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -812,7 +1067,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/21_reflect/" class="prev" rel="prev" title="21_reflect"><i class="fas fa-angle-left fa-fw"></i>21_reflect</a></div>
+    <div class="post-nav"><a href="/posts/21_reflect/" class="prev" rel="prev" title="21_reflect"><i class="fas fa-angle-left fa-fw"></i>21_reflect</a>
+            <a href="/posts/db-02%E5%A4%9A%E8%A1%A8/" class="next" rel="next" title="DB-02多表">DB-02多表<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

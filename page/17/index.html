@@ -100,89 +100,28 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db-02%E5%A4%9A%E8%A1%A8/">DB-02多表</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-04">2021-07-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
- id 价格 数量 商品名称  商品详情表
- id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
-班级表
- id 名称  学生表
- id 姓名 班级id  如何建多对多的表(学生表[姓名], 课程表[课程名称])? 多对多的关系应该去建立一个关系表, 在关系表中去维护两者之间的关系
-  先建各自的表
-  再建立关系表
-  学生表
- id 姓名  课程表
- id 课程名称  学生选课表
- id 学生id 课程id  </div><div class="post-footer">
-        <a href="/posts/db-02%E5%A4%9A%E8%A1%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db01%E5%8D%95%E8%A1%A8/">Db01单表</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-30">2021-06-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">库的增删改查 建库语句是什么(31th_sql, utf8)? 1  createdatabase31th_sqlcharactersetutf8;  如何显示所有的库? 1  showdatabases;  如何显示 31th_sql 的建库语句? 1  showcreatedatabase31th_sql;  如何删除 31th_sql 数据库? 1  dropdatabase31th_sql;  如何选择使用 mymall 数据库? 1  usemymall;  表的增删改查 如何查看 库中所有的表? 1  showtables;  如何查询 goods 表的建表语句? 1  showcreatetablegoods;  如何描述一个 goods 表? describe goods / desc goods
-1  descgoods;  如何将 goods 表中的字符集改为 utf8 , 校对规则改成 utf8_bin? 1  altertablegoodscharactersetutf8collateutf8_bin;  如何删除 goods 表中 price 字段?</div><div class="post-footer">
-        <a href="/posts/db01%E5%8D%95%E8%A1%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/21_reflect/">21_reflect</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-30">2021-06-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
-获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
-  类名.class
-  对象.getClass（）
-  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.</div><div class="post-footer">
-        <a href="/posts/21_reflect/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/aop/">Aop</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-28">2021-06-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">AOP编程实战   引入依赖
-  注册委托类组件
-  提供一个通知组件并注册(MethdoInterceptor 是来自于 org.aopalliance.intercept)
-  ASPECT 强化advisor - pointcut advisor 的时间属性   Before
-  After
-  Around
-  AfterReturning
-  AfterThrowing
-  joinPoint 的参数 ProceedingJoinPoint extends 于 JoinPint
-  getSignature() 方法信息
-  getName() 方法名
-  getArgs() 参数
-  getThis() proxy
-  getTarget() 委托类对象
-  CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.</div><div class="post-footer">
-        <a href="/posts/aop/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/spring02/">Spring02</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-25">2021-06-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">02_Spring
-builder 设计模式  注意
- 如果setIq 和 sethair 方法中的 head, 如果没有初始化的话会出现空指针异常
-  处理方法:
-  HumanBuilder
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public class HumanBuilder { Human human = new Human(); public Head setIq(Integer iq) { Head head = human.getHead(); head.setIq(iq); return head; } public Head setHair(String hair) { Head head = human.getHead(); head.setHair(hair); return head; } }   Human</div><div class="post-footer">
-        <a href="/posts/spring02/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/spring01/">Spring01</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-24">2021-06-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">单例模式 构造方法后没有;
-public class 后没有()
-线程不安全的立即加载单例模式 高并发下并不安全
-1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   线程安全的立即加载单例模式 将 synchronized 放在 public 与 static 之间
-1 2 3 4 5 6 7 8 9 10 11  public class TestSigteon { static TestSigteon testSigteon; private TestSigteon(){} public synchronized static TestSigteon getSigteonInstance(){ if(testSigteon == null){ testSigteon = new TestSigteon(); } return testSigteon; } }   什么是懒加载和立即加载?</div><div class="post-footer">
-        <a href="/posts/spring01/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><ul class="pagination"><li class="page-item active">
+        <a href="/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/">使用git协议克隆</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-01">2021-01-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/git/"><i class="far fa-folder fa-fw"></i>git</a></span></div><div class="content"><h2 id="使用git协议克隆的好处">使用<code>git</code>协议克隆的好处</h2>
+<ol>
+<li>配置完后，每次提交均不需要输入账号密码</li>
+</ol></div><div class="post-footer">
+        <a href="/posts/%E4%BD%BF%E7%94%A8git%E5%8D%8F%E8%AE%AE%E5%85%8B%E9%9A%86/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a></div></div>
+</article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
                 </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/2/">2</a>
-                    </span>
-                </li><li class="page-item ">
-                    <span class="page-link">
-                        <a href="/page/3/">3</a>
-                    </span>
-                </li><li class="page-item ">
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/15/">15</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/16/">16</a>
+                    </span>
+                </li><li class="page-item active">
                     <span class="page-link">
                         <a href="/page/17/">17</a>
                     </span>

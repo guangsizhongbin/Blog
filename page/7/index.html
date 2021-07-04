@@ -100,6 +100,24 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/13_object/">13_object</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 API ? Application Programming Interface(API)
+应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
+作用
+开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
+Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
+  在自定义类时，并不需要特别标注 extends Object
+  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
+  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
+  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
+  隐式初始化，默认调用父类的无参构造
+  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
+  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
+方法声明中 public final Class&lt;?&gt; getClass() 分别代表什么意思?   public 访问权限，调用时不必考虑权限问题
+  final 该方法可以被继承但是不能被重写</div><div class="post-footer">
+        <a href="/posts/13_object/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/12_lambda/">12_lambda</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-12">2021-04-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">new 类名().new 类名() 与 new 类名.new 这两种方式有什么区别? new 类名().new 类名()
 创建成员内部类
@@ -189,16 +207,6 @@ If a class is declared as abstract, no objects of that class can be created.</di
 if (studs == null || studs.length == 0){ return new Student[0] }</div><div class="post-footer">
         <a href="/posts/08_polymorphic/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/07_extends/">07_extends</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-06">2021-04-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是默认导包, 隐式导包? java.lang 包下的所有类，是 java 的核心类，它会自动隐式导入，不需要再写导包语句
-If I really need both Date classes in java.util and java.sql, what can I do? use the full package name with every class name:
-1 2 3 4 5 6  public class PackageTest { public static void main(String[] args) { var deadline = new java.util.Date(); var today = new java.sql.Date((long)123); } }   什么是面向过程与面向对象? 面向过程 procedureal oriented programming
-面向对象 oop
-面向过程的编程思想
-即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成</div><div class="post-footer">
-        <a href="/posts/07_extends/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -229,7 +237,7 @@ If I really need both Date classes in java.util and java.sql, what can I do? use
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/16/">16</a>
+                        <a href="/page/17/">17</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

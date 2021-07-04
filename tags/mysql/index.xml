@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>mysql - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/mysql/</link>
+        <description>mysql - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/mysql/" rel="self" type="application/rss+xml" /><item>
+    <title>DB-02多表</title>
+    <link>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</link>
+    <pubDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</guid>
+    <description><![CDATA[如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
+ id 价格 数量 商品名称  商品详情表
+ id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
+班级表
+ id 名称  学生表
+ id 姓名 班级id  如何建多对多的表(学生表[姓名], 课程表[课程名称])? 多对多的关系应该去建立一个关系表, 在关系表中去维护两者之间的关系
+  先建各自的表
+  再建立关系表
+  学生表
+ id 姓名  课程表
+ id 课程名称  学生选课表
+ id 学生id 课程id  ]]></description>
+</item></channel>
+</rss>

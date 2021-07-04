@@ -4,9 +4,27 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>DB-02多表</title>
+    <link>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</link>
+    <pubDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</guid>
+    <description><![CDATA[如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
+ id 价格 数量 商品名称  商品详情表
+ id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
+班级表
+ id 名称  学生表
+ id 姓名 班级id  如何建多对多的表(学生表[姓名], 课程表[课程名称])? 多对多的关系应该去建立一个关系表, 在关系表中去维护两者之间的关系
+  先建各自的表
+  再建立关系表
+  学生表
+ id 姓名  课程表
+ id 课程名称  学生选课表
+ id 学生id 课程id  ]]></description>
+</item><item>
     <title>Db01单表</title>
     <link>http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/</link>
     <pubDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</pubDate>
@@ -140,15 +158,5 @@ url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不�
 理论上的 hash 冲突如何解决? 线性探测法
 平方探测法
 再散列法]]></description>
-</item><item>
-    <title>Day36</title>
-    <link>http://fengqigang.cn/posts/day36/</link>
-    <pubDate>Tue, 11 May 2021 23:26:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day36/</guid>
-    <description><![CDATA[set 特点  Set 接口是 Collection 的子接口 描述的是集合这种数据结构 它的一些自实现是有序的(LinkedHashSet, TreeSet) 有些子实现是无序的(HashSet) 有些子实现允许存储null(LinkedHashSet, HashSet), 有些子实现不允许存储 null(TreeSet) 都是不允许重复元素  set Api  初始化  collection 是 add 方法, map 是 poll 方法
- addAll   clear   containsAll      iterator()  map 不能使用增强for循环, 可以用interset,
-set 可以使用增强for循环
-HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.]]></description>
 </item></channel>
 </rss>
