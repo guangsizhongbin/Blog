@@ -222,11 +222,11 @@ typedef 归编译器管
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C++" data-lang="C++">    <span class="n">k</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&gt;=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">k</span><span class="o">--</span><span class="p">)</span>
-    <span class="err">�序所对应位置的元素也需要移动</span>
-        <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+<pre class="chroma"><code class="language-C++" data-lang="C++">	<span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="n">L</span><span class="o">-&gt;</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&gt;=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="n">k</span><span class="o">--</span><span class="p">)</span>
+	<span class="c1">//位序所对应位置的元素也需要移动
+</span><span class="c1"></span>        <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
 
-    <span class="n">ata</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">e</span><span class="p">;</span> <span class="c1">//插入新的元素
+	<span class="n">L</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">e</span><span class="p">;</span> <span class="c1">//插入新的元素
 </span></code></pre></td></tr></table>
 </div>
 </div><p>``</p>
@@ -250,7 +250,7 @@ typedef 归编译器管
 <td class="lntd">
 <pre class="chroma"><code class="language-fallback" data-lang="fallback">for (k = i; k &lt; L-&gt;length; k++)
 
-    ata[k-1] = L-&gt;data[k];
+	L-&gt;data[k-1] = L-&gt;data[k];
 </code></pre></td></tr></table>
 </div>
 </div><p>``</p>
@@ -600,7 +600,7 @@ typedef 归编译器管
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.84.4">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
         </div>
     </footer></div>

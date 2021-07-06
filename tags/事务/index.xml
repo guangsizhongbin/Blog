@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>事务 - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/%E4%BA%8B%E5%8A%A1/</link>
+        <description>事务 - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/%E4%BA%8B%E5%8A%A1/" rel="self" type="application/rss+xml" /><item>
+    <title>Db04事务</title>
+    <link>http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/</link>
+    <pubDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/</guid>
+    <description><![CDATA[什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
+事务控制有哪些api?  connection.rollback();  回滚事务
+connection.commit();  提交事务
+connection.setAutoCommit(true);  开启事务
+事务的特性是什么? ACID
+ 原子性  一个事务，事务中的各个操作单元，要么就都成功，要么都不成功
+一致性  事务必须使数据库从一个一致性变成另一个一致性状态
+隔离性  事务与事务之间是互相隔离的，互不干扰的，互不影响的
+持久性  事务引起的数据库的改变应该是永久化的，而不是短暂的
+事务的隔离级别有哪些?   read uncommitted 读未提交
+  read Commited 读已提交
+  repeatable read 可重复读
+  Serializable 串行化
+  什么是 read uncommitted 读未提交?   出现脏读
+  出现不可重复读
+  出现虚幻读
+  什么是 read committed 读已提交?]]></description>
+</item></channel>
+</rss>

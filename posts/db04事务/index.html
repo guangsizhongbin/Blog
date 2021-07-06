@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Db04事务 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Db04事务" />
+<meta property="og:description" content="什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
+事务控制有哪些api?  connection.rollback();  回滚事务
+connection.commit();  提交事务
+connection.setAutoCommit(true);  开启事务
+事务的特性是什么? ACID
+ 原子性  一个事务，事务中的各个操作单元，要么就都成功，要么都不成功
+一致性  事务必须使数据库从一个一致性变成另一个一致性状态
+隔离性  事务与事务之间是互相隔离的，互不干扰的，互不影响的
+持久性  事务引起的数据库的改变应该是永久化的，而不是短暂的
+事务的隔离级别有哪些?   read uncommitted 读未提交
+  read Commited 读已提交
+  repeatable read 可重复读
+  Serializable 串行化
+  什么是 read uncommitted 读未提交?   出现脏读
+  出现不可重复读
+  出现虚幻读
+  什么是 read committed 读已提交?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-06T12:55:20+08:00" />
+<meta property="article:modified_time" content="2021-07-06T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Db04事务"/>
+<meta name="twitter:description" content="什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
+事务控制有哪些api?  connection.rollback();  回滚事务
+connection.commit();  提交事务
+connection.setAutoCommit(true);  开启事务
+事务的特性是什么? ACID
+ 原子性  一个事务，事务中的各个操作单元，要么就都成功，要么都不成功
+一致性  事务必须使数据库从一个一致性变成另一个一致性状态
+隔离性  事务与事务之间是互相隔离的，互不干扰的，互不影响的
+持久性  事务引起的数据库的改变应该是永久化的，而不是短暂的
+事务的隔离级别有哪些?   read uncommitted 读未提交
+  read Commited 读已提交
+  repeatable read 可重复读
+  Serializable 串行化
+  什么是 read uncommitted 读未提交?   出现脏读
+  出现不可重复读
+  出现虚幻读
+  什么是 read committed 读已提交?"/>
+<meta name="application-name" content="xiaonan&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/" /><link rel="prev" href="http://fengqigang.cn/posts/db-03%E7%B4%A2%E5%BC%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Db04事务",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/fengqigang.cn\/posts\/db04%E4%BA%8B%E5%8A%A1\/"
+        },"genre": "posts","keywords": "事务","wordcount":  83 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/db04%E4%BA%8B%E5%8A%A1\/","datePublished": "2021-07-06T12:55:20+08:00","dateModified": "2021-07-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xiaonan"},"author": {
+                "@type": "Person",
+                "name": "xiaonan"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="auto" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="xiaonan&#39;s Blog">xiaonan&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Db04事务</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-06">2021-07-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;83 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#什么是事务">什么是事务?</a></li>
+        <li><a href="#事务控制有哪些api">事务控制有哪些api?</a></li>
+        <li><a href="#事务的特性是什么">事务的特性是什么?</a></li>
+        <li><a href="#事务的隔离级别有哪些">事务的隔离级别有哪些?</a></li>
+        <li><a href="#什么是-read-uncommitted-读未提交">什么是 <code>read uncommitted</code> 读未提交?</a></li>
+        <li><a href="#什么是-read-committed-读已提交">什么是 <code>read committed</code> 读已提交?</a></li>
+        <li><a href="#什么是-repeatable-read-可重复读">什么是 <code>repeatable read</code> 可重复读?</a></li>
+        <li><a href="#什么是串行化">什么是串行化?</a></li>
+        <li><a href="#如何查看当前会话的隔离级别">如何查看当前会话的隔离级别?</a></li>
+        <li><a href="#如何查看系统当前的隔离级别">如何查看系统当前的隔离级别?</a></li>
+        <li><a href="#如何设置当前会话事务的隔离级别read-committed">如何设置当前会话事务的隔离级别(read committed)?</a></li>
+        <li><a href="#如何设置系统当前的隔离隔离级别为read-committed">如何设置系统当前的隔离隔离级别为(read committed)?</a></li>
+        <li><a href="#什么是脏读drity-read">什么是脏读(Drity Read)?</a></li>
+        <li><a href="#什么是不可以重复读non-repeatable">什么是不可以重复读(Non-repeatable)?</a></li>
+        <li><a href="#什么是幻读phantom-read">什么是幻读(Phantom Read)?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="什么是事务">什么是事务?</h3>
+<p>指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功</p>
+<h3 id="事务控制有哪些api">事务控制有哪些api?</h3>
+<ol>
+<li>connection.rollback();</li>
+</ol>
+<p>回滚事务</p>
+<ol start="2">
+<li>connection.commit();</li>
+</ol>
+<p>提交事务</p>
+<ol start="3">
+<li>connection.setAutoCommit(true);</li>
+</ol>
+<p>开启事务</p>
+<h3 id="事务的特性是什么">事务的特性是什么?</h3>
+<p><strong>ACID</strong></p>
+<ol>
+<li>原子性</li>
+</ol>
+<p>一个事务，事务中的各个操作单元，要么就都成功，要么都不成功</p>
+<ol start="2">
+<li>一致性</li>
+</ol>
+<p>事务必须使数据库从一个一致性变成另一个一致性状态</p>
+<ol start="3">
+<li>隔离性</li>
+</ol>
+<p>事务与事务之间是互相隔离的，互不干扰的，互不影响的</p>
+<ol start="4">
+<li>持久性</li>
+</ol>
+<p>事务引起的数据库的改变应该是永久化的，而不是短暂的</p>
+<h3 id="事务的隔离级别有哪些">事务的隔离级别有哪些?</h3>
+<ol>
+<li>
+<p>read uncommitted 读未提交</p>
+</li>
+<li>
+<p>read Commited 读已提交</p>
+</li>
+<li>
+<p>repeatable read 可重复读</p>
+</li>
+<li>
+<p>Serializable 串行化</p>
+</li>
+</ol>
+<h3 id="什么是-read-uncommitted-读未提交">什么是 <code>read uncommitted</code> 读未提交?</h3>
+<ol>
+<li>
+<p>出现脏读</p>
+</li>
+<li>
+<p>出现不可重复读</p>
+</li>
+<li>
+<p>出现虚幻读</p>
+</li>
+</ol>
+<h3 id="什么是-read-committed-读已提交">什么是 <code>read committed</code> 读已提交?</h3>
+<ol>
+<li>
+<p>没有脏读问题</p>
+</li>
+<li>
+<p>有可以重复问题</p>
+</li>
+<li>
+<p>有虚幻读</p>
+</li>
+</ol>
+<h3 id="什么是-repeatable-read-可重复读">什么是 <code>repeatable read</code> 可重复读?</h3>
+<ol>
+<li>
+<p>没有脏读问题</p>
+</li>
+<li>
+<p>没有不可重复读的问题</p>
+</li>
+<li>
+<p>没有虚幻读的问题</p>
+</li>
+</ol>
+<p><strong>但是在设计MySQL的在设计的时候，考虑到了数据的隔离性，顺便就把虚幻读的问题解决了</strong></p>
+<h3 id="什么是串行化">什么是串行化?</h3>
+<ol>
+<li>
+<p>没有脏读问题</p>
+</li>
+<li>
+<p>没有不可重复读的问题</p>
+</li>
+<li>
+<p>没有虚幻读的问题</p>
+</li>
+</ol>
+<p>这个是事务的隔离级别中最严格的一种数据库最严格的隔离机制</p>
+<h3 id="如何查看当前会话的隔离级别">如何查看当前会话的隔离级别?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">@@</span><span class="n">tx_isolation</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210706123715.png"
+        data-srcset="https://img.fengqigang.cn//img/20210706123715.png, https://img.fengqigang.cn//img/20210706123715.png 1.5x, https://img.fengqigang.cn//img/20210706123715.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210706123715.png"
+        title="20210706123715" /></p>
+<h3 id="如何查看系统当前的隔离级别">如何查看系统当前的隔离级别?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="o">@@</span><span class="k">global</span><span class="p">.</span><span class="n">tx_isolation</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210706124730.png"
+        data-srcset="https://img.fengqigang.cn//img/20210706124730.png, https://img.fengqigang.cn//img/20210706124730.png 1.5x, https://img.fengqigang.cn//img/20210706124730.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210706124730.png"
+        title="20210706124730" /></p>
+<h3 id="如何设置当前会话事务的隔离级别read-committed">如何设置当前会话事务的隔离级别(read committed)?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">set</span><span class="w"> </span><span class="k">session</span><span class="w"> </span><span class="k">transaction</span><span class="w"> </span><span class="k">isolation</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="k">read</span><span class="w"> </span><span class="k">committed</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210706125223.png"
+        data-srcset="https://img.fengqigang.cn//img/20210706125223.png, https://img.fengqigang.cn//img/20210706125223.png 1.5x, https://img.fengqigang.cn//img/20210706125223.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210706125223.png"
+        title="20210706125223" /></p>
+<h3 id="如何设置系统当前的隔离隔离级别为read-committed">如何设置系统当前的隔离隔离级别为(read committed)?</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">set</span><span class="w"> </span><span class="k">global</span><span class="w"> </span><span class="k">transaction</span><span class="w"> </span><span class="k">isolation</span><span class="w"> </span><span class="k">level</span><span class="w"> </span><span class="k">read</span><span class="w"> </span><span class="k">committed</span><span class="p">;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210706125102.png"
+        data-srcset="https://img.fengqigang.cn//img/20210706125102.png, https://img.fengqigang.cn//img/20210706125102.png 1.5x, https://img.fengqigang.cn//img/20210706125102.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210706125102.png"
+        title="20210706125102" /></p>
+<h3 id="什么是脏读drity-read">什么是脏读(Drity Read)?</h3>
+<p>就是在一个事务里面,读取到了别的事务还没有提交的数据</p>
+<h3 id="什么是不可以重复读non-repeatable">什么是不可以重复读(Non-repeatable)?</h3>
+<p>在一个事务里面, 读取到了别的事务已经提交的数据</p>
+<h3 id="什么是幻读phantom-read">什么是幻读(Phantom Read)?</h3>
+<p>读取到了别的事务插入的数据</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-07-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/db-03%E7%B4%A2%E5%BC%95/" class="prev" rel="prev" title="DB 03索引"><i class="fas fa-angle-left fa-fw"></i>DB 03索引</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
