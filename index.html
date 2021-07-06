@@ -100,6 +100,22 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/db05jdbc/">Db05jdbc</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-06">2021-07-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">数据库的访问过程是什么样的?  客户端与 Mysql 服务器之间建立连接   加载驱动  DriverManager.registerDriver(new Driver())
+ 获取连接对象  Connection connection = DriverManager.getConnection(url, name, password);
+客户端与 Mysql 服务器发送数据库请求  Statement statement = connection.createStatement();
+Mysql 服务器处理客户端的相应，并返回结果给客户端  statement.executeUpdate() statement.executeQuery()
+ 客户端接受 Mysql服务器的相应，并按照自己的业务逻辑做相应处理
+  释放相关资源
+  statement
+connection
+resultSet
+如何设置 jdbc 使用 mydatabase 数据库？ 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL? 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?</div><div class="post-footer">
+        <a href="/posts/db05jdbc/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jdbc/">jdbc</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/db04%E4%BA%8B%E5%8A%A1/">Db04事务</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-06">2021-07-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
 事务控制有哪些api?  connection.rollback();  回滚事务
@@ -121,8 +137,8 @@ connection.setAutoCommit(true);  开启事务
         <a href="/posts/db04%E4%BA%8B%E5%8A%A1/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db-03%E7%B4%A2%E5%BC%95/">DB 03索引</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-04">2021-07-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%B4%A2%E5%BC%95/"><i class="far fa-folder fa-fw"></i>索引</a></span></div><div class="content">什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
+        <a href="/posts/db03%E7%B4%A2%E5%BC%95/">db03索引</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-04">2021-07-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
 即索引是数据结构。
 数据库在执行查询的时候，如果没有索引存在的情况下，会采用全表扫描的方式进行查找。
 如果存在索引，则会先去索引列表中定位到特定的行或者直接定位到数据，从而可以极大地减少查询的行数， 增加查询速度
@@ -138,10 +154,10 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 什么是表锁和行锁? 表锁比行锁更粗, 锁的是整张表
 但是行锁锁的是一行记录，所以我们的表锁的效率是不及行行锁的，但是表锁的安全性是比行锁要高的
 如何定义一个table t1它的engine 为 MYISAM?</div><div class="post-footer">
-        <a href="/posts/db-03%E7%B4%A2%E5%BC%95/">Read More</a><div class="post-tags">
+        <a href="/posts/db03%E7%B4%A2%E5%BC%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db-02%E5%A4%9A%E8%A1%A8/">DB-02多表</a>
+        <a href="/posts/db02%E5%A4%9A%E8%A1%A8/">db02多表</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-04">2021-07-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
  id 价格 数量 商品名称  商品详情表
  id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
@@ -157,7 +173,7 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 确保每列都和主键相关:  每一个表都应该有一个主键
 一个表只讲一件事情，不表示多件事情，否则就会存在大量的数据冗余
 确保每列都和主键列直接相关，而不是间接相关  如何对其进行交叉连接?</div><div class="post-footer">
-        <a href="/posts/db-02%E5%A4%9A%E8%A1%A8/">Read More</a><div class="post-tags">
+        <a href="/posts/db02%E5%A4%9A%E8%A1%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/db01%E5%8D%95%E8%A1%A8/">Db01单表</a>
@@ -174,25 +190,6 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
   如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.</div><div class="post-footer">
         <a href="/posts/21_reflect/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/aop/">Aop</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-28">2021-06-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">AOP编程实战   引入依赖
-  注册委托类组件
-  提供一个通知组件并注册(MethdoInterceptor 是来自于 org.aopalliance.intercept)
-  ASPECT 强化advisor - pointcut advisor 的时间属性   Before
-  After
-  Around
-  AfterReturning
-  AfterThrowing
-  joinPoint 的参数 ProceedingJoinPoint extends 于 JoinPint
-  getSignature() 方法信息
-  getName() 方法名
-  getArgs() 参数
-  getThis() proxy
-  getTarget() 委托类对象
-  CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.</div><div class="post-footer">
-        <a href="/posts/aop/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

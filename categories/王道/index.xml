@@ -4,12 +4,52 @@
         <link>http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/</link>
         <description>王道 - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
-    <title>DB-02多表</title>
-    <link>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</link>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E7%8E%8B%E9%81%93/" rel="self" type="application/rss+xml" /><item>
+    <title>Db05jdbc</title>
+    <link>http://fengqigang.cn/posts/db05jdbc/</link>
+    <pubDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db05jdbc/</guid>
+    <description><![CDATA[数据库的访问过程是什么样的?  客户端与 Mysql 服务器之间建立连接   加载驱动  DriverManager.registerDriver(new Driver())
+ 获取连接对象  Connection connection = DriverManager.getConnection(url, name, password);
+客户端与 Mysql 服务器发送数据库请求  Statement statement = connection.createStatement();
+Mysql 服务器处理客户端的相应，并返回结果给客户端  statement.executeUpdate() statement.executeQuery()
+ 客户端接受 Mysql服务器的相应，并按照自己的业务逻辑做相应处理
+  释放相关资源
+  statement
+connection
+resultSet
+如何设置 jdbc 使用 mydatabase 数据库？ 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL? 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?]]></description>
+</item><item>
+    <title>db03索引</title>
+    <link>http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/</link>
+    <pubDate>Sun, 04 Jul 2021 16:43:25 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/</guid>
+    <description><![CDATA[什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
+即索引是数据结构。
+数据库在执行查询的时候，如果没有索引存在的情况下，会采用全表扫描的方式进行查找。
+如果存在索引，则会先去索引列表中定位到特定的行或者直接定位到数据，从而可以极大地减少查询的行数， 增加查询速度
+在MySQL中，常见的数据库引擎是什么? MyISAM
+InnoDB(默认)
+InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支持事务
+外键:  InnoDB 支持外键, MyISAM 不支持外键
+是否是聚集索引:  InnoDB 是聚集索引(数据文件和索引在一起) MyISAM 不是聚集索引(索引和数据文件是分开的)
+是否保存表的行数:  InnoDB 不保存表的行数， 查询某张表的行数会全表扫描 MyISAM 会保存整个表的行数， 执行速度很快
+是否支持表锁和行锁  InnoDB 支持表锁和行锁(默认) MyISAM 支持表锁
+是否有主键  InnoDB 表必须要有一个主键(如果用户不设置， 那么引擎会自行设定一列当做主键) MyISAM则可以没有
+存储文件个数  InnoDB 的存储文件是 frm 和 ibd MyISAM 的存储文件是 frm, myd, myi三个文件
+什么是表锁和行锁? 表锁比行锁更粗, 锁的是整张表
+但是行锁锁的是一行记录，所以我们的表锁的效率是不及行行锁的，但是表锁的安全性是比行锁要高的
+如何定义一个table t1它的engine 为 MYISAM?]]></description>
+</item><item>
+    <title>db02多表</title>
+    <link>http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/</link>
     <pubDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</guid>
+    <guid>http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/</guid>
     <description><![CDATA[如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
  id 价格 数量 商品名称  商品详情表
  id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
@@ -141,27 +181,5 @@ url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不�
 理论上的 hash 冲突如何解决? 线性探测法
 平方探测法
 再散列法]]></description>
-</item><item>
-    <title>Day36</title>
-    <link>http://fengqigang.cn/posts/day36/</link>
-    <pubDate>Tue, 11 May 2021 23:26:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day36/</guid>
-    <description><![CDATA[set 特点  Set 接口是 Collection 的子接口 描述的是集合这种数据结构 它的一些自实现是有序的(LinkedHashSet, TreeSet) 有些子实现是无序的(HashSet) 有些子实现允许存储null(LinkedHashSet, HashSet), 有些子实现不允许存储 null(TreeSet) 都是不允许重复元素  set Api  初始化  collection 是 add 方法, map 是 poll 方法
- addAll   clear   containsAll      iterator()  map 不能使用增强for循环, 可以用interset,
-set 可以使用增强for循环
-HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.]]></description>
-</item><item>
-    <title>Day35</title>
-    <link>http://fengqigang.cn/posts/day35/</link>
-    <pubDate>Tue, 11 May 2021 23:25:23 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day35/</guid>
-    <description><![CDATA[day35_linkedHashMap
-LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
-  LinkedHashMap 基本上完全复用了 HashMap 的底层结构， 参数，方法
-  LinkedHashMap的特点基本遵从于 HashMap
-  LinkedHashMap 底层在 HashMap 的基础上(数组 + 链表 + 红黑树) 额外维护了一个双向链表: 这个双向链表用来记录存储
-  LinkedHashMap 如何额外维护一个双向链表? 构造方法?  默认的构造方法  accessOrder(如果我们给accessOrder 设置为真，那么我们如果访问了这个LinkedHashMap中的某一个Key-value数据，那么这份Key-value数据就会在双向链表中的位置移到最后， 它在红黑树上的位置不变)   API TreeMap 有什么特点?  TreeMap 是 Map 一个子实现 描述数据结构是树/二叉搜索树/红黑树 底层是链表 TreeMap 大小有序(中序遍历是有序的) 不允许重复的 key 不允许null键 线程不安全 Treemap 的重复的定义: 大小比较结果是0, 自然顺序/比较器 如果我们希望在TreeMap中存储数据 ，key-value, 我们可以有两个选择：   让key本身可以比较(继承Comparabe接口实现 compareTo 方法)（但会让代码看一起来不清爽） 不想让 key 本身实现 Comparable 接口实现, 手动用比较器实现  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  public class DemoTreeMap { public static void main(String[] args) { TreeMap&lt;User3, Integer&gt; map = new TreeMap&lt;&gt;(); map.]]></description>
 </item></channel>
 </rss>

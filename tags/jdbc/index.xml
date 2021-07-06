@@ -1,0 +1,26 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>jdbc - Tag - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/tags/jdbc/</link>
+        <description>jdbc - Tag - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/jdbc/" rel="self" type="application/rss+xml" /><item>
+    <title>Db05jdbc</title>
+    <link>http://fengqigang.cn/posts/db05jdbc/</link>
+    <pubDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db05jdbc/</guid>
+    <description><![CDATA[数据库的访问过程是什么样的?  客户端与 Mysql 服务器之间建立连接   加载驱动  DriverManager.registerDriver(new Driver())
+ 获取连接对象  Connection connection = DriverManager.getConnection(url, name, password);
+客户端与 Mysql 服务器发送数据库请求  Statement statement = connection.createStatement();
+Mysql 服务器处理客户端的相应，并返回结果给客户端  statement.executeUpdate() statement.executeQuery()
+ 客户端接受 Mysql服务器的相应，并按照自己的业务逻辑做相应处理
+  释放相关资源
+  statement
+connection
+resultSet
+如何设置 jdbc 使用 mydatabase 数据库？ 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL? 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?]]></description>
+</item></channel>
+</rss>

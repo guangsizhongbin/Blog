@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/tags/</link>
         <description>Tags - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>jdbc</title>
+    <link>http://fengqigang.cn/tags/jdbc/</link>
+    <pubDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/tags/jdbc/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>事务</title>
     <link>http://fengqigang.cn/tags/%E4%BA%8B%E5%8A%A1/</link>
     <pubDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Sat, 27 Mar 2021 22:21:14 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/tags/array/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>hugo</title>
-    <link>http://fengqigang.cn/tags/hugo/</link>
-    <pubDate>Mon, 01 Feb 2021 20:46:27 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/tags/hugo/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

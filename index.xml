@@ -4,9 +4,27 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Db05jdbc</title>
+    <link>http://fengqigang.cn/posts/db05jdbc/</link>
+    <pubDate>Tue, 06 Jul 2021 16:56:02 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/db05jdbc/</guid>
+    <description><![CDATA[数据库的访问过程是什么样的?  客户端与 Mysql 服务器之间建立连接   加载驱动  DriverManager.registerDriver(new Driver())
+ 获取连接对象  Connection connection = DriverManager.getConnection(url, name, password);
+客户端与 Mysql 服务器发送数据库请求  Statement statement = connection.createStatement();
+Mysql 服务器处理客户端的相应，并返回结果给客户端  statement.executeUpdate() statement.executeQuery()
+ 客户端接受 Mysql服务器的相应，并按照自己的业务逻辑做相应处理
+  释放相关资源
+  statement
+connection
+resultSet
+如何设置 jdbc 使用 mydatabase 数据库？ 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL? 开始使用参数用? 再接参数时使用&amp;
+1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?]]></description>
+</item><item>
     <title>Db04事务</title>
     <link>http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/</link>
     <pubDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</pubDate>
@@ -30,11 +48,11 @@ connection.setAutoCommit(true);  开启事务
   出现虚幻读
   什么是 read committed 读已提交?]]></description>
 </item><item>
-    <title>DB 03索引</title>
-    <link>http://fengqigang.cn/posts/db-03%E7%B4%A2%E5%BC%95/</link>
+    <title>db03索引</title>
+    <link>http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/</link>
     <pubDate>Sun, 04 Jul 2021 16:43:25 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://fengqigang.cn/posts/db-03%E7%B4%A2%E5%BC%95/</guid>
+    <guid>http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/</guid>
     <description><![CDATA[什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
 即索引是数据结构。
 数据库在执行查询的时候，如果没有索引存在的情况下，会采用全表扫描的方式进行查找。
@@ -52,11 +70,11 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 但是行锁锁的是一行记录，所以我们的表锁的效率是不及行行锁的，但是表锁的安全性是比行锁要高的
 如何定义一个table t1它的engine 为 MYISAM?]]></description>
 </item><item>
-    <title>DB-02多表</title>
-    <link>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</link>
+    <title>db02多表</title>
+    <link>http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/</link>
     <pubDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/</guid>
+    <guid>http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/</guid>
     <description><![CDATA[如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
  id 价格 数量 商品名称  商品详情表
  id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
@@ -145,17 +163,5 @@ public class 后没有()
 如何安装PicGo? win   exe 安装
   choco 安装
   1  choco install picgo    scoop 安装  1  coop bucket add helbing https://github.com/helbing/scoop-bucket &amp; scoop install picgo   Linux  arch  1  yay -S picgo-appimage    AppImage  1 2  chomod a+x PicGo-2.3.0-beta.6.AppImage ./PicGo-2.3.0-beta.6.AppImage   MacOS  brew  1  brew install picgo --cask   PicGo + 阿里云oss?]]></description>
-</item><item>
-    <title>Day39</title>
-    <link>http://fengqigang.cn/posts/day39/</link>
-    <pubDate>Mon, 17 May 2021 23:31:44 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/day39/</guid>
-    <description><![CDATA[引入css有哪几种方式?  在 div 后写 style  写在 head 标签内， 用 style 包裹  导入外部文件，用link标签(可使用相对路径，也可使用绝对路径)  有哪些方式可以挑选选择器?  标签选择器  类选择器(在一个 html 页面上， 每一个标签的 class 可以有多个)  ID选择器(在一个 html 页面上，每一个标签的 id 是唯一的)   层级复合选择器   属性选择器  选择器的优先级是什么样的? 如何强制升到最高的优先级? 行内 &gt; ID &gt; 伪类|类 属性选择 &gt; 标签 &gt; 统配符
-文件中 css 与导入的 css (优先级一样), 需要 满足就近原则
-强制升到最高的优先级
-当前位置所设置的属性为最高级
-什么是标准流(标准文档流, 文档流)?   在一个 HTML 页面中，页面会根据页面的(行和块)特性，会从上到下，从左到右按顺序排列
-  每一个 HTML 标签， 要在页面上占据空间]]></description>
 </item></channel>
 </rss>

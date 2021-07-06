@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>DB 03索引 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="DB 03索引" />
+        <title>db03索引 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="db03索引" />
 <meta property="og:description" content="什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
 即索引是数据结构。
 数据库在执行查询的时候，如果没有索引存在的情况下，会采用全表扫描的方式进行查找。
@@ -23,12 +23,12 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 但是行锁锁的是一行记录，所以我们的表锁的效率是不及行行锁的，但是表锁的安全性是比行锁要高的
 如何定义一个table t1它的engine 为 MYISAM?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/db-03%E7%B4%A2%E5%BC%95/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-04T16:43:25+08:00" />
 <meta property="article:modified_time" content="2021-07-04T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="DB 03索引"/>
+<meta name="twitter:title" content="db03索引"/>
 <meta name="twitter:description" content="什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
 即索引是数据结构。
 数据库在执行查询的时候，如果没有索引存在的情况下，会采用全表扫描的方式进行查找。
@@ -48,17 +48,17 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db-03%E7%B4%A2%E5%BC%95/" /><link rel="prev" href="http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/" /><link rel="next" href="http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/" /><link rel="prev" href="http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/" /><link rel="next" href="http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DB 03索引",
+        "headline": "db03索引",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/db-03%E7%B4%A2%E5%BC%95\/"
+            "@id": "http:\/\/fengqigang.cn\/posts\/db03%E7%B4%A2%E5%BC%95\/"
         },"genre": "posts","keywords": "mysql","wordcount":  71 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/db-03%E7%B4%A2%E5%BC%95\/","datePublished": "2021-07-04T16:43:25+08:00","dateModified": "2021-07-04T00:00:00+00:00","publisher": {
+        "url": "http:\/\/fengqigang.cn\/posts\/db03%E7%B4%A2%E5%BC%95\/","datePublished": "2021-07-04T16:43:25+08:00","dateModified": "2021-07-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -132,8 +132,8 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">DB 03索引</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%B4%A2%E5%BC%95/"><i class="far fa-folder fa-fw"></i>索引</a></span></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">db03索引</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-04">2021-07-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;71 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -264,7 +264,7 @@ MyISAM 的存储文件是 frm, myd, myi三个文件</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/db-02%E5%A4%9A%E8%A1%A8/" class="prev" rel="prev" title="DB-02多表"><i class="fas fa-angle-left fa-fw"></i>DB-02多表</a>
+    <div class="post-nav"><a href="/posts/db02%E5%A4%9A%E8%A1%A8/" class="prev" rel="prev" title="db02多表"><i class="fas fa-angle-left fa-fw"></i>db02多表</a>
             <a href="/posts/db04%E4%BA%8B%E5%8A%A1/" class="next" rel="next" title="Db04事务">Db04事务<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>DB-02多表 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="DB-02多表" />
+        <title>db02多表 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="db02多表" />
 <meta property="og:description" content="如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
  id 价格 数量 商品名称  商品详情表
  id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
@@ -22,12 +22,12 @@
 一个表只讲一件事情，不表示多件事情，否则就会存在大量的数据冗余
 确保每列都和主键列直接相关，而不是间接相关  如何对其进行交叉连接?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-04T11:23:00+08:00" />
 <meta property="article:modified_time" content="2021-07-04T00:00:00+00:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="DB-02多表"/>
+<meta name="twitter:title" content="db02多表"/>
 <meta name="twitter:description" content="如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
  id 价格 数量 商品名称  商品详情表
  id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
@@ -46,17 +46,17 @@
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db-02%E5%A4%9A%E8%A1%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/" /><link rel="next" href="http://fengqigang.cn/posts/db-03%E7%B4%A2%E5%BC%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/" /><link rel="next" href="http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "DB-02多表",
+        "headline": "db02多表",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/db-02%E5%A4%9A%E8%A1%A8\/"
+            "@id": "http:\/\/fengqigang.cn\/posts\/db02%E5%A4%9A%E8%A1%A8\/"
         },"genre": "posts","keywords": "mysql","wordcount":  102 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/db-02%E5%A4%9A%E8%A1%A8\/","datePublished": "2021-07-04T11:23:00+08:00","dateModified": "2021-07-04T00:00:00+00:00","publisher": {
+        "url": "http:\/\/fengqigang.cn\/posts\/db02%E5%A4%9A%E8%A1%A8\/","datePublished": "2021-07-04T11:23:00+08:00","dateModified": "2021-07-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -130,7 +130,7 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">DB-02多表</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">db02多表</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-04">2021-07-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;102 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
@@ -493,7 +493,7 @@
     </div>
 
     <div class="post-nav"><a href="/posts/db01%E5%8D%95%E8%A1%A8/" class="prev" rel="prev" title="Db01单表"><i class="fas fa-angle-left fa-fw"></i>Db01单表</a>
-            <a href="/posts/db-03%E7%B4%A2%E5%BC%95/" class="next" rel="next" title="DB 03索引">DB 03索引<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/posts/db03%E7%B4%A2%E5%BC%95/" class="next" rel="next" title="db03索引">db03索引<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
