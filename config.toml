@@ -2,11 +2,16 @@ baseURL = "http://fengqigang.cn"
 
 defaultContentLanguage = "en"
 
-languageCode = "en"
+languageCode = "zh-cn"
 title = "xiaonan's Blog"
 
 theme = "LoveIt"
 
+# 使用git
+enableGitInfo = true
+
+# 使用 emoji 代码
+enableEmoji = true
 
 [params]
 	version="0.2.X"
@@ -17,17 +22,18 @@ theme = "LoveIt"
 
 	[params.search]
     enable = true
-    type = "lunr"
+    type = "algolia"
     contentLength = 4000
     placeholder = ""
     maxResultLength = 10
     snippetLength = 30
     highlightTag = "em"
     absoluteURL = false
+
     [params.search.algolia]
-      index = ""
-      appID = ""
-      searchKey = ""
+			index = "index.cn"
+			appID = "173HT3O1U8"
+			searchKey = "1530cf5acf447a4c01f77c17a2945f4e"
 
 	[params.header]
 		desktopMode = "auto"
@@ -154,7 +160,7 @@ theme = "LoveIt"
 			endLevel = 6
 
 [author]
-	name = "xiaonan"
+	name = "fengxiaonan"
 	email = "gaungsizhongbin@gmail.com"
 	link = "fengqigang.cn"
 
