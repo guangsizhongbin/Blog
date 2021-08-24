@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     <head>
-	<meta name="generator" content="Hugo 0.85.0" />
+	<meta name="generator" content="Hugo 0.87.0" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -22,9 +22,9 @@
     {
         "@context": "http://schema.org",
         "@type": "WebSite",
-        "url": "http:\/\/fengqigang.cn\/","inLanguage": "en","author": {
+        "url": "http:\/\/fengqigang.cn\/","inLanguage": "zh-cn","author": {
                 "@type": "Person",
-                "name": "xiaonan"
+                "name": "fengxiaonan"
             },"name": "xiaonan's Blog"
     }
     </script></head>
@@ -104,14 +104,14 @@
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-21">2021-01-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/archlinux/"><i class="far fa-folder fa-fw"></i>archlinux</a></span></div><div class="content"><h2 id="自动安装vim-plugjunegunnvim-plug">自动安装vim-plug<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;))
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -135,7 +135,7 @@ endif
 <h3 id="行相关配置">行相关配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -143,7 +143,7 @@ endif
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set number
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set number
 set relativenumber
 set cursorline
 set tabstop=2
@@ -196,14 +196,14 @@ how many columns of whitespace a <code>tab</code> keypress or a <code>backspace<
 <h4 id="swap-backup-undo-files-配置vim-remove-swap-backup-and-undo-files-from-working-directory">swap, backup, undo Files 配置<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">silent !mkdir -p ~/.config/nvim/tmp/backup
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">silent !mkdir -p ~/.config/nvim/tmp/backup
 silent !mkdir -p ~/.config/nvim/tmp/undo
 
 set backupdir=~/.config/nvim/tmp/backup,.
@@ -255,12 +255,12 @@ Set internal variable <code>{var-name}</code> to the result of the expression <c
 <h4 id="save--quit">Save &amp; quit</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap Q :q&lt;CR&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">noremap Q :q&lt;CR&gt;
 noremap &lt;C-q&gt; :qa&lt;CR&gt;
 noremap S :w&lt;CR&gt;
 </code></pre></td></tr></table>
@@ -279,12 +279,12 @@ Map the key sequence <code>{lhs}</code> to <code>{rhs}</code> for the modes wher
 <p><code>:map</code> and <code>:noremap</code> are recursive and non-recursive versions of the various mapping commands.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:map j gg				(moves cursor to first line)
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:map j gg				(moves cursor to first line)
 :map Q j				(moves cursor to first line)
 :noremap w j		(moves cursor to down one line)
 </code></pre></td></tr></table>
@@ -306,23 +306,23 @@ Map the key sequence <code>{lhs}</code> to <code>{rhs}</code> for the modes wher
 <h4 id="open-the-vimrc-file-in-anytime">Open the vimrc file in anytime</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;LEADER&gt; :e ~/.config/nvim/init.vim&lt;CR&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;LEADER&gt; :e ~/.config/nvim/init.vim&lt;CR&gt;
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="copy-content">copy content</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34; make Y to copy till the end of the line
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&#34; make Y to copy till the end of the line
 nnoremap Y y$
 
 &#34; Copy to system clipboard
@@ -332,12 +332,12 @@ vnoremap Y &#34;+y
 </div><h4 id="search">Search</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set ignorecase
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set ignorecase
 set smartcase
 noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
 </code></pre></td></tr></table>
@@ -345,10 +345,10 @@ noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
 </div><h4 id="scrolloff">scrolloff</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set scrolloff=4
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set scrolloff=4
 </code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
@@ -364,13 +364,13 @@ noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
 <h4 id="resize-splits">Resize splits</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;up&gt; :res +5&lt;CR&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;up&gt; :res +5&lt;CR&gt;
 noremap &lt;down&gt; :res -5&lt;CR&gt;
 noremap &lt;left&gt; :vertical resize -5&lt;CR&gt;
 noremap &lt;right&gt; :vertical resize +5&lt;CR&gt;
@@ -379,7 +379,7 @@ noremap &lt;right&gt; :vertical resize +5&lt;CR&gt;
 </div><h4 id="markdowm-setting">Markdowm Setting</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -463,8 +463,8 @@ Note    javac      -d  Specify where to place generated class files      运行 
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>
 
@@ -473,5 +473,5 @@ Note    javac      -d  Specify where to place generated class files      运行 
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"search":{"algoliaAppID":"173HT3O1U8","algoliaIndex":"index.cn","algoliaSearchKey":"1530cf5acf447a4c01f77c17a2945f4e","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

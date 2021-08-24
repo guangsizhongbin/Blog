@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "headline": "Linux第九章",
-        "inLanguage": "en",
+        "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0\/"
@@ -194,28 +194,28 @@
 <h3 id="在-vim-中-如何在第-n1-与-n2-列之间寻找-word1--并将该字串取代为-word2">在 <strong>vim</strong> 中, 如何在第 <strong>n1</strong> 与 <strong>n2</strong> 列之间寻找 <strong>word1</strong> ， 并将该字串取代为 <strong>word2</strong>?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">:n1, n2s/word1/word2/g
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">:n1, n2s/word1/word2/g
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="在-vim-中如何在第一行到最后一行寻找-word1-字串并将该字串取为-word2-且在取代前显示提示字符给使用者确认">在 <strong>vim</strong> 中，如何在第一行到最后一行寻找 <strong>word1</strong> 字串，并将该字串取为 <strong>word2</strong>, 且在取代前显示提示字符给使用者确认?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">:1, <span class="nv">$1</span>/word1/word2/gc
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">:1, <span class="nv">$1</span>/word1/word2/gc
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="在-vim-中如何在第一行到最后一行寻找-word1-字串并将该字串取为-word2">在 <strong>vim</strong> 中，如何在第一行到最后一行寻找 <strong>word1</strong> 字串，并将该字串取为 <strong>word2</strong>?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">:1, <span class="nv">$1</span>/word1/word2/g
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">:1, <span class="nv">$1</span>/word1/word2/g
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="在-vim-中-如何向后删除n个字符">在 <strong>vim</strong> 中， 如何向后删除n个字符?</h3>
@@ -329,14 +329,14 @@
 <h3 id="如何将-etcman_dbconf-重新复制到-tmpvitest-下面并将其修改成为-dos-断行">如何将 <strong>/etc/man_db.conf</strong> 重新复制到 <strong>/tmp/vitest</strong> 下面，并将其修改成为 <strong>dos</strong> 断行?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /tmp/vitest
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /tmp/vitest
 
 cp -a /etc/man_db.conf /tmp/vitest/
 
@@ -358,10 +358,10 @@ unix2dos -k man_db.conf
 <h3 id="如何将-man_dbconf-转成-linux-断行字符-并保留旧文件新文件放于-man_dbconflinux">如何将 <strong>man_db.conf</strong> 转成 <strong>Linux</strong> 断行字符, 并保留旧文件，新文件放于 <strong>man_db.conf.linux</strong></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">dos2unix -k -n man_db.conf man_db.conf.linux
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dos2unix -k -n man_db.conf man_db.conf.linux
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -379,10 +379,10 @@ unix2dos -k man_db.conf
 <h3 id="如何查看一个文件是-win-下创建的文件还是-linux-下创建的文件">如何查看一个文件是 <strong>win</strong> 下创建的文件还是 <strong>linux</strong> 下创建的文件？</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">file man_db.conf*
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">file man_db.conf*
 </code></pre></td></tr></table>
 </div>
 </div><p><img
@@ -437,8 +437,8 @@ unix2dos -k man_db.conf
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>
 
@@ -447,5 +447,5 @@ unix2dos -k man_db.conf
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"173HT3O1U8","algoliaIndex":"index.cn","algoliaSearchKey":"1530cf5acf447a4c01f77c17a2945f4e","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

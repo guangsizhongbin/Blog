@@ -3,8 +3,8 @@
         <title>nvim - Category - xiaonan&#39;s Blog</title>
         <link>http://fengqigang.cn/categories/nvim/</link>
         <description>nvim - Category - xiaonan&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/nvim/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/nvim/" rel="self" type="application/rss+xml" /><item>
     <title>UltiSnip中的正则</title>
     <link>http://fengqigang.cn/posts/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99/</link>
     <pubDate>Sat, 30 Jan 2021 22:22:33 &#43;0800</pubDate>
@@ -26,7 +26,7 @@
     <description><![CDATA[<h2 id="markdownmarkdown">Markdown<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -34,7 +34,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Plug &#39;godlygeek/tabular&#39; &#34;必要插件
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Plug &#39;godlygeek/tabular&#39; &#34;必要插件
 Plug &#39;plasticboy/vim-markdown&#39;
 
 &#34; To disable math conceal with LaTex math syntax enabled, add the following
@@ -72,12 +72,12 @@ let g:vim_markdown_math = 1
 <h3 id="ultisnipsedit进入编辑页面edit"><code>UltisnipsEdit</code>进入编辑页面<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet triggerWord &#34;Comment&#34; iAwrb
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet triggerWord &#34;Comment&#34; iAwrb
 your snippets
 endsnippet
 </code></pre></td></tr></table>
@@ -92,12 +92,12 @@ endsnippet
 <h4 id="数学模式下自动加下标">数学模式下自动加下标</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">snippet</span><span class="w"> </span><span class="s1">&#39;([A-Za-z])(\d)&#39;</span><span class="w"> </span><span class="s2">&#34;auto subscript&#34;</span><span class="w"> </span><span class="n">wrA</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">snippet</span><span class="w"> </span><span class="s1">&#39;([A-Za-z])(\d)&#39;</span><span class="w"> </span><span class="s2">&#34;auto subscript&#34;</span><span class="w"> </span><span class="n">wrA</span><span class="w">
 </span><span class="w"></span><span class="o">`!</span><span class="n">p</span><span class="w"> </span><span class="n">snip</span><span class="p">.</span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="k">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">`</span><span class="n">_</span><span class="o">`!</span><span class="n">p</span><span class="w"> </span><span class="n">snip</span><span class="p">.</span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="k">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">`</span><span class="w">
 </span><span class="w"></span><span class="n">endsnippet</span><span class="w">
 </span></code></pre></td></tr></table>
@@ -135,7 +135,7 @@ endsnippet
 <h4 id="创建表格">创建表格</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -152,7 +152,7 @@ endsnippet
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;(?&lt;!\\)([0-9])([0-9])tb&#39; &#34;new table&#34; r
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;(?&lt;!\\)([0-9])([0-9])tb&#39; &#34;new table&#34; r
 $1`!p 
 x=match.group(1)
 y=match.group(2)
@@ -171,7 +171,7 @@ endsnippet
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/13_object/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-13T21:42:49+08:00" />
-<meta property="article:modified_time" content="2021-04-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-09T14:15:51+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="13_object"/>
@@ -49,12 +49,12 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "headline": "13_object",
-        "inLanguage": "en",
+        "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/13_object\/"
         },"genre": "posts","keywords": "java","wordcount":  863 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/13_object\/","datePublished": "2021-04-13T21:42:49+08:00","dateModified": "2021-04-13T00:00:00+00:00","publisher": {
+        "url": "http:\/\/fengqigang.cn\/posts\/13_object\/","datePublished": "2021-04-13T21:42:49+08:00","dateModified": "2021-06-09T14:15:51+08:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -311,7 +311,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 <p>然后用 <strong>Class</strong> 获取 <strong>getName</strong>, <strong>getSimpleName</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -325,7 +325,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Student</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="o">();</span>
         <span class="n">Class</span> <span class="n">clClazz</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
@@ -428,10 +428,10 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">otherObject</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">otherObject</span><span class="o">)</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><ol start="3">
@@ -439,10 +439,10 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">otherObject</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">otherObject</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><ol start="4">
@@ -453,10 +453,10 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">otherObject</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">otherObject</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -464,10 +464,10 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(!(</span><span class="n">otherObject</span> <span class="k">instanceof</span> <span class="n">ClassName</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">if</span> <span class="o">(!(</span><span class="n">otherObject</span> <span class="k">instanceof</span> <span class="n">ClassName</span><span class="o">))</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><ol start="5">
@@ -475,10 +475,10 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">ClassName</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">ClassName</span><span class="o">)</span> <span class="n">otherObject</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="n">ClassName</span> <span class="n">other</span> <span class="o">=</span> <span class="o">(</span><span class="n">ClassName</span><span class="o">)</span> <span class="n">otherObject</span>
 </code></pre></td></tr></table>
 </div>
 </div><ol start="6">
@@ -486,10 +486,10 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="k">return</span> <span class="n">field1</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="na">field1</span><span class="o">;</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="k">return</span> <span class="n">field1</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="na">field1</span><span class="o">;</span>
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="如何判断对称性-yequalx-返回-true-时-xequaly-也应返回-true">如何判断对称性? <strong>y.equal(x)</strong> 返回 true 时， <strong>x.equal(y)</strong> 也应返回 <strong>true</strong></h3>
@@ -499,14 +499,14 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 <p><strong>x.equals(obj)</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">){</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">){</span>
     <span class="k">if</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">){</span>
         <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
     <span class="o">}</span>
@@ -520,7 +520,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 <p>Returns a BigDecimal whose value is (this - subtrahend), and whose scale is max(this.scale(), subtrahend.scale())</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -531,7 +531,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">1</span> <span class="o">-</span> <span class="n">0</span><span class="o">.</span><span class="na">9</span><span class="o">);</span>
         <span class="n">BigDecimal</span> <span class="n">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="s">&#34;1&#34;</span><span class="o">);</span>
@@ -572,7 +572,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 <h3 id="如何用-hashcode-判断两个-teacher-对象是否相等">如何用 <strong>hashCode</strong> 判断两个 Teacher 对象是否相等?</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -596,7 +596,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Teacher</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">(</span><span class="n">19</span><span class="o">,</span> <span class="s">&#34;张三&#34;</span><span class="o">,</span> <span class="n">1000</span><span class="o">);</span>
         <span class="n">Teacher</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teacher</span><span class="o">(</span><span class="n">19</span><span class="o">,</span> <span class="s">&#34;张三&#34;</span><span class="o">,</span> <span class="n">1000</span><span class="o">);</span>
@@ -643,7 +643,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 <p>可以用 <strong>instanceof</strong> 关键字进行判断该引用指向的对象是否是接口的实现类对象</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -661,7 +661,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">A</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">();</span>
         <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="k">instanceof</span> <span class="n">IEmptyInterface</span><span class="o">)</span> <span class="o">{</span>
@@ -699,7 +699,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-04-13</span>
+                <span>Updated on 2021-06-09</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -723,8 +723,8 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>
 
@@ -733,5 +733,5 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"173HT3O1U8","algoliaIndex":"index.cn","algoliaSearchKey":"1530cf5acf447a4c01f77c17a2945f4e","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

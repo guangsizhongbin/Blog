@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/hugo/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-02-01T20:46:27+08:00" />
-<meta property="article:modified_time" content="2021-02-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-01T20:47:07+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo"/>
@@ -23,12 +23,12 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "headline": "Hugo",
-        "inLanguage": "en",
+        "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/hugo\/"
         },"genre": "posts","keywords": "hugo","wordcount":  915 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/hugo\/","datePublished": "2021-02-01T20:46:27+08:00","dateModified": "2021-02-01T00:00:00+00:00","publisher": {
+        "url": "http:\/\/fengqigang.cn\/posts\/hugo\/","datePublished": "2021-02-01T20:46:27+08:00","dateModified": "2021-02-01T20:47:07+08:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -146,38 +146,38 @@
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Bash" data-lang="Bash">sudo pacman -S hugo
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">sudo pacman -S hugo
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="2-installation">2 Installation</h2>
 <h3 id="21-create-a-project">2.1 Create a Project</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Bash" data-lang="Bash">hugo new site my_website
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">hugo new site my_website
 <span class="nb">cd</span> my_website
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="22-install-the-theme">2.2 Install the Theme</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="23-configuration">2.3 Configuration</h3>
 <p><strong>my_website/config.toml</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -340,7 +340,7 @@
 </span><span class="lnt">161
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-TOML" data-lang="TOML"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;https://fengqigang.cn&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-TOML" data-lang="TOML"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s2">&#34;https://fengqigang.cn&#34;</span>
 
 <span class="nx">defaultContentLanguage</span> <span class="p">=</span> <span class="s2">&#34;en&#34;</span>
 
@@ -508,7 +508,7 @@
 <p><strong>my_website/archetypes/default.md</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -523,7 +523,7 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown">---
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">---
 title: &#34;{{ replace .Name &#34;-&#34; &#34; &#34; | title }}&#34;
 date: {{ .Date }}
 lastmod: {{ now.Format &#34;2006-01-02&#34;}}
@@ -541,19 +541,19 @@ draft: true
 </div><h4 id="242-create-a-new-website">2.4.2 Create a new website</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Bash" data-lang="Bash">hugo new posts/first_post.md
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">hugo new posts/first_post.md
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="25-launching-the-website-locally">2.5 Launching the Website Locally</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Bash" data-lang="Bash">hugo serve
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">hugo serve
 </code></pre></td></tr></table>
 </div>
 </div><p>Go to <code>http://localhost:1313</code></p>
@@ -568,10 +568,10 @@ draft: true
 <h3 id="26-build-the-website">2.6 Build the Website</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Bash" data-lang="Bash">hugo
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">hugo
 </code></pre></td></tr></table>
 </div>
 </div><h1 id="markdown-syntax">Markdown Syntax</h1>
@@ -579,10 +579,10 @@ draft: true
 <p>Add <code>&gt;</code> before any text you want to quote:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="k">&gt; </span><span class="ge">**Fusion Drive** combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="k">&gt; </span><span class="ge">**Fusion Drive** combines a hard drive with a flash storage (solid-state drive) and presents it as a single logical volume with the space of both drives combined.
 </span></code></pre></td></tr></table>
 </div>
 </div><p>The rendered output looks like this:</p>
@@ -592,12 +592,12 @@ draft: true
 <h2 id="2-task-lists">2 Task Lists</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="k">- [x]</span> Write the press release
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown"><span class="k">- [x]</span> Write the press release
 <span class="k">- [ ]</span> Update the website
 <span class="k">- [ ]</span> Contact the media
 </code></pre></td></tr></table>
@@ -611,14 +611,14 @@ draft: true
 <h2 id="3-tables">3. Tables</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Markdown" data-lang="Markdown">| Option | Description |
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown">| Option | Description |
 |--------|-------------|
 | data   | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
@@ -651,14 +651,14 @@ draft: true
 <h2 id="4-footnotes">4 Footnotes</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-Markdown" data-lang="Markdown">This is a digital footnote[^1].
+<pre tabindex="0" class="chroma"><code class="language-Markdown" data-lang="Markdown">This is a digital footnote[^1].
 This is a footnote with &#34;label&#34;[^label]
 
 [^1]: This is a digital footnote
@@ -705,8 +705,8 @@ This is a footnote with &ldquo;label&rdquo;<sup id="fnref:2"><a href="#fn:2" cla
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>
 
@@ -715,5 +715,5 @@ This is a footnote with &ldquo;label&rdquo;<sup id="fnref:2"><a href="#fn:2" cla
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"173HT3O1U8","algoliaIndex":"index.cn","algoliaSearchKey":"1530cf5acf447a4c01f77c17a2945f4e","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

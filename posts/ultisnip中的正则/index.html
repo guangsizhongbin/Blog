@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
         "@context": "http://schema.org",
         "@type": "BlogPosting",
         "headline": "UltiSnip中的正则",
-        "inLanguage": "en",
+        "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/ultisnip%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99\/"
@@ -143,12 +143,12 @@
             </div><div class="content" id="content"><h2 id="1">1</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#34;(\w+).par&#34; &#34;Parenthesis (postfix)&#34; r
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#34;(\w+).par&#34; &#34;Parenthesis (postfix)&#34; r
 (`!p snip.rv = match.group(1)`$1)$0
 endsnippet
 </code></pre></td></tr></table>
@@ -182,12 +182,12 @@ endsnippet
 <h3 id="2">2</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#34;([^\s].*)\.return&#34; &#34;Return (postfix)&#34; r
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#34;([^\s].*)\.return&#34; &#34;Return (postfix)&#34; r
 return `!p snip.rv = match.group(1)`$0
 endsnippet
 </code></pre></td></tr></table>
@@ -213,12 +213,12 @@ endsnippet
 <h3 id="3">3</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet t
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet t
 &lt;tag&gt;${VISUAL:inside text/should/is/g}&lt;/tag&gt;
 endsnippet
 </code></pre></td></tr></table>
@@ -238,7 +238,7 @@ The syntax is:</li>
 <h3 id="4">4</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -246,7 +246,7 @@ The syntax is:</li>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#34;be(gin)?( (\S+))?&#34; &#34;begin{} / end{}&#34; br
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#34;be(gin)?( (\S+))?&#34; &#34;begin{} / end{}&#34; br
 \begin{${1:`!p
 snip.rv = match.group(3) if match.group(2) is not None else &#34;something&#34;`}}
 	${2:${VISUAL}}
@@ -283,7 +283,7 @@ endsnippet
 <h3 id="5">5</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -293,7 +293,7 @@ endsnippet
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">global !p
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">global !p
 def upper_right(inp):
 	return (75 - 2 * len(inp))* &#39; &#39; + inp.upper()
 endglobal
@@ -324,7 +324,7 @@ endsnippet
 <h3 id="6">6</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -332,7 +332,7 @@ endsnippet
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet letter
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet letter
 Dear $1,
 $0
 Yours sincerely,
@@ -355,13 +355,13 @@ It is always the last tabstop in the snippet no matter how many tabstops are def
 <h3 id="7-choice-tabstop">7. choice tabstop</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet q
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet q
 Your age: ${1|&lt;18,18~60,&gt;60|}
 Your height: ${2|&lt;120cm,120cm~180cm,&gt;180cm|}
 endsnippet
@@ -378,14 +378,14 @@ endsnippet
 <h3 id="8-mirrors">8. mirrors</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet env
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet env
 \begi{${1:enumerate}}
 	$0
 \end{$1}
@@ -458,13 +458,13 @@ endsnippet
     </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet title &#34;Title transformation&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet title &#34;Title transformation&#34;
 ${1:a text}
 ${1/\w+\s*/\u$0/}
 endsnippet
@@ -483,13 +483,13 @@ endsnippet
     </div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet title &#34;Title transformation&#34;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet title &#34;Title transformation&#34;
 ${1:a text}
 ${1/\w+\s*/\u$0/g}
 endsnippet
@@ -539,8 +539,8 @@ By default, only the first match of the regular expression is replaced. With thi
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">xiaonan</a></span></div>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>
 
@@ -549,5 +549,5 @@ By default, only the first match of the regular expression is replaced. With thi
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"173HT3O1U8","algoliaIndex":"index.cn","algoliaSearchKey":"1530cf5acf447a4c01f77c17a2945f4e","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

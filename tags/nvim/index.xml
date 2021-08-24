@@ -3,8 +3,8 @@
         <title>Nvim - Tag - xiaonan&#39;s Blog</title>
         <link>http://fengqigang.cn/tags/nvim/</link>
         <description>Nvim - Tag - xiaonan&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/nvim/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/nvim/" rel="self" type="application/rss+xml" /><item>
     <title>Nvim插件</title>
     <link>http://fengqigang.cn/posts/nvim%E6%8F%92%E4%BB%B6/</link>
     <pubDate>Wed, 27 Jan 2021 22:47:15 &#43;0800</pubDate>
@@ -13,7 +13,7 @@
     <description><![CDATA[<h2 id="markdownmarkdown">Markdown<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -21,7 +21,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Plug &#39;godlygeek/tabular&#39; &#34;必要插件
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">Plug &#39;godlygeek/tabular&#39; &#34;必要插件
 Plug &#39;plasticboy/vim-markdown&#39;
 
 &#34; To disable math conceal with LaTex math syntax enabled, add the following
@@ -59,12 +59,12 @@ let g:vim_markdown_math = 1
 <h3 id="ultisnipsedit进入编辑页面edit"><code>UltisnipsEdit</code>进入编辑页面<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet triggerWord &#34;Comment&#34; iAwrb
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet triggerWord &#34;Comment&#34; iAwrb
 your snippets
 endsnippet
 </code></pre></td></tr></table>
@@ -79,12 +79,12 @@ endsnippet
 <h4 id="数学模式下自动加下标">数学模式下自动加下标</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">snippet</span><span class="w"> </span><span class="s1">&#39;([A-Za-z])(\d)&#39;</span><span class="w"> </span><span class="s2">&#34;auto subscript&#34;</span><span class="w"> </span><span class="n">wrA</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="n">snippet</span><span class="w"> </span><span class="s1">&#39;([A-Za-z])(\d)&#39;</span><span class="w"> </span><span class="s2">&#34;auto subscript&#34;</span><span class="w"> </span><span class="n">wrA</span><span class="w">
 </span><span class="w"></span><span class="o">`!</span><span class="n">p</span><span class="w"> </span><span class="n">snip</span><span class="p">.</span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="k">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">`</span><span class="n">_</span><span class="o">`!</span><span class="n">p</span><span class="w"> </span><span class="n">snip</span><span class="p">.</span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="k">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">`</span><span class="w">
 </span><span class="w"></span><span class="n">endsnippet</span><span class="w">
 </span></code></pre></td></tr></table>
@@ -122,7 +122,7 @@ endsnippet
 <h4 id="创建表格">创建表格</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -139,7 +139,7 @@ endsnippet
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;(?&lt;!\\)([0-9])([0-9])tb&#39; &#34;new table&#34; r
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">snippet &#39;(?&lt;!\\)([0-9])([0-9])tb&#39; &#34;new table&#34; r
 $1`!p 
 x=match.group(1)
 y=match.group(2)
@@ -158,7 +158,7 @@ endsnippet
 </div>
 </div><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -213,14 +213,14 @@ endsnippet
     <description><![CDATA[<h2 id="自动安装vim-plugjunegunnvim-plug">自动安装vim-plug<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;))
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">if empty(glob(&#39;~/.vim/autoload/plug.vim&#39;))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -244,7 +244,7 @@ endif
 <h3 id="行相关配置">行相关配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -252,7 +252,7 @@ endif
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set number
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set number
 set relativenumber
 set cursorline
 set tabstop=2
@@ -305,14 +305,14 @@ how many columns of whitespace a <code>tab</code> keypress or a <code>backspace<
 <h4 id="swap-backup-undo-files-配置vim-remove-swap-backup-and-undo-files-from-working-directory">swap, backup, undo Files 配置<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">silent !mkdir -p ~/.config/nvim/tmp/backup
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">silent !mkdir -p ~/.config/nvim/tmp/backup
 silent !mkdir -p ~/.config/nvim/tmp/undo
 
 set backupdir=~/.config/nvim/tmp/backup,.
@@ -364,12 +364,12 @@ Set internal variable <code>{var-name}</code> to the result of the expression <c
 <h4 id="save--quit">Save &amp; quit</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap Q :q&lt;CR&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">noremap Q :q&lt;CR&gt;
 noremap &lt;C-q&gt; :qa&lt;CR&gt;
 noremap S :w&lt;CR&gt;
 </code></pre></td></tr></table>
@@ -388,12 +388,12 @@ Map the key sequence <code>{lhs}</code> to <code>{rhs}</code> for the modes wher
 <p><code>:map</code> and <code>:noremap</code> are recursive and non-recursive versions of the various mapping commands.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">:map j gg				(moves cursor to first line)
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">:map j gg				(moves cursor to first line)
 :map Q j				(moves cursor to first line)
 :noremap w j		(moves cursor to down one line)
 </code></pre></td></tr></table>
@@ -415,23 +415,23 @@ Map the key sequence <code>{lhs}</code> to <code>{rhs}</code> for the modes wher
 <h4 id="open-the-vimrc-file-in-anytime">Open the vimrc file in anytime</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;LEADER&gt; :e ~/.config/nvim/init.vim&lt;CR&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;LEADER&gt; :e ~/.config/nvim/init.vim&lt;CR&gt;
 </code></pre></td></tr></table>
 </div>
 </div><h4 id="copy-content">copy content</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">&#34; make Y to copy till the end of the line
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&#34; make Y to copy till the end of the line
 nnoremap Y y$
 
 &#34; Copy to system clipboard
@@ -441,12 +441,12 @@ vnoremap Y &#34;+y
 </div><h4 id="search">Search</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set ignorecase
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set ignorecase
 set smartcase
 noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
 </code></pre></td></tr></table>
@@ -454,10 +454,10 @@ noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
 </div><h4 id="scrolloff">scrolloff</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">set scrolloff=4
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">set scrolloff=4
 </code></pre></td></tr></table>
 </div>
 </div><div class="details admonition note open">
@@ -473,13 +473,13 @@ noremap &lt;LEADER&gt;&lt;CR&gt; :nohlsearch&lt;CR&gt;
 <h4 id="resize-splits">Resize splits</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;up&gt; :res +5&lt;CR&gt;
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">noremap &lt;up&gt; :res +5&lt;CR&gt;
 noremap &lt;down&gt; :res -5&lt;CR&gt;
 noremap &lt;left&gt; :vertical resize -5&lt;CR&gt;
 noremap &lt;right&gt; :vertical resize +5&lt;CR&gt;
@@ -488,7 +488,7 @@ noremap &lt;right&gt; :vertical resize +5&lt;CR&gt;
 </div><h4 id="markdowm-setting">Markdowm Setting</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4

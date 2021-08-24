@@ -3,8 +3,8 @@
         <title>git - Tag - xiaonan&#39;s Blog</title>
         <link>http://fengqigang.cn/tags/git/</link>
         <description>git - Tag - xiaonan&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>gaungsizhongbin@gmail.com (xiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (xiaonan)</webMaster><lastBuildDate>Sat, 02 Jan 2021 07:43:29 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/git/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sat, 02 Jan 2021 07:43:29 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/git/" rel="self" type="application/rss+xml" /><item>
     <title>SHH地址和HTTPS地址相互转换</title>
     <link>http://fengqigang.cn/posts/github_ssh%E5%9C%B0%E5%9D%80%E5%92%8Chttps%E5%9C%B0%E5%9D%80%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/</link>
     <pubDate>Sat, 02 Jan 2021 07:43:29 &#43;0800</pubDate>
@@ -23,7 +23,7 @@
     <description><![CDATA[<h2 id="系统版本">系统版本</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -37,7 +37,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">root@vultr:~# hostnamectl
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@vultr:~# hostnamectl
 
   Static hostname: vultr.guest
         Icon name: computer-vm
