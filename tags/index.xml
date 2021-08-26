@@ -4,7 +4,21 @@
         <link>http://fengqigang.cn/tags/</link>
         <description>Tags - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 24 Aug 2021 23:57:01 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>nats</title>
+    <link>http://fengqigang.cn/tags/nats/</link>
+    <pubDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/tags/nats/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>消息中间件</title>
+    <link>http://fengqigang.cn/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</link>
+    <pubDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>spring</title>
     <link>http://fengqigang.cn/tags/spring/</link>
     <pubDate>Tue, 24 Aug 2021 23:57:01 &#43;0800</pubDate>
@@ -59,20 +73,6 @@
     <pubDate>Wed, 09 Jun 2021 16:04:58 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/tags/picgo/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>linux</title>
-    <link>http://fengqigang.cn/tags/linux/</link>
-    <pubDate>Sat, 24 Apr 2021 15:05:24 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/tags/linux/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>idea</title>
-    <link>http://fengqigang.cn/tags/idea/</link>
-    <pubDate>Sun, 04 Apr 2021 23:40:51 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/tags/idea/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

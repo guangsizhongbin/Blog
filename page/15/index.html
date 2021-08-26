@@ -100,6 +100,27 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/java/">Java</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-20">2021-01-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">Java运行机制 高级语言的运行机制 编译型 使用专门的编译器, 针对特定平台(操作系统)将某种高级语言源代码一次性&rsquo;翻译&rsquo;成可被该平台硬件执行的机器码(包括机器指令和操作数), 并包装成该平台所能识别的可执行性的程序格式。
+解释型 使用专门的解释器对源程序逐行解释成特定的机器码并立即执行的语言
+Java安装 archlinux下安装 sudo pacman -S jdk
+输出Hello World 编写Hello World代码 HelloWorld.java
+1 2 3 4 5 6 7 8  public class HelloWorld { public static void main(String[] args) { System.out.println(&#34;Hello World!&#34;); } }   String 大写
+System 大写
+编译 javac -d . HelloWorld.java
+Note    javac      -d  Specify where to place generated class files      运行 java HelloWorld</div><div class="post-footer">
+        <a href="/posts/java/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/">Samba服务器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-19">2021-01-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">安装samba 1 2  sudo apt-get update sudo apt-get intall samba samba-common-bin   配置smb.conf /etc/samba/smb.conf
+1 2 3 4 5 6  [share] path = /home/pi valid users = pi browseable = yes public = yes writable = yes   重新运行smaba服务 sudo /etc/init.d/samba restart
+添加pi用户为Samba用户 sudo smbpasswd -a pi
+参考 树莓派4设置Samba的最新版本
+树莓派3-搭建SAMBA服务器</div><div class="post-footer">
+        <a href="/posts/samba%E6%9C%8D%E5%8A%A1%E5%99%A8/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/samba/">samba</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/momo/">Momo</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-18">2021-01-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/python/"><i class="far fa-folder fa-fw"></i>python</a></span></div><div class="content">URL拼接 替换参数1 1 2  url = &#39;https://www.aliexpress.com/item/{}.html&#39;.format(123) print(url)    https://www.aliexpress.com/item/123.html
  termcolor2  colored(text, color=None, on_color=None, attrs=None)
@@ -146,36 +167,6 @@ typedef 归编译器管
   必须确定当前的线性表的长度 int length</div><div class="post-footer">
         <a href="/posts/%E9%A1%BA%E5%BA%8F%E8%A1%A8%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/">顺序表</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/">树莓派实现旁路由功能</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-14">2021-01-14</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/"><i class="far fa-folder fa-fw"></i>树莓派</a></span></div><div class="content">什么是WAN口和LAN口?1   WAN端口用于连接至Internet
-  LAN端口用于连接局域网设备
-  图1不能访问的原因在于路由器2认为WAN口连接的是另外一个网络，而设备2访问设备1的IP地址是在同一个网络中，所以不会向WAN口发送网络包，因此不通。
-什么是网关？ 网关(Gateway)就是一个网络连接到另一个网络的&quot;关口&quot;
-什么是默认网关？ 一个房间可又有多扇门一样，一台主机可又有多个网关。默认网关的意思是一台主机如果找不到可用的网关，就把数据包给默认指定的网关，由这个网关来处理数据包。现在主机使用的网关，一般指的是默认网关。
-网关与路由器有什么关系？2   “网关”是一个概念，&ldquo;路由器&quot;是一个产品。
-  网关: 帮助两个不能直接互通的网络，进行数据转发的。
-  路由器，手机，防火墙均可实现网关功能:
-  路由器将家庭局域网和互联网相连
-  手机开了热点后，笔记本接进来，手机作为网关把笔记本和互联网相连
-  防火墙可能做网关，局域网连至防火墙，防火墙把局域网和互联网相连
-    旁路由如何实现？ 网络数据在其中会怎样流动？3 国内网站:
- 局域网设备发出数据 -&gt; 到达主路由LAN1口 -&gt; 到达主路由LAN2口 -&gt; 到达旁路由LAN口 -&gt; 旁路由分析数据走位 -&gt; 到达旁路由LAN口 -&gt; 到达主路由LAN2口 -&gt; 到达主路由WAN口 -&gt; 到达互连网
-  互联网服务器返回数据 -&gt; 到达主路由WAN口 -&gt; 到达主路由LAN1口 -&gt; 到达局域网设备
- 国外网站:</div><div class="post-footer">
-        <a href="/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%AE%9E%E7%8E%B0%E6%97%81%E8%B7%AF%E7%94%B1%E5%8A%9F%E8%83%BD/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%97%81%E8%B7%AF%E7%94%B1/">旁路由</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/corn%E4%BD%BF%E7%94%A8/">Corn使用</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-12">2021-01-12</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div><div class="content">Install cron1 sudo pacman -S cronie
-Quick running config setting default Editor export EDITOR=/usr/bin/nvim
-systemctl systemctl enable cronie.service
-systemctl start cronie.service
-create cron job2   crontab -e
-    Crontab format1
-     Symbol Description     * Wildcard, specifies every possible time interval   , List multiple values separated by a comma.   - Specify a range between two numbers, separated by a hyphen   / Specify a periodicity/frequency using a slash     example</div><div class="post-footer">
-        <a href="/posts/corn%E4%BD%BF%E7%94%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/corn/">corn</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -201,6 +192,10 @@ create cron job2   crontab -e
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/17/">17</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/18/">18</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

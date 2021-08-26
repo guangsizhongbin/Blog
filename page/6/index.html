@@ -100,6 +100,71 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day24/">Day24</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-27">2021-04-27</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">数据结构和 Java 有什么关系? 数据结构本身和JAVA没有任何关系
+只不过AVA中有多种集合、数组、等集合性质的多对象存储结构,
+有时候我们希望更便捷, 更具有逻辑性的操作这些集合或者数组数据
+所以我们根据数据结构的组织方式，构建了一些特殊的JAVA集合类
+用于描述了一些JAVA对象的底层数据的组成关系
+JAVA的集合类底层组织数据的方式，是参照某些数据结构（逻辑、思想）来进行的
+数据结构的种类和JAVA中的集合类别有哪些？ 数据结构：抽象概念/逻辑概念
+集合：一堆数据
+线性表：有序的序列（操作受限的线性表：栈：先进后出队列：先进先出）
+Y= ax + b
+树：一对多的数据关系，国家，族谱
+图：多对多的关系：理论层级
+为什么需要集合类？ 很多情况下，我们需要对一组对象进行操作。而且很可能事先并不知道到底有多少个对象。为了解决这个问题，Java就提供了集合类供我们使用。
+（存储更多类型问题，扩容问题, 内存空间浪费问题,数据查找问题，数据删除问题等等
+数组的主要特点是什么? 数组是连续存储 -&gt; 随机访问的
+为什么数组的索引一般都是从0开始的呢? 第一个层面:
+历史遗留问题, 在计算资源缺乏的过去，o标号的写法可以节省编译时间
+第二个层面:
+方便计算
+计算公式 = (下标 - 1) * 单个元素空间 + 基础位置
+为什么数组的效率比链表高? 链表:
+链表是非连续存储的
+数组:
+是连续存储的
+Java 中的一维， 多维数组的内存空间是连续的吗？ 在 java 中只有一维数组的内存空间是连续的，多维数组的内存空间不一定连续.
+数组的基本操作(添加, 删除)的(最好情况，最坏情况，平均情况)时间复杂度? 添加(保证元素的顺序)
+最好情况: O(1)
+最坏情况: 移动n个元素
+平均情况: 移动 n/2 个元素
+删除(保证元素的顺序)
+最好情况： O(1)
+最坏情况: 移动 n-1 个元素, O(n)</div><div class="post-footer">
+        <a href="/posts/day24/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day23/">Day23</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-26">2021-04-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">类加载的细分? 类加载通过 加载, 连接， 初始化 三步来实现
+类加载中的加载是如何执行的？ 通过类加载器获得二进制字节流
+在内存中生成一个代表这个类的 java.lang Class对象，作为方法区这个类的各种数据的访问入口
+类加载中的连接是如何执行的? 验证：确保被加载类的正确性正确性的校验
+cafe babe:magic number起校验作用的
+准备：负责为类的静态成员分配内存并设置默认初始化值
+解析：将类中的符号引用 (跟编译原理相关) 潜替换为直接引用(内存地址)
+类加载中的初始化是如何执行的？ 给静态成员变量赋初值，执行静态代码块内容
+类加载时机有哪些? 创建类的实例 (首次创建该类)
+对象访问类的静态变量（首次)
+调用类的静态方法（首次)
+使用反射方式来强制创建某个类或接口对应的 java.lang.Class 对象
+加载某个类的子类，会先触发父类的加载
+直接使用 java. exe 命令来运行某个主类，也就是执行了某个类的main方法
+类加载中有哪些加载器? Bootstrap ClassLoader
+根类加载器负责Java运行时核心类的加载，JDK中JRE的目录下 rt jar
+Extension ClassLoader
+扩展类加载器负责JRE的扩展目录中jar包的加载，在JDK中JRE的目录下ext日录
+Sysetm ClassLoader
+系统类加载器/应用加载器负责加载自己定义的Java类
+java 在计算机中有哪几种阶段?  源文件阶段 Class 类对象阶段(通过类加载器 ClassLoader 加载) 运行时阶段  什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
+获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
+  类名.class
+  对象.getClass（）
+  如何用 Class.</div><div class="post-footer">
+        <a href="/posts/day23/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/">Linux第十二章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-24">2021-04-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">写 Shell Script 的规则是什么?   第一行写 #!/bin/bash 来宣告这个文件内的语法使用的是 bash 语法
   程序内容的说明:
@@ -169,45 +234,6 @@ What&rsquo;s the difference between multiple processes and multiple threads? eac
 thread share the same data. Shared variables make communication between threads more efficient and easier to program than interprocess communication.</div><div class="post-footer">
         <a href="/posts/20_thread/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/19_network/">19_network</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-20">2021-04-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是计算机网络   物理互联
-  软件支持
-  目的: 资源共享 + 信息传递
-  什么是网络编程? 处于 互联网络 上不同计算机 程序间 的数据交换
-OSI参考模型有几层? 分别是什么? 7 层
-物理层
-数据链路层
-网络层
-传输层
-会话层
-表示层
-应用层
-物联网淑惠试用
-物理层主要关注什么? 关注一条通信信道上传输原始比特(01)
-其功能是确保当一方发送了比特1, 另一方收到的是比特1, 而不是0
-物理层的所涉及到的典型问题是什么?   用什么样的电信号表示0和1
-  一个 bit 持续多少纳秒
-  传输是否可以在两个方向同时进行
-  初始连接如何建立，传输结束后之后如何撤销连接
-  规定一个特殊的电信号将普通的数据信号分开来
-数据链路层主要关注什么? 将一个原始的传输设施转变成一条 没有漏检传输错误 的传输线路
-检查数据是否发生差错
-数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
-  流量控制</div><div class="post-footer">
-        <a href="/posts/19_network/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/18_io/">18_io</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-19">2021-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">字节流是怎么分类的?   字节输出流
- 抽象基类 OutputStream 具体子类 FileOutputStream BufferedOutputStream    字节输入流
- 抽象基类 InputStream 具体子类 FielInputStream BufferedInputStream    什么是IO? i: input 输入
-o: output 输出
-为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
-内存有限，需要把数据读取到内存才行，需要io交互
-java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?  字节输出流 OutputStream 字节输入流 InputStream 字节输出流 Writer 字符输入流 Reader  由这4个基类派生出的子类,其子类名都是以父类名作为后缀</div><div class="post-footer">
-        <a href="/posts/18_io/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -238,7 +264,7 @@ java 流模型是什么样的? java 中的流是怎么分类的?  按照流向�
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/17/">17</a>
+                        <a href="/page/18/">18</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

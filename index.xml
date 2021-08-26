@@ -4,9 +4,29 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 24 Aug 2021 23:57:01 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>02 Nats所支持的协议</title>
+    <link>http://fengqigang.cn/posts/02-nats%E6%89%80%E6%94%AF%E6%8C%81%E7%9A%84%E5%8D%8F%E8%AE%AE/</link>
+    <pubDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/02-nats%E6%89%80%E6%94%AF%E6%8C%81%E7%9A%84%E5%8D%8F%E8%AE%AE/</guid>
+    <description><![CDATA[NATS 可以支持 nats 或 tls 协议
+NATS 可以是单个服务，也可以是集群
+nats 协议 nats://demo.nats.io, 4222是NATS的默认协议
+tls 协议 tls://demo.nats.io:4443]]></description>
+</item><item>
+    <title>01 Nats以主题为基础的消息</title>
+    <link>http://fengqigang.cn/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/</link>
+    <pubDate>Thu, 26 Aug 2021 22:58:12 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/</guid>
+    <description><![CDATA[主题的等级 用.去区分不同的等级
+1 2 3 4 5  time.us time.us.east time.us.east.atlanta time.eu.east time.eu.warsaw   通配符  * 匹配一个 token  如 time.*.east 可以匹配 time.us.east 和 time.eu.east
+&gt; 匹配多个 tokens  如 time.us.&gt; 可以匹配 time.us.east 和 time.us.east.atlanta
+混合*与&gt;  如*.*.east.&gt; 可以匹配 time.us.east.atlanta]]></description>
+</item><item>
     <title>02 Spring测试源码学习环境是否搭建成功</title>
     <link>http://fengqigang.cn/posts/02-spring%E6%B5%8B%E8%AF%95%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F/</link>
     <pubDate>Tue, 24 Aug 2021 23:57:01 &#43;0800</pubDate>
@@ -130,38 +150,5 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
   类名.class
   对象.getClass（）
   如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.]]></description>
-</item><item>
-    <title>Aop</title>
-    <link>http://fengqigang.cn/posts/aop/</link>
-    <pubDate>Mon, 28 Jun 2021 23:14:37 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/aop/</guid>
-    <description><![CDATA[AOP编程实战   引入依赖
-  注册委托类组件
-  提供一个通知组件并注册(MethdoInterceptor 是来自于 org.aopalliance.intercept)
-  ASPECT 强化advisor - pointcut advisor 的时间属性   Before
-  After
-  Around
-  AfterReturning
-  AfterThrowing
-  joinPoint 的参数 ProceedingJoinPoint extends 于 JoinPint
-  getSignature() 方法信息
-  getName() 方法名
-  getArgs() 参数
-  getThis() proxy
-  getTarget() 委托类对象
-  CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.]]></description>
-</item><item>
-    <title>Spring02</title>
-    <link>http://fengqigang.cn/posts/spring02/</link>
-    <pubDate>Fri, 25 Jun 2021 23:23:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/spring02/</guid>
-    <description><![CDATA[02_Spring
-builder 设计模式  注意
- 如果setIq 和 sethair 方法中的 head, 如果没有初始化的话会出现空指针异常
-  处理方法:
-  HumanBuilder
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public class HumanBuilder { Human human = new Human(); public Head setIq(Integer iq) { Head head = human.getHead(); head.setIq(iq); return head; } public Head setHair(String hair) { Head head = human.getHead(); head.setHair(hair); return head; } }   Human]]></description>
 </item></channel>
 </rss>
