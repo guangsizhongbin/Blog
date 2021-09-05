@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head>
-	<meta name="generator" content="Hugo 0.87.0" />
+	<meta name="generator" content="Hugo 0.88.1" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -100,6 +100,33 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/05_opp/">05_opp</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-03">2021-04-03</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是显式赋值? 直接赋值的方式
+1  String brand = &#34;华为&#34;;   其输出结果会是什么样? i 与 i8 会是一样的
+在相同的类中，整个程序的执行期间，类加载会执行多少次？ 只加载一次
+像 String, System 这种显然也是类，但是在 jdk 当中也会加载吗？ 它们仍然会被加载
+类加载都是懒加载，不是必用时，它不会加载
+局部变量 与 成员变量 有什么区别？  在类中定义的位置  局部变量:
+局部位置(包含方法，大括号之间往往都是局部位置)
+成员变量:
+成员位置(类中方法外)
+ 在内存中的位置  局部变量
+栈帧中
+成员变量
+堆上的对象
+ 生命周期不同  局部变量
+和方法的栈帧同生共死，方法调用，局部变量生效，方法执行完毕出栈，局部变量销毁
+成员变量
+和对象同生共死，是不确定的，但是只要是对象的引用被销毁了，这些对象中的成员变量也没有意义了
+ 初始化值不同  局部变量
+没有默认初始化值， 必须手动初始化
+成员变量
+有默认初始值
+为什么它不能打印 age ? 加了 static 的方法不属于普通成员方法，它是无法访问成员变量的
+这里它输出的是 80 还是 100? 输出的是 80 , 它会选择离它最近的参数调用</div><div class="post-footer">
+        <a href="/posts/05_opp/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/04_recursion/">04_recursion</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-02">2021-04-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何用一个方法捕获栈溢出这个错误？ catch (StackOverflowError error)
 什么是成员变量？ 定义在类中，除了方法体之外的区域
@@ -175,12 +202,6 @@ You can then append a project name, such as com.</div><div class="post-footer">
    1 2  nums[i] = nums[x]; i += 1;   可以直接写成</div><div class="post-footer">
         <a href="/posts/removeelement/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/array/">array</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/twosum/">TwoSum</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-26">2021-03-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/algorithm/"><i class="far fa-folder fa-fw"></i>algorithm</a></span></div><div class="content">Two Sum 001
-我的代码(双指针法) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  class Solution { public int[] twoSum(int[] nums, int target) { if (nums.length &lt; 2){ return new int[0]; } int[] data = new int[2]; for (int x = 0 ; x &lt; nums.length; x ++){ for (int y = x + 1; y &lt; nums.length; y ++){ if (nums[x] + nums[y] == target){ data[0] = x; data[1] = y; } } } return data; } }   最优解(hash表) 待学hash表</div><div class="post-footer">
-        <a href="/posts/twosum/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -215,7 +236,7 @@ You can then append a project name, such as com.</div><div class="post-footer">
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>

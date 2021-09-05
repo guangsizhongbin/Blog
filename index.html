@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head>
-	<meta name="generator" content="Hugo 0.87.0" />
+	<meta name="generator" content="Hugo 0.88.1" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -100,6 +100,17 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/01-uml/">01 Uml</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-05">2021-09-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%9B%BE/"><i class="far fa-folder fa-fw"></i>图</a></span></div><div class="content">UML类图例子 可见性修饰   -private
+  +public
+  #protected
+  ~package/default
+  关系  Inheritace 继承  Association 联系(sb eat sb)  Aggregation  A group of tortoises is called a creep.
+Composition  Multiplicity
+         0..1 zero to one(optional)   n specific number   n&hellip;* zero to many   1..* one to many   m.</div><div class="post-footer">
+        <a href="/posts/01-uml/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/uml/">uml</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/02-nats%E6%89%80%E6%94%AF%E6%8C%81%E7%9A%84%E5%8D%8F%E8%AE%AE/">02 Nats所支持的协议</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-26">2021-08-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nats/"><i class="far fa-folder fa-fw"></i>nats</a></span></div><div class="content">NATS 可以支持 nats 或 tls 协议
 NATS 可以是单个服务，也可以是集群
@@ -148,27 +159,6 @@ resultSet
 1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?</div><div class="post-footer">
         <a href="/posts/db05jdbc/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jdbc/">jdbc</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db04%E4%BA%8B%E5%8A%A1/">Db04事务</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-06">2021-07-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
-事务控制有哪些api?  connection.rollback();  回滚事务
-connection.commit();  提交事务
-connection.setAutoCommit(true);  开启事务
-事务的特性是什么? ACID
- 原子性  一个事务，事务中的各个操作单元，要么就都成功，要么都不成功
-一致性  事务必须使数据库从一个一致性变成另一个一致性状态
-隔离性  事务与事务之间是互相隔离的，互不干扰的，互不影响的
-持久性  事务引起的数据库的改变应该是永久化的，而不是短暂的
-事务的隔离级别有哪些?   read uncommitted 读未提交
-  read Commited 读已提交
-  repeatable read 可重复读
-  Serializable 串行化
-  什么是 read uncommitted 读未提交?   出现脏读
-  出现不可重复读
-  出现虚幻读
-  什么是 read committed 读已提交?</div><div class="post-footer">
-        <a href="/posts/db04%E4%BA%8B%E5%8A%A1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -189,7 +179,7 @@ connection.setAutoCommit(true);  开启事务
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>

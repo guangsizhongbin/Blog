@@ -4,7 +4,20 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sun, 05 Sep 2021 23:26:34 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>01 Uml</title>
+    <link>http://fengqigang.cn/posts/01-uml/</link>
+    <pubDate>Sun, 05 Sep 2021 23:26:34 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/01-uml/</guid>
+    <description><![CDATA[UML类图例子 可见性修饰   -private
+  +public
+  #protected
+  ~package/default
+  关系  Inheritace 继承  Association 联系(sb eat sb)  Aggregation  A group of tortoises is called a creep.
+Composition  Multiplicity
+         0..1 zero to one(optional)   n specific number   n&hellip;* zero to many   1..* one to many   m.]]></description>
+</item><item>
     <title>02 Nats所支持的协议</title>
     <link>http://fengqigang.cn/posts/02-nats%E6%89%80%E6%94%AF%E6%8C%81%E7%9A%84%E5%8D%8F%E8%AE%AE/</link>
     <pubDate>Thu, 26 Aug 2021 23:00:07 &#43;0800</pubDate>
@@ -137,16 +150,5 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
     <guid>http://fengqigang.cn/posts/db01%E5%8D%95%E8%A1%A8/</guid>
     <description><![CDATA[库的增删改查 建库语句是什么(31th_sql, utf8)? 1  createdatabase31th_sqlcharactersetutf8;  如何显示所有的库? 1  showdatabases;  如何显示 31th_sql 的建库语句? 1  showcreatedatabase31th_sql;  如何删除 31th_sql 数据库? 1  dropdatabase31th_sql;  如何选择使用 mymall 数据库? 1  usemymall;  表的增删改查 如何查看 库中所有的表? 1  showtables;  如何查询 goods 表的建表语句? 1  showcreatetablegoods;  如何描述一个 goods 表? describe goods / desc goods
 1  descgoods;  如何将 goods 表中的字符集改为 utf8 , 校对规则改成 utf8_bin? 1  altertablegoodscharactersetutf8collateutf8_bin;  如何删除 goods 表中 price 字段?]]></description>
-</item><item>
-    <title>21_reflect</title>
-    <link>http://fengqigang.cn/posts/21_reflect/</link>
-    <pubDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/21_reflect/</guid>
-    <description><![CDATA[什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
-获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
-  类名.class
-  对象.getClass（）
-  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.]]></description>
 </item></channel>
 </rss>

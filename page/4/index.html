@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
     <head>
-	<meta name="generator" content="Hugo 0.87.0" />
+	<meta name="generator" content="Hugo 0.88.1" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -100,6 +100,14 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day36/">Day36</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-05-11">2021-05-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">set 特点  Set 接口是 Collection 的子接口 描述的是集合这种数据结构 它的一些自实现是有序的(LinkedHashSet, TreeSet) 有些子实现是无序的(HashSet) 有些子实现允许存储null(LinkedHashSet, HashSet), 有些子实现不允许存储 null(TreeSet) 都是不允许重复元素  set Api  初始化  collection 是 add 方法, map 是 poll 方法
+ addAll   clear   containsAll      iterator()  map 不能使用增强for循环, 可以用interset,
+set 可以使用增强for循环
+HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.</div><div class="post-footer">
+        <a href="/posts/day36/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day35/">Day35</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-05-11">2021-05-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">day35_linkedHashMap
 LinkedHashMap的特点   LinkedHashMap 是 HashMap 一个子类
@@ -156,16 +164,6 @@ ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { publi
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20  public class TestLink { public static void main(String[] args) { ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(); list.</div><div class="post-footer">
         <a href="/posts/day31/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day30/">Day30</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-05-06">2021-05-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">集合类的分类?  Collection  List (线性表子接口)  ArrayList: 1 LinkedList: 2 Vector -&gt; Stack   Queue (队列子接口)  Deque BlockingQueue   Set (集合子接口)  HashSet: 2 LinkedHashSet: 3 TreeSet:　3     Map (Key-value)  HashMap: 1 LinkedHashMap： 3 TreeMap： 3    如何解释一个集合类（HashMap）的特点, 要解释那些东西?   这个集合类是谁的子类/接口
-  这个集合类表示是的是一种什么数据结构
-  这个集合类他的底层结构是什么(数组，链表，数组+链表)
-  如果底层结构是数组，谈数组的默认初始容量，数组的扩容机制
-  这个集合类是否有序(位序) 有序: 添加的位置是不是可以预期的
-  这个集合类是否允许存储重复元素(二叉搜索树不允许有重复元素)</div><div class="post-footer">
-        <a href="/posts/day30/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -198,7 +196,7 @@ ArrayList 实战 1 2 3 4 5 6 7 8 9 10 11 12 13 14  public class TestLink { publi
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.88.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="fengqigang.cn" target="_blank">fengxiaonan</a></span></div>
         </div>
     </footer></div>

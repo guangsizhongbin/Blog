@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>图 - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/%E5%9B%BE/</link>
+        <description>图 - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sun, 05 Sep 2021 23:26:34 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/%E5%9B%BE/" rel="self" type="application/rss+xml" /><item>
+    <title>01 Uml</title>
+    <link>http://fengqigang.cn/posts/01-uml/</link>
+    <pubDate>Sun, 05 Sep 2021 23:26:34 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/01-uml/</guid>
+    <description><![CDATA[UML类图例子 可见性修饰   -private
+  +public
+  #protected
+  ~package/default
+  关系  Inheritace 继承  Association 联系(sb eat sb)  Aggregation  A group of tortoises is called a creep.
+Composition  Multiplicity
+         0..1 zero to one(optional)   n specific number   n&hellip;* zero to many   1..* one to many   m.]]></description>
+</item></channel>
+</rss>
