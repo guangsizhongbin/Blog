@@ -20,11 +20,11 @@ Use Cases Represents an action that accomplishes some sort of task within the sy
 Relationships  Association   Include  The base use case requires an included use case in order to be complete.
  Extend  You have the option to extend the behavior of the base use case.]]></description>
 </item><item>
-    <title>01 Uml</title>
-    <link>http://fengqigang.cn/posts/01-uml/</link>
+    <title>01 Uml类图</title>
+    <link>http://fengqigang.cn/posts/01-uml%E7%B1%BB%E5%9B%BE/</link>
     <pubDate>Sun, 05 Sep 2021 23:26:34 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>http://fengqigang.cn/posts/01-uml/</guid>
+    <guid>http://fengqigang.cn/posts/01-uml%E7%B1%BB%E5%9B%BE/</guid>
     <description><![CDATA[UML类图例子 可见性修饰   -private
   +public
   #protected
