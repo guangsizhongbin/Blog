@@ -4,7 +4,20 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Mon, 06 Sep 2021 22:58:09 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 07 Sep 2021 23:32:23 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>03 ERD实体关系图</title>
+    <link>http://fengqigang.cn/posts/03-erd%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%9B%BE/</link>
+    <pubDate>Tue, 07 Sep 2021 23:32:23 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/03-erd%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%9B%BE/</guid>
+    <description><![CDATA[ERD 的全称是什么? Entity Relationship Diagrams
+ERD 的关系 ERD 图实例 Primary Key and Foreign Key A Primary Key is an attribute (or field) that uniquely identifies every record in a certain table.
+Primary Key Rules   Unique
+  Never changing
+  Never null
+  composite key composite Key Rules   Use the fewest number of attributes possible.
+  Don&rsquo;t use attributes that are apt to change.]]></description>
+</item><item>
     <title>02 UML用例图</title>
     <link>http://fengqigang.cn/posts/02-uml%E7%94%A8%E4%BE%8B%E5%9B%BE/</link>
     <pubDate>Mon, 06 Sep 2021 22:58:09 &#43;0800</pubDate>
@@ -136,26 +149,5 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 什么是表锁和行锁? 表锁比行锁更粗, 锁的是整张表
 但是行锁锁的是一行记录，所以我们的表锁的效率是不及行行锁的，但是表锁的安全性是比行锁要高的
 如何定义一个table t1它的engine 为 MYISAM?]]></description>
-</item><item>
-    <title>db02多表</title>
-    <link>http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/</link>
-    <pubDate>Sun, 04 Jul 2021 11:23:00 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/db02%E5%A4%9A%E8%A1%A8/</guid>
-    <description><![CDATA[如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
- id 价格 数量 商品名称  商品详情表
- id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
-班级表
- id 名称  学生表
- id 姓名 班级id  如何建多对多的表(学生表[姓名], 课程表[课程名称])? 多对多的关系应该去建立一个关系表, 在关系表中去维护两者之间的关系
-  先建各自的表
-  再建立关系表
-  学生表
- id 姓名  课程表
- id 课程名称  学生选课表
- id 学生id 课程id  数据库设计的三大范式是什么?  确保每列原子性:  每一列的原子性， 每一列不可以再分割
-确保每列都和主键相关:  每一个表都应该有一个主键
-一个表只讲一件事情，不表示多件事情，否则就会存在大量的数据冗余
-确保每列都和主键列直接相关，而不是间接相关  如何对其进行交叉连接?]]></description>
 </item></channel>
 </rss>

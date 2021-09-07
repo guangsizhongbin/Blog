@@ -100,6 +100,16 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/01-spring%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">01 Spring源码环境搭建</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-24">2021-08-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>spring源码学习</a></span></div><div class="content">克隆spring 5.1.x 源代码 1  git clone -b 5.1.x https://github.com/spring-projects/spring-framework.git   查看导入idea的需要注意的事项，并执行  Precompile spring-oxm with ./gradlew :spring-oxm:compileTestJava  import-into-idea.md
+在 spring-framework 文件夹下运行以下命令
+1  ./gradlew :spring-oxm:complieTestJavals   等待大约7分钟
+ Import into IntelliJ (File -&gt; New -&gt; Project from Existing Sources -&gt; Navigate to directory -&gt; Select build.gradle)
+  When prompted exclude the spring-aspects module (or after the import via File-&gt; Project Structure -&gt; Modules)
+  code away  </div><div class="post-footer">
+        <a href="/posts/01-spring%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/">源码学习</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/db05jdbc/">Db05jdbc</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-06">2021-07-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">数据库的访问过程是什么样的?  客户端与 Mysql 服务器之间建立连接   加载驱动  DriverManager.registerDriver(new Driver())
  获取连接对象  Connection connection = DriverManager.getConnection(url, name, password);
@@ -181,15 +191,6 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 1  descgoods;  如何将 goods 表中的字符集改为 utf8 , 校对规则改成 utf8_bin? 1  altertablegoodscharactersetutf8collateutf8_bin;  如何删除 goods 表中 price 字段?</div><div class="post-footer">
         <a href="/posts/db01%E5%8D%95%E8%A1%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/21_reflect/">21_reflect</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-30">2021-06-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是反射? 获取类运行时信息的一种技术，这种技术叫做反射技术
-获取字节码文件有哪些方式?   Class.forName(&ldquo;全限定类名&rdquo;)
-  类名.class
-  对象.getClass（）
-  如何用 Class.forName(&ldquo;全限定类名&rdquo;) 获取字节码文件？ 1 2 3 4 5 6 7  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.forName（&#34;全类名&#34;）  Class personCls = Class.forName(&#34;idea.Person&#34;); System.out.println(personCls); } }   如何用 类名.class 获取字节码文件？ 1 2 3 4 5 6 7 8 9 10 11  public class TestDemo { public static void main(String[] args) throws ClassNotFoundException { // 第一种 Class.</div><div class="post-footer">
-        <a href="/posts/21_reflect/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
