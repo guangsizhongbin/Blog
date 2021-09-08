@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 07 Sep 2021 23:32:23 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Wed, 08 Sep 2021 22:56:37 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>04 SequenceDiaram</title>
+    <link>http://fengqigang.cn/posts/04-sequencediaram/</link>
+    <pubDate>Wed, 08 Sep 2021 22:56:37 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/04-sequencediaram/</guid>
+    <description><![CDATA[Sequnce of events actors lifelines message alternative frame ]]></description>
+</item><item>
     <title>03 ERD实体关系图</title>
     <link>http://fengqigang.cn/posts/03-erd%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%9B%BE/</link>
     <pubDate>Tue, 07 Sep 2021 23:32:23 &#43;0800</pubDate>
@@ -127,27 +134,5 @@ connection.setAutoCommit(true);  开启事务
   出现不可重复读
   出现虚幻读
   什么是 read committed 读已提交?]]></description>
-</item><item>
-    <title>db03索引</title>
-    <link>http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/</link>
-    <pubDate>Sun, 04 Jul 2021 16:43:25 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/db03%E7%B4%A2%E5%BC%95/</guid>
-    <description><![CDATA[什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
-即索引是数据结构。
-数据库在执行查询的时候，如果没有索引存在的情况下，会采用全表扫描的方式进行查找。
-如果存在索引，则会先去索引列表中定位到特定的行或者直接定位到数据，从而可以极大地减少查询的行数， 增加查询速度
-在MySQL中，常见的数据库引擎是什么? MyISAM
-InnoDB(默认)
-InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支持事务
-外键:  InnoDB 支持外键, MyISAM 不支持外键
-是否是聚集索引:  InnoDB 是聚集索引(数据文件和索引在一起) MyISAM 不是聚集索引(索引和数据文件是分开的)
-是否保存表的行数:  InnoDB 不保存表的行数， 查询某张表的行数会全表扫描 MyISAM 会保存整个表的行数， 执行速度很快
-是否支持表锁和行锁  InnoDB 支持表锁和行锁(默认) MyISAM 支持表锁
-是否有主键  InnoDB 表必须要有一个主键(如果用户不设置， 那么引擎会自行设定一列当做主键) MyISAM则可以没有
-存储文件个数  InnoDB 的存储文件是 frm 和 ibd MyISAM 的存储文件是 frm, myd, myi三个文件
-什么是表锁和行锁? 表锁比行锁更粗, 锁的是整张表
-但是行锁锁的是一行记录，所以我们的表锁的效率是不及行行锁的，但是表锁的安全性是比行锁要高的
-如何定义一个table t1它的engine 为 MYISAM?]]></description>
 </item></channel>
 </rss>
