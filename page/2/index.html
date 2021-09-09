@@ -100,6 +100,14 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/">01 Nats以主题为基础的消息</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-26">2021-08-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nats/"><i class="far fa-folder fa-fw"></i>nats</a></span></div><div class="content">主题的等级 用.去区分不同的等级
+1 2 3 4 5  time.us time.us.east time.us.east.atlanta time.eu.east time.eu.warsaw   通配符  * 匹配一个 token  如 time.*.east 可以匹配 time.us.east 和 time.eu.east
+&gt; 匹配多个 tokens  如 time.us.&gt; 可以匹配 time.us.east 和 time.us.east.atlanta
+混合*与&gt;  如*.*.east.&gt; 可以匹配 time.us.east.atlanta</div><div class="post-footer">
+        <a href="/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nats/">nats</a>,&nbsp;<a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/">消息中间件</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/02-spring%E6%B5%8B%E8%AF%95%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E6%98%AF%E5%90%A6%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F/">02 Spring测试源码学习环境是否搭建成功</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-24">2021-08-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/"><i class="far fa-folder fa-fw"></i>spring源码学习</a></span></div><div class="content">新建module  新建 moudle  选择 gradle 项目(spring-study)  查看项目是否导入成功 在整个项目的 settings.gradle 是否引入 spring-study 项目
 设置项目依赖 在新建的 moudle 下打开 build.gradle 引入下面的依赖 spring-beans, spring-context, spring-core, spring-expression, spring-instrument
@@ -173,25 +181,6 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
 如何定义一个table t1它的engine 为 MYISAM?</div><div class="post-footer">
         <a href="/posts/db03%E7%B4%A2%E5%BC%95/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db02%E5%A4%9A%E8%A1%A8/">db02多表</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-04">2021-07-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何建立一对一的表(商品表[价格，数量，商品名称], 商品详情表[商品具体描述，图片，规规格])? 商品表:
- id 价格 数量 商品名称  商品详情表
- id 商品的具体描述 图片 规格 商品id  如何建一对多的表(班级表[名称], 学生表[姓名])? 一对多，两个表之间的关系应该维护在多的一方
-班级表
- id 名称  学生表
- id 姓名 班级id  如何建多对多的表(学生表[姓名], 课程表[课程名称])? 多对多的关系应该去建立一个关系表, 在关系表中去维护两者之间的关系
-  先建各自的表
-  再建立关系表
-  学生表
- id 姓名  课程表
- id 课程名称  学生选课表
- id 学生id 课程id  数据库设计的三大范式是什么?  确保每列原子性:  每一列的原子性， 每一列不可以再分割
-确保每列都和主键相关:  每一个表都应该有一个主键
-一个表只讲一件事情，不表示多件事情，否则就会存在大量的数据冗余
-确保每列都和主键列直接相关，而不是间接相关  如何对其进行交叉连接?</div><div class="post-footer">
-        <a href="/posts/db02%E5%A4%9A%E8%A1%A8/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mysql/">mysql</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -212,7 +201,7 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/18/">18</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

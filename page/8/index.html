@@ -100,6 +100,17 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/18_io/">18_io</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-19">2021-04-19</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">字节流是怎么分类的?   字节输出流
+ 抽象基类 OutputStream 具体子类 FileOutputStream BufferedOutputStream    字节输入流
+ 抽象基类 InputStream 具体子类 FielInputStream BufferedInputStream    什么是IO? i: input 输入
+o: output 输出
+为什么会有 IO? 需要长久保存的数据都是以文件的形式存储的，存储在外边设备当中
+内存有限，需要把数据读取到内存才行，需要io交互
+java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?  字节输出流 OutputStream 字节输入流 InputStream 字节输出流 Writer 字符输入流 Reader  由这4个基类派生出的子类,其子类名都是以父类名作为后缀</div><div class="post-footer">
+        <a href="/posts/18_io/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/17_file/">17_file</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-18">2021-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 File 类? File 类位于 java.io 包下， 是 java 进行 IO 操作的核心类， File 也是 I/O 的前置知识点
 File 是文件和目录(文件夹)路径名的抽象表达形式
@@ -160,24 +171,6 @@ Error 是严重问题， 无法被解决
   对于 Error , 程序自己是无能为力的，仅靠程序本身是无法恢复和预防</div><div class="post-footer">
         <a href="/posts/14_exception/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/13_object/">13_object</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-13">2021-04-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 API ? Application Programming Interface(API)
-应用程序编程接口，在Java 当中指的是一些先定义好的类和方法
-作用
-开发者可以在不关注具体实现细节的前提下，使用和这些已经预先定义好的类和方法实现自己的需求
-Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有类(包括数组)都 直接或间接的继承 自该类，都实现了该类的方法
-  在自定义类时，并不需要特别标注 extends Object
-  如果一个类没有明确的的指出它的父类，Object 类就默认被认为是这个类的父类，extends Object 则被省略了
-  为什么所有类都有一个默认无参?   当一个类没有定义构造方法的时候，就会自动添加默认构造方法
-  一旦有默认构造方法，在创建子类对象的时候，就会执行子类对象的隐匿初始化
-  隐式初始化，默认调用父类的无参构造
-  最终，一定能保证，调用到 Object 类的无参构造方法，先初始化 Object 这个父类
-  为什么不能访问 clone 方法 clone 方法是 protect 修饰的， 只能在自己的子类中访问
-方法声明中 public final Class&lt;?&gt; getClass() 分别代表什么意思?   public 访问权限，调用时不必考虑权限问题
-  final 该方法可以被继承但是不能被重写</div><div class="post-footer">
-        <a href="/posts/13_object/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -208,7 +201,7 @@ Object 类有什么特点?   Object 类所有类继承层次的祖先类, 所有
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/18/">18</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

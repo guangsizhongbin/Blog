@@ -100,6 +100,17 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/">01 @Autowired与@Resource的区别</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-09">2021-09-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">区别   来源不同   @Resource是java自带的
+@AutoWired是spring带来的
+ 注入的方式不同   @Autowired 只按照 byType 注入
+出现多个实现bean时可以用@Primary 来修饰也可以用@Qualifier来标注需要注入的类
+@Resource 默认按 byName 注入
+出现多个实现bean时可以用name=xxx来指定
+实战  HumanController  1 2 3 4 5 6 7 8 9 10 11 12  @RestController @RequestMapping(&#34;/an&#34;) public class HumanController { @Autowired private Human human; @RequestMapping(&#34;/run&#34;) public String runMarathon(){ return human.runMarathon(); } }    Human  1 2 3  public interface Human { String runMarathon(); }    Man  1 2 3 4 5 6 7 8  @Service public class Man implements Human { @Override public String runMarathon() { return &#34;A man run marathon&#34;; } }    Woman  1 2 3 4 5 6 7  @Service public class Woman implements Human { @Override public String runMarathon() { return &#34;An woman run marathon&#34;; } }     加入@Primary, 帮助@autowired找到对应的实现类    使用@autowired时，也可以加入@Qualifier(&ldquo;xxx&rdquo;)来指定    使用@Resource时, 指定name, name后的名字要小写    使用@Resource时，再加入@Qualifier(&ldquo;xxx&rdquo;)来指定   </div><div class="post-footer">
+        <a href="/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/04-sequencediaram/">04 SequenceDiaram</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-08">2021-09-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%9B%BE/"><i class="far fa-folder fa-fw"></i>图</a></span></div><div class="content">Sequnce of events actors lifelines message alternative frame </div><div class="post-footer">
         <a href="/posts/04-sequencediaram/">Read More</a><div class="post-tags">
@@ -147,14 +158,6 @@ nats 协议 nats://demo.nats.io, 4222是NATS的默认协议
 tls 协议 tls://demo.nats.io:4443</div><div class="post-footer">
         <a href="/posts/02-nats%E6%89%80%E6%94%AF%E6%8C%81%E7%9A%84%E5%8D%8F%E8%AE%AE/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nats/">nats</a>,&nbsp;<a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/">消息中间件</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/">01 Nats以主题为基础的消息</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-08-26">2021-08-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nats/"><i class="far fa-folder fa-fw"></i>nats</a></span></div><div class="content">主题的等级 用.去区分不同的等级
-1 2 3 4 5  time.us time.us.east time.us.east.atlanta time.eu.east time.eu.warsaw   通配符  * 匹配一个 token  如 time.*.east 可以匹配 time.us.east 和 time.eu.east
-&gt; 匹配多个 tokens  如 time.us.&gt; 可以匹配 time.us.east 和 time.us.east.atlanta
-混合*与&gt;  如*.*.east.&gt; 可以匹配 time.us.east.atlanta</div><div class="post-footer">
-        <a href="/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nats/">nats</a>,&nbsp;<a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/">消息中间件</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -171,7 +174,7 @@ tls 协议 tls://demo.nats.io:4443</div><div class="post-footer">
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/18/">18</a>
+                        <a href="/page/19/">19</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

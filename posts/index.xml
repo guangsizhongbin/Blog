@@ -4,7 +4,20 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Wed, 08 Sep 2021 22:56:37 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Thu, 09 Sep 2021 22:30:23 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>01 @Autowired与@Resource的区别</title>
+    <link>http://fengqigang.cn/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+    <pubDate>Thu, 09 Sep 2021 22:30:23 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+    <description><![CDATA[区别   来源不同   @Resource是java自带的
+@AutoWired是spring带来的
+ 注入的方式不同   @Autowired 只按照 byType 注入
+出现多个实现bean时可以用@Primary 来修饰也可以用@Qualifier来标注需要注入的类
+@Resource 默认按 byName 注入
+出现多个实现bean时可以用name=xxx来指定
+实战  HumanController  1 2 3 4 5 6 7 8 9 10 11 12  @RestController @RequestMapping(&#34;/an&#34;) public class HumanController { @Autowired private Human human; @RequestMapping(&#34;/run&#34;) public String runMarathon(){ return human.runMarathon(); } }    Human  1 2 3  public interface Human { String runMarathon(); }    Man  1 2 3 4 5 6 7 8  @Service public class Man implements Human { @Override public String runMarathon() { return &#34;A man run marathon&#34;; } }    Woman  1 2 3 4 5 6 7  @Service public class Woman implements Human { @Override public String runMarathon() { return &#34;An woman run marathon&#34;; } }     加入@Primary, 帮助@autowired找到对应的实现类    使用@autowired时，也可以加入@Qualifier(&ldquo;xxx&rdquo;)来指定    使用@Resource时, 指定name, name后的名字要小写    使用@Resource时，再加入@Qualifier(&ldquo;xxx&rdquo;)来指定   ]]></description>
+</item><item>
     <title>04 SequenceDiaram</title>
     <link>http://fengqigang.cn/posts/04-sequencediaram/</link>
     <pubDate>Wed, 08 Sep 2021 22:56:37 &#43;0800</pubDate>
@@ -111,28 +124,5 @@ resultSet
 如何设置 jdbc 使用 mydatabase 数据库？ 开始使用参数用? 再接参数时使用&amp;
 1  url=jdbc:mysql://localhost:3306/mydatabase;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL? 开始使用参数用? 再接参数时使用&amp;
 1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?]]></description>
-</item><item>
-    <title>Db04事务</title>
-    <link>http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/</link>
-    <pubDate>Tue, 06 Jul 2021 12:55:20 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/db04%E4%BA%8B%E5%8A%A1/</guid>
-    <description><![CDATA[什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
-事务控制有哪些api?  connection.rollback();  回滚事务
-connection.commit();  提交事务
-connection.setAutoCommit(true);  开启事务
-事务的特性是什么? ACID
- 原子性  一个事务，事务中的各个操作单元，要么就都成功，要么都不成功
-一致性  事务必须使数据库从一个一致性变成另一个一致性状态
-隔离性  事务与事务之间是互相隔离的，互不干扰的，互不影响的
-持久性  事务引起的数据库的改变应该是永久化的，而不是短暂的
-事务的隔离级别有哪些?   read uncommitted 读未提交
-  read Commited 读已提交
-  repeatable read 可重复读
-  Serializable 串行化
-  什么是 read uncommitted 读未提交?   出现脏读
-  出现不可重复读
-  出现虚幻读
-  什么是 read committed 读已提交?]]></description>
 </item></channel>
 </rss>

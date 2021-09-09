@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>spring - Category - xiaonan&#39;s Blog</title>
+        <link>http://fengqigang.cn/categories/spring/</link>
+        <description>spring - Category - xiaonan&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Thu, 09 Sep 2021 22:30:23 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/spring/" rel="self" type="application/rss+xml" /><item>
+    <title>01 @Autowired与@Resource的区别</title>
+    <link>http://fengqigang.cn/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+    <pubDate>Thu, 09 Sep 2021 22:30:23 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+    <description><![CDATA[区别   来源不同   @Resource是java自带的
+@AutoWired是spring带来的
+ 注入的方式不同   @Autowired 只按照 byType 注入
+出现多个实现bean时可以用@Primary 来修饰也可以用@Qualifier来标注需要注入的类
+@Resource 默认按 byName 注入
+出现多个实现bean时可以用name=xxx来指定
+实战  HumanController  1 2 3 4 5 6 7 8 9 10 11 12  @RestController @RequestMapping(&#34;/an&#34;) public class HumanController { @Autowired private Human human; @RequestMapping(&#34;/run&#34;) public String runMarathon(){ return human.runMarathon(); } }    Human  1 2 3  public interface Human { String runMarathon(); }    Man  1 2 3 4 5 6 7 8  @Service public class Man implements Human { @Override public String runMarathon() { return &#34;A man run marathon&#34;; } }    Woman  1 2 3 4 5 6 7  @Service public class Woman implements Human { @Override public String runMarathon() { return &#34;An woman run marathon&#34;; } }     加入@Primary, 帮助@autowired找到对应的实现类    使用@autowired时，也可以加入@Qualifier(&ldquo;xxx&rdquo;)来指定    使用@Resource时, 指定name, name后的名字要小写    使用@Resource时，再加入@Qualifier(&ldquo;xxx&rdquo;)来指定   ]]></description>
+</item></channel>
+</rss>
