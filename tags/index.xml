@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/tags/</link>
         <description>Tags - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sat, 11 Sep 2021 23:48:34 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sun, 12 Sep 2021 23:11:24 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>mybatis</title>
+    <link>http://fengqigang.cn/tags/mybatis/</link>
+    <pubDate>Sun, 12 Sep 2021 23:11:24 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/tags/mybatis/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>spring</title>
     <link>http://fengqigang.cn/tags/spring/</link>
     <pubDate>Sat, 11 Sep 2021 23:48:34 &#43;0800</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Wed, 30 Jun 2021 20:19:58 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>java</title>
-    <link>http://fengqigang.cn/tags/java/</link>
-    <pubDate>Wed, 30 Jun 2021 09:32:16 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/tags/java/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

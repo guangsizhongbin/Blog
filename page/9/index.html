@@ -100,6 +100,14 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/16_string/">16_string</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-16">2021-04-16</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">How to convert a String to an integer? Integer.paraseInt(s);
+1 2 3 4 5 6 7  public class StringToInt { public static void main(String[] args) { String num = &#34;1234&#34;; int x = Integer.parseInt(num); System.out.println(x); } }   What boxing and unboxing is courtesy of ? Boxing and unboxing is a courtesy of the complier, not the virtual machine
+source file
+1 2 3 4 5 6 7  public class TestBoxing { public static void main(String[] args) { Integer n = 1; Float x = 2.</div><div class="post-footer">
+        <a href="/posts/16_string/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/15_date/">15_date</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-15">2021-04-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">What&rsquo;s the different between Date class and LocalDate class? Date class:
 which represents a point in time
@@ -192,21 +200,6 @@ Java8 之后， 这个限制被解除了，改为在底层直接加上 final, �
 1 2 3 4  [访问权限修饰符] class EnclosedClazz{ [访问权限修饰符] class InnerClazz{ } }   普通的类有几种访问权限修饰符? 两种，没有 protected , private
 class 是用来被实例化的，所以只有 默认 和 public 访问权限修饰符</div><div class="post-footer">
         <a href="/posts/11_innerclass/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/10_interface/">10_interface</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-09">2021-04-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">[toc]
-子类对象初始化成员变量赋值的顺序是什么样的?   默认初始化, 默认值
-  去找创建子类对象会调用的构造方法，看第一行有没有 this(), super(), 如果有就去执行，如果没有，默认有 super() 仍然去执行
-  肯定要跳到 父类构造器 ，然后从 上到下 执行父类中的 显示赋值 和 构造代码块 ，最后执行父类的构造器
-  如果子类构造器中有 this, 回到子类 this 构造器. 如果没有 this, 直接就回去，从上到下执行子类中的显示赋值和构造代码块，然后执行 this 构造器，然后跳到最开始的构造器
-  直接执行该构造器，而不会显式赋值和构造代码块
-  如何定义一个接口? 语法:
-与 class 定义一样，接口是和 class 同等级别的数据类型
-[访问权限修饰符] interface 接口名{}
-All methods of an interface are automatically public
-Howerver , when implementing the interface, you must declare the method as public, Otherwise the compiler assumes that the method has package access - the default for a class.</div><div class="post-footer">
-        <a href="/posts/10_interface/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

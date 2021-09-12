@@ -100,6 +100,19 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/02-uml%E7%94%A8%E4%BE%8B%E5%9B%BE/">02 UML用例图</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-06">2021-09-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%9B%BE/"><i class="far fa-folder fa-fw"></i>图</a></span></div><div class="content">用例图的四个元素 Systems   Website
+  Software Component
+  Business Process
+  Application
+  Actors  Primary Actors  Initiate the use of the system
+ Secondary Actors  Reactionary
+Use Cases Represents an action that accomplishes some sort of task within the system.
+Relationships  Association   Include  The base use case requires an included use case in order to be complete.
+ Extend  You have the option to extend the behavior of the base use case.</div><div class="post-footer">
+        <a href="/posts/02-uml%E7%94%A8%E4%BE%8B%E5%9B%BE/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/uml/">uml</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/01-uml%E7%B1%BB%E5%9B%BE/">01 Uml类图</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-05">2021-09-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%9B%BE/"><i class="far fa-folder fa-fw"></i>图</a></span></div><div class="content">UML类图例子 可见性修饰   -private
   +public
@@ -143,22 +156,6 @@ tls 协议 tls://demo.nats.io:4443</div><div class="post-footer">
   code away  </div><div class="post-footer">
         <a href="/posts/01-spring%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0/">源码学习</a>,&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/db05jdbc/">Db05jdbc</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-06">2021-07-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">数据库的访问过程是什么样的?  客户端与 Mysql 服务器之间建立连接   加载驱动  DriverManager.registerDriver(new Driver())
- 获取连接对象  Connection connection = DriverManager.getConnection(url, name, password);
-客户端与 Mysql 服务器发送数据库请求  Statement statement = connection.createStatement();
-Mysql 服务器处理客户端的相应，并返回结果给客户端  statement.executeUpdate() statement.executeQuery()
- 客户端接受 Mysql服务器的相应，并按照自己的业务逻辑做相应处理
-  释放相关资源
-  statement
-connection
-resultSet
-如何设置 jdbc 使用 mydatabase 数据库？ 开始使用参数用? 再接参数时使用&amp;
-1  url=jdbc:mysql://localhost:3306/mydatabase;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL? 开始使用参数用? 再接参数时使用&amp;
-1  url=jdbc:mysql://localhost:3306/mydatabase?useSSL=false;   如何设置 jdbc 使用 mydatabase 数据库, 并不使用SSL, 设置编码格式为utf8?</div><div class="post-footer">
-        <a href="/posts/db05jdbc/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/jdbc/">jdbc</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
