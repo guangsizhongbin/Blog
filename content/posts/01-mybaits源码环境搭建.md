@@ -8,7 +8,7 @@ math:
 
 tags: 
 - mybatis
-categories: []
+categories:
 - mybatis
 ---
 
