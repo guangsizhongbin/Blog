@@ -100,6 +100,35 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/06_block/">06_block</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是匿名对象? 如何创建匿名对象? 匿名对象:
+没有名字的对象，没有引用指向它的对象
+创建匿名对象:
+new 类名();
+什么时候用匿名对象?   用 匿名对象调用方法
+  如果方法的形式参数中需要一个对象，可以 传入一个匿名对象
+  如果一个方法返回值类型是一个类，要返回一个对象，可以 返回一个匿名对象
+  什么是代码块? 有哪些代码块? 在java中, 使用大括号 {} 括起来的代码被称为 代码块
+  局部代码块
+  构造代码块(成员位置)
+  静态代码块(构造代码块 + static 修饰)
+  同步代码块(多线程)
+  什么是局部代码块? 有什么作用? 和局部变量位置相似， 处在 方法中局部位置 的代码块
+作用:
+限定局部变量的作用范围和生命周期，及早释放，提高内存利用率
+评价
+代码太难看了，可读性很差
+并没有多大用，不要在代码中使用局部代码块
+什么是构造代码块? 有什么用? 处于成员位置
+{}
+作用:
+构造代码块会随着构造器的执行而执行，可以用来给成员变量赋值
+给成员变量赋值的方式有哪些? 创建对象中:
+  默认初始化 默认值
+  显式赋值</div><div class="post-footer">
+        <a href="/posts/06_block/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux%E7%AC%AC%E5%8D%81%E7%AB%A0/">Linux第十章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">什么是壳程序? 能够操作 应用程序的接口 都能够称为壳程序
 狭义:
@@ -196,24 +225,6 @@ JVM内存模型中JVM堆(heap)中有什么样的特点? 所有new出来的东西
   引用数据类型，打印变量名显示该引用变量堆上的内存地址
     堆上对象和栈中变量有什么区别?  从存储的类型来看:    堆上存储的是 new 出来的东西，是 引用数据类型 的对象</div><div class="post-footer">
         <a href="/posts/02_method/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/01_basic/">01_basic</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-30">2021-03-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">[toc]
-JDK 与 JRE 有什么样的关系? JRE (Java Runtime Environment)
-Java 运行时环境
-JDK(Java Development Kit)
-Java 开发者工具包
-除了JRE外，JDK还提供了Java开发者需要使用的工具,如(javac.exe, java.exe)
-Java 程序的运行原理是什么样的? 给一个 project起名的规范是什么?   全部英文小写， 不要用中文
-  单词之间用下划线或横杠连接
-  如:
-student-manage
-How to absolutely guarantee a unique package name? Use an Internet domain name written in reverse.
-For example, consider the domain horstmann.com
-When written in reverse order, it turns into the package name com.horstmann
-You can then append a project name, such as com.</div><div class="post-footer">
-        <a href="/posts/01_basic/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

@@ -4,9 +4,21 @@
         <link>http://fengqigang.cn/</link>
         <description>xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sun, 12 Sep 2021 23:11:24 &#43;0800</lastBuildDate>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Mon, 13 Sep 2021 22:39:42 &#43;0800</lastBuildDate>
             <atom:link href="http://fengqigang.cn/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>02 Mybatis执行器</title>
+    <link>http://fengqigang.cn/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/</link>
+    <pubDate>Mon, 13 Sep 2021 22:39:42 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/</guid>
+    <description><![CDATA[mybatis的四大模块   动态代理 MapperProxy
+  SQL 会话 SqlSession
+  执行器 Executor
+  JDBC StatementHandler
+  Mybatis的执行过程 门面模式:
+提供一个统一的门面接口API, 使得系统更容易使用]]></description>
+</item><item>
     <title>01 Mybaits源码环境搭建</title>
     <link>http://fengqigang.cn/posts/01-mybaits%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
     <pubDate>Sun, 12 Sep 2021 23:11:24 &#43;0800</pubDate>
@@ -104,15 +116,5 @@ Composition  Multiplicity
 NATS 可以是单个服务，也可以是集群
 nats 协议 nats://demo.nats.io, 4222是NATS的默认协议
 tls 协议 tls://demo.nats.io:4443]]></description>
-</item><item>
-    <title>01 Nats以主题为基础的消息</title>
-    <link>http://fengqigang.cn/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/</link>
-    <pubDate>Thu, 26 Aug 2021 22:58:12 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/01-nats%E4%BB%A5%E4%B8%BB%E9%A2%98%E4%B8%BA%E5%9F%BA%E7%A1%80%E7%9A%84%E6%B6%88%E6%81%AF/</guid>
-    <description><![CDATA[主题的等级 用.去区分不同的等级
-1 2 3 4 5  time.us time.us.east time.us.east.atlanta time.eu.east time.eu.warsaw   通配符  * 匹配一个 token  如 time.*.east 可以匹配 time.us.east 和 time.eu.east
-&gt; 匹配多个 tokens  如 time.us.&gt; 可以匹配 time.us.east 和 time.us.east.atlanta
-混合*与&gt;  如*.*.east.&gt; 可以匹配 time.us.east.atlanta]]></description>
 </item></channel>
 </rss>
