@@ -17,7 +17,11 @@
   执行器 Executor
   JDBC StatementHandler
   Mybatis的执行过程 门面模式:
-提供一个统一的门面接口API, 使得系统更容易使用]]></description>
+提供一个统一的门面接口API, 使得系统更容易使用
+执行器  简单执行器(SimpleExecutor)  无论SQL是否一样，每次都会进行预编译
+可重用执行器(ReuseExecutor)  相同的SQL只进行一次预处理
+批处理执行器(Batch Executor)  批处理提交修改
+必须执行flushStatements才会生效]]></description>
 </item><item>
     <title>01 Mybaits源码环境搭建</title>
     <link>http://fengqigang.cn/posts/01-mybaits%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
