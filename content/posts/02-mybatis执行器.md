@@ -39,6 +39,59 @@ categories:
 
 无论SQL是否一样，每次都会进行预编译
 
+```java
+package cn.fengqigang.test;
+
+import cn.fengqigang.bean.JDBC;
+import org.apache.ibatis.executor.SimpleExecutor;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.io.OException;
+import java.io.Reader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
+
+public class ExecutorTest {
+    private Configuration configuration;
+    private Connection connection;
+    private JdbcTransaction jdbcTransaction;
+
+    @Before
+    public void init() throws SQLException, IOException {
+        String resource = "mybatis-config.xml";
+        final Reader reader = Resources.getResourceAsReader(resource);
+        SqlSessionFactory build = new SqlSessionFactoryBuilder().build(reader);
+        configuration = build.getConfiguration();
+        connection = DriverManager.getConnection(JDBC.URL, JDBC.USERNAME, JDBC.PASSWORD);
+        jdbcTransaction = new JdbcTransaction(connection);
+    }
+
+    @Test
+    public void simpleTest() throws SQLException {
+        SimpleExecutor executor = new SimpleExecutor(configuration, jdbcTransaction);
+        MappedStatement ms = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.selectById");
+        List<Object> list1 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
+                SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
+        List<Object> list2 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
+                SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
+        System.out.println(list1.get(0));
+        System.out.println(list2.get(0));
+    }
+}
+```
+
+![20210915231029](https://img.fengqigang.cn//img/20210915231029.png)
+
 2. 可重用执行器(ReuseExecutor)
 
 相同的SQL只进行一次预处理
@@ -50,4 +103,4 @@ categories:
 必须执行flushStatements才会生效
 
 ![20210914230935](https://img.fengqigang.cn//img/20210914230935.png)
-
+I
