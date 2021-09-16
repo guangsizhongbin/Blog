@@ -54,7 +54,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.OException;
+import java.io.IOException;
 import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -96,11 +96,52 @@ public class ExecutorTest {
 
 相同的SQL只进行一次预处理
 
+```java
+@Test
+public void ReuseTest() throws SQLException {
+    ReuseExecutor executor = new ReuseExecutor(configuration, jdbcTransaction);
+    MappedStatement ms = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.selectById");
+    List<Object> list1 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
+            SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
+    List<Object> list2 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
+            SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
+    System.out.println(list1.get(0));
+    System.out.println(list2.get(0));
+}
+```
+
+![20210916191458](https://img.fengqigang.cn//img/20210916191458.png)
+
 3. 批处理执行器(Batch Executor)
 
 批处理提交修改
 
 必须执行flushStatements才会生效
 
+> **只针对修改操作, 而对增删操作无效**
+
+```java
+@Test
+public void BatchTest() throws SQLException {
+    BatchExecutor executor = new BatchExecutor(configuration, jdbcTransaction);
+    MappedStatement ms = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.selectById");
+    List<Object> list1 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
+            SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
+    List<Object> list2 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
+            SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
+    System.out.println(list1.get(0));
+    System.out.println(list2.get(0));
+}
+```
+
+![20210916192142](https://img.fengqigang.cn//img/20210916192142.png)
+
+> 批处理操作必须手动刷新
+
+![20210916193934](https://img.fengqigang.cn//img/20210916193934.png)
+
+
+
+
 ![20210914230935](https://img.fengqigang.cn//img/20210914230935.png)
-I
+
