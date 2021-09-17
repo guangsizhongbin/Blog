@@ -121,16 +121,18 @@ public void ReuseTest() throws SQLException {
 > **只针对修改操作, 而对增删操作无效**
 
 ```java
+// 只针对修改操作
+// 批处理必须手动刷新
 @Test
 public void BatchTest() throws SQLException {
     BatchExecutor executor = new BatchExecutor(configuration, jdbcTransaction);
-    MappedStatement ms = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.selectById");
-    List<Object> list1 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
-            SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
-    List<Object> list2 = executor.doQuery(ms, 2, RowBounds.DEFAULT,
-            SimpleExecutor.NO_RESULT_HANDLER, ms.getBoundSql(2));
-    System.out.println(list1.get(0));
-    System.out.println(list2.get(0));
+    MappedStatement setAge = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.setAge");
+    Map param = new HashMap<>();
+    param.put("arg0", 2);
+    param.put("arg1", 1);
+    executor.doUpdate(setAge, param);
+    executor.doUpdate(setAge, param);
+    executor.doFlushStatements(false);
 }
 ```
 
@@ -144,4 +146,50 @@ public void BatchTest() throws SQLException {
 
 
 ![20210914230935](https://img.fengqigang.cn//img/20210914230935.png)
+
+4. Base Executor(负责一级缓存和获取连接)
+
+```java
+@Test
+public void BaseExecutorTest() throws SQLException {
+    Executor executor = new SimpleExecutor(configuration, jdbcTransaction);
+    MappedStatement ms = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.selectById");
+    executor.query(ms, 10, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+    executor.query(ms, 10, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+}
+```
+
+5. Caching Executor(获取二级缓存)
+
+
+```java
+@Test
+public void cacheExecutorTest() throws SQLException {
+    SimpleExecutor executor = new SimpleExecutor(configuration, jdbcTransaction);
+
+    CachingExecutor cachingExecutor = new CachingExecutor(executor); // 二级缓存相关逻辑 执行数据操作逻辑
+    MappedStatement ms = configuration.getMappedStatement("cn.fengqigang.mapper.StudentMapper.selectById");
+
+    cachingExecutor.query(ms, 3, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+    cachingExecutor.query(ms, 3, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER);
+}
+```
+
+
+
+装饰者模式:
+
+在不改变原有类结构和继承的情况下，通过包装原对象去扩展一个新功能.
+
+![20210917231606](https://img.fengqigang.cn//img/20210917231606.png)
+
+> 一级缓存与二级缓存的区别?
+
+1. 一级缓存, 在查询之后，缓存中的数据立马就有了
+
+2. 二级缓存需要提交之后，缓存才会存在
+
+3. 二级缓存存在跨线程的调用，而一级缓存不会
+
+
 
