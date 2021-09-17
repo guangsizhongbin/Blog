@@ -41,7 +41,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8\/"
-        },"genre": "posts","keywords": "mybatis","wordcount":  289 ,
+        },"genre": "posts","keywords": "mybatis","wordcount":  379 ,
         "url": "http:\/\/fengqigang.cn\/posts\/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8\/","datePublished": "2021-09-13T22:39:42+08:00","dateModified": "2021-09-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -118,7 +118,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">02 Mybatis执行器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-13">2021-09-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;289 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-13">2021-09-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;379 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -345,18 +345,22 @@
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">// 只针对修改操作
+</span><span class="c1">// 批处理必须手动刷新
+</span><span class="c1"></span><span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">BatchTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">SQLException</span> <span class="o">{</span>
     <span class="n">BatchExecutor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BatchExecutor</span><span class="o">(</span><span class="n">configuration</span><span class="o">,</span> <span class="n">jdbcTransaction</span><span class="o">);</span>
-    <span class="n">MappedStatement</span> <span class="n">ms</span> <span class="o">=</span> <span class="n">configuration</span><span class="o">.</span><span class="na">getMappedStatement</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">);</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">list1</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">doQuery</span><span class="o">(</span><span class="n">ms</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">,</span>
-            <span class="n">SimpleExecutor</span><span class="o">.</span><span class="na">NO_RESULT_HANDLER</span><span class="o">,</span> <span class="n">ms</span><span class="o">.</span><span class="na">getBoundSql</span><span class="o">(</span><span class="n">2</span><span class="o">));</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">list2</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">doQuery</span><span class="o">(</span><span class="n">ms</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">,</span>
-            <span class="n">SimpleExecutor</span><span class="o">.</span><span class="na">NO_RESULT_HANDLER</span><span class="o">,</span> <span class="n">ms</span><span class="o">.</span><span class="na">getBoundSql</span><span class="o">(</span><span class="n">2</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list1</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">));</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list2</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">));</span>
+    <span class="n">MappedStatement</span> <span class="n">setAge</span> <span class="o">=</span> <span class="n">configuration</span><span class="o">.</span><span class="na">getMappedStatement</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.setAge&#34;</span><span class="o">);</span>
+    <span class="n">Map</span> <span class="n">param</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">param</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;arg0&#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
+    <span class="n">param</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;arg1&#34;</span><span class="o">,</span> <span class="n">1</span><span class="o">);</span>
+    <span class="n">executor</span><span class="o">.</span><span class="na">doUpdate</span><span class="o">(</span><span class="n">setAge</span><span class="o">,</span> <span class="n">param</span><span class="o">);</span>
+    <span class="n">executor</span><span class="o">.</span><span class="na">doUpdate</span><span class="o">(</span><span class="n">setAge</span><span class="o">,</span> <span class="n">param</span><span class="o">);</span>
+    <span class="n">executor</span><span class="o">.</span><span class="na">doFlushStatements</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -387,6 +391,82 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210914230935.png"
         title="20210914230935" /></p>
+<ol start="4">
+<li>Base Executor(负责一级缓存和获取连接)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">BaseExecutorTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">SQLException</span> <span class="o">{</span>
+    <span class="n">Executor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleExecutor</span><span class="o">(</span><span class="n">configuration</span><span class="o">,</span> <span class="n">jdbcTransaction</span><span class="o">);</span>
+    <span class="n">MappedStatement</span> <span class="n">ms</span> <span class="o">=</span> <span class="n">configuration</span><span class="o">.</span><span class="na">getMappedStatement</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">);</span>
+    <span class="n">executor</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">ms</span><span class="o">,</span> <span class="n">10</span><span class="o">,</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">,</span> <span class="n">Executor</span><span class="o">.</span><span class="na">NO_RESULT_HANDLER</span><span class="o">);</span>
+    <span class="n">executor</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">ms</span><span class="o">,</span> <span class="n">10</span><span class="o">,</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">,</span> <span class="n">Executor</span><span class="o">.</span><span class="na">NO_RESULT_HANDLER</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>Caching Executor(获取二级缓存)</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">cacheExecutorTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">SQLException</span> <span class="o">{</span>
+    <span class="n">SimpleExecutor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleExecutor</span><span class="o">(</span><span class="n">configuration</span><span class="o">,</span> <span class="n">jdbcTransaction</span><span class="o">);</span>
+
+    <span class="n">CachingExecutor</span> <span class="n">cachingExecutor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CachingExecutor</span><span class="o">(</span><span class="n">executor</span><span class="o">);</span> <span class="c1">// 二级缓存相关逻辑 执行数据操作逻辑
+</span><span class="c1"></span>    <span class="n">MappedStatement</span> <span class="n">ms</span> <span class="o">=</span> <span class="n">configuration</span><span class="o">.</span><span class="na">getMappedStatement</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">);</span>
+
+    <span class="n">cachingExecutor</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">ms</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">,</span> <span class="n">Executor</span><span class="o">.</span><span class="na">NO_RESULT_HANDLER</span><span class="o">);</span>
+    <span class="n">cachingExecutor</span><span class="o">.</span><span class="na">query</span><span class="o">(</span><span class="n">ms</span><span class="o">,</span> <span class="n">3</span><span class="o">,</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">,</span> <span class="n">Executor</span><span class="o">.</span><span class="na">NO_RESULT_HANDLER</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>装饰者模式:</p>
+<p>在不改变原有类结构和继承的情况下，通过包装原对象去扩展一个新功能.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210917231606.png"
+        data-srcset="https://img.fengqigang.cn//img/20210917231606.png, https://img.fengqigang.cn//img/20210917231606.png 1.5x, https://img.fengqigang.cn//img/20210917231606.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210917231606.png"
+        title="20210917231606" /></p>
+<blockquote>
+<p>一级缓存与二级缓存的区别?</p>
+</blockquote>
+<ol>
+<li>
+<p>一级缓存, 在查询之后，缓存中的数据立马就有了</p>
+</li>
+<li>
+<p>二级缓存需要提交之后，缓存才会存在</p>
+</li>
+<li>
+<p>二级缓存存在跨线程的调用，而一级缓存不会</p>
+</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
