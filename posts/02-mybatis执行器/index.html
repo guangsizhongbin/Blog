@@ -12,7 +12,7 @@
   JDBC StatementHandler
   Mybatis的执行过程 门面模式:
 提供一个统一的门面接口API, 使得系统更容易使用
-执行器  简单执行器(SimpleExecutor)  无论SQL是否一样，每次都会进行预编译
+执行器 1. 简单执行器(SimpleExecutor) 无论SQL是否一样，每次都会进行预编译
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48  package cn." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/" /><meta property="article:section" content="posts" />
@@ -27,12 +27,12 @@
   JDBC StatementHandler
   Mybatis的执行过程 门面模式:
 提供一个统一的门面接口API, 使得系统更容易使用
-执行器  简单执行器(SimpleExecutor)  无论SQL是否一样，每次都会进行预编译
+执行器 1. 简单执行器(SimpleExecutor) 无论SQL是否一样，每次都会进行预编译
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48  package cn."/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/01-mybaits%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/" /><link rel="prev" href="http://fengqigang.cn/posts/01-mybaits%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="next" href="http://fengqigang.cn/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -41,7 +41,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8\/"
-        },"genre": "posts","keywords": "mybatis","wordcount":  379 ,
+        },"genre": "posts","keywords": "mybatis","wordcount":  410 ,
         "url": "http:\/\/fengqigang.cn\/posts\/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8\/","datePublished": "2021-09-13T22:39:42+08:00","dateModified": "2021-09-14T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -118,7 +118,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">02 Mybatis执行器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-13">2021-09-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;379 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-13">2021-09-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;410 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -130,7 +130,16 @@
     <li><a href="#mybatis的四大模块">mybatis的四大模块</a></li>
     <li><a href="#mybatis的执行过程">Mybatis的执行过程</a>
       <ul>
-        <li><a href="#执行器">执行器</a></li>
+        <li><a href="#执行器">执行器</a>
+          <ul>
+            <li><a href="#1-简单执行器simpleexecutor">1. 简单执行器(SimpleExecutor)</a></li>
+            <li><a href="#2-可重用执行器reuseexecutor">2. 可重用执行器(ReuseExecutor)</a></li>
+            <li><a href="#3-批处理执行器batch-executor">3. 批处理执行器(Batch Executor)</a></li>
+            <li><a href="#4-base-executor负责一级缓存和获取连接">4. Base Executor(负责一级缓存和获取连接)</a></li>
+            <li><a href="#5-caching-executor获取二级缓存">5. Caching Executor(获取二级缓存)</a></li>
+            <li><a href="#6-sessionexector">6. SessionExector</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -170,9 +179,7 @@
         alt="https://img.fengqigang.cn//img/20210913223517.png"
         title="20210913223517" /></p>
 <h3 id="执行器">执行器</h3>
-<ol>
-<li>简单执行器(SimpleExecutor)</li>
-</ol>
+<h4 id="1-简单执行器simpleexecutor">1. 简单执行器(SimpleExecutor)</h4>
 <p>无论SQL是否一样，每次都会进行预编译</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -240,7 +247,7 @@
 <span class="kn">import</span> <span class="nn">org.junit.Before</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jav.io.IOException</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.io.Reader</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.sql.Connection</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.sql.DriverManager</span><span class="o">;</span>
@@ -284,9 +291,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210915231029.png"
         title="20210915231029" /></p>
-<ol start="2">
-<li>可重用执行器(ReuseExecutor)</li>
-</ol>
+<h4 id="2-可重用执行器reuseexecutor">2. 可重用执行器(ReuseExecutor)</h4>
 <p>相同的SQL只进行一次预处理</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -324,9 +329,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210916191458.png"
         title="20210916191458" /></p>
-<ol start="3">
-<li>批处理执行器(Batch Executor)</li>
-</ol>
+<h4 id="3-批处理执行器batch-executor">3. 批处理执行器(Batch Executor)</h4>
 <p>批处理提交修改</p>
 <p>必须执行flushStatements才会生效</p>
 <blockquote>
@@ -391,9 +394,7 @@
         data-sizes="auto"
         alt="https://img.fengqigang.cn//img/20210914230935.png"
         title="20210914230935" /></p>
-<ol start="4">
-<li>Base Executor(负责一级缓存和获取连接)</li>
-</ol>
+<h4 id="4-base-executor负责一级缓存和获取连接">4. Base Executor(负责一级缓存和获取连接)</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -414,9 +415,7 @@
 <span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><ol start="5">
-<li>Caching Executor(获取二级缓存)</li>
-</ol>
+</div><h4 id="5-caching-executor获取二级缓存">5. Caching Executor(获取二级缓存)</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -467,6 +466,35 @@
 <p>二级缓存存在跨线程的调用，而一级缓存不会</p>
 </li>
 </ol>
+<h4 id="6-sessionexector">6. SessionExector</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">sessionTest</span><span class="o">(){</span>
+    <span class="n">SqlSession</span> <span class="n">sqlSession</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">openSession</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="c1">// 降低调用的复杂性
+</span><span class="c1"></span>    <span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">0</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210918213105.png"
+        data-srcset="https://img.fengqigang.cn//img/20210918213105.png, https://img.fengqigang.cn//img/20210918213105.png 1.5x, https://img.fengqigang.cn//img/20210918213105.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210918213105.png"
+        title="20210918213105" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -490,7 +518,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/01-mybaits%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="prev" rel="prev" title="01 Mybaits源码环境搭建"><i class="fas fa-angle-left fa-fw"></i>01 Mybaits源码环境搭建</a></div>
+    <div class="post-nav"><a href="/posts/01-mybaits%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="prev" rel="prev" title="01 Mybaits源码环境搭建"><i class="fas fa-angle-left fa-fw"></i>01 Mybaits源码环境搭建</a>
+            <a href="/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/" class="next" rel="next" title="03 Mybatis的命中场景">03 Mybatis的命中场景<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

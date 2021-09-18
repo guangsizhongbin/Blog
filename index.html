@@ -100,6 +100,14 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/">03 Mybatis的命中场景</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-18">2021-09-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div><div class="content">命中一级缓存测试  一级缓存命中的条件
+   SQL 和参数必须相同
+  相同的 statement id
+  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession.</div><div class="post-footer">
+        <a href="/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mybatis/">mybatis</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/">02 Mybatis执行器</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-13">2021-09-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div><div class="content">mybatis的四大模块   动态代理 MapperProxy
   SQL 会话 SqlSession
@@ -107,7 +115,7 @@
   JDBC StatementHandler
   Mybatis的执行过程 门面模式:
 提供一个统一的门面接口API, 使得系统更容易使用
-执行器  简单执行器(SimpleExecutor)  无论SQL是否一样，每次都会进行预编译
+执行器 1. 简单执行器(SimpleExecutor) 无论SQL是否一样，每次都会进行预编译
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48  package cn.</div><div class="post-footer">
         <a href="/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mybatis/">mybatis</a></div></div>
@@ -143,11 +151,6 @@ parent: https://github.com/mybatis/parent
 实战  HumanController  1 2 3 4 5 6 7 8 9 10 11 12  @RestController @RequestMapping(&#34;/an&#34;) public class HumanController { @Autowired private Human human; @RequestMapping(&#34;/run&#34;) public String runMarathon(){ return human.runMarathon(); } }    Human  1 2 3  public interface Human { String runMarathon(); }    Man  1 2 3 4 5 6 7 8  @Service public class Man implements Human { @Override public String runMarathon() { return &#34;A man run marathon&#34;; } }    Woman  1 2 3 4 5 6 7  @Service public class Woman implements Human { @Override public String runMarathon() { return &#34;An woman run marathon&#34;; } }     加入@Primary, 帮助@autowired找到对应的实现类    使用@autowired时，也可以加入@Qualifier(&ldquo;xxx&rdquo;)来指定    使用@Resource时, 指定name, name后的名字要小写    使用@Resource时，再加入@Qualifier(&ldquo;xxx&rdquo;)来指定   </div><div class="post-footer">
         <a href="/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/04-sequencediaram/">04 SequenceDiaram</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-08">2021-09-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E5%9B%BE/"><i class="far fa-folder fa-fw"></i>图</a></span></div><div class="content">Sequnce of events actors lifelines message alternative frame </div><div class="post-footer">
-        <a href="/posts/04-sequencediaram/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/uml/">uml</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

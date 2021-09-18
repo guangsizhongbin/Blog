@@ -100,6 +100,18 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/">Linux第十二章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-24">2021-04-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">写 Shell Script 的规则是什么?   第一行写 #!/bin/bash 来宣告这个文件内的语法使用的是 bash 语法
+  程序内容的说明:
+   内容与功能 版本信息 作者与联络方式 创建日期 历史记录   主要环境变量的宣告 PATH 与 LANG
+  执行成果告知
+  1  exit 0   当下达
+1  echo $?   则可得到0的值
+echo -e 会发生什么?  e  enable interpretation of backslash escapes
+以 read 指令的用途，撰写一个 script, 他可以让使用者输入 1. first name 与 2. last name, 最后并且在屏幕上显示 &ldquo;Your full name is:&rdquo; 的内容?</div><div class="post-footer">
+        <a href="/posts/linux%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day22/">Day22</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-23">2021-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是计算机网络   物理互联
   软件支持
@@ -195,19 +207,6 @@ o: output 输出
 内存有限，需要把数据读取到内存才行，需要io交互
 java 流模型是什么样的? java 中的流是怎么分类的?  按照流向分(以内存为参照)  输入流 input 输出流 output   按照数据类型分类  字节流: 一连串的 01 二进制数据 按字节传输 1B = 8 bit 0000 0000 字符流: 一连串的字符的字符序列，把它当做一种文化符号 &ldquo;abc&rdquo;, &ldquo;你&rdquo;    java IO抽象基类有哪些?  字节输出流 OutputStream 字节输入流 InputStream 字节输出流 Writer 字符输入流 Reader  由这4个基类派生出的子类,其子类名都是以父类名作为后缀</div><div class="post-footer">
         <a href="/posts/18_io/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/17_file/">17_file</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-18">2021-04-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是 File 类? File 类位于 java.io 包下， 是 java 进行 IO 操作的核心类， File 也是 I/O 的前置知识点
-File 是文件和目录(文件夹)路径名的抽象表达形式
-File类只是用文件/夹的路径来抽象的表示文件，那么这个路径下是否真的存在这个文件，它并不关心
-File类在创建对象时，不关心文件是否存在，也不会抛出任何异常
-如何获取当前 idea 相对路径? System.getProperty(&ldquo;user.dir&rdquo;)
-1 2 3 4 5  public class demo { public static void main(String[] args) { System.out.println(System.getProperty(&#34;user.dir&#34;)); } }   Java 如何转义路径? 可以用 //, \
-如何判断当前目录下 a 是否存在? public boolean exists()
-绝对路径
-1 2 3 4 5 6  public class demo { public static void main(String[] args) { File f = new File(&#34;/home/feng/IdeaProjects/day13/a&#34;); System.</div><div class="post-footer">
-        <a href="/posts/17_file/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
