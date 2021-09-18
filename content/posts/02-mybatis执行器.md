@@ -35,7 +35,7 @@ categories:
 
 ### 执行器
 
-1. 简单执行器(SimpleExecutor)
+#### 1. 简单执行器(SimpleExecutor)
 
 无论SQL是否一样，每次都会进行预编译
 
@@ -54,7 +54,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
+import jav.io.IOException;
 import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -92,7 +92,7 @@ public class ExecutorTest {
 
 ![20210915231029](https://img.fengqigang.cn//img/20210915231029.png)
 
-2. 可重用执行器(ReuseExecutor)
+#### 2. 可重用执行器(ReuseExecutor)
 
 相同的SQL只进行一次预处理
 
@@ -112,7 +112,7 @@ public void ReuseTest() throws SQLException {
 
 ![20210916191458](https://img.fengqigang.cn//img/20210916191458.png)
 
-3. 批处理执行器(Batch Executor)
+#### 3. 批处理执行器(Batch Executor)
 
 批处理提交修改
 
@@ -147,7 +147,7 @@ public void BatchTest() throws SQLException {
 
 ![20210914230935](https://img.fengqigang.cn//img/20210914230935.png)
 
-4. Base Executor(负责一级缓存和获取连接)
+#### 4. Base Executor(负责一级缓存和获取连接)
 
 ```java
 @Test
@@ -159,7 +159,7 @@ public void BaseExecutorTest() throws SQLException {
 }
 ```
 
-5. Caching Executor(获取二级缓存)
+#### 5. Caching Executor(获取二级缓存)
 
 
 ```java
@@ -192,4 +192,16 @@ public void cacheExecutorTest() throws SQLException {
 3. 二级缓存存在跨线程的调用，而一级缓存不会
 
 
+#### 6. SessionExector
 
+```java
+@Test
+public void sessionTest(){
+    SqlSession sqlSession = factory.openSession(true);
+    // 降低调用的复杂性
+    List<Object> list = sqlSession.selectList("cn.fengqigang.mapper.StudentMapper.selectById", 3);
+    System.out.println(list.get(0));
+}
+```
+
+![20210918213105](https://img.fengqigang.cn//img/20210918213105.png)
