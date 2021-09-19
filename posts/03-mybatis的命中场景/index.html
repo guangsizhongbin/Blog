@@ -6,10 +6,7 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>03 Mybatis的命中场景 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="03 Mybatis的命中场景" />
-<meta property="og:description" content="命中一级缓存测试  一级缓存命中的条件
-   SQL 和参数必须相同
-  相同的 statement id
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession." />
+<meta property="og:description" content="命中一级缓存测试 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession.getMapper(StudentMapper.class); Student student1 = mapper.selectById(2); Student student2 = mapper." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://fengqigang.cn/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-09-18T23:17:19+08:00" />
@@ -17,10 +14,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="03 Mybatis的命中场景"/>
-<meta name="twitter:description" content="命中一级缓存测试  一级缓存命中的条件
-   SQL 和参数必须相同
-  相同的 statement id
-  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession."/>
+<meta name="twitter:description" content="命中一级缓存测试 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession.getMapper(StudentMapper.class); Student student1 = mapper.selectById(2); Student student2 = mapper."/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/fengqigang.cn\/posts\/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF\/"
-        },"genre": "posts","keywords": "mybatis","wordcount":  124 ,
+        },"genre": "posts","keywords": "mybatis","wordcount":  253 ,
         "url": "http:\/\/fengqigang.cn\/posts\/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF\/","datePublished": "2021-09-18T23:17:19+08:00","dateModified": "2021-09-18T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
@@ -110,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">03 Mybatis的命中场景</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-18">2021-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;124 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-18">2021-09-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;253 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -127,17 +121,6 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="命中一级缓存测试">命中一级缓存测试</h2>
-<blockquote>
-<p>一级缓存命中的条件</p>
-</blockquote>
-<ol>
-<li>
-<p>SQL 和参数必须相同</p>
-</li>
-<li>
-<p>相同的 statement id</p>
-</li>
-</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -208,7 +191,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
 <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test2</span><span class="o">()</span> <span class="o">{</span>
-    <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMpper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
     <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
     <span class="n">Student</span> <span class="n">student1</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">selectById1</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span> <span class="o">==</span> <span class="n">student1</span><span class="o">);</span>
@@ -233,18 +216,143 @@
 <p>不相同的statementID</p>
 </li>
 <li>
-<p>sqlSession 会话必须一样</p>
+<p>sqlSession 会话必须一样(会话级的缓存)</p>
+</li>
+<li>
+<p>RowBounds 返回行范围必须相同</p>
 </li>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test4</span><span class="o">(){</span>
+    <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">Student</span> <span class="n">student1</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+    <span class="n">Object</span> <span class="n">student2</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectOne</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student1</span> <span class="o">==</span> <span class="n">student2</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>a</p>
+</div><p><strong>命中</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210919220906.png"
+        data-srcset="https://img.fengqigang.cn//img/20210919220906.png, https://img.fengqigang.cn//img/20210919220906.png 1.5x, https://img.fengqigang.cn//img/20210919220906.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210919220906.png"
+        title="20210919220906" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test5</span><span class="o">(){</span>
+    <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">Student</span> <span class="n">student1</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+    <span class="n">RowBounds</span> <span class="n">rowBound</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RowBounds</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">10</span><span class="o">);</span>
+    <span class="n">Object</span> <span class="n">student2</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">rowBound</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student1</span> <span class="o">==</span> <span class="n">student2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>未命中</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210919221358.png"
+        data-srcset="https://img.fengqigang.cn//img/20210919221358.png, https://img.fengqigang.cn//img/20210919221358.png 1.5x, https://img.fengqigang.cn//img/20210919221358.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210919221358.png"
+        title="20210919221358" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test5</span><span class="o">(){</span>
+    <span class="n">StudentMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">StudentMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">student1</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="na">selectById</span><span class="o">(</span><span class="n">2</span><span class="o">);</span>
+    <span class="n">RowBounds</span> <span class="n">rowBound</span> <span class="o">=</span> <span class="n">RowBounds</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">;</span>
+    <span class="n">Object</span> <span class="n">student2</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;cn.fengqigang.mapper.StudentMapper.selectById&#34;</span><span class="o">,</span> <span class="n">2</span><span class="o">,</span> <span class="n">rowBound</span><span class="o">);</span>
+
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student1</span> <span class="o">==</span> <span class="n">student2</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>命中</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210919222413.png"
+        data-srcset="https://img.fengqigang.cn//img/20210919222413.png, https://img.fengqigang.cn//img/20210919222413.png 1.5x, https://img.fengqigang.cn//img/20210919222413.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210919222413.png"
+        title="20210919222413" /></p>
+<blockquote>
+<p>手动清空</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">@Test
+public void test6(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    List&lt;Student&gt; students = mapper.selectById(10);
+    sqlSession.clearCache();
+    List&lt;Student&gt; students1 = mapper.selectById(10);
+    System.out.println(students == students1);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>未命中</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://img.fengqigang.cn//img/20210919223726.png"
+        data-srcset="https://img.fengqigang.cn//img/20210919223726.png, https://img.fengqigang.cn//img/20210919223726.png 1.5x, https://img.fengqigang.cn//img/20210919223726.png 2x"
+        data-sizes="auto"
+        alt="https://img.fengqigang.cn//img/20210919223726.png"
+        title="20210919223726" /></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
