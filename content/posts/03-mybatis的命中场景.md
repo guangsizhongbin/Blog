@@ -14,13 +14,6 @@ categories:
 
 ## 命中一级缓存测试
 
-> 一级缓存命中的条件
-
-1. SQL 和参数必须相同
-
-2. 相同的 statement id
-
-
 
 ```java
 public class FirstCacheTest {
@@ -54,7 +47,7 @@ public class FirstCacheTest {
 ```java
 @Test
 public void test2() {
-    StudentMapper mapper = sqlSession.getMapper(StudentMpper.class);
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
     Student student = mapper.selectById(2);
     Student student1 = mapper.selectById1(2);
     System.out.println(student == student1);
@@ -71,12 +64,81 @@ public void test2() {
 
 2. 不相同的statementID
 
-3. sqlSession 会话必须一样
+3. sqlSession 会话必须一样(会话级的缓存)
+
+4. RowBounds 返回行范围必须相同
 
 ```java
+@Test
+public void test4(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    Student student1 = mapper.selectById(2);
+    Object student2 = sqlSession.selectOne("cn.fengqigang.mapper.StudentMapper.selectById", 2);
 
+    System.out.println(student1 == student2);
+}
 ```
 
+**命中**
 
-a
+![20210919220906](https://img.fengqigang.cn//img/20210919220906.png)
+
+
+```java
+@Test
+public void test5(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    Student student1 = mapper.selectById(2);
+    RowBounds rowBound = new RowBounds(0, 10);
+    Object student2 = sqlSession.selectList("cn.fengqigang.mapper.StudentMapper.selectById", 2, rowBound);
+
+    System.out.println(student1 == student2);
+}
+```
+
+**未命中**
+
+![20210919221358](https://img.fengqigang.cn//img/20210919221358.png)
+
+
+```java
+@Test
+public void test5(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    List<Student> student1 = mapper.selectById(2);
+    RowBounds rowBound = RowBounds.DEFAULT;
+    Object student2 = sqlSession.selectList("cn.fengqigang.mapper.StudentMapper.selectById", 2, rowBound);
+
+    System.out.println(student1 == student2);
+}
+```
+
+**命中**
+
+![20210919222413](https://img.fengqigang.cn//img/20210919222413.png)
+
+
+
+> 手动清空
+
+```
+@Test
+public void test6(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    List<Student> students = mapper.selectById(10);
+    sqlSession.clearCache();
+    List<Student> students1 = mapper.selectById(10);
+    System.out.println(students == students1);
+}
+```
+
+**未命中**
+
+![20210919223726](https://img.fengqigang.cn//img/20210919223726.png)
+
+
+
+
+
+
 
