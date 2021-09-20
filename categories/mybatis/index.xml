@@ -4,13 +4,25 @@
         <link>http://fengqigang.cn/categories/mybatis/</link>
         <description>mybatis - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sat, 18 Sep 2021 23:17:19 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/mybatis/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Mon, 20 Sep 2021 21:25:30 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/mybatis/" rel="self" type="application/rss+xml" /><item>
+    <title>04 一级缓存失效的情况</title>
+    <link>http://fengqigang.cn/posts/04-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/</link>
+    <pubDate>Mon, 20 Sep 2021 21:25:30 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/04-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/</guid>
+    <description><![CDATA[一级缓存总结   与会话相关
+  参数条件相关
+  提交和修改都会清空
+  ]]></description>
+</item><item>
     <title>03 Mybatis的命中场景</title>
     <link>http://fengqigang.cn/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/</link>
     <pubDate>Sat, 18 Sep 2021 23:17:19 &#43;0800</pubDate>
     <author>Author</author>
     <guid>http://fengqigang.cn/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/</guid>
-    <description><![CDATA[命中一级缓存测试 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession.getMapper(StudentMapper.class); Student student1 = mapper.selectById(2); Student student2 = mapper.]]></description>
+    <description><![CDATA[一级缓存的特点   默认打开
+  底层是key-value形式
+  命中一级缓存测试 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession.]]></description>
 </item><item>
     <title>02 Mybatis执行器</title>
     <link>http://fengqigang.cn/posts/02-mybatis%E6%89%A7%E8%A1%8C%E5%99%A8/</link>

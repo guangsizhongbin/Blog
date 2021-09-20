@@ -100,6 +100,13 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/03_array/">03_array</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">可变参数的实质是什么? 是用数组作为参数
+1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i++) { sumValue += arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   How to write a function that computes the maximum of a variable double number of values? function
+1 2 3 4 5  private static double max(double.</div><div class="post-footer">
+        <a href="/posts/03_array/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/02_method/">02_method</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何实现 Junit 单元测试? 1 2 3  @Test public void methodName() { }   public void 是固定格式，不可以修改，否则报错
 方法的形参列表，必须为空的，否则会报错
@@ -161,17 +168,6 @@ You can then append a project name, such as com.</div><div class="post-footer">
 如何定义一个类为 Book, 并提供一个方法, 输出图书的名称和价格? 1 2 3 4 5 6 7 8 9 10  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.out.println(&#34;图书名称:&#34; + title + &#34;, 价格:&#34; + price); } }   如何定义一个Book类为bk, bk的title为 Java 开发， bk的price为89.9? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  class Book { String title; double price; /* * 输出对象完整信息 */ public void getInfo() { System.</div><div class="post-footer">
         <a href="/posts/java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/">Linux第九章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-21">2021-03-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">什么是纯文本文件? 文件记录就是0与1, 面通过编码系统将这些0与1转成如我们认识的文字
-在 vim 中, n +  代表什么操作? 表示光标会向 右 移动 n 个字符
-在 vim 中, 如何移动到这一列的最后面字符处? $
-在 vim 中, 如何将光标移动到这个屏幕中央那一列的第一个字符? M
-在 vim 中, 如何移动到第n行? nG
-在 vim 中, 光标如何向下移动n行? n 
-在 vim 中, 如何在第 n1 与 n2 列之间寻找 word1 ， 并将该字串取代为 word2? 1  :n1, n2s/word1/word2/g   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2, 且在取代前显示提示字符给使用者确认? 1  :1, $1/word1/word2/gc   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2?</div><div class="post-footer">
-        <a href="/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -202,7 +198,7 @@ You can then append a project name, such as com.</div><div class="post-footer">
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/19/">19</a>
+                        <a href="/page/20/">20</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

@@ -100,6 +100,16 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/07_extends/">07_extends</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-06">2021-04-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是默认导包, 隐式导包? java.lang 包下的所有类，是 java 的核心类，它会自动隐式导入，不需要再写导包语句
+If I really need both Date classes in java.util and java.sql, what can I do? use the full package name with every class name:
+1 2 3 4 5 6  public class PackageTest { public static void main(String[] args) { var deadline = new java.util.Date(); var today = new java.sql.Date((long)123); } }   什么是面向过程与面向对象? 面向过程 procedureal oriented programming
+面向对象 oop
+面向过程的编程思想
+即程序是&quot;动词&quot;的集合，即程序功能是由一系列有序的动作来完成</div><div class="post-footer">
+        <a href="/posts/07_extends/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/intelldebug/">IntellDebug</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-04">2021-04-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/software/"><i class="far fa-folder fa-fw"></i>software</a></span></div><div class="content">Breakpoints Notation  If a file with breakpoints was modified externally, for example, update through a VCS or changed in an external editor, and the line numbers have changed, the breakpoints will be moved accordingly.  Types of breakpoints(Add breakpoints) Setting Line breakpoint keymap
  Line breakpoints  Click the gutter at the executable line of code or press keymap
@@ -209,13 +219,6 @@ new Student() 是创建引用类型对象的过程
 该类的信息就能够被 JVM 获取到，从而创建能够创建对象</div><div class="post-footer">
         <a href="/posts/04_recursion/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/03_array/">03_array</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">可变参数的实质是什么? 是用数组作为参数
-1 2 3 4 5 6 7 8 9 10 11  public static int sum(int[] arr) { int sumValue = 0; for (int i = 0; i &lt; arr.length; i++) { sumValue += arr[i]; } return sumValue; } public static int sum(int... a) { return 1; }   How to write a function that computes the maximum of a variable double number of values? function
-1 2 3 4 5  private static double max(double.</div><div class="post-footer">
-        <a href="/posts/03_array/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -246,7 +249,7 @@ new Student() 是创建引用类型对象的过程
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/19/">19</a>
+                        <a href="/page/20/">20</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
