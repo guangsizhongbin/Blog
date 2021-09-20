@@ -12,6 +12,13 @@ categories:
 - mybatis
 ---
 
+## 一级缓存的特点
+
+1. 默认打开
+
+2. 底层是key-value形式
+
+
 ## 命中一级缓存测试
 
 
@@ -137,8 +144,93 @@ public void test6(){
 ![20210919223726](https://img.fengqigang.cn//img/20210919223726.png)
 
 
+> 执行updata 和 @Updata中写(select) 也会清空, 
+
+```java
+@Test
+public void test7(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    List<Student> students = mapper.selectById(2);
+    mapper.setAge(2, 5);
+
+    List<Student> students1 = mapper.selectById(2);
+    System.out.println(students == students1);
+}
+```
+
+![20210920200418](https://img.fengqigang.cn//img/20210920200418.png)
 
 
+> 作用域缩小到statement
 
+> 设置 localCacheScope 为 STATEMENT
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="localCacheScope" value="STATEMENT"/>
+    </settings>
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+
+        </environment>
+    </environments>
+    <mappers>
+        <!--<mapper resource="mapper/StudentMapper.xml" url="" class=""/>-->
+        <package name="cn.fengqigang.mapper"/>
+    </mappers>
+</configuration>
+```
+
+
+```java
+@Test
+public void test8(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    List<Student> students = mapper.selectById(2);
+
+    List<Student> students2 = mapper.selectAll();
+
+    List<Student> students1 = mapper.selectById(2);
+    System.out.println(students == students1);
+}
+```
+
+![20210920202424](https://img.fengqigang.cn//img/20210920202424.png)
+
+> 执行 session.comit 或 session.rollback 也会清空缓存, 会调用 clearLocalcache
+
+```java
+@Test
+public void test9(){
+    StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+    List<Student> students = mapper.selectById(2);
+
+    sqlSession.commit();
+    sqlSession.rollback();
+
+    List<Student> students1 = mapper.selectById(2);
+    System.out.println(students == students1);
+}
+```
+
+
+## 总结
+
+![20210920203012](https://img.fengqigang.cn//img/20210920203012.png)
 
 
