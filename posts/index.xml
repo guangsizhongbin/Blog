@@ -4,7 +4,20 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Mon, 20 Sep 2021 21:25:30 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 21 Sep 2021 19:00:21 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>05 二级缓存的定义与需求分析</title>
+    <link>http://fengqigang.cn/posts/05-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</link>
+    <pubDate>Tue, 21 Sep 2021 19:00:21 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/05-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</guid>
+    <description><![CDATA[二级缓存的定义 二级缓存也称作是应用级缓存， 与一级缓存不同的是它的作用范围是整个应用，而且可以跨线程使用。 所以二级缓存有更高的命中率，适合缓存一些修改较少的数据。
+二级缓存的扩展性需求 存储   内存
+  硬盘
+  第三方集成
+  溢出淘汰   FIFO 先进先出
+  LRU 最近最少使用
+  过期清理 线程安全 命中率统计 序列化 ]]></description>
+</item><item>
     <title>04 一级缓存失效的情况</title>
     <link>http://fengqigang.cn/posts/04-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/</link>
     <pubDate>Mon, 20 Sep 2021 21:25:30 &#43;0800</pubDate>
@@ -97,20 +110,5 @@ Primary Key Rules   Unique
   Never null
   composite key composite Key Rules   Use the fewest number of attributes possible.
   Don&rsquo;t use attributes that are apt to change.]]></description>
-</item><item>
-    <title>02 UML用例图</title>
-    <link>http://fengqigang.cn/posts/02-uml%E7%94%A8%E4%BE%8B%E5%9B%BE/</link>
-    <pubDate>Mon, 06 Sep 2021 22:58:09 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/02-uml%E7%94%A8%E4%BE%8B%E5%9B%BE/</guid>
-    <description><![CDATA[用例图的四个元素 Systems   Website
-  Software Component
-  Business Process
-  Application
-  Actors  Primary Actors  Initiate the use of the system
- Secondary Actors  Reactionary
-Use Cases Represents an action that accomplishes some sort of task within the system.
-Relationships  Association   Include  The base use case requires an included use case in order to be complete.
- Extend  You have the option to extend the behavior of the base use case.]]></description>
 </item></channel>
 </rss>

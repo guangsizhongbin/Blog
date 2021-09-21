@@ -100,6 +100,17 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/05-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/">05 二级缓存的定义与需求分析</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-21">2021-09-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div><div class="content">二级缓存的定义 二级缓存也称作是应用级缓存， 与一级缓存不同的是它的作用范围是整个应用，而且可以跨线程使用。 所以二级缓存有更高的命中率，适合缓存一些修改较少的数据。
+二级缓存的扩展性需求 存储   内存
+  硬盘
+  第三方集成
+  溢出淘汰   FIFO 先进先出
+  LRU 最近最少使用
+  过期清理 线程安全 命中率统计 序列化 </div><div class="post-footer">
+        <a href="/posts/05-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mybatis/">mybatis</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/04-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/">04 一级缓存失效的情况</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-20">2021-09-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div><div class="content">一级缓存总结   与会话相关
   参数条件相关
@@ -139,13 +150,6 @@ parent: https://github.com/mybatis/parent
         <a href="/posts/03-springboot%E5%90%AF%E5%8A%A8%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3%E5%87%BA%E7%8E%B0404%E9%94%99%E8%AF%AF/">03 Springboot启动正常,访问接口出现404错误</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-11">2021-09-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">错误事例 产生的原因  controller 控制类不在启动类所在的目录下或子目录中  解决的方案  将启动类与controller放在同一层，或将contrller的子目录下  在启动类上加上@ComponentScan(basePackages = {&quot;cn.fengqigang.*&quot;}) 注解  也可以直接写</div><div class="post-footer">
         <a href="/posts/03-springboot%E5%90%AF%E5%8A%A8%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3%E5%87%BA%E7%8E%B0404%E9%94%99%E8%AF%AF/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/02-springboot%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">02 SpringBoot加载配置文件</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-10">2021-09-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">springboot的自动化配置 默认情况下 springboot 会自动读取 application.properties 和 application.yaml
-使用 application.yaml 中的配置  @Value()   application.yaml  1  config:hello, fengqigang  使用
- HelloControl  1 2 3 4 5 6 7 8 9 10 11  @RestController public class HelloControl { @Value(&#34;${config}&#34;) private String config; @RequestMapping(&#34;/index&#34;) public void say() { System.out.println(config); } }   配置成实体类   BeanConfig  1 2 3 4 5 6 7  @Data @Component @ConfigurationProperties(prefix = &#34;config2&#34;) public class BeanConfig { public String name; public String value; }    BeanController  1 2 3 4 5 6 7 8 9 10 11  @RestController public class BeanController { @Autowired public BeanConfig beanConfig; @RequestMapping(&#34;/say&#34;) public void say(){ System.</div><div class="post-footer">
-        <a href="/posts/02-springboot%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
