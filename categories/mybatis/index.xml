@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/categories/mybatis/</link>
         <description>mybatis - Category - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 21 Sep 2021 19:00:21 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/mybatis/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Wed, 22 Sep 2021 22:08:42 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/categories/mybatis/" rel="self" type="application/rss+xml" /><item>
+    <title>07</title>
+    <link>http://fengqigang.cn/posts/07.%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%B8%AD%E6%9D%A1%E4%BB%B6/</link>
+    <pubDate>Wed, 22 Sep 2021 22:08:42 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/07.%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E4%BD%BF%E7%94%A8%E7%9A%84%E5%91%BD%E4%B8%AD%E6%9D%A1%E4%BB%B6/</guid>
+    <description><![CDATA[缓存必须提交 会话未提交时 1 2 3 4 5 6 7 8 9 10 11 12 13  @Test public void test01(){ SqlSession sqlSession1 = factory.openSession(); StudentMapper mapper = sqlSession1.getMapper(StudentMapper.class); List&lt;Student&gt; students = mapper.selectById(2); System.out.println(students); SqlSession sqlSession2 = factory.openSession(); StudentMapper mapper1 = sqlSession2.getMapper(StudentMapper.class); List&lt;Student&gt; students1 = mapper1.selectById(2); System.out.println(students1); }   会话提交时 1 2 3 4 5 6 7 8 9 10 11  @Test public void test02() { SqlSession sqlSession1 = factory.]]></description>
+</item><item>
     <title>05 二级缓存的定义与需求分析</title>
     <link>http://fengqigang.cn/posts/05-%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/</link>
     <pubDate>Tue, 21 Sep 2021 19:00:21 &#43;0800</pubDate>

@@ -100,6 +100,16 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/spring02/">Spring02</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-25">2021-06-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">02_Spring
+builder 设计模式  注意
+ 如果setIq 和 sethair 方法中的 head, 如果没有初始化的话会出现空指针异常
+  处理方法:
+  HumanBuilder
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public class HumanBuilder { Human human = new Human(); public Head setIq(Integer iq) { Head head = human.getHead(); head.setIq(iq); return head; } public Head setHair(String hair) { Head head = human.getHead(); head.setHair(hair); return head; } }   Human</div><div class="post-footer">
+        <a href="/posts/spring02/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/spring01/">Spring01</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-24">2021-06-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">单例模式 构造方法后没有;
 public class 后没有()
@@ -170,14 +180,6 @@ url 分类三大部分 什么哈希表? Hash函数具有的特点 Hash算法不�
 平方探测法
 再散列法</div><div class="post-footer">
         <a href="/posts/day37/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day36/">Day36</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-05-11">2021-05-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">set 特点  Set 接口是 Collection 的子接口 描述的是集合这种数据结构 它的一些自实现是有序的(LinkedHashSet, TreeSet) 有些子实现是无序的(HashSet) 有些子实现允许存储null(LinkedHashSet, HashSet), 有些子实现不允许存储 null(TreeSet) 都是不允许重复元素  set Api  初始化  collection 是 add 方法, map 是 poll 方法
- addAll   clear   containsAll      iterator()  map 不能使用增强for循环, 可以用interset,
-set 可以使用增强for循环
-HashSet特点  HashSet 是 Set 接口一个具体子实现 HashSet 的底层持有一个 HashMap 对象, HashMap 的底层是一个数组 + 链表 + 红黑树结构, 所以存储到 HashSet 中的元素， 实际上都存储到 HashSet 所持有 HashMap 中作为 Key 存在 由于它的底层持有的是 HashMap 对象，所以无序 不允许存储重复元素： 存储的元素 hash 值一样，并且两个元素直接相等或者相 equals.</div><div class="post-footer">
-        <a href="/posts/day36/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
