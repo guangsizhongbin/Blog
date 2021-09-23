@@ -100,6 +100,20 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/">Linux第八章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-11">2021-03-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">什么是压缩的原理是什么? 压缩 :
+如果数据为&quot;111&hellip;&ldquo;共用100个, 压缩技术会记录为&quot;100个1&quot;而不是真的有100个1的位存在
+如何用 tar 备份 /etc (tar.gz)?   切换成 root 用户
+  time tar -zpcv -f /root/etc.tar.gz /etc
+  -z, &ndash;gzip, &ndash;gunzip, &ndash;ungzip
+Filter the archive through gzip
+-p, &ndash;preserve-permissions, &ndash;same-permissions
+extract information about file permissions(default for superuser)
+-c, &ndash;create
+Cteate a new archive. Arguments supply the names of the files to be archived. Directories are archived recursively, unless the &ndash;no-recursion option is given.</div><div class="post-footer">
+        <a href="/posts/linux%E7%AC%AC%E5%85%AB%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/linux%E7%AC%AC%E4%B8%83%E7%AB%A0/">Linux第七章</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-06">2021-03-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">为什么硬盘在分区后需要进行格式化呢? 因为每个操作系统所设置的文件属性/权限并不相同，为了存放这些文件所需的数据，因此就需要将分区进行格式化, 以成为操作系统能够利用的文件系统格式。
 在ext2中, superblock, inode和block是什么样的关系? superblock : 记录此 filesystem的整体信息，包括inode/block的总量、使用量、剩余量，以及文件系统的格式与相关信息。
@@ -178,18 +192,6 @@ p2分出来的L1, L2, L3, L4, L5为逻辑分区(logical partition)
 设备文件名分别为:
  P1: /dev/sda1 P2: /dev/sda2 L1: /dev/sda5 L2: /dev/sda6 L3: /dev/sda7 L4: /dev/sda8 L5: /dev/sda9  /dev/sda3与/dev/sda4是保留给Primary或Extended用的，逻辑分区的设备名称号码由5号开始</div><div class="post-footer">
         <a href="/posts/linux_5/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux_4/">Linux_4</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-22">2021-02-22</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">假设你的主机为虚拟机，里面仅有一颗VirtIO接口的磁盘，请问他在Linux操作系统里面的设备文件名为何？ 虚拟机使用的是/dev/vd[a-p]来命名的
-所以其名为/dev/vda
-如果你的PC上面有两个SATA磁盘以及一个USB磁盘，而主板上面有六个SATA的插槽，这两个磁盘分别安插在主板上的SATA1, SATA5插槽上，请问这三个磁盘Linux中设备文件名为何？ USB闪存盘与SATA相同，均用/dev/sd[a-p]来命名的
-且采用侦测到的顺序来决定设备文件名，并非与实际插槽代号有关
-SATA1: /dev/sda
-SATA5: /dev/sdb
-USB磁盘(开机完成后才被系统捉到): /dev/sdc
-什么是MSDOS（MBR）分区 </div><div class="post-footer">
-        <a href="/posts/linux_4/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
