@@ -100,6 +100,23 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/02_method/">02_method</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-31">2021-03-31</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何实现 Junit 单元测试? 1 2 3  @Test public void methodName() { }   public void 是固定格式，不可以修改，否则报错
+方法的形参列表，必须为空的，否则会报错
+单元测试的类中，不要写main方法
+JVM内存模型是什么样的? Java 的开发者, 在 《Java虚拟机规范》中指出:
+ JVM (运行时数据区)内存分为  JVM栈 堆 方法区 程序计数器 本地方法栈    JVM内存模型中JVM栈(stack)中有什么样的特点? 只有栈中处于栈顶的栈帧才会生效，称这为当前栈桢，当前方法
+JVM内存模型中JVM堆(heap)中有什么样的特点? 所有new出来的东西（称之为对象）都在堆上
+基本数据类型与引用数据类型有什么区别?   存储位置(本质)
+  基本数据类型不存在&quot;引用&quot;的概念，数据都是直接存储在栈上的栈帧里
+  引用数据类型在栈帧中存储引用，引用存储的只是该引用类型在堆上对象的内存地址
+    打印变量名内容:
+  基本数据类型，打印变量名就是该变量具体的数值
+  引用数据类型，打印变量名显示该引用变量堆上的内存地址
+    堆上对象和栈中变量有什么区别?  从存储的类型来看:    堆上存储的是 new 出来的东西，是 引用数据类型 的对象</div><div class="post-footer">
+        <a href="/posts/02_method/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/01_basic/">01_basic</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-30">2021-03-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">[toc]
 JDK 与 JRE 有什么样的关系? JRE (Java Runtime Environment)
@@ -155,25 +172,6 @@ You can then append a project name, such as com.</div><div class="post-footer">
 在 vim 中, 如何在第 n1 与 n2 列之间寻找 word1 ， 并将该字串取代为 word2? 1  :n1, n2s/word1/word2/g   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2, 且在取代前显示提示字符给使用者确认? 1  :1, $1/word1/word2/gc   在 vim 中，如何在第一行到最后一行寻找 word1 字串，并将该字串取为 word2?</div><div class="post-footer">
         <a href="/posts/linux%E7%AC%AC%E4%B9%9D%E7%AB%A0/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/">Java第二章</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-17">2021-03-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">如何做文档注释? 以 /** 开头， 以 */
-如
-/**
- @author gaungsizhongbin   */
-在JAVA中数据类型分为哪几种? 基本数据类型
-引用数据类型
-基本类型 与 引用类型 有什么区别? 基本类型会涉及内存的分配
-引用类型不会涉及内存的分配
-基本类型 包括哪几种? 数值型
-  整数类型 (byte, short, int, long)
-  浮点类型 (float, double)
-  字符型(char)
-布尔型(boolean)
-byte 可表示的数据范围是多少? byte 是8位大小， $- (2^8 / 2)$ ~ $(2^8 / 2) - 1$
-short 可表示的数据范围是多少? short 是16位大小, $- (2^{16} / 2)$ ~ $(2^{16} / 2) - 1$</div><div class="post-footer">
-        <a href="/posts/java%E7%AC%AC%E4%BA%8C%E7%AB%A0/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
