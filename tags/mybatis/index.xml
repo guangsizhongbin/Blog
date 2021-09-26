@@ -4,7 +4,15 @@
         <link>http://fengqigang.cn/tags/mybatis/</link>
         <description>mybatis - Tag - xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sat, 25 Sep 2021 23:00:02 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/mybatis/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Sun, 26 Sep 2021 20:57:45 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/tags/mybatis/" rel="self" type="application/rss+xml" /><item>
+    <title>11 StatementHandle的定义与结构</title>
+    <link>http://fengqigang.cn/posts/11-statementhandle%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%BB%93%E6%9E%84/</link>
+    <pubDate>Sun, 26 Sep 2021 20:57:45 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/11-statementhandle%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%BB%93%E6%9E%84/</guid>
+    <description><![CDATA[StatementHandler定义 JDBC处理器，基于JDBC构建Statement, 并设置参数，然后执行Sql. 每调用会话当中一次SQL, 都会有与之相对应的且唯一的Statement的实例
+StatementHandler的结构 ]]></description>
+</item><item>
     <title>10 Mybatis执行过程总结</title>
     <link>http://fengqigang.cn/posts/10-mybatis%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sat, 25 Sep 2021 23:00:02 &#43;0800</pubDate>

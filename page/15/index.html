@@ -100,6 +100,23 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/">Linux第五章</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-02">2021-03-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">箭头和方框所指的是什么意思？   第一个箭头是指连接到此文件的数量
+  第二个箭头指的是文件的容量
+  方框所指的是文件最后修改的时间
+   如何用ls命令列出全部文件最后修改的确切时间？ ls -al --full-time
+ 请问testgroup这个群组的成员与其他人(others)是否可以进入本目录？   test1 是本目录的拥有者，有[rwx]权限，可以对该目录进行任何操作
+  testgroup 这个群组[r-x], 即该组的成员可以进入本目录进行工作，但是不能在本目录下进行写入动作。
+  other [r&ndash;], 由于没有x的权限，因此others的使用者，并不能进入此目录
+   系统有个帐号名称为vbird, 这个帐号并没有支持root群组，请问vbird对这个目录有何权限? vbird 对此目录只有r的权限，但没有x权限，表示vbird没法进入该目录，即便有r权限，也无法执行。
+ 普通用户dmtsai对这目录/文件的权限为何？ 其有r权限，可以查询到文件名，由于没有权限，会有一堆问号
+ 为什么很多时候没有/dir1 的r权限，也可以对里面的数据进行操作？ 因为， r 代表&quot;这个抽屉里有灯光&quot;, 可以看到各个文件在哪里
+但当有 x 权限的时候，就知道里面的数据在哪里，不需要有灯光，摸黑也可以找到
+只是，没有 r 的话，使用 [tab] 时，无法补齐文件名
+ 在FHS(filesystem hierarchy standard)规定下，各个文件夹都是放什么的?？1   /bin (User Binaries) 与 /sbin (System Binaries)</div><div class="post-footer">
+        <a href="/posts/linux%E7%AC%AC%E4%BA%94%E7%AB%A0/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/java%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0%E9%A2%98/">Java基础练习题</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-26">2021-02-26</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">基础概念问答    请问Java语言是跨平台的吗？JVM是跨平台的吗？为什么？     Java语言是跨平台的，但JVM不是跨平台的，不同的平台有不同的JVM。 首先, 后缀为 &quot;*.java&quot; 的文件，经过javac命令编译后会生成public class定义类名称的.class文件(字节码文件)。然后, 不同平台的JVM会根据不同操作系统所提供的接口，实现.class文件中的功能。
  例如: Hello.java所对应的程序
@@ -176,18 +193,6 @@ CPU中的所有数据都是由内存提供的
 1  sudo dmidecode -t memory   MT/s 与 MHz有什么关系?</div><div class="post-footer">
         <a href="/posts/linux_2/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/linux_1/">Linux_1</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-02-15">2021-02-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E9%B8%9F%E5%93%A5%E7%9A%84%E7%A7%81%E6%88%BF%E8%8F%9C/"><i class="far fa-folder fa-fw"></i>鸟哥的私房菜</a></span></div><div class="content">电脑: 辅助人脑的好工具 计算机硬件的五大单元 计算机硬件有哪五大单元？  输入单元 输出单元 控制单元 算数逻辑单元 存储单元  cpu中包含哪些单元？ 控制、算术逻辑单元
-CPU-什么是CPU的架构？ 首先，使用软件都需要经过CPU内部的微指令集来达成才行。其次，这些指令集的设计主要被分为两种设计理念，也就是两种主要的CPU架构: 分别为:精简指令集(RISC)与复杂指令集(CISC)系统。
-CPU-什么是精简指令集(RISC)？ RISC 即 Reduced Instruction Set Computer.
-其特点是:
- 每个指令的执行时间很短 完成的动作单纯 指令的执行性能较佳 若做复杂的事情，需要多个指令来完成  其应用：
- 甲骨文的SPARC CPU  学术领域的大型工作站 银行金融体系的主要服务器   IBM的Power Architecture  索尼的Play Station 3   安谋(ARM Holdings)的ARM CPU  手机 PDA(Personaldigital assistant) 导航系统 网络设备(交换器、路由器)    CPU-什么是复杂指令集(CISC)? CISC 即 Complex Instruction Set Computer.
-其特点是:
- 每个微指令集可又执行一些较低阶的硬件操作 指令数目多而且复杂 每条指令的长度并不相同  CPU-所谓的x86架构是如何而来的？ 因为最早的Intel发展出来的CPU代号称为8086, 后来依此架构以开发出80286, 80386&hellip;, 因此这种架构的CPU就被称为x86架构</div><div class="post-footer">
-        <a href="/posts/linux_1/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -218,7 +223,7 @@ CPU-什么是精简指令集(RISC)？ RISC 即 Reduced Instruction Set Computer.
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/20/">20</a>
+                        <a href="/page/21/">21</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

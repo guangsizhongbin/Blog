@@ -100,6 +100,14 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/04-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/">04 一级缓存失效的情况</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-20">2021-09-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div><div class="content">一级缓存总结   与会话相关
+  参数条件相关
+  提交和修改都会清空
+  </div><div class="post-footer">
+        <a href="/posts/04-%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E7%9A%84%E6%83%85%E5%86%B5/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mybatis/">mybatis</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/">03 Mybatis的命中场景</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-18">2021-09-18</time></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div><div class="content">一级缓存的特点   默认打开
   底层是key-value形式
@@ -139,17 +147,6 @@ parent: https://github.com/mybatis/parent
  HelloControl  1 2 3 4 5 6 7 8 9 10 11  @RestController public class HelloControl { @Value(&#34;${config}&#34;) private String config; @RequestMapping(&#34;/index&#34;) public void say() { System.out.println(config); } }   配置成实体类   BeanConfig  1 2 3 4 5 6 7  @Data @Component @ConfigurationProperties(prefix = &#34;config2&#34;) public class BeanConfig { public String name; public String value; }    BeanController  1 2 3 4 5 6 7 8 9 10 11  @RestController public class BeanController { @Autowired public BeanConfig beanConfig; @RequestMapping(&#34;/say&#34;) public void say(){ System.</div><div class="post-footer">
         <a href="/posts/02-springboot%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/">01 @Autowired与@Resource的区别</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-09-09">2021-09-09</time></span>&nbsp;<span class="post-category">included in <a href="/categories/spring/"><i class="far fa-folder fa-fw"></i>spring</a></span></div><div class="content">区别   来源不同   @Resource是java自带的
-@AutoWired是spring带来的
- 注入的方式不同   @Autowired 只按照 byType 注入
-出现多个实现bean时可以用@Primary 来修饰也可以用@Qualifier来标注需要注入的类
-@Resource 默认按 byName 注入
-出现多个实现bean时可以用name=xxx来指定
-实战  HumanController  1 2 3 4 5 6 7 8 9 10 11 12  @RestController @RequestMapping(&#34;/an&#34;) public class HumanController { @Autowired private Human human; @RequestMapping(&#34;/run&#34;) public String runMarathon(){ return human.runMarathon(); } }    Human  1 2 3  public interface Human { String runMarathon(); }    Man  1 2 3 4 5 6 7 8  @Service public class Man implements Human { @Override public String runMarathon() { return &#34;A man run marathon&#34;; } }    Woman  1 2 3 4 5 6 7  @Service public class Woman implements Human { @Override public String runMarathon() { return &#34;An woman run marathon&#34;; } }     加入@Primary, 帮助@autowired找到对应的实现类    使用@autowired时，也可以加入@Qualifier(&ldquo;xxx&rdquo;)来指定    使用@Resource时, 指定name, name后的名字要小写    使用@Resource时，再加入@Qualifier(&ldquo;xxx&rdquo;)来指定   </div><div class="post-footer">
-        <a href="/posts/01-autowired%E4%B8%8Eresource%E7%9A%84%E5%8C%BA%E5%88%AB/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -170,7 +167,7 @@ parent: https://github.com/mybatis/parent
                     <span class="page-link" aria-hidden="true">&hellip;</span>
                 </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/20/">20</a>
+                        <a href="/page/21/">21</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">
