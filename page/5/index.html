@@ -100,6 +100,27 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/db04%E4%BA%8B%E5%8A%A1/">Db04事务</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-06">2021-07-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>java</a></span></div><div class="content">什么是事务? 指逻辑上的一组操作单元， 组成这个逻辑操作的各个单元， 要么都成功，要么都不成功
+事务控制有哪些api?  connection.rollback();  回滚事务
+connection.commit();  提交事务
+connection.setAutoCommit(true);  开启事务
+事务的特性是什么? ACID
+ 原子性  一个事务，事务中的各个操作单元，要么就都成功，要么都不成功
+一致性  事务必须使数据库从一个一致性变成另一个一致性状态
+隔离性  事务与事务之间是互相隔离的，互不干扰的，互不影响的
+持久性  事务引起的数据库的改变应该是永久化的，而不是短暂的
+事务的隔离级别有哪些?   read uncommitted 读未提交
+  read Commited 读已提交
+  repeatable read 可重复读
+  Serializable 串行化
+  什么是 read uncommitted 读未提交?   出现脏读
+  出现不可重复读
+  出现虚幻读
+  什么是 read committed 读已提交?</div><div class="post-footer">
+        <a href="/posts/db04%E4%BA%8B%E5%8A%A1/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/db03%E7%B4%A2%E5%BC%95/">db03索引</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-07-04">2021-07-04</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">什么是索引? 索引是可以帮助MySQL高效获取数据的数据结构。
 即索引是数据结构。
@@ -171,16 +192,6 @@ InnoDB 与 MyISAM 有什么区别?  事务:  InnoDB 支持事务, MyISAM 不支�
   getTarget() 委托类对象
   CustomAspect  指定组件为切面组件 @Aspect , 保留@Component  配置切入点 @Pointcut(&ldquo;execution(* cn.</div><div class="post-footer">
         <a href="/posts/aop/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/spring02/">Spring02</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-06-25">2021-06-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">02_Spring
-builder 设计模式  注意
- 如果setIq 和 sethair 方法中的 head, 如果没有初始化的话会出现空指针异常
-  处理方法:
-  HumanBuilder
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public class HumanBuilder { Human human = new Human(); public Head setIq(Integer iq) { Head head = human.getHead(); head.setIq(iq); return head; } public Head setHair(String hair) { Head head = human.getHead(); head.setHair(hair); return head; } }   Human</div><div class="post-footer">
-        <a href="/posts/spring02/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/spring/">spring</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
