@@ -5,38 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>13 参数的转换过程 - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="13 参数的转换过程" />
-<meta property="og:description" content="参数处理 单个参数 默认不作任何处理，除非设置了 @param
-多个参数   转换成 param1, param2
-  基于@param 中 name 属性转换
-  基于反射转换成变量名, 如果不支持转换成arg0, arg1(jdk 1.8之后才支持)
-  " />
+        <title>Helloworld - xiaonan&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="Helloworld" />
+<meta property="og:description" content="helloworld" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengqigang.cn/posts/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-09-28T23:52:53+08:00" />
-<meta property="article:modified_time" content="2021-09-28T00:00:00+00:00" />
+<meta property="og:url" content="http://fengqigang.cn/posts/helloworld/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-10-21T19:46:57+08:00" />
+<meta property="article:modified_time" content="2021-10-21T19:47:53+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="13 参数的转换过程"/>
-<meta name="twitter:description" content="参数处理 单个参数 默认不作任何处理，除非设置了 @param
-多个参数   转换成 param1, param2
-  基于@param 中 name 属性转换
-  基于反射转换成变量名, 如果不支持转换成arg0, arg1(jdk 1.8之后才支持)
-  "/>
+<meta name="twitter:title" content="Helloworld"/>
+<meta name="twitter:description" content="helloworld"/>
 <meta name="application-name" content="xiaonan&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="xiaonan&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B/" /><link rel="prev" href="http://fengqigang.cn/posts/12-preparedstatementhandler%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" /><link rel="next" href="http://fengqigang.cn/posts/helloworld/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://fengqigang.cn/posts/helloworld/" /><link rel="prev" href="http://fengqigang.cn/posts/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "13 参数的转换过程",
+        "headline": "Helloworld",
         "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/fengqigang.cn\/posts\/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B\/"
-        },"genre": "posts","keywords": "mybatis","wordcount":  16 ,
-        "url": "http:\/\/fengqigang.cn\/posts\/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B\/","datePublished": "2021-09-28T23:52:53+08:00","dateModified": "2021-09-28T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/fengqigang.cn\/posts\/helloworld\/"
+        },"genre": "posts","keywords": "helloworld","wordcount":  1 ,
+        "url": "http:\/\/fengqigang.cn\/posts\/helloworld\/","datePublished": "2021-10-21T19:46:57+08:00","dateModified": "2021-10-21T19:47:53+08:00","publisher": {
             "@type": "Organization",
             "name": "xiaonan"},"author": {
                 "@type": "Person",
@@ -110,45 +102,22 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">13 参数的转换过程</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mybatis/"><i class="far fa-folder fa-fw"></i>mybatis</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-28">2021-09-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;16 words&nbsp;
+        </div><article class="page single"><h1 class="single-title animated flipInX">Helloworld</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/helloworld/"><i class="far fa-folder fa-fw"></i>helloworld</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-21">2021-10-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;One word&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#参数处理">参数处理</a>
-      <ul>
-        <li><a href="#单个参数">单个参数</a></li>
-        <li><a href="#多个参数">多个参数</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h2 id="参数处理">参数处理</h2>
-<h3 id="单个参数">单个参数</h3>
-<p>默认不作任何处理，除非设置了 <code>@param</code></p>
-<h3 id="多个参数">多个参数</h3>
-<ol>
-<li>
-<p>转换成 <code>param1</code>, <code>param2</code></p>
-</li>
-<li>
-<p>基于<code>@param</code> 中 <code>name</code> 属性转换</p>
-</li>
-<li>
-<p>基于反射转换成变量名, 如果不支持转换成arg0, arg1(jdk 1.8之后才支持)</p>
-</li>
-</ol>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>helloworld</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-09-28</span>
+                <span>Updated on 2021-10-21</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -161,14 +130,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/mybatis/">mybatis</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/helloworld/">helloworld</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/12-preparedstatementhandler%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90/" class="prev" rel="prev" title="12 PreparedStatementHandler执行流程分析"><i class="fas fa-angle-left fa-fw"></i>12 PreparedStatementHandler执行流程分析</a>
-            <a href="/posts/helloworld/" class="next" rel="next" title="Helloworld">Helloworld<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B/" class="prev" rel="prev" title="13 参数的转换过程"><i class="fas fa-angle-left fa-fw"></i>13 参数的转换过程</a></div>
 </div>
 </article></div>
             </main><footer class="footer">

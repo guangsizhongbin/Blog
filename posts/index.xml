@@ -4,7 +4,14 @@
         <link>http://fengqigang.cn/posts/</link>
         <description>All Posts | xiaonan&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>gaungsizhongbin@gmail.com (fengxiaonan)</managingEditor>
-            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Tue, 28 Sep 2021 23:52:53 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>gaungsizhongbin@gmail.com (fengxiaonan)</webMaster><lastBuildDate>Thu, 21 Oct 2021 19:46:57 &#43;0800</lastBuildDate><atom:link href="http://fengqigang.cn/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Helloworld</title>
+    <link>http://fengqigang.cn/posts/helloworld/</link>
+    <pubDate>Thu, 21 Oct 2021 19:46:57 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>http://fengqigang.cn/posts/helloworld/</guid>
+    <description><![CDATA[helloworld]]></description>
+</item><item>
     <title>13 参数的转换过程</title>
     <link>http://fengqigang.cn/posts/13-%E5%8F%82%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%BF%87%E7%A8%8B/</link>
     <pubDate>Tue, 28 Sep 2021 23:52:53 &#43;0800</pubDate>
@@ -83,14 +90,5 @@ StatementHandler的结构 ]]></description>
   参数条件相关
   提交和修改都会清空
   ]]></description>
-</item><item>
-    <title>03 Mybatis的命中场景</title>
-    <link>http://fengqigang.cn/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/</link>
-    <pubDate>Sat, 18 Sep 2021 23:17:19 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>http://fengqigang.cn/posts/03-mybatis%E7%9A%84%E5%91%BD%E4%B8%AD%E5%9C%BA%E6%99%AF/</guid>
-    <description><![CDATA[一级缓存的特点   默认打开
-  底层是key-value形式
-  命中一级缓存测试 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21  public class FirstCacheTest { private SqlSessionFactory factory; private SqlSession sqlSession; @Before public void init() { // 获取构建器  SqlSessionFactoryBuilder factoryBuilder = new SqlSessionFactoryBuilder(); // 解析XML 并构建会话工厂  factory = factoryBuilder.build(ExecutorTest.class.getResourceAsStream(&#34;/mybatis-config.xml&#34;)); sqlSession = factory.openSession(); } @Test public void test1() { StudentMapper mapper = sqlSession.]]></description>
 </item></channel>
 </rss>

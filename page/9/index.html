@@ -100,6 +100,16 @@
         alt="/images/avatar.png"
         title="/images/avatar.png" /></a></div><h1 class="home-title">Xiaonan's Blog</h1><div class="links"><a href="https://github.com/guangsizhongbin" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:guangsizhongbin@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/posts/day26/">Day26</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-29">2021-04-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何定义一个双链表? 定义结点
+一般有:
+pre , value , next
+结点
+1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this.value = value; this.next = next; this.pre = pre; } }   链表
+1 2 3 4 5 6 7 8 9 10 11  class Node { String value; Node next; Node pre; public Node(Node pre, String value, Node next) { this.</div><div class="post-footer">
+        <a href="/posts/day26/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
         <a href="/posts/day25/">Day25</a>
     </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-28">2021-04-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">如何利用双指针法输出输出中的中间元素(快指针与慢指针)? 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48  public class Ex3 { public static void main(String[] args) { Node zs = new Node(&#34;zs&#34;, null); Node ls = new Node(&#34;ls&#34;, null); Node wu = new Node(&#34;wu&#34;, null); Node sq = new Node(&#34;sq&#34;, null); Node qg = new Node(&#34;qg&#34;, null); zs.</div><div class="post-footer">
         <a href="/posts/day25/">Read More</a><div class="post-tags">
@@ -208,27 +218,6 @@ OSI参考模型有几层? 分别是什么? 7 层
 数据链路层的主要功能是什么?  成帧   差错控制(帧校验，确认 + 超时重传)
   流量控制</div><div class="post-footer">
         <a href="/posts/day22/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/posts/day21/">Day21</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="fengqigang.cn" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>xiaonan</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-04-23">2021-04-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%8B%E9%81%93/"><i class="far fa-folder fa-fw"></i>王道</a></span></div><div class="content">同步方法中的锁对象是什么? 同步代码块中
-任意java对象
-任意方法中
-this
-静态方法中
-字节码文件对象（.clsss） 补充代码
-为什么在同步代码块中可以放一个任意的对象?  因为 java 当中所有对象， 内部都存在一个 标志位，表示加锁和解锁的状态 其实锁对象，就是充当锁的角色  所谓的加锁解锁，其实就是 设置锁对象的标志位，来表示加锁解锁的状态
-当某个线程执行到同步代码块时，遇到加锁或无锁时会怎么处理?  当锁对象处于未加锁状态， jvm 就会设置锁对象的标志位(加锁)， 并在锁对象中记录，是哪个线程加的锁. 加锁成功， 执行同步代码块中的代码。 如果锁对象 已经被加锁, 且加锁线程不是当前线程，系统会让当前线程处于阻塞状态(等着)， 直到加锁线程，执行完了对共享变量的组操作，并释放锁。  加锁线程何时释放锁? 当加锁线程，执行完了同步代码块中的代码(对共享变量的一组操作)，在退出同步代码块之前,
-jvm 自动清理锁对象的标志位，将锁对象变成未上锁状态(释放锁)
-如何使用 Lock 锁住对象?  定义一把锁  Lock lock = new ReentrantLock();
-美[ˌriˈɛntrənt]
-public ReentrantLock()
-Creates an instance of ReentrantLock. THis is equivalent to using ReentrantLock(false).
-获取锁  lock.lock();
-void lock()
-Acquires the lock.
-释放锁  lock.</div><div class="post-footer">
-        <a href="/posts/day21/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">java</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
